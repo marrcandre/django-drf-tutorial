@@ -78,14 +78,6 @@ That's it, we're done!
 
 You can now open the API in your browser at `http://127.0.0.1:8000/`, and view your new 'users' API. If you use the `Login` control in the top right corner you'll also be able to add, create and delete users from the system.
 
-# Documentation & Support
-
-Full documentation for the project is available at [https://www.django-rest-framework.org/][docs].
-
-For questions and support, use the [REST framework discussion group][group], or `#restframework` on libera.chat IRC.
-
-You may also want to [follow the author on Twitter][twitter].
-
 # Passo a passo do Django com Django Rest Framework
 
 ## Criar pasta
@@ -95,16 +87,18 @@ Não usar acentos e nem espaços nos nomes de pastas
 Nunca abrir um arquivo 
 
 ## Extensões necessárias do vscode 
-Python, SqLite
-Intellicode
-Prettier
+* Python, SqLite
+* Intellicode
+* Prettier
 
 ## Abrir o terminal no vscode
+`Control + Shift + '`
 
-## Verificar se o python está instalado 
-python --version
-python3 --version
+## Verificar se o python está instalado
+
+    python --version
+    python3 --version
 
 ## Verificar se o poetry está instalado 
-poetry --version
+    poetry --version
 
