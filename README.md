@@ -1,16 +1,46 @@
 # Django REST framework
 
-# Installation
+# Aula 1
 
-Install using `pip`...
+## Preparação
 
-    pip install djangorestframework
+* Abra o navegador de arquivos
+* Crie uma pasta chamada `livraria` para o seu projeto
+* Certifique-se de que nenhuma pasta no caminho tenha espaços ou acentos.
+* Abra a pasta no vscode (repita em voz alta: *"Nunca abra um arquivo, sempre abra a pasta."*).
+* Dentro do vscode, abra um terminal (`Control + Shift + '`)
+  
+Os comandos a seguir serão digitados no terminal que você abriu dentro do **vscode**.
 
-Add `'rest_framework'` to your `INSTALLED_APPS` setting.
+Verifique se o **poetry** está instalado:
+
+    poetry --version
+
+Verifique se o **python** está instalado:
+
+    python --version
+ou
+
+    python3 --version
+
+Crie o ambiente virtual usado o **poetry**:
+
+    poetry init
+
+
+## Algumas extensões necessárias do vscode 
+* Python
+* SqLite Viewer
+* Intellicode
+* Prettier
+  
+----
+
+Acrescente `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 ```python
 INSTALLED_APPS = [
     ...
-    'rest_framework',
+    'core',
 ]
 ```
 
@@ -78,27 +108,4 @@ That's it, we're done!
 
 You can now open the API in your browser at `http://127.0.0.1:8000/`, and view your new 'users' API. If you use the `Login` control in the top right corner you'll also be able to add, create and delete users from the system.
 
-# Passo a passo do Django com Django Rest Framework
-
-## Criar pasta
-Não usar acentos e nem espaços nos nomes de pastas
-
-## Abrir a pasta no vscode
-Nunca abrir um arquivo 
-
-## Extensões necessárias do vscode 
-* Python, SqLite
-* Intellicode
-* Prettier
-
-## Abrir o terminal no vscode
-`Control + Shift + '`
-
-## Verificar se o python está instalado
-
-    python --version
-    python3 --version
-
-## Verificar se o poetry está instalado 
-    poetry --version
 
