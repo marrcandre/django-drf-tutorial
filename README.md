@@ -307,12 +307,51 @@ class Editora(models.Model):
 
 Não esqueça de que a cada criação de novas models é necessário:
 
-* Registra a model no `Admin`
+* Registra a model no `Admin`;
 * Fazer as migrações (`makemigrations`);
 * Efetivar as migrações (`migrate`);
+
+
+Seu arquivo `admin.py` ficará assim:
+
+```python
+from django.contrib import admin
+
+from core.models import Categoria, Editora
+
+admin.site.register(Categoria)
+admin.site.register(Editora)
+```
 
 Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados. Para
 
 ---
+
+# Aula 3 
+
+## Colocando o projeto no **github**
+
+O primeiro passo é configurar o computador:
+
+* Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** no painel lateral esquerdo.
+* Configure as variáveis do git no seu computador.
+
+Para isso, digite no terminal, substituindo por suas informações pessoais:
+  
+
+    git config user.name "Marco André Mendes"
+    git config user.email "marcoandre@gmail.com"
+
+Para verificar se as informações estão corretas, digite:
+
+    git config -l
+
+* No **vscode**, entre na opção do **git** (Controle de código fonte).
+* Clique no botão **Initialize repository**
+* Escreva uma descrição para o commit (`"Commit Inicial"`).
+* Tecle `Control + ENTER`
+
+Para fazer o envio para o servidor do github.
+
 
 
