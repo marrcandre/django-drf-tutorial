@@ -1,5 +1,7 @@
 # Django com DRF
 
+ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest Framework).
+
 # Aula 1
 
 ## Preparação
@@ -143,7 +145,7 @@ Se precisar parar a execução do projeto, aperte `Control + C` e depois o execu
 
 Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
 
-    python manage.py makemigrations
+    python manage.py migrate
 
 Verifique se o projeto continua rodando e se o `admin` roda.
 
@@ -158,21 +160,21 @@ Agora sim, seu projeto está rodando e você consegue entrar no `admin`:
 
 ----
 # Aula 2
-Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
-```python
-INSTALLED_APPS = [
-    ...
-    'core',
-]
-```
 
-# Resumo da criação de um projeto Django:
+Apague o projeto criado na aula passada e vamos criá-lo novamente.
 
-Abra um terminal na pasta onde você deseja criar o projeto e digite:
 
-    
-    mkdir livraria
-    poetry -n
+## Resumo da criação de um projeto Django:
+
+Siga as seguintes instruções para criar novamente o projeto.
+
+* Crie uma pasta
+* Abra a pasta no **vscode**
+* Abra um terminal no **vscode**
+
+Digite os seguintes comandos, uma aum, no terminal dentro do vscode.
+
+    poetry 
     poetry shell
     poetry add django
     django-admin startproject livraria .
@@ -180,55 +182,137 @@ Abra um terminal na pasta onde você deseja criar o projeto e digite:
     ./manage.py createsuperuser
     ./manage.py starapp core    
 
-Now edit the `example/urls.py` module in your project:
 
-```python
-from django.urls import path, include
-from django.contrib.auth.models import User
-from rest_framework import serializers, viewsets, routers
-
-# Serializers define the API representation.
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
-
-
-# ViewSets define the view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-# Routers provide a way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-
-
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
-urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-]
-```
-
-We'd also like to configure a couple of settings for our API.
-
-Add the following to your `settings.py` module:
-
+Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 ```python
 INSTALLED_APPS = [
-    ...  # Make sure to include the default installed apps here.
-    'rest_framework',
+    ...
+    'core',
 ]
+```
+Após criar o app, sua pasta deve parecer com isso:
+
+```
+.
+├── core
+│   ├── admin.py
+│   ├── apps.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── db.sqlite3
+├── livraria
+│   ├── asgi.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── poetry.lock
+└── pyproject.toml
 
 ```
 
-That's it, we're done!
+Dentro da pasta `core` foram criados alguns arquivos.
+Vamos abrir cada um desses arquivos e verificar para que eles servem, principalmente os seguintes:
 
-    ./manage.py runserver
+* `admin.py`
+* `models.py`
+* `views.py`
 
-You can now open the API in your browser at `http://127.0.0.1:8000/`, and view your new 'users' API. If you use the `Login` control in the top right corner you'll also be able to add, create and delete users from the system.
+Posteriormente, iremos modificar esses arquivos, bem como incluir alguns arquivos novos.
+
+Nesse ponto, temos:
+
+* O ambiente virtual **Python** criado;
+* O projeto `livraria` criado;
+* O app `core` criado e instalado no projeto.
+
+---
+
+## Criação da primeira model
+
+Uma `model` no **Django** é uma classe que representa uma tabela no banco de dados. Cada atributo (variável) dessa classe representa um campo da tabela.
+
+Para maiores informações consulte a [documentação](https://docs.djangoproject.com/en/4.0/topics/db/models/) do **Django** sobre `models`.
+
+
+Altere o arquivo `models.py`, desse jeito:
+
+```python
+from django.db import models
+
+class Categoria(models.Model):
+    descricao = models.CharField(max_length=100)
+```
+
+Nesse código, você:
+
+* Importou o pacote necessário para criar a `model`;
+* Criou a classe `Categoria`;
+* Incluiu o campo `descricao`.
+
+### Efetivando a criação da tabela
+
+Precisamos agora efetivar essa criação da tabela no banco de dados. Para isso, abra um novo terminal, deixando o terminal antigo executando o servidor do projeto, e execute os seguintes comandos:
+
+    ./manage makemigrations
+    ./migrate
+
+* Acesse o banco de dados e verifique se a tabela `core_categoria` foi criada.
+* Acesse o `Admin` do projeto e verifique se a nova tabela aparece lá.
+
+### Inclusão no Admin
+
+A tabela ainda não apareceu, pois ainda precisamos informar ao `Admin` da sua existência.
+
+Para isso, inclua as seguintes linhas no arquivo `admin.py`:
+
+```python
+from django.contrib import admin
+
+from core.models import Categoria
+
+admin.site.register(Categoria)
+```
+
+Acesse novamente o `Admin` e inclua algumas editoras no banco de dados. 
+
+Você perceberá que a descrição dos informações que você inclui está meio estranha. Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
+
+```python
+...
+
+    def __str__(self):
+        return self.descricao
+```
+
+---
+## Criação da segunda model
+
+Crie a segunda model, incluindo as seguintes informações no arquivo `models.py`:
+
+```python
+...
+
+class Editora(models.Model):
+    nome = models.CharField(max_length=100)
+    site = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
+```
+
+Não esqueça de que a cada criação de novas models é necessário:
+
+* Registra a model no `Admin`
+* Fazer as migrações (`makemigrations`);
+* Efetivar as migrações (`migrate`);
+
+Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados. Para
+
+---
 
 
