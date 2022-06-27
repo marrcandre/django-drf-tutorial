@@ -323,11 +323,38 @@ admin.site.register(Categoria)
 admin.site.register(Editora)
 ```
 
-Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados. Para
+Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados.
 
 ---
 
-# Aula 3 
+# Aula 3
+
+## Criando um segundo projeto
+
+Seguindo aquilo que você já aprendeu, crie um novo projeto chamdo **garagem**. Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
+
+```python
+from django.db import models
+
+
+class Marca(models.Model):
+    nome = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nome
+
+
+class Categoria(models.Model):
+    descricao = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.descricao
+```
+
+
+---
+
+# Aula 4 
 
 ## Colocando o projeto no **github**
 
