@@ -90,7 +90,7 @@ Instale o **django** no ambiente virtual:
 
 Verifique se o **django** está instalado:
 
-    djago-admin
+    django-admin
 
 Se tudo der certo, ele mostrará as opções do `django-admin` na tela.
 
@@ -180,7 +180,7 @@ Digite os seguintes comandos, uma aum, no terminal dentro do vscode.
     django-admin startproject livraria .
     ./manage.py migrate
     ./manage.py createsuperuser
-    ./manage.py starapp core    
+    ./manage.py startapp core    
 
 
 Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
