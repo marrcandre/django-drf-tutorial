@@ -259,7 +259,7 @@ Nesse código, você:
 Precisamos agora efetivar essa criação da tabela no banco de dados. Para isso, abra um novo terminal, deixando o terminal antigo executando o servidor do projeto, e execute os seguintes comandos:
 
     ./manage makemigrations
-    ./migrate
+    ./manage.py migrate
 
 * Acesse o banco de dados e verifique se a tabela `core_categoria` foi criada.
 * Acesse o `Admin` do projeto e verifique se a nova tabela aparece lá.
