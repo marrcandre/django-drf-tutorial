@@ -8,8 +8,8 @@
 
 * Abra o navegador de arquivos
 * Crie uma pasta chamada `livraria` para o seu projeto
-* Certifique-se de que nenhuma pasta no caminho tenha espaços ou acentos.
-* Abra a pasta no vscode (repita em voz alta: *"Nunca abra um arquivo, sempre abra a pasta."*).
+* Certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (*se você não fizer isso, terá que recriar todo o projeto*).
+* Abra a **pasta** no vscode (repita em voz alta: *"Nunca abra um arquivo, sempre abra a pasta."*).
 * Dentro do vscode, abra um terminal (`Control + Shift + '`)
 
 Instale algumas extensões para o **vscode**:
@@ -358,12 +358,24 @@ class Categoria(models.Model):
 
 ## Colocando o projeto no **github**
 
-O primeiro passo é configurar o computador:
+Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
-* Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** no painel lateral esquerdo.
-* Configure as variáveis do git no seu computador.
+* **Antes de clicar ou responder, leia atentamente as instruções.**
+* **Leia atentamente as instruções antes de clicar ou responder.**
+* **Nunca clique ou responda sem antes ler atentamente as instruções.**
 
-Para isso, digite no terminal, substituindo por suas informações pessoais:
+As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
+
+### Configure o projeto git
+
+* Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
+* Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Depois, clique no botão `Initialize repository`.
+* Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
+
+
+### Configure as variáveis do **git**
+  
+Para isso, digite no terminal, substituindo por suas informações pessoais (colocando as suas informações no lugar):
   
 
     git config user.name "Marco André Mendes"
@@ -373,12 +385,27 @@ Para verificar se as informações estão corretas, digite:
 
     git config -l
 
-* No **vscode**, entre na opção do **git** (Controle de código fonte).
-* Clique no botão **Initialize repository**
-* Escreva uma descrição para o commit (`"Commit Inicial"`).
-* Tecle `Control + ENTER`
+### Crie o arquivo .gitignore
 
-Para fazer o envio para o servidor do github.
+* Vá no site [gitignore.io](http://https://gitignore.io/`)
+* Escolha as opções `Django` e `VisualStudioCode`.
+* Clique em `Criar`.
+* Selecione todo o texto (`Control + A`) e copie (`Control + C`).
+* Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`.
+* Cole o conteúdo copiado (`Control + V`).
+
+
+### Faça a publicação
+
+* Escreva uma descrição para o commit (`"Commit Inicial"`).
+* Tecle `Control + ENTER` para fazer o envio para o servidor do github.
+* Leia atentamente as instruções relacionadas a autenticação no **github** e criação do projeto. 
+* Ao final, seu projeto será incluído no **github** e você poderá visulizá-lo lá.
+
+## Fazendo alterações no projeto e enviando novamente
+
+
+
 
 
 
