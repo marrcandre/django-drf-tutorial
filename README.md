@@ -90,7 +90,7 @@ Instale o **django** no ambiente virtual:
 
 Verifique se o **django** está instalado:
 
-    djago-admin
+    django-admin
 
 Se tudo der certo, ele mostrará as opções do `django-admin` na tela.
 
@@ -180,7 +180,7 @@ Digite os seguintes comandos, uma aum, no terminal dentro do vscode.
     django-admin startproject livraria .
     ./manage.py migrate
     ./manage.py createsuperuser
-    ./manage.py starapp core    
+    ./manage.py startapp core    
 
 
 Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
@@ -258,8 +258,8 @@ Nesse código, você:
 
 Precisamos agora efetivar essa criação da tabela no banco de dados. Para isso, abra um novo terminal, deixando o terminal antigo executando o servidor do projeto, e execute os seguintes comandos:
 
-    ./manage makemigrations
-    ./migrate
+    ./manage.py makemigrations
+    ./manage.py migrate
 
 * Acesse o banco de dados e verifique se a tabela `core_categoria` foi criada.
 * Acesse o `Admin` do projeto e verifique se a nova tabela aparece lá.
