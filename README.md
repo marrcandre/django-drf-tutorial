@@ -162,7 +162,7 @@ Verifique se o projeto continua rodando e se o `admin` roda.
 
 Crie o super usuário para poder fazer o login:
 
-    python manage.py creatsuperuser
+    python manage.py createsuperuser
 
 Agora sim, seu projeto está rodando e você consegue entrar no `admin`:
 
@@ -183,7 +183,7 @@ Siga as seguintes instruções para criar novamente o projeto.
 -   Abra a pasta no **vscode**
 -   Abra um terminal no **vscode**
 
-Digite os seguintes comandos, uma aum, no terminal dentro do vscode.
+Digite os seguintes comandos, um a um, no terminal dentro do vscode.
 
     poetry
     poetry shell
@@ -191,6 +191,11 @@ Digite os seguintes comandos, uma aum, no terminal dentro do vscode.
     django-admin startproject livraria .
     ./manage.py migrate
     ./manage.py createsuperuser
+
+## Criando um app
+
+Para criar seu primeiro app, digite: 
+
     ./manage.py startapp core
 
 Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
