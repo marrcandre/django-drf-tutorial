@@ -342,7 +342,7 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 ## Criando um segundo projeto
 
-Seguindo aquilo que você já aprendeu, crie um novo projeto chamado **garagem**. Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
+Seguindo aquilo que você já aprendeu, crie um **novo projeto** chamado **garagem**. Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
 
 ```python
 from django.db import models
