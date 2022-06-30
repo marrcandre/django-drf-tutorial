@@ -118,13 +118,11 @@ Para executar o projeto, digite no terminal:
 
     python manage.py runserver
 
-Verifique o projeto rodando no navegador:
 
-    http://localhost:8000
+Verifique se o projeto está rodando:
+* Página inicial: [http://localhost:8000](http://localhost:8000)
 
-Verifique também se o `admin` está rodando:
-
-    http://localhost:8000/admin
+* `Admin`: [http://localhost:8000/admin](http://localhost:8000/admin)
 
 Ao rodar o projeto pela primeira vez, o arquivo `db.sqlite3` é criado.
 Também aparecem mensagens de erro importantes.
@@ -139,15 +137,28 @@ Vamos abrir cada um desses arquivos e verificar para que eles servem, principalm
 * `urls.py`
 * `db.sqlite3`
 
+## Configurando o interpretador Python
+
+* Ao abrir um arquivo `.py`, verifique se o interpretador Python correto está configurado. Clique na opção do interpretador Python na barra inferior do **vscode**. O correto seria algo como `./.venv/bin/python`. 
+* Se não estiver assim, clique e configure.
+* Opcionalmente, configure a variavel `Venv Path` nos configurações do **vscode**. Tecle `Control + ,` e procure por `venv`.
+* Com essas configurações feitas, feche todos os terminais e abra novamente. O ambiente virtual deve ser ativado automaticamente cada vez que você abrir um terminal a partir de agora.
+
+## Executando o servidor
+
 Desse ponto em diante, abra um outro terminal no **vscode**, mantendo sempre o django em execução (`runserver`) no outro terminal.
 
 Se precisar parar a execução do projeto, aperte `Control + C` e depois o execute novamente.
+
+## Criando a base de dados inicial
 
 Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
 
     python manage.py migrate
 
 Verifique se o projeto continua rodando e se o `admin` roda.
+
+## Criando o superusuário
 
 Crie o super usuário para poder fazer o login:
 
