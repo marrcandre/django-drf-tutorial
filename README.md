@@ -10,7 +10,7 @@ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest
 -   Crie uma pasta chamada `livraria` para o seu projeto
 -   Certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (_se você não fizer isso, terá que recriar todo o projeto_).
 -   Abra a **pasta** no vscode (repita em voz alta: _"Nunca abra um arquivo, sempre abra a pasta."_).
--   Dentro do vscode, abra um terminal (`Control + Shift + '`)
+-   Dentro do vscode, abra um terminal (`Control+Shift+'`)
 
 Instale algumas extensões para o **vscode**:
 
@@ -141,14 +141,14 @@ Vamos abrir cada um desses arquivos e verificar para que eles servem, principalm
 
 -   Ao abrir um arquivo `.py`, verifique se o interpretador Python correto está configurado. Clique na opção do interpretador Python na barra inferior do **vscode**. O correto seria algo como `./.venv/bin/python`.
 -   Se não estiver assim, clique e configure.
--   Opcionalmente, configure a variavel `Venv Path` nos configurações do **vscode**. Tecle `Control + ,` e procure por `venv`.
+-   Opcionalmente, configure a variavel `Venv Path` nos configurações do **vscode**. Tecle `Control+,` e procure por `venv`.
 -   Com essas configurações feitas, feche todos os terminais e abra novamente. O ambiente virtual deve ser ativado automaticamente cada vez que você abrir um terminal a partir de agora.
 
 ## Executando o servidor
 
 Desse ponto em diante, abra um outro terminal no **vscode**, mantendo sempre o django em execução (`runserver`) no outro terminal.
 
-Se precisar parar a execução do projeto, aperte `Control + C` e depois o execute novamente.
+Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute novamente.
 
 ## Criando a base de dados inicial
 
@@ -384,7 +384,7 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 ### Configure o projeto git
 
 -   Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
--   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Depois, clique no botão `Initialize repository`.
+-   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
 ### Configure as variáveis do **git**
@@ -403,14 +403,14 @@ Para verificar se as informações estão corretas, digite:
 -   Vá no site [gitignore.io](https://gitignore.io/)
 -   Escolha as opções `Django` e `VisualStudioCode`.
 -   Clique em `Criar`.
--   Selecione todo o texto (`Control + A`) e copie (`Control + C`).
+-   Selecione todo o texto (`Control+A`) e copie (`Control+C`).
 -   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`.
--   Cole o conteúdo copiado (`Control + V`).
+-   Cole o conteúdo copiado (`Control+V`).
 
 ### Faça a publicação
 
--   Escreva uma descrição para o commit (`"Commit Inicial"`).
--   Tecle `Control + ENTER` para fazer o envio para o servidor do github.
+-   Escreva uma descrição para o commit (`"commit Inicial"`).
+-   Tecle `Control+ENTER` para fazer o envio para o servidor do github.
 -   Leia atentamente as instruções relacionadas a autenticação no **github** e criação do projeto.
 -   Ao final, seu projeto será incluído no **github** e você poderá visulizá-lo lá.
 
@@ -418,15 +418,15 @@ Para verificar se as informações estão corretas, digite:
 
 Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **github**.
 
--   Abra o arquivo `models.py` (Um atalho útil é teclar `Control + P` e então digitar o nome do arquivo.)
--   Selecione todo o texto (`Control + A`) e mande formatar o código (`Control + Shift + I` ou `Control + Shift + P + "Formatar o Documento"`).
+-   Abra o arquivo `models.py` (Um atalho útil é teclar `Control+P` e então digitar o nome do arquivo.)
+-   Selecione todo o texto (`Control+A`) e mande formatar o código (`Control+Shift+I` ou `Control+Shift+P+"Formatar o Documento"`).
 -   Deve aparecer uma mensagem pedindo para instalar um **formatador de código** (`black`). Concorde com a instalação.
 -   Após a instalação, execute o comando anterior novamente. O arquivo deve ser formatado.
 -   Faça a mesma coisa com o arquivo `admin.py`.
 -   Altere outros arquivos. Por exemplo: apague os comentários iniciais dos arquivos `settings.py` e `urls.py`.
 -   Nesse ponto, você já deve ter vários arquivos modificados.
 -   Vá para a aba do **github** no **vscode** e coloque o nome do **commit** como sendo `Instalação do black`.
--   Confirme o **commit** teclando `Control + ENTER`.
+-   Confirme o **commit** teclando `Control+ENTER`.
 -   Faça o envio (`push`), clicando no ícone de envio.
 -   Vá no seu projeto no github, atualize a página e verifique as modificações.
 
@@ -441,7 +441,7 @@ Agora que seu projeto está no **github**, você pode baixá-lo onde quiser. Vam
 
 -   Abra o **vscode** na pasta (_Você já sabe fazer isso. Aula 1, lembra?_).
 -   Vá no projeto no **github**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
--   Tecle `Control + Shift + P + "Git Clone"`
+-   Tecle `Control+Shift+P+"Git Clone"`
 -   Ao ser solicitado o endereço do projeto, informe a url que você copiou de lá.
 -   Se tudo correu bem, o projeto foi baixado e está no seu computador. 
 -   Abra um terminal.
