@@ -387,7 +387,7 @@ Para verificar se as informações estão corretas, digite:
 
 ### Crie o arquivo .gitignore
 
-* Vá no site [gitignore.io](https://gitignore.io/`)
+* Vá no site [gitignore.io](https://gitignore.io/)
 * Escolha as opções `Django` e `VisualStudioCode`.
 * Clique em `Criar`.
 * Selecione todo o texto (`Control + A`) e copie (`Control + C`).
