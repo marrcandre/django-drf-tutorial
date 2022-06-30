@@ -156,7 +156,7 @@ Para resolver o erro informado no momento de rodar o projeto, execute o seguinte
 
     python manage.py migrate
 
-Verifique se o projeto continua rodando e se o `admin` roda.
+Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) está em execução.
 
 ## Criando o superusuário
 
@@ -281,11 +281,11 @@ e
     ./manage.py migrate
 
 -   Acesse o banco de dados e verifique se a tabela `core_categoria` foi criada.
--   Acesse o `Admin` do projeto e verifique se a nova tabela aparece lá.
+-   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
 
 ### Inclusão no Admin
 
-A tabela ainda não apareceu, pois ainda precisamos informar ao `Admin` da sua existência.
+A tabela ainda não apareceu, pois ainda precisamos informar ao [Admin](http://localhost:8000) da sua existência.
 
 Para isso, inclua as seguintes linhas no arquivo `admin.py`:
 
@@ -297,7 +297,7 @@ from core.models import Categoria
 admin.site.register(Categoria)
 ```
 
-Acesse novamente o [`Admin`](http://localhost:8000) e inclua algumas editoras no banco de dados.
+Acesse novamente o [Admin](http://localhost:8000) e inclua algumas editoras no banco de dados.
 
 ## Mudando a língua e time zone
 
@@ -341,7 +341,7 @@ class Editora(models.Model):
 
 Não esqueça de que a cada criação de novas models é necessário:
 
--   Registra a model no `Admin`;
+-   Registrar a model no arquivo `admin.py`;
 -   Fazer as migrações (`makemigrations`);
 -   Efetivar as migrações (`migrate`);
 
