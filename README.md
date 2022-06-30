@@ -294,7 +294,20 @@ from core.models import Categoria
 admin.site.register(Categoria)
 ```
 
-Acesse novamente o `Admin` e inclua algumas editoras no banco de dados.
+Acesse novamente o [`Admin`](http://localhost:8000) e inclua algumas editoras no banco de dados.
+
+## Mudando a língua e time zone
+
+Edite as seguintes linhas no arquivo no arquivo `settings.py`:
+
+    LANGUAGE_CODE = "pt-br"
+e
+
+    TIME_ZONE = "America/Sao_Paulo"
+
+Acesse novamente o [`Admin`](http://localhost:8000) e verifique que agora ele está em português.
+
+## Mudando a descrição dos registros criados
 
 Você perceberá que a descrição dos informações que você inclui está meio estranha. Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
 
@@ -304,6 +317,7 @@ Você perceberá que a descrição dos informações que você inclui está meio
     def __str__(self):
         return self.descricao
 ```
+Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentação da model `Categoria`.
 
 ---
 
