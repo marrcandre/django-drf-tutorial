@@ -189,14 +189,14 @@ Digite os seguintes comandos, um a um, no terminal dentro do vscode.
     poetry shell
     poetry add django
     django-admin startproject livraria .
-    ./manage.py migrate
-    ./manage.py createsuperuser
+    python manage.py migrate
+    python manage.py createsuperuser
 
 ## Criando um app
 
 Para criar seu primeiro app, digite: 
 
-    ./manage.py startapp core
+    python manage.py startapp core
 
 Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 
@@ -274,11 +274,11 @@ Nesse código, você:
 
 Precisamos agora efetivar essa criação da tabela no banco de dados. Para isso, abra um novo terminal, deixando o terminal antigo executando o servidor do projeto, e execute os seguintes comandos:
 
-    ./manage.py makemigrations
+    python manage.py makemigrations
 
 e
 
-    ./manage.py migrate
+    python manage.py migrate
 
 -   Acesse o banco de dados e verifique se a tabela `core_categoria` foi criada.
 -   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
@@ -301,7 +301,7 @@ Acesse novamente o [Admin](http://localhost:8000) e inclua algumas editoras no b
 
 ## Mudando a língua e time zone
 
-Edite as seguintes linhas no arquivo no arquivo `settings.py`:
+Encontre e edite as seguintes linhas no arquivo no arquivo `settings.py`:
 
     LANGUAGE_CODE = "pt-br"
 e
