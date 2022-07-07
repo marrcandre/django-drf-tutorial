@@ -471,3 +471,110 @@ Digite no terminal:
 - Feito isso, execute o servidor do seu projeto e teste no navegador.
 
 Pronto! Seu projeto está de volta no computador e rodando.
+
+# Aula 5
+
+## Colocando o projeto livraria no github
+
+Agora que você conseguiu colocar o projeto `garagem` no **github**, coloque também o projeto `livraria`.
+
+## Criando as tabelas `Autor` e `Livro`
+
+Vamos agora criar mais duas tabelas na nossa livraria, as tabelas `Autor` e `Livro`.
+
+No arquivo `models.py`. inclua a seguinte informação:
+
+```python
+...
+
+class Autor(models.Model):
+    nome = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Autores"
+
+
+class Livro(models.Model):
+    titulo = models.CharField(max_length=255)
+    isbn = models.CharField(max_length=32)
+    quantidade = models.IntegerField()
+    preco = models.DecimalField(max_digits=7, decimal_places=2)
+ 
+    def __str__(self):
+        return f'{self.titulo} ({self.quantidade})'
+```
+
+Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chaves estrangeiras no modelo `Livro`.
+
+## Incluindo chaves estrangeiras no modelo
+
+Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando as tabelas `Categoria` e `Editora`.
+
+### Campo `categoria`
+
+Inclua a linha a seguir no `model Categoria`, logo após o atributo `preco`:
+
+```python
+...
+    categoria = models.ForeignKey(
+        Categoria, on_delete=models.PROTECT, related_name="livros"
+    )
+...
+```
+
+Vamos entender cada parte:
+
+- `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
+- `Categoria`: o model (tabela) que será associado a esse campo.
+- `on_delete=models.PROTECT`: impede de apagar uma categoria que possua livros associados.
+- `related_name='livros'`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
+
+De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
+
+```python
+    editora = models.ForeignKey(
+        Editora, on_delete=models.PROTECT, related_name="livros"
+    )
+```
+
+Feito isso, inclua as classe criadas no arquivo `admin.py`:
+
+```python
+from django.contrib import admin
+
+from core.models import Autor, Categoria, Editora, Livro
+
+admin.site.register(Autor)
+admin.site.register(Categoria)
+admin.site.register(Editora)
+admin.site.register(Livro)
+```
+
+O próximo passo é migrar a base de dados para efetivarmos essas mudanças no banco de dados podermos testar na interface de administração. Lembra dos comandos? Aqui estão eles, mais uma vez:
+
+    python manage.py makemigrations
+
+e
+
+    python manage.py migrate
+
+Feito isso, verifique se tudo funcionou.
+
+- Cadastre algumas categorias, editoras, autores e livros. 
+- Note como os livros acessam as categorias e editoras já cadastradas.
+- Tente apagar uma editora ou categoria **com** livros associados.
+- Tente apagar uma editora ou categoria **sem** livros associados.
+
+<!-- 
+No django shell, é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
+Categoria.objects.get(id=1).livros.all() 
+-->
+
+
+
+
+
