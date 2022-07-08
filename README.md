@@ -574,7 +574,116 @@ No django shell, é possível testar o acesso a todos os livros de uma categoria
 Categoria.objects.get(id=1).livros.all() 
 -->
 
+# Aula 6
 
+## Criando uma API Rest com o Django REST framework (DRF)
 
+## Instalação do DRF
 
+Instale o DRF via poetry:
 
+    poetry add djangorestframework
+
+Adicione-o aos applicativos instalados, no arquivo `settings.py`:
+
+```python
+INSTALLED_APPS = [
+...
+    "rest_framework",
+    "core",
+]
+```
+
+## Criação do serializer
+
+Para criar o serializer da `Categoria`, crie o arquivo `serializers.py` na pasta `core`:
+
+```python
+from rest_framework.serializers import ModelSerializer
+
+from core.models import Categoria
+
+class CategoriaSerializer(ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = "__all__"
+```
+
+## Criação da view
+
+Para criar a view da `Categoria`, edite o arquivo `views.py` na pasta `core`. Substitua o seu conteúdo por esse:
+
+```python
+from rest_framework.viewsets import ModelViewSet
+
+from core.models import Categoria
+from core.serializers import CategoriaSerializer
+
+class CategoriaViewSet(ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+```
+
+## Criação das rotas(urls)
+
+Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `livraria`. Substitua o seu conteúdo por esse:
+
+```python
+from django.contrib import admin
+from django.urls import include, path
+
+from rest_framework.routers import DefaultRouter
+
+from core.views import CategoriaViewSet
+
+router = DefaultRouter()
+router.register(r'categorias', CategoriaViewSet)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+]
+```
+
+## Testando a API
+
+Para acessar a interface gerada pelo DRF, acesse:
+
+    http://localhost:8000
+
+Se tudo correu bem, você deve ver a interface do DRF.
+
+Você pode acessar diretamente a rota da `Categoria`:
+
+    http://localhost:8000/categorias
+
+Isso deve trazer todas as categorias do banco, no formato **json**.
+
+Para acessar um único registro, use o seguinte formato:
+
+  http://localhost:8000/categorias/1/
+
+Nesse caso, `1` é o `id` do registro no banco de dados.
+
+## Opções de manipulação do banco de dados
+
+As opções disponíveis para manipulação dos dados são:
+
+- GET: para listar todos ou apenas 1 registro.
+- POST: para criar um novo registro.
+- PUT: para alterar um registro.
+- PATCH: para alterar campos de um registro.
+- DELETE: para remover registros.
+
+## Outras ferramentas para testar a API
+
+A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
+
+- **Insomnia**
+- **Postan**
+- **Thunder Client** (extensão do **vscode**)
+
+---
+```python
+print("That's all, folks!")
+```
