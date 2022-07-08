@@ -680,7 +680,7 @@ As opções disponíveis para manipulação dos dados são:
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
 - **Insomnia**
-- **Postan**
+- **Postman**
 - **Thunder Client** (extensão do **vscode**)
 
 ---
