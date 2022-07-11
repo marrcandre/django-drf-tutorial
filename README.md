@@ -4,7 +4,7 @@ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest
 
 # Aula 1
 
-## Preparação
+## Preparação do ambiente
 
 -   Abra o navegador de arquivos
 -   Crie uma pasta chamada `livraria` para o seu projeto
@@ -34,7 +34,7 @@ Informe ao **poetry** para criar a pasta do ambiente virtual dentro da pasta do 
 
     poetry config virtualenvs.in-project true
 
-## Criação do ambiente virtual
+**Criação do ambiente virtual**
 
 Crie o ambiente virtual usado o **poetry**:
 
@@ -83,7 +83,7 @@ Para verificar o tamanho da pasta do ambiente virtual:
 
     du -sh .venv
 
-## Instalação do django
+**Instalação do django**
 
 Instale o **django** no ambiente virtual:
 
@@ -95,7 +95,7 @@ Verifique se o **django** está instalado:
 
 Se tudo der certo, ele mostrará as opções do `django-admin` na tela.
 
-## Criação do projeto no django
+**Criação do projeto no django**
 
     django-admin startproject livraria .
 
@@ -137,20 +137,20 @@ Vamos abrir cada um desses arquivos e verificar para que eles servem, principalm
 -   `urls.py`
 -   `db.sqlite3`
 
-## Configurando o interpretador Python
+**Configurando o interpretador Python**
 
 -   Ao abrir um arquivo `.py`, verifique se o interpretador Python correto está configurado. Clique na opção do interpretador Python na barra inferior do **vscode**, ao lado da palavra `Python`. O correto seria algo como `.'venv/':poetry`.
 -   Se não estiver assim, clique e configure.
 -   Opcionalmente, configure a variavel `Venv Path` nos configurações do **vscode**. Tecle `Control+,` e procure por `venv`.
 -   Com essas configurações feitas, feche todos os terminais e abra novamente. O ambiente virtual deve ser ativado automaticamente cada vez que você abrir um terminal a partir de agora.
 
-## Executando o servidor
+**Executando o servidor**
 
 Desse ponto em diante, abra um outro terminal no **vscode**, mantendo sempre o django em execução (`runserver`) no outro terminal.
 
 Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute novamente.
 
-## Criando a base de dados inicial
+**Criando a base de dados inicial**
 
 Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
 
@@ -158,7 +158,7 @@ Para resolver o erro informado no momento de rodar o projeto, execute o seguinte
 
 Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) está em execução.
 
-## Criando o superusuário
+**Criando o superusuário**
 
 Crie o super usuário para poder fazer o login:
 
@@ -249,7 +249,7 @@ Nesse ponto, temos:
 
 ---
 
-## Criação da primeira model
+**Criação da primeira model**
 
 Uma `model` no **Django** é uma classe que representa uma tabela no banco de dados. Cada atributo (variável) dessa classe representa um campo da tabela.
 
@@ -270,7 +270,7 @@ Nesse código, você:
 -   Criou a classe `Categoria`;
 -   Incluiu o campo `descricao`.
 
-### Efetivando a criação da tabela
+**Efetivando a criação da tabela**
 
 Precisamos agora efetivar essa criação da tabela no banco de dados. Para isso, abra um novo terminal, deixando o terminal antigo executando o servidor do projeto, e execute os seguintes comandos:
 
@@ -283,7 +283,7 @@ e
 -   Acesse o banco de dados e verifique se a tabela `core_categoria` foi criada.
 -   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
 
-### Inclusão no Admin
+**Inclusão no Admin**
 
 A tabela ainda não apareceu, pois ainda precisamos informar ao [Admin](http://localhost:8000) da sua existência.
 
@@ -299,7 +299,7 @@ admin.site.register(Categoria)
 
 Acesse novamente o [Admin](http://localhost:8000) e inclua algumas editoras no banco de dados.
 
-## Mudando a língua e time zone
+**Mudando a língua e time zone**
 
 Encontre e edite as seguintes linhas no arquivo no arquivo `settings.py`:
 
@@ -310,7 +310,7 @@ e
 
 Acesse novamente o [`Admin`](http://localhost:8000) e verifique que agora ele está em português.
 
-## Mudando a descrição dos registros criados
+**Mudando a descrição dos registros criados**
 
 Você perceberá que a descrição dos informações que você inclui está meio estranha. Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
 
@@ -324,7 +324,7 @@ Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentaçã
 
 ---
 
-## Criação da segunda model
+**Criação da segunda model**
 
 Crie a segunda model, incluindo as seguintes informações no arquivo `models.py`:
 
@@ -398,13 +398,13 @@ Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instru
 
 As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
-### Configure o projeto git
+**Configure o projeto git**
 
 -   Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
-### Configure as variáveis do **git**
+**Configure as variáveis do **git****
 
 Para isso, digite no terminal, substituindo por suas informações pessoais (colocando as suas informações no lugar):
 
@@ -415,7 +415,7 @@ Para verificar se as informações estão corretas, digite:
 
     git config -l
 
-### Crie o arquivo .gitignore
+**Crie o arquivo `.gitignore`**
 
 -   Vá no site [gitignore.io](https://gitignore.io/)
 -   Escolha as opções `Django` e `VisualStudioCode`.
@@ -424,14 +424,14 @@ Para verificar se as informações estão corretas, digite:
 -   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`.
 -   Cole o conteúdo copiado (`Control+V`).
 
-### Faça a publicação
+**Faça a publicação**
 
 -   Escreva uma descrição para o commit (`"commit Inicial"`).
 -   Tecle `Control+ENTER` para fazer o envio para o servidor do github.
 -   Leia atentamente as instruções relacionadas a autenticação no **github** e criação do projeto.
 -   Ao final, seu projeto será incluído no **github** e você poderá visulizá-lo lá.
 
-## Fazendo alterações no projeto e enviando novamente
+**Fazendo alterações no projeto e enviando novamente**
 
 Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **github**.
 
@@ -447,7 +447,7 @@ Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o *
 -   Faça o envio (`push`), clicando no ícone de envio.
 -   Vá no seu projeto no github, atualize a página e verifique as modificações.
 
-## Baixando novamente o projeto
+**Baixando novamente o projeto**
 
 Agora que seu projeto está no **github**, você pode baixá-lo onde quiser. Vamos testar isso.
 
@@ -474,11 +474,13 @@ Pronto! Seu projeto está de volta no computador e rodando.
 
 # Aula 5
 
-## Colocando o projeto livraria no github
+## Continuando o projeto livraria
+
+**Colocando o projeto livraria no github**
 
 Agora que você conseguiu colocar o projeto `garagem` no **github**, coloque também o projeto `livraria`.
 
-## Criando as tabelas `Autor` e `Livro`
+**Criando as tabelas `Autor` e `Livro`**
 
 Vamos agora criar mais duas tabelas na nossa livraria, as tabelas `Autor` e `Livro`.
 
@@ -510,11 +512,11 @@ class Livro(models.Model):
 
 Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chaves estrangeiras no modelo `Livro`.
 
-## Incluindo chaves estrangeiras no modelo
+**Incluindo chaves estrangeiras no modelo**
 
 Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando as tabelas `Categoria` e `Editora`.
 
-### Campo `categoria`
+**Campo `categoria`**
 
 Inclua a linha a seguir no `model Categoria`, logo após o atributo `preco`:
 
@@ -578,7 +580,7 @@ Categoria.objects.get(id=1).livros.all()
 
 ## Criando uma API Rest com o Django REST framework (DRF)
 
-## Instalação do DRF
+**Instalação do DRF**
 
 Instale o DRF via poetry:
 
@@ -594,7 +596,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-## Criação do serializer
+**Criação do serializer**
 
 Para criar o serializer da `Categoria`, crie o arquivo `serializers.py` na pasta `core`:
 
@@ -609,7 +611,7 @@ class CategoriaSerializer(ModelSerializer):
         fields = "__all__"
 ```
 
-## Criação da view
+**Criação da view**
 
 Para criar a view da `Categoria`, edite o arquivo `views.py` na pasta `core`. Substitua o seu conteúdo por esse:
 
@@ -624,7 +626,7 @@ class CategoriaViewSet(ModelViewSet):
     serializer_class = CategoriaSerializer
 ```
 
-## Criação das rotas(urls)
+**Criação das rotas(urls)**
 
 Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `livraria`. Substitua o seu conteúdo por esse:
 
@@ -645,7 +647,7 @@ urlpatterns = [
 ]
 ```
 
-## Testando a API
+**Testando a API**
 
 Para acessar a interface gerada pelo DRF, acesse:
 
@@ -665,7 +667,7 @@ Para acessar um único registro, use o seguinte formato:
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
 
-## Opções de manipulação do banco de dados
+**Opções de manipulação do banco de dados**
 
 As opções disponíveis para manipulação dos dados são:
 
@@ -675,7 +677,7 @@ As opções disponíveis para manipulação dos dados são:
 - PATCH: para alterar campos de um registro.
 - DELETE: para remover registros.
 
-## Outras ferramentas para testar a API
+**Outras ferramentas para testar a API**
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
