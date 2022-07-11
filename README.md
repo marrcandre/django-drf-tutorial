@@ -657,13 +657,13 @@ Se tudo correu bem, você deve ver a interface do DRF.
 
 Você pode acessar diretamente a rota da `Categoria`:
 
-    http://localhost:8000/categorias
+    http://localhost:8000/categorias/
 
 Isso deve trazer todas as categorias do banco, no formato **json**.
 
 Para acessar um único registro, use o seguinte formato:
 
-  http://localhost:8000/categorias/1/
+    http://localhost:8000/categorias/1/
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
 
@@ -671,19 +671,54 @@ Nesse caso, `1` é o `id` do registro no banco de dados.
 
 As opções disponíveis para manipulação dos dados são:
 
-- GET: para listar todos ou apenas 1 registro.
-- POST: para criar um novo registro.
-- PUT: para alterar um registro.
-- PATCH: para alterar campos de um registro.
-- DELETE: para remover registros.
+- **GET**: 
+  - para **listar** **todos** os registros:
+  
+        http://localhost.com/categorias/
+
+  - para **listar** **apenas 1** registro:
+  
+        http://localhost.com/categorias/<id>/
+
+- **POST** (para **criar** um **novo** registro):
+  
+        http://localhost.com/categorias/
+
+- **PUT** (para **alterar** um registro existente):
+  
+        http://localhost.com/categorias/<id>/
+
+- **PATCH** (para **alterar parcialmente** um registro):
+ 
+        http://localhost.com/categorias/<id>/
+
+- **DELETE** (para **remover** um registro):
+ 
+        http://localhost.com/categorias/<id>/
+
 
 **Outras ferramentas para testar a API**
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
-- **Insomnia**
-- **Postman**
-- **Thunder Client** (extensão do **vscode**)
+- [Insomnia](https://docs.insomnia.rest/insomnia/install)
+- [Postman](https://www.postman.com/downloads/)
+- [Thunder Client](https://www.thunderclient.com/) (extensão do **vscode**)
+
+**Testando a API e as ferramentas**
+
+Instale uma ou mais das ferramentas sugeridas.
+
+Experimente as seguintes tarefas:
+
+- Criar uma ou mais categorias;
+- Listar todas as categorias;
+- Alterar uma ou mais categorias, utilizando PUT e PATCH;
+- Listar a categoria alterada;
+- Remover uma categoria;
+- Incluir outra categoria;
+- Listar todas as categorias.
+
 
 ---
 ```python
