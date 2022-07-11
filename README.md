@@ -175,7 +175,7 @@ Agora sim, seu projeto está rodando e você consegue entrar no `admin`:
 
 Apague o projeto criado na aula passada e vamos criá-lo novamente.
 
-## Resumo da criação de um projeto Django:
+## Resumo da criação de um projeto Django
 
 Siga as seguintes instruções para criar novamente o projeto.
 
