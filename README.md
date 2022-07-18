@@ -194,7 +194,7 @@ Digite os seguintes comandos, um a um, no terminal dentro do vscode.
 
 ## Criando um app
 
-Para criar seu primeiro app, digite: 
+Para criar seu primeiro app, digite:
 
     python manage.py startapp core
 
@@ -304,6 +304,7 @@ Acesse novamente o [Admin](http://localhost:8000) e inclua algumas editoras no b
 Encontre e edite as seguintes linhas no arquivo no arquivo `settings.py`:
 
     LANGUAGE_CODE = "pt-br"
+
 e
 
     TIME_ZONE = "America/Sao_Paulo"
@@ -320,6 +321,7 @@ Você perceberá que a descrição dos informações que você inclui está meio
     def __str__(self):
         return self.descricao
 ```
+
 Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentação da model `Categoria`.
 
 ---
@@ -404,7 +406,7 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
-**Configure as variáveis do **git****
+**Configure as variáveis do **git\*\*\*\*
 
 Para isso, digite no terminal, substituindo por suas informações pessoais (colocando as suas informações no lugar):
 
@@ -451,7 +453,7 @@ Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o *
 
 Agora que seu projeto está no **github**, você pode baixá-lo onde quiser. Vamos testar isso.
 
-  **A partir desse ponto, vamos repetir uma série de passos que já fizemos nas aulas anteriores. Em caso de dúvidas, volte nessas aulas para mais detalhes.**
+**A partir desse ponto, vamos repetir uma série de passos que já fizemos nas aulas anteriores. Em caso de dúvidas, volte nessas aulas para mais detalhes.**
 
 -   Apague todo o projeto do seu computador (_isso mesmo, coragem_).
 -   Crie novamente uma pasta vazia para hospedá-lo.
@@ -460,15 +462,15 @@ Agora que seu projeto está no **github**, você pode baixá-lo onde quiser. Vam
 -   Vá no projeto no **github**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
 -   Tecle `Control+Shift+P+"Git Clone"`
 -   Ao ser solicitado o endereço do projeto, informe a url que você copiou de lá.
--   Se tudo correu bem, o projeto foi baixado e está no seu computador. 
+-   Se tudo correu bem, o projeto foi baixado e está no seu computador.
 -   Abra um terminal.
--   Reinstale os pacotes necessários para o seu projeto e ative o ambiente virtual: 
+-   Reinstale os pacotes necessários para o seu projeto e ative o ambiente virtual:
 
 Digite no terminal:
 
     poetry install && poetry shell
 
-- Feito isso, execute o servidor do seu projeto e teste no navegador.
+-   Feito isso, execute o servidor do seu projeto e teste no navegador.
 
 Pronto! Seu projeto está de volta no computador e rodando.
 
@@ -502,10 +504,10 @@ class Autor(models.Model):
 
 class Livro(models.Model):
     titulo = models.CharField(max_length=255)
-    isbn = models.CharField(max_length=32)
+    isbn = models.CharField(max_length=32, null=True, blank=True)
     quantidade = models.IntegerField()
     preco = models.DecimalField(max_digits=7, decimal_places=2)
- 
+
     def __str__(self):
         return f'{self.titulo} ({self.quantidade})'
 ```
@@ -530,10 +532,10 @@ Inclua a linha a seguir no `model Categoria`, logo após o atributo `preco`:
 
 Vamos entender cada parte:
 
-- `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
-- `Categoria`: o model (tabela) que será associado a esse campo.
-- `on_delete=models.PROTECT`: impede de apagar uma categoria que possua livros associados.
-- `related_name='livros'`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
+-   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
+-   `Categoria`: o model (tabela) que será associado a esse campo.
+-   `on_delete=models.PROTECT`: impede de apagar uma categoria que possua livros associados.
+-   `related_name='livros'`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
 
 De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
 
@@ -566,14 +568,14 @@ e
 
 Feito isso, verifique se tudo funcionou.
 
-- Cadastre algumas categorias, editoras, autores e livros. 
-- Note como os livros acessam as categorias e editoras já cadastradas.
-- Tente apagar uma editora ou categoria **com** livros associados.
-- Tente apagar uma editora ou categoria **sem** livros associados.
+-   Cadastre algumas categorias, editoras, autores e livros.
+-   Note como os livros acessam as categorias e editoras já cadastradas.
+-   Tente apagar uma editora ou categoria **com** livros associados.
+-   Tente apagar uma editora ou categoria **sem** livros associados.
 
-<!-- 
+<!--
 No django shell, é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
-Categoria.objects.get(id=1).livros.all() 
+Categoria.objects.get(id=1).livros.all()
 -->
 
 # Aula 6
@@ -657,13 +659,13 @@ Se tudo correu bem, você deve ver a interface do DRF.
 
 Você pode acessar diretamente a rota da `Categoria`:
 
-    http://localhost:8000/categorias/
+[http://localhost:8000/categorias/](http://localhost:8000/categorias/)
 
 Isso deve trazer todas as categorias do banco, no formato **json**.
 
 Para acessar um único registro, use o seguinte formato:
 
-    http://localhost:8000/categorias/1/
+[http://localhost:8000/categorias/1/](http://localhost:8000/categorias/1/)
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
 
@@ -671,39 +673,39 @@ Nesse caso, `1` é o `id` do registro no banco de dados.
 
 As opções disponíveis para manipulação dos dados são:
 
-- **GET**: 
-  - para **listar** **todos** os registros:
-  
-        http://localhost.com/categorias/
+-   **GET**:
 
-  - para **listar** **apenas 1** registro:
-  
-        http://localhost.com/categorias/<id>/
+    -   para **listar** **todos** os registros:
 
-- **POST** (para **criar** um **novo** registro):
-  
-        http://localhost.com/categorias/
+            http://localhost:8000/categorias/
 
-- **PUT** (para **alterar** um registro existente):
-  
-        http://localhost.com/categorias/<id>/
+    -   para **listar** **apenas 1** registro:
 
-- **PATCH** (para **alterar parcialmente** um registro):
- 
-        http://localhost.com/categorias/<id>/
+            http://localhost:8000/categorias/<id>/
 
-- **DELETE** (para **remover** um registro):
- 
-        http://localhost.com/categorias/<id>/
+-   **POST** (para **criar** um **novo** registro):
 
+          http://localhost:8000/categorias/
+
+-   **PUT** (para **alterar** um registro existente):
+
+          http://localhost:8000/categorias/<id>/
+
+-   **PATCH** (para **alterar parcialmente** um registro):
+
+          http://localhost:8000/categorias/<id>/
+
+-   **DELETE** (para **remover** um registro):
+
+          http://localhost:8000/categorias/<id>/
 
 **Outras ferramentas para testar a API**
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
-- [Insomnia](https://docs.insomnia.rest/insomnia/install)
-- [Postman](https://www.postman.com/downloads/)
-- [Thunder Client](https://www.thunderclient.com/) (extensão do **vscode**)
+-   [Insomnia](https://docs.insomnia.rest/insomnia/install)
+-   [Postman](https://www.postman.com/downloads/)
+-   [Thunder Client](https://www.thunderclient.com/) (extensão do **vscode**)
 
 **Testando a API e as ferramentas**
 
@@ -711,16 +713,139 @@ Instale uma ou mais das ferramentas sugeridas.
 
 Experimente as seguintes tarefas:
 
-- Criar uma ou mais categorias;
-- Listar todas as categorias;
-- Alterar uma ou mais categorias, utilizando PUT e PATCH;
-- Listar a categoria alterada;
-- Remover uma categoria;
-- Incluir outra categoria;
-- Listar todas as categorias.
+-   Criar uma ou mais categorias;
+-   Listar todas as categorias;
+-   Alterar uma ou mais categorias, utilizando PUT e PATCH;
+-   Listar a categoria alterada;
+-   Remover uma categoria;
+-   Incluir outra categoria;
+-   Listar todas as categorias.
 
+# Aula 7
+
+## API Rest com Django DRF
+
+**Criação da API para a classe Editora**
+
+Repita os passos utilizados para a criação da API da `Categoria` e crie a API para a `Editora`.
+
+Os passos são:
+
+-   Criar o serializador em `serializers.py`
+-   Criar a viewset em `views.py`.
+-   Incluir a nova rota em `urls.py`
+
+Os arquivos ficarão assim:
+
+**`serializers.py`**
+
+```python
+from rest_framework.serializers import ModelSerializer
+
+from core.models import Categoria, Editora
+
+class CategoriaSerializer(ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = "__all__"
+
+
+class EditoraSerializer(ModelSerializer):
+    class Meta:
+        model = Editora
+        fields = "__all__"
+```
+
+**`views.py`**
+
+```python
+from rest_framework.viewsets import ModelViewSet
+
+from core.models import Categoria, Editora
+from core.serializers import CategoriaSerializer, EditoraSerializer
+
+class CategoriaViewSet(ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+
+class EditoraViewSet(ModelViewSet):
+    queryset = Editora.objects.all()
+    serializer_class = EditoraSerializer
+```
+
+**`urls.py`**
+
+```python
+...
+
+from core.views import CategoriaViewSet, EditoraViewSet
+
+...
+
+router.register(r'categorias', CategoriaViewSet)
+router.register(r'editoras', EditoraViewSet)
+
+...
+```
+
+**Teste da API da Editora**
+
+-   Teste todas as operações da `Editora`.
+-   Verifique se é possível incluir novas editoras sem incluir todos os campos.
+-   Tente utilizar o PUT e o PATCH sem informar todos os campos.
+-   Tente remover uma editora com livros associados a ela.
+
+**Criação da API para Autor e Livro**
+
+-   Repita os passos para a criação da API para `Autor` e `Livro`.
+-   Teste o funcionamento.
+-   Observe que no Livro, aparecem apenas os campos `id` da categoria e da editora.
+
+**Apresentação das informações de categoria e editora no livro**
+
+Uma forma de mostrar essas informações é essa, em `serializers.py`:
+
+```python
+class LivroSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = "__all__"
+        depth = 1
+```
+
+Teste e você verá que isso resolve a listagem (GET), mas gera problema no criação e alteração (POST, PUT e PATCH).
+
+Para resolver isso, podemos criar dois (ou mais) serializadores, como no exemplo:
+
+```python
+class LivroSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = "__all__"
+
+
+class LivroDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = "__all__"
+        depth = 1
+```
+
+Na viewset, escolhemos o serializador conforme a operação:
+
+```python
+class LivroViewSet(ModelViewSet):
+    queryset = Livro.objects.all()
+
+    def get_serializer_class(self):
+        if self.action in ['list', 'retrieve']:
+            return LivroDetailSerializer
+        return LivroSerializer
+```
 
 ---
+
 ```python
 print("That's all, folks!")
 ```
