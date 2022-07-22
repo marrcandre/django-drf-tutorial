@@ -846,10 +846,53 @@ class LivroViewSet(ModelViewSet):
 
 # Aula 8
 
+## Inclusão do Django CORS headers no projeto
+
+Adicionar o Django CORS headers permite que seus projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de *frontend* feita em *vuejs*. 
+
+Instale o pacote no `poetry`:
+
+```python
+poetry add django-cors-headers
+```
+e então adicione-o nas suas aplicações instaladas:
+
+```python
+INSTALLED_APPS = [
+    ...,
+    "corsheaders",
+    "rest_framework",
+    "core",
+    ...,
+]
+```
+
+Não esqueça da vírgula no final da linha.
+
+Você também vai precisar adicionar uma classe de *middleware* para ouvir suas respostas:
+
+```python
+MIDDLEWARE = [
+    ...,
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    ...,
+]
+```
+Por fim, adicione a seguinte linha ao final do arquivo `settings.py`:
+
+```python
+CORS_ALLOW_ALL_ORIGINS = True
+```
+
+Feito isso, reinicie o servidor e tudo deve funcionar.
+
+# Aula 9
+
 ## API Rest do projeto Garagem
 
 - Volte ao projeto `Garagem`
-- Crie as classes, baseadas no arquivo `models.py` abaixo
+- Crie as classes, baseadas no arquivo `models.py` abaixo.
 - Depois, crie a API REST com o Django Rest Framework para todas as entidades.
 - Não esqueça de adicionar o DRF ao seu projeto.
 - Depois, teste tudo!
