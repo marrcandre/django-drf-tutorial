@@ -2,7 +2,7 @@
 
 Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest Framework).
 
-# Aula 1
+# Aula 1 - Preparação do ambiente
 
 ## Preparação do ambiente
 
@@ -171,7 +171,7 @@ Agora sim, seu projeto está rodando e você consegue entrar no `admin`:
 
 ---
 
-# Aula 2
+# Aula 2 - Criando uma app
 
 Apague o projeto criado na aula passada e vamos criá-lo novamente.
 
@@ -362,7 +362,8 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 ---
 
-# Aula 3
+# Aula 3 - Criando um segundo projeto
+
 
 ## Criando um segundo projeto
 
@@ -388,7 +389,7 @@ class Categoria(models.Model):
 
 ---
 
-# Aula 4
+# Aula 4 - Colocando o projeto no **github**
 
 ## Colocando o projeto no **github**
 
@@ -474,7 +475,7 @@ Digite no terminal:
 
 Pronto! Seu projeto está de volta no computador e rodando.
 
-# Aula 5
+# Aula 5 - Continuando o projeto livraria
 
 ## Continuando o projeto livraria
 
@@ -578,7 +579,7 @@ No django shell, é possível testar o acesso a todos os livros de uma categoria
 Categoria.objects.get(id=1).livros.all()
 -->
 
-# Aula 6
+# Aula 6 - DRF
 
 ## Criando uma API Rest com o Django REST framework (DRF)
 
@@ -721,7 +722,7 @@ Experimente as seguintes tarefas:
 -   Incluir outra categoria;
 -   Listar todas as categorias.
 
-# Aula 7
+# Aula 7 - API Rest com DRF
 
 ## API Rest com Django DRF
 
@@ -844,7 +845,7 @@ class LivroViewSet(ModelViewSet):
         return LivroSerializer
 ```
 
-# Aula 8
+# Aula 8 - Aplicação frontend e Django CORS Headers
 
 ## Executando uma aplicação *frontend* de exemplo
 
@@ -907,7 +908,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-# Aula 9
+# Aula 9 - API Rest do projeto Garagem
 
 ## API Rest do projeto Garagem
 
@@ -946,6 +947,11 @@ class Carro(models.Model):
     def __str__(self):
         return f"{self.marca} {self.modelo} {self.cor} ({self.ano})"
 ```
+# Aula 10 - Deploy no Heroku
+
+## Deploy no Heroku
+
+
 
 ---
 ```python
@@ -966,7 +972,7 @@ print("That's all, folks!")
 
 <!-- # Uso de TabularInline no Admin para Intens da Compra -->
 
-<!-- # Deploy no Heroku -->
+
 
 <!-- Reestruturação inicial das pastas para as models, views e serializers -->
 
