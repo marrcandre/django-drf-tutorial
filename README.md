@@ -846,16 +846,34 @@ class LivroViewSet(ModelViewSet):
 
 # Aula 8
 
+## Executando uma aplicação *frontend* de exemplo
+
+Clone o repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
+
+```
+npm install
+npm run dev
+```
+
+Se tudo correu bem, execute a aplicação:
+
+http://localhost:3000
+
+Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
+
+Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.;
+
 ## Inclusão do Django CORS headers no projeto
 
-Adicionar o Django CORS headers permite que seus projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de *frontend* feita em *vuejs*. 
+Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de *frontend* feita em *vuejs*. 
 
 Instale o pacote no `poetry`:
 
 ```python
 poetry add django-cors-headers
 ```
-e então adicione-o nas suas aplicações instaladas:
+
+Depois, faça algumas modificações no `settings.py'. Primeiro, adicione o pacote recém adicionado nas suas aplicações instaladas:
 
 ```python
 INSTALLED_APPS = [
@@ -867,7 +885,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Não esqueça da vírgula no final da linha.
+Não esqueça da vírgula no final da linha e procure manter nessa mesma ordem.
 
 Você também vai precisar adicionar uma classe de *middleware* para ouvir suas respostas:
 
@@ -879,6 +897,8 @@ MIDDLEWARE = [
     ...,
 ]
 ```
+A ordem aqui também é importante.
+
 Por fim, adicione a seguinte linha ao final do arquivo `settings.py`:
 
 ```python
@@ -931,3 +951,26 @@ class Carro(models.Model):
 ```python
 print("That's all, folks!")
 ```
+
+<!-- Aulas futuras -->
+
+<!-- # Model com ManyToManyField - Livros com vários autores -->
+
+<!-- # Uso do Django Shell para acessar as models -->
+
+<!-- # Model de compras integrando com Model User do Django  -->
+
+<!-- # Criar model StatusCompra -->
+
+<!-- Criar model ItensCompra -->
+
+<!-- # Uso de TabularInline no Admin para Intens da Compra -->
+
+<!-- # Deploy no Heroku -->
+
+<!-- Reestruturação inicial das pastas para as models, views e serializers -->
+
+<!-- Endpoint para listagem básica de Compras -->
+
+<!-- #  Ajustes na visualização do status de compra e itens de compra -->
+
