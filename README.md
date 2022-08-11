@@ -951,6 +951,73 @@ class Carro(models.Model):
 
 ## Deploy no Heroku
 
+### Instalação e configuração do gunicorn
+
+O **gunicorn** é um servidor web. Adicione-o ao seu projeto assim:
+
+    poetry add gunicorn
+
+Crie o arquivo `Procfile` na raiz do projeto e adicione esse conteúdo:
+
+    web: gunicorn livraria.wsgi
+
+
+**Instalação do whitenoise**
+
+O **whitenoise** é um servidor de arquivos estáticos. Adicione-o ao seu projeto assim:
+
+    poetry add whitenoise
+
+Edite seu arquivo `settings.py` e faça as alterações abaixo.
+
+Adicione o **whitenoise** ao final da lista de `MIDDLEWARE`:
+
+```python
+MIDDLEWARE = [
+    ...
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    ...
+]
+```
+
+Adicione também a seguinte linha ao final do arquivo:
+
+```python
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+```
+
+Import o módulo `os` no início do arquivo:
+
+```python
+import os
+```
+
+E adicione a seguinte linha ao final do arquivo:
+
+```python
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+```
+
+Por fim, execute o seguinte comando no terminal, para coletar os arquivos estáticos:
+ 
+    python manage.py collectstatic --noinput
+
+### Criação do arquivo `requirements.txt`
+
+Crie o arquivo `requirements.txt` na raiz do projeto. Esse arquivo contém a lista de pacotes necessários para que o projeto funcione corretamente.
+
+
+    poetry export --without-hashes > requirements.txt
+
+**Criação do projeto no heroku**
+- Garanta que a última versão do seu projeto esteja no **github**.
+- Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
+- Escolha a opção **Conectar no GitHub**
+- Selecione o repositório desejado.
+- Clique na opção **Deploy Branch**.
+- 
+
+
 
 
 ---
