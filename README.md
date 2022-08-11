@@ -1015,9 +1015,8 @@ Crie o arquivo `requirements.txt` na raiz do projeto. Esse arquivo contém a lis
 - Escolha a opção **Conectar no GitHub**
 - Selecione o repositório desejado.
 - Clique na opção **Deploy Branch**.
-- 
-
-
+- Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
+- O link para aplicação é https://livraria.herokuapp.com/
 
 
 ---
@@ -1037,7 +1036,7 @@ print("That's all, folks!")
 
 <!-- Criar model ItensCompra -->
 
-<!-- # Uso de TabularInline no Admin para Intens da Compra -->
+<!-- # Uso de TabularInline no Admin para Itens da Compra -->
 
 
 
