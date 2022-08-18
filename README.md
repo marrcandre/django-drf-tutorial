@@ -1014,6 +1014,7 @@ Crie o arquivo `requirements.txt` na raiz do projeto. Esse arquivo contém a lis
 - Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
 - Escolha a opção **Conectar no GitHub**
 - Selecione o repositório desejado.
+- Clique na opção **Enable Automatic Deploy**
 - Clique na opção **Deploy Branch**.
 - Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
 - O link para aplicação é https://livraria.herokuapp.com/
