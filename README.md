@@ -407,7 +407,7 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
-**Configure as variáveis do **git\*\*\*\*
+**Configure as variáveis do git**
 
 Para isso, digite no terminal, substituindo por suas informações pessoais (colocando as suas informações no lugar):
 
@@ -421,11 +421,12 @@ Para verificar se as informações estão corretas, digite:
 **Crie o arquivo `.gitignore`**
 
 -   Vá no site [gitignore.io](https://gitignore.io/)
--   Escolha as opções `Django` e `VisualStudioCode`.
+-   Escolha a opção `Django`.
 -   Clique em `Criar`.
 -   Selecione todo o texto (`Control+A`) e copie (`Control+C`).
 -   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`.
 -   Cole o conteúdo copiado (`Control+V`).
+-   Encontre as linhas que se referem "`db.sqlite3`" e comente-as (`Control+/`).
 
 **Faça a publicação**
 
@@ -1038,8 +1039,6 @@ print("That's all, folks!")
 <!-- Criar model ItensCompra -->
 
 <!-- # Uso de TabularInline no Admin para Itens da Compra -->
-
-
 
 <!-- Reestruturação inicial das pastas para as models, views e serializers -->
 
