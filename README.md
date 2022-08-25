@@ -521,7 +521,7 @@ Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos q
 
 **Campo `categoria`**
 
-Inclua a linha a seguir no `model Categoria`, logo após o atributo `preco`:
+Inclua a linha a seguir no `model Livro`, logo após o atributo `preco`:
 
 ```python
 ...
