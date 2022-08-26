@@ -1020,15 +1020,35 @@ Crie o arquivo `requirements.txt` na raiz do projeto. Esse arquivo contém a lis
 - Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
 - O link para aplicação é https://livraria.herokuapp.com/
 
+# Aula 11 - Relacionamento n para n 
 
----
+## Model com ManyToManyField - Livros com vários autores
+
+Um livro pode ter vários autores, por isso criaremos agora um relacionamento n para n entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
+
+Inclua o seguinte atributo na *model* `Livro`:
+
+
 ```python
-print("That's all, folks!")
+...
+autores = models.ManyToManyField(Autor, related_name="livros")
+...
 ```
+
+Como sempre que alteramos um modelo precisamos fazer a migração das tabelas do banco de dados, precisamos executar os seguintes comandos no terminal:
+
+    python manage.py makemigrations
+
+e
+
+    python manage.py migrate
+
+Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso uma **tabela associativa** foi criada, com o nome `core_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
+
+**Tarefa**: Entre no **Admin** agora e cadastre alguns livros e autores.
 
 <!-- Aulas futuras -->
 
-<!-- # Model com ManyToManyField - Livros com vários autores -->
 
 <!-- # Uso do Django Shell para acessar as models -->
 
