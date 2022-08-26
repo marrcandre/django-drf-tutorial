@@ -1049,7 +1049,6 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 
 <!-- Aulas futuras -->
 
-
 <!-- # Uso do Django Shell para acessar as models -->
 
 <!-- # Model de compras integrando com Model User do Django  -->
