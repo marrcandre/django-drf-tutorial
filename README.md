@@ -1047,6 +1047,48 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 
 **Tarefa**: Entre no **Admin** agora e cadastre alguns livros e autores.
 
+# Aula 12 - Permissões de acesso
+
+Vamos trabalhar agora os conceitos de segurança relacionados a autenticação e permissão (autorização). Utilizaremos aquilo que o Django 
+já oferece, em termos de usuários e grupos.
+
+Uma estratégia muito utilizada para a definição de permissões de acesso é:
+
+- criar grupos para perfis de usuários específicos
+- definir as permissões que esse grupo de usuários terá
+- criar um usuários para cada pessoa 
+- incluir os usuários nos grupos, dando assim as permissões
+- No caso de mudanças nas permissões, elas são sempre feitas nos grupos, refletindo nos usuários
+- Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em vários grupos
+- Quando um usuário sai de um cargo ou deve perder seus privilégios, ele é removido do grupo específico
+
+**Resumindo: toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.**
+
+Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
+
+## Criando grupos
+
+Vamos começar criando 2 grupos e dando a eles permissões distintas:
+
+**Grupo compradores**
+
+Crie um grupo chamado `compradores`, com as seguintes permissões:
+
+- Visualizar autor, categoria e editora
+- Adicionar, editar e visualizar livro
+
+**Grupo administradores**
+
+Crie também um grupo chamado `administradores`, dando a ele **todas** as permissões em categorias, editoras, autores e livros.
+
+## Criando usuários e adicionando aos grupos
+
+- Crie um usuário `admin1` e o inclua no grupo `administradores`.
+- Crie um usuário `comprador1` e o inclua no grupo `compradores`.
+  
+
+
+
 <!-- Aulas futuras -->
 
 <!-- # Uso do Django Shell para acessar as models -->
