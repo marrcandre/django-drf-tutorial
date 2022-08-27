@@ -364,7 +364,6 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 # Aula 3 - Criando um segundo projeto
 
-
 ## Criando um segundo projeto
 
 Seguindo aquilo que você já aprendeu, crie um **novo projeto** chamado **garagem**. Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
@@ -848,11 +847,11 @@ class LivroViewSet(ModelViewSet):
 
 # Aula 8 - Aplicação frontend e Django CORS Headers
 
-## Executando uma aplicação *frontend* de exemplo
+## Executando uma aplicação _frontend_ de exemplo
 
 Clone o repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
 
-```
+```shell
 npm install
 npm run dev
 ```
@@ -867,7 +866,7 @@ Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer,
 
 ## Inclusão do Django CORS headers no projeto
 
-Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de *frontend* feita em *vuejs*. 
+Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de _frontend_ feita em _vuejs_.
 
 Instale o pacote no `poetry`:
 
@@ -889,7 +888,7 @@ INSTALLED_APPS = [
 
 Não esqueça da vírgula no final da linha e procure manter nessa mesma ordem.
 
-Você também vai precisar adicionar uma classe de *middleware* para ouvir suas respostas:
+Você também vai precisar adicionar uma classe de _middleware_ para ouvir suas respostas:
 
 ```python
 MIDDLEWARE = [
@@ -899,6 +898,7 @@ MIDDLEWARE = [
     ...,
 ]
 ```
+
 A ordem aqui também é importante.
 
 Por fim, adicione a seguinte linha ao final do arquivo `settings.py`:
@@ -913,12 +913,11 @@ Feito isso, reinicie o servidor e tudo deve funcionar.
 
 ## API Rest do projeto Garagem
 
-- Volte ao projeto `Garagem`
-- Crie as classes, baseadas no arquivo `models.py` abaixo.
-- Depois, crie a API REST com o Django Rest Framework para todas as entidades.
-- Não esqueça de adicionar o DRF ao seu projeto.
-- Depois, teste tudo!
-
+-   Volte ao projeto `Garagem`
+-   Crie as classes, baseadas no arquivo `models.py` abaixo.
+-   Depois, crie a API REST com o Django Rest Framework para todas as entidades.
+-   Não esqueça de adicionar o DRF ao seu projeto.
+-   Depois, teste tudo!
 
 ```python
 class Categoria(models.Model):
@@ -948,6 +947,7 @@ class Carro(models.Model):
     def __str__(self):
         return f"{self.marca} {self.modelo} {self.cor} ({self.ano})"
 ```
+
 # Aula 10 - Deploy no Heroku
 
 ## Deploy no Heroku
@@ -961,7 +961,6 @@ O **gunicorn** é um servidor web. Adicione-o ao seu projeto assim:
 Crie o arquivo `Procfile` na raiz do projeto e adicione esse conteúdo:
 
     web: gunicorn livraria.wsgi
-
 
 **Instalação do whitenoise**
 
@@ -1000,34 +999,33 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ```
 
 Por fim, execute o seguinte comando no terminal, para coletar os arquivos estáticos:
- 
+
     python manage.py collectstatic --noinput
 
 ### Criação do arquivo `requirements.txt`
 
 Crie o arquivo `requirements.txt` na raiz do projeto. Esse arquivo contém a lista de pacotes necessários para que o projeto funcione corretamente.
 
-
     poetry export --without-hashes > requirements.txt
 
 **Criação do projeto no heroku**
-- Garanta que a última versão do seu projeto esteja no **github**.
-- Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
-- Escolha a opção **Conectar no GitHub**
-- Selecione o repositório desejado.
-- Clique na opção **Enable Automatic Deploy**
-- Clique na opção **Deploy Branch**.
-- Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
-- O link para aplicação é https://livraria.herokuapp.com/
 
-# Aula 11 - Relacionamento n para n 
+-   Garanta que a última versão do seu projeto esteja no **github**.
+-   Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
+-   Escolha a opção **Conectar no GitHub**
+-   Selecione o repositório desejado.
+-   Clique na opção **Enable Automatic Deploy**
+-   Clique na opção **Deploy Branch**.
+-   Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
+-   O link para aplicação é https://livraria.herokuapp.com/
+
+# Aula 11 - Relacionamento n para n
 
 ## Model com ManyToManyField - Livros com vários autores
 
 Um livro pode ter vários autores, por isso criaremos agora um relacionamento n para n entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
 
-Inclua o seguinte atributo na *model* `Livro`:
-
+Inclua o seguinte atributo na _model_ `Livro`:
 
 ```python
 ...
@@ -1049,18 +1047,18 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 
 # Aula 12 - Permissões de acesso
 
-Vamos trabalhar agora os conceitos de segurança relacionados a autenticação e permissão (autorização). Utilizaremos aquilo que o Django 
+Vamos trabalhar agora os conceitos de segurança relacionados a autenticação e permissão (autorização). Utilizaremos aquilo que o Django
 já oferece, em termos de usuários e grupos.
 
 Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
-- criar grupos para perfis de usuários específicos
-- definir as permissões que esse grupo de usuários terá
-- criar um usuários para cada pessoa 
-- incluir os usuários nos grupos, dando assim as permissões
-- No caso de mudanças nas permissões, elas são sempre feitas nos grupos, refletindo nos usuários
-- Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em vários grupos
-- Quando um usuário sai de um cargo ou deve perder seus privilégios, ele é removido do grupo específico
+-   criar grupos para perfis de usuários específicos
+-   definir as permissões que esse grupo de usuários terá
+-   criar um usuários para cada pessoa
+-   incluir os usuários nos grupos, dando assim as permissões
+-   No caso de mudanças nas permissões, elas são sempre feitas nos grupos, refletindo nos usuários
+-   Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em vários grupos
+-   Quando um usuário sai de um cargo ou deve perder seus privilégios, ele é removido do grupo específico
 
 **Resumindo: toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.**
 
@@ -1074,8 +1072,8 @@ Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
 Crie um grupo chamado `compradores`, com as seguintes permissões:
 
-- Visualizar autor, categoria e editora
-- Adicionar, editar e visualizar livro
+-   Visualizar autor, categoria e editora
+-   Adicionar, editar e visualizar livro
 
 **Grupo administradores**
 
@@ -1083,11 +1081,274 @@ Crie também um grupo chamado `administradores`, dando a ele **todas** as permis
 
 ## Criando usuários e adicionando aos grupos
 
-- Crie um usuário `admin1` e o inclua no grupo `administradores`.
-- Crie um usuário `comprador1` e o inclua no grupo `compradores`.
-  
+-   Crie um usuário `admin1` e o inclua no grupo `administradores`.
+-   Crie um usuário `comprador1` e o inclua no grupo `compradores`.
+
+# Aula 13 - Usando as permissões do DRF
+
+## Autenticação e permissão
+
+_A **autenticação** ou **identificação** por si só geralmente não é suficiente para obter acesso à informação ou código. Para isso, a entidade que solicita o acesso deve ter **autorização**._ [(Permissões no DRF)](https://www.django-rest-framework.org/api-guide/permissions/)
+
+**Autenticação** significa que um usuário foi **identificado** em um sistema, portanto ele é **conhecido**. Isso se dá, normamente por um sistema de **_login_**.
+
+**Permissão (autorização)** se dá por um esquema de **conceder privilégios**, seja a usuários ou grupos.
+
+Por padrão, qualquer usuário, mesmo sem autenticação, tem acesso irrestrito e permissão de fazer qualquer coisa em uma aplicação.
+
+As permissões podem ser definidas a nível de objeto (nas _views_ ou _viewsets_, por exemplo) ou de forma global, no arquivo `settings.py`.
+
+## Exemplo de uso de permisssão na viewset
+
+Como ilustração, modifique o arquivo `views.py`, da seguinte forma.
+
+Importe a seguinte função:
+
+```python
+from rest_framework.permissions import IsAuthenticated
+```
+
+Inclua também a seguinte linha na `CategoriaViewSet`:
+
+```python
+permission_classes = [IsAuthenticated]
+```
+
+Para testar:
+
+-   Encerre a sessão do **Admin**
+-   Tente acessar as **categorias** pelo DRF.
+-   Você deve receber um erro.
+-   Agora entre novamente pelo **Admin**.
+-   Tente acessar as **categorias** pelo DRF.
+-   Você deve conseguir.
+
+## Exemplo de uso de permisssão no `settings.py`
+
+Outra forma de gerencimento de permissões é feita no arquivo `settings.py`. Para isso, utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+
+Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, só permitir acesso a todos os _endpoints_ para usuários autenticados é configurar desse modo o arquivo `settings.py`:
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+```
+
+Inclua o códio acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
+
+## Permissões com o DjangoModelPermissions
+
+A forma que iremos adotar para o gerenciamento de permissões será com o uso do [DjangoModelPermissions](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions).
+
+Esta classe de permissão está ligada às permissões do modelo `django.contrib.auth` padrão do Django. Essa permissão deve ser aplicada apenas a visualizações que tenham uma propriedade `.queryset` ou método `get_queryset()` (exatamente o que temos).
+
+A autorização só será concedida se o usuário estiver autenticado e tiver as permissões de modelo relevantes atribuídas, da seguinte forma:
+
+-   As solicitações `POST` exigem que o usuário tenha a permissão de adição (`add`) no modelo.
+-   As solicitações `PUT` e `PATCH` exigem que o usuário tenha a permissão de alteração (`change`) no modelo.
+-   As solicitações `DELETE` exigem que o usuário tenha a permissão de exclusão (`remove`) no modelo.
+
+Para isso, teremos que alterar a classe de autenticação:
+
+```python
+REST_FRAMEWORK = {
+    ...
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissions",
+    ],
+    ...
+}
+```
+
+**Resumindo, utilizaremos a estrutura de usuários, grupos e permissões que o próprio Django já nos fornece.**
+
+Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Utilizaremos o **SimpleJWT**.
+
+# Aula 14 - Uso do SimpleJWT para autenticação no DRF
+
+## Um resumo sobre autenticação e autorização
+
+Relembrando o que estudamos até aqui em termos de autenticação e autorização:
+
+-   Como criar grupos e usuários e inserir os usuários nesses grupos
+-   Como dar permissões nas models (via **Admin**) para visualização (`view`), adição (`add`), alteração (`change`) e exclusão (`remove`).
+-   Como utilizar diversas formas de gerenciamento de permissões no Django, incluindo as permissões em cada `view` ou as permissões padrão no `settings.py`.
+-   Como utilizar o `DjangoModelPermissions` para fazer uso do gerenciamento de permissões já incluído no **Django Admin**.
+
+Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Framework**.
+
+**Resumindo, utilizaremos o SimpleJWT para autenticação e a estrutura de permissões do Django para autorização.**
+
+## O SimpleJWT
+
+O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) é um plug-in de autenticação JSON Web Token para o Django REST Framework.
+
+**Instalação**
+
+Para instalar, execute o seguinte comando no _poetry shell_:
+
+```shell
+poetry add djangorestframework-simplejwt
+```
+
+**Configuração**
+
+Adicione a forma de autenticação no arquivo `settings.py`:
+
+```python
+REST_FRAMEWORK = {
+    ...
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        ...
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    ...
+}
+```
+
+Inclua também as rotas no arquivo `urls.py`:
+
+```python
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+urlpatterns = [
+    ...
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    ...
+]
+```
+
+Por fim, adicione o **SimpleJWT** a lista de `INSTALLED_APPS`, no `settings.py`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework_simplejwt',
+    ...
+]
+```
+
+Feitas essa aterações, coloque o servidor do Django novamente em execução.
+
+Pata testar se tudo deu certo, utilizaremos algum cliente HTTP, como **Postman**, **Insomnia**, **Thunder Client** ou **RapidAPI**.
+
+# Aula 15 - Testando as permissões dos endpoints usando um cliente HTTP
 
 
+## Colocando as informações do token na requisição
+
+Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcionamento. Para isso utilize um cliente HTTP.
+
+**Dica: se sua ferramenta permitir, crie várias requisições separadas para cada tipo de requisição, como autenticação, consulta, inclusão, etc.**
+
+Ao tentar acessar, por exemplo, o seguinte _endpoint_:
+
+```
+http://localhost:8000/categorias/
+```
+
+Você deverá receber uma resposta parecida com essa:
+
+```json
+{
+    "detail": "As credenciais de autenticação não foram fornecidas."
+}
+```
+
+Para fazer a autenticação, precisamos enviar as informações de usuário e senha. Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações:
+
+```json
+{
+    "username": "admin1",
+    "password": "minhasenha1"
+}
+```
+
+O endereço é o seguinte:
+
+```
+http://localhost:8000/token/
+```
+
+Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
+
+Você deve receber uma resposta semelhante a essa:
+
+```json
+{
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY2MTcyNDUxMCwiaWF0IjoxNjYxNjM4MTEwLCJqdGkiOiJiN2RhNWZkMjEwYTI0NjliOWE0MjgxZjQxZDcwNjZhMCIsInVzZXJfaWQiOjN9.lATd6io76oVa6nW5zuBEtsa8htvsL6wVhp-KzXMK-rk",
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjM4NDEwLCJpYXQiOjE2NjE2MzgxMTAsImp0aSI6ImRhYTBmNDcyZDI3YTQ5ZTM4M2I4ZjJhOTcwYjhlMWNmIiwidXNlcl9pZCI6M30.HY2j0L6eQBaPxAoHrPz_KFK_sWyb9lHmR7dQ1sOPTNY"
+}
+```
+
+A cada chamada ao sistema, precisaremos enviar no cabeçalho da requisição um campo com o nome `Authorization` (autorização) com tipo `Bearer ` com essa chave que foi definida no campo `access`.
+
+Para fazer isso, inclua em `Headers` um nova entrada, com se seguintes informações:
+
+-   KEY (Header Name): `Authorization`
+-   Value: `Bearer` + `valor da chave accesss`. (O valor desse token muda a cada nova autenticação.)
+-   -   Por exemplo: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjM4NDEwLCJpYXQiOjE2NjE2MzgxMTAsImp0aSI6ImRhYTBmNDcyZDI3YTQ5ZTM4M2I4ZjJhOTcwYjhlMWNmIiwidXNlcl9pZCI6M30.HY2j0L6eQBaPxAoHrPz_KFK_sWyb9lHmR7dQ1sOPTNY`
+
+Para testar, acesse com `GET` o seguinte endereço:
+
+```
+[GET] ​http://localhost:8000/categorias/
+```
+
+Você deverá conseguir visualizar todas as categorias cadastradas.
+
+## Token expirado
+
+```json
+{
+  "detail": "O token informado não é válido para qualquer tipo de token",
+  "code": "token_not_valid",
+  "messages": [
+    {
+      "token_class": "AccessToken",
+      "token_type": "access",
+      "message": "O token é inválido ou expirado"
+    }
+  ]
+}
+```
+
+## Testando com outro usuário
+
+Repita o processo de autenticação e consulta com o usuário `comprador1` que criamos anteriormente.
+
+Resumindo, você vai precisar:
+- Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
+- Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
+
+## Tentando alterar uma informação
+
+
+```
+[POST] ​http://localhost:8000/categorias/10/
+```
+
+
+```json
+{
+  "descricao": "Cobol"
+}
+```
+
+```json
+{
+  "detail": "Método \"POST\" não é permitido."
+}
+```
+
+Com isso, fizemos um sistema básico de autenticação (login) e autorização (permissões) usando o próprio sistema já fornecido pelo Admin do Django.
 
 <!-- Aulas futuras -->
 
@@ -1106,4 +1367,3 @@ Crie também um grupo chamado `administradores`, dando a ele **todas** as permis
 <!-- Endpoint para listagem básica de Compras -->
 
 <!-- #  Ajustes na visualização do status de compra e itens de compra -->
-
