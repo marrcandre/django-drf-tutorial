@@ -962,6 +962,8 @@ Crie o arquivo `Procfile` na raiz do projeto e adicione esse conteúdo:
 
     web: gunicorn livraria.wsgi
 
+Lembrando que `livraria` é o nome do projeto e precisa ser alterado a cada projeto criado.
+
 **Instalação do whitenoise**
 
 O **whitenoise** é um servidor de arquivos estáticos. Adicione-o ao seu projeto assim:
@@ -980,10 +982,16 @@ MIDDLEWARE = [
 ]
 ```
 
-Adicione também a seguinte linha ao final do arquivo:
+<!-- Adicione também a seguinte linha ao final do arquivo:
 
 ```python
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+``` -->
+
+Modifique a linha do `ALLOWED_HOSTS`, para que fique assim:
+
+```python
+ALLOWED_HOSTS = ["*"]
 ```
 
 Import o módulo `os` no início do arquivo:
@@ -1004,9 +1012,11 @@ Por fim, execute o seguinte comando no terminal, para coletar os arquivos estát
 
 ### Criação do arquivo `requirements.txt`
 
-Crie o arquivo `requirements.txt` na raiz do projeto. Esse arquivo contém a lista de pacotes necessários para que o projeto funcione corretamente.
+Execute o seguinte comando no *poetry shell*:
 
     poetry export --without-hashes > requirements.txt
+
+Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pacotes que foram instalados no projeto e que estão listados no arquivo `pyproject.toml`. Esse arquivo contém a lista de pacotes necessários para que o projeto funcione corretamente.
 
 **Criação do projeto no heroku**
 
