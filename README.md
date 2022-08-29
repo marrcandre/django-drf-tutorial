@@ -406,6 +406,12 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
+Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
+
+    rm -Rf ~/.gitconfig
+
+Recarregue o **vscode** (`Control+Shift+P + "Recarregar a Janela"`) e verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
+
 **Configure as variáveis do git**
 
 Para isso, digite no terminal, substituindo por suas informações pessoais (colocando as suas informações no lugar):
@@ -416,6 +422,12 @@ Para isso, digite no terminal, substituindo por suas informações pessoais (col
 Para verificar se as informações estão corretas, digite:
 
     git config -l
+
+Se aparecer outro nome de usuário ou outras informações estranhas, remova o arquivo com as configurações globais do git:
+
+    rm ~/.gitconfig
+
+Repita o processo de configuração de nome e email.
 
 **Crie o arquivo `.gitignore`**
 
