@@ -25,6 +25,8 @@ Verifique se o **poetry** está instalado:
 
     poetry --version
 
+Se não estiver instalado, baixe o [programa de instalação](./bin/poetry_install.sh) e o execute em um terminal.
+
 Verifique se o **python** está instalado:
 
     python --version
