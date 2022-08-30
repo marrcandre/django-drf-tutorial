@@ -14,8 +14,8 @@ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest
 
 Instale algumas extensões para o **vscode**:
 
--   Python \*
--   SqLite Viewer \*
+-   Python 
+-   SqLite Viewer
 -   Intellicode
 -   Prettier
 
@@ -25,7 +25,19 @@ Verifique se o **poetry** está instalado:
 
     poetry --version
 
-Se não estiver instalado, baixe o [programa de instalação](./bin/poetry_install.sh) e o execute em um terminal.
+Se não estiver instalado, siga o próximo passo:
+
+**Instalação do poetry**
+
+Baixe o [programa de instalação](./bin/poetry_install.sh) e o execute em um terminal.
+
+Execute os seguintes comandos no terminal:
+
+    poetry completions bash >> ~/.bash_completion
+
+e
+
+    pip install -U pip setuptools
 
 Verifique se o **python** está instalado:
 
