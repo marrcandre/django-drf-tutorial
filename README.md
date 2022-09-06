@@ -27,7 +27,7 @@ Verifique se o **poetry** está instalado:
 
 Se não estiver instalado, siga o próximo passo:
 
-**Instalação do poetry**
+## Instalação do poetry
 
 Baixe o [programa de instalação](./bin/poetry_install.sh) e o execute em um terminal.
 
