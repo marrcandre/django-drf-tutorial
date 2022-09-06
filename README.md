@@ -4,7 +4,7 @@ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest
 
 # 1 - Preparação do ambiente
 
-## Preparação do ambiente
+**Criação da pasta**
 
 -   Abra o navegador de arquivos
 -   Crie uma pasta chamada `livraria` para o seu projeto
@@ -12,12 +12,16 @@ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest
 -   Abra a **pasta** no vscode (repita em voz alta: _"Nunca abra um arquivo, sempre abra a pasta."_).
 -   Dentro do vscode, abra um terminal (`Control+Shift+'`)
 
+**Instalação de extensões**
+
 Instale algumas extensões para o **vscode**:
 
--   Python 
+-   Python
 -   SqLite Viewer
 -   Intellicode
 -   Prettier
+
+**Instalação do poetry**
 
 Os comandos a seguir serão digitados no terminal que você abriu dentro do **vscode**.
 
@@ -26,8 +30,6 @@ Verifique se o **poetry** está instalado:
     poetry --version
 
 Se não estiver instalado, siga o próximo passo:
-
-## Instalação do poetry
 
 Baixe o [programa de instalação](./bin/poetry_install.sh) e o execute em um terminal.
 
@@ -189,7 +191,7 @@ Agora sim, seu projeto está rodando e você consegue entrar no `admin`:
 
 Apague o projeto criado na passada e vamos criá-lo novamente.
 
-## Resumo da criação de um projeto Django
+**Resumo da criação de um projeto Django**
 
 Siga as seguintes instruções para criar novamente o projeto.
 
@@ -206,7 +208,7 @@ Digite os seguintes comandos, um a um, no terminal dentro do vscode.
     python manage.py migrate
     python manage.py createsuperuser
 
-## Criando um app
+**Criando um app**
 
 Para criar seu primeiro app, digite:
 
@@ -378,8 +380,6 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 # 3 - Criando um segundo projeto
 
-## Criando um segundo projeto
-
 Seguindo aquilo que você já aprendeu, crie um **novo projeto** chamado **garagem**. Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
 
 ```python
@@ -403,8 +403,6 @@ class Categoria(models.Model):
 ---
 
 # 4 - Colocando o projeto no **github**
-
-## Colocando o projeto no **github**
 
 Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
@@ -501,11 +499,7 @@ Digite no terminal:
 
 Pronto! Seu projeto está de volta no computador e rodando.
 
-# 5 - Continuando o projeto livraria
-
-## Continuando o projeto livraria
-
-**Colocando o projeto livraria no github**
+# 5 - Colocando o projeto livraria no github
 
 Agora que você conseguiu colocar o projeto `garagem` no **github**, coloque também o projeto `livraria`.
 
@@ -605,9 +599,7 @@ No django shell, é possível testar o acesso a todos os livros de uma categoria
 Categoria.objects.get(id=1).livros.all()
 -->
 
-# 6 - DRF
-
-## Criando uma API Rest com o Django REST framework (DRF)
+# 6 - Criando uma API Rest com o Django REST framework (DRF)
 
 **Instalação do DRF**
 
@@ -750,8 +742,6 @@ Experimente as seguintes tarefas:
 
 # 7 - API Rest com DRF
 
-## API Rest com Django DRF
-
 **Criação da API para a classe Editora**
 
 Repita os passos utilizados para a criação da API da `Categoria` e crie a API para a `Editora`.
@@ -873,7 +863,7 @@ class LivroViewSet(ModelViewSet):
 
 # 8 - Aplicação frontend e Django CORS Headers
 
-## Executando uma aplicação _frontend_ de exemplo
+**Executando uma aplicação _frontend_ de exemplo**
 
 Clone o repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
 
@@ -890,7 +880,7 @@ Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (
 
 Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.;
 
-## Inclusão do Django CORS headers no projeto
+**Inclusão do Django CORS headers no projeto**
 
 Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de _frontend_ feita em _vuejs_.
 
@@ -937,8 +927,6 @@ Feito isso, reinicie o servidor e tudo deve funcionar.
 
 # 9 - API Rest do projeto Garagem
 
-## API Rest do projeto Garagem
-
 -   Volte ao projeto `Garagem`
 -   Crie as classes, baseadas no arquivo `models.py` abaixo.
 -   Depois, crie a API REST com o Django Rest Framework para todas as entidades.
@@ -976,9 +964,7 @@ class Carro(models.Model):
 
 # 10 - Deploy no Heroku
 
-## Deploy no Heroku
-
-### Instalação e configuração do gunicorn
+**Instalação e configuração do gunicorn**
 
 O **gunicorn** é um servidor web. Adicione-o ao seu projeto assim:
 
@@ -1036,9 +1022,9 @@ Por fim, execute o seguinte comando no terminal, para coletar os arquivos estát
 
     python manage.py collectstatic --noinput
 
-### Criação do arquivo `requirements.txt`
+**Criação do arquivo `requirements.txt`**
 
-Execute o seguinte comando no *poetry shell*:
+Execute o seguinte comando no _poetry shell_:
 
     poetry export --without-hashes > requirements.txt
 
@@ -1057,7 +1043,7 @@ Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pac
 
 # 11 - Relacionamento n para n
 
-## Model com ManyToManyField - Livros com vários autores
+**Model com ManyToManyField - Livros com vários autores**
 
 Um livro pode ter vários autores, por isso criaremos agora um relacionamento n para n entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
 
@@ -1277,7 +1263,6 @@ Pata testar se tudo deu certo, utilizaremos algum cliente HTTP, como **Postman**
 
 # 15 - Testando as permissões dos endpoints usando um cliente HTTP
 
-
 ## Colocando as informações do token na requisição
 
 Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcionamento. Para isso utilize um cliente HTTP.
@@ -1344,15 +1329,15 @@ Você deverá conseguir visualizar todas as categorias cadastradas.
 
 ```json
 {
-  "detail": "O token informado não é válido para qualquer tipo de token",
-  "code": "token_not_valid",
-  "messages": [
-    {
-      "token_class": "AccessToken",
-      "token_type": "access",
-      "message": "O token é inválido ou expirado"
-    }
-  ]
+    "detail": "O token informado não é válido para qualquer tipo de token",
+    "code": "token_not_valid",
+    "messages": [
+        {
+            "token_class": "AccessToken",
+            "token_type": "access",
+            "message": "O token é inválido ou expirado"
+        }
+    ]
 }
 ```
 
@@ -1361,26 +1346,25 @@ Você deverá conseguir visualizar todas as categorias cadastradas.
 Repita o processo de autenticação e consulta com o usuário `comprador1` que criamos anteriormente.
 
 Resumindo, você vai precisar:
-- Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
-- Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
+
+-   Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
+-   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
 
 ## Tentando alterar uma informação
-
 
 ```
 [POST] ​http://localhost:8000/categorias/10/
 ```
 
-
 ```json
 {
-  "descricao": "Cobol"
+    "descricao": "Cobol"
 }
 ```
 
 ```json
 {
-  "detail": "Método \"POST\" não é permitido."
+    "detail": "Método \"POST\" não é permitido."
 }
 ```
 
