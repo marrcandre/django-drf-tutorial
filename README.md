@@ -2,7 +2,7 @@
 
 Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest Framework).
 
-# Aula 1 - Preparação do ambiente
+# 1 - Preparação do ambiente
 
 ## Preparação do ambiente
 
@@ -185,9 +185,9 @@ Agora sim, seu projeto está rodando e você consegue entrar no `admin`:
 
 ---
 
-# Aula 2 - Criando uma app
+# 2 - Criando uma app
 
-Apague o projeto criado na aula passada e vamos criá-lo novamente.
+Apague o projeto criado na passada e vamos criá-lo novamente.
 
 ## Resumo da criação de um projeto Django
 
@@ -376,7 +376,7 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 ---
 
-# Aula 3 - Criando um segundo projeto
+# 3 - Criando um segundo projeto
 
 ## Criando um segundo projeto
 
@@ -402,7 +402,7 @@ class Categoria(models.Model):
 
 ---
 
-# Aula 4 - Colocando o projeto no **github**
+# 4 - Colocando o projeto no **github**
 
 ## Colocando o projeto no **github**
 
@@ -485,7 +485,7 @@ Agora que seu projeto está no **github**, você pode baixá-lo onde quiser. Vam
 -   Apague todo o projeto do seu computador (_isso mesmo, coragem_).
 -   Crie novamente uma pasta vazia para hospedá-lo.
 
--   Abra o **vscode** na pasta (_Você já sabe fazer isso. Aula 1, lembra?_).
+-   Abra o **vscode** na pasta (_Você já sabe fazer isso. 1, lembra?_).
 -   Vá no projeto no **github**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
 -   Tecle `Control+Shift+P+"Git Clone"`
 -   Ao ser solicitado o endereço do projeto, informe a url que você copiou de lá.
@@ -501,7 +501,7 @@ Digite no terminal:
 
 Pronto! Seu projeto está de volta no computador e rodando.
 
-# Aula 5 - Continuando o projeto livraria
+# 5 - Continuando o projeto livraria
 
 ## Continuando o projeto livraria
 
@@ -605,7 +605,7 @@ No django shell, é possível testar o acesso a todos os livros de uma categoria
 Categoria.objects.get(id=1).livros.all()
 -->
 
-# Aula 6 - DRF
+# 6 - DRF
 
 ## Criando uma API Rest com o Django REST framework (DRF)
 
@@ -748,7 +748,7 @@ Experimente as seguintes tarefas:
 -   Incluir outra categoria;
 -   Listar todas as categorias.
 
-# Aula 7 - API Rest com DRF
+# 7 - API Rest com DRF
 
 ## API Rest com Django DRF
 
@@ -871,7 +871,7 @@ class LivroViewSet(ModelViewSet):
         return LivroSerializer
 ```
 
-# Aula 8 - Aplicação frontend e Django CORS Headers
+# 8 - Aplicação frontend e Django CORS Headers
 
 ## Executando uma aplicação _frontend_ de exemplo
 
@@ -935,7 +935,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-# Aula 9 - API Rest do projeto Garagem
+# 9 - API Rest do projeto Garagem
 
 ## API Rest do projeto Garagem
 
@@ -974,7 +974,7 @@ class Carro(models.Model):
         return f"{self.marca} {self.modelo} {self.cor} ({self.ano})"
 ```
 
-# Aula 10 - Deploy no Heroku
+# 10 - Deploy no Heroku
 
 ## Deploy no Heroku
 
@@ -1055,7 +1055,7 @@ Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pac
 -   Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
 -   O link para aplicação é https://livraria.herokuapp.com/
 
-# Aula 11 - Relacionamento n para n
+# 11 - Relacionamento n para n
 
 ## Model com ManyToManyField - Livros com vários autores
 
@@ -1081,7 +1081,7 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 
 **Tarefa**: Entre no **Admin** agora e cadastre alguns livros e autores.
 
-# Aula 12 - Permissões de acesso
+# 12 - Permissões de acesso
 
 Vamos trabalhar agora os conceitos de segurança relacionados a autenticação e permissão (autorização). Utilizaremos aquilo que o Django
 já oferece, em termos de usuários e grupos.
@@ -1120,7 +1120,7 @@ Crie também um grupo chamado `administradores`, dando a ele **todas** as permis
 -   Crie um usuário `admin1` e o inclua no grupo `administradores`.
 -   Crie um usuário `comprador1` e o inclua no grupo `compradores`.
 
-# Aula 13 - Usando as permissões do DRF
+# 13 - Usando as permissões do DRF
 
 ## Autenticação e permissão
 
@@ -1203,7 +1203,7 @@ REST_FRAMEWORK = {
 
 Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Utilizaremos o **SimpleJWT**.
 
-# Aula 14 - Uso do SimpleJWT para autenticação no DRF
+# 14 - Uso do SimpleJWT para autenticação no DRF
 
 ## Um resumo sobre autenticação e autorização
 
@@ -1275,7 +1275,7 @@ Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
 Pata testar se tudo deu certo, utilizaremos algum cliente HTTP, como **Postman**, **Insomnia**, **Thunder Client** ou **RapidAPI**.
 
-# Aula 15 - Testando as permissões dos endpoints usando um cliente HTTP
+# 15 - Testando as permissões dos endpoints usando um cliente HTTP
 
 
 ## Colocando as informações do token na requisição
