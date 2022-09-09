@@ -1372,7 +1372,42 @@ Com isso, fizemos um sistema básico de autenticação (login) e autorização (
 
 <!-- Aulas futuras -->
 
+<!-- Reestruturação inicial das pastas para as models, views e serializers -->
+criar a pasta
+criar o __init__.py
+separar as informações
+
+<!-- Adicionando campos ao usuário padrão -->
+- Explicar que essa é uma estratégia mais simples, mas que dá de fazer sem perder os dados.
+- Editar settings.py e models.py 
+- Apagar as migrations e dbsqlite
+- makemigrations core && migrate
+- Editar admin.py incluindo as informaçoes de BaseAdmin e incluindo os campos adicionais
+
+<!-- Settings para dev e produção -->
+
+<!-- Configuração do isort (junto com black). -->
+
+<!-- Vuejs com autenticação e autorização. -->
+
+<!-- Upload e associação de Imagens -->
+
+1a etapa
+- baixar pasta media e utils (remover referencias de backend)
+- instalar python-magic e Pillow
+- settings.py
+  - INSTALLED_APPS
+  - configurações de MEDIA
+  - urls.py
+- makemigrations media && migrate
+
+2a etapa
+- Adicionar campo Image na model
+- Referenciar no serializer
+
 <!-- # Uso do Django Shell para acessar as models -->
+
+<!-- Populate script  -->
 
 <!-- # Model de compras integrando com Model User do Django  -->
 
@@ -1381,8 +1416,6 @@ Com isso, fizemos um sistema básico de autenticação (login) e autorização (
 <!-- Criar model ItensCompra -->
 
 <!-- # Uso de TabularInline no Admin para Itens da Compra -->
-
-<!-- Reestruturação inicial das pastas para as models, views e serializers -->
 
 <!-- Endpoint para listagem básica de Compras -->
 
