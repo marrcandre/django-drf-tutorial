@@ -1373,16 +1373,16 @@ Com isso, fizemos um sistema básico de autenticação (login) e autorização (
 <!-- Aulas futuras -->
 
 <!-- Reestruturação inicial das pastas para as models, views e serializers -->
-criar a pasta
+<!-- criar a pasta
 criar o __init__.py
-separar as informações
+separar as informações -->
 
 <!-- Adicionando campos ao usuário padrão -->
-- Explicar que essa é uma estratégia mais simples, mas que dá de fazer sem perder os dados.
+<!-- - Explicar que essa é uma estratégia mais simples, mas que dá de fazer sem perder os dados.
 - Editar settings.py e models.py 
 - Apagar as migrations e dbsqlite
 - makemigrations core && migrate
-- Editar admin.py incluindo as informaçoes de BaseAdmin e incluindo os campos adicionais
+- Editar admin.py incluindo as informaçoes de BaseAdmin e incluindo os campos adicionais -->
 
 <!-- Settings para dev e produção -->
 
@@ -1392,7 +1392,7 @@ separar as informações
 
 <!-- Upload e associação de Imagens -->
 
-1a etapa
+<!-- 1a etapa
 - baixar pasta media e utils (remover referencias de backend)
 - instalar python-magic e Pillow
 - settings.py
@@ -1403,7 +1403,7 @@ separar as informações
 
 2a etapa
 - Adicionar campo Image na model
-- Referenciar no serializer
+- Referenciar no serializer -->
 
 <!-- # Uso do Django Shell para acessar as models -->
 
