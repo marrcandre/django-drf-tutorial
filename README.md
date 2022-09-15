@@ -1370,7 +1370,7 @@ Resumindo, você vai precisar:
 
 Com isso, fizemos um sistema básico de autenticação (login) e autorização (permissões) usando o próprio sistema já fornecido pelo Admin do Django.
 
-# 16- Reestruturação inicial das pastas para as models, views e serializers -->
+# 16- Reestruturação em pastas de *models*, *views* e *serializers*
 
 Por padrão, as *models*, as *views* e os *serializers* são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
 
