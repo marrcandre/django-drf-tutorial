@@ -1464,26 +1464,75 @@ core
     ├── categoria.py
     ├── editora.py
     └── livro.py
-
 ```
 A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupas entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
 
+# 17- Adicionando campos ao usuário padrão do Django
+
+Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
+- Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
+- Não removeremos os campos padrão do usuário.
+- Incluiremos os campos que precisamos no nosso usuário.
+- Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
+- Faremos a migração do banco de dados.
+- Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
+
+Vamos aos passos:
+
+- Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `core`.
+- Inclua o seguinte conteúdo:
+
+```python
+from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
+class Usuario(AbstractUser):
+    cpf = models.CharField(max_length=11, unique=True)
+    telefone = models.CharField(max_length=11, blank=True, null=True)
+    data_nascimento = models.DateField(blank=True, null=True)
+```
+- Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
+```python
+AUTH_USER_MODEL = 'core.Usuario'
+```
+- Remova o banco de dados e as migrações e crie um novo:
 
-<!-- criar a pasta
-criar o __init__.py
-separar as informações
+```bash
+rm db.sqlite3
+rm -rf core/migrations
+python manage.py makemigrations core
+python manage.py migrate
+python manage.py createsuperuser
+```
+- Edite o arquivo `admin.py` e inclua a configuração abaixo:
+
+```python
+class UsuarioAdmin(UserAdmin):
+    fieldsets = (
+        (None, {"fields": ("username", "password")}),
+        (_("Personal info"), {"fields": ("first_name", "last_name", "email", "cpf", "telefone", "data_nascimento")}),
+        (
+            _("Permissions"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                ),
+            },
+        ),
+        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+    )
+```
+- Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
+
 <!-- Aulas futuras -->
 
-
-<!-- Adicionando campos ao usuário padrão -->
-<!-- - Explicar que essa é uma estratégia mais simples, mas que dá de fazer sem perder os dados.
-- Editar settings.py e models.py 
-- Apagar as migrations e dbsqlite
-- makemigrations core && migrate
-- Editar admin.py incluindo as informaçoes de BaseAdmin e incluindo os campos adicionais -->
+<!-- DRF para campos related_name -->
 
 <!-- Settings para dev e produção -->
 
