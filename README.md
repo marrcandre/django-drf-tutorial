@@ -599,7 +599,7 @@ No django shell, é possível testar o acesso a todos os livros de uma categoria
 Categoria.objects.get(id=1).livros.all()
 -->
 
-# 6 - Criando uma API Rest com o Django REST framework (DRF)
+# 6 - Criando uma API REST
 
 **Instalação do DRF**
 
@@ -740,7 +740,7 @@ Experimente as seguintes tarefas:
 -   Incluir outra categoria;
 -   Listar todas as categorias.
 
-# 7 - API Rest com DRF
+# 7 - Continuando a criação da API REST
 
 **Criação da API para a classe Editora**
 
@@ -861,7 +861,7 @@ class LivroViewSet(ModelViewSet):
         return LivroSerializer
 ```
 
-# 8 - Aplicação frontend e Django CORS Headers
+# 8 - Aplicação frontend Vuejs e Django CORS Headers
 
 **Executando uma aplicação _frontend_ de exemplo**
 
@@ -925,7 +925,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-# 9 - API Rest do projeto Garagem
+# 9 - API REST do projeto Garagem
 
 -   Volte ao projeto `Garagem`
 -   Crie as classes, baseadas no arquivo `models.py` abaixo.
