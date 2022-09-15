@@ -1370,12 +1370,113 @@ Resumindo, você vai precisar:
 
 Com isso, fizemos um sistema básico de autenticação (login) e autorização (permissões) usando o próprio sistema já fornecido pelo Admin do Django.
 
-<!-- Aulas futuras -->
+## 16- Reestruturação inicial das pastas para as models, views e serializers -->
 
-<!-- Reestruturação inicial das pastas para as models, views e serializers -->
+Por padrão, as *models*, as *views* e os *serializers* são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
+
+- Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
+- Os conflitos no github são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
+  
+Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, organizados dentro de uma pasta.
+
+**Vale observar que essa mudança não afeta a forma de uso desses componentes, nem desempenho da aplicação e nem o banco de dados. É uma simples refatoração de código.**
+
+**Separando as *models* em arquivos**
+
+Siga os passos:
+- Crie uma pasta `models` dentro da pasta da aplicação (`core`).
+- Crie um arquivo `__init__.py` dentro da pasta `models` recém criada.
+- Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`.
+- Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `autor.py`.
+
+```python
+from django.db import models
+
+class Autor(models.Model):
+    nome = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Autores"
+```
+
+- Remova o conteúdo copiado no arquivo `models.py`. Não remova a linha do `import`, pois ela será utilizada por todas as entidades.
+- Inclua a importação da entidade `Autor` no arquivo `__init__.py`:
+
+```python
+from .autor import Autor
+```
+
+- Repita os mesmos passos para as demais entidades (Categoria, Editora, Livro, etc.)
+- Observe que a entidade livro referencia as demais entidades, portanto elas precisam ser importadas em `livro.py`:
+
+```python
+from django.db import models
+
+from .autor import Autor
+from .categoria import Categoria
+from .editora import Editora
+
+
+class Livro(models.Model):
+...
+```
+- Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
+
+**Separando *views* e *serializers* em arquivos**
+
+Para separar as *views* e os *serializers* em arquivos, repita o mesmo processo feito para as models:
+
+- Crie a pasta correspondente (`views` e `serializers`).
+- Crie o arquivo `__init__.py`.
+- Crie um arquivo para cada entidade dentro da pasta.
+- Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
+- Adicione a importação no arquivo `__init__.py`.
+- Remova o conteúdo do arquivo.
+
+Ao final , você terá uma estrutura parecida com essa:
+
+```
+core
+├── __init__.py
+├── admin.py
+├── apps.py
+├── migrations
+├── models
+│   ├── __init__.py
+│   ├── autor.py
+│   ├── categoria.py
+│   ├── editora.py
+│   └── livro.py
+├── serializers
+│   ├── __init__.py
+│   ├── autor.py
+│   ├── categoria.py
+│   ├── editora.py
+│   └── livro.py
+├── tests.py
+└── views
+    ├── __init__.py
+    ├── autor.py
+    ├── categoria.py
+    ├── editora.py
+    └── livro.py
+
+```
+A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupas entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
+
+
+
+
+
 <!-- criar a pasta
 criar o __init__.py
-separar as informações -->
+separar as informações
+<!-- Aulas futuras -->
+
 
 <!-- Adicionando campos ao usuário padrão -->
 <!-- - Explicar que essa é uma estratégia mais simples, mas que dá de fazer sem perder os dados.
