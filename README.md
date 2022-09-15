@@ -1086,7 +1086,7 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
 
-## Criando grupos
+**Criando grupos**
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
@@ -1101,14 +1101,14 @@ Crie um grupo chamado `compradores`, com as seguintes permissões:
 
 Crie também um grupo chamado `administradores`, dando a ele **todas** as permissões em categorias, editoras, autores e livros.
 
-## Criando usuários e adicionando aos grupos
+**Criando usuários e adicionando aos grupos**
 
 -   Crie um usuário `admin1` e o inclua no grupo `administradores`.
 -   Crie um usuário `comprador1` e o inclua no grupo `compradores`.
 
 # 13 - Usando as permissões do DRF
 
-## Autenticação e permissão
+**Autenticação e permissão**
 
 _A **autenticação** ou **identificação** por si só geralmente não é suficiente para obter acesso à informação ou código. Para isso, a entidade que solicita o acesso deve ter **autorização**._ [(Permissões no DRF)](https://www.django-rest-framework.org/api-guide/permissions/)
 
@@ -1120,7 +1120,7 @@ Por padrão, qualquer usuário, mesmo sem autenticação, tem acesso irrestrito 
 
 As permissões podem ser definidas a nível de objeto (nas _views_ ou _viewsets_, por exemplo) ou de forma global, no arquivo `settings.py`.
 
-## Exemplo de uso de permisssão na viewset
+**Exemplo de uso de permisssão na viewset**
 
 Como ilustração, modifique o arquivo `views.py`, da seguinte forma.
 
@@ -1145,7 +1145,7 @@ Para testar:
 -   Tente acessar as **categorias** pelo DRF.
 -   Você deve conseguir.
 
-## Exemplo de uso de permisssão no `settings.py`
+**Exemplo de uso de permisssão no `settings.py`**
 
 Outra forma de gerencimento de permissões é feita no arquivo `settings.py`. Para isso, utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
 
@@ -1161,7 +1161,7 @@ REST_FRAMEWORK = {
 
 Inclua o códio acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
 
-## Permissões com o DjangoModelPermissions
+**Permissões com o `DjangoModelPermissions`**
 
 A forma que iremos adotar para o gerenciamento de permissões será com o uso do [DjangoModelPermissions](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions).
 
@@ -1191,7 +1191,7 @@ Para utilizar essa estrutura de permissões corretamente, precisaremos de um sis
 
 # 14 - Uso do SimpleJWT para autenticação no DRF
 
-## Um resumo sobre autenticação e autorização
+**Um resumo sobre autenticação e autorização**
 
 Relembrando o que estudamos até aqui em termos de autenticação e autorização:
 
@@ -1204,7 +1204,7 @@ Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Fra
 
 **Resumindo, utilizaremos o SimpleJWT para autenticação e a estrutura de permissões do Django para autorização.**
 
-## O SimpleJWT
+**O SimpleJWT**
 
 O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) é um plug-in de autenticação JSON Web Token para o Django REST Framework.
 
@@ -1261,9 +1261,9 @@ Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
 Pata testar se tudo deu certo, utilizaremos algum cliente HTTP, como **Postman**, **Insomnia**, **Thunder Client** ou **RapidAPI**.
 
-# 15 - Testando as permissões dos endpoints usando um cliente HTTP
+# 15 - Testando as permissões dos *endpoints* usando um cliente HTTP
 
-## Colocando as informações do token na requisição
+**Colocando as informações do token na requisição**
 
 Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcionamento. Para isso utilize um cliente HTTP.
 
@@ -1325,7 +1325,7 @@ Para testar, acesse com `GET` o seguinte endereço:
 
 Você deverá conseguir visualizar todas as categorias cadastradas.
 
-## Token expirado
+***Token* expirado**
 
 ```json
 {
@@ -1341,7 +1341,7 @@ Você deverá conseguir visualizar todas as categorias cadastradas.
 }
 ```
 
-## Testando com outro usuário
+**Testando com outro usuário**
 
 Repita o processo de autenticação e consulta com o usuário `comprador1` que criamos anteriormente.
 
@@ -1350,7 +1350,7 @@ Resumindo, você vai precisar:
 -   Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
 -   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
 
-## Tentando alterar uma informação
+**Tentando alterar uma informação**
 
 ```
 [POST] ​http://localhost:8000/categorias/10/
