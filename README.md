@@ -214,12 +214,12 @@ Para criar seu primeiro app, digite:
 
     python manage.py startapp core
 
-Acrescente o app `'core'` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
+Acrescente o app `core` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 
 ```python
 INSTALLED_APPS = [
     ...
-    'core',
+    "core",
 ]
 ```
 
@@ -530,7 +530,7 @@ class Livro(models.Model):
     preco = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
-        return f'{self.titulo} ({self.quantidade})'
+        return f"{self.titulo} ({self.quantidade})"
 ```
 
 Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chaves estrangeiras no modelo `Livro`.
@@ -556,7 +556,7 @@ Vamos entender cada parte:
 -   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
 -   `Categoria`: o model (tabela) que será associado a esse campo.
 -   `on_delete=models.PROTECT`: impede de apagar uma categoria que possua livros associados.
--   `related_name='livros'`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
+-   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
 
 De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
 
@@ -660,11 +660,11 @@ from rest_framework.routers import DefaultRouter
 from core.views import CategoriaViewSet
 
 router = DefaultRouter()
-router.register(r'categorias', CategoriaViewSet)
+router.register(r"categorias", CategoriaViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path("admin/", admin.site.urls),
+    path("", include(router.urls)),
 ]
 ```
 
@@ -800,8 +800,8 @@ from core.views import CategoriaViewSet, EditoraViewSet
 
 ...
 
-router.register(r'categorias', CategoriaViewSet)
-router.register(r'editoras', EditoraViewSet)
+router.register(r"categorias", CategoriaViewSet)
+router.register(r"editoras", EditoraViewSet)
 
 ...
 ```
@@ -856,7 +856,7 @@ class LivroViewSet(ModelViewSet):
     queryset = Livro.objects.all()
 
     def get_serializer_class(self):
-        if self.action in ['list', 'retrieve']:
+        if self.action in ["list", "retrieve"]:
             return LivroDetailSerializer
         return LivroSerializer
 ```
@@ -890,7 +890,7 @@ Instale o pacote no `poetry`:
 poetry add django-cors-headers
 ```
 
-Depois, faça algumas modificações no `settings.py'. Primeiro, adicione o pacote recém adicionado nas suas aplicações instaladas:
+Depois, faça algumas modificações no `settings.py`. Primeiro, adicione o pacote recém adicionado nas suas aplicações instaladas:
 
 ```python
 INSTALLED_APPS = [
@@ -1015,7 +1015,7 @@ import os
 E adicione a seguinte linha ao final do arquivo:
 
 ```python
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 ```
 
 Por fim, execute o seguinte comando no terminal, para coletar os arquivos estáticos:
@@ -1153,8 +1153,8 @@ Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, i
 
 ```python
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ]
 }
 ```
@@ -1223,9 +1223,8 @@ Adicione a forma de autenticação no arquivo `settings.py`:
 ```python
 REST_FRAMEWORK = {
     ...
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        ...
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
     ...
 }
@@ -1241,8 +1240,8 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     ...
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     ...
 ]
 ```
@@ -1252,7 +1251,7 @@ Por fim, adicione o **SimpleJWT** a lista de `INSTALLED_APPS`, no `settings.py`:
 ```python
 INSTALLED_APPS = [
     ...
-    'rest_framework_simplejwt',
+    "rest_framework_simplejwt",
     ...
 ]
 ```
@@ -1495,7 +1494,7 @@ class Usuario(AbstractUser):
 - Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
 ```python
-AUTH_USER_MODEL = 'core.Usuario'
+AUTH_USER_MODEL = "core.Usuario"
 ```
 - Remova o banco de dados e as migrações e crie um novo:
 
@@ -1530,43 +1529,167 @@ class UsuarioAdmin(UserAdmin):
 ```
 - Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
+# 18- Upload e associação de imagens
+
+Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
+
+**Configuração**
+- Baixe o arquivo compactado `media.zip`.
+- Descompacte esse arquivo na pasta raiz do projeto.
+O projeto ficará com uma estrutura parecida com essa:
+
+```
+.
+├── core
+├── livraria
+├── media
+│   ├── models
+│   │   ├── document.py
+│   │   ├── image.py
+│   │   └── __init__.py
+│   ├── router.py
+│   ├── serializers
+│   │   ├── document.py
+│   │   ├── image.py
+│   │   └── __init__.py
+├── static
+└── utils
+    └── files.py
+```
+- Instalar os pacotes `python-magic` e `Pillow`:
+  
+```bash
+poetry add python-magic Pillow
+```
+
+- Aproveite para atualizar o arquivo requirements.txt:
+  
+```bash
+poetry export --without-hashes > requirements.txt
+```
+
+- Adicione o pacote `media` na lista de `INSTALLED_APPS`, no `settings.py`:
+  
+```python
+INSTALLED_APPS = [
+    ...
+    "media",
+    "core",
+    ...
+]
+```
+
+- Ainda no `settings.py` faça as seguintes configurações:
+
+```python
+MEDIA_URL = "http://localhost:8000/media/"
+MEDIA_ENDPOINT = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_files/")
+FILE_UPLOAD_PERMISSIONS = 0o640
+```
+
+- Inclua o seguinte conteúdo no arquivo `urls.py`:
+
+```python
+from django.conf import settings
+from django.conf.urls.static import static
+...
+from media.router import router as media_router
+...
+path("api/media/", include(media_router.urls)),
+...
+urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
+...
+```
+
+- Faça a migração do banco de dados:
+
+```bash
+python manage.py makemigrations media
+python manage.py migrate
+```
+
+**Uso em modelos**
+
+- Edite o arquivo `models\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+
+```python
+...
+from media.models import Image
+
+
+class Livro(models.Model):
+...
+    capa = models.ForeignKey(
+        Image,
+        related_name="+",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        default=None,
+    )
+```
+
+- Faça novamente a migração do banco de dados:
+
+```bash
+python manage.py makemigrations core
+python manage.py migrate
+```
+
+**Uso no serializer**
+- Edite o arquivo `serializers\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+
+```python
+...
+from rest_framework.serializers import ModelSerializer,                    SlugRelatedField
+
+from media.models import Image
+from media.serializers import ImageSerializer
+...
+class LivroSerializer(ModelSerializer):
+    capa_attachment_key = SlugRelatedField(
+        source="capa",
+        queryset=Image.objects.all(),
+        slug_field="attachment_key",
+        required=False,
+        write_only=True,
+    )
+    capa = ImageSerializer(required=False, read_only=True)
+
+...
+class LivroDetailSerializer(ModelSerializer):
+...
+    capa = ImageSerializer(required=False)
+```
+
+**Teste de upload e associação com o livro**
+
+- Acesse a API de media:
+
+    http://localhost:8000/api/media/images/ 
+
+- Faça o upload de uma imagem.
+- Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
+- Guarde o valor do campo `capa_attachment_key`.
+- Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
+- Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
+
+
 <!-- Aulas futuras -->
 
+<!-- Swagger e documentação da API -->
+<!-- DRF Spectacular -->
+<!-- Django Filter -->
 <!-- DRF para campos related_name -->
-
 <!-- Settings para dev e produção -->
-
 <!-- Configuração do isort (junto com black). -->
-
 <!-- Vuejs com autenticação e autorização. -->
-
-<!-- Upload e associação de Imagens -->
-
-<!-- 1a etapa
-- baixar pasta media e utils (remover referencias de backend)
-- instalar python-magic e Pillow
-- settings.py
-  - INSTALLED_APPS
-  - configurações de MEDIA
-  - urls.py
-- makemigrations media && migrate
-
-2a etapa
-- Adicionar campo Image na model
-- Referenciar no serializer -->
-
 <!-- # Uso do Django Shell para acessar as models -->
-
 <!-- Populate script  -->
-
 <!-- # Model de compras integrando com Model User do Django  -->
-
 <!-- # Criar model StatusCompra -->
-
 <!-- Criar model ItensCompra -->
-
 <!-- # Uso de TabularInline no Admin para Itens da Compra -->
-
 <!-- Endpoint para listagem básica de Compras -->
-
 <!-- #  Ajustes na visualização do status de compra e itens de compra -->
