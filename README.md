@@ -1750,7 +1750,7 @@ urlpatterns = [
     http://localhost:8000/api/swagger/
 
 
-**Alterando a url da nossa API**
+**Alteração da URL da API**
 
 - Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
 
@@ -1762,11 +1762,51 @@ urlpatterns = [
 ]
 ```
 
+# 20- Configuração do isort
+
+O `isort` é um utilitário para ordenar as importações de forma automática.
+
+**Instalação**
+
+- Instale o pacote `isort`:
+
+```bash
+poetry add isort
+```
+
+- Não esqueça de atualizar o arquivo `requirements.txt`.
+
+**Configuração**
+
+- Crie o arquivo `.isort.cfg` na raiz do projeto:
+
+```bash
+touch .isort.cfg
+```
+
+- Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
+
+```bash
+[isort]
+default_section = THIRDPARTY
+known_first_party = livraria  # change it for the name of your django project
+known_django = django
+sections = FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
+
+[settings]
+profile=black
+```
+
+**Teste**
+
+- Execute o comando `isort`:
+
+```bash
+isort .
+```
 
 <!-- Aulas futuras -->
 
-<!-- Swagger e documentação da API -->
-<!-- DRF Spectacular -->
 <!-- Django Filter -->
 <!-- DRF para campos related_name -->
 <!-- Settings para dev e produção -->
