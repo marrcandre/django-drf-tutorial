@@ -1675,6 +1675,93 @@ class LivroDetailSerializer(ModelSerializer):
 - Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
 - Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
 
+# 19- Habilitando o Swagger e Redoc usando DRF Spectacular
+
+Vamos instalar o pacote `drf-spectacular` para habilitar o Swagger e o Redoc.
+
+**Instalação e Configuração**
+
+- Instale o pacote `drf-spectacular`:
+
+```bash
+poetry add drf-spectacular
+``` 
+
+- Não esqueça de atualizar o arquivo `requirements.txt`.
+- Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
+  
+```python
+INSTALLED_APPS = [
+    ...
+    "drf_spectacular",
+    ...
+]
+```
+
+- Registre o pacote no `settings.py`:
+
+```python
+REST_FRAMEWORK = {
+    ...
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+```
+
+- Faça ainda algumas configurações no `settings.py`:
+
+```python
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Livraria API",
+    "DESCRIPTION": "API para gerenciamento de livraria,, incluindo endpoints e documentação.",
+    "VERSION": "1.0.0",
+}
+```
+
+- Inclua o seguinte conteúdo no arquivo `urls.py`, **organizando-o adequadamente**:
+
+```python
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
+...
+urlpatterns = [
+    ...
+    # OpenAPI 3
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path(
+        "api/swagger/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "api/redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
+]
+```
+
+**Teste**
+
+- Acesse o Swagger:
+
+    http://localhost:8000/api/swagger/
+
+
+**Alterando a url da nossa API**
+
+- Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
+
+```python
+urlpatterns = [
+    ...
+    path("api/", include(router.urls)),
+    ...
+]
+```
+
 
 <!-- Aulas futuras -->
 
