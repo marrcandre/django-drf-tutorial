@@ -29,9 +29,9 @@ Verifique se o **poetry** está instalado:
 
     poetry --version
 
-Se não estiver instalado, siga o próximo passo:
+Se não estiver instalado, execute o seguinte comando no terminal:
 
-Baixe o [programa de instalação](./bin/poetry_install.sh) e o execute em um terminal.
+    curl -sSL https://install.python-poetry.org | python3 -
 
 Execute os seguintes comandos no terminal:
 
@@ -1541,7 +1541,7 @@ admin.site.register(Usuario, UsuarioAdmin)
 Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
 
 **Configuração**
-- Baixe o arquivo compactado `media.zip`.
+- Baixe o arquivo compactado [`media.zip`](./media/media.zip).
 - Descompacte esse arquivo na pasta raiz do projeto.
 O projeto ficará com uma estrutura parecida com essa:
 
