@@ -1508,6 +1508,11 @@ python manage.py createsuperuser
 - Edite o arquivo `admin.py` e inclua a configuração abaixo:
 
 ```python
+...
+from django.contrib.auth.admin import UserAdmin
+from django.utils.translation import gettext_lazy as _
+...
+
 class UsuarioAdmin(UserAdmin):
     fieldsets = (
         (None, {"fields": ("username", "password")}),
@@ -1526,6 +1531,8 @@ class UsuarioAdmin(UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
+
+admin.site.register(Usuario, UsuarioAdmin)
 ```
 - Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
