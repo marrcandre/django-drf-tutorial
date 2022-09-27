@@ -1496,6 +1496,12 @@ class Usuario(AbstractUser):
     data_nascimento = models.DateField(blank=True, null=True)
 ```
 
+-   Adicione a importação no arquivo `__init__.py`:
+
+```python
+from .usuario import Usuario
+```
+
 -   Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
 ```python
