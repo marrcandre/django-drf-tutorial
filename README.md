@@ -915,7 +915,7 @@ MIDDLEWARE = [
 ]
 ```
 
-A ordem aqui também é importante.
+**A ordem aqui é muito importante.**
 
 Por fim, adicione a seguinte linha ao final do arquivo `settings.py`:
 
@@ -1260,7 +1260,7 @@ Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
 Pata testar se tudo deu certo, utilizaremos algum cliente HTTP, como **Postman**, **Insomnia**, **Thunder Client** ou **RapidAPI**.
 
-# 15 - Testando as permissões dos *endpoints* usando um cliente HTTP
+# 15 - Testando as permissões dos _endpoints_ usando um cliente HTTP
 
 **Colocando as informações do token na requisição**
 
@@ -1324,7 +1324,7 @@ Para testar, acesse com `GET` o seguinte endereço:
 
 Você deverá conseguir visualizar todas as categorias cadastradas.
 
-***Token* expirado**
+**_Token_ expirado**
 
 ```json
 {
@@ -1369,24 +1369,25 @@ Resumindo, você vai precisar:
 
 Com isso, fizemos um sistema básico de autenticação (login) e autorização (permissões) usando o próprio sistema já fornecido pelo Admin do Django.
 
-# 16- Reestruturação em pastas de *models*, *views* e *serializers*
+# 16- Reestruturação em pastas de _models_, _views_ e _serializers_
 
-Por padrão, as *models*, as *views* e os *serializers* são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
+Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
 
-- Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
-- Os conflitos no github são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
-  
+-   Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
+-   Os conflitos no github são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
+
 Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, organizados dentro de uma pasta.
 
 **Vale observar que essa mudança não afeta a forma de uso desses componentes, nem desempenho da aplicação e nem o banco de dados. É uma simples refatoração de código.**
 
-**Separando as *models* em arquivos**
+**Separando as _models_ em arquivos**
 
 Siga os passos:
-- Crie uma pasta `models` dentro da pasta da aplicação (`core`).
-- Crie um arquivo `__init__.py` dentro da pasta `models` recém criada.
-- Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`.
-- Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `autor.py`.
+
+-   Crie uma pasta `models` dentro da pasta da aplicação (`core`).
+-   Crie um arquivo `__init__.py` dentro da pasta `models` recém criada.
+-   Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`.
+-   Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `autor.py`.
 
 ```python
 from django.db import models
@@ -1402,15 +1403,15 @@ class Autor(models.Model):
         verbose_name_plural = "Autores"
 ```
 
-- Remova o conteúdo copiado no arquivo `models.py`. Não remova a linha do `import`, pois ela será utilizada por todas as entidades.
-- Inclua a importação da entidade `Autor` no arquivo `__init__.py`:
+-   Remova o conteúdo copiado no arquivo `models.py`. Não remova a linha do `import`, pois ela será utilizada por todas as entidades.
+-   Inclua a importação da entidade `Autor` no arquivo `__init__.py`:
 
 ```python
 from .autor import Autor
 ```
 
-- Repita os mesmos passos para as demais entidades (Categoria, Editora, Livro, etc.)
-- Observe que a entidade livro referencia as demais entidades, portanto elas precisam ser importadas em `livro.py`:
+-   Repita os mesmos passos para as demais entidades (Categoria, Editora, Livro, etc.)
+-   Observe que a entidade livro referencia as demais entidades, portanto elas precisam ser importadas em `livro.py`:
 
 ```python
 from django.db import models
@@ -1423,18 +1424,19 @@ from .editora import Editora
 class Livro(models.Model):
 ...
 ```
-- Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
 
-**Separando *views* e *serializers* em arquivos**
+-   Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
 
-Para separar as *views* e os *serializers* em arquivos, repita o mesmo processo feito para as models:
+**Separando _views_ e _serializers_ em arquivos**
 
-- Crie a pasta correspondente (`views` e `serializers`).
-- Crie o arquivo `__init__.py`.
-- Crie um arquivo para cada entidade dentro da pasta.
-- Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
-- Adicione a importação no arquivo `__init__.py`.
-- Remova o conteúdo do arquivo.
+Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo feito para as models:
+
+-   Crie a pasta correspondente (`views` e `serializers`).
+-   Crie o arquivo `__init__.py`.
+-   Crie um arquivo para cada entidade dentro da pasta.
+-   Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
+-   Adicione a importação no arquivo `__init__.py`.
+-   Remova o conteúdo do arquivo.
 
 Ao final , você terá uma estrutura parecida com essa:
 
@@ -1464,22 +1466,24 @@ core
     ├── editora.py
     └── livro.py
 ```
+
 A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupas entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
 
 # 17- Adicionando campos ao usuário padrão do Django
 
 Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
-- Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
-- Não removeremos os campos padrão do usuário.
-- Incluiremos os campos que precisamos no nosso usuário.
-- Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
-- Faremos a migração do banco de dados.
-- Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
+
+-   Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
+-   Não removeremos os campos padrão do usuário.
+-   Incluiremos os campos que precisamos no nosso usuário.
+-   Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
+-   Faremos a migração do banco de dados.
+-   Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
 
 Vamos aos passos:
 
-- Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `core`.
-- Inclua o seguinte conteúdo:
+-   Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `core`.
+-   Inclua o seguinte conteúdo:
 
 ```python
 from django.db import models
@@ -1491,12 +1495,14 @@ class Usuario(AbstractUser):
     telefone = models.CharField(max_length=11, blank=True, null=True)
     data_nascimento = models.DateField(blank=True, null=True)
 ```
-- Edite o arquivo `settings.py` e inclua a configuração abaixo:
+
+-   Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
 ```python
 AUTH_USER_MODEL = "core.Usuario"
 ```
-- Remova o banco de dados e as migrações e crie um novo:
+
+-   Remova o banco de dados e as migrações e crie um novo:
 
 ```bash
 rm db.sqlite3
@@ -1505,7 +1511,8 @@ python manage.py makemigrations core
 python manage.py migrate
 python manage.py createsuperuser
 ```
-- Edite o arquivo `admin.py` e inclua a configuração abaixo:
+
+-   Edite o arquivo `admin.py` e inclua a configuração abaixo:
 
 ```python
 ...
@@ -1534,16 +1541,18 @@ class UsuarioAdmin(UserAdmin):
 
 admin.site.register(Usuario, UsuarioAdmin)
 ```
-- Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
+
+-   Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
 # 18- Upload e associação de imagens
 
 Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
 
 **Configuração**
-- Baixe o arquivo compactado [`media.zip`](./media/media.zip).
-- Descompacte esse arquivo na pasta raiz do projeto.
-O projeto ficará com uma estrutura parecida com essa:
+
+-   Baixe o arquivo compactado [`media.zip`](./media/media.zip).
+-   Descompacte esse arquivo na pasta raiz do projeto.
+    O projeto ficará com uma estrutura parecida com essa:
 
 ```
 .
@@ -1563,20 +1572,21 @@ O projeto ficará com uma estrutura parecida com essa:
 └── utils
     └── files.py
 ```
-- Instalar os pacotes `python-magic` e `Pillow`:
-  
+
+-   Instalar os pacotes `python-magic` e `Pillow`:
+
 ```bash
 poetry add python-magic Pillow
 ```
 
-- Aproveite para atualizar o arquivo requirements.txt:
-  
+-   Aproveite para atualizar o arquivo requirements.txt:
+
 ```bash
 poetry export --without-hashes > requirements.txt
 ```
 
-- Adicione o pacote `media` na lista de `INSTALLED_APPS`, no `settings.py`:
-  
+-   Adicione o pacote `media` na lista de `INSTALLED_APPS`, no `settings.py`:
+
 ```python
 INSTALLED_APPS = [
     ...
@@ -1586,7 +1596,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-- Ainda no `settings.py` faça as seguintes configurações:
+-   Ainda no `settings.py` faça as seguintes configurações:
 
 ```python
 MEDIA_URL = "http://localhost:8000/media/"
@@ -1595,7 +1605,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media_files/")
 FILE_UPLOAD_PERMISSIONS = 0o640
 ```
 
-- Inclua o seguinte conteúdo no arquivo `urls.py`:
+-   Inclua o seguinte conteúdo no arquivo `urls.py`:
 
 ```python
 from django.conf import settings
@@ -1609,7 +1619,7 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 ...
 ```
 
-- Faça a migração do banco de dados:
+-   Faça a migração do banco de dados:
 
 ```bash
 python manage.py makemigrations media
@@ -1618,7 +1628,7 @@ python manage.py migrate
 
 **Uso em modelos**
 
-- Edite o arquivo `models\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+-   Edite o arquivo `models\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1637,7 +1647,7 @@ class Livro(models.Model):
     )
 ```
 
-- Faça novamente a migração do banco de dados:
+-   Faça novamente a migração do banco de dados:
 
 ```bash
 python manage.py makemigrations core
@@ -1645,7 +1655,8 @@ python manage.py migrate
 ```
 
 **Uso no serializer**
-- Edite o arquivo `serializers\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+
+-   Edite o arquivo `serializers\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1672,15 +1683,15 @@ class LivroDetailSerializer(ModelSerializer):
 
 **Teste de upload e associação com o livro**
 
-- Acesse a API de media:
+-   Acesse a API de media:
 
-    http://localhost:8000/api/media/images/ 
+    http://localhost:8000/api/media/images/
 
-- Faça o upload de uma imagem.
-- Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
-- Guarde o valor do campo `capa_attachment_key`.
-- Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
-- Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
+-   Faça o upload de uma imagem.
+-   Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
+-   Guarde o valor do campo `capa_attachment_key`.
+-   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
+-   Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
 
 # 19- Habilitando o Swagger e Redoc usando DRF Spectacular
 
@@ -1688,15 +1699,15 @@ Vamos instalar o pacote `drf-spectacular` para habilitar o Swagger e o Redoc.
 
 **Instalação e Configuração**
 
-- Instale o pacote `drf-spectacular`:
+-   Instale o pacote `drf-spectacular`:
 
 ```bash
 poetry add drf-spectacular
-``` 
+```
 
-- Não esqueça de atualizar o arquivo `requirements.txt`.
-- Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
-  
+-   Não esqueça de atualizar o arquivo `requirements.txt`.
+-   Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
+
 ```python
 INSTALLED_APPS = [
     ...
@@ -1705,7 +1716,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-- Registre o pacote no `settings.py`:
+-   Registre o pacote no `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
@@ -1714,7 +1725,7 @@ REST_FRAMEWORK = {
 }
 ```
 
-- Faça ainda algumas configurações no `settings.py`:
+-   Faça ainda algumas configurações no `settings.py`:
 
 ```python
 SPECTACULAR_SETTINGS = {
@@ -1724,7 +1735,7 @@ SPECTACULAR_SETTINGS = {
 }
 ```
 
-- Inclua o seguinte conteúdo no arquivo `urls.py`, **organizando-o adequadamente**:
+-   Inclua o seguinte conteúdo no arquivo `urls.py`, **organizando-o adequadamente**:
 
 ```python
 from drf_spectacular.views import (
@@ -1752,14 +1763,13 @@ urlpatterns = [
 
 **Teste**
 
-- Acesse o Swagger:
+-   Acesse o Swagger:
 
     http://localhost:8000/api/swagger/
 
-
 **Alteração da URL da API**
 
-- Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
+-   Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
 
 ```python
 urlpatterns = [
@@ -1775,23 +1785,23 @@ O `isort` é um utilitário para ordenar as importações de forma automática.
 
 **Instalação**
 
-- Instale o pacote `isort`:
+-   Instale o pacote `isort`:
 
 ```bash
 poetry add isort
 ```
 
-- Não esqueça de atualizar o arquivo `requirements.txt`.
+-   Não esqueça de atualizar o arquivo `requirements.txt`.
 
 **Configuração**
 
-- Crie o arquivo `.isort.cfg` na raiz do projeto:
+-   Crie o arquivo `.isort.cfg` na raiz do projeto:
 
 ```bash
 touch .isort.cfg
 ```
 
-- Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
+-   Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
 
 ```bash
 [isort]
@@ -1806,7 +1816,7 @@ profile=black
 
 **Teste**
 
-- Execute o comando `isort`:
+-   Execute o comando `isort`:
 
 ```bash
 isort .
