@@ -1557,8 +1557,13 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 **Configuração**
 
 -   Baixe o arquivo compactado [`media.zip`](./media/media.zip).
--   Descompacte esse arquivo na pasta raiz do projeto.
-    O projeto ficará com uma estrutura parecida com essa:
+-   Descompacte esse arquivo na pasta raiz do projeto:
+  
+```bash
+unzip media.zip
+```
+
+O projeto ficará com uma estrutura parecida com essa:
 
 ```
 .
@@ -1666,7 +1671,7 @@ python manage.py migrate
 
 ```python
 ...
-from rest_framework.serializers import ModelSerializer,                    SlugRelatedField
+from rest_framework.serializers import ModelSerializer,                  SlugRelatedField
 
 from media.models import Image
 from media.serializers import ImageSerializer
