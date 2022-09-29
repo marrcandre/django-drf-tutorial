@@ -1556,7 +1556,12 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 **Configuração**
 
--   Baixe o arquivo compactado [`media.zip`](./media/media.zip).
+-   Baixe o arquivo compactado [`media.zip`](./media/media.zip):
+
+```bash
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/media/media.zip
+```
+
 -   Descompacte esse arquivo na pasta raiz do projeto:
   
 ```bash
