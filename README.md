@@ -1416,9 +1416,7 @@ from .autor import Autor
 ```python
 from django.db import models
 
-from .autor import Autor
-from .categoria import Categoria
-from .editora import Editora
+from core.models import Autor, Categoria, Editora
 
 
 class Livro(models.Model):
@@ -1567,7 +1565,8 @@ wget https://github.com/marrcandre/django-drf-tutorial/raw/main/media/media.zip
 ```bash
 unzip media.zip
 ```
-
+- Remova a pasta `media` do arquivo `.gitignore`.
+  
 O projeto ficará com uma estrutura parecida com essa:
 
 ```
