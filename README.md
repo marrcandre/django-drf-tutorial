@@ -1803,7 +1803,7 @@ O `isort` é um utilitário para ordenar as importações de forma automática.
 -   Instale o pacote `isort`:
 
 ```bash
-poetry add isort
+poetry add -G dev isort
 ```
 
 -   Não esqueça de atualizar o arquivo `requirements.txt`.
@@ -1837,8 +1837,165 @@ profile=black
 isort .
 ```
 
+# 21- Uso do Django Shell
+
+Vamos aprender a usar o Django Shell.
+
+**Acesso ao shell**
+
+-   Acesse o shell:
+
+```bash
+python manage.py shell
+```
+
+**Importação de módulos**
+
+-   Importe o módulo `core.models`:
+
+```python
+>>> from core.models import Autor, Categoria, Editora, Livro
+```
+
+**Criação de objetos**
+
+-   Crie um objeto:
+
+```python
+>>> categoria = Categoria.objects.create(descricao="Desenvolvimento Web")
+```
+
+-   Observe que o objeto foi criado:
+
+```python
+>>> categoria
+<Categoria: Desenvolvimento Web>
+```
+
+**Listagem de objetos**
+
+-   Liste os objetos:
+
+```python
+>>> Categoria.objects.all()
+<QuerySet [<Categoria: Desenvolvimento Web>]>
+```
+
+**Obtenção de objetos**
+
+-   Obtenha o objeto:
+
+```python
+>>> categoria = Categoria.objects.get(descricao="Desenvolvimento Web")
+```
+
+-   Observe que o objeto foi obtido:
+
+```python
+>>> categoria
+<Categoria: Desenvolvimento Web>
+```
+
+**Atualização de objetos**
+
+-   Atualize o objeto:
+
+```python
+>>> categoria.descricao = "Desenvolvimento Web com Django"
+>>> categoria.save()
+```
+
+-   Observe que o objeto foi atualizado:
+
+```python
+>>> categoria
+<Categoria: Desenvolvimento Web com Django>
+```
+
+**Remoção de objetos**
+
+-   Remova o objeto:
+
+```python
+>>> categoria.delete()
+(1, {'core.Categoria': 1})
+```
+
+-   Observe que o objeto foi removido:
+
+```python
+>>> Categoria.objects.all()
+<QuerySet []>
+```
+
+**Acessar campos `related_name`**
+
+- Acesso a todos os livros de um autor:
+
+```python
+Autor.objects.get(id=1).livros.all()
+```
+
+- Acesso a todos os livros de uma categoria:
+
+```python
+Categoria.objects.get(id=1).livros.all()
+```
+- Acesso a todos os livros de uma editora:
+
+```python
+Editora.objects.get(id=1).livros.all()
+```
+
+**Encerramento do shell**
+
+-   Encerre o shell:
+
+```python
+>>> exit()
+```
+
+# 22- Dump e Load de dados
+
+Vamos aprender a fazer o dump e load de dados.
+
+**Dump**
+
+-   Execute o comando `dumpdata`:
+
+```bash
+python manage.py dumpdata core --indent 4 > livraria.json
+```
+
+-   Observe que o arquivo `livraria.json` foi criado:
+
+```bash
+code livraria.json
+```
+
+**Load**
+
+-   Execute o comando `loaddata`:
+
+```bash
+python manage.py loaddata livraria.json
+```
+
+-   Observe que os dados foram carregados:
+
+```bash
+python manage.py shell
+>>> from core.models import Livro
+>>> Livro.objects.all()
+```
+
+
+
+
+
 <!-- Aulas futuras -->
 
+<!-- Configure o Django settings para múltiplos ambientes -->
 <!-- Django Filter -->
 <!-- DRF para campos related_name -->
 <!-- Settings para dev e produção -->
