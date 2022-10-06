@@ -1554,13 +1554,13 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 **Configuração**
 
--   Baixe o arquivo compactado [`media.zip`](./media/media.zip):
+-   Baixe o arquivo compactado `media.zip`, que contém o código fonte da aplicação `media`, executando o seguinte comando no terminal:
 
 ```bash
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/media/media.zip
 ```
 
--   Descompacte esse arquivo na pasta raiz do projeto:
+-   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
   
 ```bash
 unzip media.zip
@@ -1989,8 +1989,33 @@ python manage.py shell
 >>> Livro.objects.all()
 ```
 
+# 23- Customização do Admin
 
+Vamos aprender a customizar o Admin.
 
+**Customização do Admin**
+
+-   Edite o arquivo `core/admin.py`:
+
+```python
+...
+@admin.register(Autor)
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'email')
+    search_fields = ('nome', 'email')
+    list_filter = ('nome',)
+    ordering = ('nome', 'email')
+    list_per_page = 30
+```
+Repita a operação para cada model.
+
+**Teste**
+
+-   Acesse o Admin:
+
+    http://localhost:8000/admin/
+
+<!-- # 24- Configuração do Django Environment -->
 
 
 <!-- Aulas futuras -->
@@ -1999,7 +2024,6 @@ python manage.py shell
 <!-- Django Filter -->
 <!-- DRF para campos related_name -->
 <!-- Settings para dev e produção -->
-<!-- Configuração do isort (junto com black). -->
 <!-- Vuejs com autenticação e autorização. -->
 <!-- # Uso do Django Shell para acessar as models -->
 <!-- Populate script  -->
