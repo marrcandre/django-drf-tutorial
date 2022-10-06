@@ -1675,7 +1675,7 @@ python manage.py migrate
 
 ```python
 ...
-from rest_framework.serializers import ModelSerializer,                  SlugRelatedField
+from rest_framework.serializers import ModelSerializer, SlugRelatedField
 
 from media.models import Image
 from media.serializers import ImageSerializer
