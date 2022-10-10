@@ -1961,6 +1961,19 @@ Editora.objects.get(id=1).livros.all()
 
 Vamos aprender a fazer o dump e load de dados.
 
+**Cópia de segurança dos dados**
+
+-   Execute o comando `dumpdata`:
+
+```bash
+python manage.py dumpdata core --indent 2 > livraria_bkp.json
+```
+-   Observe que o arquivo `livraria_bkp.json` foi criado:
+
+```bash
+code livraria_bkp.json
+```
+
 **Arquivo exemplo**
 
 -   Baixe o arquivo `livraria.json`:
@@ -1969,21 +1982,7 @@ Vamos aprender a fazer o dump e load de dados.
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 ```
 
-**Dump**
-
--   Execute o comando `dumpdata`:
-
-```bash
-python manage.py dumpdata core --indent 4 > livraria.json
-```
-
--   Observe que o arquivo `livraria.json` foi criado:
-
-```bash
-code livraria.json
-```
-
-**Load**
+**Carga dos dados**
 
 -   Execute o comando `loaddata`:
 
@@ -1998,6 +1997,8 @@ python manage.py shell
 >>> from core.models import Livro
 >>> Livro.objects.all()
 ```
+
+Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
 
 # 23- Customização do Admin
 
