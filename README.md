@@ -1561,12 +1561,13 @@ wget https://github.com/marrcandre/django-drf-tutorial/raw/main/media/media.zip
 ```
 
 -   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
-  
+
 ```bash
 unzip media.zip
 ```
-- Remova a pasta `media` do arquivo `.gitignore`.
-  
+
+-   Remova a pasta `media` do arquivo `.gitignore`.
+
 O projeto ficará com uma estrutura parecida com essa:
 
 ```
@@ -1930,18 +1931,19 @@ python manage.py shell
 
 **Acessar campos `related_name`**
 
-- Acesso a todos os livros de um autor:
+-   Acesso a todos os livros de um autor:
 
 ```python
 Autor.objects.get(id=1).livros.all()
 ```
 
-- Acesso a todos os livros de uma categoria:
+-   Acesso a todos os livros de uma categoria:
 
 ```python
 Categoria.objects.get(id=1).livros.all()
 ```
-- Acesso a todos os livros de uma editora:
+
+-   Acesso a todos os livros de uma editora:
 
 ```python
 Editora.objects.get(id=1).livros.all()
@@ -1958,6 +1960,14 @@ Editora.objects.get(id=1).livros.all()
 # 22- Dump e Load de dados
 
 Vamos aprender a fazer o dump e load de dados.
+
+**Arquivo exemplo**
+
+-   Baixe o arquivo `livraria.json`:
+
+```bash
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
+```
 
 **Dump**
 
@@ -2007,6 +2017,7 @@ class AutorAdmin(admin.ModelAdmin):
     ordering = ('nome', 'email')
     list_per_page = 30
 ```
+
 Repita a operação para cada model.
 
 **Teste**
@@ -2016,7 +2027,6 @@ Repita a operação para cada model.
     http://localhost:8000/admin/
 
 <!-- # 24- Configuração do Django Environment -->
-
 
 <!-- Aulas futuras -->
 
