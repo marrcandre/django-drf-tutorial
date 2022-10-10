@@ -1838,7 +1838,50 @@ profile=black
 isort .
 ```
 
-# 21- Uso do Django Shell
+# 21- Dump e Load de dados
+
+Vamos aprender a fazer o dump e load de dados.
+
+**Cópia de segurança dos dados**
+
+-   Execute o comando `dumpdata`:
+
+```bash
+python manage.py dumpdata core --indent 2 > livraria_bkp.json
+```
+-   Observe que o arquivo `livraria_bkp.json` foi criado:
+
+```bash
+code livraria_bkp.json
+```
+
+**Arquivo exemplo**
+
+-   Baixe o arquivo `livraria.json`:
+
+```bash
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
+```
+
+**Carga dos dados**
+
+-   Execute o comando `loaddata`:
+
+```bash
+python manage.py loaddata livraria.json
+```
+
+-   Observe que os dados foram carregados:
+
+```bash
+python manage.py shell
+>>> from core.models import Livro
+>>> Livro.objects.all()
+```
+
+Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
+
+# 22- Uso do Django Shell
 
 Vamos aprender a usar o Django Shell.
 
@@ -1956,49 +1999,6 @@ Editora.objects.get(id=1).livros.all()
 ```python
 >>> exit()
 ```
-
-# 22- Dump e Load de dados
-
-Vamos aprender a fazer o dump e load de dados.
-
-**Cópia de segurança dos dados**
-
--   Execute o comando `dumpdata`:
-
-```bash
-python manage.py dumpdata core --indent 2 > livraria_bkp.json
-```
--   Observe que o arquivo `livraria_bkp.json` foi criado:
-
-```bash
-code livraria_bkp.json
-```
-
-**Arquivo exemplo**
-
--   Baixe o arquivo `livraria.json`:
-
-```bash
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
-```
-
-**Carga dos dados**
-
--   Execute o comando `loaddata`:
-
-```bash
-python manage.py loaddata livraria.json
-```
-
--   Observe que os dados foram carregados:
-
-```bash
-python manage.py shell
->>> from core.models import Livro
->>> Livro.objects.all()
-```
-
-Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
 
 # 23- Customização do Admin
 
