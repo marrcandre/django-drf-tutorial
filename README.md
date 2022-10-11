@@ -29,7 +29,7 @@ Verifique se o **poetry** está instalado:
 
     poetry --version
 
-Se não estiver instalado, execute o seguinte comando no terminal:
+Se não estiver instalado, ou se a versão for inferior a 1.2, execute o seguinte comando no terminal:
 
     curl -sSL https://install.python-poetry.org | python3 -
 
@@ -1644,7 +1644,7 @@ python manage.py migrate
 
 **Uso em modelos**
 
--   Edite o arquivo `models\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+-   Edite o arquivo `models/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1746,7 +1746,7 @@ REST_FRAMEWORK = {
 ```python
 SPECTACULAR_SETTINGS = {
     "TITLE": "Livraria API",
-    "DESCRIPTION": "API para gerenciamento de livraria,, incluindo endpoints e documentação.",
+    "DESCRIPTION": "API para gerenciamento de livraria, incluindo endpoints e documentação.",
     "VERSION": "1.0.0",
 }
 ```
@@ -1849,6 +1849,7 @@ Vamos aprender a fazer o dump e load de dados.
 ```bash
 python manage.py dumpdata core --indent 2 > livraria_bkp.json
 ```
+
 -   Observe que o arquivo `livraria_bkp.json` foi criado:
 
 ```bash
@@ -2027,7 +2028,60 @@ Repita a operação para cada model.
 
     http://localhost:8000/admin/
 
-<!-- # 24- Configuração do Django Environment -->
+# 24- Configurando variáveis de ambiente
+
+É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no GitHub! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
+
+**Instalação do django_environ**
+
+-   Instale o pacote `django_environ`:
+
+```bash
+poetry add django-environ
+```
+
+**Configuração do django_environ**
+
+-   Edite o arquivo `livraria/settings.py`:
+
+```python
+...
+import environ
+...
+# Carrega as variáveis de ambiente do sistema operacional e as prepara para usá-las
+env = environ.Env()
+environ.Env.read_env((os.path.join(BASE_DIR, '.env')))
+
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
+DATABASES = {'default': env.db()}
+```
+
+Não esqueça de substituir essas variáveis de ambiente pelos seus valores.
+
+-   Crie o arquivo `.env`:
+
+```bash
+touch .env
+```
+
+-   Edite o arquivo `.env`:
+
+```python
+SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+DEBUG=True
+
+ALLOWED_HOSTS=localhost,
+
+DATABASE_URL=sqlite:///db.sqlite3
+```
+
+**IMPORTANTE: Adicione o arquivo `.env` ao arquivo `.gitignore`.**
+
+
+
 
 <!-- Aulas futuras -->
 
