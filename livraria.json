@@ -1,3 +1,4 @@
+['localhost', '"*"']
 [
 {
   "model": "core.autor",
@@ -1182,14 +1183,6 @@
 },
 {
   "model": "core.editora",
-  "pk": 32,
-  "fields": {
-    "nome": "HarperCollins Brasil",
-    "site": null
-  }
-},
-{
-  "model": "core.editora",
   "pk": 33,
   "fields": {
     "nome": "Edipro",
@@ -1273,14 +1266,6 @@
   "pk": 43,
   "fields": {
     "nome": "Nova Fronteira",
-    "site": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 45,
-  "fields": {
-    "nome": "Dark Side",
     "site": null
   }
 },
@@ -2765,7 +2750,7 @@
     "quantidade": 8,
     "preco": "17.39",
     "categoria": 24,
-    "editora": 32,
+    "editora": 10,
     "capa": null,
     "autores": [
       55
@@ -3705,7 +3690,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$390000$ho8E4gMoGI5ZLcdzrNbDrx$Sv5olhGNiaf5DQZyIObHVulv0C4hzuLKYSDB38QvXVY=",
-    "last_login": "2022-10-10T12:18:47Z",
+    "last_login": "2022-10-17T12:26:26.936Z",
     "is_superuser": true,
     "username": "marco",
     "first_name": "",
