@@ -2292,17 +2292,10 @@ DATABASE_URL=sqlite:///db.sqlite3
 
 # 25. Publicação no PythonAnywhere
 
-O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente.
-
-**IMPORTANTE:** 
-- Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no GitHub.
-- Substitua `seu_usuario` pelo seu usuário do GitHub.
-- Substitua `seu_projeto` pelo nome do seu projeto no GitHub.
-- Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
+O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no GitHub.
 
 **Criação da conta no PythonAnywhere**
 - Crie uma conta no https://www.pythonanywhere.com/
-
 
 **Criação do banco de dados no PythonAnywhere**
 
@@ -2313,7 +2306,13 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
     - Username: `seu_usuario_bd`
     - Password: `sua_senha`
 
-**IMPORTANTE:** Não esqueça de substituir `sua_conta`, `seu_usuario_bd`, `sua_senha` e `seu_bd` pelos seus valores.
+**IMPORTANTE:** 
+- Substitua `seu_usuario` pelo seu usuário do GitHub.
+- Substitua `seu_projeto` pelo nome do seu projeto no GitHub.
+- Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
+- Substitua `seu_bd` pelo nome do seu banco de dados.
+- Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
+- Substitua `sua_senha` pela sua senha no banco de dados.
 
 **Configuração das variáveis de ambiente no PythonAnywhere**
 
