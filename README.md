@@ -2314,7 +2314,23 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 - Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
 - Substitua `sua_senha` pela sua senha no banco de dados.
 
-**Configuração das variáveis de ambiente no PythonAnywhere**
+**Instalação do módulo `mysqlclient`**
+
+O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL. 
+
+- Instale o módulo `mysqlclient`:
+
+```bash
+poetry add mysqlclient
+```
+
+- Atualize o arquivo requirements.txt:
+
+```bash
+poetry export -f requirements.txt > requirements.txt
+```
+
+**Configuração das variáveis de ambiente**
 
 - Retire o arquivo `.env` do `.gitignore`.
 
