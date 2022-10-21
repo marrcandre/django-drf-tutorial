@@ -2290,11 +2290,116 @@ DATABASE_URL=sqlite:///db.sqlite3
 
 **IMPORTANTE**: Adicione o arquivo `.env` ao arquivo `.gitignore`.
 
+# 25. Publicação no PythonAnywhere
 
+O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente.
+
+**IMPORTANTE:** 
+- Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no GitHub.
+- Substitua `seu_usuario` pelo seu usuário do GitHub.
+- Substitua `seu_projeto` pelo nome do seu projeto no GitHub.
+- Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
+
+**Criação da conta no PythonAnywhere**
+- Crie uma conta no https://www.pythonanywhere.com/
+
+
+**Criação do banco de dados no PythonAnywhere**
+
+- Crie o banco de dados em https://www.pythonanywhere.com/dashboard/, na opção `Databases`.
+- Anote as informações de conexão com o banco de dados:
+    - Host: `sua_conta.mysql.pythonanywhere-services.com`
+    - Database name: `seu_usuario_bd$seu_bd`
+    - Username: `seu_usuario_bd`
+    - Password: `sua_senha`
+
+**IMPORTANTE:** Não esqueça de substituir `sua_conta`, `seu_usuario_bd`, `sua_senha` e `seu_bd` pelos seus valores.
+
+**Configuração das variáveis de ambiente no PythonAnywhere**
+
+- Retire o arquivo `.env` do `.gitignore`.
+
+- Edite o arquivo `.env`:
+
+```python
+SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+DEBUG=False
+
+ALLOWED_HOSTS=sua_conta.pythonanywhere.com
+
+DATABASE_URL=mysql://seu_usuario_bd:sua_senha@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
+```
+
+- Para gerar uma nova chave secreta, execute o comando:
+  
+
+```bash
+python manage.py shell -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+- Você também pode gerar uma nova chave secreta em https://djecrety.ir/
+
+IMPORTANTE:
+- Não esqueça de substituir a chave secreta pelo valor gerado.
+- Não esqueça de substituir as variáveis de ambiente pelos seus valores.
+
+**Instalação do cliente do PythonAnywhere**
+- Acesse o terminal do PythonAnywhere:
+
+    https://www.pythonanywhere.com/consoles/
+
+- Instale o cliente do PythonAnywhere no terminal (console):
+
+```bash
+pip install pythonanywhere --user
+```
+
+**Criação do projeto no PythonAnywhere**
+
+O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAnywhere a partir de um repositório do GitHub:
+- Faz o clone do repositório do GitHub.
+- Cria um virtualenv.
+- Instala as dependências do projeto.
+- Cria uma webapp.
+- Cria o arquivo de configuração `wsgi.py`.
+- Adiciona os arquivos estáticos.
+
+- Execute o comando `pa_autoconfigure_django.py`:
+
+```bash
+pa_autoconfigure_django.py https://github.com/seu_usuario/seu_projeto.git --python=3.8 --nuke
+```
+
+- Não esqueça de substituir `seu_usuario` e `seu_projeto` pelos seus valores.
+- Esse script irá clonar o repositório do GitHub, criar um virtualenv, instalar as dependências, configurar o banco de dados e configurar o arquivo `wsgi.py`.
+
+- Se necessário, no console, ative o `virtualenv`:
+
+```bash
+workon marcoandre.pythonanywhere.com
+```
+
+**Configuração do banco de dados no PythonAnywhere**
+
+- Carregue os dados iniciais:
+
+```bash
+python manage.py loaddata livraria.json
+```
+
+**Remoção do banco de dados local**
+
+Para remover um banco de dados, acesse https://www.pythonanywhere.com/dashboard/, na opção `Databases` e digite:
+
+```bash
+drop database seu_usuario$seu_bd;
+```
+
+**IMPORTANTE:** Não esqueça de substituir `seu_usuario` e `seu_bd` pelos seus valores.
 
 
 <!-- Aulas futuras -->
-
+<!-- MUdar nome app media upload -->
 <!-- # Testes -->
 <!-- Pre commits -->
 <!-- Django Filter -->
