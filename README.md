@@ -2330,6 +2330,8 @@ ALLOWED_HOSTS=sua_conta.pythonanywhere.com
 DATABASE_URL=mysql://seu_usuario_bd:sua_senha@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
 ```
 
+**Geração da chave secreta (opcional)**
+
 - Para gerar uma nova chave secreta, execute o comando:
   
 
@@ -2340,7 +2342,7 @@ python manage.py shell -c "from django.core.management.utils import get_random_s
 
 IMPORTANTE:
 - Não esqueça de substituir a chave secreta pelo valor gerado.
-- Não esqueça de substituir as variáveis de ambiente pelos seus valores.
+- Não esqueça de substituir os valores das variáveis de ambiente pelos seus valores.
 
 **Instalação do cliente do PythonAnywhere**
 - Acesse o terminal do PythonAnywhere:
@@ -2369,8 +2371,7 @@ O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAn
 pa_autoconfigure_django.py https://github.com/seu_usuario/seu_projeto.git --python=3.8 --nuke
 ```
 
-- Não esqueça de substituir `seu_usuario` e `seu_projeto` pelos seus valores.
-- Esse script irá clonar o repositório do GitHub, criar um virtualenv, instalar as dependências, configurar o banco de dados e configurar o arquivo `wsgi.py`.
+- Não esqueça de substituir `seu_usuario` e `seu_projeto` pelos seus valores (o link do seu projeto no GitHub).
 
 - Se necessário, no console, ative o `virtualenv`:
 
@@ -2386,7 +2387,7 @@ workon marcoandre.pythonanywhere.com
 python manage.py loaddata livraria.json
 ```
 
-**Remoção do banco de dados local**
+**Remoção do banco de dados local (se necessário)**
 
 Para remover um banco de dados, acesse https://www.pythonanywhere.com/dashboard/, na opção `Databases` e digite:
 
@@ -2396,6 +2397,27 @@ drop database seu_usuario$seu_bd;
 
 **IMPORTANTE:** Não esqueça de substituir `seu_usuario` e `seu_bd` pelos seus valores.
 
+**Baixar novamente o projeto do GitHub (se necessário)**
+
+Se você precisar atualizar o projeto do GitHub, sem precisar executar todo o processo novamente execute o comando:
+
+
+```bash
+git pull
+```
+
+Se houverem alterações no arquivo `requirements.txt`, execute o comando:
+
+```bash
+pip install -r requirements.txt
+```
+
+Se houverem alterações nos modelos, execute os comandos:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
 <!-- Aulas futuras -->
 <!-- MUdar nome app media upload -->
