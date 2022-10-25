@@ -2340,7 +2340,7 @@ poetry export -f requirements.txt > requirements.txt
 
 **Configuração das variáveis de ambiente**
 
-<!-- - Retire o arquivo `.env` do `.gitignore`. -->
+- Retire (comente) o arquivo `.env` do `.gitignore`.
 
 - Edite o arquivo `.env`:
 
