@@ -2304,7 +2304,7 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
     - Host: `sua_conta.mysql.pythonanywhere-services.com`
     - Database name: `seu_usuario_bd$seu_bd`
     - Username: `seu_usuario_bd`
-    - Password: `sua_senha`
+    - Password: `sua_senha_bd`
 
 **IMPORTANTE:** 
 - Substitua `seu_usuario` pelo seu usuário do GitHub.
@@ -2312,7 +2312,7 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 - Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
 - Substitua `seu_bd` pelo nome do seu banco de dados.
 - Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
-- Substitua `sua_senha` pela sua senha no banco de dados.
+- Substitua `sua_senha_bd` pela sua senha no banco de dados.
 
 **Instalação do módulo `mysqlclient`**
 
@@ -2351,7 +2351,7 @@ DEBUG=False
 
 ALLOWED_HOSTS=sua_conta.pythonanywhere.com
 
-DATABASE_URL=mysql://seu_usuario_bd:sua_senha@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
+DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
 ```
 
 **Geração da SECRET_KEY (opcional)**
