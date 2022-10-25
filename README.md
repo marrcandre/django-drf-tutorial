@@ -2283,7 +2283,7 @@ SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 DEBUG=True
 
-ALLOWED_HOSTS=localhost,
+ALLOWED_HOSTS=localhost,127.0.0.1
 
 DATABASE_URL=sqlite:///db.sqlite3
 ```
@@ -2346,15 +2346,15 @@ ALLOWED_HOSTS=sua_conta.pythonanywhere.com
 DATABASE_URL=mysql://seu_usuario_bd:sua_senha@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
 ```
 
-**Geração da chave secreta (opcional)**
+**Geração da SECRET_KEY (opcional)**
 
-- Para gerar uma nova chave secreta, execute o comando:
+- Para gerar uma nova SECRET_KEY (chave secreta), execute o comando:
   
-
 ```bash
-python manage.py shell -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+python -c "import secrets; print(secrets.token_urlsafe())"
 ```
 - Você também pode gerar uma nova chave secreta em https://djecrety.ir/
+- Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
 
 IMPORTANTE:
 - Não esqueça de substituir a chave secreta pelo valor gerado.
