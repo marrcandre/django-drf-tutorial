@@ -2340,19 +2340,23 @@ poetry export -f requirements.txt > requirements.txt
 
 **Configuração das variáveis de ambiente**
 
-- Retire (comente) o arquivo `.env` do `.gitignore`.
+<!-- - Retire (comente) o arquivo `.env` do `.gitignore`. -->
 
-- Edite o arquivo `.env`:
+- Crie um arquivo `.env` na pasta raiz (`/`) do seu usuario no PythonAnywhere. Você pode fazer isso pelo console ou pela interface web, na opção `Files`.
 
 ```python
 SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
 DEBUG=False
-
 ALLOWED_HOSTS=sua_conta.pythonanywhere.com
-
 DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
 ```
+- Inclua o seguinte conteúdo no arquivo .virtualenvs/postactivate:
+
+```bash
+cp ~/.env ~/seu_usuario.pythonanywhere.com/ 
+```
+Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnywhere.
+
 
 **Geração da SECRET_KEY (opcional)**
 
