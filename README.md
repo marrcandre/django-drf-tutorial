@@ -2368,12 +2368,14 @@ IMPORTANTE:
 - Não esqueça de substituir a chave secreta pelo valor gerado.
 - Não esqueça de substituir os valores das variáveis de ambiente pelos seus valores.
 
+**Criação da API Token**
+
+- Crie uma API Token em `Account` > `API Token` em https://www.pythonanywhere.com/dashboard/.
+
 **Instalação do cliente do PythonAnywhere**
-- Acesse o terminal do PythonAnywhere:
+- Acesse o console (terminal) do PythonAnywhere em https://www.pythonanywhere.com/consoles/
 
-    https://www.pythonanywhere.com/consoles/
-
-- Instale o cliente do PythonAnywhere no terminal (console):
+- Instale o cliente do PythonAnywhere no console:
 
 ```bash
 pip install pythonanywhere --user
@@ -2389,7 +2391,7 @@ O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAn
 - Cria o arquivo de configuração `wsgi.py`.
 - Adiciona os arquivos estáticos.
 
-- Execute o comando `pa_autoconfigure_django.py`:
+- No console do PythonAnywhere, execute o comando `pa_autoconfigure_django.py`:
 
 ```bash
 pa_autoconfigure_django.py https://github.com/seu_usuario/seu_projeto.git --python=3.8 --nuke
