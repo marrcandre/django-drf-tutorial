@@ -2316,13 +2316,21 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 
 **Instalação do módulo `mysqlclient`**
 
-O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL. 
+- Instale o pacote `libmysqlclient-dev`:
+
+```bash
+sudo apt install libmysqlclient-dev
+``` 
+
+O pacote `libmysqlclient-dev` é necessário para instalar o módulo `mysqlclient`.
 
 - Instale o módulo `mysqlclient`:
 
 ```bash
 poetry add mysqlclient
 ```
+
+O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL.
 
 - Atualize o arquivo requirements.txt:
 
