@@ -6,56 +6,55 @@ Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest
 
 **Instalação de extensões no vscode**
 
-- Instale algumas extensões para o **vscode**:
+-   Instale algumas extensões para o **vscode**:
 
-  - Intellicode
-  - Material Icon Theme
-  - Peacock
-  - Portuguese (Brazil) Language Pack for Visual Studio Code
-  - Prettier - Code formatter
-  - Python
-  - RapidAPI Client
-  - SqLite Viewer
+    -   Intellicode
+    -   Material Icon Theme
+    -   Peacock
+    -   Portuguese (Brazil) Language Pack for Visual Studio Code
+    -   Prettier - Code formatter
+    -   Python
+    -   RapidAPI Client
+    -   SqLite Viewer
 
 **Instalação do poetry**
 
-- Abra um terminal: 
-    
+-   Abra um terminal:
+
     `Ctrl + Alt + T`
 
-
-- Verifique se o **poetry** está instalado:
+-   Verifique se o **poetry** está instalado:
 
 ```bash
 poetry -V
 ```
 
-- Se a versão for inferior a 1.2, instale a versão mais recente:
+-   Se a versão for inferior a 1.2, instale a versão mais recente:
 
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
-- Instale o `bash_completion` do `poetry`:
+-   Instale o `bash_completion` do `poetry`:
 
 ```bash
 poetry completions bash >> ~/.bash_completion
 ```
 
-- Atualize o `setuptools`:
+-   Atualize o `setuptools`:
 
 ```bash
     pip install -U pip setuptools
 ```
 
-- Verifique se o **python** está instalado:
+-   Verifique se o **python** está instalado:
 
 ```bash
 python --version
 python3 --version
 ```
 
-- Configure o **poetry** para criar a pasta do ambiente virtual dentro da pasta do projeto:
+-   Configure o **poetry** para criar a pasta do ambiente virtual dentro da pasta do projeto:
 
 ```bash
 poetry config virtualenvs.in-project true
@@ -63,26 +62,26 @@ poetry config virtualenvs.in-project true
 
 **Criação da pasta do projeto**
 
-- Abra o navegador de arquivos:
+-   Abra o navegador de arquivos:
 
     `Windows + E`
 
-- Entre na pasta **Documentos**. **Não trabalhe na Área de Trabalho.**
-- Crie uma pasta chamada `livraria` para o seu projeto.
--  **IMPORTANTE**: certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (**se você não fizer isso, terá que recriar todo o projeto**).
--  Dentro dessa pasta, abra um terminal:
-  
-    *Botao direito do mouse -> Abrir terminal aqui*
+-   Entre na pasta **Documentos**. **Não trabalhe na Área de Trabalho.**
+-   Crie uma pasta chamada `livraria` para o seu projeto.
+-   **IMPORTANTE**: certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (**se você não fizer isso, terá que recriar todo o projeto**).
+-   Dentro dessa pasta, abra um terminal:
+
+    _Botao direito do mouse -> Abrir terminal aqui_
 
 **Criação do ambiente virtual**
 
-- Crie o ambiente virtual usado o **poetry**:
+-   Crie o ambiente virtual usado o **poetry**:
 
 ```bash
 poetry init
 ```
 
-- Você passará por uma tela semelhante a essa:
+-   Você passará por uma tela semelhante a essa:
 
 ```bash
 This command will guide you through creating your pyproject.toml config.
@@ -117,14 +116,14 @@ build-backend = "poetry.core.masonry.api"
 Do you confirm generation? (yes/no) [yes] yes
 ```
 
-- Verifique que o arquivo `pyproject.toml` foi criado.
-- Ative o ambiente virtual recém criado:
+-   Verifique que o arquivo `pyproject.toml` foi criado.
+-   Ative o ambiente virtual recém criado:
 
 ```bash
 poetry shell
 ```
 
-- Para verificar o tamanho da pasta do ambiente virtual:
+-   Para verificar o tamanho da pasta do ambiente virtual:
 
 ```bash
 du -sh .venv
@@ -132,14 +131,14 @@ du -sh .venv
 
 **Instalação do Django**
 
-- Instale o **Django** no ambiente virtual:
+-   Instale o **Django** no ambiente virtual:
 
 ```bash
 poetry add django
 ```
 
-- Verifique que o arquivo `poetry.lock` foi criado.
-- Verifique se o **Django** está instalado:
+-   Verifique que o arquivo `poetry.lock` foi criado.
+-   Verifique se o **Django** está instalado:
 
 ```bash
 django-admin
@@ -149,7 +148,7 @@ Se tudo der certo, ele mostrará as opções do `django-admin` na tela.
 
 **Criação do projeto no Django**
 
-- Crie o projeto no **Django**:
+-   Crie o projeto no **Django**:
 
 ```bash
 django-admin startproject livraria .
@@ -174,8 +173,8 @@ O projeto criado ficará assim:
 
 ## Abrindo o projeto no vscode
 
-- **Abra a **pasta raiz do projeto** no vscode (repita em voz alta: _"Nunca abra um arquivo, sempre abra a pasta."_).**
-- Opcionalmente, abra o code pelo terminal:
+-   **Abra a **pasta raiz do projeto** no vscode (repita em voz alta: _"Nunca abra um arquivo, sempre abra a pasta."_).**
+-   Opcionalmente, abra o code pelo terminal:
 
 ```bash
 code .
@@ -183,38 +182,39 @@ code .
 
 **Configurando o interpretador Python e o ambiente virtual**
 
-- Ao abrir um arquivo `.py`, verifique se o interpretador Python correto está configurado.
-  - Clique na opção do interpretador Python na barra inferior do **vscode**, ao lado da palavra `Python`. O correto seria algo como `.'venv/':poetry`.
-  - Se não estiver assim, clique e configure.
-  - Se essa opção não aparecer, configure a variavel `Venv Path` nos configurações do **vscode**. 
-  - Tecle `Control + ,` e procure por `venv`.
-- Com essas configurações feitas, feche todos os terminais e abra novamente. 
-- **O ambiente virtual deve ser ativado automaticamente cada vez que você abrir um terminal a partir de agora.**
-- Dentro do vscode, abra um terminal (`Control+Shift+'`)
+-   Ao abrir um arquivo `.py`, verifique se o interpretador Python correto está configurado.
+    -   Clique na opção do interpretador Python na barra inferior do **vscode**, ao lado da palavra `Python`. O correto seria algo como `.'venv/':poetry`.
+    -   Se não estiver assim, clique e configure.
+    -   Se essa opção não aparecer, configure a variavel `Venv Path` nos configurações do **vscode**.
+    -   Tecle `Control + ,` e procure por `venv`.
+-   Com essas configurações feitas, feche todos os terminais e abra novamente.
+-   **O ambiente virtual deve ser ativado automaticamente cada vez que você abrir um terminal a partir de agora.**
+-   Dentro do vscode, abra um terminal (`Control+Shift+'`)
 
 **Rodando o servidor de desenvolvimento**
 
-- Para executar o projeto, digite no terminal:
+-   Para executar o projeto, digite no terminal:
 
 ```bash
 python manage.py runserver
 ```
 
-- Verifique se o projeto está rodando:
-  - Página inicial: http://localhost:8000
-  - `Admin`: http://localhost:8000/admin
+-   Verifique se o projeto está rodando:
 
-- Ao rodar o projeto pela primeira vez, o arquivo `db.sqlite3` é criado.
-- Também aparecem mensagens de erro importantes.
-- Abra o arquivo `db.sqlite3` dentro do **vscode**.
-- Verifique que ele ainda não possui nenhuma tabela.
+    -   Página inicial: http://localhost:8000
+    -   `Admin`: http://localhost:8000/admin
 
-- Vamos abrir cada um desses arquivos e verificar para que eles servem, principalmente os seguintes:
+-   Ao rodar o projeto pela primeira vez, o arquivo `db.sqlite3` é criado.
+-   Também aparecem mensagens de erro importantes.
+-   Abra o arquivo `db.sqlite3` dentro do **vscode**.
+-   Verifique que ele ainda não possui nenhuma tabela.
 
-  - `manage.py`: é o arquivo que você usa para executar comandos do **Django**.
-  - `settings.py`: é o arquivo de configuração do projeto.
-  - `urls.py`: é o arquivo de configuração das rotas do projeto.
-  - `db.sqlite3`: é o arquivo de banco de dados do projeto.
+-   Vamos abrir cada um desses arquivos e verificar para que eles servem, principalmente os seguintes:
+
+    -   `manage.py`: é o arquivo que você usa para executar comandos do **Django**.
+    -   `settings.py`: é o arquivo de configuração do projeto.
+    -   `urls.py`: é o arquivo de configuração das rotas do projeto.
+    -   `db.sqlite3`: é o arquivo de banco de dados do projeto.
 
 **Executando o servidor**
 
@@ -224,7 +224,7 @@ Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute
 
 **Criando a base de dados inicial**
 
-- Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
+-   Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
 
 ```bash
 python manage.py migrate
@@ -234,23 +234,23 @@ Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) es
 
 **Criando o superusuário**
 
-- Crie o super usuário para poder fazer o login:
+-   Crie o super usuário para poder fazer o login:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-- Agora sim, seu projeto está rodando e você consegue entrar no `Admin`:
+-   Agora sim, seu projeto está rodando e você consegue entrar no `Admin`:
 
-- Crie mais 2 usuários de teste.
-- Entre no arquivo de banco de dados (`db.sqlite3`), e verifique se os registros foram criados.
-
+-   Crie mais 2 usuários de teste.
+-   Entre no arquivo de banco de dados (`db.sqlite3`), e verifique se os registros foram criados.
 
 # 2. Criando a aplicação
 
 **Removendo o projeto**
 
-- Abra o terminal e remova o projeto:
+-   Abra o terminal e remova o projeto:
+
 ```bash
 rm -rf livraria
 ```
@@ -259,60 +259,81 @@ rm -rf livraria
 
 Siga as seguintes instruções para criar novamente o projeto.
 
-- Abra o terminal e crie uma pasta para o projeto:
+-   Abra o terminal e crie uma pasta para o projeto:
+
 ```bash
 mkdir livraria
 ```
-- Entre na pasta:
+
+-   Entre na pasta:
+
 ```bash
 cd livraria
 ```
-- Crie o ambiente virtual:
+
+-   Crie o ambiente virtual:
+
 ```bash
 poetry init
 ```
-- Ative o ambiente virtual:
+
+-   Ative o ambiente virtual:
+
 ```bash
 poetry shell
 ```
-- Instale o Django:
+
+-   Instale o Django:
+
 ```bash
 poetry add django
 ```
-- Crie o projeto:
+
+-   Crie o projeto:
+
 ```bash
 django-admin startproject livraria .
 ```
-- Migre o banco de dados:
+
+-   Migre o banco de dados:
+
 ```bash
 python manage.py migrate
 ```
-- Crie o super usuário:
+
+-   Crie o super usuário:
+
 ```bash
 python manage.py createsuperuser
 ```
-- Abra o projeto no vscode:
+
+-   Abra o projeto no vscode:
+
 ```bash
 code .
 ```
-- Abra um terminal no vscode:
+
+-   Abra um terminal no vscode:
+
 ```bash
 Control+Shift+'
 ```
-- Execute o servidor:
+
+-   Execute o servidor:
+
 ```bash
 python manage.py runserver
 ```
 
 **Criando uma aplicação**
 
-- Para criar uma aplicação, execute o seguinte comando:
+-   Para criar uma aplicação, execute o seguinte comando:
 
 ```bash
 python manage.py startapp core
 ```
 
-- Acrescente a aplicação `core` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
+-   Acrescente a aplicação `core` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 
 ```python
 INSTALLED_APPS = [
@@ -347,20 +368,22 @@ Após criar a aplicação, sua pasta deve parecer com isso:
 ```
 
 Dentro da pasta `core` foram criados alguns arquivos, mas os mais importantes são:
-  - `admin.py`: é o arquivo de configuração do `Admin` da aplicação.
-  - `models.py`: é o arquivo de configuração dos modelos da aplicação.
-  - `views.py`: é o arquivo de configuração das views da aplicação.
-  - `migrations`: é a pasta de migrações da aplicação.
+
+-   `admin.py`: é o arquivo de configuração do `Admin` da aplicação.
+-   `models.py`: é o arquivo de configuração dos modelos da aplicação.
+-   `views.py`: é o arquivo de configuração das views da aplicação.
+-   `migrations`: é a pasta de migrações da aplicação.
 
 Posteriormente, iremos modificar esses arquivos, bem como incluir alguns arquivos novos.
 
 **Resumo**
 
 Nesse ponto, temos:
-- O poetry instalado e configurado;
-- O ambiente virtual **Python** criado;
-- O projeto `livraria` criado;
-- A aplicação `core` criada e instalada no projeto.
+
+-   O poetry instalado e configurado;
+-   O ambiente virtual **Python** criado;
+-   O projeto `livraria` criado;
+-   A aplicação `core` criada e instalada no projeto.
 
 **Criação do primeiro modelo de dados**
 
@@ -368,9 +391,9 @@ Um modelo (`model`) no **Django** é uma classe que representa uma tabela no ban
 
 Para maiores informações consulte a [documentação](https://docs.djangoproject.com/en/4.0/topics/db/models/) do **Django** sobre `models`.
 
-- Vamos criar o modelo de dados `Categoria`:
+-   Vamos criar o modelo de dados `Categoria`:
 
-```python   
+```python
 from django.db import models
 
 class Categoria(models.Model):
@@ -379,35 +402,36 @@ class Categoria(models.Model):
 
 Nesse código, você:
 
-- Importou o pacote necessário para criar a `model`;
-- Criou a classe `Categoria`;
-- Incluiu o campo `descricao`.
+-   Importou o pacote necessário para criar a `model`;
+-   Criou a classe `Categoria`;
+-   Incluiu o campo `descricao`.
 
 **Efetivando a criação da tabela**
 
-Precisamos agora efetivar a criação da tabela no banco de dados. 
+Precisamos agora efetivar a criação da tabela no banco de dados.
 
-- Abra um novo terminal, deixando o terminal antigo executando o servidor do projeto.
+-   Abra um novo terminal, deixando o terminal antigo executando o servidor do projeto.
 
-- Crie as migrações:
+-   Crie as migrações:
 
 ```bash
 python manage.py makemigrations
 ```
 
-- Execute as migrações:
+-   Execute as migrações:
+
 ```bash
 python manage.py migrate
 ```
 
-- Acesse o arquivo do banco de dados e verifique se a tabela `core_categoria` foi criada.
-- Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
+-   Acesse o arquivo do banco de dados e verifique se a tabela `core_categoria` foi criada.
+-   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
 
 **Inclusão no Admin**
 
 A tabela ainda não apareceu, certo? Isso acontece poque ainda não incluímos a `model` no `Admin`.
 
-- Vamos incluir a `model` no `Admin`:
+-   Vamos incluir a `model` no `Admin`:
 
 ```python
 from django.contrib import admin
@@ -440,9 +464,9 @@ O campo `__str__` é criado automaticamente pelo **Django**. Ele é o campo que 
 
 **Mudando a descrição dos registros criados**
 
-- Inclua algumas categorias no banco de dados.
-- Você perceberá que a descrição dos informações que você inclui está meio estranha. 
-- Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
+-   Inclua algumas categorias no banco de dados.
+-   Você perceberá que a descrição dos informações que você inclui está meio estranha.
+-   Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
 
 ```python
 ...
@@ -450,13 +474,11 @@ O campo `__str__` é criado automaticamente pelo **Django**. Ele é o campo que 
         return self.descricao
 ```
 
-
-
 Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentação da model `Categoria`.
 
 **Criação do modelo de dados Editora**
 
-- Vamos criar o modelo de dados `Editora`, no arquivo `models.py`:
+-   Vamos criar o modelo de dados `Editora`, no arquivo `models.py`:
 
 ```python
 ...
@@ -473,9 +495,9 @@ O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True`
 
 Não esqueça de que a cada criação de novas models é necessário:
 
-- Registrar a model no arquivo `admin.py`;
-- Fazer as migrações (`makemigrations`);
-- Efetivar as migrações (`migrate`);
+-   Registrar a model no arquivo `admin.py`;
+-   Fazer as migrações (`makemigrations`);
+-   Efetivar as migrações (`migrate`);
 
 Seu arquivo `admin.py` ficará assim:
 
@@ -492,9 +514,9 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 # 3. Criando um segundo projeto
 
-Seguindo aquilo que você já aprendeu, crie um **novo projeto** chamado **garagem**. 
+Seguindo aquilo que você já aprendeu, crie um **novo projeto** chamado **garagem**.
 
-- Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
+-   Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
 
 ```python
 from django.db import models
@@ -520,44 +542,46 @@ class Categoria(models.Model):
 
 Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
-- **Antes de clicar ou responder, leia atentamente as instruções.**
-- **Leia atentamente as instruções antes de clicar ou responder.**
-- **Nunca clique ou responda sem antes ler atentamente as instruções.**
+-   **Antes de clicar ou responder, leia atentamente as instruções.**
+-   **Leia atentamente as instruções antes de clicar ou responder.**
+-   **Nunca clique ou responda sem antes ler atentamente as instruções.**
 
 As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
 **Configure o projeto git**
 
-- Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
-- Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
-- Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
+-   Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
+-   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
+-   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
-- Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
+-   Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
 
     rm -Rf ~/.git
 
-- Recarregue a janela do **vscode**:
+-   Recarregue a janela do **vscode**:
+
 ```bash
 Control + Shift + P + "Recarregar a Janela"
 ```
-- Verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
+
+-   Verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
 
 **Configure as variáveis do git**
 
-- Informe seu nome e email no git. Para isso, abra o terminal do vscode e digite:
+-   Informe seu nome e email no git. Para isso, abra o terminal do vscode e digite:
 
 ```bash
 git config user.name "Seu Nome"
 git config user.email "seuemailnogithub@gmail.com"
 ```
 
-- Para verificar se as variáveis foram configuradas corretamente, digite:
+-   Para verificar se as variáveis foram configuradas corretamente, digite:
 
 ```bash
 git config -l
 ```
 
-- Se aparecer outro nome de usuário ou outras informações estranhas, remova o arquivo com as configurações globais do git:
+-   Se aparecer outro nome de usuário ou outras informações estranhas, remova o arquivo com as configurações globais do git:
 
 ```bash
 rm ~/.gitconfig
@@ -569,56 +593,64 @@ Repita o processo de configuração de nome e email.
 
 Vamos criar um arquivo chamado `.gitignore` na raiz do projeto. Esse arquivo serve para indicar quais arquivos não devem ser versionados (monitorados pelo **git**).
 
-- Vá no site [gitignore.io](https://gitignore.io/)
-- Escolha a opção `Django`.
-- Clique em `Criar`.
-- Selecione todo o texto (`Control + A`) e copie (`Control + C`).
-- Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`:
+-   Vá no site [gitignore.io](https://gitignore.io/)
+-   Escolha a opção `Django`.
+-   Clique em `Criar`.
+-   Selecione todo o texto (`Control + A`) e copie (`Control + C`).
+-   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`:
+
 ```bash
 touch .gitignore
 ```
-- Cole o conteúdo copiado (`Control + V`).
-- Encontre as linhas que se referem a "`db.sqlite3`" e comente-as (`Control + /`).
+
+-   Cole o conteúdo copiado (`Control + V`).
+-   Encontre as linhas que se referem a "`db.sqlite3`" e comente-as (`Control + /`).
 
 **Faça a publicação**
 
-- Escreva uma descrição para o commit (`"commit Inicial"`).
-- Tecle `Control+ENTER` para fazer o envio para o servidor do **github**.
-- Leia atentamente as instruções relacionadas a autenticação no **github** e criação do projeto.
-- Ao final, seu projeto será incluído no **github** e você poderá visulizá-lo lá.
+-   Escreva uma descrição para o commit (`"commit Inicial"`).
+-   Tecle `Control+ENTER` para fazer o envio para o servidor do **github**.
+-   Leia atentamente as instruções relacionadas a autenticação no **github** e criação do projeto.
+-   Ao final, seu projeto será incluído no **github** e você poderá visulizá-lo lá.
 
 **Fazendo alterações no projeto e enviando novamente**
 
 Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **github**.
 
-- Abra o arquivo `models.py`:
+-   Abra o arquivo `models.py`:
+
 ```bash
 Control + P + models.py
 ```
-- Selecione todo o texto (`Control + A`) e mande formatar o código:
+
+-   Selecione todo o texto (`Control + A`) e mande formatar o código:
+
 ```bash
 Control + Shift + I
 ```
+
 ou
+
 ```bash
 Control + Shift + P + "Formatar o Documento"
 ```
-- Deve aparecer uma mensagem pedindo para instalar um **formatador de código** (`black`). Concorde com a instalação.
-- Após a instalação, execute o comando para formatar novamente. O arquivo deve ser formatado.
-- Faça a mesma coisa com o arquivo `admin.py`.
-- Altere outros arquivos. Por exemplo: apague os comentários iniciais dos arquivos `settings.py` e `urls.py`.
-- Nesse ponto, você já deve ter vários arquivos modificados.
-- Vá para a aba do **github** no **vscode** e coloque o nome do **commit** como sendo `Instalação do black`.
-- Confirme o **commit** teclando `Control+ENTER`.
-- Faça o envio (`push`), clicando no ícone de envio.
-- Vá no seu projeto no **github**, atualize a página e verifique as modificações.
+
+-   Deve aparecer uma mensagem pedindo para instalar um **formatador de código** (`black`). Concorde com a instalação.
+-   Após a instalação, execute o comando para formatar novamente. O arquivo deve ser formatado.
+-   Faça a mesma coisa com o arquivo `admin.py`.
+-   Altere outros arquivos. Por exemplo: apague os comentários iniciais dos arquivos `settings.py` e `urls.py`.
+-   Nesse ponto, você já deve ter vários arquivos modificados.
+-   Vá para a aba do **github** no **vscode** e coloque o nome do **commit** como sendo `Instalação do black`.
+-   Confirme o **commit** teclando `Control+ENTER`.
+-   Faça o envio (`push`), clicando no ícone de envio.
+-   Vá no seu projeto no **github**, atualize a página e verifique as modificações.
 
 **Escrevendo uma boa mensagem de commit**
 
-- Escreva uma mensagem de commit que descreva o que foi feito.
-- Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
-- Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
-- Escreva mensagens como `Adiciona o arquivo settings.py`, `Adiciona o arquivo urls.py`, `Adiciona o arquivo admin.py`, etc.
+-   Escreva uma mensagem de commit que descreva o que foi feito.
+-   Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
+-   Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
+-   Escreva mensagens como `Adiciona o arquivo settings.py`, `Adiciona o arquivo urls.py`, `Adiciona o arquivo admin.py`, etc.
 
 **Baixando novamente o projeto**
 
@@ -626,40 +658,56 @@ Agora que seu projeto está no **github**, você pode baixá-lo onde quiser, sej
 
 **A partir desse ponto, vamos repetir uma série de passos que já fizemos nas aulas anteriores. Em caso de dúvidas, volte nessas aulas para mais detalhes.**
 
-- Abra o terminal na pasta superior à pasta do projeto:
+-   Abra o terminal na pasta superior à pasta do projeto:
+
 ```bash
 Control + Alt + T
 ```
-- Apague todo o projeto do seu computador (_isso mesmo, coragem_):
+
+-   Apague todo o projeto do seu computador (_isso mesmo, coragem_):
+
 ```bash
 rm -rf livraria
 ```
-- Crie novamente uma pasta vazia para hospedá-lo:
+
+-   Crie novamente uma pasta vazia para hospedá-lo:
+
 ```bash
 mkdir livraria
 ```
-- Vá no projeto no **github**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
-- Clone o projeto para a pasta atual:
+
+-   Vá no projeto no **github**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
+-   Clone o projeto para a pasta atual:
+
 ```bash
 git clone https://github.com/marrcandre/livraria.git
 ```
-- Vá para a pasta do projeto:
+
+-   Vá para a pasta do projeto:
+
 ```bash
 cd livraria
 ```
-- Abra o projeto no **vscode**:
+
+-   Abra o projeto no **vscode**:
+
 ```bash
 code .
 ```
-- Instale as dependências do projeto e ative o ambiente virtual:
+
+-   Instale as dependências do projeto e ative o ambiente virtual:
+
 ```bash
 poetry install && poetry shell
 ```
-- Rode o servidor:
+
+-   Rode o servidor:
+
 ```bash
 python manage.py runserver
 ```
-- Acesse o projeto no navegador: 
+
+-   Acesse o projeto no navegador:
 
     http://localhost:8000/
 
@@ -673,7 +721,7 @@ Agora que você conseguiu colocar o projeto `garagem` no **github**, coloque tam
 
 **Criando o modelo de dados Autor**
 
-- Vamos criar o modelo de dados `Autor`, no arquivo `models.py`:
+-   Vamos criar o modelo de dados `Autor`, no arquivo `models.py`:
 
 ```python
 ...
@@ -691,7 +739,7 @@ class Autor(models.Model):
 
 **Criando o modelo de dados Livro**
 
-- Vamos criar o modelo de dados `Livro`, no arquivo `models.py`:
+-   Vamos criar o modelo de dados `Livro`, no arquivo `models.py`:
 
 ```python
 
@@ -713,7 +761,7 @@ Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos q
 
 **Campo `categoria` no `Livro`**
 
-- Inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
+-   Inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
 
 ```python
 ...
@@ -723,22 +771,24 @@ Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos q
 ...
 ```
 
-- Vamos entender cada parte:
-  - `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
-  - `Categoria`: o model que será associado a esse campo.
-  - `on_delete=models.PROTECT`: impede de apagar uma *categoria* que possua *livros* associados.
-  - `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
+-   Vamos entender cada parte:
+    -   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
+    -   `Categoria`: o model que será associado a esse campo.
+    -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
+    -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
 
 **Testando o atributo related_name**
 
 No `Django Shell`, é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
 
-- Abrar o Django shell:
+-   Abrar o Django shell:
+
 ```bash
 python manage.py shell
 ```
 
-- Acesse os livros da categoria com `id` 1:
+-   Acesse os livros da categoria com `id` 1:
+
 ```python
 >>> from livraria.core.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
@@ -747,13 +797,14 @@ python manage.py shell
 Mais na frente, aprenderemos a utilizar outros recursos do `Django Shell`.
 
 **Campo `editora` no `Livro`**
-- De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
+
+-   De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
 
 ```python
 editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros")
 ```
 
-- Inclua os modelos criados no arquivo `admin.py`:
+-   Inclua os modelos criados no arquivo `admin.py`:
 
 ```python
 from django.contrib import admin
@@ -766,33 +817,36 @@ admin.site.register(Editora)
 admin.site.register(Livro)
 ```
 
-- Prepare as migrações:
+-   Prepare as migrações:
+
 ```bash
 python manage.py makemigrations
 ```
-- Efetive as migrações:
+
+-   Efetive as migrações:
+
 ```bash
 python manage.py migrate
 ```
 
 Feito isso, verifique se tudo funcionou.
-- Cadastre algumas categorias, editoras, autores e livros.
-- Note como os livros acessam as categorias e editoras já cadastradas.
-- Tente apagar uma editora ou categoria **com** livros associados.
-- Tente apagar uma editora ou categoria **sem** livros associados.
 
+-   Cadastre algumas categorias, editoras, autores e livros.
+-   Note como os livros acessam as categorias e editoras já cadastradas.
+-   Tente apagar uma editora ou categoria **com** livros associados.
+-   Tente apagar uma editora ou categoria **sem** livros associados.
 
 # 6. Criando uma API REST
 
 **Instalação do DRF**
 
-- Instale o `djangorestframework`:
+-   Instale o `djangorestframework`:
 
 ```bash
 poetry add djangorestframework
 ```
 
-- Adicione o `rest_framework` no arquivo `settings.py`:
+-   Adicione o `rest_framework` no arquivo `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -804,16 +858,15 @@ INSTALLED_APPS = [
 
 **Criação do serializer**
 
-Um *serializer* é um objeto que transforma um objeto do banco de dados em um objeto JSON.
+Um _serializer_ é um objeto que transforma um objeto do banco de dados em um objeto JSON.
 
-- Crie o arquivo `serializers.py` no diretório `core`:
+-   Crie o arquivo `serializers.py` no diretório `core`:
 
 ```bash
 touch core/serializers.py
 ```
 
-- Adicione o seguinte código no arquivo `serializers.py`:
-
+-   Adicione o seguinte código no arquivo `serializers.py`:
 
 ```python
 from rest_framework.serializers import ModelSerializer
@@ -828,9 +881,9 @@ class CategoriaSerializer(ModelSerializer):
 
 **Criação da view**
 
-Uma *view* é um objeto que recebe uma requisição HTTP e retorna uma resposta HTTP.
+Uma _view_ é um objeto que recebe uma requisição HTTP e retorna uma resposta HTTP.
 
-- Crie a view `CategoriaViewSet` no arquivo `views.py`:
+-   Crie a view `CategoriaViewSet` no arquivo `views.py`:
 
 ```python
 from rest_framework.viewsets import ModelViewSet
@@ -847,8 +900,7 @@ class CategoriaViewSet(ModelViewSet):
 
 As rotas são responsáveis por mapear as URLs para as views.
 
-
-- Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `livraria`. Substitua o seu conteúdo por esse:
+-   Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `livraria`. Substitua o seu conteúdo por esse:
 
 ```python
 from django.contrib import admin
@@ -869,18 +921,18 @@ urlpatterns = [
 
 **Testando a API**
 
-- Para acessar a interface gerada pelo DRF, acesse:
+-   Para acessar a interface gerada pelo DRF, acesse:
 
     http://localhost:8000
 
 Se tudo correu bem, você deve ver a interface do DRF.
 
-- Você pode acessar diretamente a rota da `Categoria`:
+-   Você pode acessar diretamente a rota da `Categoria`:
     http://localhost:8000/categorias/
 
 Isso deve trazer todas as categorias do banco, no formato **JSON**.
 
-- Para acessar um único registro, use o seguinte formato:
+-   Para acessar um único registro, use o seguinte formato:
     http://localhost:8000/categorias/1/
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
@@ -889,33 +941,33 @@ Nesse caso, `1` é o `id` do registro no banco de dados.
 
 As opções disponíveis para manipulação dos dados são:
 
-- **GET** para **listar** **todos** os registros: http://localhost:8000/categorias/
-- **GET** para **listar** **apenas 1** registro: http://localhost:8000/categorias/1/
-- **POST** (para **criar** um **novo** registro): http://localhost:8000/categorias/
-- **PUT** (para **alterar** um registro existente): http://localhost:8000/categorias/1/
-- **PATCH** (para **alterar parcialmente** um registro): http://localhost:8000/categorias/1/
-- **DELETE** (para **remover** um registro): http://localhost:8000/categorias/1/
+-   **GET** para **listar** **todos** os registros: http://localhost:8000/categorias/
+-   **GET** para **listar** **apenas 1** registro: http://localhost:8000/categorias/1/
+-   **POST** (para **criar** um **novo** registro): http://localhost:8000/categorias/
+-   **PUT** (para **alterar** um registro existente): http://localhost:8000/categorias/1/
+-   **PATCH** (para **alterar parcialmente** um registro): http://localhost:8000/categorias/1/
+-   **DELETE** (para **remover** um registro): http://localhost:8000/categorias/1/
 
 **Outras ferramentas para testar a API**
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
-- [Insomnia](https://docs.insomnia.rest/insomnia/install)
-- [Postman](https://www.postman.com/downloads/)
-- [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **vscode**)
+-   [Insomnia](https://docs.insomnia.rest/insomnia/install)
+-   [Postman](https://www.postman.com/downloads/)
+-   [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **vscode**)
 
 **Testando a API e as ferramentas**
 
 Instale uma ou mais das ferramentas sugeridas.
 
-- Experimente as seguintes tarefas:
-  - Criar uma ou mais categorias;
-  - Listar todas as categorias;
-  - Alterar uma ou mais categorias, utilizando PUT e PATCH;
-  - Listar a categoria alterada;
-  - Remover uma categoria;
-  - Incluir outra categoria;
-  - Listar todas as categorias.
+-   Experimente as seguintes tarefas:
+    -   Criar uma ou mais categorias;
+    -   Listar todas as categorias;
+    -   Alterar uma ou mais categorias, utilizando PUT e PATCH;
+    -   Listar a categoria alterada;
+    -   Remover uma categoria;
+    -   Incluir outra categoria;
+    -   Listar todas as categorias.
 
 # 7. Continuando a criação da API REST
 
@@ -923,12 +975,13 @@ Instale uma ou mais das ferramentas sugeridas.
 
 Crie a API para a classe `Editora` seguindo os passos anteriores.
 
-- Os passos são:
-  - Criar o serializador em `serializers.py`
-  - Criar a viewset em `views.py`.
-  - Incluir a nova rota em `urls.py`
+-   Os passos são:
 
-- Os arquivos ficarão assim:
+    -   Criar o serializador em `serializers.py`
+    -   Criar a viewset em `views.py`.
+    -   Incluir a nova rota em `urls.py`
+
+-   Os arquivos ficarão assim:
 
 **`serializers.py`**
 
@@ -980,16 +1033,16 @@ router.register(r"editoras", EditoraViewSet)
 
 **Teste da API da Editora**
 
-- Teste todas as operações da `Editora`.
-- Verifique se é possível incluir novas editoras sem incluir todos os campos.
-- Tente utilizar o PUT e o PATCH sem informar todos os campos.
-- Tente remover uma editora com livros associados a ela.
+-   Teste todas as operações da `Editora`.
+-   Verifique se é possível incluir novas editoras sem incluir todos os campos.
+-   Tente utilizar o PUT e o PATCH sem informar todos os campos.
+-   Tente remover uma editora com livros associados a ela.
 
 **Criação da API para Autor e Livro**
 
-- Repita os passos para a criação da API para `Autor` e `Livro`.
-- Teste o funcionamento.
-- Observe que no Livro, aparecem apenas os campos `id` da categoria e da editora.
+-   Repita os passos para a criação da API para `Autor` e `Livro`.
+-   Teste o funcionamento.
+-   Observe que no Livro, aparecem apenas os campos `id` da categoria e da editora.
 
 **Apresentação das informações de categoria e editora no livro**
 
@@ -1056,13 +1109,13 @@ Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer,
 
 Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de _frontend_ feita em _vuejs_.
 
-- Instale o pacote `django-cors-headers`:
+-   Instale o pacote `django-cors-headers`:
 
 ```bash
 poetry add django-cors-headers
 ```
 
-- Adicione o pacote `corsheaders` em `INSTALLED_APPS` em `settings.py`:
+-   Adicione o pacote `corsheaders` em `INSTALLED_APPS` em `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -1076,7 +1129,7 @@ INSTALLED_APPS = [
 
 Não esqueça da vírgula no final de cada linha e procure manter nessa mesma ordem.
 
-- Adicione o Middleware `corsheaders.middleware.CorsMiddleware` em `MIDDLEWARE` em `settings.py`:
+-   Adicione o Middleware `corsheaders.middleware.CorsMiddleware` em `MIDDLEWARE` em `settings.py`:
 
 ```python
 MIDDLEWARE = [
@@ -1099,11 +1152,11 @@ Feito isso, reinicie o servidor e tudo deve funcionar.
 
 # 9. API REST do projeto Garagem
 
-- Volte ao projeto `Garagem`
-- Crie as classes, baseadas no arquivo `models.py` abaixo.
-- Depois, crie a API REST com o Django Rest Framework para todas as entidades.
-- Não esqueça de adicionar o DRF ao seu projeto.
-- Depois, teste tudo!
+-   Volte ao projeto `Garagem`
+-   Crie as classes, baseadas no arquivo `models.py` abaixo.
+-   Depois, crie a API REST com o Django Rest Framework para todas as entidades.
+-   Não esqueça de adicionar o DRF ao seu projeto.
+-   Depois, teste tudo!
 
 ```python
 class Categoria(models.Model):
@@ -1140,7 +1193,7 @@ class Carro(models.Model):
 
 O gunicorn é um servidor web que permite que sua aplicação seja executada em produção.
 
-- Instale o gunicorn:
+-   Instale o gunicorn:
 
 ```bash
 poetry add gunicorn
@@ -1150,13 +1203,13 @@ poetry add gunicorn
 
 O arquivo `Procfile` é um arquivo de configuração do Heroku que permite que você especifique os comandos que serão executados quando sua aplicação for iniciada.
 
-- Crie o arquivo `Procfile`:
+-   Crie o arquivo `Procfile`:
 
 ```bash
 touch Procfile
 ```
 
--  Adicione ao arquivo `Procfile` o seguinte conteúdo:
+-   Adicione ao arquivo `Procfile` o seguinte conteúdo:
 
 ```bash
 web: gunicorn livraria.wsgi
@@ -1168,7 +1221,7 @@ web: gunicorn livraria.wsgi
 
 Whitenoise é um middleware que permite que sua aplicação seja servida de forma estática.
 
-- Instale o whitenoise:
+-   Instale o whitenoise:
 
 ```bash
 poetry add whitenoise
@@ -1176,7 +1229,7 @@ poetry add whitenoise
 
 **Adicionando o whitenoise ao projeto**
 
-- Adicione o middleware `whitenoise.middleware.WhiteNoiseMiddleware` em `MIDDLEWARE` em `settings.py`:
+-   Adicione o middleware `whitenoise.middleware.WhiteNoiseMiddleware` em `MIDDLEWARE` em `settings.py`:
 
 ```python
 MIDDLEWARE = [
@@ -1188,25 +1241,25 @@ MIDDLEWARE = [
 
 **Modificando o arquivo settings.py**
 
-- Modifique a linha do `ALLOWED_HOSTS` em `settings.py`:
+-   Modifique a linha do `ALLOWED_HOSTS` em `settings.py`:
 
 ```python
 ALLOWED_HOSTS = ["*"]
 ```
 
-- Importe o módulo os no início do arquivo `settings.py`:
+-   Importe o módulo os no início do arquivo `settings.py`:
 
 ```python
 import os
 ```
 
-- E adicione a seguinte linha ao final do arquivo:
+-   E adicione a seguinte linha ao final do arquivo:
 
 ```python
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 ```
 
-- Colete os arquivos estáticos:
+-   Colete os arquivos estáticos:
 
 ```bash
 python manage.py collectstatic --noinput
@@ -1216,24 +1269,24 @@ python manage.py collectstatic --noinput
 
 O arquivo `requirements.txt` é um arquivo de configuração do Heroku que permite que você especifique os pacotes que serão instalados quando sua aplicação for iniciada.
 
-- Execute o comando abaixo para criar o arquivo `requirements.txt`:
+-   Execute o comando abaixo para criar o arquivo `requirements.txt`:
 
 ```bash
 poetry export --without-hashes > requirements.txt
 ```
 
-Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pacotes que foram instalados no projeto e que estão listados no arquivo `pyproject.toml`.  
+Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pacotes que foram instalados no projeto e que estão listados no arquivo `pyproject.toml`.
 
 **Criação do projeto no Heroku**
 
-- Garanta que a última versão do seu projeto esteja no **github**.
-- Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
-- Escolha a opção **Conectar no GitHub**
-- Selecione o repositório desejado.
-- Clique na opção **Enable Automatic Deploy**
-- Clique na opção **Deploy Branch**.
-- Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
-- O link para aplicação é algo como https://livraria.herokuapp.com/
+-   Garanta que a última versão do seu projeto esteja no **github**.
+-   Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
+-   Escolha a opção **Conectar no GitHub**
+-   Selecione o repositório desejado.
+-   Clique na opção **Enable Automatic Deploy**
+-   Clique na opção **Deploy Branch**.
+-   Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
+-   O link para aplicação é algo como https://livraria.herokuapp.com/
 
 # 11. Relacionamento n para n
 
@@ -1241,7 +1294,7 @@ Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pac
 
 Um livro pode ter vários autores, por isso criaremos agora um relacionamento n para n entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
 
-- Inclua o campo `autores` no modelo `Livro`:
+-   Inclua o campo `autores` no modelo `Livro`:
 
 ```python
 ...
@@ -1249,13 +1302,13 @@ autores = models.ManyToManyField(Autor, related_name="livros")
 ...
 ```
 
-- Crie as migrações:
+-   Crie as migrações:
 
 ```bash
 python manage.py makemigrations
 ```
 
-- Execute as migrações:
+-   Execute as migrações:
 
 ```bash
 python manage.py migrate
@@ -1263,10 +1316,11 @@ python manage.py migrate
 
 Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso, uma **tabela associativa** foi criada, com o nome `core_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
 
-**Tarefa**: 
-- Entre no **Admin**;
-- Cadastre alguns autores;
-- Cadastre alguns livros com mais do que um autor.
+**Tarefa**:
+
+-   Entre no **Admin**;
+-   Cadastre alguns autores;
+-   Cadastre alguns livros com mais do que um autor.
 
 # 12. Permissões de acesso
 
@@ -1275,13 +1329,13 @@ já oferece, em termos de usuários e grupos.
 
 Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
-- Criar **grupos** para perfis de usuários específicos
-- Definir as **permissões** que esse grupo de usuários terá
-- Criar um **usuário** para cada pessoa
-- **incluir** os usuários nos grupos, dando assim as permissões
-- No caso de mudanças nas permissões, elas são sempre feitas nos **grupos**, refletindo nos usuários
-- Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em **vários** grupos
-- Quando um usuário sai de um cargo ou deve perder seus privilégios, ele é **removido** do grupo específico
+-   Criar **grupos** para perfis de usuários específicos
+-   Definir as **permissões** que esse grupo de usuários terá
+-   Criar um **usuário** para cada pessoa
+-   **incluir** os usuários nos grupos, dando assim as permissões
+-   No caso de mudanças nas permissões, elas são sempre feitas nos **grupos**, refletindo nos usuários
+-   Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em **vários** grupos
+-   Quando um usuário sai de um cargo ou deve perder seus privilégios, ele é **removido** do grupo específico
 
 **Resumindo:** toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.
 
@@ -1291,16 +1345,16 @@ Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções d
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
-- Crie um grupo chamado `compradores`, com as seguintes permissões:
-  - Visualizar: `autor`, `categoria` e `editora`.
-  - Adicionar, editar e visualizar: `livro`.
-- Crie um grupo chamado `administradores`, com as seguintes as permissões:
-  - Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
+-   Crie um grupo chamado `compradores`, com as seguintes permissões:
+    -   Visualizar: `autor`, `categoria` e `editora`.
+    -   Adicionar, editar e visualizar: `livro`.
+-   Crie um grupo chamado `administradores`, com as seguintes as permissões:
+    -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
 
 **Criando usuários e adicionando aos grupos**
 
-- Crie um usuário `admin1` e o inclua no grupo `administradores`.
-- Crie um usuário `comprador1` e o inclua no grupo `compradores`.
+-   Crie um usuário `admin1` e o inclua no grupo `administradores`.
+-   Crie um usuário `comprador1` e o inclua no grupo `compradores`.
 
 # 13. Usando as permissões do DRF
 
@@ -1320,13 +1374,13 @@ As permissões podem ser definidas a nível de objeto (nas _views_ ou _viewsets_
 
 Como ilustração, modifique o arquivo `views.py`, da seguinte forma.
 
-- Importe a seguinte função:
+-   Importe a seguinte função:
 
 ```python
 from rest_framework.permissions import IsAuthenticated
 ```
 
-- Inclua também a seguinte linha na `CategoriaViewSet`:
+-   Inclua também a seguinte linha na `CategoriaViewSet`:
 
 ```python
 permission_classes = [IsAuthenticated]
@@ -1334,12 +1388,12 @@ permission_classes = [IsAuthenticated]
 
 Para testar:
 
-- Encerre a sessão do **Admin**
-- Tente acessar as **categorias** pelo DRF.
-- Você deve receber um erro.
-- Agora entre novamente pelo **Admin**.
-- Tente acessar as **categorias** pelo DRF.
-- Você deve conseguir.
+-   Encerre a sessão do **Admin**
+-   Tente acessar as **categorias** pelo DRF.
+-   Você deve receber um erro.
+-   Agora entre novamente pelo **Admin**.
+-   Tente acessar as **categorias** pelo DRF.
+-   Você deve conseguir.
 
 **Exemplo de uso de permisssão no `settings.py`**
 
@@ -1365,9 +1419,9 @@ Esta classe de permissão está ligada às permissões do modelo `django.contrib
 
 A autorização só será concedida se o usuário estiver autenticado e tiver as permissões de modelo relevantes atribuídas, da seguinte forma:
 
-- As solicitações `POST` exigem que o usuário tenha a permissão de adição (`add`) no modelo.
-- As solicitações `PUT` e `PATCH` exigem que o usuário tenha a permissão de alteração (`change`) no modelo.
-- As solicitações `DELETE` exigem que o usuário tenha a permissão de exclusão (`remove`) no modelo.
+-   As solicitações `POST` exigem que o usuário tenha a permissão de adição (`add`) no modelo.
+-   As solicitações `PUT` e `PATCH` exigem que o usuário tenha a permissão de alteração (`change`) no modelo.
+-   As solicitações `DELETE` exigem que o usuário tenha a permissão de exclusão (`remove`) no modelo.
 
 Para isso, teremos que alterar a classe de autenticação:
 
@@ -1391,10 +1445,10 @@ Para utilizar essa estrutura de permissões corretamente, precisaremos de um sis
 
 Relembrando o que estudamos até aqui em termos de autenticação e autorização:
 
-- Como criar grupos e usuários e inserir os usuários nesses grupos
-- Como dar permissões nas models (via **Admin**) para visualização (`view`), adição (`add`), alteração (`change`) e exclusão (`remove`).
-- Como utilizar diversas formas de gerenciamento de permissões no Django, incluindo as permissões em cada `view` ou as permissões padrão no `settings.py`.
-- Como utilizar o `DjangoModelPermissions` para fazer uso do gerenciamento de permissões já incluído no **Django Admin**.
+-   Como criar grupos e usuários e inserir os usuários nesses grupos
+-   Como dar permissões nas models (via **Admin**) para visualização (`view`), adição (`add`), alteração (`change`) e exclusão (`remove`).
+-   Como utilizar diversas formas de gerenciamento de permissões no Django, incluindo as permissões em cada `view` ou as permissões padrão no `settings.py`.
+-   Como utilizar o `DjangoModelPermissions` para fazer uso do gerenciamento de permissões já incluído no **Django Admin**.
 
 Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Framework**.
 
@@ -1406,7 +1460,7 @@ O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
 **Instalação**
 
-- Para instalar o SimpleJWT, execute o seguinte comando:
+-   Para instalar o SimpleJWT, execute o seguinte comando:
 
 ```bash
 poetry add djangorestframework-simplejwt
@@ -1414,7 +1468,7 @@ poetry add djangorestframework-simplejwt
 
 **Configuração**
 
-- Adicione o `SimpleJWT` no arquivo `settings.py`:
+-   Adicione o `SimpleJWT` no arquivo `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -1424,7 +1478,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-- Adicione o `SimpleJWT` no arquivo `urls.py`:
+-   Adicione o `SimpleJWT` no arquivo `urls.py`:
 
 ```python
 from rest_framework_simplejwt.views import (
@@ -1440,7 +1494,7 @@ urlpatterns = [
 ]
 ```
 
-- Adicione o `SimpleJWT` no arquivo `settings.py`:
+-   Adicione o `SimpleJWT` no arquivo `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
@@ -1464,11 +1518,11 @@ Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcion
 
 **Dica:** se sua ferramenta permitir, crie várias requisições separadas para cada tipo de requisição, como autenticação, consulta, inclusão, etc.
 
-- Ao tentar acessar, por exemplo, o seguinte _endpoint_:
+-   Ao tentar acessar, por exemplo, o seguinte _endpoint_:
 
     http://localhost:8000/categorias/
 
-- Você deverá receber uma resposta parecida com essa:
+-   Você deverá receber uma resposta parecida com essa:
 
 ```json
 {
@@ -1476,7 +1530,7 @@ Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcion
 }
 ```
 
-- Para fazer a autenticação, precisamos enviar as informações de usuário e senha. Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações:
+-   Para fazer a autenticação, precisamos enviar as informações de usuário e senha. Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações:
 
 ```json
 {
@@ -1485,10 +1539,9 @@ Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcion
 }
 ```
 
-- O endereço é o seguinte:
+-   O endereço é o seguinte:
 
     http://localhost:8000/token/
-
 
 **IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
 
@@ -1505,9 +1558,9 @@ A cada chamada ao sistema, precisaremos enviar no cabeçalho da requisição um 
 
 Para fazer isso, inclua em `Headers` um nova entrada, com se seguintes informações:
 
-- KEY (Header Name): `Authorization`
-- Value: `Bearer` + `valor da chave accesss`. (O valor desse token muda a cada nova autenticação.)
-- - Por exemplo: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjM4NDEwLCJpYXQiOjE2NjE2MzgxMTAsImp0aSI6ImRhYTBmNDcyZDI3YTQ5ZTM4M2I4ZjJhOTcwYjhlMWNmIiwidXNlcl9pZCI6M30.HY2j0L6eQBaPxAoHrPz_KFK_sWyb9lHmR7dQ1sOPTNY`
+-   KEY (Header Name): `Authorization`
+-   Value: `Bearer` + `valor da chave accesss`. (O valor desse token muda a cada nova autenticação.)
+-   -   Por exemplo: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjM4NDEwLCJpYXQiOjE2NjE2MzgxMTAsImp0aSI6ImRhYTBmNDcyZDI3YTQ5ZTM4M2I4ZjJhOTcwYjhlMWNmIiwidXNlcl9pZCI6M30.HY2j0L6eQBaPxAoHrPz_KFK_sWyb9lHmR7dQ1sOPTNY`
 
 Para testar, acesse com `GET` o seguinte endereço:
 
@@ -1532,7 +1585,8 @@ Você deverá conseguir visualizar todas as categorias cadastradas.
     ]
 }
 ```
- Recebemos essa mensagem quando o token expirou. Para isso, precisamos gerar um novo token.
+
+Recebemos essa mensagem quando o token expirou. Para isso, precisamos gerar um novo token.
 
 **Testando com outro usuário**
 
@@ -1540,8 +1594,8 @@ Repita o processo de autenticação e consulta com o usuário `comprador1` que c
 
 Resumindo, você vai precisar:
 
-- Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
-- Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
+-   Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
+-   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
 
 **Tentando alterar uma informação**
 
@@ -1569,8 +1623,8 @@ Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autoriz
 
 Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
 
-- Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
-- Os conflitos no **github** são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
+-   Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
+-   Os conflitos no **github** são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
 
 Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, organizados dentro de uma pasta.
 
@@ -1580,25 +1634,25 @@ Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, o
 
 Siga os passos:
 
-- Crie uma pasta `models` dentro da pasta da aplicação (`core`):
+-   Crie uma pasta `models` dentro da pasta da aplicação (`core`):
 
 ```bash
 mkdir core/models
 ```
 
-- Crie um arquivo `__init__.py` dentro da pasta `models` recém criada:
-    
+-   Crie um arquivo `__init__.py` dentro da pasta `models` recém criada:
+
 ```bash
 touch core/models/__init__.py
 ```
 
-- Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`:
-        
+-   Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`:
+
 ```bash
 touch core/models/autor.py
 ```
 
-- Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `models/autor.py`.
+-   Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `models/autor.py`.
 
 ```python
 from django.db import models
@@ -1614,15 +1668,15 @@ class Autor(models.Model):
         verbose_name_plural = "Autores"
 ```
 
-- Remova o conteúdo copiado no arquivo `models.py`. Não remova a linha do `import`, pois ela será utilizada por todas as entidades.
-- Inclua a importação da entidade `Autor` no arquivo `__init__.py`:
+-   Remova o conteúdo copiado no arquivo `models.py`. Não remova a linha do `import`, pois ela será utilizada por todas as entidades.
+-   Inclua a importação da entidade `Autor` no arquivo `__init__.py`:
 
 ```python
 from .autor import Autor
 ```
 
-- Repita os mesmos passos para as demais entidades (Categoria, Editora, Livro, etc.)
-- Observe que a entidade livro referencia as demais entidades, portanto elas precisam ser importadas em `livro.py`:
+-   Repita os mesmos passos para as demais entidades (Categoria, Editora, Livro, etc.)
+-   Observe que a entidade livro referencia as demais entidades, portanto elas precisam ser importadas em `livro.py`:
 
 ```python
 from django.db import models
@@ -1634,18 +1688,18 @@ class Livro(models.Model):
 ...
 ```
 
-- Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
+-   Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
 
 **Separando _views_ e _serializers_ em arquivos**
 
 Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo feito para as _models_:
 
-- Crie a pasta correspondente (`views` e `serializers`).
-- Crie o arquivo `__init__.py` dentro de cada pasta.
-- Crie um arquivo para cada entidade dentro da pasta.
-- Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
-- Adicione a importação no arquivo `__init__.py`.
-- Remova o conteúdo do arquivo.
+-   Crie a pasta correspondente (`views` e `serializers`).
+-   Crie o arquivo `__init__.py` dentro de cada pasta.
+-   Crie um arquivo para cada entidade dentro da pasta.
+-   Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
+-   Adicione a importação no arquivo `__init__.py`.
+-   Remova o conteúdo do arquivo.
 
 Ao final , você terá uma estrutura parecida com essa:
 
@@ -1682,17 +1736,17 @@ A partir dessa organização, cada nova entidade criada terá seus arquivos corr
 
 Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
 
-- Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
-- Não removeremos os campos padrão do usuário.
-- Incluiremos os campos que precisamos no nosso usuário.
-- Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
-- Faremos a migração do banco de dados.
-- Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
+-   Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
+-   Não removeremos os campos padrão do usuário.
+-   Incluiremos os campos que precisamos no nosso usuário.
+-   Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
+-   Faremos a migração do banco de dados.
+-   Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
 
 Vamos aos passos:
 
-- Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `core`.
-- Inclua o seguinte conteúdo:
+-   Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `core`.
+-   Inclua o seguinte conteúdo:
 
 ```python
 from django.db import models
@@ -1705,19 +1759,19 @@ class Usuario(AbstractUser):
     data_nascimento = models.DateField(blank=True, null=True)
 ```
 
-- Adicione a importação no arquivo `__init__.py`:
+-   Adicione a importação no arquivo `__init__.py`:
 
 ```python
 from .usuario import Usuario
 ```
 
-- Edite o arquivo `settings.py` e inclua a configuração abaixo:
+-   Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
 ```python
 AUTH_USER_MODEL = "core.Usuario"
 ```
 
-- Remova o banco de dados e as migrações e crie novamente:
+-   Remova o banco de dados e as migrações e crie novamente:
 
 ```bash
 rm db.sqlite3
@@ -1727,7 +1781,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-- Edite o arquivo `admin.py` e inclua a configuração abaixo:
+-   Edite o arquivo `admin.py` e inclua a configuração abaixo:
 
 ```python
 ...
@@ -1757,7 +1811,7 @@ class UsuarioAdmin(UserAdmin):
 admin.site.register(Usuario, UsuarioAdmin)
 ```
 
-- Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
+-   Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
 # 18. Upload e associação de imagens
 
@@ -1765,13 +1819,13 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 **Configuração**
 
-- Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
+-   Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
 
 ```bash
 curl -O https://github.com/marrcandre/django-drf-tutorial/raw/master/uploader.zip
 ```
 
-- Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
+-   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
 
 ```bash
 unzip uploader.zip
@@ -1800,19 +1854,19 @@ O projeto ficará com uma estrutura parecida com essa:
     └── files.py
 ```
 
-- Instalar os pacotes `python-magic` e `Pillow`:
+-   Instalar os pacotes `python-magic` e `Pillow`:
 
 ```bash
 poetry add python-magic Pillow
 ```
 
-- Aproveite para atualizar o arquivo requirements.txt:
+-   Aproveite para atualizar o arquivo requirements.txt:
 
 ```bash
 poetry export --without-hashes > requirements.txt
 ```
 
-- Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
+-   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -1823,7 +1877,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-- Ainda no `settings.py` faça as seguintes configurações:
+-   Ainda no `settings.py` faça as seguintes configurações:
 
 ```python
 MEDIA_URL = "http://localhost:8000/media/"
@@ -1832,7 +1886,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
 ```
 
-- Inclua o seguinte conteúdo no arquivo `urls.py`:
+-   Inclua o seguinte conteúdo no arquivo `urls.py`:
 
 ```python
 from django.conf import settings
@@ -1846,7 +1900,7 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 ...
 ```
 
-- Faça a migração do banco de dados:
+-   Faça a migração do banco de dados:
 
 ```bash
 python manage.py makemigrations uploader
@@ -1855,7 +1909,7 @@ python manage.py migrate
 
 **Uso em modelos**
 
-- Edite o arquivo `models/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+-   Edite o arquivo `models/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1874,7 +1928,7 @@ class Livro(models.Model):
     )
 ```
 
-- Faça novamente a migração do banco de dados:
+-   Faça novamente a migração do banco de dados:
 
 ```bash
 python manage.py makemigrations core
@@ -1883,7 +1937,7 @@ python manage.py migrate
 
 **Uso no serializer**
 
-- Edite o arquivo `serializers\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+-   Edite o arquivo `serializers\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1910,15 +1964,15 @@ class LivroDetailSerializer(ModelSerializer):
 
 **Teste de upload e associação com o livro**
 
-- Acesse a API de media:
+-   Acesse a API de media:
 
     http://localhost:8000/api/media/images/
 
-- Faça o upload de uma imagem.
-- Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
-- Guarde o valor do campo `capa_attachment_key`.
-- Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
-- Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
+-   Faça o upload de uma imagem.
+-   Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
+-   Guarde o valor do campo `capa_attachment_key`.
+-   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
+-   Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
 
 # 19. Habilitando o Swagger e Redoc usando DRF Spectacular
 
@@ -1926,19 +1980,19 @@ Vamos instalar uma aplicação para gerar a documentação da API usando o Swagg
 
 **Instalação e Configuração**
 
-- Instale o pacote `drf-spectacular`:
+-   Instale o pacote `drf-spectacular`:
 
 ```bash
 poetry add drf-spectacular
 ```
 
-- Não esqueça de atualizar o arquivo `requirements.txt`:
+-   Não esqueça de atualizar o arquivo `requirements.txt`:
 
 ```bash
 poetry export --without-hashes > requirements.txt
 ```
 
-- Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
+-   Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -1948,7 +2002,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-- Registre o pacote no `settings.py`:
+-   Registre o pacote no `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
@@ -1957,7 +2011,7 @@ REST_FRAMEWORK = {
 }
 ```
 
-- Faça ainda algumas configurações no `settings.py`:
+-   Faça ainda algumas configurações no `settings.py`:
 
 ```python
 SPECTACULAR_SETTINGS = {
@@ -1967,7 +2021,7 @@ SPECTACULAR_SETTINGS = {
 }
 ```
 
-- Inclua o seguinte conteúdo no arquivo `urls.py`, **organizando-o adequadamente**:
+-   Inclua o seguinte conteúdo no arquivo `urls.py`, **organizando-o adequadamente**:
 
 ```python
 from drf_spectacular.views import (
@@ -1995,13 +2049,13 @@ urlpatterns = [
 
 **Teste**
 
-- Acesse o Swagger:
+-   Acesse o Swagger:
 
     http://localhost:8000/api/swagger/
 
 **Alteração da URL da API**
 
-- Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
+-   Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
 
 ```python
 urlpatterns = [
@@ -2017,23 +2071,23 @@ O `isort` é um utilitário para ordenar as importações de forma automática.
 
 **Instalação**
 
-- Instale o pacote `isort`:
+-   Instale o pacote `isort`:
 
 ```bash
 poetry add -G dev isort
 ```
 
-- Não esqueça de atualizar o arquivo `requirements.txt`.
+-   Não esqueça de atualizar o arquivo `requirements.txt`.
 
 **Configuração**
 
-- Crie o arquivo `.isort.cfg` na raiz do projeto:
+-   Crie o arquivo `.isort.cfg` na raiz do projeto:
 
 ```bash
 touch .isort.cfg
 ```
 
-- Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
+-   Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
 
 ```bash
 [isort]
@@ -2048,7 +2102,7 @@ profile=black
 
 **Teste**
 
-- Execute o comando `isort`:
+-   Execute o comando `isort`:
 
 ```bash
 isort .
@@ -2060,13 +2114,13 @@ Vamos aprender a fazer o _dump_ e _load_ de dados.
 
 **Cópia de segurança dos dados**
 
-- Execute o comando `dumpdata`:
+-   Execute o comando `dumpdata`:
 
 ```bash
 python manage.py dumpdata --indent 2 > livraria_bkp.json
 ```
 
-- Observe que o arquivo `livraria_bkp.json` foi criado:
+-   Observe que o arquivo `livraria_bkp.json` foi criado:
 
 ```bash
 code livraria_bkp.json
@@ -2074,7 +2128,7 @@ code livraria_bkp.json
 
 **Arquivo exemplo**
 
-- Baixe o arquivo `livraria.json`:
+-   Baixe o arquivo `livraria.json`:
 
 ```bash
 curl -O https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
@@ -2082,13 +2136,13 @@ curl -O https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 
 **Carga dos dados**
 
-- Execute o comando `loaddata`:
+-   Execute o comando `loaddata`:
 
 ```bash
 python manage.py loaddata livraria.json
 ```
 
-- Observe que os dados foram carregados:
+-   Observe que os dados foram carregados:
 
 ```bash
 python manage.py shell
@@ -2102,97 +2156,98 @@ Você também pode acessar o Django Admin ou o Swagger e verificar que os dados 
 
 O Django Shell é uma ferramenta para interagir com o banco de dados.
 
-- Acesse o shell:
+-   Acesse o shell:
 
 ```bash
 python manage.py shell
 ```
 
-- Importe os modelos de `core.models`:
+-   Importe os modelos de `core.models`:
 
 ```python
 >>> from core.models import Autor, Categoria, Editora, Livro
 ```
 
-- Crie um objeto:
+-   Crie um objeto:
 
 ```python
 >>> categoria = Categoria.objects.create(descricao="Desenvolvimento Web")
 ```
 
-- Observe que o objeto foi criado:
+-   Observe que o objeto foi criado:
 
 ```python
 >>> categoria
 <Categoria: Desenvolvimento Web>
 ```
 
-- Liste os objetos:
+-   Liste os objetos:
 
 ```python
 >>> Categoria.objects.all()
 <QuerySet [<Categoria: Desenvolvimento Web>]>
 ```
 
-- Obtenha o objeto:
+-   Obtenha o objeto:
 
 ```python
 >>> categoria = Categoria.objects.get(descricao="Desenvolvimento Web")
 ```
 
-- Observe que o objeto foi obtido:
+-   Observe que o objeto foi obtido:
 
 ```python
 >>> categoria
 <Categoria: Desenvolvimento Web>
 ```
 
-- Atualize o objeto:
+-   Atualize o objeto:
 
 ```python
 >>> categoria.descricao = "Desenvolvimento Web com Django"
 >>> categoria.save()
 ```
 
-- Observe que o objeto foi atualizado:
+-   Observe que o objeto foi atualizado:
 
 ```python
 >>> categoria
 <Categoria: Desenvolvimento Web com Django>
 ```
 
-- Remova o objeto:
+-   Remova o objeto:
 
 ```python
 >>> categoria.delete()
 (1, {'core.Categoria': 1})
 ```
 
-- Observe que o objeto foi removido:
+-   Observe que o objeto foi removido:
 
 ```python
 >>> Categoria.objects.all()
 <QuerySet []>
 ```
 
-- Acesso a todos os livros de um autor:
+-   Acesso a todos os livros de um autor:
 
 ```python
 Autor.objects.get(id=1).livros.all()
 ```
 
-- Acesso a todos os livros de uma categoria:
+-   Acesso a todos os livros de uma categoria:
 
 ```python
 Categoria.objects.get(id=1).livros.all()
 ```
 
-- Acesso a todos os livros de uma editora:
+-   Acesso a todos os livros de uma editora:
 
 ```python
 Editora.objects.get(id=1).livros.all()
 ```
-- Encerre o shell:
+
+-   Encerre o shell:
 
 ```python
 >>> exit()
@@ -2204,7 +2259,7 @@ O Admin é uma ferramenta para gerenciar os dados do banco de dados. Ele pode se
 
 **Customização do Admin**
 
-- Edite o arquivo `core/admin.py`:
+-   Edite o arquivo `core/admin.py`:
 
 ```python
 ...
@@ -2238,7 +2293,7 @@ class LivroAdmin(admin.ModelAdmin):
     list_per_page = 25
 ```
 
-- Acesse o Admin:
+-   Acesse o Admin:
 
     http://localhost:8000/admin/
 
@@ -2246,13 +2301,13 @@ class LivroAdmin(admin.ModelAdmin):
 
 É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no GitHub! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
 
-- Instale o pacote `django_environ`:
+-   Instale o pacote `django_environ`:
 
 ```bash
 poetry add django-environ
 ```
 
-- Edite o arquivo `livraria/settings.py`:
+-   Edite o arquivo `livraria/settings.py`:
 
 ```python
 ...
@@ -2270,13 +2325,13 @@ DATABASES = {'default': env.db()}
 
 Não esqueça de substituir essas variáveis de ambiente pelos seus valores.
 
-- Crie o arquivo `.env`:
+-   Crie o arquivo `.env`:
 
 ```bash
 touch .env
 ```
 
-- Edite o arquivo `.env`:
+-   Edite o arquivo `.env`:
 
 ```python
 SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -2295,36 +2350,38 @@ DATABASE_URL=sqlite:///db.sqlite3
 O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no GitHub.
 
 **Criação da conta no PythonAnywhere**
-- Crie uma conta no https://www.pythonanywhere.com/
+
+-   Crie uma conta no https://www.pythonanywhere.com/
 
 **Criação do banco de dados no PythonAnywhere**
 
-- Crie o banco de dados em https://www.pythonanywhere.com/dashboard/, na opção `Databases`.
-- Anote as informações de conexão com o banco de dados:
-    - Host: `sua_conta.mysql.pythonanywhere-services.com`
-    - Database name: `seu_usuario_bd$seu_bd`
-    - Username: `seu_usuario_bd`
-    - Password: `sua_senha_bd`
+-   Crie o banco de dados em https://www.pythonanywhere.com/dashboard/, na opção `Databases`.
+-   Anote as informações de conexão com o banco de dados:
+    -   Host: `sua_conta.mysql.pythonanywhere-services.com`
+    -   Database name: `seu_usuario_bd$seu_bd`
+    -   Username: `seu_usuario_bd`
+    -   Password: `sua_senha_bd`
 
-**IMPORTANTE:** 
-- Substitua `seu_usuario` pelo seu usuário do GitHub.
-- Substitua `seu_projeto` pelo nome do seu projeto no GitHub.
-- Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
-- Substitua `seu_bd` pelo nome do seu banco de dados.
-- Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
-- Substitua `sua_senha_bd` pela sua senha no banco de dados.
+**IMPORTANTE:**
+
+-   Substitua `seu_usuario` pelo seu usuário do GitHub.
+-   Substitua `seu_projeto` pelo nome do seu projeto no GitHub.
+-   Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
+-   Substitua `seu_bd` pelo nome do seu banco de dados.
+-   Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
+-   Substitua `sua_senha_bd` pela sua senha no banco de dados.
 
 **Instalação do módulo `mysqlclient`**
 
-- Instale o pacote `libmysqlclient-dev`:
+-   Instale o pacote `libmysqlclient-dev`:
 
 ```bash
 sudo apt install libmysqlclient-dev
-``` 
+```
 
 O pacote `libmysqlclient-dev` é necessário para instalar o módulo `mysqlclient`.
 
-- Instale o módulo `mysqlclient`:
+-   Instale o módulo `mysqlclient`:
 
 ```bash
 poetry add mysqlclient
@@ -2332,7 +2389,7 @@ poetry add mysqlclient
 
 O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL.
 
-- Atualize o arquivo requirements.txt:
+-   Atualize o arquivo requirements.txt:
 
 ```bash
 poetry export -f requirements.txt > requirements.txt
@@ -2342,7 +2399,7 @@ poetry export -f requirements.txt > requirements.txt
 
 <!-- - Retire (comente) o arquivo `.env` do `.gitignore`. -->
 
-- Crie um arquivo `.env` na pasta raiz (`/`) do seu usuario no PythonAnywhere. Você pode fazer isso pelo console ou pela interface web, na opção `Files`.
+-   Crie um arquivo `.env` na pasta raiz (`/`) do seu usuario no PythonAnywhere. Você pode fazer isso pelo console ou pela interface web, na opção `Files`.
 
 ```python
 SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -2350,36 +2407,41 @@ DEBUG=False
 ALLOWED_HOSTS=sua_conta.pythonanywhere.com
 DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
 ```
-- Inclua o seguinte conteúdo no arquivo .virtualenvs/postactivate:
+
+-   Inclua o seguinte conteúdo no arquivo .virtualenvs/postactivate:
 
 ```bash
-cp ~/.env ~/seu_usuario.pythonanywhere.com/ 
+echo "Copiando o arquivo .env para a pasta do projeto..."
+cp ~/.env ~/seu_usuario.pythonanywhere.com/
 ```
-Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnywhere.
 
+Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnywhere.
 
 **Geração da SECRET_KEY (opcional)**
 
-- Para gerar uma nova SECRET_KEY (chave secreta), execute o comando:
-  
+-   Para gerar uma nova SECRET_KEY (chave secreta), execute o comando:
+
 ```bash
 python -c "import secrets; print(secrets.token_urlsafe())"
 ```
-- Você também pode gerar uma nova chave secreta em https://djecrety.ir/
-- Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
+
+-   Você também pode gerar uma nova chave secreta em https://djecrety.ir/
+-   Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
 
 IMPORTANTE:
-- Não esqueça de substituir a chave secreta pelo valor gerado.
-- Não esqueça de substituir os valores das variáveis de ambiente pelos seus valores.
+
+-   Não esqueça de substituir a chave secreta pelo valor gerado.
+-   Não esqueça de substituir os valores das variáveis de ambiente pelos seus valores.
 
 **Criação da API Token**
 
-- Crie uma API Token em `Account` > `API Token` em https://www.pythonanywhere.com/dashboard/.
+-   Crie uma API Token em `Account` > `API Token` em https://www.pythonanywhere.com/dashboard/.
 
 **Instalação do cliente do PythonAnywhere**
-- Acesse o console (terminal) do PythonAnywhere em https://www.pythonanywhere.com/consoles/
 
-- Instale o cliente do PythonAnywhere no console:
+-   Acesse o console (terminal) do PythonAnywhere em https://www.pythonanywhere.com/consoles/
+
+-   Instale o cliente do PythonAnywhere no console:
 
 ```bash
 pip install pythonanywhere --user
@@ -2388,22 +2450,23 @@ pip install pythonanywhere --user
 **Criação do projeto no PythonAnywhere**
 
 O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAnywhere a partir de um repositório do GitHub:
-- Faz o clone do repositório do GitHub.
-- Cria um virtualenv.
-- Instala as dependências do projeto.
-- Cria uma webapp.
-- Cria o arquivo de configuração `wsgi.py`.
-- Adiciona os arquivos estáticos.
 
-- No console do PythonAnywhere, execute o comando `pa_autoconfigure_django.py`:
+-   Faz o clone do repositório do GitHub.
+-   Cria um virtualenv.
+-   Instala as dependências do projeto.
+-   Cria uma webapp.
+-   Cria o arquivo de configuração `wsgi.py`.
+-   Adiciona os arquivos estáticos.
+
+-   No console do PythonAnywhere, execute o comando `pa_autoconfigure_django.py`:
 
 ```bash
 pa_autoconfigure_django.py https://github.com/seu_usuario/seu_projeto.git --python=3.8 --nuke
 ```
 
-- Não esqueça de substituir `seu_usuario` e `seu_projeto` pelos seus valores (o link do seu projeto no GitHub).
+-   Não esqueça de substituir `seu_usuario` e `seu_projeto` pelos seus valores (o link do seu projeto no GitHub).
 
-- Se necessário, no console, ative o `virtualenv`:
+-   Se necessário, no console, ative o `virtualenv`:
 
 ```bash
 workon marcoandre.pythonanywhere.com
@@ -2411,7 +2474,7 @@ workon marcoandre.pythonanywhere.com
 
 **Configuração do banco de dados no PythonAnywhere**
 
-- Carregue os dados iniciais:
+-   Carregue os dados iniciais:
 
 ```bash
 python manage.py loaddata livraria.json
@@ -2429,23 +2492,29 @@ drop database seu_usuario$seu_bd;
 
 **Baixar novamente o projeto do GitHub (se necessário)**
 
-Se você precisar atualizar o projeto do GitHub, sem precisar executar todo o processo novamente execute o comando:
-
+-   Se você precisar atualizar o projeto do GitHub, sem precisar executar todo o processo novamente execute o comando:
 
 ```bash
 git pull
 ```
 
-Se houverem alterações no arquivo `requirements.txt`, execute o comando:
+-   Em caso de erro, execute o comando:
+
+```bash
+git checkout -- .
+git clean -f -d
+git pull
+```
+
+-   Se houverem alterações no arquivo `requirements.txt`, execute o comando:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Se houverem alterações nos modelos, execute os comandos:
+-   Se houverem alterações nos modelos, faça a migração:
 
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 
