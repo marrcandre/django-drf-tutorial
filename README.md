@@ -1822,7 +1822,7 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 -   Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
 
 ```bash
-curl -O https://github.com/marrcandre/django-drf-tutorial/raw/master/uploader.zip
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/uploader.zip
 ```
 
 -   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
@@ -2131,7 +2131,7 @@ code livraria_bkp.json
 -   Baixe o arquivo `livraria.json`:
 
 ```bash
-curl -O https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 ```
 
 **Carga dos dados**
