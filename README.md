@@ -2397,8 +2397,6 @@ poetry export --without-hashes > requirements.txt
 
 **Configuração das variáveis de ambiente**
 
-<!-- - Retire (comente) o arquivo `.env` do `.gitignore`. -->
-
 -   Crie um arquivo `.env` na pasta raiz (`/`) do seu usuario no PythonAnywhere. Você pode fazer isso pelo console ou pela interface web, na opção `Files`.
 
 ```python
@@ -2458,18 +2456,25 @@ O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAn
 -   Cria o arquivo de configuração `wsgi.py`.
 -   Adiciona os arquivos estáticos.
 
--   No console do PythonAnywhere, execute o comando `pa_autoconfigure_django.py`:
+-   No console do PythonAnywhere, execute o comando abaixo, substituindo `https://github.com/seu_usuario/seu_projeto.git` pelo link do seu repositório no GitHub (aquele mesmo que você usou para clonar o projeto):
 
 ```bash
-pa_autoconfigure_django.py https://github.com/seu_usuario/seu_projeto.git --python=3.8 --nuke
+pa_autoconfigure_django.py --python=3.8 --nuke https://github.com/seu_usuario/seu_projeto.git 
 ```
-
--   Não esqueça de substituir `seu_usuario` e `seu_projeto` pelos seus valores (o link do seu projeto no GitHub).
+**Ativando o virtualenv (se necessário)**
 
 -   Se necessário, no console, ative o `virtualenv`:
 
 ```bash
 workon marcoandre.pythonanywhere.com
+```
+
+**Migrando o banco de dados**
+
+-   No console, execute o comando abaixo para migrar o banco de dados:
+
+```bash
+python manage.py migrate
 ```
 
 **Configuração do banco de dados no PythonAnywhere**
