@@ -1765,19 +1765,19 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 **Configuração**
 
-- Baixe o arquivo compactado `media.zip`, que contém o código fonte da aplicação `media`, executando o seguinte comando no terminal:
+- Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
 
 ```bash
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/media/media.zip
+curl -O https://github.com/marrcandre/django-drf-tutorial/raw/master/uploader.zip
 ```
 
 - Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
 
 ```bash
-unzip media.zip
+unzip uploader.zip
 ```
 
-- Remova a pasta `media` do arquivo `.gitignore`.
+<!-- - Remova a pasta `media` do arquivo `.gitignore`. -->
 
 O projeto ficará com uma estrutura parecida com essa:
 
@@ -1785,7 +1785,7 @@ O projeto ficará com uma estrutura parecida com essa:
 .
 ├── core
 ├── livraria
-├── media
+├── uploader
 │   ├── models
 │   │   ├── document.py
 │   │   ├── image.py
@@ -1812,12 +1812,12 @@ poetry add python-magic Pillow
 poetry export --without-hashes > requirements.txt
 ```
 
-- Adicione o pacote `media` na lista de `INSTALLED_APPS`, no `settings.py`:
+- Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
 
 ```python
 INSTALLED_APPS = [
     ...
-    "media",
+    "uploader",
     "core",
     ...
 ]
@@ -1828,7 +1828,7 @@ INSTALLED_APPS = [
 ```python
 MEDIA_URL = "http://localhost:8000/media/"
 MEDIA_ENDPOINT = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media_files/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
 ```
 
@@ -1838,9 +1838,9 @@ FILE_UPLOAD_PERMISSIONS = 0o640
 from django.conf import settings
 from django.conf.urls.static import static
 ...
-from media.router import router as media_router
+from uploader.router import router as uploader_router
 ...
-path("api/media/", include(media_router.urls)),
+path("api/media/", include(uploader_router.urls)),
 ...
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
 ...
@@ -1849,7 +1849,7 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 - Faça a migração do banco de dados:
 
 ```bash
-python manage.py makemigrations media
+python manage.py makemigrations uploader
 python manage.py migrate
 ```
 
@@ -1859,7 +1859,7 @@ python manage.py migrate
 
 ```python
 ...
-from media.models import Image
+from uploader.models import Image
 
 
 class Livro(models.Model):
@@ -1889,8 +1889,8 @@ python manage.py migrate
 ...
 from rest_framework.serializers import ModelSerializer, SlugRelatedField
 
-from media.models import Image
-from media.serializers import ImageSerializer
+from uploader.models import Image
+from uploader.serializers import ImageSerializer
 ...
 class LivroSerializer(ModelSerializer):
     capa_attachment_key = SlugRelatedField(
@@ -2063,7 +2063,7 @@ Vamos aprender a fazer o _dump_ e _load_ de dados.
 - Execute o comando `dumpdata`:
 
 ```bash
-python manage.py dumpdata core media --indent 2 > livraria_bkp.json
+python manage.py dumpdata --indent 2 > livraria_bkp.json
 ```
 
 - Observe que o arquivo `livraria_bkp.json` foi criado:
@@ -2077,7 +2077,7 @@ code livraria_bkp.json
 - Baixe o arquivo `livraria.json`:
 
 ```bash
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
+curl -O https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 ```
 
 **Carga dos dados**
@@ -2450,7 +2450,7 @@ python manage.py migrate
 ```
 
 <!-- Aulas futuras -->
-<!-- MUdar nome app media upload -->
+<!-- MUdar nome app media para upload -->
 <!-- # Testes -->
 <!-- Pre commits -->
 <!-- Django Filter -->
