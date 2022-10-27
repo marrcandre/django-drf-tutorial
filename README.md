@@ -2392,7 +2392,7 @@ O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados 
 -   Atualize o arquivo requirements.txt:
 
 ```bash
-poetry export -f requirements.txt > requirements.txt
+poetry export --without-hashes > requirements.txt
 ```
 
 **Configuração das variáveis de ambiente**
@@ -2519,16 +2519,15 @@ python manage.py migrate
 ```
 
 <!-- Aulas futuras -->
-<!-- MUdar nome app media para upload -->
-<!-- # Testes -->
+<!-- Testes -->
 <!-- Pre commits -->
 <!-- Django Filter -->
 <!-- DRF para campos related_name -->
 <!-- Vuejs com autenticação e autorização. -->
 <!-- Populate script  -->
-<!-- # Model de compras integrando com Model User do Django  -->
-<!-- # Criar model StatusCompra -->
+<!-- Model de compras integrando com Model User do Django  -->
+<!-- Criar model StatusCompra -->
 <!-- Criar model ItensCompra -->
-<!-- # Uso de TabularInline no Admin para Itens da Compra -->
+<!-- Uso de TabularInline no Admin para Itens da Compra -->
 <!-- Endpoint para listagem básica de Compras -->
-<!-- #  Ajustes na visualização do status de compra e itens de compra -->
+<!-- Ajustes na visualização do status de compra e itens de compra -->
