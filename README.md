@@ -2523,6 +2523,110 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
+
+# 26. Inclusão da foto de perfil no usuário
+
+Vamos incluir a foto de perfil no usuário.
+
+**Criação do campo de foto de perfil**
+
+-   No arquivo `models\usuario.py`, inclua o campo `foto`:
+
+```python
+...
+from uploader.models import Image
+...
+class Usuario(AbstractUser):
+    foto = models.ForeignKey(
+        Image,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        default=None,
+    )
+```
+
+- Faça as migrações:
+
+```bash
+python manage.py makemigrations core
+python manage.py migrate
+```
+
+- No arquivo `admin.py`, inclua o campo `foto`:
+
+```python
+...
+class UsuarioAdmin(UserAdmin):
+    ...
+    "fields": ("first_name","last_name","foto",...),
+    ...
+```
+
+- Crie um serializador para o usuário:
+
+```python
+rom rest_framework.serializers import ModelSerializer, SlugRelatedField
+
+from core.models import Usuario
+from media.models import Image
+from media.serializers import ImageSerializer
+
+
+class UsuarioSerializer(ModelSerializer):
+    foto_attachment_key = SlugRelatedField(
+        source="foto",
+        queryset=Image.objects.all(),
+        slug_field="attachment_key",
+        required=False,
+        write_only=True,
+    )
+    foto = ImageSerializer(required=False, read_only=True)
+
+    class Meta:
+        model = Usuario
+        fields = "__all__"
+```
+
+- Inclua o novo serializador no arquivo 
+`__init__.py` dos serializadores:
+
+```python
+from .usuario import UsuarioSerializer
+```
+
+- Crie uma nova view para o usuário:
+
+```python
+from rest_framework.viewsets import ModelViewSet
+
+from core.models import Usuario
+from core.serializers import UsuarioSerializer
+
+
+class UsuarioViewSet(ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+```
+
+- Inclua a nova view no arquivo `__init__.py` das views:
+
+```python
+from .usuario import UsuarioViewSet
+```
+
+- Inclua a nova view no arquivo `urls.py`:
+
+```python
+from core.views import UsuarioViewSet
+...
+router.register(r"usuarios", UsuarioViewSet)
+```
+
+**Testando**
+-   Inclua uma foto de perfil em um usuário.
+
+
 <!-- Aulas futuras -->
 <!-- Testes -->
 <!-- Pre commits -->
