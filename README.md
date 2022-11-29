@@ -2322,8 +2322,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 DATABASES = {'default': env.db()}
 ```
-
-Não esqueça de substituir essas variáveis de ambiente pelos seus valores.
+IMPORTANTE: Após incluir essas variáveis, remova as outras referências a elas no arquivo `settings.py`.
 
 -   Crie o arquivo `.env`:
 
@@ -2334,16 +2333,20 @@ touch .env
 -   Edite o arquivo `.env`:
 
 ```python
-SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
+SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 DEBUG=True
-
 ALLOWED_HOSTS=localhost,127.0.0.1
-
 DATABASE_URL=sqlite:///db.sqlite3
 ```
 
-**IMPORTANTE**: Adicione o arquivo `.env` ao arquivo `.gitignore`.
+**IMPORTANTE**: 
+- Adicione o arquivo `.env` ao arquivo `.gitignore`.
+- Feito isso, esse arquivo não será mais versionado pelo Git.
+- Para ter um modelo de arquivo `.env`, crie um arquivo `.env.example` e adicione-o ao Git.
+
+```bash
+cp .env .env.example
+```
 
 # 25. Publicação no PythonAnywhere
 
@@ -2400,7 +2403,7 @@ poetry export --without-hashes > requirements.txt
 -   Crie um arquivo `.env` na pasta raiz (`/`) do seu usuario no PythonAnywhere. Você pode fazer isso pelo console ou pela interface web, na opção `Files`.
 
 ```python
-SECRET_KEY=django-insecure-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 DEBUG=False
 ALLOWED_HOSTS=sua_conta.pythonanywhere.com
 DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
@@ -2415,9 +2418,9 @@ cp ~/.env ~/seu_usuario.pythonanywhere.com/
 
 Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnywhere.
 
-**Geração da SECRET_KEY (opcional)**
+**Geração da SECRET_KEY**
 
--   Para gerar uma nova SECRET_KEY (chave secreta), execute o comando:
+-   Para gerar uma nova SECRET_KEY (chave secreta), a ser colocada no arquivo `.env`, execute o comando:
 
 ```bash
 python -c "import secrets; print(secrets.token_urlsafe())"
