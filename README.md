@@ -2631,6 +2631,9 @@ router.register(r"usuarios", UsuarioViewSet)
 
 
 <!-- Aulas futuras -->
+
+<!-- Incluir MEDIA_URL no tutorial de configuração do .env e de deploy-->
+
 <!-- Testes -->
 <!-- Pre commits -->
 <!-- Django Filter -->
