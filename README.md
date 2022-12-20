@@ -4,11 +4,18 @@ Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangop
 
 # 1. Preparação do ambiente
 
-**Instalação de extensões no vscode**
+A preparação do ambiente será feita apenas uma vez em cada computador. Ela consiste em instalar e configurar o **VS Code**, o **PDM** e o **Python**.
 
-Instale as extensoẽs do **vscode** de sua preferência. 
+**1.1 VS Code**
 
-- Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **vscode** e pesquisando pelo nome da extensão.
+**1.1 Instalação do VS Code**
+
+Caso não tenha o **VS Code** instalado, instale-o seguindo as instruções [deste link](https://code.visualstudio.com/download).
+
+**1.2 Instalação de extensões no VS Code**
+
+Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
+
 -   Eu recomendo as seguintes:
     -   Better TOML (Syntaxe Destacada para TOML)
     -   ESLint (JavaScript)
@@ -16,7 +23,7 @@ Instale as extensoẽs do **vscode** de sua preferência.
     -   isort (Organização de imports)
     -   Material Icon Theme (Temas de ícones)
     -   Peacock (Personalização de cores)
-    -   Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do vscode)
+    -   Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)
     -   Prettier (Formatação de código)
     -   Python (Uhaa!)
     -   RapidAPI Client (Teste de APIs)
@@ -24,9 +31,9 @@ Instale as extensoẽs do **vscode** de sua preferência.
     -   TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)
     -   Vue Language Features (Desenvolvimento de aplicações Vue.js)
 
-Você pode configurar a sincronização das extensões entre os computadores. Para isso, você precisa fazer login com a conta do **GitHub** ou da **Microsoft** no vscode. Para isso, clique no ícone de engrenagem no canto inferior esquerdo da tela do vscode e clique em `Ativar a Sincronização de Configurações`.
+Você pode configurar a sincronização das extensões entre os computadores. Para isso, você precisa fazer login com a conta do **GitHub** ou da **Microsoft** no VS Code. Para isso, clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
 
-**Instalação do PDM**
+**1.2 Instalação do PDM**
 
 As instruções a seguir são para o **Linux Manjaro**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
 
@@ -36,137 +43,172 @@ As instruções a seguir são para o **Linux Manjaro**. Se você estiver usando 
 
 -   Verifique se o **PDM** está instalado:
 
-```bash
+```shell
 pdm -V
 ```
 
 -   Se a versão for inferior a 2, instale a versão mais recente:
 
-```bash
+```shell
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
--   Ative o auto preenchimento do **PDM**, conforme o seu shell:
+**1.2.1 Configuração do auto preenchimento do PDM**
 
-    -   Para o **bash**:
+Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 
-```bash
+-   Para o **bash**:
+
+```shell
 pdm completions bash >> ~/.bash_completion
 ```
+- Para o **zsh**:
 
-    -  Para o **zsh**:
-
-```bash
+```shell
 pdm completions zsh >> ~/.zshrc
 ```
 
-    - Para o **Oh My Zsh**:
+- Para o **Oh My Zsh**:
 
-```bash
+```shell
 mkdir $ZSH_CUSTOM/plugins/pdm
 pdm completion zsh > $ZSH_CUSTOM/plugins/pdm/_pdm
 ```
-No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins no arquivo `~/.zshrc`:
+No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins no arquivo `~/.zshrc`.
 
+**1.2.2 Habilitar o PEP 582 no PDM**
+
+```shell
+pdm --pep582 >> ~/.zshrc #zsh
+pdm --pep582 >> ~/.bash_profile #bash
+```
+
+**1.2.3 Instalação de plugins do PDM**
+
+-   Instale o plugin **pdm-vscode**, que permite a integração do **PDM** com o **VS Code**:
+
+```shell
+pdm add pdm-vscode
+```
+
+- Instale o plugin pdm-autoexport, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
+
+```shell
+pdm add pdm-autoexport
+```
+
+**1.3 Instalação do Python**
 -   Verifique se o **python** está instalado:
 
-```bash
+```shell
 python --version
 python3 --version
 ```
 
-**Criação da pasta do projeto**
+# 2. Criação do projeto
+
+**2.1 Criação da pasta do projeto**
 
 -   Abra o navegador de arquivos:
 
     `Windows + E`
 
--   Entre na pasta **Documentos**. **Não trabalhe na Área de Trabalho.**
--   Crie uma pasta chamada `livraria` para o seu projeto.
--   **IMPORTANTE**: certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (**se você não fizer isso, terá que recriar todo o projeto**).
+-   Entre na pasta **Documentos** ou crie uma pasta **projetos**. 
+-   Crie uma pasta chamada `livraria` (ou outro nome de sua preferência) para o seu projeto.
+-   **IMPORTANTE**: 
+    -   Não trabalhe na `Área de Trabalho` ou na pasta `Downloads`.
+    -   Certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (**se você não fizer isso, terá que recriar todo o projeto**).
 -   Dentro dessa pasta, abra um terminal:
 
     _Botao direito do mouse -> Abrir terminal aqui_
 
-**Criação do ambiente virtual**
+**2.2 Criação do projeto no PDM**
 
--   Crie o ambiente virtual usado o **poetry**:
+-   Crie o projeto com o **PDM**:
 
-```bash
-poetry init
+```shell
+pdm init
 ```
 
 -   Você passará por uma tela semelhante a essa:
 
-```bash
-This command will guide you through creating your pyproject.toml config.
-
-Package name [livraria]:
-Version [0.1.0]:
-Description []:
-Author [Marco André Mendes <marcoandre@gmail.com>, n to skip]:
-License []:
-Compatible Python versions [^3.10]:
-
-Would you like to define your main dependencies interactively? (yes/no) [yes] no
-Would you like to define your development dependencies interactively? (yes/no) [yes] no
-Generated file
-
-[tool.poetry]
-name = "livraria"
-version = "0.1.0"
-description = ""
-authors = ["Marco André Mendes <marcoandre@gmail.com>"]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-[tool.poetry.dev-dependencies]
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-
-Do you confirm generation? (yes/no) [yes] yes
+```shell
+Creating a pyproject.toml for PDM...
+Please enter the Python interpreter to use
+1. /usr/bin/python (3.10)
+2. /usr/bin/python3.10 (3.10)
+3. /home/marco/.local/share/pdm/venv/bin/python (3.10)
+Please select (0): 
+Using Python interpreter: /usr/bin/python (3.10)
+Would you like to create a virtualenv with /usr/bin/python? [y/n] (y): n
+You are using the PEP 582 mode, no virtualenv is created.
+For more info, please visit https://peps.python.org/pep-0582/
+Is the project a library that will be uploaded to PyPI [y/n] (n): n
+License(SPDX name) (MIT): 
+Author name (Marco André Mendes): 
+Author email (marcoandre@gmail.com): 
+Python requires('*' to allow any) (>=3.10): 
+Changes are written to pyproject.toml.
 ```
 
--   Verifique que o arquivo `pyproject.toml` foi criado.
--   Ative o ambiente virtual recém criado:
+- Entre na pasta do projeto:
 
-```bash
-poetry shell
+```shell
+cd livraria
 ```
 
--   Para verificar o tamanho da pasta do ambiente virtual:
+-   Verifique se o **PDM** criou o arquivo `pyproject.toml`:
 
-```bash
-du -sh .venv
+```shell
+ls -l pyproject.toml
 ```
 
-**Instalação do Django**
+**2.3 Abrindo o projeto no VS Code**
 
--   Instale o **Django** no ambiente virtual:
+- Abra o projeto no VS Code:
 
-```bash
-poetry add django
+```shell
+code .
 ```
 
--   Verifique que o arquivo `poetry.lock` foi criado.
--   Verifique se o **Django** está instalado:
+Você pode abrir o projeto no VS Code de duas formas:
 
-```bash
-django-admin
+-  Digitando o comando `code .` no terminal.
+-  Pelo gereciador de arquivos, clicando com o botão direito do mouse na pasta do projeto e selecionando a opção **Abrir com o VS Code**.
+-   Clicando no botão **Abrir pasta** e selecionando a pasta do projeto.
+
+**IMPORTANTE:**
+-  Sempre abra a **pasta raiz do projeto** no VS Code (repita em voz alta: _"**Nunca** abra um **arquivo**, **sempre** abra a **pasta**."_).**
+- O VS Code precisa dessa informação de qual é a pasta raiz do projeto para funcionar corretamente.
+
+**2.4 Instalação do Django**
+
+-   Instale o **Django** no seu projeto:
+
+```shell
+pdm add django
 ```
 
-Se tudo der certo, ele mostrará as opções do `django-admin` na tela.
+-   Verifique se o arquivo `pdm.lock` foi criado:
+
+```shell
+ls -l pdm.lock
+```
+
+-   Verifique a versão do **Django** instalado:
+
+```shell
+pdm run django-admin --version            
+```
 
 **Criação do projeto no Django**
 
+Um projeto no **Django** é uma pasta com um conjunto de arquivos e pastas que contém o código do seu site.
+
 -   Crie o projeto no **Django**:
 
-```bash
-django-admin startproject livraria .
+```shell
+pdm run django-admin startproject config .
 ```
 
 **IMPORTANTE**: o ponto no final é importante. Ele indica que o projeto será criado na pasta atual.
@@ -175,43 +217,30 @@ O projeto criado ficará assim:
 
 ```
 .
-├── livraria
+├── .vscode
+│   ├── settings.json
+├── config
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
 ├── manage.py
-├── poetry.lock
-└── pyproject.toml
+├── pdm.lock
+├── pyproject.toml
+└── requirements.txt
 ```
 
-## Abrindo o projeto no vscode
+**Abra um terminal no VS Code**
 
--   **Abra a **pasta raiz do projeto** no vscode (repita em voz alta: _"Nunca abra um arquivo, sempre abra a pasta."_).**
--   Opcionalmente, abra o code pelo terminal:
-
-```bash
-code .
-```
-
-**Configurando o interpretador Python e o ambiente virtual**
-
--   Ao abrir um arquivo `.py`, verifique se o interpretador Python correto está configurado.
-    -   Clique na opção do interpretador Python na barra inferior do **vscode**, ao lado da palavra `Python`. O correto seria algo como `.'venv/':poetry`.
-    -   Se não estiver assim, clique e configure.
-    -   Se essa opção não aparecer, configure a variavel `Venv Path` nos configurações do **vscode**.
-    -   Tecle `Control + ,` e procure por `venv`.
--   Com essas configurações feitas, feche todos os terminais e abra novamente.
--   **O ambiente virtual deve ser ativado automaticamente cada vez que você abrir um terminal a partir de agora.**
--   Dentro do vscode, abra um terminal (`Control+Shift+'`)
+ Ctrl + Shift + `
 
 **Rodando o servidor de desenvolvimento**
 
 -   Para executar o projeto, digite no terminal:
 
-```bash
-python manage.py runserver
+```shell
+pdm run python manage.py runserver
 ```
 
 -   Verifique se o projeto está rodando:
@@ -221,7 +250,7 @@ python manage.py runserver
 
 -   Ao rodar o projeto pela primeira vez, o arquivo `db.sqlite3` é criado.
 -   Também aparecem mensagens de erro importantes.
--   Abra o arquivo `db.sqlite3` dentro do **vscode**.
+-   Abra o arquivo `db.sqlite3` dentro do **VS Code**.
 -   Verifique que ele ainda não possui nenhuma tabela.
 
 -   Vamos abrir cada um desses arquivos e verificar para que eles servem, principalmente os seguintes:
@@ -233,7 +262,7 @@ python manage.py runserver
 
 **Executando o servidor**
 
-Desse ponto em diante, abra um outro terminal lado a lado no **vscode**, mantendo sempre o django em execução (`runserver`) no outro terminal.
+Desse ponto em diante, abra um outro terminal lado a lado no **VS Code**, mantendo sempre o django em execução (`runserver`) no outro terminal.
 
 Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute novamente.
 
@@ -241,8 +270,8 @@ Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute
 
 -   Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
 
-```bash
-python manage.py migrate
+```shell
+pdm run python manage.py migrate
 ```
 
 Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) está em execução.
@@ -251,8 +280,8 @@ Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) es
 
 -   Crie o super usuário para poder fazer o login:
 
-```bash
-python manage.py createsuperuser
+```shell
+pdm run python manage.py createsuperuser
 ```
 
 -   Agora sim, seu projeto está rodando e você consegue entrar no `Admin`:
@@ -260,100 +289,30 @@ python manage.py createsuperuser
 -   Crie mais 2 usuários de teste.
 -   Entre no arquivo de banco de dados (`db.sqlite3`), e verifique se os registros foram criados.
 
-# 2. Criando a aplicação
+**Exercício**
 
-**Removendo o projeto**
+- Apague o projeto e crie novamente, seguindo as instruções acima. 
+- Verifique se o projeto está rodando e se o `Admin` está em execução. 
+- Observe que configurações precisam ser feitas novamente e quais não foram mais necessárias.
 
--   Abra o terminal e remova o projeto:
+# 3. Criação de uma aplicação
 
-```bash
-rm -rf livraria
-```
-
-**Recriando o projeto Django**
-
-Siga as seguintes instruções para criar novamente o projeto.
-
--   Abra o terminal e crie uma pasta para o projeto:
-
-```bash
-mkdir livraria
-```
-
--   Entre na pasta:
-
-```bash
-cd livraria
-```
-
--   Crie o ambiente virtual:
-
-```bash
-poetry init
-```
-
--   Ative o ambiente virtual:
-
-```bash
-poetry shell
-```
-
--   Instale o Django:
-
-```bash
-poetry add django
-```
-
--   Crie o projeto:
-
-```bash
-django-admin startproject livraria .
-```
-
--   Migre o banco de dados:
-
-```bash
-python manage.py migrate
-```
-
--   Crie o super usuário:
-
-```bash
-python manage.py createsuperuser
-```
-
--   Abra o projeto no vscode:
-
-```bash
-code .
-```
-
--   Abra um terminal no vscode:
-
-```bash
-Control+Shift+'
-```
-
--   Execute o servidor:
-
-```bash
-python manage.py runserver
-```
+Uma aplicação no **Django** é um conjunto de arquivos e pastas que contém o código de uma funcionalidade específica do seu site.
 
 **Criando uma aplicação**
 
 -   Para criar uma aplicação, execute o seguinte comando:
 
-```bash
-python manage.py startapp core
+```shell
+pdm run python manage.py startapp livraria
 ```
 
--   Acrescente a aplicação `core` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
+-   Acrescente a aplicação `livraria` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 
 ```python
 INSTALLED_APPS = [
     ...
-    "core",
+    "livraria",
 ]
 ```
 
@@ -361,7 +320,7 @@ Após criar a aplicação, sua pasta deve parecer com isso:
 
 ```
 .
-├── core
+├── livraria
 │   ├── admin.py
 │   ├── apps.py
 │   ├── __init__.py
@@ -370,23 +329,23 @@ Após criar a aplicação, sua pasta deve parecer com isso:
 │   ├── tests.py
 │   └── views.py
 ├── db.sqlite3
-├── livraria
+├── config
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
 ├── manage.py
-├── poetry.lock
-└── pyproject.toml
-
+├── pdm.lock
+├── pyproject.toml
+└── requirements.txt
 ```
 
-Dentro da pasta `core` foram criados alguns arquivos, mas os mais importantes são:
+Dentro da pasta `livraria` foram criados alguns arquivos, mas os mais importantes são:
 
 -   `admin.py`: é o arquivo de configuração do `Admin` da aplicação.
 -   `models.py`: é o arquivo de configuração dos modelos da aplicação.
--   `views.py`: é o arquivo de configuração das views da aplicação.
+-   `views.py`: é o arquivo de configuração das `views` da aplicação.
 -   `migrations`: é a pasta de migrações da aplicação.
 
 Posteriormente, iremos modificar esses arquivos, bem como incluir alguns arquivos novos.
@@ -395,10 +354,9 @@ Posteriormente, iremos modificar esses arquivos, bem como incluir alguns arquivo
 
 Nesse ponto, temos:
 
--   O poetry instalado e configurado;
--   O ambiente virtual **Python** criado;
--   O projeto `livraria` criado;
--   A aplicação `core` criada e instalada no projeto.
+-   O projeto no `PDM` criado;
+-   O projeto `config` criado;
+-   A aplicação `livraria` criada e instalada no projeto.
 
 **Criação do primeiro modelo de dados**
 
@@ -429,17 +387,17 @@ Precisamos agora efetivar a criação da tabela no banco de dados.
 
 -   Crie as migrações:
 
-```bash
-python manage.py makemigrations
+```shell
+pdm run python manage.py makemigrations
 ```
 
 -   Execute as migrações:
 
-```bash
-python manage.py migrate
+```shell
+pdm run python manage.py migrate
 ```
 
--   Acesse o arquivo do banco de dados e verifique se a tabela `core_categoria` foi criada.
+-   Acesse o arquivo do banco de dados e verifique se a tabela `livraria_categoria` foi criada.
 -   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
 
 **Inclusão no Admin**
@@ -508,7 +466,7 @@ class Editora(models.Model):
 
 O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True` indica que o campo pode ser deixado em branco.
 
-Não esqueça de que a cada criação de novas models é necessário:
+Não esqueça de que a cada criação de novas `models` é necessário:
 
 -   Registrar a model no arquivo `admin.py`;
 -   Fazer as migrações (`makemigrations`);
@@ -553,7 +511,7 @@ class Categoria(models.Model):
 
 ---
 
-# 4. Colocando o projeto no **github**
+# 4. Colocando o projeto no **GitHub**
 
 Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
@@ -565,7 +523,7 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
 **Configure o projeto git**
 
--   Verifique se já não existe uma conta conectada ao github no **vscode**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
+-   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
 
@@ -573,9 +531,9 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
     rm -Rf ~/.git
 
--   Recarregue a janela do **vscode**:
+-   Recarregue a janela do **VS Code**:
 
-```bash
+```shell
 Control + Shift + P + "Recarregar a Janela"
 ```
 
@@ -583,22 +541,22 @@ Control + Shift + P + "Recarregar a Janela"
 
 **Configure as variáveis do git**
 
--   Informe seu nome e email no git. Para isso, abra o terminal do vscode e digite:
+-   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
 
-```bash
+```shell
 git config user.name "Seu Nome"
 git config user.email "seuemailnogithub@gmail.com"
 ```
 
 -   Para verificar se as variáveis foram configuradas corretamente, digite:
 
-```bash
+```shell
 git config -l
 ```
 
 -   Se aparecer outro nome de usuário ou outras informações estranhas, remova o arquivo com as configurações globais do git:
 
-```bash
+```shell
 rm ~/.gitconfig
 ```
 
@@ -614,7 +572,7 @@ Vamos criar um arquivo chamado `.gitignore` na raiz do projeto. Esse arquivo ser
 -   Selecione todo o texto (`Control + A`) e copie (`Control + C`).
 -   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`:
 
-```bash
+```shell
 touch .gitignore
 ```
 
@@ -624,29 +582,29 @@ touch .gitignore
 **Faça a publicação**
 
 -   Escreva uma descrição para o commit (`"commit Inicial"`).
--   Tecle `Control+ENTER` para fazer o envio para o servidor do **github**.
--   Leia atentamente as instruções relacionadas a autenticação no **github** e criação do projeto.
--   Ao final, seu projeto será incluído no **github** e você poderá visulizá-lo lá.
+-   Tecle `Control+ENTER` para fazer o envio para o servidor do **GitHub**.
+-   Leia atentamente as instruções relacionadas a autenticação no **GitHub** e criação do projeto.
+-   Ao final, seu projeto será incluído no **GitHub** e você poderá visulizá-lo lá.
 
 **Fazendo alterações no projeto e enviando novamente**
 
-Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **github**.
+Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **GitHub**.
 
 -   Abra o arquivo `models.py`:
 
-```bash
+```shell
 Control + P + models.py
 ```
 
 -   Selecione todo o texto (`Control + A`) e mande formatar o código:
 
-```bash
+```shell
 Control + Shift + I
 ```
 
 ou
 
-```bash
+```shell
 Control + Shift + P + "Formatar o Documento"
 ```
 
@@ -655,10 +613,10 @@ Control + Shift + P + "Formatar o Documento"
 -   Faça a mesma coisa com o arquivo `admin.py`.
 -   Altere outros arquivos. Por exemplo: apague os comentários iniciais dos arquivos `settings.py` e `urls.py`.
 -   Nesse ponto, você já deve ter vários arquivos modificados.
--   Vá para a aba do **github** no **vscode** e coloque o nome do **commit** como sendo `Instalação do black`.
+-   Vá para a aba do **GitHub** no **VS Code** e coloque o nome do **commit** como sendo `Instalação do black`.
 -   Confirme o **commit** teclando `Control+ENTER`.
 -   Faça o envio (`push`), clicando no ícone de envio.
--   Vá no seu projeto no **github**, atualize a página e verifique as modificações.
+-   Vá no seu projeto no **GitHub**, atualize a página e verifique as modificações.
 
 **Escrevendo uma boa mensagem de commit**
 
@@ -669,56 +627,56 @@ Control + Shift + P + "Formatar o Documento"
 
 **Baixando novamente o projeto**
 
-Agora que seu projeto está no **github**, você pode baixá-lo onde quiser, seja na aula, em casa ou no trabalho, por exemplo. Vamos testar isso.
+Agora que seu projeto está no **GitHub**, você pode baixá-lo onde quiser, seja na aula, em casa ou no trabalho, por exemplo. Vamos testar isso.
 
 **A partir desse ponto, vamos repetir uma série de passos que já fizemos nas aulas anteriores. Em caso de dúvidas, volte nessas aulas para mais detalhes.**
 
 -   Abra o terminal na pasta superior à pasta do projeto:
 
-```bash
+```shell
 Control + Alt + T
 ```
 
 -   Apague todo o projeto do seu computador (_isso mesmo, coragem_):
 
-```bash
+```shell
 rm -rf livraria
 ```
 
 -   Crie novamente uma pasta vazia para hospedá-lo:
 
-```bash
+```shell
 mkdir livraria
 ```
 
--   Vá no projeto no **github**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
+-   Vá no projeto no **GitHub**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
 -   Clone o projeto para a pasta atual:
 
-```bash
+```shell
 git clone https://github.com/marrcandre/livraria.git
 ```
 
 -   Vá para a pasta do projeto:
 
-```bash
+```shell
 cd livraria
 ```
 
--   Abra o projeto no **vscode**:
+-   Abra o projeto no **VS Code**:
 
-```bash
+```shell
 code .
 ```
 
 -   Instale as dependências do projeto e ative o ambiente virtual:
 
-```bash
+```shell
 poetry install && poetry shell
 ```
 
 -   Rode o servidor:
 
-```bash
+```shell
 python manage.py runserver
 ```
 
@@ -730,9 +688,9 @@ Pronto! Seu projeto está de volta no computador e rodando.
 
 # 5. Criando os outros modelos de dados
 
-**Colocando o projeto livraria no github**
+**Colocando o projeto livraria no **GitHub****
 
-Agora que você conseguiu colocar o projeto `garagem` no **github**, coloque também o projeto `livraria`.
+Agora que você conseguiu colocar o projeto `garagem` no **GitHub**, coloque também o projeto `livraria`.
 
 **Criando o modelo de dados Autor**
 
@@ -798,7 +756,7 @@ No `Django Shell`, é possível testar o acesso a todos os livros de uma categor
 
 -   Abrar o Django shell:
 
-```bash
+```shell
 python manage.py shell
 ```
 
@@ -834,13 +792,13 @@ admin.site.register(Livro)
 
 -   Prepare as migrações:
 
-```bash
+```shell
 python manage.py makemigrations
 ```
 
 -   Efetive as migrações:
 
-```bash
+```shell
 python manage.py migrate
 ```
 
@@ -857,7 +815,7 @@ Feito isso, verifique se tudo funcionou.
 
 -   Instale o `djangorestframework`:
 
-```bash
+```shell
 poetry add djangorestframework
 ```
 
@@ -875,9 +833,9 @@ INSTALLED_APPS = [
 
 Um _serializer_ é um objeto que transforma um objeto do banco de dados em um objeto JSON.
 
--   Crie o arquivo `serializers.py` no diretório `core`:
+-   Crie o arquivo `serializers.py` no diretório `livraria`:
 
-```bash
+```shell
 touch core/serializers.py
 ```
 
@@ -969,7 +927,7 @@ A interface do DRF é funcional, porém simples e limitada. Algumas opções de 
 
 -   [Insomnia](https://docs.insomnia.rest/insomnia/install)
 -   [Postman](https://www.postman.com/downloads/)
--   [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **vscode**)
+-   [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **VS Code**)
 
 **Testando a API e as ferramentas**
 
@@ -1107,7 +1065,7 @@ class LivroViewSet(ModelViewSet):
 
 Clone o repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
 
-```bash
+```shell
 npm install
 npm run dev
 ```
@@ -1126,7 +1084,7 @@ Adicionar o Django CORS headers permite que seu projeto seja acessado de outros 
 
 -   Instale o pacote `django-cors-headers`:
 
-```bash
+```shell
 poetry add django-cors-headers
 ```
 
@@ -1210,7 +1168,7 @@ O gunicorn é um servidor web que permite que sua aplicação seja executada em 
 
 -   Instale o gunicorn:
 
-```bash
+```shell
 poetry add gunicorn
 ```
 
@@ -1220,13 +1178,13 @@ O arquivo `Procfile` é um arquivo de configuração do Heroku que permite que v
 
 -   Crie o arquivo `Procfile`:
 
-```bash
+```shell
 touch Procfile
 ```
 
 -   Adicione ao arquivo `Procfile` o seguinte conteúdo:
 
-```bash
+```shell
 web: gunicorn livraria.wsgi
 ```
 
@@ -1238,7 +1196,7 @@ Whitenoise é um middleware que permite que sua aplicação seja servida de form
 
 -   Instale o whitenoise:
 
-```bash
+```shell
 poetry add whitenoise
 ```
 
@@ -1276,7 +1234,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 -   Colete os arquivos estáticos:
 
-```bash
+```shell
 python manage.py collectstatic --noinput
 ```
 
@@ -1286,7 +1244,7 @@ O arquivo `requirements.txt` é um arquivo de configuração do Heroku que permi
 
 -   Execute o comando abaixo para criar o arquivo `requirements.txt`:
 
-```bash
+```shell
 poetry export --without-hashes > requirements.txt
 ```
 
@@ -1294,7 +1252,7 @@ Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pac
 
 **Criação do projeto no Heroku**
 
--   Garanta que a última versão do seu projeto esteja no **github**.
+-   Garanta que a última versão do seu projeto esteja no **GitHub**.
 -   Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
 -   Escolha a opção **Conectar no GitHub**
 -   Selecione o repositório desejado.
@@ -1319,13 +1277,13 @@ autores = models.ManyToManyField(Autor, related_name="livros")
 
 -   Crie as migrações:
 
-```bash
+```shell
 python manage.py makemigrations
 ```
 
 -   Execute as migrações:
 
-```bash
+```shell
 python manage.py migrate
 ```
 
@@ -1477,7 +1435,7 @@ O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
 -   Para instalar o SimpleJWT, execute o seguinte comando:
 
-```bash
+```shell
 poetry add djangorestframework-simplejwt
 ```
 
@@ -1639,7 +1597,7 @@ Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autoriz
 Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
 
 -   Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
--   Os conflitos no **github** são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
+-   Os conflitos no **GitHub** são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
 
 Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, organizados dentro de uma pasta.
 
@@ -1649,21 +1607,21 @@ Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, o
 
 Siga os passos:
 
--   Crie uma pasta `models` dentro da pasta da aplicação (`core`):
+-   Crie uma pasta `models` dentro da pasta da aplicação (`livraria`):
 
-```bash
+```shell
 mkdir core/models
 ```
 
 -   Crie um arquivo `__init__.py` dentro da pasta `models` recém criada:
 
-```bash
+```shell
 touch core/models/__init__.py
 ```
 
 -   Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`:
 
-```bash
+```shell
 touch core/models/autor.py
 ```
 
@@ -1760,7 +1718,7 @@ Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário
 
 Vamos aos passos:
 
--   Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `core`.
+-   Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `livraria`.
 -   Inclua o seguinte conteúdo:
 
 ```python
@@ -1788,7 +1746,7 @@ AUTH_USER_MODEL = "core.Usuario"
 
 -   Remova o banco de dados e as migrações e crie novamente:
 
-```bash
+```shell
 rm db.sqlite3
 rm -rf core/migrations
 python manage.py makemigrations core
@@ -1836,13 +1794,13 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 -   Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
 
-```bash
+```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/uploader.zip
 ```
 
 -   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
 
-```bash
+```shell
 unzip uploader.zip
 ```
 
@@ -1871,13 +1829,13 @@ O projeto ficará com uma estrutura parecida com essa:
 
 -   Instalar os pacotes `python-magic` e `Pillow`:
 
-```bash
+```shell
 poetry add python-magic Pillow
 ```
 
 -   Aproveite para atualizar o arquivo requirements.txt:
 
-```bash
+```shell
 poetry export --without-hashes > requirements.txt
 ```
 
@@ -1917,14 +1875,14 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 
 -   Faça a migração do banco de dados:
 
-```bash
+```shell
 python manage.py makemigrations uploader
 python manage.py migrate
 ```
 
 **Uso em modelos**
 
--   Edite o arquivo `models/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+-   Edite o arquivo `models/livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1945,14 +1903,14 @@ class Livro(models.Model):
 
 -   Faça novamente a migração do banco de dados:
 
-```bash
+```shell
 python manage.py makemigrations core
 python manage.py migrate
 ```
 
 **Uso no serializer**
 
--   Edite o arquivo `serializers\livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+-   Edite o arquivo `serializers\livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
 
 ```python
 ...
@@ -1997,13 +1955,13 @@ Vamos instalar uma aplicação para gerar a documentação da API usando o Swagg
 
 -   Instale o pacote `drf-spectacular`:
 
-```bash
+```shell
 poetry add drf-spectacular
 ```
 
 -   Não esqueça de atualizar o arquivo `requirements.txt`:
 
-```bash
+```shell
 poetry export --without-hashes > requirements.txt
 ```
 
@@ -2088,7 +2046,7 @@ O `isort` é um utilitário para ordenar as importações de forma automática.
 
 -   Instale o pacote `isort`:
 
-```bash
+```shell
 poetry add -G dev isort
 ```
 
@@ -2098,13 +2056,13 @@ poetry add -G dev isort
 
 -   Crie o arquivo `.isort.cfg` na raiz do projeto:
 
-```bash
+```shell
 touch .isort.cfg
 ```
 
 -   Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
 
-```bash
+```shell
 [isort]
 default_section = THIRDPARTY
 known_first_party = livraria  # change it for the name of your django project
@@ -2119,7 +2077,7 @@ profile=black
 
 -   Execute o comando `isort`:
 
-```bash
+```shell
 isort .
 ```
 
@@ -2131,13 +2089,13 @@ Vamos aprender a fazer o _dump_ e _load_ de dados.
 
 -   Execute o comando `dumpdata`:
 
-```bash
+```shell
 python manage.py dumpdata --indent 2 > livraria_bkp.json
 ```
 
 -   Observe que o arquivo `livraria_bkp.json` foi criado:
 
-```bash
+```shell
 code livraria_bkp.json
 ```
 
@@ -2145,7 +2103,7 @@ code livraria_bkp.json
 
 -   Baixe o arquivo `livraria.json`:
 
-```bash
+```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 ```
 
@@ -2153,13 +2111,13 @@ wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 
 -   Execute o comando `loaddata`:
 
-```bash
+```shell
 python manage.py loaddata livraria.json
 ```
 
 -   Observe que os dados foram carregados:
 
-```bash
+```shell
 python manage.py shell
 >>> from core.models import Livro
 >>> Livro.objects.all()
@@ -2173,11 +2131,11 @@ O Django Shell é uma ferramenta para interagir com o banco de dados.
 
 -   Acesse o shell:
 
-```bash
+```shell
 python manage.py shell
 ```
 
--   Importe os modelos de `core.models`:
+-   Importe os modelos de `livraria.models`:
 
 ```python
 >>> from core.models import Autor, Categoria, Editora, Livro
@@ -2274,7 +2232,7 @@ O Admin é uma ferramenta para gerenciar os dados do banco de dados. Ele pode se
 
 **Customização do Admin**
 
--   Edite o arquivo `core/admin.py`:
+-   Edite o arquivo `livraria/admin.py`:
 
 ```python
 ...
@@ -2314,11 +2272,11 @@ class LivroAdmin(admin.ModelAdmin):
 
 # 24. Configurando variáveis de ambiente
 
-É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no GitHub! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
+É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no **GitHub**! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
 
 -   Instale o pacote `django_environ`:
 
-```bash
+```shell
 poetry add django-environ
 ```
 
@@ -2341,7 +2299,7 @@ IMPORTANTE: Após incluir essas variáveis, remova as outras referências a elas
 
 -   Crie o arquivo `.env`:
 
-```bash
+```shell
 touch .env
 ```
 
@@ -2359,13 +2317,13 @@ DATABASE_URL=sqlite:///db.sqlite3
 - Feito isso, esse arquivo não será mais versionado pelo Git.
 - Para ter um modelo de arquivo `.env`, crie um arquivo `.env.example` e adicione-o ao Git.
 
-```bash
+```shell
 cp .env .env.example
 ```
 
 # 25. Publicação no PythonAnywhere
 
-O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no GitHub.
+O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no **GitHub**.
 
 **Criação da conta no PythonAnywhere**
 
@@ -2382,8 +2340,8 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 
 **IMPORTANTE:**
 
--   Substitua `seu_usuario` pelo seu usuário do GitHub.
--   Substitua `seu_projeto` pelo nome do seu projeto no GitHub.
+-   Substitua `seu_usuario` pelo seu usuário do **GitHub**.
+-   Substitua `seu_projeto` pelo nome do seu projeto no **GitHub**.
 -   Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
 -   Substitua `seu_bd` pelo nome do seu banco de dados.
 -   Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
@@ -2393,7 +2351,7 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 
 -   Instale o pacote `libmysqlclient-dev`:
 
-```bash
+```shell
 sudo apt install libmysqlclient-dev
 ```
 
@@ -2401,7 +2359,7 @@ O pacote `libmysqlclient-dev` é necessário para instalar o módulo `mysqlclien
 
 -   Instale o módulo `mysqlclient`:
 
-```bash
+```shell
 poetry add mysqlclient
 ```
 
@@ -2409,7 +2367,7 @@ O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados 
 
 -   Atualize o arquivo requirements.txt:
 
-```bash
+```shell
 poetry export --without-hashes > requirements.txt
 ```
 
@@ -2426,7 +2384,7 @@ DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-
 
 -   Inclua o seguinte conteúdo no arquivo .virtualenvs/postactivate:
 
-```bash
+```shell
 echo "Copiando o arquivo .env para a pasta do projeto..."
 cp ~/.env ~/seu_usuario.pythonanywhere.com/
 ```
@@ -2437,7 +2395,7 @@ Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnyw
 
 -   Para gerar uma nova SECRET_KEY (chave secreta), a ser colocada no arquivo `.env`, execute o comando:
 
-```bash
+```shell
 python -c "import secrets; print(secrets.token_urlsafe())"
 ```
 
@@ -2459,31 +2417,31 @@ IMPORTANTE:
 
 -   Instale o cliente do PythonAnywhere no console:
 
-```bash
+```shell
 pip install pythonanywhere --user
 ```
 
 **Criação do projeto no PythonAnywhere**
 
-O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAnywhere a partir de um repositório do GitHub:
+O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAnywhere a partir de um repositório do **GitHub**:
 
--   Faz o clone do repositório do GitHub.
+-   Faz o clone do repositório do **GitHub**.
 -   Cria um virtualenv.
 -   Instala as dependências do projeto.
 -   Cria uma webapp.
 -   Cria o arquivo de configuração `wsgi.py`.
 -   Adiciona os arquivos estáticos.
 
--   No console do PythonAnywhere, execute o comando abaixo, substituindo `https://github.com/seu_usuario/seu_projeto.git` pelo link do seu repositório no GitHub (aquele mesmo que você usou para clonar o projeto):
+-   No console do PythonAnywhere, execute o comando abaixo, substituindo `https://github.com/seu_usuario/seu_projeto.git` pelo link do seu repositório no **GitHub** (aquele mesmo que você usou para clonar o projeto):
 
-```bash
+```shell
 pa_autoconfigure_django.py --python=3.8 --nuke https://github.com/seu_usuario/seu_projeto.git 
 ```
 **Ativando o virtualenv (se necessário)**
 
 -   Se necessário, no console, ative o `virtualenv`:
 
-```bash
+```shell
 workon marcoandre.pythonanywhere.com
 ```
 
@@ -2491,7 +2449,7 @@ workon marcoandre.pythonanywhere.com
 
 -   No console, execute o comando abaixo para migrar o banco de dados:
 
-```bash
+```shell
 python manage.py migrate
 ```
 
@@ -2499,7 +2457,7 @@ python manage.py migrate
 
 -   Carregue os dados iniciais:
 
-```bash
+```shell
 python manage.py loaddata livraria.json
 ```
 
@@ -2507,23 +2465,23 @@ python manage.py loaddata livraria.json
 
 Para remover um banco de dados, acesse https://www.pythonanywhere.com/dashboard/, na opção `Databases` e digite:
 
-```bash
+```shell
 drop database seu_usuario$seu_bd;
 ```
 
 **IMPORTANTE:** Não esqueça de substituir `seu_usuario` e `seu_bd` pelos seus valores.
 
-**Baixar novamente o projeto do GitHub (se necessário)**
+**Baixar novamente o projeto do **GitHub** (se necessário)**
 
--   Se você precisar atualizar o projeto do GitHub, sem precisar executar todo o processo novamente execute o comando:
+-   Se você precisar atualizar o projeto do **GitHub**, sem precisar executar todo o processo novamente execute o comando:
 
-```bash
+```shell
 git pull
 ```
 
 -   Em caso de erro, execute o comando:
 
-```bash
+```shell
 git checkout -- .
 git clean -f -d
 git pull
@@ -2531,13 +2489,13 @@ git pull
 
 -   Se houverem alterações no arquivo `requirements.txt`, execute o comando:
 
-```bash
+```shell
 pip install -r requirements.txt
 ```
 
 -   Se houverem alterações nos modelos, faça a migração:
 
-```bash
+```shell
 python manage.py migrate
 ```
 
@@ -2566,7 +2524,7 @@ class Usuario(AbstractUser):
 
 - Faça as migrações:
 
-```bash
+```shell
 python manage.py makemigrations core
 python manage.py migrate
 ```
