@@ -1,63 +1,78 @@
 # Django com DRF
 
-Tutorial para desenvolvimento de APIs REST usando o Django, com DRF (Django Rest Framework).
+Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework).
 
 # 1. Preparação do ambiente
 
 **Instalação de extensões no vscode**
 
--   Instale algumas extensões para o **vscode**:
+Instale as extensoẽs do **vscode** de sua preferência. 
 
-    -   Intellicode
-    -   Material Icon Theme
-    -   Peacock
-    -   Portuguese (Brazil) Language Pack for Visual Studio Code
-    -   Prettier - Code formatter
-    -   Python
-    -   RapidAPI Client
-    -   SqLite Viewer
+- Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **vscode** e pesquisando pelo nome da extensão.
+-   Eu recomendo as seguintes:
+    -   Better TOML (Syntaxe Destacada para TOML)
+    -   ESLint (JavaScript)
+    -   Intellicode (Desenvolvimento Inteligente)
+    -   isort (Organização de imports)
+    -   Material Icon Theme (Temas de ícones)
+    -   Peacock (Personalização de cores)
+    -   Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do vscode)
+    -   Prettier (Formatação de código)
+    -   Python (Uhaa!)
+    -   RapidAPI Client (Teste de APIs)
+    -   SqLite Viewer (Visualização de bancos de dados SQLite)
+    -   TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)
+    -   Vue Language Features (Desenvolvimento de aplicações Vue.js)
 
-**Instalação do poetry**
+Você pode configurar a sincronização das extensões entre os computadores. Para isso, você precisa fazer login com a conta do **GitHub** ou da **Microsoft** no vscode. Para isso, clique no ícone de engrenagem no canto inferior esquerdo da tela do vscode e clique em `Ativar a Sincronização de Configurações`.
+
+**Instalação do PDM**
+
+As instruções a seguir são para o **Linux Manjaro**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
 
 -   Abra um terminal:
 
     `Ctrl + Alt + T`
 
--   Verifique se o **poetry** está instalado:
+-   Verifique se o **PDM** está instalado:
 
 ```bash
-poetry -V
+pdm -V
 ```
 
--   Se a versão for inferior a 1.2, instale a versão mais recente:
+-   Se a versão for inferior a 2, instale a versão mais recente:
 
 ```bash
-curl -sSL https://install.python-poetry.org | python3 -
+curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
--   Instale o `bash_completion` do `poetry`:
+-   Ative o auto preenchimento do **PDM**, conforme o seu shell:
+
+    -   Para o **bash**:
 
 ```bash
-poetry completions bash >> ~/.bash_completion
+pdm completions bash >> ~/.bash_completion
 ```
 
--   Atualize o `setuptools`:
+    -  Para o **zsh**:
 
 ```bash
-    pip install -U pip setuptools
+pdm completions zsh >> ~/.zshrc
 ```
+
+    - Para o **Oh My Zsh**:
+
+```bash
+mkdir $ZSH_CUSTOM/plugins/pdm
+pdm completion zsh > $ZSH_CUSTOM/plugins/pdm/_pdm
+```
+No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins no arquivo `~/.zshrc`:
 
 -   Verifique se o **python** está instalado:
 
 ```bash
 python --version
 python3 --version
-```
-
--   Configure o **poetry** para criar a pasta do ambiente virtual dentro da pasta do projeto:
-
-```bash
-poetry config virtualenvs.in-project true
 ```
 
 **Criação da pasta do projeto**
