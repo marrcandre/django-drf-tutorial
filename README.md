@@ -485,11 +485,15 @@ admin.site.register(Editora)
 
 Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados.
 
-# 3. Criando um segundo projeto
+# 4. Criando um segundo projeto
 
-Seguindo aquilo que você já aprendeu, crie um **novo projeto** chamado **garagem**.
+Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
 
--   Crie os seguintes modelos nesse projeto e inclua dados nas tabelas.
+- Nome do projeto: **config**.
+- Nome da aplicação: **garagem**.
+- Crie os modelos conforme a definição abaixo.
+- Registre as models no `Admin`.
+- Inclua alguns registros no banco de dados.
 
 ```python
 from django.db import models
@@ -499,7 +503,7 @@ class Marca(models.Model):
     nome = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.nome
+        return self.nome.upper()
 
 
 class Categoria(models.Model):
@@ -511,7 +515,7 @@ class Categoria(models.Model):
 
 ---
 
-# 4. Colocando o projeto no **GitHub**
+# 5. Colocando o projeto no GitHub
 
 Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
@@ -523,13 +527,15 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
 **Configure o projeto git**
 
+- Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
 -   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
-
 -   Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
 
-    rm -Rf ~/.git
+```shell
+rm -Rf ~/.git
+```
 
 -   Recarregue a janela do **VS Code**:
 
@@ -544,8 +550,8 @@ Control + Shift + P + "Recarregar a Janela"
 -   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
 
 ```shell
-git config user.name "Seu Nome"
-git config user.email "seuemailnogithub@gmail.com"
+git config --global user.name "Seu Nome"
+git config --global user.email "seuEmailNoGitHub@gmail.com"
 ```
 
 -   Para verificar se as variáveis foram configuradas corretamente, digite:
@@ -567,7 +573,7 @@ Repita o processo de configuração de nome e email.
 Vamos criar um arquivo chamado `.gitignore` na raiz do projeto. Esse arquivo serve para indicar quais arquivos não devem ser versionados (monitorados pelo **git**).
 
 -   Vá no site [gitignore.io](https://gitignore.io/)
--   Escolha a opção `Django`.
+-   Escolha as opções `Python` e `Django`.
 -   Clique em `Criar`.
 -   Selecione todo o texto (`Control + A`) e copie (`Control + C`).
 -   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`:
@@ -581,7 +587,7 @@ touch .gitignore
 
 **Faça a publicação**
 
--   Escreva uma descrição para o commit (`"commit Inicial"`).
+-   Escreva uma descrição para o commit (`"commit Inicial"`, por exemplo.).
 -   Tecle `Control+ENTER` para fazer o envio para o servidor do **GitHub**.
 -   Leia atentamente as instruções relacionadas a autenticação no **GitHub** e criação do projeto.
 -   Ao final, seu projeto será incluído no **GitHub** e você poderá visulizá-lo lá.
@@ -613,17 +619,20 @@ Control + Shift + P + "Formatar o Documento"
 -   Faça a mesma coisa com o arquivo `admin.py`.
 -   Altere outros arquivos. Por exemplo: apague os comentários iniciais dos arquivos `settings.py` e `urls.py`.
 -   Nesse ponto, você já deve ter vários arquivos modificados.
--   Vá para a aba do **GitHub** no **VS Code** e coloque o nome do **commit** como sendo `Instalação do black`.
+-   Vá para a aba do **GitHub** no **VS Code** e coloque o nome do **commit** como sendo `Formatação dos arquivos do projeto`.
 -   Confirme o **commit** teclando `Control+ENTER`.
 -   Faça o envio (`push`), clicando no ícone de envio.
 -   Vá no seu projeto no **GitHub**, atualize a página e verifique as modificações.
 
-**Escrevendo uma boa mensagem de commit**
+**IMPORTANTE: Escrevendo uma boa mensagem de commit**
 
 -   Escreva uma mensagem de commit que descreva o que foi feito.
 -   Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
 -   Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
--   Escreva mensagens como `Adiciona o arquivo settings.py`, `Adiciona o arquivo urls.py`, `Adiciona o arquivo admin.py`, etc.
+-   Escreva mensagens como:
+    -    `Adiciona o arquivo settings.py`
+    -    `Adiciona o arquivo urls.py`
+    -    `Adiciona o arquivo admin.py`
 
 **Baixando novamente o projeto**
 
@@ -649,11 +658,11 @@ rm -rf livraria
 mkdir livraria
 ```
 
--   Vá no projeto no **GitHub**, clique no botão **Code** e copie a url dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
+-   Vá no projeto no **GitHub**, clique no botão **Code** e copie a URL dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
 -   Clone o projeto para a pasta atual:
 
 ```shell
-git clone https://github.com/marrcandre/livraria.git
+git clone https://github.com/marrcandre/livraria.git #troque essa URL pela sua
 ```
 
 -   Vá para a pasta do projeto:
@@ -671,13 +680,13 @@ code .
 -   Instale as dependências do projeto e ative o ambiente virtual:
 
 ```shell
-poetry install && poetry shell
+pdm install
 ```
 
 -   Rode o servidor:
 
 ```shell
-python manage.py runserver
+pdm run python manage.py runserver
 ```
 
 -   Acesse o projeto no navegador:
@@ -686,7 +695,7 @@ python manage.py runserver
 
 Pronto! Seu projeto está de volta no computador e rodando.
 
-# 5. Criando os outros modelos de dados
+# 6. Criando os outros modelos de dados
 
 **Colocando o projeto livraria no **GitHub****
 
@@ -809,14 +818,14 @@ Feito isso, verifique se tudo funcionou.
 -   Tente apagar uma editora ou categoria **com** livros associados.
 -   Tente apagar uma editora ou categoria **sem** livros associados.
 
-# 6. Criando uma API REST
+# 7. Criando uma API REST
 
 **Instalação do DRF**
 
 -   Instale o `djangorestframework`:
 
 ```shell
-poetry add djangorestframework
+pdm add djangorestframework
 ```
 
 -   Adicione o `rest_framework` no arquivo `settings.py`:
@@ -942,7 +951,7 @@ Instale uma ou mais das ferramentas sugeridas.
     -   Incluir outra categoria;
     -   Listar todas as categorias.
 
-# 7. Continuando a criação da API REST
+# 8. Continuando a criação da API REST
 
 **Criação da API para a classe Editora**
 
@@ -1059,7 +1068,7 @@ class LivroViewSet(ModelViewSet):
         return LivroSerializer
 ```
 
-# 8. Aplicação frontend Vuejs e Django CORS Headers
+# 9. Aplicação frontend Vuejs e Django CORS Headers
 
 **Executando uma aplicação _frontend_ de exemplo**
 
@@ -1085,7 +1094,7 @@ Adicionar o Django CORS headers permite que seu projeto seja acessado de outros 
 -   Instale o pacote `django-cors-headers`:
 
 ```shell
-poetry add django-cors-headers
+pdm add django-cors-headers
 ```
 
 -   Adicione o pacote `corsheaders` em `INSTALLED_APPS` em `settings.py`:
@@ -1123,7 +1132,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-# 9. API REST do projeto Garagem
+# 10. API REST do projeto Garagem
 
 -   Volte ao projeto `Garagem`
 -   Crie as classes, baseadas no arquivo `models.py` abaixo.
@@ -1160,106 +1169,6 @@ class Carro(models.Model):
         return f"{self.marca} {self.modelo} {self.cor} ({self.ano})"
 ```
 
-# 10. Deploy no Heroku
-
-**Instalação e configuração do gunicorn**
-
-O gunicorn é um servidor web que permite que sua aplicação seja executada em produção.
-
--   Instale o gunicorn:
-
-```shell
-poetry add gunicorn
-```
-
-**Procfile**
-
-O arquivo `Procfile` é um arquivo de configuração do Heroku que permite que você especifique os comandos que serão executados quando sua aplicação for iniciada.
-
--   Crie o arquivo `Procfile`:
-
-```shell
-touch Procfile
-```
-
--   Adicione ao arquivo `Procfile` o seguinte conteúdo:
-
-```shell
-web: gunicorn livraria.wsgi
-```
-
-**IMPORTANTE:** `livraria` é o nome do projeto e precisa ser alterado a cada projeto criado.
-
-**Instalação do whitenoise**
-
-Whitenoise é um middleware que permite que sua aplicação seja servida de forma estática.
-
--   Instale o whitenoise:
-
-```shell
-poetry add whitenoise
-```
-
-**Adicionando o whitenoise ao projeto**
-
--   Adicione o middleware `whitenoise.middleware.WhiteNoiseMiddleware` em `MIDDLEWARE` em `settings.py`:
-
-```python
-MIDDLEWARE = [
-    ...
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    ...
-]
-```
-
-**Modificando o arquivo settings.py**
-
--   Modifique a linha do `ALLOWED_HOSTS` em `settings.py`:
-
-```python
-ALLOWED_HOSTS = ["*"]
-```
-
--   Importe o módulo os no início do arquivo `settings.py`:
-
-```python
-import os
-```
-
--   E adicione a seguinte linha ao final do arquivo:
-
-```python
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-```
-
--   Colete os arquivos estáticos:
-
-```shell
-python manage.py collectstatic --noinput
-```
-
-**Criação do arquivo `requirements.txt`**
-
-O arquivo `requirements.txt` é um arquivo de configuração do Heroku que permite que você especifique os pacotes que serão instalados quando sua aplicação for iniciada.
-
--   Execute o comando abaixo para criar o arquivo `requirements.txt`:
-
-```shell
-poetry export --without-hashes > requirements.txt
-```
-
-Isso irá criar o arquivo `requirements.txt` na raiz do projeto a partir dos pacotes que foram instalados no projeto e que estão listados no arquivo `pyproject.toml`.
-
-**Criação do projeto no Heroku**
-
--   Garanta que a última versão do seu projeto esteja no **GitHub**.
--   Entre no [Heroku](https://dashboard.heroku.com/) e crie uma nova aplicação.
--   Escolha a opção **Conectar no GitHub**
--   Selecione o repositório desejado.
--   Clique na opção **Enable Automatic Deploy**
--   Clique na opção **Deploy Branch**.
--   Se tudo der certo, aparecerá uma opção **View** para você entrar na aplicação.
--   O link para aplicação é algo como https://livraria.herokuapp.com/
 
 # 11. Relacionamento n para n
 
@@ -1436,7 +1345,7 @@ O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 -   Para instalar o SimpleJWT, execute o seguinte comando:
 
 ```shell
-poetry add djangorestframework-simplejwt
+pdm add djangorestframework-simplejwt
 ```
 
 **Configuração**
@@ -1830,7 +1739,7 @@ O projeto ficará com uma estrutura parecida com essa:
 -   Instalar os pacotes `python-magic` e `Pillow`:
 
 ```shell
-poetry add python-magic Pillow
+pdm add python-magic Pillow
 ```
 
 -   Aproveite para atualizar o arquivo requirements.txt:
@@ -1956,7 +1865,7 @@ Vamos instalar uma aplicação para gerar a documentação da API usando o Swagg
 -   Instale o pacote `drf-spectacular`:
 
 ```shell
-poetry add drf-spectacular
+pdm add drf-spectacular
 ```
 
 -   Não esqueça de atualizar o arquivo `requirements.txt`:
@@ -2028,7 +1937,7 @@ urlpatterns = [
 
 **Alteração da URL da API**
 
--   Edite o arquivo `urls.py` altere a url da API para `http://localhost:8000/api/`:
+-   Edite o arquivo `urls.py` altere a URL da API para `http://localhost:8000/api/`:
 
 ```python
 urlpatterns = [
@@ -2038,48 +1947,6 @@ urlpatterns = [
 ]
 ```
 
-# 20. Configuração do isort
-
-O `isort` é um utilitário para ordenar as importações de forma automática.
-
-**Instalação**
-
--   Instale o pacote `isort`:
-
-```shell
-poetry add -G dev isort
-```
-
--   Não esqueça de atualizar o arquivo `requirements.txt`.
-
-**Configuração**
-
--   Crie o arquivo `.isort.cfg` na raiz do projeto:
-
-```shell
-touch .isort.cfg
-```
-
--   Adicione o seguinte conteúdo ao arquivo `.isort.cfg`:
-
-```shell
-[isort]
-default_section = THIRDPARTY
-known_first_party = livraria  # change it for the name of your django project
-known_django = django
-sections = FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
-
-[settings]
-profile=black
-```
-
-**Teste**
-
--   Execute o comando `isort`:
-
-```shell
-isort .
-```
 
 # 21. Dump e Load de dados
 
@@ -2277,7 +2144,7 @@ class LivroAdmin(admin.ModelAdmin):
 -   Instale o pacote `django_environ`:
 
 ```shell
-poetry add django-environ
+pdm add django-environ
 ```
 
 -   Edite o arquivo `livraria/settings.py`:
@@ -2360,7 +2227,7 @@ O pacote `libmysqlclient-dev` é necessário para instalar o módulo `mysqlclien
 -   Instale o módulo `mysqlclient`:
 
 ```shell
-poetry add mysqlclient
+pdm add mysqlclient
 ```
 
 O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL.
