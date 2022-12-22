@@ -468,7 +468,7 @@ class Editora(models.Model):
         return self.nome
 ```
 
-O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True` indica que o campo pode ser deixado em branco.
+O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True` indica que o campo pode ser deixado em branco. Na prática, usamos esses atributos quando queremos que um campo seja **opcional**.
 
 Não esqueça de que a cada criação de novas `models` é necessário:
 
@@ -701,7 +701,7 @@ Pronto! Seu projeto está de volta no computador e rodando.
 
 # 6. Criando os outros modelos de dados
 
-**Colocando o projeto livraria no **GitHub\*\*\*\*
+**Colocando o projeto livraria no GitHub**
 
 Agora que você conseguiu colocar o projeto `garagem` no **GitHub**, coloque também o projeto `livraria`.
 
