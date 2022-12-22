@@ -62,18 +62,20 @@ Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 ```shell
 pdm completions bash >> ~/.bash_completion
 ```
-- Para o **zsh**:
+
+-   Para o **zsh**:
 
 ```shell
 pdm completions zsh >> ~/.zshrc
 ```
 
-- Para o **Oh My Zsh**:
+-   Para o **Oh My Zsh**:
 
 ```shell
 mkdir $ZSH_CUSTOM/plugins/pdm
 pdm completion zsh > $ZSH_CUSTOM/plugins/pdm/_pdm
 ```
+
 No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins no arquivo `~/.zshrc`.
 
 **1.2.2 Habilitar o PEP 582 no PDM**
@@ -91,13 +93,14 @@ pdm --pep582 >> ~/.bash_profile #bash
 pdm add pdm-vscode
 ```
 
-- Instale o plugin pdm-autoexport, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
+-   Instale o plugin pdm-autoexport, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
 
 ```shell
 pdm add pdm-autoexport
 ```
 
 **1.3 Instalação do Python**
+
 -   Verifique se o **python** está instalado:
 
 ```shell
@@ -113,9 +116,9 @@ python3 --version
 
     `Windows + E`
 
--   Entre na pasta **Documentos** ou crie uma pasta **projetos**. 
+-   Entre na pasta **Documentos** ou crie uma pasta **projetos**.
 -   Crie uma pasta chamada `livraria` (ou outro nome de sua preferência) para o seu projeto.
--   **IMPORTANTE**: 
+-   **IMPORTANTE**:
     -   Não trabalhe na `Área de Trabalho` ou na pasta `Downloads`.
     -   Certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (**se você não fizer isso, terá que recriar todo o projeto**).
 -   Dentro dessa pasta, abra um terminal:
@@ -138,20 +141,20 @@ Please enter the Python interpreter to use
 1. /usr/bin/python (3.10)
 2. /usr/bin/python3.10 (3.10)
 3. /home/marco/.local/share/pdm/venv/bin/python (3.10)
-Please select (0): 
+Please select (0):
 Using Python interpreter: /usr/bin/python (3.10)
 Would you like to create a virtualenv with /usr/bin/python? [y/n] (y): n
 You are using the PEP 582 mode, no virtualenv is created.
 For more info, please visit https://peps.python.org/pep-0582/
 Is the project a library that will be uploaded to PyPI [y/n] (n): n
-License(SPDX name) (MIT): 
-Author name (Marco André Mendes): 
-Author email (marcoandre@gmail.com): 
-Python requires('*' to allow any) (>=3.10): 
+License(SPDX name) (MIT):
+Author name (Marco André Mendes):
+Author email (marcoandre@gmail.com):
+Python requires('*' to allow any) (>=3.10):
 Changes are written to pyproject.toml.
 ```
 
-- Entre na pasta do projeto:
+-   Entre na pasta do projeto:
 
 ```shell
 cd livraria
@@ -165,7 +168,7 @@ ls -l pyproject.toml
 
 **2.3 Abrindo o projeto no VS Code**
 
-- Abra o projeto no VS Code:
+-   Abra o projeto no VS Code:
 
 ```shell
 code .
@@ -173,13 +176,14 @@ code .
 
 Você pode abrir o projeto no VS Code de duas formas:
 
--  Digitando o comando `code .` no terminal.
--  Pelo gereciador de arquivos, clicando com o botão direito do mouse na pasta do projeto e selecionando a opção **Abrir com o VS Code**.
+-   Digitando o comando `code .` no terminal.
+-   Pelo gereciador de arquivos, clicando com o botão direito do mouse na pasta do projeto e selecionando a opção **Abrir com o VS Code**.
 -   Clicando no botão **Abrir pasta** e selecionando a pasta do projeto.
 
 **IMPORTANTE:**
--  Sempre abra a **pasta raiz do projeto** no VS Code (repita em voz alta: _"**Nunca** abra um **arquivo**, **sempre** abra a **pasta**."_).**
-- O VS Code precisa dessa informação de qual é a pasta raiz do projeto para funcionar corretamente.
+
+-   Sempre abra a **pasta raiz do projeto** no VS Code (repita em voz alta: _"**Nunca** abra um **arquivo**, **sempre** abra a **pasta**."_).\*\*
+-   O VS Code precisa dessa informação de qual é a pasta raiz do projeto para funcionar corretamente.
 
 **2.4 Instalação do Django**
 
@@ -198,7 +202,7 @@ ls -l pdm.lock
 -   Verifique a versão do **Django** instalado:
 
 ```shell
-pdm run django-admin --version            
+pdm run django-admin --version
 ```
 
 **Criação do projeto no Django**
@@ -233,7 +237,7 @@ O projeto criado ficará assim:
 
 **Abra um terminal no VS Code**
 
- Ctrl + Shift + `
+Ctrl + Shift + `
 
 **Rodando o servidor de desenvolvimento**
 
@@ -291,9 +295,9 @@ pdm run python manage.py createsuperuser
 
 **Exercício**
 
-- Apague o projeto e crie novamente, seguindo as instruções acima. 
-- Verifique se o projeto está rodando e se o `Admin` está em execução. 
-- Observe que configurações precisam ser feitas novamente e quais não foram mais necessárias.
+-   Apague o projeto e crie novamente, seguindo as instruções acima.
+-   Verifique se o projeto está rodando e se o `Admin` está em execução.
+-   Observe que configurações precisam ser feitas novamente e quais não foram mais necessárias.
 
 # 3. Criação de uma aplicação
 
@@ -489,11 +493,11 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
 
-- Nome do projeto: **config**.
-- Nome da aplicação: **garagem**.
-- Crie os modelos conforme a definição abaixo.
-- Registre as models no `Admin`.
-- Inclua alguns registros no banco de dados.
+-   Nome do projeto: **config**.
+-   Nome da aplicação: **garagem**.
+-   Crie os modelos conforme a definição abaixo.
+-   Registre as models no `Admin`.
+-   Inclua alguns registros no banco de dados.
 
 ```python
 from django.db import models
@@ -527,7 +531,7 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
 **Configure o projeto git**
 
-- Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
+-   Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
 -   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
@@ -630,9 +634,9 @@ Control + Shift + P + "Formatar o Documento"
 -   Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
 -   Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
 -   Escreva mensagens como:
-    -    `Adiciona o arquivo settings.py`
-    -    `Adiciona o arquivo urls.py`
-    -    `Adiciona o arquivo admin.py`
+    -   `Adiciona o arquivo settings.py`
+    -   `Adiciona o arquivo urls.py`
+    -   `Adiciona o arquivo admin.py`
 
 **Baixando novamente o projeto**
 
@@ -697,7 +701,7 @@ Pronto! Seu projeto está de volta no computador e rodando.
 
 # 6. Criando os outros modelos de dados
 
-**Colocando o projeto livraria no **GitHub****
+**Colocando o projeto livraria no **GitHub\*\*\*\*
 
 Agora que você conseguiu colocar o projeto `garagem` no **GitHub**, coloque também o projeto `livraria`.
 
@@ -1168,7 +1172,6 @@ class Carro(models.Model):
     def __str__(self):
         return f"{self.marca} {self.modelo} {self.cor} ({self.ano})"
 ```
-
 
 # 11. Relacionamento n para n
 
@@ -1742,12 +1745,6 @@ O projeto ficará com uma estrutura parecida com essa:
 pdm add python-magic Pillow
 ```
 
--   Aproveite para atualizar o arquivo requirements.txt:
-
-```shell
-poetry export --without-hashes > requirements.txt
-```
-
 -   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
 
 ```python
@@ -1868,12 +1865,6 @@ Vamos instalar uma aplicação para gerar a documentação da API usando o Swagg
 pdm add drf-spectacular
 ```
 
--   Não esqueça de atualizar o arquivo `requirements.txt`:
-
-```shell
-poetry export --without-hashes > requirements.txt
-```
-
 -   Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
 
 ```python
@@ -1946,7 +1937,6 @@ urlpatterns = [
     ...
 ]
 ```
-
 
 # 21. Dump e Load de dados
 
@@ -2162,6 +2152,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 DATABASES = {'default': env.db()}
 ```
+
 IMPORTANTE: Após incluir essas variáveis, remova as outras referências a elas no arquivo `settings.py`.
 
 -   Crie o arquivo `.env`:
@@ -2179,10 +2170,11 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=sqlite:///db.sqlite3
 ```
 
-**IMPORTANTE**: 
-- Adicione o arquivo `.env` ao arquivo `.gitignore`.
-- Feito isso, esse arquivo não será mais versionado pelo Git.
-- Para ter um modelo de arquivo `.env`, crie um arquivo `.env.example` e adicione-o ao Git.
+**IMPORTANTE**:
+
+-   Adicione o arquivo `.env` ao arquivo `.gitignore`.
+-   Feito isso, esse arquivo não será mais versionado pelo Git.
+-   Para ter um modelo de arquivo `.env`, crie um arquivo `.env.example` e adicione-o ao Git.
 
 ```shell
 cp .env .env.example
@@ -2231,12 +2223,6 @@ pdm add mysqlclient
 ```
 
 O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL.
-
--   Atualize o arquivo requirements.txt:
-
-```shell
-poetry export --without-hashes > requirements.txt
-```
 
 **Configuração das variáveis de ambiente**
 
@@ -2302,8 +2288,9 @@ O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAn
 -   No console do PythonAnywhere, execute o comando abaixo, substituindo `https://github.com/seu_usuario/seu_projeto.git` pelo link do seu repositório no **GitHub** (aquele mesmo que você usou para clonar o projeto):
 
 ```shell
-pa_autoconfigure_django.py --python=3.8 --nuke https://github.com/seu_usuario/seu_projeto.git 
+pa_autoconfigure_django.py --python=3.8 --nuke https://github.com/seu_usuario/seu_projeto.git
 ```
+
 **Ativando o virtualenv (se necessário)**
 
 -   Se necessário, no console, ative o `virtualenv`:
@@ -2366,7 +2353,6 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-
 # 26. Inclusão da foto de perfil no usuário
 
 Vamos incluir a foto de perfil no usuário.
@@ -2389,14 +2375,14 @@ class Usuario(AbstractUser):
     )
 ```
 
-- Faça as migrações:
+-   Faça as migrações:
 
 ```shell
 python manage.py makemigrations core
 python manage.py migrate
 ```
 
-- No arquivo `admin.py`, inclua o campo `foto`:
+-   No arquivo `admin.py`, inclua o campo `foto`:
 
 ```python
 ...
@@ -2406,7 +2392,7 @@ class UsuarioAdmin(UserAdmin):
     ...
 ```
 
-- Crie um serializador para o usuário:
+-   Crie um serializador para o usuário:
 
 ```python
 rom rest_framework.serializers import ModelSerializer, SlugRelatedField
@@ -2431,14 +2417,14 @@ class UsuarioSerializer(ModelSerializer):
         fields = "__all__"
 ```
 
-- Inclua o novo serializador no arquivo 
-`__init__.py` dos serializadores:
+-   Inclua o novo serializador no arquivo
+    `__init__.py` dos serializadores:
 
 ```python
 from .usuario import UsuarioSerializer
 ```
 
-- Crie uma nova view para o usuário:
+-   Crie uma nova view para o usuário:
 
 ```python
 from rest_framework.viewsets import ModelViewSet
@@ -2452,13 +2438,13 @@ class UsuarioViewSet(ModelViewSet):
     serializer_class = UsuarioSerializer
 ```
 
-- Inclua a nova view no arquivo `__init__.py` das views:
+-   Inclua a nova view no arquivo `__init__.py` das views:
 
 ```python
 from .usuario import UsuarioViewSet
 ```
 
-- Inclua a nova view no arquivo `urls.py`:
+-   Inclua a nova view no arquivo `urls.py`:
 
 ```python
 from core.views import UsuarioViewSet
@@ -2467,8 +2453,8 @@ router.register(r"usuarios", UsuarioViewSet)
 ```
 
 **Testando**
--   Inclua uma foto de perfil em um usuário.
 
+-   Inclua uma foto de perfil em um usuário.
 
 <!-- Aulas futuras -->
 
