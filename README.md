@@ -418,7 +418,7 @@ from .models import Categoria
 admin.site.register(Categoria)
 ```
 
-Acesse novamente o [Admin](http://localhost:8000) e inclua algumas editoras no banco de dados.
+Acesse novamente o [Admin](http://localhost:8000) e inclua algumas categorias no banco de dados.
 
 **Mudando a língua e time zone**
 
