@@ -190,7 +190,7 @@ Você pode abrir o projeto no VS Code de duas formas:
 
 **IMPORTANTE:**
 
--   Sempre abra a **pasta raiz do projeto** no VS Code (repita em voz alta: _"**Nunca** abra um **arquivo**, **sempre** abra a **pasta**."_).\*\*
+-   Sempre abra a **pasta raiz do projeto** no VS Code (repita em voz alta: _"**Nunca** abra um **arquivo**, **sempre** abra a **pasta**."_).
 -   O VS Code precisa dessa informação de qual é a pasta raiz do projeto para funcionar corretamente.
 
 **2.4 Instalação do Django**
