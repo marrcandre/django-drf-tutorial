@@ -57,32 +57,41 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 
 Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 
--   Para o **bash**:
+-   No **bash**:
 
 ```shell
 pdm completions bash >> ~/.bash_completion
 ```
 
--   Para o **zsh**:
+-   No **zsh**:
 
 ```shell
 pdm completions zsh >> ~/.zshrc
 ```
 
--   Para o **Oh My Zsh**:
+-   No **Oh My Zsh**:
 
 ```shell
 mkdir $ZSH_CUSTOM/plugins/pdm
 pdm completion zsh > $ZSH_CUSTOM/plugins/pdm/_pdm
 ```
 
-No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins no arquivo `~/.zshrc`.
+No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins, editando o arquivo `~/.zshrc`.
+
+Para instalar e configurar o Oh My Zsh, siga as instruções [deste link](https://www.alura.com.br/artigos/oh-my-zsh-melhorando-produtividade-terminal).
 
 **1.2.2 Habilitar o PEP 582 no PDM**
 
+-   No **bash**:
+
+```shell
+pdm --pep582 >> ~/.bash_profile #bash
+```
+
+-   No **zsh**:
+
 ```shell
 pdm --pep582 >> ~/.zshrc #zsh
-pdm --pep582 >> ~/.bash_profile #bash
 ```
 
 **1.2.3 Instalação de plugins do PDM**
@@ -90,13 +99,13 @@ pdm --pep582 >> ~/.bash_profile #bash
 -   Instale o plugin **pdm-vscode**, que permite a integração do **PDM** com o **VS Code**:
 
 ```shell
-pdm add pdm-vscode
+pdm plugin add pdm-vscode
 ```
 
 -   Instale o plugin pdm-autoexport, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
 
 ```shell
-pdm add pdm-autoexport
+pdm plugin add pdm-autoexport
 ```
 
 **1.3 Instalação do Python**
@@ -105,7 +114,6 @@ pdm add pdm-autoexport
 
 ```shell
 python --version
-python3 --version
 ```
 
 # 2. Criação do projeto
