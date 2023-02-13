@@ -2,6 +2,8 @@
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework).
 
+Este tutorial está em constante desenvolvimento. Envie sugestões e correções para [meu email](mailto:marcoandre@gmail.com).
+
 # 1. Preparação do ambiente
 
 A preparação do ambiente será feita apenas uma vez em cada computador. Ela consiste em instalar e configurar o **VS Code**, o **PDM** e o **Python**.
