@@ -8,11 +8,25 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 
 **1.1 VS Code**
 
-**1.1 Instalação do VS Code**
+**1.1.1 Instalação do VS Code**
 
 Caso não tenha o **VS Code** instalado, instale-o seguindo as instruções [deste link](https://code.visualstudio.com/download).
 
-**1.2 Instalação de extensões no VS Code**
+**1.1.2 Atualização do VS Code**
+
+Para atualizar o **VS Code**, siga as seguintes instruções:
+
+**No Manjaro:**
+
+```shell
+sudo yay -Syu visual-studio-code-bin
+```
+
+**No Windows:**
+
+- Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
+
+**1.1.3 Instalação de extensões no VS Code**
 
 Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
 
@@ -31,7 +45,12 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
     -   TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)
     -   Vue Language Features (Desenvolvimento de aplicações Vue.js)
 
-Você pode configurar a sincronização das extensões entre os computadores. Para isso, você precisa fazer login com a conta do **GitHub** ou da **Microsoft** no VS Code. Para isso, clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
+**1.1.4 Sinconização de extensões no VS Code**
+
+Você pode configurar a sincronização das extensões entre os computadores. Para isso:
+
+- Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code. 
+- Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
 
 **1.2 Instalação do PDM**
 
