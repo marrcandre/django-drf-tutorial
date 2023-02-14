@@ -18,6 +18,12 @@ Caso não tenha o **VS Code** instalado, instale-o seguindo as instruções [des
 
 Para atualizar o **VS Code**, siga as seguintes instruções:
 
+**No Ubuntu/Mint e derivados:**
+
+```shell
+sudo apt install code
+```
+
 **No Manjaro:**
 
 ```shell
@@ -74,6 +80,12 @@ pdm -V
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
+- Coloque o **PDM** no **PATH**:
+
+```shell
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+```
+
 **1.2.1 Configuração do auto preenchimento do PDM**
 
 Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
@@ -81,7 +93,7 @@ Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 -   No **bash**:
 
 ```shell
-pdm completions bash >> ~/.bash_completion
+pdm completion bash >> ~/.bash_completion
 ```
 
 -   No **zsh**:
@@ -106,13 +118,13 @@ Para instalar e configurar o Oh My Zsh, siga as instruções [deste link](https:
 -   No **bash**:
 
 ```shell
-pdm --pep582 >> ~/.bash_profile #bash
+pdm --pep582 bash >> ~/.bash_profile
 ```
 
 -   No **zsh**:
 
 ```shell
-pdm --pep582 >> ~/.zshrc #zsh
+pdm --pep582 zsh >> ~/.zshrc
 ```
 
 **1.2.3 Instalação de plugins do PDM**
@@ -134,7 +146,25 @@ pdm plugin add pdm-autoexport
 -   Verifique se o **python** está instalado:
 
 ```shell
-python --version
+python -V
+```
+
+- Se o python não estiver instalado, verifique se o python3 está instalado:
+
+```shell
+python3 -V
+```
+
+- Nesse caso, você pode criar um link simbólico para o python3:
+
+```shell
+sudo ln -s /usr/bin/python3 /usr/bin/python
+```
+
+- Ou ainda, criar um `alias` (apelido) para o python3:
+
+```shell
+echo "alias python=python3" >> ~/.bashrc
 ```
 
 # 2. Criação do projeto
@@ -155,6 +185,18 @@ python --version
     _Botao direito do mouse -> Abrir terminal aqui_
 
 **2.2 Criação do projeto no PDM**
+
+- Crie uma pasta chamada `livraria` para o seu projeto.
+  
+```shell
+mkdir livraria
+```
+
+-   Entre na pasta do projeto:
+
+```shell
+cd livraria
+```
 
 -   Crie o projeto com o **PDM**:
 
@@ -181,12 +223,6 @@ Author name (Marco André Mendes):
 Author email (marcoandre@gmail.com):
 Python requires('*' to allow any) (>=3.10):
 Changes are written to pyproject.toml.
-```
-
--   Entre na pasta do projeto:
-
-```shell
-cd livraria
 ```
 
 -   Verifique se o **PDM** criou o arquivo `pyproject.toml`:
