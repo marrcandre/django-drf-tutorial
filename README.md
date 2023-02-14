@@ -99,7 +99,7 @@ pdm completion bash >> ~/.bash_completion
 -   No **zsh**:
 
 ```shell
-pdm completions zsh >> ~/.zshrc
+pdm completion zsh >> ~/.zshrc
 ```
 
 -   No **Oh My Zsh**:
