@@ -252,6 +252,10 @@ Você pode abrir o projeto no VS Code de duas formas:
 
 **2.4 Instalação do Django**
 
+- Abra o terminal do VS Code:
+
+    Ctrl + Shift + `
+
 -   Instale o **Django** no seu projeto:
 
 ```shell
@@ -270,9 +274,9 @@ ls -l pdm.lock
 pdm run django-admin --version
 ```
 
-**Criação do projeto no Django**
+**2.5 Criação do projeto no Django**
 
-Um projeto no **Django** é uma pasta com um conjunto de arquivos e pastas que contém o código do seu site.
+Um projeto no **Django** é uma pasta com um conjunto de arquivos e pastas que contém o código do seu site. Vamos criar um projeto chamado `config`.
 
 -   Crie o projeto no **Django**:
 
@@ -300,11 +304,7 @@ O projeto criado ficará assim:
 └── requirements.txt
 ```
 
-**Abra um terminal no VS Code**
-
-Ctrl + Shift + `
-
-**Rodando o servidor de desenvolvimento**
+**2.6 Rodando o servidor de desenvolvimento**
 
 -   Para executar o projeto, digite no terminal:
 
@@ -329,13 +329,13 @@ pdm run python manage.py runserver
     -   `urls.py`: é o arquivo de configuração das rotas do projeto.
     -   `db.sqlite3`: é o arquivo de banco de dados do projeto.
 
-**Executando o servidor**
+**2.7 Executando o servidor**
 
 Desse ponto em diante, abra um outro terminal lado a lado no **VS Code**, mantendo sempre o django em execução (`runserver`) no outro terminal.
 
 Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute novamente.
 
-**Criando a base de dados inicial**
+**2.8 Criando a base de dados inicial**
 
 -   Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
 
@@ -345,7 +345,7 @@ pdm run python manage.py migrate
 
 Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) está em execução.
 
-**Criando o superusuário**
+**2.9 Criando o superusuário**
 
 -   Crie o super usuário para poder fazer o login:
 
@@ -358,7 +358,7 @@ pdm run python manage.py createsuperuser
 -   Crie mais 2 usuários de teste.
 -   Entre no arquivo de banco de dados (`db.sqlite3`), e verifique se os registros foram criados.
 
-**Exercício**
+**2.10 Exercício**
 
 -   Apague o projeto e crie novamente, seguindo as instruções acima.
 -   Verifique se o projeto está rodando e se o `Admin` está em execução.
@@ -368,13 +368,14 @@ pdm run python manage.py createsuperuser
 
 Uma aplicação no **Django** é um conjunto de arquivos e pastas que contém o código de uma funcionalidade específica do seu site.
 
-**Criando uma aplicação**
+**3.1 Criando uma aplicação**
 
 -   Para criar uma aplicação, execute o seguinte comando:
 
 ```shell
 pdm run python manage.py startapp livraria
 ```
+**3.2 Instalando a aplicação**
 
 -   Acrescente a aplicação `livraria` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
 
@@ -389,51 +390,50 @@ Após criar a aplicação, sua pasta deve parecer com isso:
 
 ```
 .
-├── livraria
-│   ├── admin.py
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   ├── models.py
-│   ├── tests.py
-│   └── views.py
-├── db.sqlite3
 ├── config
-│   ├── asgi.py
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── db.sqlite3
+├── livraria
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
 ├── manage.py
 ├── pdm.lock
-├── pyproject.toml
-└── requirements.txt
+└── pyproject.toml
 ```
 
 Dentro da pasta `livraria` foram criados alguns arquivos, mas os mais importantes são:
 
--   `admin.py`: é o arquivo de configuração do `Admin` da aplicação.
--   `models.py`: é o arquivo de configuração dos modelos da aplicação.
+-   `admin.py`: é o arquivo de configuração do `Admin`, uma ferramenta que permite que você gerencie os dados do seu site.
+-   `models.py`: é o arquivo de configuração dos modelos (entidades) da aplicação.
 -   `views.py`: é o arquivo de configuração das `views` da aplicação.
--   `migrations`: é a pasta de migrações da aplicação.
+-   `migrations`: é a pasta de migrações de banco de dados da aplicação.
 
 Posteriormente, iremos modificar esses arquivos, bem como incluir alguns arquivos novos.
 
-**Resumo**
+**3.3 Resumo**
 
 Nesse ponto, temos:
 
--   O projeto no `PDM` criado;
--   O projeto `config` criado;
+-   O projeto criado no `PDM`;
+-   O projeto django chamado `config` criado;
 -   A aplicação `livraria` criada e instalada no projeto.
 
-**Criação do primeiro modelo de dados**
+**3.4 Criação do primeiro modelo de dados**
 
 Um modelo (`model`) no **Django** é uma classe que representa uma tabela no banco de dados. Cada atributo (variável) dessa classe representa um campo da tabela.
 
 Para maiores informações consulte a [documentação](https://docs.djangoproject.com/en/4.0/topics/db/models/) do **Django** sobre `models`.
 
--   Vamos criar o modelo de dados `Categoria`:
+-   Vamos começar criando o modelo de dados `Categoria`, que representa uma categoria de livro, como por exemplo: `Ficção`, `Terror`, `Romance`, etc.
+
+-  Abra o arquivo `models.py` da aplicação `livraria` e adicione o seguinte código:
 
 ```python
 from django.db import models
@@ -448,7 +448,7 @@ Nesse código, você:
 -   Criou a classe `Categoria`;
 -   Incluiu o campo `descricao`.
 
-**Efetivando a criação da tabela**
+**3.5 Efetivando a criação da tabela**
 
 Precisamos agora efetivar a criação da tabela no banco de dados.
 
@@ -466,15 +466,15 @@ pdm run python manage.py makemigrations
 pdm run python manage.py migrate
 ```
 
--   Acesse o arquivo do banco de dados e verifique se a tabela `livraria_categoria` foi criada.
+-   Acesse o arquivo do banco de dados (`db.sqlite3`) e verifique se a tabela `livraria_categoria` foi criada.
 -   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
 
-**Inclusão no Admin**
+**3.6 Inclusão no Admin**
 
 A tabela ainda não apareceu, certo? Isso acontece poque ainda não incluímos a `model` no `Admin`.
 
--   Vamos incluir a `model` no `Admin`:
-
+-   Vamos incluir a `model` no `Admin`. Abra o arquivo `admin.py` da aplicação `livraria` e adicione o seguinte código:
+  
 ```python
 from django.contrib import admin
 
@@ -483,9 +483,9 @@ from .models import Categoria
 admin.site.register(Categoria)
 ```
 
-Acesse novamente o [Admin](http://localhost:8000) e inclua algumas categorias no banco de dados.
+Acesse novamente o [Admin](http://localhost:8000/admin) e inclua algumas categorias no banco de dados.
 
-**Mudando a língua e time zone**
+**3.7 Mudando a língua e time zone**
 
 Encontre e edite as seguintes linhas no arquivo no arquivo `settings.py`:
 
@@ -496,19 +496,21 @@ TIME_ZONE = "America/Sao_Paulo"
 
 Acesse novamente o [`Admin`](http://localhost:8000) e verifique que agora ele está em português.
 
-**O campo `id`**
+**3.8 O campo `id`**
 
 O campo `id` é criado automaticamente pelo **Django**. Ele é o identificador único de cada registro da tabela.
 
-**O campo `__str__`**
-
-O campo `__str__` é criado automaticamente pelo **Django**. Ele é o campo que será exibido no `Admin` e em outros lugares.
-
-**Mudando a descrição dos registros criados**
+**3.9 Mudando a forma de exibição dos registros criados**
 
 -   Inclua algumas categorias no banco de dados.
 -   Você perceberá que a descrição dos informações que você inclui está meio estranha.
 -   Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
+
+**3.10 O método `__str__`**
+
+O método `__str__` é um método especial que é chamado quando você tenta imprimir um objeto. Ele é utilizado no `Admin` e em outros locais para definir como o objeto será exibido.
+
+-  Vamos incluir o método `__str__` na `model Categoria`:
 
 ```python
 ...
@@ -516,9 +518,9 @@ O campo `__str__` é criado automaticamente pelo **Django**. Ele é o campo que 
         return self.descricao
 ```
 
-Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentação da model `Categoria`.
+Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentação dos objetos da model `Categoria`.
 
-**Criação do modelo de dados Editora**
+**3.11 Criação do modelo de dados Editora**
 
 -   Vamos criar o modelo de dados `Editora`, no arquivo `models.py`:
 
@@ -532,10 +534,9 @@ class Editora(models.Model):
     def __str__(self):
         return self.nome
 ```
+**Observação:** O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True` indica que o campo pode ser deixado em branco. Na prática, usamos esses atributos quando queremos que um campo seja **opcional**.
 
-O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True` indica que o campo pode ser deixado em branco. Na prática, usamos esses atributos quando queremos que um campo seja **opcional**.
-
-Não esqueça de que a cada criação de novas `models` é necessário:
+Não esqueça de que a cada criação de novas `models`, é necessário:
 
 -   Registrar a model no arquivo `admin.py`;
 -   Fazer as migrações (`makemigrations`);
