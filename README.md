@@ -32,7 +32,7 @@ sudo yay -Syu visual-studio-code-bin
 
 **No Windows:**
 
-- Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
+-   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
 
 **1.1.3 Instalação de extensões no VS Code**
 
@@ -57,8 +57,8 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
 
 Você pode configurar a sincronização das extensões entre os computadores. Para isso:
 
-- Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code. 
-- Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
+-   Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code.
+-   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
 
 **1.2 Instalação do PDM**
 
@@ -80,7 +80,7 @@ pdm -V
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
-- Coloque o **PDM** no **PATH**:
+-   Coloque o **PDM** no **PATH**:
 
 ```shell
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
@@ -127,7 +127,19 @@ pdm --pep582 bash >> ~/.bash_profile
 pdm --pep582 zsh >> ~/.zshrc
 ```
 
-**1.2.3 Instalação de plugins do PDM**
+**1.2.3 Configuração para não usar virtualenv**
+
+```shell
+pdm config python.use_venv false
+```
+
+Verifique se o **PDM** está configurado para não usar virtualenv:
+
+```shell
+pdm config
+```
+
+**1.2.4 Instalação de plugins do PDM**
 
 -   Instale o plugin **pdm-vscode**, que permite a integração do **PDM** com o **VS Code**:
 
@@ -149,19 +161,19 @@ pdm plugin add pdm-autoexport
 python -V
 ```
 
-- Se o python não estiver instalado, verifique se o python3 está instalado:
+-   Se o python não estiver instalado, verifique se o python3 está instalado:
 
 ```shell
 python3 -V
 ```
 
-- Nesse caso, você pode criar um link simbólico para o python3:
+-   Nesse caso, você pode criar um link simbólico para o python3:
 
 ```shell
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
 
-- Ou ainda, criar um `alias` (apelido) para o python3:
+-   Ou ainda, criar um `alias` (apelido) para o python3:
 
 ```shell
 echo "alias python=python3" >> ~/.bashrc
@@ -186,8 +198,8 @@ echo "alias python=python3" >> ~/.bashrc
 
 **2.2 Criação do projeto no PDM**
 
-- Crie uma pasta chamada `livraria` para o seu projeto.
-  
+-   Crie uma pasta chamada `livraria` para o seu projeto.
+
 ```shell
 mkdir livraria
 ```
@@ -252,7 +264,7 @@ Você pode abrir o projeto no VS Code de duas formas:
 
 **2.4 Instalação do Django**
 
-- Abra o terminal do VS Code:
+-   Abra o terminal do VS Code:
 
     Ctrl + Shift + `
 
@@ -375,6 +387,7 @@ Uma aplicação no **Django** é um conjunto de arquivos e pastas que contém o 
 ```shell
 pdm run python manage.py startapp livraria
 ```
+
 **3.2 Instalando a aplicação**
 
 -   Acrescente a aplicação `livraria` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
@@ -433,7 +446,7 @@ Para maiores informações consulte a [documentação](https://docs.djangoprojec
 
 -   Vamos começar criando o modelo de dados `Categoria`, que representa uma categoria de livro, como por exemplo: `Ficção`, `Terror`, `Romance`, etc.
 
--  Abra o arquivo `models.py` da aplicação `livraria` e adicione o seguinte código:
+-   Abra o arquivo `models.py` da aplicação `livraria` e adicione o seguinte código:
 
 ```python
 from django.db import models
@@ -474,7 +487,7 @@ pdm run python manage.py migrate
 A tabela ainda não apareceu, certo? Isso acontece poque ainda não incluímos a `model` no `Admin`.
 
 -   Vamos incluir a `model` no `Admin`. Abra o arquivo `admin.py` da aplicação `livraria` e adicione o seguinte código:
-  
+
 ```python
 from django.contrib import admin
 
@@ -510,7 +523,7 @@ O campo `id` é criado automaticamente pelo **Django**. Ele é o identificador �
 
 O método `__str__` é um método especial que é chamado quando você tenta imprimir um objeto. Ele é utilizado no `Admin` e em outros locais para definir como o objeto será exibido.
 
--  Vamos incluir o método `__str__` na `model Categoria`:
+-   Vamos incluir o método `__str__` na `model Categoria`:
 
 ```python
 ...
@@ -534,6 +547,7 @@ class Editora(models.Model):
     def __str__(self):
         return self.nome
 ```
+
 **Observação:** O atributo `null=True` indica que o campo pode ser nulo. O atributo `blank=True` indica que o campo pode ser deixado em branco. Na prática, usamos esses atributos quando queremos que um campo seja **opcional**.
 
 Não esqueça de que a cada criação de novas `models`, é necessário:
@@ -559,11 +573,15 @@ Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu
 
 Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
 
--   Nome do projeto: **config**.
--   Nome da aplicação: **garagem**.
--   Crie os modelos conforme a definição abaixo.
--   Registre as models no `Admin`.
--   Inclua alguns registros no banco de dados.
+-   Crie uma pasta para o projeto.
+-   Crie um ambiente virtual para o projeto (pdm).
+-   Instale o Django.
+-   Crie o projeto Django, e a aplicação:
+    -   Nome do projeto: **config**.
+    -   Nome da aplicação: **garagem**.
+    -   Crie os modelos conforme a definição abaixo.
+    -   Registre as models no `Admin`.
+    -   Inclua alguns registros no banco de dados.
 
 ```python
 from django.db import models
@@ -587,6 +605,8 @@ class Categoria(models.Model):
 
 # 5. Colocando o projeto no GitHub
 
+**5.1 Um aviso importante**
+
 Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
 -   **Antes de clicar ou responder, leia atentamente as instruções.**
@@ -595,7 +615,7 @@ Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instru
 
 As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
-**Configure o projeto git**
+**5.2 Configurando o projeto git**
 
 -   Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
 -   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
@@ -615,7 +635,7 @@ Control + Shift + P + "Recarregar a Janela"
 
 -   Verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
 
-**Configure as variáveis do git**
+**5.3 Configurando as variáveis do git**
 
 -   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
 
@@ -638,7 +658,7 @@ rm ~/.gitconfig
 
 Repita o processo de configuração de nome e email.
 
-**Crie o arquivo `.gitignore`**
+**5.4 Criando o arquivo `.gitignore`**
 
 Vamos criar um arquivo chamado `.gitignore` na raiz do projeto. Esse arquivo serve para indicar quais arquivos não devem ser versionados (monitorados pelo **git**).
 
@@ -655,14 +675,14 @@ touch .gitignore
 -   Cole o conteúdo copiado (`Control + V`).
 -   Encontre as linhas que se referem a "`db.sqlite3`" e comente-as (`Control + /`).
 
-**Faça a publicação**
+**5.5 Publicando o projeto**
 
 -   Escreva uma descrição para o commit (`"commit Inicial"`, por exemplo.).
 -   Tecle `Control+ENTER` para fazer o envio para o servidor do **GitHub**.
 -   Leia atentamente as instruções relacionadas a autenticação no **GitHub** e criação do projeto.
 -   Ao final, seu projeto será incluído no **GitHub** e você poderá visulizá-lo lá.
 
-**Fazendo alterações no projeto e enviando novamente**
+**5.6 Fazendo alterações no projeto e enviando novamente**
 
 Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **GitHub**.
 
@@ -700,16 +720,17 @@ Control + Shift + P + "Formatar o Documento"
 -   Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
 -   Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
 -   Escreva mensagens como:
-    -   `Adiciona o arquivo settings.py`
-    -   `Adiciona o arquivo urls.py`
-    -   `Adiciona o arquivo admin.py`
+    -   Modificação do arquivo `models.py`
+    -   Inclusão da Categoria de Veículos
+    -   Alteração do Marca do Veículo
 
-**Baixando novamente o projeto**
+**5.7 Baixando novamente o projeto**
 
 Agora que seu projeto está no **GitHub**, você pode baixá-lo onde quiser, seja na aula, em casa ou no trabalho, por exemplo. Vamos testar isso.
 
 **A partir desse ponto, vamos repetir uma série de passos que já fizemos nas aulas anteriores. Em caso de dúvidas, volte nessas aulas para mais detalhes.**
 
+-   Feche o projeto no **VS Code**.
 -   Abra o terminal na pasta superior à pasta do projeto:
 
 ```shell
@@ -719,26 +740,20 @@ Control + Alt + T
 -   Apague todo o projeto do seu computador (_isso mesmo, coragem_):
 
 ```shell
-rm -rf livraria
+rm -rf garagem
 ```
 
--   Crie novamente uma pasta vazia para hospedá-lo:
-
-```shell
-mkdir livraria
-```
-
--   Vá no projeto no **GitHub**, clique no botão **Code** e copie a URL dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/livraria.git`
+-   Vá no projeto no **GitHub**, clique no botão **Code** e copie a URL dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/garagem.git`
 -   Clone o projeto para a pasta atual:
 
 ```shell
-git clone https://github.com/marrcandre/livraria.git #troque essa URL pela sua
+git clone https://github.com/marrcandre/garagem.git #troque essa URL pela sua
 ```
 
 -   Vá para a pasta do projeto:
 
 ```shell
-cd livraria
+cd garagem
 ```
 
 -   Abra o projeto no **VS Code**:
