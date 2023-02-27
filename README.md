@@ -39,20 +39,20 @@ sudo yay -Syu visual-studio-code-bin
 Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
 
 -   Eu recomendo as seguintes:
-    -   Better TOML (Syntaxe Destacada para TOML)
-    -   ESLint (JavaScript)
-    -   Intellicode (Desenvolvimento Inteligente)
-    -   isort (Organização de imports)
-    -   Markdown All in One (Edição de arquivos Markdown)
-    -   Material Icon Theme (Temas de ícones)
-    -   Peacock (Personalização de cores)
-    -   Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)
-    -   Prettier (Formatação de código)
-    -   Python (Uhaa!)
-    -   RapidAPI Client (Teste de APIs)
-    -   SqLite Viewer (Visualização de bancos de dados SQLite)
-    -   TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)
-    -   Vue Language Features (Desenvolvimento de aplicações Vue.js)
+    - [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
+    - [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+    - [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+    - [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
+    - [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+    - [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+    - [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+    - [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
+    - [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+    - [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+    - [RapidAPI Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rapidapi.rapidapi-client)
+    - [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+    - [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
+    - [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
 **1.1.4 Sinconização de extensões no VS Code**
 
