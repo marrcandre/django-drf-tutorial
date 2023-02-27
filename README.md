@@ -39,20 +39,20 @@ sudo yay -Syu visual-studio-code-bin
 Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
 
 -   Eu recomendo as seguintes:
-    - [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
-    - [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-    - [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
-    - [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
-    - [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-    - [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
-    - [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
-    - [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
-    - [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-    - [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-    - [RapidAPI Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rapidapi.rapidapi-client)
-    - [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
-    - [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
-    - [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+    -   [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
+    -   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+    -   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+    -   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
+    -   [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+    -   [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+    -   [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+    -   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
+    -   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+    -   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+    -   [RapidAPI Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rapidapi.rapidapi-client)
+    -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+    -   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
+    -   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
 **1.1.4 Sinconização de extensões no VS Code**
 
@@ -96,7 +96,7 @@ Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
 ```
 
-**1.2.2 Configuração do auto preenchimento do PDM**
+**1.2.3 Configuração do auto preenchimento do PDM**
 
 Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 
@@ -123,7 +123,7 @@ No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins, edi
 
 Para instalar e configurar o Oh My Zsh, siga as instruções [deste link](https://www.alura.com.br/artigos/oh-my-zsh-melhorando-produtividade-terminal).
 
-**1.2.2 Habilitar o PEP 582 no PDM**
+**1.2.4 Habilitar o PEP 582 no PDM**
 
 -   No **bash**:
 
@@ -137,7 +137,7 @@ pdm --pep582 bash >> ~/.bash_profile
 pdm --pep582 zsh >> ~/.zshrc
 ```
 
-**1.2.3 Configuração para não usar virtualenv**
+**1.2.5 Configuração para não usar virtualenv**
 
 ```shell
 pdm config python.use_venv false
@@ -149,7 +149,7 @@ Verifique se o **PDM** está configurado para não usar virtualenv:
 pdm config
 ```
 
-**1.2.4 Instalação de plugins do PDM**
+**1.2.6 Instalação de plugins do PDM**
 
 -   Instale o plugin **pdm-vscode**, que permite a integração do **PDM** com o **VS Code**:
 
