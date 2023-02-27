@@ -62,6 +62,8 @@ Você pode configurar a sincronização das extensões entre os computadores. Pa
 
 **1.2 Instalação do PDM**
 
+**1.2.1 Instalação do PDM no Manjaro**
+
 As instruções a seguir são para o **Linux Manjaro**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
 
 -   Abra um terminal:
@@ -86,7 +88,14 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
-**1.2.1 Configuração do auto preenchimento do PDM**
+**1.2.2 Instalação do PDM no Windows**
+Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
+
+```shell
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
+```
+
+**1.2.2 Configuração do auto preenchimento do PDM**
 
 Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 
