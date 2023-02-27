@@ -43,6 +43,7 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
     -   ESLint (JavaScript)
     -   Intellicode (Desenvolvimento Inteligente)
     -   isort (Organização de imports)
+    -   Markdown All in One (Edição de arquivos Markdown)
     -   Material Icon Theme (Temas de ícones)
     -   Peacock (Personalização de cores)
     -   Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)
