@@ -579,43 +579,9 @@ admin.site.register(Editora)
 
 Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados.
 
-# 4. Criando um segundo projeto
+# 4. Colocando o projeto no GitHub
 
-Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
-
--   Crie uma pasta para o projeto.
--   Crie um ambiente virtual para o projeto (pdm).
--   Instale o Django.
--   Crie o projeto Django, e a aplicação:
-    -   Nome do projeto: **config**.
-    -   Nome da aplicação: **garagem**.
-    -   Crie os modelos conforme a definição abaixo.
-    -   Registre as models no `Admin`.
-    -   Inclua alguns registros no banco de dados.
-
-```python
-from django.db import models
-
-
-class Marca(models.Model):
-    nome = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nome.upper()
-
-
-class Categoria(models.Model):
-    descricao = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.descricao
-```
-
----
-
-# 5. Colocando o projeto no GitHub
-
-**5.1 Um aviso importante**
+**4.1 Um aviso importante**
 
 Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
 
@@ -625,7 +591,7 @@ Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instru
 
 As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 
-**5.2 Configurando o projeto git**
+**4.2 Configurando o projeto git**
 
 -   Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
 -   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
@@ -645,7 +611,7 @@ Control + Shift + P + "Recarregar a Janela"
 
 -   Verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
 
-**5.3 Configurando as variáveis do git**
+**4.3 Configurando as variáveis do git**
 
 -   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
 
@@ -668,7 +634,7 @@ rm ~/.gitconfig
 
 Repita o processo de configuração de nome e email.
 
-**5.4 Criando o arquivo `.gitignore`**
+**4.4 Criando o arquivo `.gitignore`**
 
 Vamos criar um arquivo chamado `.gitignore` na raiz do projeto. Esse arquivo serve para indicar quais arquivos não devem ser versionados (monitorados pelo **git**).
 
@@ -685,14 +651,14 @@ touch .gitignore
 -   Cole o conteúdo copiado (`Control + V`).
 -   Encontre as linhas que se referem a "`db.sqlite3`" e comente-as (`Control + /`).
 
-**5.5 Publicando o projeto**
+**4.5 Publicando o projeto**
 
 -   Escreva uma descrição para o commit (`"commit Inicial"`, por exemplo.).
 -   Tecle `Control+ENTER` para fazer o envio para o servidor do **GitHub**.
 -   Leia atentamente as instruções relacionadas a autenticação no **GitHub** e criação do projeto.
 -   Ao final, seu projeto será incluído no **GitHub** e você poderá visulizá-lo lá.
 
-**5.6 Fazendo alterações no projeto e enviando novamente**
+**4.6 Fazendo alterações no projeto e enviando novamente**
 
 Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **GitHub**.
 
@@ -734,7 +700,7 @@ Control + Shift + P + "Formatar o Documento"
     -   Inclusão da Categoria de Veículos
     -   Alteração do Marca do Veículo
 
-**5.7 Baixando novamente o projeto**
+**4.7 Baixando novamente o projeto**
 
 Agora que seu projeto está no **GitHub**, você pode baixá-lo onde quiser, seja na aula, em casa ou no trabalho, por exemplo. Vamos testar isso.
 
@@ -750,20 +716,20 @@ Control + Alt + T
 -   Apague todo o projeto do seu computador (_isso mesmo, coragem_):
 
 ```shell
-rm -rf garagem
+rm -rf livraria
 ```
 
 -   Vá no projeto no **GitHub**, clique no botão **Code** e copie a URL dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/garagem.git`
 -   Clone o projeto para a pasta atual:
 
 ```shell
-git clone https://github.com/marrcandre/garagem.git #troque essa URL pela sua
+git clone https://github.com/marrcandre/livraria.git #troque essa URL pela sua
 ```
 
 -   Vá para a pasta do projeto:
 
 ```shell
-cd garagem
+cd livraria
 ```
 
 -   Abra o projeto no **VS Code**:
@@ -789,6 +755,41 @@ pdm run python manage.py runserver
     http://localhost:8000/
 
 Pronto! Seu projeto está de volta no computador e rodando.
+
+# 5. Criando um segundo projeto
+
+Nessa aula, vamos criar um segundo projeto, com uma aplicação e alguns modelos.
+
+Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
+
+-   Crie uma pasta para o projeto.
+-   Crie um ambiente virtual para o projeto (pdm).
+-   Instale o Django.
+-   Crie o projeto Django, e a aplicação:
+    -   Nome do projeto: **config**.
+    -   Nome da aplicação: **garagem**.
+    -   Crie os modelos conforme a definição abaixo.
+    -   Registre as models no `Admin`.
+    -   Inclua alguns registros no banco de dados.
+    -   Suba o projeto pro **GitHub**.
+
+```python
+from django.db import models
+
+
+class Marca(models.Model):
+    nome = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nome.upper()
+
+
+class Categoria(models.Model):
+    descricao = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.descricao
+```
 
 # 6. Criando os outros modelos de dados
 
