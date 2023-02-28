@@ -571,7 +571,7 @@ Seu arquivo `admin.py` ficará assim:
 ```python
 from django.contrib import admin
 
-from core.models import Categoria, Editora
+from livraria.models import Categoria, Editora
 
 admin.site.register(Categoria)
 admin.site.register(Editora)
@@ -868,7 +868,7 @@ python manage.py shell
 -   Acesse os livros da categoria com `id` 1:
 
 ```python
->>> from livraria.core.models import Categoria
+>>> from config.livraria.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
 ```
 
@@ -887,7 +887,7 @@ editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="liv
 ```python
 from django.contrib import admin
 
-from core.models import Autor, Categoria, Editora, Livro
+from livraria.models import Autor, Categoria, Editora, Livro
 
 admin.site.register(Autor)
 admin.site.register(Categoria)
@@ -930,7 +930,7 @@ pdm add djangorestframework
 INSTALLED_APPS = [
 ...
     "rest_framework",
-    "core",
+    "livraria",
 ]
 ```
 
@@ -941,7 +941,7 @@ Um _serializer_ é um objeto que transforma um objeto do banco de dados em um ob
 -   Crie o arquivo `serializers.py` no diretório `livraria`:
 
 ```shell
-touch core/serializers.py
+touch livraria/serializers.py
 ```
 
 -   Adicione o seguinte código no arquivo `serializers.py`:
@@ -949,7 +949,7 @@ touch core/serializers.py
 ```python
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Categoria
+from livraria.models import Categoria
 
 class CategoriaSerializer(ModelSerializer):
     class Meta:
@@ -966,8 +966,8 @@ Uma _view_ é um objeto que recebe uma requisição HTTP e retorna uma resposta 
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Categoria
-from core.serializers import CategoriaSerializer
+from livraria.models import Categoria
+from livraria.serializers import CategoriaSerializer
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
@@ -978,7 +978,7 @@ class CategoriaViewSet(ModelViewSet):
 
 As rotas são responsáveis por mapear as URLs para as views.
 
--   Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `livraria`. Substitua o seu conteúdo por esse:
+-   Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `config`. Substitua o seu conteúdo por esse:
 
 ```python
 from django.contrib import admin
@@ -986,7 +986,7 @@ from django.urls import include, path
 
 from rest_framework.routers import DefaultRouter
 
-from core.views import CategoriaViewSet
+from livraria.views import CategoriaViewSet
 
 router = DefaultRouter()
 router.register(r"categorias", CategoriaViewSet)
@@ -1066,7 +1066,7 @@ Crie a API para a classe `Editora` seguindo os passos anteriores.
 ```python
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Categoria, Editora
+from livraria.models import Categoria, Editora
 
 class CategoriaSerializer(ModelSerializer):
     class Meta:
@@ -1085,8 +1085,8 @@ class EditoraSerializer(ModelSerializer):
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Categoria, Editora
-from core.serializers import CategoriaSerializer, EditoraSerializer
+from livraria.models import Categoria, Editora
+from livraria.serializers import CategoriaSerializer, EditoraSerializer
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
@@ -1102,7 +1102,7 @@ class EditoraViewSet(ModelViewSet):
 
 ```python
 ...
-from core.views import CategoriaViewSet, EditoraViewSet
+from livraria.views import CategoriaViewSet, EditoraViewSet
 ...
 router.register(r"categorias", CategoriaViewSet)
 router.register(r"editoras", EditoraViewSet)
@@ -1200,7 +1200,7 @@ INSTALLED_APPS = [
     ...,
     "corsheaders",
     "rest_framework",
-    "core",
+    "livraria",
     ...,
 ]
 ```
@@ -1291,7 +1291,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso, uma **tabela associativa** foi criada, com o nome `core_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
+Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso, uma **tabela associativa** foi criada, com o nome `livraria_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
 
 **Tarefa**:
 
@@ -1614,19 +1614,19 @@ Siga os passos:
 -   Crie uma pasta `models` dentro da pasta da aplicação (`livraria`):
 
 ```shell
-mkdir core/models
+mkdir livraria/models
 ```
 
 -   Crie um arquivo `__init__.py` dentro da pasta `models` recém criada:
 
 ```shell
-touch core/models/__init__.py
+touch livraria/models/__init__.py
 ```
 
 -   Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`:
 
 ```shell
-touch core/models/autor.py
+touch livraria/models/autor.py
 ```
 
 -   Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `models/autor.py`.
@@ -1658,7 +1658,7 @@ from .autor import Autor
 ```python
 from django.db import models
 
-from core.models import Autor, Categoria, Editora
+from livraria.models import Autor, Categoria, Editora
 
 
 class Livro(models.Model):
@@ -1681,7 +1681,7 @@ Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo 
 Ao final , você terá uma estrutura parecida com essa:
 
 ```
-core
+livraria
 ├── __init__.py
 ├── admin.py
 ├── apps.py
@@ -1745,15 +1745,15 @@ from .usuario import Usuario
 -   Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
 ```python
-AUTH_USER_MODEL = "core.Usuario"
+AUTH_USER_MODEL = "livraria.Usuario"
 ```
 
 -   Remova o banco de dados e as migrações e crie novamente:
 
 ```shell
 rm db.sqlite3
-rm -rf core/migrations
-python manage.py makemigrations core
+rm -rf livraria/migrations
+python manage.py makemigrations livraria
 python manage.py migrate
 python manage.py createsuperuser
 ```
@@ -1814,8 +1814,8 @@ O projeto ficará com uma estrutura parecida com essa:
 
 ```
 .
-├── core
 ├── livraria
+├── config
 ├── uploader
 │   ├── models
 │   │   ├── document.py
@@ -1843,7 +1843,7 @@ pdm add python-magic Pillow
 INSTALLED_APPS = [
     ...
     "uploader",
-    "core",
+    "livraria",
     ...
 ]
 ```
@@ -1902,7 +1902,7 @@ class Livro(models.Model):
 -   Faça novamente a migração do banco de dados:
 
 ```shell
-python manage.py makemigrations core
+python manage.py makemigrations livraria
 python manage.py migrate
 ```
 
@@ -2068,7 +2068,7 @@ python manage.py loaddata livraria.json
 
 ```shell
 python manage.py shell
->>> from core.models import Livro
+>>> from livraria.models import Livro
 >>> Livro.objects.all()
 ```
 
@@ -2087,7 +2087,7 @@ python manage.py shell
 -   Importe os modelos de `livraria.models`:
 
 ```python
->>> from core.models import Autor, Categoria, Editora, Livro
+>>> from livraria.models import Autor, Categoria, Editora, Livro
 ```
 
 -   Crie um objeto:
@@ -2141,7 +2141,7 @@ python manage.py shell
 
 ```python
 >>> categoria.delete()
-(1, {'core.Categoria': 1})
+(1, {'livraria.Categoria': 1})
 ```
 
 -   Observe que o objeto foi removido:
@@ -2229,7 +2229,7 @@ class LivroAdmin(admin.ModelAdmin):
 pdm add django-environ
 ```
 
--   Edite o arquivo `livraria/settings.py`:
+-   Edite o arquivo `config/settings.py`:
 
 ```python
 ...
@@ -2470,7 +2470,7 @@ class Usuario(AbstractUser):
 -   Faça as migrações:
 
 ```shell
-python manage.py makemigrations core
+python manage.py makemigrations livraria
 python manage.py migrate
 ```
 
@@ -2489,7 +2489,7 @@ class UsuarioAdmin(UserAdmin):
 ```python
 rom rest_framework.serializers import ModelSerializer, SlugRelatedField
 
-from core.models import Usuario
+from livraria.models import Usuario
 from media.models import Image
 from media.serializers import ImageSerializer
 
@@ -2521,8 +2521,8 @@ from .usuario import UsuarioSerializer
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Usuario
-from core.serializers import UsuarioSerializer
+from livraria.models import Usuario
+from livraria.serializers import UsuarioSerializer
 
 
 class UsuarioViewSet(ModelViewSet):
@@ -2539,7 +2539,7 @@ from .usuario import UsuarioViewSet
 -   Inclua a nova view no arquivo `urls.py`:
 
 ```python
-from core.views import UsuarioViewSet
+from livraria.views import UsuarioViewSet
 ...
 router.register(r"usuarios", UsuarioViewSet)
 ```
