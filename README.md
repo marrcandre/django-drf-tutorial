@@ -2548,12 +2548,40 @@ router.register(r"usuarios", UsuarioViewSet)
 
 -   Inclua uma foto de perfil em um usuário.
 
-# A1. Instalação e configuração de ferramentas de desenvolvimento
+# A1. Criação de PDM scripts
+
+Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
+
+Aqui estão alguns exemplos de scripts que você pode adicionar ao seu `pyproject.toml`:
+
+-   Edite o arquivo `pyproject.toml` na raiz do projeto:
+
+```python
+[tool.pdm.scripts]
+dev = "python manage.py runserver"
+runserver = "python manage.py runserver"
+createsuperuser = "python manage.py createsuperuser"
+migrate = "python manage.py migrate"
+makemigrations = "python manage.py makemigrations"
+shell = "python manage.py shell"
+test = "python manage.py test"
+startapp = "python manage.py startapp {args}"
+loaddata = "python manage.py loaddata {args}"
+dumpdata = "python manage.py dumpdata {args}"
+```
+
+-   Agora, você pode executar os comandos do Django com o `pdm run`, por exemplo:
+
+```shell
+pdm run dev
+```
+
+# A2. Instalação e configuração de ferramentas de desenvolvimento
 
 -   Instale as ferramentas de desenvolvimento `isort` e `black`:
 
 ```shell
-pdm install isort black
+pdm add --dev isort black
 ```
 
 -   Crie um arquivo `.isort.cfg` na raiz do projeto:
@@ -2653,33 +2681,7 @@ pre-commit install
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
 
-# A2. Criação de PDM scripts
 
-Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
-
-Aqui estão alguns exemplos de scripts que você pode adicionar ao seu `pyproject.toml`:
-
--   Edite o arquivo `pyproject.toml` na raiz do projeto:
-
-```python
-[tool.pdm.scripts]
-dev = "python manage.py runserver"
-runserver = "python manage.py runserver"
-createsuperuser = "python manage.py createsuperuser"
-migrate = "python manage.py migrate"
-makemigrations = "python manage.py makemigrations"
-shell = "python manage.py shell"
-test = "python manage.py test"
-startapp = "python manage.py startapp {args}"
-loaddata = "python manage.py loaddata {args}"
-dumpdata = "python manage.py dumpdata {args}"
-```
-
--   Agora, você pode executar os comandos do Django com o `pdm run`, por exemplo:
-
-```shell
-pdm run dev
-```
 
 <!-- Aulas futuras -->
 
