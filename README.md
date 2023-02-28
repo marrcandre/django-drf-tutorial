@@ -2548,6 +2548,139 @@ router.register(r"usuarios", UsuarioViewSet)
 
 -   Inclua uma foto de perfil em um usuário.
 
+# A1. Instalação e configuração de ferramentas de desenvolvimento
+
+-   Instale as ferramentas de desenvolvimento `isort` e `black`:
+
+```shell
+pdm install isort black
+```
+
+-   Crie um arquivo `.isort.cfg` na raiz do projeto:
+
+```shell
+touch .isort.cfg
+```
+
+-   Abra o arquivo `.isort.cfg` e coloque o seguinte conteúdo:
+
+```python
+[isort]
+default_section = THIRDPARTY
+known_first_party = config  # change it for the name of your django project
+known_django = django
+sections = FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
+
+[settings]
+profile=black
+```
+
+-   Crie um arquivo `.editorconfig` na raiz do projeto:
+
+```shell
+touch .editorconfig
+```
+
+-   Abra o arquivo `.editorconfig` e coloque o seguinte conteúdo:
+
+```python
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+
+
+
+[*.py]
+indent_size = 4
+```
+
+-   Crie um arquivo `.flake8` na raiz do projeto:
+
+```shell
+touch .flake8
+```
+
+-   Abra o arquivo `.flake8` e coloque o seguinte conteúdo:
+
+```python
+
+[flake8]
+max-line-length = 88
+extend-ignore = E203, W503
+```
+
+-   Crie um arquivo `.pre-commit-config.yaml` na raiz do projeto:
+
+```shell
+touch .pre-commit-config.yaml
+```
+
+-   Abra o arquivo `.pre-commit-config.yaml` e coloque o seguinte conteúdo:
+
+```python
+
+repos:
+-   repo:
+
+    rev: 3.8.4
+
+    hooks:
+
+    -   id: black
+
+    -   id: isort
+
+    -   id: flake8
+
+```
+
+-   Instale o `pre-commit`:
+
+```shell
+pdm install pre-commit
+```
+
+-   Ative o `pre-commit`:
+
+```shell
+pre-commit install
+```
+
+-   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
+-   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
+
+# A2. Criação de PDM scripts
+
+Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
+
+Aqui estão alguns exemplos de scripts que você pode adicionar ao seu `pyproject.toml`:
+
+-   Edite o arquivo `pyproject.toml` na raiz do projeto:
+
+```python
+[tool.pdm.scripts]
+dev = "python manage.py runserver"
+runserver = "python manage.py runserver"
+createsuperuser = "python manage.py createsuperuser"
+migrate = "python manage.py migrate"
+makemigrations = "python manage.py makemigrations"
+shell = "python manage.py shell"
+test = "python manage.py test"
+startapp = "python manage.py startapp {args}"
+loaddata = "python manage.py loaddata {args}"
+dumpdata = "python manage.py dumpdata {args}"
+```
+
+-   Agora, você pode executar os comandos do Django com o `pdm run`, por exemplo:
+
+```shell
+pdm run dev
+```
+
 <!-- Aulas futuras -->
 
 <!-- Incluir MEDIA_URL no tutorial de configuração do .env e de deploy-->
