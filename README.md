@@ -862,7 +862,7 @@ No `Django Shell`, é possível testar o acesso a todos os livros de uma categor
 -   Abrar o Django shell:
 
 ```shell
-python manage.py shell
+pdm run python manage.py shell
 ```
 
 -   Acesse os livros da categoria com `id` 1:
@@ -2547,6 +2547,8 @@ router.register(r"usuarios", UsuarioViewSet)
 **Testando**
 
 -   Inclua uma foto de perfil em um usuário.
+
+# Apêndices
 
 # A1. Criação de PDM scripts
 
