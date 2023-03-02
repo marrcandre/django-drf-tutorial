@@ -151,13 +151,30 @@ pdm config
 
 **1.2.6 Instalação de plugins do PDM**
 
--   Instale o plugin **pdm-vscode**, que permite a integração do **PDM** com o **VS Code**:
+**1.2.6.1 Instalação do plugin pdm-vscode**
+
+Instale o plugin `pdm-vscode`, que permite a integração do **PDM** com o **VS Code**:
 
 ```shell
 pdm plugin add pdm-vscode
 ```
 
--   Instale o plugin pdm-autoexport, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
+Na criação do projeto, será criada uma pasta `.vscode` com um arquivo `settings.json` que contém as configurações do **PDM** para o **VS Code**:
+
+```json
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/__pypackages__/3.10/lib"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/__pypackages__/3.10/lib"
+    ]
+}
+```
+
+**1.2.7 Instalação do plugin pdm-autoexport**
+
+Instale o plugin `pdm-autoexport`, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
 
 ```shell
 pdm plugin add pdm-autoexport
