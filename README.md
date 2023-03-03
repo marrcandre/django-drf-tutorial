@@ -106,9 +106,11 @@ Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 pdm completion bash >> ~/.bash_completion
 ```
 
-<!-- -   No **zsh**:
+-   No **zsh**:
 
-```shell
+**Não faça nada!**
+
+<!-- ```shell
 pdm completion zsh >> ~/.zshrc
 ``` -->
 
