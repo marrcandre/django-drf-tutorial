@@ -790,10 +790,11 @@ Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
     -   Registre a aplicação no `settings.py`.
 -   Suba o projeto pro **GitHub**:
     -   Não esqueça de criar o arquivo `.gitignore` e de retirar o `db.sqlite3` dele.
+    -   Nomeie o commit como sendo `Criação do projeto`.
 -   Crie os modelos conforme a definição abaixo:
     -   Crie o modelo `Marca`, com as seguintes definições:
         -   `nome` (string, máximo 50 caracteres).
-        -   nacionalidade (string, máximo 50 caracteres, não obrigatório).
+        -   `nacionalidade` (string, máximo 50 caracteres, opcional).
         -  `__str__` (retorna o nome da marca em caixa alta).
     -  Registre a model `Marca` no `Admin`.
      - Faça um commit com a mensagem *"Criação do modelo Marca"*.
