@@ -787,28 +787,22 @@ Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
 -   Crie o projeto Django, e a aplicação:
     -   Nome do projeto: **config**.
     -   Nome da aplicação: **garagem**.
-    -   Crie os modelos conforme a definição abaixo.
-    -   Registre as models no `Admin`.
+    -   Registre a aplicação no `settings.py`.
+-   Suba o projeto pro **GitHub**:
+    -   Não esqueça de criar o arquivo `.gitignore` e de retirar o `db.sqlite3` dele.
+-   Crie os modelos conforme a definição abaixo:
+    -   Crie o modelo `Marca`, com as seguintes definições:
+        -   `nome` (string, máximo 50 caracteres).
+        -   nacionalidade (string, máximo 50 caracteres, não obrigatório).
+        -  `__str__` (retorna o nome da marca em caixa alta).
+    -  Registre a model `Marca` no `Admin`.
+     - Faça um commit com a mensagem *"Criação do modelo Marca"*.
+     -  Crie o modelo Categoria, com as seguintes definições:
+        -   `descricao` (string, máximo 100 caracteres).
+        -   `__str__` (retorna a descrição da categoria).
+    -   Registre a model `Categoria` no `Admin`.
+    -   Faça um commit com a mensagem *"Criação do modelo Categoria"*.
     -   Inclua alguns registros no banco de dados.
-    -   Suba o projeto pro **GitHub**.
-
-```python
-from django.db import models
-
-
-class Marca(models.Model):
-    nome = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nome.upper()
-
-
-class Categoria(models.Model):
-    descricao = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.descricao
-```
 
 # 6. Criando os outros modelos de dados
 
