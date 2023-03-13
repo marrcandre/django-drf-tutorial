@@ -869,25 +869,6 @@ Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos q
     -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
     -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
 
-**Testando o atributo related_name**
-
-No `Django Shell`, é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
-
--   Abrar o Django shell:
-
-```shell
-pdm run python manage.py shell
-```
-
--   Acesse os livros da categoria com `id` 1:
-
-```python
->>> from config.livraria.models import Categoria
->>> Categoria.objects.get(id=1).livros.all()
-```
-
-Mais na frente, aprenderemos a utilizar outros recursos do `Django Shell`.
-
 **Campo `editora` no `Livro`**
 
 -   De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
@@ -925,8 +906,29 @@ Feito isso, verifique se tudo funcionou.
 
 -   Cadastre algumas categorias, editoras, autores e livros.
 -   Note como os livros acessam as categorias e editoras já cadastradas.
--   Tente apagar uma editora ou categoria **com** livros associados.
+-   Tente apagar uma editora ou categoria **com** livros associados. 
+    -   O que aconteceu?
+    -   Por que isso aconteceu?
 -   Tente apagar uma editora ou categoria **sem** livros associados.
+    -   O que aconteceu?
+    -   Por que isso aconteceu?
+
+**Testando o atributo related_name**
+
+No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
+
+-   Abra o Django shell:
+
+```shell
+pdm run python manage.py shell
+```
+
+-   Acesse os livros da categoria com `id` 1:
+
+```python
+>>> from config.livraria.models import Categoria
+>>> Categoria.objects.get(id=1).livros.all()
+```
 
 # 7. Criando uma API REST
 
