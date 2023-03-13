@@ -795,14 +795,14 @@ Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
     -   Crie o modelo `Marca`, com as seguintes definições:
         -   `nome` (string, máximo 50 caracteres).
         -   `nacionalidade` (string, máximo 50 caracteres, opcional).
-        -  `__str__` (retorna o nome da marca em caixa alta).
-    -  Registre a model `Marca` no `Admin`.
-     - Faça um commit com a mensagem *"Criação do modelo Marca"*.
-     -  Crie o modelo Categoria, com as seguintes definições:
+        -   `__str__` (retorna o nome da marca em caixa alta).
+    -   Registre a model `Marca` no `Admin`.
+    -   Faça um commit com a mensagem _"Criação do modelo Marca"_.
+    -   Crie o modelo `Categoria`, com as seguintes definições:
         -   `descricao` (string, máximo 100 caracteres).
         -   `__str__` (retorna a descrição da categoria).
     -   Registre a model `Categoria` no `Admin`.
-    -   Faça um commit com a mensagem *"Criação do modelo Categoria"*.
+    -   Faça um commit com a mensagem _"Criação do modelo Categoria"_.
     -   Inclua alguns registros no banco de dados.
 
 # 6. Criando os outros modelos de dados
@@ -906,7 +906,7 @@ Feito isso, verifique se tudo funcionou.
 
 -   Cadastre algumas categorias, editoras, autores e livros.
 -   Note como os livros acessam as categorias e editoras já cadastradas.
--   Tente apagar uma editora ou categoria **com** livros associados. 
+-   Tente apagar uma editora ou categoria **com** livros associados.
     -   O que aconteceu?
     -   Por que isso aconteceu?
 -   Tente apagar uma editora ou categoria **sem** livros associados.
@@ -2698,8 +2698,6 @@ pre-commit install
 
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
-
-
 
 <!-- Aulas futuras -->
 
