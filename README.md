@@ -809,7 +809,7 @@ Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
 
 Vamos criar os outros modelos de dados do projeto **Livraria**.
 
-**Criando o modelo de dados Autor**
+**6.1 Criando o modelo de dados Autor**
 
 -   Vamos criar o modelo de dados `Autor`, no arquivo `models.py`:
 
@@ -827,7 +827,7 @@ class Autor(models.Model):
         verbose_name_plural = "Autores"
 ```
 
-**Criando o modelo de dados Livro**
+**6.2 Criando o modelo de dados Livro**
 
 -   Vamos criar o modelo de dados `Livro`, no arquivo `models.py`:
 
@@ -845,11 +845,11 @@ class Livro(models.Model):
 
 Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chaves estrangeiras no modelo `Livro`.
 
-**Incluindo chaves estrangeiras no modelo**
+**6.3 Incluindo chaves estrangeiras no modelo**
 
 Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`.
 
-**Campo `categoria` no `Livro`**
+**6.3.1 Campo `categoria` no `Livro`**
 
 -   Inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
 
@@ -867,13 +867,15 @@ Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir 
     -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
     -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
 
-**Campo `editora` no `Livro`**
+**6.3.2 Campo `editora` no `Livro`**
 
 -   De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
 
 ```python
 editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros")
 ```
+
+**6.4 Inclusão dos modelos no `Admin`**
 
 -   Inclua os modelos criados no arquivo `admin.py`:
 
@@ -888,6 +890,8 @@ admin.site.register(Editora)
 admin.site.register(Livro)
 ```
 
+**6.5 Efetivando as alterações no banco de dados**
+
 -   Prepare as migrações:
 
 ```shell
@@ -900,8 +904,11 @@ pdm run python manage.py makemigrations
 pdm run python manage.py migrate
 ```
 
+**6.6 Testando o atributo `on_delete`**
+
 Feito isso, verifique se tudo funcionou.
 
+No `Admin`:
 -   Cadastre algumas categorias, editoras, autores e livros.
 -   Note como os livros acessam as categorias e editoras já cadastradas.
 -   Tente apagar uma editora ou categoria **com** livros associados.
@@ -911,7 +918,7 @@ Feito isso, verifique se tudo funcionou.
     -   O que aconteceu?
     -   Por que isso aconteceu?
 
-**Testando o atributo related_name**
+**6.7 Testando o atributo related_name**
 
 No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
 
@@ -927,6 +934,28 @@ pdm run python manage.py shell
 >>> from config.livraria.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
 ```
+**6.8 Exercício: criando os demais modelos de dados no projeto Garagem**
+
+Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
+
+-   `Acessório`:
+    -   `descricao` (string, máximo 100 caracteres).
+    -   `__str__` (retorna a descrição do acessório).
+
+-  `Cor`:
+    -   `descricao` (string, máximo 100 caracteres).
+    -   `__str__` (retorna a descrição da cor).
+
+Crie o modelo `Veículo`, com os seguintes atributos:
+
+-   `Veículo`:
+    -   `marca` (chave estrangeira para `Marca`).
+    -   `categoria` (chave estrangeira para `Categoria`).
+    -   `cor` (chave estrangeira para `Cor`).
+    -   `ano` (inteiro, permite nulo, default 0).
+    -   `preco` (decimal, máximo 10, dígitos, 2 casas decimais, permite nulo, default 0).
+    -   `__str__` (retorna a marca, modelo, ano e cor do carro).
+
 
 # 7. Criando uma API REST
 
