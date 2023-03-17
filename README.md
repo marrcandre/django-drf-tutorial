@@ -63,9 +63,9 @@ Você pode configurar a sincronização das extensões entre os computadores. Pa
 
 **1.2 Instalação do PDM**
 
-**1.2.1 Instalação do PDM no Manjaro**
+**1.2.1 Instalação do PDM no Linux**
 
-As instruções a seguir são para o **Linux Manjaro**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
+As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
 
 -   Abra um terminal:
 
