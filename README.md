@@ -807,9 +807,7 @@ Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
 
 # 6. Criando os outros modelos de dados
 
-**Colocando o projeto livraria no GitHub**
-
-Agora que você conseguiu colocar o projeto `garagem` no **GitHub**, coloque também o projeto `livraria`.
+Vamos criar os outros modelos de dados do projeto **Livraria**.
 
 **Criando o modelo de dados Autor**
 
@@ -838,8 +836,8 @@ class Autor(models.Model):
 class Livro(models.Model):
     titulo = models.CharField(max_length=255)
     isbn = models.CharField(max_length=32, null=True, blank=True)
-    quantidade = models.IntegerField(default=0)
-    preco = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    quantidade = models.IntegerField(default=0,  null=True, blank=True)
+    preco = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=True, blank=True)
 
     def __str__(self):
         return f"{self.titulo} ({self.quantidade})"
@@ -849,7 +847,7 @@ Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chave
 
 **Incluindo chaves estrangeiras no modelo**
 
-Nosso livro terá uma categoria e uma editora. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`.
+Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`.
 
 **Campo `categoria` no `Livro`**
 
@@ -893,13 +891,13 @@ admin.site.register(Livro)
 -   Prepare as migrações:
 
 ```shell
-python manage.py makemigrations
+pdm run python manage.py makemigrations
 ```
 
 -   Efetive as migrações:
 
 ```shell
-python manage.py migrate
+pdm run python manage.py migrate
 ```
 
 Feito isso, verifique se tudo funcionou.
@@ -1298,13 +1296,13 @@ autores = models.ManyToManyField(Autor, related_name="livros")
 -   Crie as migrações:
 
 ```shell
-python manage.py makemigrations
+pdm run python manage.py makemigrations
 ```
 
 -   Execute as migrações:
 
 ```shell
-python manage.py migrate
+pdm run python manage.py migrate
 ```
 
 Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso, uma **tabela associativa** foi criada, com o nome `livraria_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
@@ -1769,9 +1767,9 @@ AUTH_USER_MODEL = "livraria.Usuario"
 ```shell
 rm db.sqlite3
 rm -rf livraria/migrations
-python manage.py makemigrations livraria
-python manage.py migrate
-python manage.py createsuperuser
+pdm run python manage.py makemigrations livraria
+pdm run python manage.py migrate
+pdm run python manage.py createsuperuser
 ```
 
 -   Edite o arquivo `admin.py` e inclua a configuração abaixo:
@@ -1890,8 +1888,8 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 -   Faça a migração do banco de dados:
 
 ```shell
-python manage.py makemigrations uploader
-python manage.py migrate
+pdm run python manage.py makemigrations uploader
+pdm run python manage.py migrate
 ```
 
 **Uso em modelos**
@@ -1918,8 +1916,8 @@ class Livro(models.Model):
 -   Faça novamente a migração do banco de dados:
 
 ```shell
-python manage.py makemigrations livraria
-python manage.py migrate
+pdm run python manage.py makemigrations livraria
+pdm run python manage.py migrate
 ```
 
 **Uso no serializer**
@@ -2055,7 +2053,7 @@ Vamos aprender a fazer o _dump_ e _load_ de dados.
 -   Execute o comando `dumpdata`:
 
 ```shell
-python manage.py dumpdata --indent 2 > livraria_bkp.json
+pdm run python manage.py dumpdata --indent 2 > livraria_bkp.json
 ```
 
 -   Observe que o arquivo `livraria_bkp.json` foi criado:
@@ -2077,13 +2075,13 @@ wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
 -   Execute o comando `loaddata`:
 
 ```shell
-python manage.py loaddata livraria.json
+pdm run python manage.py loaddata livraria.json
 ```
 
 -   Observe que os dados foram carregados:
 
 ```shell
-python manage.py shell
+pdm run python manage.py shell
 >>> from livraria.models import Livro
 >>> Livro.objects.all()
 ```
@@ -2097,7 +2095,7 @@ O Django Shell é uma ferramenta para interagir com o banco de dados.
 -   Acesse o shell:
 
 ```shell
-python manage.py shell
+pdm run python manage.py shell
 ```
 
 -   Importe os modelos de `livraria.models`:
@@ -2412,7 +2410,7 @@ workon marcoandre.pythonanywhere.com
 -   No console, execute o comando abaixo para migrar o banco de dados:
 
 ```shell
-python manage.py migrate
+pdm run python manage.py migrate
 ```
 
 **Configuração do banco de dados no PythonAnywhere**
@@ -2420,7 +2418,7 @@ python manage.py migrate
 -   Carregue os dados iniciais:
 
 ```shell
-python manage.py loaddata livraria.json
+pdm run python manage.py loaddata livraria.json
 ```
 
 **Remoção do banco de dados local (se necessário)**
@@ -2458,7 +2456,7 @@ pip install -r requirements.txt
 -   Se houverem alterações nos modelos, faça a migração:
 
 ```shell
-python manage.py migrate
+pdm run python manage.py migrate
 ```
 
 # 26. Inclusão da foto de perfil no usuário
@@ -2486,8 +2484,8 @@ class Usuario(AbstractUser):
 -   Faça as migrações:
 
 ```shell
-python manage.py makemigrations livraria
-python manage.py migrate
+pdm run python manage.py makemigrations livraria
+pdm run python manage.py migrate
 ```
 
 -   No arquivo `admin.py`, inclua o campo `foto`:
