@@ -89,6 +89,8 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
+**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
+
 **1.2.2 Instalação do PDM no Windows**
 Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
 
