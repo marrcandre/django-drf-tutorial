@@ -89,7 +89,7 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
-**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**  
+**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
 **1.2.2 Instalação do PDM no Windows**
 Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
@@ -911,6 +911,7 @@ pdm run python manage.py migrate
 Feito isso, verifique se tudo funcionou.
 
 No `Admin`:
+
 -   Cadastre algumas categorias, editoras, autores e livros.
 -   Note como os livros acessam as categorias e editoras já cadastradas.
 -   Tente apagar uma editora ou categoria **com** livros associados.
@@ -936,15 +937,17 @@ pdm run python manage.py shell
 >>> from livraria.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
 ```
+
 **6.8 Exercício: criando os demais modelos de dados no projeto Garagem**
 
 Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
 
 -   `Acessório`:
+
     -   `descricao` (string, máximo 100 caracteres).
     -   `__str__` (retorna a descrição do acessório).
 
--  `Cor`:
+-   `Cor`:
     -   `descricao` (string, máximo 100 caracteres).
     -   `__str__` (retorna a descrição da cor).
 
@@ -957,7 +960,6 @@ Crie o modelo `Veículo`, com os seguintes atributos:
     -   `ano` (inteiro, permite nulo, default 0).
     -   `preco` (decimal, máximo 10, dígitos, 2 casas decimais, permite nulo, default 0).
     -   `__str__` (retorna a marca, modelo, ano e cor do carro).
-
 
 # 7. Criando uma API REST
 
@@ -1792,6 +1794,16 @@ from .usuario import Usuario
 ```python
 AUTH_USER_MODEL = "livraria.Usuario"
 ```
+
+**Instalação do pacote setuptools**
+
+O pacote `setuptools` é necessário nesse ponto do projeto. Para instalá-lo, execute o comando abaixo:
+
+```shell
+pdm add setuptools
+```
+
+**Efetivação das alterações**
 
 -   Remova o banco de dados e as migrações e crie novamente:
 
