@@ -89,7 +89,7 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
-**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
+**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**  
 
 **1.2.2 Instalação do PDM no Windows**
 Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
@@ -922,7 +922,7 @@ No `Admin`:
 
 **6.7 Testando o atributo related_name**
 
-No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a todos os livros de uma categoria usando algo parecido com isso:
+No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a **todos os livros de uma categoria** usando algo parecido com isso:
 
 -   Abra o Django shell:
 
@@ -933,7 +933,7 @@ pdm run python manage.py shell
 -   Acesse os livros da categoria com `id` 1:
 
 ```python
->>> from config.livraria.models import Categoria
+>>> from livraria.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
 ```
 **6.8 Exercício: criando os demais modelos de dados no projeto Garagem**
