@@ -1860,12 +1860,14 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 ```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/uploader.zip
+# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/uploader.zip" -OutFile uploader.zip # no PowerShell
 ```
 
 -   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
 
 ```shell
 unzip uploader.zip
+# Expand-Archive -Path uploader.zip -DestinationPath . # no PowerShell
 ```
 
 <!-- - Remova a pasta `media` do arquivo `.gitignore`. -->
@@ -2114,6 +2116,7 @@ code livraria_bkp.json
 
 ```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
+# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json" -OutFile livraria.json # no PowerShell
 ```
 
 **Carga dos dados**
