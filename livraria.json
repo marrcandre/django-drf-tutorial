@@ -1,7 +1,6 @@
-['localhost', '"*"']
 [
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 1,
   "fields": {
     "nome": "Robert C. Martin",
@@ -9,7 +8,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 2,
   "fields": {
     "nome": "J. R. R. Tolkien",
@@ -17,7 +16,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 3,
   "fields": {
     "nome": "C. S. Lewis",
@@ -25,7 +24,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 4,
   "fields": {
     "nome": "Agatha Chistie",
@@ -33,7 +32,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 5,
   "fields": {
     "nome": "Rick Riordan",
@@ -41,7 +40,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 6,
   "fields": {
     "nome": "João Guimarães Rosa",
@@ -49,7 +48,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 7,
   "fields": {
     "nome": "George R. R. Martin",
@@ -57,7 +56,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 8,
   "fields": {
     "nome": "Fiódor Dostoiévski",
@@ -65,7 +64,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 9,
   "fields": {
     "nome": "Oscar Wilde",
@@ -73,7 +72,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 10,
   "fields": {
     "nome": "Bell Hooks",
@@ -81,7 +80,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 11,
   "fields": {
     "nome": "Colleen Houck",
@@ -89,7 +88,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 12,
   "fields": {
     "nome": "Philip K. Dick",
@@ -97,7 +96,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 13,
   "fields": {
     "nome": "Marv Wolfman",
@@ -105,7 +104,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 14,
   "fields": {
     "nome": "Oliver Bowden",
@@ -113,7 +112,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 15,
   "fields": {
     "nome": "Geoff Johns",
@@ -121,7 +120,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 16,
   "fields": {
     "nome": "Richard Donner",
@@ -129,7 +128,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 17,
   "fields": {
     "nome": "Adam Kubert",
@@ -137,7 +136,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 18,
   "fields": {
     "nome": "Brian Azzarello",
@@ -145,7 +144,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 19,
   "fields": {
     "nome": "Jim Lee",
@@ -153,7 +152,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 20,
   "fields": {
     "nome": "Mark Millar",
@@ -161,7 +160,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 21,
   "fields": {
     "nome": "Dave Johnson",
@@ -169,7 +168,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 22,
   "fields": {
     "nome": "Kilian Plunkett",
@@ -177,7 +176,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 23,
   "fields": {
     "nome": "Cecily von Ziegesar",
@@ -185,7 +184,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 24,
   "fields": {
     "nome": "Jeff Kinney",
@@ -193,7 +192,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 25,
   "fields": {
     "nome": "Tom King",
@@ -201,7 +200,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 26,
   "fields": {
     "nome": "Andy Kubert",
@@ -209,7 +208,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 27,
   "fields": {
     "nome": "Bernard Cornwell",
@@ -217,7 +216,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 28,
   "fields": {
     "nome": "Sandra Hope",
@@ -225,7 +224,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 29,
   "fields": {
     "nome": "Augusto Cury",
@@ -233,7 +232,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 30,
   "fields": {
     "nome": "Brad Anderson",
@@ -241,7 +240,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 31,
   "fields": {
     "nome": "Marcelo Marques Gomes",
@@ -249,7 +248,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 32,
   "fields": {
     "nome": "Ciranda Cultural",
@@ -257,7 +256,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 34,
   "fields": {
     "nome": "Douglas Adams",
@@ -265,7 +264,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 35,
   "fields": {
     "nome": "Paula Pimenta",
@@ -273,7 +272,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 36,
   "fields": {
     "nome": "Thomas Nield",
@@ -281,7 +280,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 37,
   "fields": {
     "nome": "George Orwell",
@@ -289,7 +288,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 38,
   "fields": {
     "nome": "Daniel Kraus",
@@ -297,7 +296,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 39,
   "fields": {
     "nome": "Edgar Allan Poe",
@@ -305,7 +304,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 40,
   "fields": {
     "nome": "Rick J. Scavetta",
@@ -313,7 +312,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 41,
   "fields": {
     "nome": "Cathy Tanimura",
@@ -321,7 +320,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 42,
   "fields": {
     "nome": "Veronica Roth",
@@ -329,7 +328,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 43,
   "fields": {
     "nome": "Julio Verne",
@@ -337,7 +336,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 44,
   "fields": {
     "nome": "Edécio Fernando Iepsen",
@@ -345,7 +344,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 45,
   "fields": {
     "nome": "Daniel J. Barrett",
@@ -353,7 +352,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 46,
   "fields": {
     "nome": "Abel Ferreira",
@@ -361,7 +360,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 47,
   "fields": {
     "nome": "Franz Kafka",
@@ -369,7 +368,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 48,
   "fields": {
     "nome": "Neal Shusterman",
@@ -377,7 +376,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 49,
   "fields": {
     "nome": "Charlie Donlea",
@@ -385,7 +384,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 51,
   "fields": {
     "nome": "H. P. Lovecraft",
@@ -393,7 +392,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 52,
   "fields": {
     "nome": "Aldous Leonard Huxley",
@@ -401,7 +400,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 53,
   "fields": {
     "nome": "Phil Knight",
@@ -409,7 +408,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 54,
   "fields": {
     "nome": "Howard Schultz",
@@ -417,7 +416,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 55,
   "fields": {
     "nome": "Antoine de Saint-Exupéry",
@@ -425,7 +424,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 56,
   "fields": {
     "nome": "Marco Aurélio",
@@ -433,7 +432,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 57,
   "fields": {
     "nome": "Hal Elrod",
@@ -441,7 +440,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 58,
   "fields": {
     "nome": "William Golding",
@@ -449,7 +448,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 59,
   "fields": {
     "nome": "Anthony Burgess",
@@ -457,7 +456,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 60,
   "fields": {
     "nome": "Karl Marx",
@@ -465,7 +464,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 61,
   "fields": {
     "nome": "Viola Davis",
@@ -473,7 +472,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 62,
   "fields": {
     "nome": "Michel Foucault",
@@ -481,7 +480,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 63,
   "fields": {
     "nome": "Dom Paulo Evaristo Arns",
@@ -489,7 +488,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 64,
   "fields": {
     "nome": "Deepak Chopra",
@@ -497,7 +496,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 65,
   "fields": {
     "nome": "Platão",
@@ -505,7 +504,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 66,
   "fields": {
     "nome": "Stefano Mancuso",
@@ -513,7 +512,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 67,
   "fields": {
     "nome": "Neil Gaiman",
@@ -521,7 +520,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 68,
   "fields": {
     "nome": "Kahlil Gibran",
@@ -529,7 +528,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 69,
   "fields": {
     "nome": "Emily Dickinson",
@@ -537,7 +536,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 70,
   "fields": {
     "nome": "Sally Rooney",
@@ -545,7 +544,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 72,
   "fields": {
     "nome": "Raphael Montes",
@@ -553,7 +552,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 73,
   "fields": {
     "nome": "Josh Goldberg",
@@ -561,7 +560,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 74,
   "fields": {
     "nome": "Clóvis de Barros Filho",
@@ -569,7 +568,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 75,
   "fields": {
     "nome": "Stephen King",
@@ -577,7 +576,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 76,
   "fields": {
     "nome": "Leigh Bardugo",
@@ -585,7 +584,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 77,
   "fields": {
     "nome": "Carina Rissi",
@@ -593,7 +592,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 78,
   "fields": {
     "nome": "Dan Brown",
@@ -601,7 +600,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 79,
   "fields": {
     "nome": "Joel Dicker",
@@ -609,7 +608,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 80,
   "fields": {
     "nome": "Casey McQuiston",
@@ -617,7 +616,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 81,
   "fields": {
     "nome": "Machado de Assis",
@@ -625,7 +624,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 82,
   "fields": {
     "nome": "Jane Austen",
@@ -633,7 +632,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 83,
   "fields": {
     "nome": "Euclides da Cunha",
@@ -641,7 +640,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 84,
   "fields": {
     "nome": "Fernando Morais",
@@ -649,7 +648,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 85,
   "fields": {
     "nome": "J. D. Salinger",
@@ -657,7 +656,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 86,
   "fields": {
     "nome": "Editora do Brasil",
@@ -665,7 +664,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 87,
   "fields": {
     "nome": "Ned Vizzini",
@@ -673,7 +672,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 89,
   "fields": {
     "nome": "Ronan Wielewski",
@@ -681,7 +680,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 90,
   "fields": {
     "nome": "Friedrich Engels",
@@ -689,7 +688,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 91,
   "fields": {
     "nome": "Lygia Bojunga",
@@ -697,7 +696,7 @@
   }
 },
 {
-  "model": "core.autor",
+  "model": "livraria.autor",
   "pk": 93,
   "fields": {
     "nome": "Victoria Aveyard",
@@ -705,252 +704,252 @@
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 1,
   "fields": {
     "descricao": "Engenharia de Software"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 2,
   "fields": {
     "descricao": "Fantasia"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 3,
   "fields": {
     "descricao": "Policial"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 4,
   "fields": {
     "descricao": "Javascript"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 6,
   "fields": {
     "descricao": "Aventura"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 7,
   "fields": {
     "descricao": "Contos"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 8,
   "fields": {
     "descricao": "Clássico"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 9,
   "fields": {
     "descricao": "Literatura Gótica"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 10,
   "fields": {
     "descricao": "Ciências Sociais"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 11,
   "fields": {
     "descricao": "Ficção Científica"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 12,
   "fields": {
     "descricao": "História em Quadrinhos"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 13,
   "fields": {
     "descricao": "Ficção"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 14,
   "fields": {
     "descricao": "Drama adolescente"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 15,
   "fields": {
     "descricao": "Romance Historico"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 16,
   "fields": {
     "descricao": "Programação"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 17,
   "fields": {
     "descricao": "Infantil"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 18,
   "fields": {
     "descricao": "SQL"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 19,
   "fields": {
     "descricao": "Distopia"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 20,
   "fields": {
     "descricao": "Python"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 21,
   "fields": {
     "descricao": "Biografia"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 22,
   "fields": {
     "descricao": "Religioso"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 23,
   "fields": {
     "descricao": "Linux"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 24,
   "fields": {
     "descricao": "Literatura Infantil"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 25,
   "fields": {
     "descricao": "Desenvolvimento Pessoal"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 26,
   "fields": {
     "descricao": "Sociologia"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 27,
   "fields": {
     "descricao": "Filosofia"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 28,
   "fields": {
     "descricao": "Poesia"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 30,
   "fields": {
     "descricao": "Suspense"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 31,
   "fields": {
     "descricao": "Drama"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 32,
   "fields": {
     "descricao": "Romance"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 34,
   "fields": {
     "descricao": "Autoajuda"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 35,
   "fields": {
     "descricao": "Política"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 36,
   "fields": {
     "descricao": "Romance/Drama"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 37,
   "fields": {
     "descricao": "Comédia romantica"
   }
 },
 {
-  "model": "core.categoria",
+  "model": "livraria.categoria",
   "pk": 38,
   "fields": {
     "descricao": "Infanto-Juvenil"
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 1,
   "fields": {
     "nome": "Alta Books",
@@ -958,7 +957,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 2,
   "fields": {
     "nome": "Record",
@@ -966,7 +965,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 3,
   "fields": {
     "nome": "Martins Fontes",
@@ -974,7 +973,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 5,
   "fields": {
     "nome": "Companhia das Letras",
@@ -982,7 +981,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 6,
   "fields": {
     "nome": "Suma",
@@ -990,7 +989,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 7,
   "fields": {
     "nome": "Intrínseca",
@@ -998,7 +997,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 8,
   "fields": {
     "nome": "Elefante",
@@ -1006,7 +1005,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 9,
   "fields": {
     "nome": "Arqueiro",
@@ -1014,7 +1013,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 10,
   "fields": {
     "nome": "HarperCollins",
@@ -1022,7 +1021,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 11,
   "fields": {
     "nome": "Panini",
@@ -1030,7 +1029,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 12,
   "fields": {
     "nome": "Amulet Books",
@@ -1038,7 +1037,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 13,
   "fields": {
     "nome": "Saraiva",
@@ -1046,7 +1045,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 14,
   "fields": {
     "nome": "Magalu",
@@ -1054,7 +1053,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 15,
   "fields": {
     "nome": "Ciranda Cultural",
@@ -1062,7 +1061,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 16,
   "fields": {
     "nome": "Aleph",
@@ -1070,7 +1069,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 18,
   "fields": {
     "nome": "Novatec",
@@ -1078,7 +1077,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 19,
   "fields": {
     "nome": "Farol Literário",
@@ -1086,7 +1085,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 20,
   "fields": {
     "nome": "Gutenberg",
@@ -1094,7 +1093,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 21,
   "fields": {
     "nome": "Melhoramentos",
@@ -1102,7 +1101,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 22,
   "fields": {
     "nome": "Thomas Nelson Brasil",
@@ -1110,7 +1109,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 23,
   "fields": {
     "nome": "Rocco Jovens Leitores",
@@ -1118,7 +1117,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 24,
   "fields": {
     "nome": "Montecristo",
@@ -1126,7 +1125,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 25,
   "fields": {
     "nome": "Planeta Minotauro",
@@ -1134,7 +1133,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 26,
   "fields": {
     "nome": "Seguinte",
@@ -1142,7 +1141,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 27,
   "fields": {
     "nome": "Faro Editorial",
@@ -1150,7 +1149,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 28,
   "fields": {
     "nome": "Sextante",
@@ -1158,7 +1157,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 29,
   "fields": {
     "nome": "Darkside",
@@ -1166,7 +1165,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 30,
   "fields": {
     "nome": "Biblioteca Azul",
@@ -1174,7 +1173,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 31,
   "fields": {
     "nome": "Buzz",
@@ -1182,7 +1181,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 33,
   "fields": {
     "nome": "Edipro",
@@ -1190,7 +1189,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 34,
   "fields": {
     "nome": "Best Seller",
@@ -1198,7 +1197,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 35,
   "fields": {
     "nome": "Quill Tree Books",
@@ -1206,7 +1205,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 36,
   "fields": {
     "nome": "Alfaguara",
@@ -1214,7 +1213,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 37,
   "fields": {
     "nome": "Veneta",
@@ -1222,7 +1221,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 38,
   "fields": {
     "nome": "Paz & Terra",
@@ -1230,7 +1229,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 39,
   "fields": {
     "nome": "Vozes",
@@ -1238,7 +1237,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 40,
   "fields": {
     "nome": "Lafonte",
@@ -1246,7 +1245,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 41,
   "fields": {
     "nome": "Tordesilhas",
@@ -1254,7 +1253,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 42,
   "fields": {
     "nome": "Unicamp",
@@ -1262,7 +1261,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 43,
   "fields": {
     "nome": "Nova Fronteira",
@@ -1270,7 +1269,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 46,
   "fields": {
     "nome": "L&PM",
@@ -1278,7 +1277,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 49,
   "fields": {
     "nome": "Citadel",
@@ -1286,7 +1285,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 50,
   "fields": {
     "nome": "Principis",
@@ -1294,7 +1293,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 51,
   "fields": {
     "nome": "Penguin",
@@ -1302,7 +1301,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 52,
   "fields": {
     "nome": "Todavia",
@@ -1310,7 +1309,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 53,
   "fields": {
     "nome": "Brasil",
@@ -1318,7 +1317,7 @@
   }
 },
 {
-  "model": "core.editora",
+  "model": "livraria.editora",
   "pk": 54,
   "fields": {
     "nome": "Casa Lygia Bojunga",
@@ -1326,7 +1325,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 1,
   "fields": {
     "titulo": "O Código Limpo",
@@ -1342,7 +1341,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 2,
   "fields": {
     "titulo": "O Codificador Limpo",
@@ -1358,7 +1357,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 3,
   "fields": {
     "titulo": "As Crônicas de Nárnia",
@@ -1374,7 +1373,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 4,
   "fields": {
     "titulo": "O Senhor dos Anéis",
@@ -1390,7 +1389,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 5,
   "fields": {
     "titulo": "O Hobbit",
@@ -1406,7 +1405,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 6,
   "fields": {
     "titulo": "Morte no Nilo",
@@ -1422,7 +1421,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 7,
   "fields": {
     "titulo": "Sagarana",
@@ -1438,7 +1437,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 8,
   "fields": {
     "titulo": "Percy Jackson e o Ladrão de Raios",
@@ -1454,7 +1453,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 9,
   "fields": {
     "titulo": "O Jogador",
@@ -1470,7 +1469,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 10,
   "fields": {
     "titulo": "Fogo & Sangue – Volume 1",
@@ -1486,7 +1485,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 11,
   "fields": {
     "titulo": "Percy Jackson e o Mar de Monstros",
@@ -1502,7 +1501,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 12,
   "fields": {
     "titulo": "O Retrato de Dorian Gray",
@@ -1518,7 +1517,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 13,
   "fields": {
     "titulo": "Percy Jackson e a Maldição do Titã",
@@ -1534,7 +1533,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 14,
   "fields": {
     "titulo": "Anseios",
@@ -1550,7 +1549,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 15,
   "fields": {
     "titulo": "A Maldição do Tigre",
@@ -1566,7 +1565,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 16,
   "fields": {
     "titulo": "O Silmarillion",
@@ -1582,7 +1581,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 17,
   "fields": {
     "titulo": "Androides Sonham com Ovelhas Elétricas?",
@@ -1598,7 +1597,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 18,
   "fields": {
     "titulo": "Os filhos de Húrin",
@@ -1614,7 +1613,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 19,
   "fields": {
     "titulo": "Percy Jackson e a Batalha do Labirinto",
@@ -1630,7 +1629,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 20,
   "fields": {
     "titulo": "Percy Jackson e o Último Olimpiano",
@@ -1646,7 +1645,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 21,
   "fields": {
     "titulo": "Superman: Homem e Superman",
@@ -1662,7 +1661,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 22,
   "fields": {
     "titulo": "Assassin's Creed: Renascença",
@@ -1678,7 +1677,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 23,
   "fields": {
     "titulo": "Assassin's Creed: Irmandade: 2",
@@ -1694,7 +1693,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 24,
   "fields": {
     "titulo": "Assassin’s Creed: A Cruzada Secreta",
@@ -1710,7 +1709,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 25,
   "fields": {
     "titulo": "Superman: O Último Filho: DC Deluxe",
@@ -1728,7 +1727,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 26,
   "fields": {
     "titulo": "Superman - Pelo Amanha: Capa Dura",
@@ -1745,7 +1744,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 27,
   "fields": {
     "titulo": "Assassin´s Creed: Revelações",
@@ -1761,7 +1760,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 28,
   "fields": {
     "titulo": "Assassin´s Creed: Renegado",
@@ -1777,7 +1776,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 29,
   "fields": {
     "titulo": "Assassin´s Creed: Bandeira Negra",
@@ -1793,7 +1792,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 30,
   "fields": {
     "titulo": "Superman: Entre a Foice e o Martelo",
@@ -1811,7 +1810,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 31,
   "fields": {
     "titulo": "Assassin's Creed: Unity",
@@ -1827,7 +1826,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 32,
   "fields": {
     "titulo": "Gossip Girl: você sabe que me ama",
@@ -1843,7 +1842,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 33,
   "fields": {
     "titulo": "Diário de um Banana",
@@ -1859,7 +1858,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 34,
   "fields": {
     "titulo": "A Queda de Gondolin",
@@ -1875,7 +1874,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 35,
   "fields": {
     "titulo": "Superman: Para O Alto E Avante",
@@ -1894,7 +1893,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 36,
   "fields": {
     "titulo": "Beren e Lúthien",
@@ -1910,7 +1909,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 37,
   "fields": {
     "titulo": "O Último Reino",
@@ -1926,7 +1925,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 38,
   "fields": {
     "titulo": "O Cavaleiro da Morte",
@@ -1942,7 +1941,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 39,
   "fields": {
     "titulo": "Petrus Logus - O Guardião do Tempo",
@@ -1958,7 +1957,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 40,
   "fields": {
     "titulo": "Os Senhores do Norte",
@@ -1974,7 +1973,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 41,
   "fields": {
     "titulo": "Algoritmos E Lógica Da Programação",
@@ -1990,7 +1989,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 42,
   "fields": {
     "titulo": "O Rei do Inverno (Vol. 1 As Crônicas de Artur)",
@@ -2006,7 +2005,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 43,
   "fields": {
     "titulo": "O Inimigo de Deus (Vol. 2 As Crônicas de Artur)",
@@ -2022,7 +2021,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 44,
   "fields": {
     "titulo": "Excalibur (Vol. 3 As Crônicas de Artur)",
@@ -2038,7 +2037,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 45,
   "fields": {
     "titulo": "Turma da Mônica - Vamos Aprender o Alfabeto",
@@ -2054,7 +2053,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 46,
   "fields": {
     "titulo": "Blade Runner: Androides Sonham com Ovelhas Elétricas?",
@@ -2070,7 +2069,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 47,
   "fields": {
     "titulo": "O Guia Definitivo do Mochileiro das Galáxias",
@@ -2086,7 +2085,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 48,
   "fields": {
     "titulo": "Turma da Mônica - Cuidados do Dia a Dia",
@@ -2102,7 +2101,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 49,
   "fields": {
     "titulo": "Turma da Mônica - Vamos Aprender os Traços",
@@ -2118,7 +2117,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 50,
   "fields": {
     "titulo": "As Aventuras de Pedro",
@@ -2134,7 +2133,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 51,
   "fields": {
     "titulo": "Introdução à Linguagem SQL: Abordagem Prática Para Iniciantes",
@@ -2150,7 +2149,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 52,
   "fields": {
     "titulo": "1984",
@@ -2166,7 +2165,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 53,
   "fields": {
     "titulo": "Viagem ao Mar",
@@ -2182,7 +2181,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 54,
   "fields": {
     "titulo": "A Forma da Água",
@@ -2198,7 +2197,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 55,
   "fields": {
     "titulo": "A Queda da Casa de Usher",
@@ -2214,7 +2213,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 56,
   "fields": {
     "titulo": "Fazendo meu filme 1: A estreia de Fani",
@@ -2230,7 +2229,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 57,
   "fields": {
     "titulo": "Revolução dos Bichos",
@@ -2246,7 +2245,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 58,
   "fields": {
     "titulo": "Python e R para o Cientista de Dados Moderno",
@@ -2262,7 +2261,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 59,
   "fields": {
     "titulo": "Dr. Sócrates o Ídolo Corinthiano",
@@ -2278,7 +2277,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 60,
   "fields": {
     "titulo": "A Mascara da Morte Vermelha",
@@ -2294,7 +2293,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 61,
   "fields": {
     "titulo": "SQL para Análise de Dados",
@@ -2310,7 +2309,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 62,
   "fields": {
     "titulo": "Cristianismo Puro e Simples",
@@ -2326,7 +2325,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 63,
   "fields": {
     "titulo": "Divergente",
@@ -2342,7 +2341,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 64,
   "fields": {
     "titulo": "Lógica de Programação e Algoritmos com JavaScript - 2ª Edição",
@@ -2358,7 +2357,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 65,
   "fields": {
     "titulo": "Fascismo e Democracia",
@@ -2374,7 +2373,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 66,
   "fields": {
     "titulo": "O Gato Preto",
@@ -2390,7 +2389,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 67,
   "fields": {
     "titulo": "A Ilha Misteriosa",
@@ -2406,7 +2405,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 68,
   "fields": {
     "titulo": "Cartas de um Diabo a seu Aprendiz",
@@ -2422,7 +2421,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 69,
   "fields": {
     "titulo": "Insurgente",
@@ -2438,7 +2437,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 70,
   "fields": {
     "titulo": "Linux Eficiente na Linha de Comando",
@@ -2454,7 +2453,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 71,
   "fields": {
     "titulo": "A Abolição do Homem",
@@ -2470,7 +2469,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 72,
   "fields": {
     "titulo": "Convergente",
@@ -2486,7 +2485,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 73,
   "fields": {
     "titulo": "Os Quatro Amores",
@@ -2502,7 +2501,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 74,
   "fields": {
     "titulo": "A Metamorfose",
@@ -2518,7 +2517,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 75,
   "fields": {
     "titulo": "O Peso da Glória",
@@ -2534,7 +2533,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 76,
   "fields": {
     "titulo": "Cabeça Fria, Coração Quente",
@@ -2550,7 +2549,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 77,
   "fields": {
     "titulo": "O Ceifador",
@@ -2566,7 +2565,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 78,
   "fields": {
     "titulo": "O Corvo",
@@ -2582,7 +2581,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 79,
   "fields": {
     "titulo": "A Nuvem",
@@ -2598,7 +2597,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 80,
   "fields": {
     "titulo": "A Garota do Lago",
@@ -2614,7 +2613,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 81,
   "fields": {
     "titulo": "O Timbre",
@@ -2630,7 +2629,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 82,
   "fields": {
     "titulo": "A Marca da Vitória: A Autobiografia do Criador da Nike",
@@ -2646,7 +2645,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 83,
   "fields": {
     "titulo": "Admirável Mundo Novo",
@@ -2662,7 +2661,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 84,
   "fields": {
     "titulo": "Gleanings: Stories from the Arc of a Scythe",
@@ -2678,7 +2677,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 85,
   "fields": {
     "titulo": "Medo Clássico Volume 2",
@@ -2694,7 +2693,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 86,
   "fields": {
     "titulo": "A Anatomia de um Luto",
@@ -2710,7 +2709,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 87,
   "fields": {
     "titulo": "H.P. Lovecraft - Medo Clássico - Vol. 1",
@@ -2726,7 +2725,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 88,
   "fields": {
     "titulo": "Dedique-se de coração: A História de como a Starbucks se Tornou uma Grande Empresa de Xícara em Xícara",
@@ -2742,7 +2741,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 89,
   "fields": {
     "titulo": "O Pequeno Príncipe",
@@ -2758,7 +2757,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 90,
   "fields": {
     "titulo": "Deus no Banco dos Réus",
@@ -2774,7 +2773,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 91,
   "fields": {
     "titulo": "O Homem do Castelo Alto",
@@ -2790,7 +2789,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 92,
   "fields": {
     "titulo": "Medo Clássico: Sinta o Medo Clássico",
@@ -2806,7 +2805,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 93,
   "fields": {
     "titulo": "O Darksider Original Mais Vivo do que Nunca",
@@ -2822,7 +2821,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 94,
   "fields": {
     "titulo": "Meditações",
@@ -2838,7 +2837,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 95,
   "fields": {
     "titulo": "Game Changer",
@@ -2854,7 +2853,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 96,
   "fields": {
     "titulo": "Senhor das Moscas",
@@ -2870,7 +2869,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 97,
   "fields": {
     "titulo": "Laranja Mecânica",
@@ -2886,7 +2885,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 98,
   "fields": {
     "titulo": "O Capital",
@@ -2902,7 +2901,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 99,
   "fields": {
     "titulo": "O Milagre da Manhã",
@@ -2918,7 +2917,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 100,
   "fields": {
     "titulo": "Manifesto do Partido Comunista",
@@ -2934,7 +2933,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 101,
   "fields": {
     "titulo": "História da Sexualidade: A Vontade do Saber (Vol. 1): A Vontade de Saber",
@@ -2950,7 +2949,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 102,
   "fields": {
     "titulo": "História da Sexualidade: O Uso dos Prazeres (Vol. 2)",
@@ -2966,7 +2965,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 103,
   "fields": {
     "titulo": "História da Sexualidade: O Cuidado de Si (Vol. 3)",
@@ -2982,7 +2981,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 104,
   "fields": {
     "titulo": "Em Busca de Mim",
@@ -2998,7 +2997,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 105,
   "fields": {
     "titulo": "Brasil: Nunca Mais",
@@ -3014,7 +3013,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 106,
   "fields": {
     "titulo": "A Fúria dos Reis",
@@ -3030,7 +3029,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 107,
   "fields": {
     "titulo": "As Sete Leis Espirituais do Sucesso",
@@ -3046,7 +3045,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 108,
   "fields": {
     "titulo": "A República",
@@ -3062,7 +3061,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 109,
   "fields": {
     "titulo": "Contos de Imaginação e Mistério",
@@ -3078,7 +3077,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 110,
   "fields": {
     "titulo": "A Incrível Viagem das Plantas",
@@ -3094,7 +3093,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 111,
   "fields": {
     "titulo": "Lugar Nenhum",
@@ -3110,7 +3109,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 112,
   "fields": {
     "titulo": "O Pequeno Livro do Amor",
@@ -3126,7 +3125,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 113,
   "fields": {
     "titulo": "Poesia Completa (Volume 1)",
@@ -3142,7 +3141,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 114,
   "fields": {
     "titulo": "Envelope Poems",
@@ -3158,7 +3157,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 115,
   "fields": {
     "titulo": "É Fácil Matar",
@@ -3174,7 +3173,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 116,
   "fields": {
     "titulo": "Pessoas Normais",
@@ -3190,7 +3189,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 117,
   "fields": {
     "titulo": "O Capital: crítica da Economia Política",
@@ -3206,7 +3205,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 118,
   "fields": {
     "titulo": "O Vilarejo",
@@ -3222,7 +3221,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 119,
   "fields": {
     "titulo": "Aprendendo TypeScript",
@@ -3238,7 +3237,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 120,
   "fields": {
     "titulo": "Os Crimes ABC",
@@ -3254,7 +3253,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 122,
   "fields": {
     "titulo": "Joyland",
@@ -3270,7 +3269,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 123,
   "fields": {
     "titulo": "Sombra e Ossos",
@@ -3286,7 +3285,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 124,
   "fields": {
     "titulo": "Sol e Tormenta",
@@ -3302,7 +3301,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 125,
   "fields": {
     "titulo": "No Mundo da Luna",
@@ -3318,7 +3317,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 126,
   "fields": {
     "titulo": "Ruína e Ascensão",
@@ -3334,7 +3333,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 127,
   "fields": {
     "titulo": "O Código Da Vinci",
@@ -3350,7 +3349,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 128,
   "fields": {
     "titulo": "O Livro dos Baltimore",
@@ -3366,7 +3365,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 129,
   "fields": {
     "titulo": "O Caso Alaska Sanders",
@@ -3382,7 +3381,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 130,
   "fields": {
     "titulo": "Vermalho, Branco e Sangue azul",
@@ -3398,7 +3397,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 131,
   "fields": {
     "titulo": "Dom Casmurro",
@@ -3414,7 +3413,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 132,
   "fields": {
     "titulo": "Orgulho e Preconceito",
@@ -3430,7 +3429,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 133,
   "fields": {
     "titulo": "O Alienista",
@@ -3446,7 +3445,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 134,
   "fields": {
     "titulo": "Em Busca de Nós Mesmos",
@@ -3462,7 +3461,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 135,
   "fields": {
     "titulo": "Memórias Póstumas de Brás Cubas",
@@ -3478,7 +3477,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 136,
   "fields": {
     "titulo": "Lula, volume 1: Biografia",
@@ -3494,7 +3493,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 137,
   "fields": {
     "titulo": "Os sertões",
@@ -3510,7 +3509,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 138,
   "fields": {
     "titulo": "Quincas Borba",
@@ -3526,7 +3525,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 139,
   "fields": {
     "titulo": "Apanhador no Campo de Centeio",
@@ -3542,7 +3541,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 140,
   "fields": {
     "titulo": "Uma História Meio que Engraçada",
@@ -3558,7 +3557,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 141,
   "fields": {
     "titulo": "Lula: O Brasil FELIZ de novo!",
@@ -3574,7 +3573,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 142,
   "fields": {
     "titulo": "Manifesto Comunista",
@@ -3590,7 +3589,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 144,
   "fields": {
     "titulo": "O Abraço",
@@ -3606,7 +3605,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 145,
   "fields": {
     "titulo": "Sapato de Salto",
@@ -3622,7 +3621,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 146,
   "fields": {
     "titulo": "A Casa da Madrinha",
@@ -3638,7 +3637,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 147,
   "fields": {
     "titulo": "Tchau",
@@ -3654,7 +3653,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 149,
   "fields": {
     "titulo": "A Rainha Vermelha",
@@ -3670,7 +3669,7 @@
   }
 },
 {
-  "model": "core.livro",
+  "model": "livraria.livro",
   "pk": 150,
   "fields": {
     "titulo": "A Bolsa Amarela",
@@ -3686,13 +3685,13 @@
   }
 },
 {
-  "model": "core.usuario",
+  "model": "livraria.usuario",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$390000$ho8E4gMoGI5ZLcdzrNbDrx$Sv5olhGNiaf5DQZyIObHVulv0C4hzuLKYSDB38QvXVY=",
     "last_login": "2022-10-17T12:26:26.936Z",
     "is_superuser": true,
-    "username": "marco",
+    "username": "admin",
     "first_name": "",
     "last_name": "",
     "email": "",
@@ -3707,7 +3706,7 @@
   }
 },
 {
-  "model": "core.usuario",
+  "model": "livraria.usuario",
   "pk": 3,
   "fields": {
     "password": "pbkdf2_sha256$390000$i9mQUcKQUFk7OyWvVFzjX1$tU3QU+cj90RBk6zoanKyfmG0bhwdpNdH4AaTqOBADmY=",
@@ -3728,7 +3727,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 1,
   "fields": {
     "attachment_key": "18284d4d-c9e7-43ce-859d-3fd96fac339a",
@@ -3739,7 +3738,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 2,
   "fields": {
     "attachment_key": "71312fbc-7446-4763-83d5-cfa8feb940af",
@@ -3750,7 +3749,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 3,
   "fields": {
     "attachment_key": "e17599f7-bb32-4a7d-9346-06fb3c7e707d",
@@ -3761,7 +3760,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 4,
   "fields": {
     "attachment_key": "eabee81f-5293-49a1-9121-f0b66ca7c870",
@@ -3772,7 +3771,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 5,
   "fields": {
     "attachment_key": "04730722-1c75-4c19-8aa6-ba11b283ac30",
@@ -3783,7 +3782,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 6,
   "fields": {
     "attachment_key": "acbcd6da-9788-4f7a-a8c4-928d49c08bda",
@@ -3794,7 +3793,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 7,
   "fields": {
     "attachment_key": "2aaac910-d5d5-4c93-a845-43fcfcc29bde",
@@ -3805,7 +3804,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 8,
   "fields": {
     "attachment_key": "e0227aa0-257e-41d6-8fce-8fc26a582b70",
@@ -3816,7 +3815,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 9,
   "fields": {
     "attachment_key": "879a7ccd-8b1d-4304-8d40-34cfffb8d54e",
@@ -3827,7 +3826,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 10,
   "fields": {
     "attachment_key": "60f2500b-41c6-44b4-a8cd-2e764f06a2d7",
@@ -3838,7 +3837,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 11,
   "fields": {
     "attachment_key": "1598de8b-65bb-4755-a91c-a7535ee6b73e",
@@ -3849,7 +3848,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 12,
   "fields": {
     "attachment_key": "219ca135-1f2e-48b4-98a6-7e049079c8cc",
@@ -3860,7 +3859,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 13,
   "fields": {
     "attachment_key": "a2a21bdc-0f58-406b-b263-eb4912a2fdee",
@@ -3871,7 +3870,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 14,
   "fields": {
     "attachment_key": "ace1454a-c18c-4dea-a41b-94170fe55fd9",
@@ -3882,7 +3881,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 15,
   "fields": {
     "attachment_key": "aafd8dc1-6d3c-474f-b9d3-f8954a99fc15",
@@ -3893,7 +3892,7 @@
   }
 },
 {
-  "model": "media.image",
+  "model": "uploader.image",
   "pk": 16,
   "fields": {
     "attachment_key": "1aa915e9-61d1-4899-93d1-a049549d1173",
