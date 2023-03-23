@@ -738,6 +738,7 @@ Control + Alt + T
 
 ```shell
 rm -rf livraria
+# rmdir livraria /s /q # no Windows
 ```
 
 -   Vá no projeto no **GitHub**, clique no botão **Code** e copie a URL dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/garagem.git`
@@ -1810,6 +1811,8 @@ pdm add setuptools
 ```shell
 rm db.sqlite3
 rm -rf livraria/migrations
+# rmdir livraria/migrations /s /q # no Windows
+# Remove-Item -Recurse -Force livraria/migrations # no PowerShell
 pdm run python manage.py makemigrations livraria
 pdm run python manage.py migrate
 pdm run python manage.py createsuperuser
