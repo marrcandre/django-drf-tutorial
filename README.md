@@ -2339,6 +2339,16 @@ cp .env .env.example
 
 O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no **GitHub**.
 
+**Atualização do arquivo `requirements.txt`**
+
+Atualize o arquivo `requirements.txt`:
+
+```shell
+pdm export -o requirements.txt
+```
+
+Faça um commit e um push para o **GitHub** antes de continuar.
+
 **Criação da conta no PythonAnywhere**
 
 -   Crie uma conta no https://www.pythonanywhere.com/
