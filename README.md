@@ -2379,6 +2379,12 @@ Faça um commit e um push para o **GitHub** antes de continuar.
 sudo apt install libmysqlclient-dev
 ```
 
+- Caso você esteja usando Manjaro:
+
+```shell
+sudo pacman -S gcc mysql
+```
+
 O pacote `libmysqlclient-dev` é necessário para instalar o módulo `mysqlclient`.
 
 -   Instale o módulo `mysqlclient`:
