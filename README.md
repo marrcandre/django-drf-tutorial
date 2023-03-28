@@ -922,7 +922,7 @@ No `Admin`:
     -   O que aconteceu?
     -   Por que isso aconteceu?
 
-**6.7 Testando o atributo related_name**
+**6.7 Testando o atributo related_name no Django Shell**
 
 No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a **todos os livros de uma categoria** usando algo parecido com isso:
 
@@ -964,7 +964,7 @@ Crie o modelo `Veículo`, com os seguintes atributos:
 
 # 7. Criando uma API REST
 
-**Instalação do DRF**
+**7.1 Instalação do DRF**
 
 -   Instale o `djangorestframework`:
 
@@ -982,7 +982,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-**Criação do serializer**
+**7.2 Criação do serializer**
 
 Um _serializer_ é um objeto que transforma um objeto do banco de dados em um objeto JSON.
 
@@ -1005,7 +1005,12 @@ class CategoriaSerializer(ModelSerializer):
         fields = "__all__"
 ```
 
-**Criação da view**
+**7.2.1 Explicando o código**
+
+-   `model = Categoria`: define o model que será serializado.
+-   `fields = "__all__"`: define que todos os campos serão serializados.
+
+**7.3 Criação da view**
 
 Uma _view_ é um objeto que recebe uma requisição HTTP e retorna uma resposta HTTP.
 
@@ -1022,7 +1027,12 @@ class CategoriaViewSet(ModelViewSet):
     serializer_class = CategoriaSerializer
 ```
 
-**Criação das rotas(urls)**
+**7.3.1 Explicando o código**
+
+-   `queryset = Categoria.objects.all()`: define o conjunto de objetos que será retornado pela view.
+-   `serializer_class = CategoriaSerializer`: define o serializer que será utilizado para serializar os objetos.
+
+**7.4 Criação das rotas(urls)**
 
 As rotas são responsáveis por mapear as URLs para as views.
 
@@ -1045,7 +1055,7 @@ urlpatterns = [
 ]
 ```
 
-**Testando a API**
+**7.5 Testando a API**
 
 -   Para acessar a interface gerada pelo DRF, acesse:
 
@@ -1063,7 +1073,7 @@ Isso deve trazer todas as categorias do banco, no formato **JSON**.
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
 
-**Opções de manipulação do banco de dados**
+**7.6 Opções de manipulação do banco de dados**
 
 As opções disponíveis para manipulação dos dados são:
 
@@ -1074,7 +1084,7 @@ As opções disponíveis para manipulação dos dados são:
 -   **PATCH** (para **alterar parcialmente** um registro): http://localhost:8000/categorias/1/
 -   **DELETE** (para **remover** um registro): http://localhost:8000/categorias/1/
 
-**Outras ferramentas para testar a API**
+**7.7 Outras ferramentas para testar a API**
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
@@ -1082,7 +1092,7 @@ A interface do DRF é funcional, porém simples e limitada. Algumas opções de 
 -   [Postman](https://www.postman.com/downloads/)
 -   [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **VS Code**)
 
-**Testando a API e as ferramentas**
+**7.8 Testando a API e as ferramentas**
 
 Instale uma ou mais das ferramentas sugeridas.
 
@@ -1095,9 +1105,15 @@ Instale uma ou mais das ferramentas sugeridas.
     -   Incluir outra categoria;
     -   Listar todas as categorias.
 
+## 7.9 Exercício: Criação da API REST no projeto Garagem
+
+-   Instale o `djangorestframework`.
+-   Crie o serializador para a classe `Marca`.
+-   Teste a API com a ferramenta de sua preferência.
+
 # 8. Continuando a criação da API REST
 
-**Criação da API para a classe Editora**
+**8.1 Criação da API para a classe Editora**
 
 Crie a API para a classe `Editora` seguindo os passos anteriores.
 
@@ -1157,20 +1173,20 @@ router.register(r"editoras", EditoraViewSet)
 ...
 ```
 
-**Teste da API da Editora**
+**8.2 Teste da API da Editora**
 
 -   Teste todas as operações da `Editora`.
 -   Verifique se é possível incluir novas editoras sem incluir todos os campos.
 -   Tente utilizar o PUT e o PATCH sem informar todos os campos.
 -   Tente remover uma editora com livros associados a ela.
 
-**Criação da API para Autor e Livro**
+**8.3 Criação da API para Autor e Livro**
 
 -   Repita os passos para a criação da API para `Autor` e `Livro`.
 -   Teste o funcionamento.
 -   Observe que no Livro, aparecem apenas os campos `id` da categoria e da editora.
 
-**Apresentação das informações de categoria e editora no livro**
+**8.4 Apresentação das informações de categoria e editora no livro**
 
 Uma forma de mostrar essas informações é essa, em `serializers.py`:
 
@@ -1211,6 +1227,11 @@ class LivroViewSet(ModelViewSet):
             return LivroDetailSerializer
         return LivroSerializer
 ```
+
+**8.5 Exercício: Criação da API REST no projeto Garagem para as demais classes**
+
+-   Crie a API para as classes `Categoria`, `Cor`, `Acessorio` e `Veiculo`.
+-   Teste a API com a ferramenta de sua preferência.
 
 # 9. Aplicação frontend Vuejs e Django CORS Headers
 
@@ -1276,42 +1297,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-# 10. API REST do projeto Garagem
+**9.1 Exercício: Criação de uma aplicação frontend com Vuejs**
 
--   Volte ao projeto `Garagem`
--   Crie as classes, baseadas no arquivo `models.py` abaixo.
--   Depois, crie a API REST com o Django Rest Framework para todas as entidades.
--   Não esqueça de adicionar o DRF ao seu projeto.
--   Depois, teste tudo!
-
-```python
-class Categoria(models.Model):
-    descricao = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.descricao
-
-
-class Marca(models.Model):
-    nome = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.nome
-
-
-class Carro(models.Model):
-    modelo = models.CharField(max_length=50)
-    marca = models.ForeignKey(Marca, on_delete=models.PROTECT, related_name="carros")
-    categoria = models.ForeignKey(
-        Categoria, on_delete=models.PROTECT, related_name="carros"
-    )
-    ano = models.IntegerField(null=True, blank=True)
-    cor = models.CharField(max_length=50, null=True, blank=True)
-    preco = models.FloatField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.marca} {self.modelo} {self.cor} ({self.ano})"
-```
+-   Modifique a aplicação frontend com Vuejs para consumir a API REST das demais classes do projeto `Livraria`.
+-   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
 
 # 11. Relacionamento n para n
 
@@ -2379,7 +2368,7 @@ Faça um commit e um push para o **GitHub** antes de continuar.
 sudo apt install libmysqlclient-dev
 ```
 
-- Caso você esteja usando Manjaro:
+-   Caso você esteja usando Manjaro:
 
 ```shell
 sudo pacman -S gcc mysql
