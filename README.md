@@ -2333,7 +2333,7 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 Atualize o arquivo `requirements.txt`:
 
 ```shell
-pdm export -o requirements.txt
+pdm export -o requirements.txt -v --wihtiout-hashes
 ```
 
 Faça um commit e um push para o **GitHub** antes de continuar.
