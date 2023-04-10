@@ -51,6 +51,7 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
     -   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
     -   [RapidAPI Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rapidapi.rapidapi-client)
     -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+    -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
     -   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
     -   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
@@ -1088,9 +1089,10 @@ As opções disponíveis para manipulação dos dados são:
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
--   [Insomnia](https://docs.insomnia.rest/insomnia/install)
--   [Postman](https://www.postman.com/downloads/)
+-   [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) (extensão do **VS Code**)
 -   [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **VS Code**)
+-   [Insomnia](https://docs.insomnia.rest/insomnia/install) (externo)
+-   [Postman](https://www.postman.com/downloads/) (externo)
 
 **7.8 Testando a API e as ferramentas**
 
@@ -2399,7 +2401,7 @@ DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-
 
 ```shell
 echo "Copiando o arquivo .env para a pasta do projeto..."
-cp ~/.env ~/seu_usuario.pythonanywhere.com/
+cp ~/.env ~/sua_conta.pythonanywhere.com/
 ```
 
 Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnywhere.
@@ -2750,6 +2752,8 @@ pre-commit install
 
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
+
+
 
 <!-- Aulas futuras -->
 
