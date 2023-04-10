@@ -2753,6 +2753,25 @@ pre-commit install
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
 
+A3. Testando a API via linha de comando, utilizando o curl
+
+- Liste todas as categorias:
+
+```shell
+curl -X GET http://localhost:8000/api/categorias/
+```
+
+- Liste uma categoria específica:
+
+```shell
+curl -X GET http://localhost:8000/api/categorias/1/
+```
+
+- Crie uma nova categoria:
+
+```shell
+curl -X POST http://localhost:8000/api/categorias/ -d "descricao=Teste"
+```
 
 
 <!-- Aulas futuras -->
