@@ -27,7 +27,7 @@ sudo apt install code
 **No Manjaro:**
 
 ```shell
-sudo yay -Syu visual-studio-code-bin
+yay -Syu visual-studio-code-bin
 ```
 
 **No Windows:**
@@ -2753,26 +2753,37 @@ pre-commit install
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
 
-A3. Testando a API via linha de comando, utilizando o curl
+# A3. Testando a API via linha de comando, utilizando o curl
 
 - Liste todas as categorias:
 
 ```shell
-curl -X GET http://localhost:8000/api/categorias/
+curl -X GET http://localhost:8000/categorias/
 ```
 
 - Liste uma categoria específica:
 
 ```shell
-curl -X GET http://localhost:8000/api/categorias/1/
+curl -X GET http://localhost:8000/categorias/1/
 ```
 
 - Crie uma nova categoria:
 
 ```shell
-curl -X POST http://localhost:8000/api/categorias/ -d "descricao=Teste"
+curl -X POST http://localhost:8000/categorias/ -d "descricao=Teste"
 ```
 
+- Atualize uma categoria:
+
+```shell
+curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
+```
+
+- Delete uma categoria:
+
+```shell
+curl -X DELETE http://localhost:8000/categorias/1/
+```
 
 <!-- Aulas futuras -->
 
