@@ -40,6 +40,7 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
 
 -   Eu recomendo as seguintes:
     -   [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
+    -   [Black (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
     -   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
     -   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
     -   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
@@ -49,7 +50,6 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
     -   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
     -   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
     -   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-    -   [RapidAPI Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rapidapi.rapidapi-client)
     -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
     -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
     -   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
@@ -154,6 +154,11 @@ Verifique se o **PDM** está configurado para não usar virtualenv:
 pdm config
 ```
 
+**Observação:** 
+
+Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
+
+
 **1.2.6 Instalação de plugins do PDM**
 
 **1.2.6.1 Instalação do plugin pdm-vscode**
@@ -183,6 +188,21 @@ Instale o plugin `pdm-autoexport`, que atualiza automaticamente o arquivo `requi
 
 ```shell
 pdm plugin add pdm-autoexport
+```
+
+Para configurar o plugin, edite o arquivo `pyproject.toml` e adicione a seguinte linha:
+
+```toml
+[[tool.pdm.autoexport]]
+filename = "requirements.txt"
+without-hashes = "true"
+```
+**1.2.8 Configuração do Navegador de Arquivos**
+
+-   No **Gnome Shell**, inclua o VS Code no menu de contexto do navegador de arquivos (*"Abrir com Code"*):
+
+```shell
+wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.sh | bash
 ```
 
 **1.3 Instalação do Python**
