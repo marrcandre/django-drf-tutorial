@@ -38,22 +38,23 @@ yay -Syu visual-studio-code-bin
 
 Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
 
--   Eu recomendo as seguintes:
-    -   [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
-    -   [Black (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
-    -   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-    -   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
-    -   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
-    -   [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-    -   [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
-    -   [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
-    -   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
-    -   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-    -   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-    -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
-    -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
-    -   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
-    -   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+Eu recomendo as seguintes:
+
+-   [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
+-   [Black (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+-   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+-   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+-   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
+-   [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+-   [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+-   [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+-   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
+-   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+-   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+-   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+-   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
+-   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
+-   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
 **1.1.4 Sinconização de extensões no VS Code**
 
@@ -154,10 +155,9 @@ Verifique se o **PDM** está configurado para não usar virtualenv:
 pdm config
 ```
 
-**Observação:** 
+**Observação:**
 
 Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
-
 
 **1.2.6 Instalação de plugins do PDM**
 
@@ -197,9 +197,10 @@ Para configurar o plugin, edite o arquivo `pyproject.toml` e adicione a seguinte
 filename = "requirements.txt"
 without-hashes = "true"
 ```
+
 **1.2.8 Configuração do Navegador de Arquivos**
 
--   No **Gnome Shell**, inclua o VS Code no menu de contexto do navegador de arquivos (*"Abrir com Code"*):
+-   No **Gnome Shell**, inclua o VS Code no menu de contexto do navegador de arquivos (_"Abrir com Code"_):
 
 ```shell
 wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.sh | bash
@@ -337,6 +338,34 @@ ls -l pdm.lock
 ```shell
 pdm run django-admin --version
 ```
+
+**Instalação do black**
+
+Vamos instalar o **black** para formatar o código do nosso projeto. O **black** é um **formatador de código** que formata o código de acordo com as **regras de estilo** do **PEP8**.
+
+-   Instale o **black**:
+
+```shell
+pdm add --dev black
+```
+
+-   Crie (ou edite) o arquivo chamado `.vscode/settings.json` com o seguinte conteúdo:
+
+```json
+{
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length=79"
+    ]
+}
+```
+
+Para formatar o código:
+- use as teclas `Ctrl + Shift + P` e digite `Format Document`.
+- use as teclas `Ctrl + Shift + I`.
+- no terminal, digite :
+  
+    `pdm run black .`
 
 **2.5 Criação do projeto no Django**
 
@@ -848,8 +877,19 @@ class Autor(models.Model):
         return self.nome
 
     class Meta:
+        verbose_name = "Autor"
         verbose_name_plural = "Autores"
 ```
+
+**Uso da classe `Meta`**
+
+- Utilizamos o `verbose_name_plural` para alterar o nome do modelo no plural, que por padrão é o nome do modelo acrescido de `s`. Sem ele, o nome do modelo no plural seria `Autors`.
+
+- Utilizamos também o `verbose_name` para alterar o nome do modelo no singular. Nesse caso não é necessário, pois o nome do modelo no singular é o mesmo do plural, mas vamos deixar para fins de exemplo.
+Isso é útil quando:
+  - o nome do modelo é muito grande e não cabe no menu do admin. Exemplo: `Categoria de Veículos`.
+  - o nome do modelo é muito pequeno e não é claro. Exemplo: `Cat`.
+  - queremos que o nome apareça com acentos. Exemplo: `Acessório`.
 
 **6.2 Criando o modelo de dados Livro**
 
@@ -984,6 +1024,10 @@ Crie o modelo `Veículo`, com os seguintes atributos:
     -   `__str__` (retorna a marca, modelo, ano e cor do carro).
 
 # 7. Criando uma API REST
+
+Nessa aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API que permite criar, listar, atualizar e deletar categorias, editoras, autores e livros.
+
+Como exercício, você pode criar uma API para o projeto `garagem`.
 
 **7.1 Instalação do DRF**
 
@@ -1127,13 +1171,15 @@ Instale uma ou mais das ferramentas sugeridas.
     -   Incluir outra categoria;
     -   Listar todas as categorias.
 
-## 7.9 Exercício: Criação da API REST no projeto Garagem
+**7.9 Exercício: Criação da API REST no projeto Garagem**
 
 -   Instale o `djangorestframework`.
 -   Crie o serializador para a classe `Marca`.
 -   Teste a API com a ferramenta de sua preferência.
 
 # 8. Continuando a criação da API REST
+
+Vamos continuar a criação da API REST para o projeto `livraria`.
 
 **8.1 Criação da API para a classe Editora**
 
@@ -2486,7 +2532,7 @@ workon marcoandre.pythonanywhere.com
 -   No console, execute o comando abaixo para migrar o banco de dados:
 
 ```shell
-pdm run python manage.py migrate
+python manage.py migrate
 ```
 
 **Configuração do banco de dados no PythonAnywhere**
@@ -2494,7 +2540,7 @@ pdm run python manage.py migrate
 -   Carregue os dados iniciais:
 
 ```shell
-pdm run python manage.py loaddata livraria.json
+python manage.py loaddata livraria.json
 ```
 
 **Remoção do banco de dados local (se necessário)**
@@ -2532,7 +2578,7 @@ pip install -r requirements.txt
 -   Se houverem alterações nos modelos, faça a migração:
 
 ```shell
-pdm run python manage.py migrate
+python manage.py migrate
 ```
 
 # 26. Inclusão da foto de perfil no usuário
@@ -2744,17 +2790,17 @@ touch .pre-commit-config.yaml
 ```python
 
 repos:
--   repo:
+- repo:
 
     rev: 3.8.4
 
     hooks:
 
-    -   id: black
+    - id: black
 
-    -   id: isort
+    - id: isort
 
-    -   id: flake8
+    - id: flake8
 
 ```
 
@@ -2775,31 +2821,31 @@ pre-commit install
 
 # A3. Testando a API via linha de comando, utilizando o curl
 
-- Liste todas as categorias:
+-   Liste todas as categorias:
 
 ```shell
 curl -X GET http://localhost:8000/categorias/
 ```
 
-- Liste uma categoria específica:
+-   Liste uma categoria específica:
 
 ```shell
 curl -X GET http://localhost:8000/categorias/1/
 ```
 
-- Crie uma nova categoria:
+-   Crie uma nova categoria:
 
 ```shell
 curl -X POST http://localhost:8000/categorias/ -d "descricao=Teste"
 ```
 
-- Atualize uma categoria:
+-   Atualize uma categoria:
 
 ```shell
 curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
 ```
 
-- Delete uma categoria:
+-   Delete uma categoria:
 
 ```shell
 curl -X DELETE http://localhost:8000/categorias/1/
