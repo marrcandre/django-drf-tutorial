@@ -2401,7 +2401,7 @@ O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permit
 Atualize o arquivo `requirements.txt`:
 
 ```shell
-pdm export -o requirements.txt -v --wihtiout-hashes
+pdm export -o requirements.txt -v --without-hashes
 ```
 
 Faça um commit e um push para o **GitHub** antes de continuar.
@@ -2623,11 +2623,11 @@ class UsuarioAdmin(UserAdmin):
 -   Crie um serializador para o usuário:
 
 ```python
-rom rest_framework.serializers import ModelSerializer, SlugRelatedField
+from rest_framework.serializers import ModelSerializer, SlugRelatedField
 
 from livraria.models import Usuario
-from media.models import Image
-from media.serializers import ImageSerializer
+from uploader.models import Image
+from uploader.serializers import ImageSerializer
 
 
 class UsuarioSerializer(ModelSerializer):
