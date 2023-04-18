@@ -1250,9 +1250,17 @@ router.register(r"editoras", EditoraViewSet)
 
 **8.3 Criação da API para Autor e Livro**
 
--   Repita os passos para a criação da API para `Autor` e `Livro`.
--   Teste o funcionamento.
--   Observe que no Livro, aparecem apenas os campos `id` da categoria e da editora.
+**8.3.1 Criação da API para Autor**
+
+- Crie a API para a classe `Autor` seguindo os passos anteriores.
+- Teste o funcionamento.
+- Faça o commit.
+
+**8.3.2 Criação da API para Livro**
+
+- Crie a API para a classe `Livro` seguindo os passos anteriores.
+- Teste o funcionamento.
+- **Observou que no Livro, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
 
 **8.4 Apresentação das informações de categoria e editora no livro**
 
