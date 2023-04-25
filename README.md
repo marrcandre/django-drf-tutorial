@@ -1260,7 +1260,7 @@ router.register(r"editoras", EditoraViewSet)
 
 - Crie a API para a classe `Livro` seguindo os passos anteriores.
 - Teste o funcionamento.
-- **Observou que no Livro, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
+- **Observou que no `Livro`, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
 
 **8.4 Apresentação das informações de categoria e editora no livro**
 
@@ -1306,7 +1306,9 @@ class LivroViewSet(ModelViewSet):
 
 **8.5 Exercício: Criação da API REST no projeto Garagem para as demais classes**
 
--   Crie a API para as classes `Categoria`, `Cor`, `Acessorio` e `Veiculo`.
+-   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, `Modelo` e `Veiculo`.
+    -   Faça um commit para cada _endpoint_ criado.
+-   Faça pelo menos 2 serializadores diferentes para a class `Veículo`.
 -   Teste a API com a ferramenta de sua preferência.
 
 # 9. Aplicação frontend Vuejs e Django CORS Headers
