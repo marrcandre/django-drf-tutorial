@@ -2773,7 +2773,7 @@ trim_trailing_whitespace = true
 [*.py]
 indent_size = 4
 ```
-
+<!-- 
 -   Crie um arquivo `.flake8` na raiz do projeto:
 
 ```shell
@@ -2828,7 +2828,7 @@ pre-commit install
 
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
-
+ -->
 # A3. Testando a API via linha de comando, utilizando o curl
 
 -   Liste todas as categorias:
