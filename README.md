@@ -1305,7 +1305,7 @@ class LivroViewSet(ModelViewSet):
         return LivroSerializer
 ```
 
-8.4.2 Criação de um serializador para a listagem de livros
+**8.4.2 Criação de um serializador para a listagem de livros**
 
 -   Crie um serializador para a listagem de livros, que mostre apenas o id, o título e o preço.
 
@@ -1329,7 +1329,7 @@ class LivroListSerializer(ModelSerializer):
 
 -   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
 
-8.4.3 Utilizando um dicionário para escolher o serializador
+**8.4.3 Utilizando um dicionário para escolher o serializador**
 
 -   Crie um dicionário para escolher o serializador de acordo com a operação:
 
