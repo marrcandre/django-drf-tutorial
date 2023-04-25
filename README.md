@@ -354,17 +354,16 @@ pdm add --dev black
 ```json
 {
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length=79"
-    ]
+    "python.formatting.blackArgs": ["--line-length=79"]
 }
 ```
 
 Para formatar o código:
-- use as teclas `Ctrl + Shift + P` e digite `Format Document`.
-- use as teclas `Ctrl + Shift + I`.
-- no terminal, digite :
-  
+
+-   use as teclas `Ctrl + Shift + P` e digite `Format Document`.
+-   use as teclas `Ctrl + Shift + I`.
+-   no terminal, digite :
+
     `pdm run black .`
 
 **2.5 Criação do projeto no Django**
@@ -883,13 +882,13 @@ class Autor(models.Model):
 
 **Uso da classe `Meta`**
 
-- Utilizamos o `verbose_name_plural` para alterar o nome do modelo no plural, que por padrão é o nome do modelo acrescido de `s`. Sem ele, o nome do modelo no plural seria `Autors`.
+-   Utilizamos o `verbose_name_plural` para alterar o nome do modelo no plural, que por padrão é o nome do modelo acrescido de `s`. Sem ele, o nome do modelo no plural seria `Autors`.
 
-- Utilizamos também o `verbose_name` para alterar o nome do modelo no singular. Nesse caso não é necessário, pois o nome do modelo no singular é o mesmo do plural, mas vamos deixar para fins de exemplo.
-Isso é útil quando:
-  - o nome do modelo é muito grande e não cabe no menu do admin. Exemplo: `Categoria de Veículos`.
-  - o nome do modelo é muito pequeno e não é claro. Exemplo: `Cat`.
-  - queremos que o nome apareça com acentos. Exemplo: `Acessório`.
+-   Utilizamos também o `verbose_name` para alterar o nome do modelo no singular. Nesse caso não é necessário, pois o nome do modelo no singular é o mesmo do plural, mas vamos deixar para fins de exemplo.
+    Isso é útil quando:
+    -   o nome do modelo é muito grande e não cabe no menu do admin. Exemplo: `Categoria de Veículos`.
+    -   o nome do modelo é muito pequeno e não é claro. Exemplo: `Cat`.
+    -   queremos que o nome apareça com acentos. Exemplo: `Acessório`.
 
 **6.2 Criando o modelo de dados Livro**
 
@@ -1252,17 +1251,19 @@ router.register(r"editoras", EditoraViewSet)
 
 **8.3.1 Criação da API para Autor**
 
-- Crie a API para a classe `Autor` seguindo os passos anteriores.
-- Teste o funcionamento.
-- Faça o commit.
+-   Crie a API para a classe `Autor` seguindo os passos anteriores.
+-   Teste o funcionamento.
+-   Faça o commit.
 
 **8.3.2 Criação da API para Livro**
 
-- Crie a API para a classe `Livro` seguindo os passos anteriores.
-- Teste o funcionamento.
-- **Observou que no `Livro`, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
+-   Crie a API para a classe `Livro` seguindo os passos anteriores.
+-   Teste o funcionamento.
+-   **Observou que no `Livro`, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
 
-**8.4 Apresentação das informações de categoria e editora no livro**
+**8.4 Criação de múltiplos serializadores**
+
+**8.4.1 Apresentação das informações de categoria e editora no livro**
 
 Uma forma de mostrar essas informações é essa, em `serializers.py`:
 
@@ -1303,6 +1304,46 @@ class LivroViewSet(ModelViewSet):
             return LivroDetailSerializer
         return LivroSerializer
 ```
+
+8.4.2 Criação de um serializador para a listagem de livros
+
+-   Crie um serializador para a listagem de livros, que mostre apenas o id, o título e o preço.
+
+```python
+class LivroListSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = ["id", "titulo", "preco"]
+```
+
+-   Altere a viewset para utilizar esse serializador na listagem:
+
+```python
+    def get_serializer_class(self):
+        if self.action == "list":
+            return LivroListSerializer
+        elif self.action == "retrieve":
+            return LivroDetailSerializer
+        return LivroSerializer
+```
+
+-   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
+
+8.4.3 Utilizando um dicionário para escolher o serializador
+
+-   Crie um dicionário para escolher o serializador de acordo com a operação:
+
+```python
+    serializer_classes = {
+        "list": LivroListSerializer,
+        "retrieve": LivroDetailSerializer,
+    }
+
+    def get_serializer_class(self):
+        return self.serializer_classes.get(self.action, LivroSerializer)
+```
+
+-   Teste a API.
 
 **8.5 Exercício: Criação da API REST no projeto Garagem para as demais classes**
 
@@ -2773,7 +2814,8 @@ trim_trailing_whitespace = true
 [*.py]
 indent_size = 4
 ```
-<!-- 
+
+<!--
 -   Crie um arquivo `.flake8` na raiz do projeto:
 
 ```shell
@@ -2829,6 +2871,7 @@ pre-commit install
 -   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
  -->
+
 # A3. Testando a API via linha de comando, utilizando o curl
 
 -   Liste todas as categorias:
