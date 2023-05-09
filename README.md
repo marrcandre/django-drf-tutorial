@@ -1329,34 +1329,23 @@ class LivroListSerializer(ModelSerializer):
 
 -   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
 
-**8.4.3 Utilizando um dicionário para escolher o serializador**
-
--   Crie um dicionário para escolher o serializador de acordo com a operação:
-
-```python
-    serializer_classes = {
-        "list": LivroListSerializer,
-        "retrieve": LivroDetailSerializer,
-    }
-
-    def get_serializer_class(self):
-        return self.serializer_classes.get(self.action, LivroSerializer)
-```
-
 -   Teste a API.
 
 **8.5 Exercício: Criação da API REST no projeto Garagem para as demais classes**
 
--   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, `Modelo` e `Veiculo`.
+-   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, e `Veiculo`.
     -   Faça um commit para cada _endpoint_ criado.
--   Faça pelo menos 2 serializadores diferentes para a class `Veículo`.
+-   Crie 2 serializadores diferentes para a classe `Veículo`:
+    -   Um para a listagem, que mostre apenas o id, o modelo e o ano.
+    -   Outro para a recuperação de um único veículo, que mostre todos os campos, com profundidade 1.
+    -   Outro para a criação e alteração, que mostre todos os campos, sem profundidade.
 -   Teste a API com a ferramenta de sua preferência.
 
 # 9. Aplicação frontend Vuejs e Django CORS Headers
 
-**Executando uma aplicação _frontend_ de exemplo**
+**9.1 Executando uma aplicação _frontend_ de exemplo**
 
-Clone o repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
+Clone (ou faça um fork) do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
 
 ```shell
 npm install
@@ -1371,7 +1360,7 @@ Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (
 
 Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.;
 
-**Inclusão do Django CORS headers no projeto**
+**9.2 Inclusão do Django CORS headers no projeto**
 
 Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de _frontend_ feita em _vuejs_.
 
@@ -1416,9 +1405,14 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-**9.1 Exercício: Criação de uma aplicação frontend com Vuejs**
+**9.1 Exercícios**
+
+**9.1.1 Criação de uma aplicação frontend com Vuejs para a Livraria**
 
 -   Modifique a aplicação frontend com Vuejs para consumir a API REST das demais classes do projeto `Livraria`.
+ 
+**9.1.2 Criação de uma aplicação frontend com Vuejs para a Garagem**
+
 -   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
 
 # 11. Relacionamento n para n
