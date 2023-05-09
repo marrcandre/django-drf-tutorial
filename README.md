@@ -85,11 +85,20 @@ pdm -V
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
+**Configuração do PDM no `bash`**
+
+- Execute o seguinte comando:
+
+```shell
+curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config.sh | bash
+```
+
+<!-- 
 -   Coloque o **PDM** no **PATH**:
 
 ```shell
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-```
+``` -->
 
 **Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
@@ -100,7 +109,7 @@ Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
 ```
 
-**1.2.3 Configuração do auto preenchimento do PDM**
+<!-- **1.2.3 Configuração do auto preenchimento do PDM**
 
 Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
 
@@ -112,13 +121,13 @@ pdm completion bash >> ~/.bash_completion
 
 -   No **zsh**:
 
-**Não faça nada!**
+**Não faça nada!** -->
 
 <!-- ```shell
 pdm completion zsh >> ~/.zshrc
 ``` -->
 
--   No **Oh My Zsh**:
+<!-- -   No **Oh My Zsh**:
 
 ```shell
 mkdir $ZSH_CUSTOM/plugins/pdm
@@ -147,7 +156,7 @@ pdm --pep582 zsh >> ~/.zshrc
 
 ```shell
 pdm config python.use_venv false
-```
+``` -->
 
 Verifique se o **PDM** está configurado para não usar virtualenv:
 
@@ -159,7 +168,7 @@ pdm config
 
 Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
 
-**1.2.6 Instalação de plugins do PDM**
+<!-- **1.2.6 Instalação de plugins do PDM**
 
 **1.2.6.1 Instalação do plugin pdm-vscode**
 
@@ -196,17 +205,17 @@ Para configurar o plugin, edite o arquivo `pyproject.toml` e adicione a seguinte
 [[tool.pdm.autoexport]]
 filename = "requirements.txt"
 without-hashes = "true"
-```
+``` -->
 
-**1.2.8 Configuração do Navegador de Arquivos**
+<!-- **1.2.8 Configuração do Navegador de Arquivos**
 
 -   No **Gnome Shell**, inclua o VS Code no menu de contexto do navegador de arquivos (_"Abrir com Code"_):
 
 ```shell
 wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.sh | bash
-```
+``` -->
 
-**1.3 Instalação do Python**
+<!-- **1.3 Instalação do Python**
 
 -   Verifique se o **python** está instalado:
 
@@ -230,7 +239,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 ```shell
 echo "alias python=python3" >> ~/.bashrc
-```
+``` -->
 
 # 2. Criação do projeto
 
