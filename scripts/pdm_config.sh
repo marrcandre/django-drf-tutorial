@@ -5,9 +5,9 @@ pdm completion bash >> ~/.bash_completion
 
 pdm --pep582 >> ~/.bashrc
 
-pdm config use_venv false
+pdm config python.use_venv false
 
-pdm plugin add pdm-vscode pdm-auto-export pdm-django
+pdm plugin add pdm-vscode pdm-autoexport pdm-django
 
 echo '
 [[tool.pdm.autoexport]]
