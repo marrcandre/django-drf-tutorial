@@ -1105,7 +1105,7 @@ class CategoriaViewSet(ModelViewSet):
 -   `queryset = Categoria.objects.all()`: define o conjunto de objetos que será retornado pela view.
 -   `serializer_class = CategoriaSerializer`: define o serializer que será utilizado para serializar os objetos.
 
-**7.4 Criação das rotas(urls)**
+**7.4 Criação das rotas (urls)**
 
 As rotas são responsáveis por mapear as URLs para as views.
 
@@ -1127,6 +1127,8 @@ urlpatterns = [
     path("", include(router.urls)),
 ]
 ```
+
+**IMPORTANTE**: as nomes das rotas serão sempre nomes **únicos**, no **plural** e em **minúsculas**.
 
 **7.5 Testando a API**
 
@@ -1344,7 +1346,7 @@ class LivroListSerializer(ModelSerializer):
 
 -   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, e `Veiculo`.
     -   Faça um commit para cada _endpoint_ criado.
--   Crie 2 serializadores diferentes para a classe `Veículo`:
+-   Crie **3 serializadores** diferentes para a classe `Veículo`:
     -   Um para a listagem, que mostre apenas o id, o modelo e o ano.
     -   Outro para a recuperação de um único veículo, que mostre todos os campos, com profundidade 1.
     -   Outro para a criação e alteração, que mostre todos os campos, sem profundidade.
