@@ -4,7 +4,16 @@ Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangop
 
 Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva). Recomendo.
 
-Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça um *fork* do projeto, faça as alterações e envie um *pull request*.
+
+Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma solicitação de contribuição ao projeto.
+
+**Como contribuir com um projeto privado:**
+
+- Criar um fork do projeto.
+- Clonar o fork
+- Criar um branch para a sua contribuição.
+- Fazer as alterações no seu branch.
+- Enviar um pull request para o projeto original.
 
 # 1. Preparação do ambiente
 
