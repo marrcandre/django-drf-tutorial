@@ -1386,6 +1386,8 @@ Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer,
 
 Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de _frontend_ feita em _vuejs_.
 
+**No projeto `livraria` (backend), faça o seguinte:**
+
 -   Instale o pacote `django-cors-headers`:
 
 ```shell
