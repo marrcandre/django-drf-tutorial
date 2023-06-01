@@ -1834,7 +1834,7 @@ livraria
 
 A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupar entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
 
-# 17. Adicionando campos ao usuário padrão do Django
+# 17. Modificando o usuário padrão do Django
 
 Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
 
@@ -1885,12 +1885,17 @@ pdm add setuptools
 
 -   Remova o banco de dados e as migrações e crie novamente:
 
+encontre e remove as migrações e o banco de dados:
+
 ```shell
 rm db.sqlite3
-rm -rf livraria/migrations
+rm -rf user/migrations/*
+touch user/migrations/__init__.py
+rm -rf livraria/migrations/*
+touch livraria/migrations/__init__.py
 # rmdir livraria/migrations /s /q # no Windows
 # Remove-Item -Recurse -Force livraria/migrations # no PowerShell
-pdm run python manage.py makemigrations livraria
+pdm run python manage.py makemigrations
 pdm run python manage.py migrate
 pdm run python manage.py createsuperuser
 ```
@@ -1936,8 +1941,8 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 -   Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/uploader.zip
-# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/uploader.zip" -OutFile uploader.zip # no PowerShell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip
+# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip" -OutFile uploader.zip # no PowerShell
 ```
 
 -   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
@@ -2192,8 +2197,8 @@ code livraria_bkp.json
 -   Baixe o arquivo `livraria.json`:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json
-# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/livraria.json" -OutFile livraria.json # no PowerShell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria.json
+# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria.json" -OutFile livraria.json # no PowerShell
 ```
 
 **Carga dos dados**
