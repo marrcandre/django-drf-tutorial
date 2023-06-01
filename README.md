@@ -101,16 +101,16 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 - Execute o seguinte comando:
 
 ```shell
-curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config.sh | bash
+curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
 ```
 
-<!-- 
--   Coloque o **PDM** no **PATH**:
+**Configuração do PDM no `zsh` com o `Oh! My Zsh`**
+
+- Execute o seguinte comando:
 
 ```shell
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-``` -->
-
+curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
+```
 **Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
 **1.2.2 Instalação do PDM no Windows**
@@ -119,55 +119,6 @@ Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
 ```shell
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
 ```
-
-<!-- **1.2.3 Configuração do auto preenchimento do PDM**
-
-Ative o **auto preenchimento** do **PDM**, conforme o seu shell:
-
--   No **bash**:
-
-```shell
-pdm completion bash >> ~/.bash_completion
-```
-
--   No **zsh**:
-
-**Não faça nada!** -->
-
-<!-- ```shell
-pdm completion zsh >> ~/.zshrc
-``` -->
-
-<!-- -   No **Oh My Zsh**:
-
-```shell
-mkdir $ZSH_CUSTOM/plugins/pdm
-pdm completion zsh > $ZSH_CUSTOM/plugins/pdm/_pdm
-```
-
-No caso do **Oh My Zsh**, você precisa adicionar `pdm` à lista de plugins, editando o arquivo `~/.zshrc`.
-
-Para instalar e configurar o Oh My Zsh, siga as instruções [deste link](https://www.alura.com.br/artigos/oh-my-zsh-melhorando-produtividade-terminal).
-
-**1.2.4 Habilitar o PEP 582 no PDM**
-
--   No **bash**:
-
-```shell
-pdm --pep582 bash >> ~/.bash_profile
-```
-
--   No **zsh**:
-
-```shell
-pdm --pep582 zsh >> ~/.zshrc
-```
-
-**1.2.5 Configuração para não usar virtualenv**
-
-```shell
-pdm config python.use_venv false
-``` -->
 
 Verifique se o **PDM** está configurado para não usar virtualenv:
 
