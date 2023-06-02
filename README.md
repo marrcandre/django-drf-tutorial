@@ -1361,7 +1361,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-Não esqueça da vírgula no final de cada linha e procure manter nessa mesma ordem.
+> Não esqueça da vírgula no final de cada linha e procure manter nessa mesma ordem.
 
 -   Adicione o Middleware `corsheaders.middleware.CorsMiddleware` em `MIDDLEWARE` em `settings.py`:
 
@@ -1374,7 +1374,7 @@ MIDDLEWARE = [
 ]
 ```
 
-**IMPORTANTE**: a ordem aqui precisa ser essa.
+> **IMPORTANTE**: a ordem aqui precisa ser essa.
 
 Por fim, adicione a seguinte linha ao final do arquivo `settings.py`:
 
