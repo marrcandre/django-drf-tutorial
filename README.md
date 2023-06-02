@@ -9,11 +9,11 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 
 **Como contribuir com um projeto privado:**
 
-- Criar um fork do projeto.
-- Clonar o fork
-- Criar um branch para a sua contribuição.
-- Fazer as alterações no seu branch.
-- Enviar um pull request para o projeto original.
+- Criar um *fork* do projeto.
+- Clonar o *fork*
+- Criar um *branch* para a sua contribuição.
+- Fazer as alterações no seu *branch*.
+- Enviar um *pull request* para o projeto original.
 
 # 1. Preparação do ambiente
 
@@ -1322,6 +1322,9 @@ Faça um `fork` do repositório https://github.com/marrcandre/livraria-vue-3 e e
 
 ```shell
 npm install
+```
+
+```shell
 npm run dev
 ```
 
@@ -1845,6 +1848,16 @@ Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário
 -   Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
 -   Faremos a migração do banco de dados.
 -   Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
+
+----
+
+Baixe e descompacte o arquivo com a app pronta para ser utilizada:
+
+```shell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/custom_user.zip -O custom_user.zip | unzip custom_user.zip && rm custom_user.zip
+```
+
+----
 
 Vamos aos passos:
 
