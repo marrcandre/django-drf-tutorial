@@ -1903,8 +1903,8 @@ encontre e remove as migrações e o banco de dados:
 
 ```shell
 rm db.sqlite3
-rm -rf user/migrations/*
-touch user/migrations/__init__.py
+rm -rf usuario/migrations/*
+touch usuario/migrations/__init__.py
 rm -rf livraria/migrations/*
 touch livraria/migrations/__init__.py
 # rmdir livraria/migrations /s /q # no Windows
