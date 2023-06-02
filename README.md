@@ -1318,20 +1318,21 @@ class LivroListSerializer(ModelSerializer):
 
 **9.1 Executando uma aplicação _frontend_ de exemplo**
 
-Clone (ou faça um fork) do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
+Faça um `fork` do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
 
 ```shell
 npm install
 npm run dev
 ```
 
+> Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
+
 Se tudo correu bem, execute a aplicação:
 
 http://localhost:3000
 
-Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
-
-Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.;
+> Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
+Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.
 
 **9.2 Inclusão do Django CORS headers no projeto**
 
