@@ -1394,7 +1394,7 @@ Feito isso, reinicie o servidor e tudo deve funcionar.
 
 -   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
 
-# 11. Relacionamento n para n
+# 10. Relacionamento n para n
 
 **Model com ManyToManyField - Livros com vários autores**
 
@@ -1422,11 +1422,26 @@ pdm run python manage.py migrate
 
 Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso, uma **tabela associativa** foi criada, com o nome `livraria_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
 
-**Tarefa**:
+**10.1 Exercícios**
 
--   Entre no **Admin**;
--   Cadastre alguns autores;
--   Cadastre alguns livros com mais do que um autor.
+**10.1.1 No projeto Livraria**
+
+**10.1.1.1 No Admin**:
+  -   Entre no **Admin**;
+  -   Cadastre alguns autores;
+  -   Cadastre alguns livros com mais do que um autor.
+
+**10.1.1.2 Na API**:
+-   Teste a API REST de livros e autores.
+
+**10.2 No projeto Garagem**
+
+**10.2.1 Criação de um relacionamento n para n entre `Veiculo` e `Acessorio`**
+
+-   Crie um relacionamento n para n entre `Veiculo` e `Acessorio`, utilizando um campo do tipo `ManyToManyField`.
+-   Inclua alguns acessórios em alguns veículos pelo Admin.
+-   Teste a API REST de veículos e acessórios.
+
 
 # 12. Permissões de acesso
 
