@@ -2907,6 +2907,32 @@ curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
 curl -X DELETE http://localhost:8000/categorias/1/
 ```
 
+# A4. Gerando um diagrama de banco de dados a partir das models
+
+-   Instale o `django-extensions`:
+
+```shell
+pdm add django-extensions
+```
+
+-   Adicione o `django-extensions` ao `INSTALLED_APPS` do arquivo `settings.py`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    "django_extensions",
+]
+```
+
+-   Gere o diagrama de banco de dados:
+
+```shell
+pdm run python manage.py graph_models -g -o livraria.png livraria
+```
+
+
+
+
 <!-- Aulas futuras -->
 
 <!-- Incluir MEDIA_URL no tutorial de configuração do .env e de deploy-->
