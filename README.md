@@ -1443,26 +1443,27 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 -   Teste a API REST de veículos e acessórios.
 
 
-# 12. Permissões de acesso
+# 11. Permissões de acesso
 
-Vamos trabalhar agora os conceitos de segurança relacionados a **autenticação** (_login_) e **autorização** (_permissão_)). Utilizaremos aquilo que o Django
-já oferece, em termos de usuários e grupos.
+11.1 Autenticação e autorização
+
+Vamos trabalhar agora os conceitos de segurança relacionados a **autenticação** (_login_) e **autorização** (_permissão_). Utilizaremos aquilo que o Django já oferece, em termos de usuários e grupos.
 
 Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
--   Criar **grupos** para perfis de usuários específicos
--   Definir as **permissões** que esse grupo de usuários terá
--   Criar um **usuário** para cada pessoa
--   **incluir** os usuários nos grupos, dando assim as permissões
--   No caso de mudanças nas permissões, elas são sempre feitas nos **grupos**, refletindo nos usuários
--   Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em **vários** grupos
--   Quando um usuário sai de um cargo ou deve perder seus privilégios, ele é **removido** do grupo específico
+-   Criar **grupos** para perfis de usuários específicos.
+-   Definir as **permissões** que esse grupo de usuários terá.
+-   Criar um **usuário** para cada pessoa que utilizará a aplicação.
+-   **Incluir** os usuários nos grupos, dando assim as permissões.
+-   No caso de mudanças nas permissões, elas são sempre feitas nos **grupos**, refletindo nos usuários.
+-   Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em **vários** grupos.
+-   Quando um usuário sai de uma função ou deve perder seus privilégios, ele é **removido** do grupo específico.
 
-**Resumindo:** toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.
+>**Resumindo:** toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.
 
-Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
+>Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
 
-**Criando grupos**
+**11.2 Criando grupos**
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
@@ -1472,14 +1473,14 @@ Vamos começar criando 2 grupos e dando a eles permissões distintas:
 -   Crie um grupo chamado `administradores`, com as seguintes as permissões:
     -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
 
-**Criando usuários e adicionando aos grupos**
+**11.3 Criando usuários e adicionando aos grupos**
 
 -   Crie um usuário `admin1` e o inclua no grupo `administradores`.
 -   Crie um usuário `comprador1` e o inclua no grupo `compradores`.
 
-# 13. Usando as permissões do DRF
+# 12. Usando as permissões do DRF
 
-**Autenticação e permissão**
+**12.1 Autenticação e permissão**
 
 _A **autenticação** ou **identificação** por si só geralmente não é suficiente para obter acesso à informação ou código. Para isso, a entidade que solicita o acesso deve ter **autorização**._ [(Permissões no DRF)](https://www.django-rest-framework.org/api-guide/permissions/)
 
@@ -1491,7 +1492,7 @@ Por padrão, qualquer usuário, mesmo sem autenticação, tem acesso irrestrito 
 
 As permissões podem ser definidas a nível de objeto (nas _views_ ou _viewsets_, por exemplo) ou de forma global, no arquivo `settings.py`.
 
-**Exemplo de uso de permisssão na viewset**
+**12.2 Exemplo de uso de permisssão na viewset**
 
 Como ilustração, modifique o arquivo `views.py`, da seguinte forma.
 
@@ -1516,11 +1517,11 @@ Para testar:
 -   Tente acessar as **categorias** pelo DRF.
 -   Você deve conseguir.
 
-**Exemplo de uso de permisssão no `settings.py`**
+**12.3 Exemplo de uso de permisssão no `settings.py`**
 
-Outra forma de gerencimento de permissões é feita no arquivo `settings.py`. Para isso, utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+>IMPORTANTE: Outra forma de gerencimento de permissões é feita no arquivo `settings.py`. Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
 
-Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, só permitir acesso a todos os _endpoints_ para usuários autenticados é configurar desse modo o arquivo `settings.py`:
+Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, permitir acesso aos _endpoints_ apenas para usuários autenticados, é configurar desse modo o arquivo `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
@@ -1530,11 +1531,11 @@ REST_FRAMEWORK = {
 }
 ```
 
-Inclua o código acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
+>Inclua o código acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
 
-**Permissões com o `DjangoModelPermissions`**
+**12.4 Permissões com o `DjangoModelPermissions`**
 
-A forma que iremos adotar para o gerenciamento de permissões será com o uso do [DjangoModelPermissions](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions).
+Apesar de ser possível definir a autorização das formas que vimos anteriormente, adotaremos uma outra forma. Essa forma que iremos adotar para o gerenciamento de permissões será com o uso do [DjangoModelPermissions](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions).
 
 Esta classe de permissão está ligada às permissões do modelo `django.contrib.auth` padrão do Django. Essa permissão deve ser aplicada apenas a visualizações que tenham uma propriedade `.queryset` ou método `get_queryset()` (exatamente o que temos).
 
@@ -1544,7 +1545,7 @@ A autorização só será concedida se o usuário estiver autenticado e tiver as
 -   As solicitações `PUT` e `PATCH` exigem que o usuário tenha a permissão de alteração (`change`) no modelo.
 -   As solicitações `DELETE` exigem que o usuário tenha a permissão de exclusão (`remove`) no modelo.
 
-Para isso, teremos que alterar a classe de autenticação:
+Para isso, teremos que alterar a classe de autenticação, substituindo o que colocamos anteriormente:
 
 ```python
 REST_FRAMEWORK = {
@@ -1556,11 +1557,11 @@ REST_FRAMEWORK = {
 }
 ```
 
-**Resumindo**, utilizaremos a estrutura de usuários, grupos e permissões que o próprio Django já nos fornece. Para isso, utilizaremos o `DjangoModelPermissions` para gerenciar as permissões.
+>**Resumindo**, utilizaremos a estrutura de usuários, grupos e permissões que o próprio Django já nos fornece. Para isso, utilizaremos o `DjangoModelPermissions` para gerenciar as permissões.
 
-Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Utilizaremos o **SimpleJWT**.
+Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Para isso, utilizaremos o **SimpleJWT**.
 
-# 14. Autenticação com o SimpleJWT
+# 13. Autenticação com o SimpleJWT
 
 **Um resumo sobre autenticação e autorização**
 
