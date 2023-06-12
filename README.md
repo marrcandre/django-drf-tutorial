@@ -1519,7 +1519,7 @@ Para testar:
 
 **12.3 Exemplo de uso de permisssão no `settings.py`**
 
->IMPORTANTE: Outra forma de gerencimento de permissões é feita no arquivo `settings.py`. Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+>IMPORTANTE: Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`. Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
 
 Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, permitir acesso aos _endpoints_ apenas para usuários autenticados, é configurar desse modo o arquivo `settings.py`:
 
