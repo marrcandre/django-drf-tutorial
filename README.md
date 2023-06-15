@@ -1856,7 +1856,7 @@ A partir dessa organização, cada nova entidade criada terá seus arquivos corr
 
 # 17. Modificando o usuário padrão do Django
 
-Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
+Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
 
 -   Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
 -   Não removeremos os campos padrão do usuário.
@@ -1864,58 +1864,52 @@ Utilizaremos uma estratégia mais simples para a inclusão de campos ao usuário
 -   Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
 -   Faremos a migração do banco de dados.
 -   Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
+-   Em nosso exemplo, incluiremos os campos `cpf`, `telefone` e `data_nascimento` ao usuário.
+-   Posteriormente, incluiremos a foto do usuário.
 
-----
+**17.1 Instalando a app `usuario`**
 
-Baixe e descompacte o arquivo com a app pronta para ser utilizada:
+- Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/custom_user.zip -O custom_user.zip | unzip custom_user.zip && rm custom_user.zip
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -O usuario.zip | unzip usuario.zip && rm usuario.zip
 ```
 
-----
+A pasta ficará assim:
 
-Vamos aos passos:
-
--   Crie um arquivo `usuario.py` dentro da pasta `models` da aplicação `livraria`.
--   Inclua o seguinte conteúdo:
-
-```python
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-
-
-class Usuario(AbstractUser):
-    cpf = models.CharField(max_length=11, unique=True)
-    telefone = models.CharField(max_length=11, blank=True, null=True)
-    data_nascimento = models.DateField(blank=True, null=True)
+```
+usuario
+├── admin.py
+├── apps.py
+├── forms.py
+├── __init__.py
+├── managers.py
+├── migrations
+│   └── __init__.py
+└── models.py
 ```
 
--   Adicione a importação no arquivo `__init__.py`:
+**17.2 Adicionando a app `usuario` ao projeto**
+
+-   Edite o arquivo `settings.py` e inclua a app `usuario` na lista de apps instaladas:
 
 ```python
-from .usuario import Usuario
+INSTALLED_APPS = [
+    ...
+    "usuario",
+]
 ```
 
 -   Edite o arquivo `settings.py` e inclua a configuração abaixo:
 
 ```python
-AUTH_USER_MODEL = "livraria.Usuario"
+AUTH_USER_MODEL = "usuario.Usuario"
 ```
 
-**Instalação do pacote setuptools**
 
-O pacote `setuptools` é necessário nesse ponto do projeto. Para instalá-lo, execute o comando abaixo:
+**17.3 Efetivação das alterações**
 
-```shell
-pdm add setuptools
-```
-
-**Efetivação das alterações**
-
--   Remova o banco de dados e as migrações e crie novamente:
-
-encontre e remove as migrações e o banco de dados:
+-   Remova o banco de dados e as migrações:
 
 ```shell
 rm db.sqlite3
@@ -1923,66 +1917,64 @@ rm -rf usuario/migrations/*
 touch usuario/migrations/__init__.py
 rm -rf livraria/migrations/*
 touch livraria/migrations/__init__.py
-# rmdir livraria/migrations /s /q # no Windows
-# Remove-Item -Recurse -Force livraria/migrations # no PowerShell
+```
+
+- No Windows, utilize os comandos abaixo:
+
+```shell
+del db.sqlite3
+del usuario\migrations\*
+type nul > usuario\migrations\__init__.py
+del livraria\migrations\*
+type nul > livraria\migrations\__init__.py
+```
+
+-   Crie novamente o banco de dados e execute as migrações:
+
+```shell
 pdm run python manage.py makemigrations
 pdm run python manage.py migrate
+```
+
+**17.4 Criando um novo usuário**
+
+- Crie um novo superusuário:
+
+```shell
 pdm run python manage.py createsuperuser
 ```
 
--   Edite o arquivo `admin.py` e inclua a configuração abaixo:
+> Ao criar um novo usuário, observe que o `email` é agora o campo principal, no lugar do `username`.
 
-```python
-...
-from django.contrib.auth.admin import UserAdmin
-from django.utils.translation import gettext_lazy as _
-...
 
-class UsuarioAdmin(UserAdmin):
-    fieldsets = (
-        (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name", "email", "cpf", "telefone", "data_nascimento")}),
-        (
-            _("Permissions"),
-            {
-                "fields": (
-                    "is_active",
-                    "is_staff",
-                    "is_superuser",
-                    "groups",
-                    "user_permissions",
-                ),
-            },
-        ),
-        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
-    )
-
-admin.site.register(Usuario, UsuarioAdmin)
-```
-
--   Entre no Admin e crie um novo usuário. Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
+-  Entre no `Admin` e crie um novo usuário. 
+  
+> Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
 # 18. Upload e associação de imagens
 
 Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
 
 **Configuração**
-
--   Baixe o arquivo compactado `uploader.zip`, que contém o código fonte da aplicação `uploader`, executando o seguinte comando no terminal:
-
-```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip
-# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip" -OutFile uploader.zip # no PowerShell
-```
-
--   Descompacte esse arquivo. Certifique-se de que ele esteja na pasta raiz do projeto:
+Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
 ```shell
-unzip uploader.zip
-# Expand-Archive -Path uploader.zip -DestinationPath . # no PowerShell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip | unzip uploader.zip && rm uploader.zip
 ```
 
-<!-- - Remova a pasta `media` do arquivo `.gitignore`. -->
+No `Windows`, execute os seguintes comandos no `PowerShell`:
+
+```shell
+Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -OutFile uploader.zip
+```
+
+```shell
+Expand-Archive -Path uploader.zip -DestinationPath . 
+```
+    
+```shell
+Remove-Item -Force uploader.zip 
+```
 
 O projeto ficará com uma estrutura parecida com essa:
 
