@@ -1574,7 +1574,7 @@ Relembrando o que estudamos até aqui em termos de autenticação e autorizaçã
 
 Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Framework**.
 
-**Resumindo**, utilizaremos o SimpleJWT para autenticação e a estrutura de permissões do Django para autorização.
+> **Resumindo**, utilizaremos o **SimpleJWT** para *autenticação* e a *estrutura de permissões do Django* para **autorização**.
 
 **O SimpleJWT**
 
@@ -1628,11 +1628,11 @@ REST_FRAMEWORK = {
 }
 ```
 
-Feitas essa aterações, coloque o servidor do Django novamente em execução.
+- Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
-Para testar se tudo deu certo, utilizaremos algum cliente HTTP, como **Postman**, **Insomnia**, **Thunder Client** ou **RapidAPI**.
+- Para testar se tudo deu certo, utilizaremos algum cliente HTTP, como o **Thunder Client** ou outros.
 
-# 15. Testando as permissões dos _endpoints_ usando um cliente HTTP
+# 14. Testando as permissões dos _endpoints_ usando um cliente HTTP
 
 **Colocando as informações do token na requisição**
 
@@ -1741,7 +1741,7 @@ Você não pode alterar uma informação com esse usuário. Para isso, você pre
 
 Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Admin do Django.
 
-# 16. Reestruturação em pastas de _models_, _views_ e _serializers_
+# 15. Reestruturação em pastas de _models_, _views_ e _serializers_
 
 Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
 
@@ -1750,7 +1750,7 @@ Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um
 
 Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, organizados dentro de uma pasta.
 
-**IMPORTANTE:** essa mudança não afeta a forma de uso desses componentes, nem desempenho da aplicação e nem o banco de dados. É uma simples refatoração de código.
+> **IMPORTANTE:** essa mudança não afeta a forma de uso desses componentes, nem desempenho da aplicação e nem o banco de dados. É uma simples refatoração de código.
 
 **Colocando os modelos em arquivos separados**
 
@@ -1810,7 +1810,7 @@ class Livro(models.Model):
 ...
 ```
 
--   Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
+> Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
 
 **Separando _views_ e _serializers_ em arquivos**
 
@@ -1852,9 +1852,9 @@ livraria
     └── livro.py
 ```
 
-A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupar entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
+> A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupar entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
 
-# 17. Modificando o usuário padrão do Django
+# 16. Modificando o usuário padrão do Django
 
 Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
 
@@ -1867,7 +1867,7 @@ Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padr
 -   Em nosso exemplo, incluiremos os campos `cpf`, `telefone` e `data_nascimento` ao usuário.
 -   Posteriormente, incluiremos a foto do usuário.
 
-**17.1 Instalando a app `usuario`**
+**Instalando a app `usuario`**
 
 - Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
@@ -1886,10 +1886,13 @@ usuario
 ├── managers.py
 ├── migrations
 │   └── __init__.py
-└── models.py
+├── models.py
+├── router.py
+├── serializers.py
+└── views.py
 ```
 
-**17.2 Adicionando a app `usuario` ao projeto**
+**Adicionando a app `usuario` ao projeto**
 
 -   Edite o arquivo `settings.py` e inclua a app `usuario` na lista de apps instaladas:
 
@@ -1905,9 +1908,24 @@ INSTALLED_APPS = [
 ```python
 AUTH_USER_MODEL = "usuario.Usuario"
 ```
+> Essa configuração indica ao Django que a classe `Usuario` da app `usuario` será utilizada como classe de usuário padrão.
 
+- Edite o arquivo `urls.py` e inclua as rotas da app `usuario`:
 
-**17.3 Efetivação das alterações**
+```python
+...
+from usuario.router import router as usuario_router
+...
+
+urlpatterns = [
+    ...
+    path("api/", include(usuario_router.urls)),
+]
+```
+
+> Ela será acessada através da rota `/api/usuario/`.
+
+**Efetivando as alterações**
 
 -   Remova o banco de dados e as migrações:
 
@@ -1936,7 +1954,7 @@ pdm run python manage.py makemigrations
 pdm run python manage.py migrate
 ```
 
-**17.4 Criando um novo usuário**
+**Criando um novo usuário**
 
 - Crie um novo superusuário:
 
@@ -1951,7 +1969,7 @@ pdm run python manage.py createsuperuser
   
 > Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
-# 18. Upload e associação de imagens
+# 17. Upload e associação de imagens
 
 Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
 
@@ -2111,7 +2129,7 @@ class LivroDetailSerializer(ModelSerializer):
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
 -   Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
 
-# 19. Habilitando o Swagger e Redoc usando DRF Spectacular
+# 18. Habilitando o Swagger e Redoc usando DRF Spectacular
 
 Vamos instalar uma aplicação para gerar a documentação da API usando o Swagger e o Redoc.
 
@@ -2196,7 +2214,7 @@ urlpatterns = [
 ]
 ```
 
-# 21. Dump e Load de dados
+# 19. Dump e Load de dados
 
 Vamos aprender a fazer o _dump_ e _load_ de dados.
 
@@ -2241,7 +2259,7 @@ pdm run python manage.py shell
 
 Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
 
-# 22- Uso do Django Shell
+# 20. Uso do Django Shell
 
 O Django Shell é uma ferramenta para interagir com o banco de dados.
 
@@ -2342,7 +2360,7 @@ Editora.objects.get(id=1).livros.all()
 >>> exit()
 ```
 
-# 23. Customização do Admin
+# 21. Customização do Admin
 
 O Admin é uma ferramenta para gerenciar os dados do banco de dados. Ele pode ser customizado para melhorar a experiência do usuário.
 
@@ -2386,7 +2404,7 @@ class LivroAdmin(admin.ModelAdmin):
 
     http://localhost:8000/admin/
 
-# 24. Configurando variáveis de ambiente
+# 22. Configurando variáveis de ambiente
 
 É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no **GitHub**! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
 
