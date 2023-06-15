@@ -2472,7 +2472,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 cp .env .env.example
 ```
 
-# 25. Publicação no PythonAnywhere
+# 23. Publicação no PythonAnywhere
 
 O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no **GitHub**.
 
@@ -2661,7 +2661,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-# 26. Inclusão da foto de perfil no usuário
+# 24. Inclusão da foto de perfil no usuário
 
 Vamos incluir a foto de perfil no usuário.
 
@@ -2764,9 +2764,105 @@ router.register(r"usuarios", UsuarioViewSet)
 
 -   Inclua uma foto de perfil em um usuário.
 
+# 25. Criação da entidade `compras` integrada ao usuário do projeto
+
+Nessa aula, vamos criar um model de compras integrada à model do usuário do projeto.
+
+**Criando o model de compras**
+
+- Crie um novo arquivo `compras.py` dentro da pasta `models` do app `livraria`, com o seguinte conteúdo:
+
+```python
+from django.db import models
+
+from usuario.models import Usuario
+
+from .livro import Livro
+
+
+class Compra(models.Model):
+    class StatusCompra(models.IntegerChoices):
+        CARRINHO = (1,"Carrinho",)
+        REALIZADO = (2,"Realizado",)
+        PAGO = (3,"Pago",)
+        ENTREGUE = (4,"Entregue",)
+
+    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="compras")
+    status = models.IntegerField(        choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
+```
+
+> Note que estamos utilizando o `Usuario` do app `usuario` como `ForeignKey` para o model `Compra`.
+
+> `StatusCompra` é do tipo `IntegerChoices`, que é uma forma de criar um campo `choices` com valores inteiros.
+> `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`. 
+
+- Adicione o model `Compra` ao `admin.py` do app `livraria`:
+
+```python
+...
+from livraria.models import Compras
+
+admin.site.register(Compra)
+```
+
+- Execute as migrações:
+
+```shell
+pdm run python manage.py makemigrations
+pdm run python manage.py migrate
+```
+
+- Teste o model `Compra` no admin do Django.
+
+# 26. Criando os itens da compra
+
+No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo.
+
+- Vamos adicionar um novo model `ItensCompra` ao arquivo `compras.py`:
+
+```python
+class ItensCompra(models.Model):
+    compra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name="itens")
+    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="+")
+    quantidade = models.IntegerField(default=1)
+```
+
+> No atributo `compra`, utilizamos models.CASCADE, pois queremos que, ao deletar uma compra, todos os itens da compra sejam deletados também.
+
+
+> No atributo `livro`, utilizamos models.PROTECT, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
+
+> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`. 
+
+- Execute as migrações (você já sabe como fazer, certo?)
+- Verifique que a tabela `livraria_itenscompra` foi criada no banco de dados.
+- Inclua o model `ItensCompra` no `Admin` do Django.
+
+# 27. Uso de `TabularInline` no `Admin` para Itens da Compra
+
+Vamos mostrar os itens da compra no admin do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
+
+- No arquivo `admin.py` do app `livraria`, adicione o seguinte código:
+
+```python
+class ItensCompraInline(admin.TabularInline):
+    model = ItensCompra
+
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    inlines = [ItensCompraInline]
+```
+
+> Desta forma, quando você editar uma compra no admin do Django, você verá os itens da compra logo abaixo do formulário de edição da compra.
+
+- Teste no admin do Django.
+
+
+----
+
 # Apêndices
 
-# A1. Criação de PDM scripts
+# A1. Criação de *scripts* PDM
 
 Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
 
@@ -2956,19 +3052,24 @@ INSTALLED_APPS = [
 pdm run python manage.py graph_models -g -o livraria.png livraria
 ```
 
-<!-- Aulas futuras -->
 
-<!-- Incluir MEDIA_URL no tutorial de configuração do .env e de deploy-->
+  
+
+-----------------
+Marco André Mendes \<marcoandre@gmail.com>
+
+<!-- Aulas futuras -->
 
 <!-- Testes -->
 <!-- Pre commits -->
 <!-- Django Filter -->
-<!-- DRF para campos related_name -->
 <!-- Vuejs com autenticação e autorização. -->
 <!-- Populate script  -->
-<!-- Model de compras integrando com Model User do Django  -->
-<!-- Criar model StatusCompra -->
-<!-- Criar model ItensCompra -->
-<!-- Uso de TabularInline no Admin para Itens da Compra -->
 <!-- Endpoint para listagem básica de Compras -->
 <!-- Ajustes na visualização do status de compra e itens de compra -->
+
+<!-- Publicação no Render -->
+
+<!-- https://render.com/docs/deploy-django -->
+
+
