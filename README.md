@@ -4,16 +4,15 @@ Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangop
 
 Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva). Recomendo.
 
-
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma solicitação de contribuição ao projeto.
 
 **Como contribuir com um projeto privado:**
 
-- Criar um *fork* do projeto.
-- Clonar o *fork*
-- Criar um *branch* para a sua contribuição.
-- Fazer as alterações no seu *branch*.
-- Enviar um *pull request* para o projeto original.
+-   Criar um _fork_ do projeto.
+-   Clonar o _fork_
+-   Criar um _branch_ para a sua contribuição.
+-   Fazer as alterações no seu _branch_.
+-   Enviar um _pull request_ para o projeto original.
 
 # 1. Preparação do ambiente
 
@@ -98,7 +97,7 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 
 **Configuração do PDM no `bash`**
 
-- Execute o seguinte comando:
+-   Execute o seguinte comando:
 
 ```shell
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
@@ -106,11 +105,12 @@ curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm
 
 **Configuração do PDM no `zsh` com o `Oh! My Zsh`**
 
-- Execute o seguinte comando:
+-   Execute o seguinte comando:
 
 ```shell
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
 ```
+
 **Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
 **1.2.2 Instalação do PDM no Windows**
@@ -1335,7 +1335,7 @@ Se tudo correu bem, execute a aplicação:
 http://localhost:3000
 
 > Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
-Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.
+> Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.
 
 **9.2 Inclusão do Django CORS headers no projeto**
 
@@ -1389,7 +1389,7 @@ Feito isso, reinicie o servidor e tudo deve funcionar.
 **9.1.1 Criação de uma aplicação frontend com Vuejs para a Livraria**
 
 -   Modifique a aplicação frontend com Vuejs para consumir a API REST das demais classes do projeto `Livraria`.
- 
+
 **9.1.2 Criação de uma aplicação frontend com Vuejs para a Garagem**
 
 -   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
@@ -1427,11 +1427,13 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 **10.1.1 No projeto Livraria**
 
 **10.1.1.1 No Admin**:
-  -   Entre no **Admin**;
-  -   Cadastre alguns autores;
-  -   Cadastre alguns livros com mais do que um autor.
+
+-   Entre no **Admin**;
+-   Cadastre alguns autores;
+-   Cadastre alguns livros com mais do que um autor.
 
 **10.1.1.2 Na API**:
+
 -   Teste a API REST de livros e autores.
 
 **10.2 No projeto Garagem**
@@ -1441,7 +1443,6 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 -   Crie um relacionamento n para n entre `Veiculo` e `Acessorio`, utilizando um campo do tipo `ManyToManyField`.
 -   Inclua alguns acessórios em alguns veículos pelo Admin.
 -   Teste a API REST de veículos e acessórios.
-
 
 # 11. Permissões de acesso
 
@@ -1459,9 +1460,9 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 -   Se um usuário possui mais do que um perfil de permissões, ele deve ser incluído em **vários** grupos.
 -   Quando um usuário sai de uma função ou deve perder seus privilégios, ele é **removido** do grupo específico.
 
->**Resumindo:** toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.
+> **Resumindo:** toda a estratégia de permissões parte da criação de grupos e inclusão ou remoção de usuários desses grupos.
 
->Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
+> Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
 
 **11.2 Criando grupos**
 
@@ -1519,7 +1520,7 @@ Para testar:
 
 **12.3 Exemplo de uso de permisssão no `settings.py`**
 
->IMPORTANTE: Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`. Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+> IMPORTANTE: Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`. Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
 
 Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, permitir acesso aos _endpoints_ apenas para usuários autenticados, é configurar desse modo o arquivo `settings.py`:
 
@@ -1531,7 +1532,7 @@ REST_FRAMEWORK = {
 }
 ```
 
->Inclua o código acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
+> Inclua o código acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
 
 **12.4 Permissões com o `DjangoModelPermissions`**
 
@@ -1557,7 +1558,7 @@ REST_FRAMEWORK = {
 }
 ```
 
->**Resumindo**, utilizaremos a estrutura de usuários, grupos e permissões que o próprio Django já nos fornece. Para isso, utilizaremos o `DjangoModelPermissions` para gerenciar as permissões.
+> **Resumindo**, utilizaremos a estrutura de usuários, grupos e permissões que o próprio Django já nos fornece. Para isso, utilizaremos o `DjangoModelPermissions` para gerenciar as permissões.
 
 Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Para isso, utilizaremos o **SimpleJWT**.
 
@@ -1574,7 +1575,7 @@ Relembrando o que estudamos até aqui em termos de autenticação e autorizaçã
 
 Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Framework**.
 
-> **Resumindo**, utilizaremos o **SimpleJWT** para *autenticação* e a *estrutura de permissões do Django* para **autorização**.
+> **Resumindo**, utilizaremos o **SimpleJWT** para _autenticação_ e a _estrutura de permissões do Django_ para **autorização**.
 
 **O SimpleJWT**
 
@@ -1628,9 +1629,9 @@ REST_FRAMEWORK = {
 }
 ```
 
-- Feitas essa aterações, coloque o servidor do Django novamente em execução.
+-   Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
-- Para testar se tudo deu certo, utilizaremos algum cliente HTTP, como o **Thunder Client** ou outros.
+-   Para testar se tudo deu certo, utilizaremos algum cliente HTTP, como o **Thunder Client** ou outros.
 
 # 14. Testando as permissões dos _endpoints_ usando um cliente HTTP
 
@@ -1869,10 +1870,24 @@ Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padr
 
 **Instalando a app `usuario`**
 
-- Baixe e descompacte o arquivo com a app pronta para ser utilizada:
+-   Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
 ```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -O usuario.zip | unzip usuario.zip && rm usuario.zip
+```
+
+No `Windows`, execute os seguintes comandos no `PowerShell`:
+
+```shell
+Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -OutFile usuario.zip
+```
+
+```shell
+Expand-Archive -Path usuario.zip -DestinationPath .
+```
+
+```shell
+Remove-Item -Force usuario.zip
 ```
 
 A pasta ficará assim:
@@ -1908,9 +1923,10 @@ INSTALLED_APPS = [
 ```python
 AUTH_USER_MODEL = "usuario.Usuario"
 ```
+
 > Essa configuração indica ao Django que a classe `Usuario` da app `usuario` será utilizada como classe de usuário padrão.
 
-- Edite o arquivo `urls.py` e inclua as rotas da app `usuario`:
+-   Edite o arquivo `urls.py` e inclua as rotas da app `usuario`:
 
 ```python
 ...
@@ -1937,7 +1953,7 @@ rm -rf livraria/migrations/*
 touch livraria/migrations/__init__.py
 ```
 
-- No Windows, utilize os comandos abaixo:
+-   No Windows, utilize os comandos abaixo:
 
 ```shell
 del db.sqlite3
@@ -1956,7 +1972,7 @@ pdm run python manage.py migrate
 
 **Criando um novo usuário**
 
-- Crie um novo superusuário:
+-   Crie um novo superusuário:
 
 ```shell
 pdm run python manage.py createsuperuser
@@ -1964,9 +1980,8 @@ pdm run python manage.py createsuperuser
 
 > Ao criar um novo usuário, observe que o `email` é agora o campo principal, no lugar do `username`.
 
+-   Entre no `Admin` e crie um novo usuário.
 
--  Entre no `Admin` e crie um novo usuário. 
-  
 > Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
 # 17. Upload e associação de imagens
@@ -1987,11 +2002,11 @@ Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/mai
 ```
 
 ```shell
-Expand-Archive -Path uploader.zip -DestinationPath . 
+Expand-Archive -Path uploader.zip -DestinationPath .
 ```
-    
+
 ```shell
-Remove-Item -Force uploader.zip 
+Remove-Item -Force uploader.zip
 ```
 
 O projeto ficará com uma estrutura parecida com essa:
@@ -2940,9 +2955,6 @@ INSTALLED_APPS = [
 ```shell
 pdm run python manage.py graph_models -g -o livraria.png livraria
 ```
-
-
-
 
 <!-- Aulas futuras -->
 
