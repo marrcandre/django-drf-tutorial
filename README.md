@@ -1444,9 +1444,9 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 -   Inclua alguns acessórios em alguns veículos pelo Admin.
 -   Teste a API REST de veículos e acessórios.
 
-# 11. Permissões de acesso
+# 11. Autenticação e autorização
 
-11.1 Autenticação e autorização
+11.1 Introdução
 
 Vamos trabalhar agora os conceitos de segurança relacionados a **autenticação** (_login_) e **autorização** (_permissão_). Utilizaremos aquilo que o Django já oferece, em termos de usuários e grupos.
 
@@ -1464,9 +1464,18 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 > Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
 
-**11.2 Criando grupos**
+**Relação entre nomes das permissões**
+
+|     | Adicionar | Listar | Alterar | Remover |
+|-----|--------|------|--------|--------|
+| CRUD| Create | Read | Update | Delete |
+| Admin| add    | view | change | delete |
+| HTTP | POST   | GET  | PUT    | DELETE |
+
+**11.2 Criando grupos e dando permissões**
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
+
 
 -   Crie um grupo chamado `compradores`, com as seguintes permissões:
     -   Visualizar: `autor`, `categoria` e `editora`.
