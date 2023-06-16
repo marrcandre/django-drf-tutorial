@@ -3051,6 +3051,33 @@ INSTALLED_APPS = [
 ```shell
 pdm run python manage.py graph_models -g -o livraria.png livraria
 ```
+# A5. Resolução de erros
+
+## A5.1. Erro ao tentar rodar o servidor
+
+- Ao tentar executar o comando:
+
+```python
+pdm run python manage.py runserver
+```
+
+- Se você receber o seguinte erro:
+
+```shell
+Error: That port is already in use.
+```
+
+- Execute o seguinte comando:
+
+```shell
+fuser -k 8000/tcp
+```
+
+> Este comando vai matar o processo que está rodando na porta 8000.
+
+
+
+
 
 
   
