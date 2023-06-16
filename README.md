@@ -1464,13 +1464,15 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 > Observe no **Admin**, para cada usuário em **Usuários (Users)**, as opções de **Permissões do usuário**.
 
-**Relação entre nomes das permissões**
+**Relação entre nomes das ações**
 
-|     | Adicionar | Listar | Alterar | Remover |
-|-----|--------|------|--------|--------|
-| CRUD| Create | Read | Update | Delete |
-| Admin| add    | view | change | delete |
-| HTTP | POST   | GET  | PUT    | DELETE |
+| Ação | HTTP   | CRUD   | Admin  |
+|-------------------|--------|--------|--------|
+| Criar             | POST   | Create | add    |
+| Ler               | GET    | Read   | view   |
+| Atualizar         | PUT (PATCH)   | Update | change |
+| Deletar           | DELETE | Delete | delete |
+
 
 **11.2 Criando grupos e dando permissões**
 
