@@ -1746,7 +1746,7 @@ Resumindo, você vai precisar:
 
 Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
 
-# 15. Reestruturação em pastas de _models_, _views_ e _serializers_
+# 14. Reestruturação em pastas de _models_, _views_ e _serializers_
 
 Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
 
@@ -1859,7 +1859,7 @@ livraria
 
 > A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupar entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
 
-# 16. Modificando o usuário padrão do Django
+# 15. Modificando o usuário padrão do Django
 
 Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
 
@@ -1988,7 +1988,7 @@ pdm run python manage.py createsuperuser
 
 > Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
 
-# 17. Upload e associação de imagens
+# 16. Upload e associação de imagens
 
 Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
 
@@ -2148,7 +2148,7 @@ class LivroDetailSerializer(ModelSerializer):
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
 -   Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
 
-# 18. Habilitando o Swagger e Redoc usando DRF Spectacular
+# 17. Habilitando o Swagger e Redoc usando DRF Spectacular
 
 Vamos instalar uma aplicação para gerar a documentação da API usando o Swagger e o Redoc.
 
@@ -2233,7 +2233,7 @@ urlpatterns = [
 ]
 ```
 
-# 19. Dump e Load de dados
+# 18. Dump e Load de dados
 
 Vamos aprender a fazer o _dump_ e _load_ de dados.
 
@@ -2278,7 +2278,7 @@ pdm run python manage.py shell
 
 Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
 
-# 20. Uso do Django Shell
+# 19. Uso do Django Shell
 
 O Django Shell é uma ferramenta para interagir com o banco de dados.
 
@@ -2379,7 +2379,7 @@ Editora.objects.get(id=1).livros.all()
 >>> exit()
 ```
 
-# 21. Customização do Admin
+# 20. Customização do Admin
 
 O Admin é uma ferramenta para gerenciar os dados do banco de dados. Ele pode ser customizado para melhorar a experiência do usuário.
 
@@ -2423,7 +2423,7 @@ class LivroAdmin(admin.ModelAdmin):
 
     http://localhost:8000/admin/
 
-# 22. Configurando variáveis de ambiente
+# 21. Configurando variáveis de ambiente
 
 É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no **GitHub**! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
 
@@ -2476,7 +2476,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 cp .env .env.example
 ```
 
-# 23. Publicação no PythonAnywhere
+# 22. Publicação no PythonAnywhere
 
 O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no **GitHub**.
 
@@ -2665,7 +2665,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-# 24. Inclusão da foto de perfil no usuário
+# 23. Inclusão da foto de perfil no usuário
 
 Vamos incluir a foto de perfil no usuário.
 
@@ -2768,7 +2768,7 @@ router.register(r"usuarios", UsuarioViewSet)
 
 -   Inclua uma foto de perfil em um usuário.
 
-# 25. Criação da entidade `compras` integrada ao usuário do projeto
+# 24. Criação da entidade `compras` integrada ao usuário do projeto
 
 Nessa aula, vamos criar um model de compras integrada à model do usuário do projeto.
 
@@ -2818,7 +2818,7 @@ pdm run python manage.py migrate
 
 - Teste o model `Compra` no admin do Django.
 
-# 26. Criando os itens da compra
+# 25. Criando os itens da compra
 
 No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo.
 
@@ -2842,7 +2842,7 @@ class ItensCompra(models.Model):
 - Verifique que a tabela `livraria_itenscompra` foi criada no banco de dados.
 - Inclua o model `ItensCompra` no `Admin` do Django.
 
-# 27. Uso de `TabularInline` no `Admin` para Itens da Compra
+# 26. Uso de `TabularInline` no `Admin` para Itens da Compra
 
 Vamos mostrar os itens da compra no admin do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
 
