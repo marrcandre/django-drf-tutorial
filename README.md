@@ -1592,17 +1592,15 @@ Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Fra
 
 O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) é um plug-in de autenticação JSON Web Token para o Django REST Framework.
 
-**Instalação**
+**Instalação e configuração**
 
--   Para instalar o SimpleJWT, execute o seguinte comando:
+- Para instalar o SimpleJWT, execute o seguinte comando:
 
 ```shell
 pdm add djangorestframework-simplejwt
 ```
 
-**Configuração**
-
--   Adicione o `SimpleJWT` no arquivo `settings.py`:
+- Adicione o `SimpleJWT` no arquivo `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -1610,6 +1608,18 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     ...
 ]
+```
+
+-   Adicione o `SimpleJWT` no arquivo `settings.py`:
+
+```python
+REST_FRAMEWORK = {
+    ...
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    ...
+}
 ```
 
 -   Adicione o `SimpleJWT` no arquivo `urls.py`:
@@ -1628,33 +1638,19 @@ urlpatterns = [
 ]
 ```
 
--   Adicione o `SimpleJWT` no arquivo `settings.py`:
-
-```python
-REST_FRAMEWORK = {
-    ...
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    ...
-}
-```
-
 -   Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
--   Para testar se tudo deu certo, utilizaremos algum cliente HTTP, como o **Thunder Client** ou outros.
+**Exercícios: Testando as permissões com o SimpleJWT**
 
-# 14. Testando as permissões dos _endpoints_ usando um cliente HTTP
+Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Client**.
 
 **Colocando as informações do token na requisição**
 
-Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcionamento. Para isso utilize um cliente HTTP.
+**Dica:** se sua ferramenta permitir, crie várias requisições separadas e dê nomes, como _login_, _consulta_, _inclusão_, etc.
 
-**Dica:** se sua ferramenta permitir, crie várias requisições separadas para cada tipo de requisição, como autenticação, consulta, inclusão, etc.
+-   Ao tentar acessar um _endpoint_ com `GET`, como esse:
 
--   Ao tentar acessar, por exemplo, o seguinte _endpoint_:
-
-    http://localhost:8000/categorias/
+   [GET] http://localhost:8000/categorias/
 
 -   Você deverá receber uma resposta parecida com essa:
 
@@ -1664,20 +1660,20 @@ Feita a instalação e a configuração do SimpleJWT, podemos testar seu funcion
 }
 ```
 
--   Para fazer a autenticação, precisamos enviar as informações de usuário e senha. Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações:
+-   Para fazer a autenticação, precisamos enviar as informações de `usuário` e `senha`. Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações, no `Body` em `JSON`:
 
 ```json
 {
-    "username": "admin1",
+    "username": "comprador1",
     "password": "minhasenha1"
 }
 ```
 
--   O endereço é o seguinte:
+-   O endereço para envio da requisição é o seguinte:
 
-    http://localhost:8000/token/
+    [POST] http://localhost:8000/token/
 
-**IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
+> **IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
 
 Você deve receber uma resposta semelhante a essa:
 
@@ -1688,13 +1684,7 @@ Você deve receber uma resposta semelhante a essa:
 }
 ```
 
-A cada chamada ao sistema, precisaremos enviar no cabeçalho da requisição um campo com o nome `Authorization` (autorização) com tipo `Bearer ` com essa chave que foi definida no campo `access`.
-
-Para fazer isso, inclua em `Headers` um nova entrada, com se seguintes informações:
-
--   KEY (Header Name): `Authorization`
--   Value: `Bearer` + `valor da chave accesss`. (O valor desse token muda a cada nova autenticação.)
--   -   Por exemplo: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjM4NDEwLCJpYXQiOjE2NjE2MzgxMTAsImp0aSI6ImRhYTBmNDcyZDI3YTQ5ZTM4M2I4ZjJhOTcwYjhlMWNmIiwidXNlcl9pZCI6M30.HY2j0L6eQBaPxAoHrPz_KFK_sWyb9lHmR7dQ1sOPTNY`
+Todas as chamadas ao sistema que precisarem de autenticação deverão ser feitas com o campo `access` token. Para isso, copie o valor do campo `access` e cole no campo `Auth`, opção `Bearer` do Thunder Client.
 
 Para testar, acesse com `GET` o seguinte endereço:
 
@@ -1705,6 +1695,8 @@ Para testar, acesse com `GET` o seguinte endereço:
 Você deverá conseguir visualizar todas as categorias cadastradas.
 
 **_Token_ expirado**
+
+Quando o token expira, você receberá uma resposta semelhante a essa:
 
 ```json
 {
@@ -1720,16 +1712,7 @@ Você deverá conseguir visualizar todas as categorias cadastradas.
 }
 ```
 
-Recebemos essa mensagem quando o token expirou. Para isso, precisamos gerar um novo token.
-
-**Testando com outro usuário**
-
-Repita o processo de autenticação e consulta com o usuário `comprador1` que criamos anteriormente.
-
-Resumindo, você vai precisar:
-
--   Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
--   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Authorization` da requisição do tipo `GET` que vocẽ fará.
+Para renovar o token, faça novamente a requisição de autenticação, enviando as informações de usuário e senha.
 
 **Tentando alterar uma informação**
 
@@ -1751,7 +1734,17 @@ Resumindo, você vai precisar:
 
 Você não pode alterar uma informação com esse usuário. Para isso, você precisa de um usuário com permissão de escrita.
 
-Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Admin do Django.
+**Testando com outro usuário**
+
+Repita o processo de autenticação e consulta com o usuário `admin1` que criamos anteriormente.
+
+Resumindo, você vai precisar:
+
+-   Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
+-   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
+
+
+Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
 
 # 15. Reestruturação em pastas de _models_, _views_ e _serializers_
 
