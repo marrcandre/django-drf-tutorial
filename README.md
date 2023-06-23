@@ -3058,7 +3058,7 @@ pdm run python manage.py graph_models -g -o livraria.png livraria
 ```
 # A5. Resolução de erros
 
-## A5.1. Erro ao tentar rodar o servidor
+## Porta em uso
 
 - Ao tentar executar o comando:
 
@@ -3080,6 +3080,29 @@ fuser -k 8000/tcp
 
 > Este comando vai matar o processo que está rodando na porta 8000.
 
+## Descobrir IP da máquina
+
+-   Execute o seguinte comando:
+
+```shell
+nmcli device show | grep IP4.ADDRESS | head -1 | awk '{print $2}' | rev | cut -c 4- | rev
+```
+
+## Rodar o Django no IP da máquina
+
+-   Execute o seguinte comando:
+
+```shell
+pdm run python manage.py runserver <ip_da_maquina>:<porta>
+```
+
+Exemplo:
+    
+```shell
+pdm run python manage.py runserver 191.52.62.13:19005
+```
+
+> Essa é uma forma de rodar o Django em um IP específico, por exemplo, para testar a API em um dispositivo móvel.
 
 
 
