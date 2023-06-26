@@ -1774,6 +1774,10 @@ mkdir livraria/models
 touch livraria/models/__init__.py
 ```
 
+> O arquivo `__init__.py` é necessário para que o Python reconheça a pasta como um módulo.
+
+> Quando o Python importa um módulo, ele executa o código do arquivo `__init__.py` antes de importar os outros arquivos.
+
 -   Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`:
 
 ```shell
@@ -3135,7 +3139,7 @@ rm -rf __pypackages__ pdm.lock
 rm db.sqlite3
 ```
 
-**Gerar o arquivo requirements.txt automaticamente**
+## Gerar o arquivo requirements.txt automaticamente
 
 O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
 
