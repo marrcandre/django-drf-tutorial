@@ -1638,7 +1638,7 @@ urlpatterns = [
 ]
 ```
 
--   Feitas essa aterações, coloque o servidor do Django novamente em execução.
+- Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
 **Exercícios: Testando as permissões com o SimpleJWT**
 
@@ -1828,6 +1828,17 @@ Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo 
 -   Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
 -   Adicione a importação no arquivo `__init__.py`.
 -   Remova o conteúdo do arquivo.
+
+- Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`. Para isso, execute os seguintes comandos:
+
+```shell
+mkdir livraria/views
+cd livraria/views
+touch __init__.py autor.py categoria.py editora.py livro.py
+```
+
+> Você pode fazer o mesmo para a pasta `serializers`.
+
 
 Ao final , você terá uma estrutura parecida com essa:
 
@@ -3104,6 +3115,12 @@ pdm run python manage.py runserver 191.52.62.13:19005
 
 > Essa é uma forma de rodar o Django em um IP específico, por exemplo, para testar a API em um dispositivo móvel.
 
+## Removendo migrations e o banco de dados
+
+find . -name "__pycache__" -type d -exec rm -r {} +
+find . -path "*/migrations/*.pyc" -delete
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+rm -rf __pypackages__ pdm.lock
 
 
 
