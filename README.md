@@ -2956,6 +2956,16 @@ trim_trailing_whitespace = true
 indent_size = 4
 ```
 
+**Usando o isort e o black**
+
+Execute os seguintes comandos:
+
+```shell
+pdm run isort .
+pdm run black .
+```
+
+
 <!--
 -   Crie um arquivo `.flake8` na raiz do projeto:
 
@@ -3115,17 +3125,44 @@ pdm run python manage.py runserver 191.52.62.13:19005
 
 > Essa é uma forma de rodar o Django em um IP específico, por exemplo, para testar a API em um dispositivo móvel.
 
-## Removendo migrations e o banco de dados
+## Removendo temporários, migrations e o banco de dados
 
-find . -name "__pycache__" -type d -exec rm -r {} +
+```shell
+find . -name "__pycache__" -type d -exec rm -r {} + 
 find . -path "*/migrations/*.pyc" -delete
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 rm -rf __pypackages__ pdm.lock
+rm db.sqlite3
+```
 
+**Gerar o arquivo requirements.txt automaticamente**
 
+O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
 
+- Instale o plugin `autoexport` do `pdm`:
 
-  
+```shell
+pdm plugin add autoexport
+```
+
+- Execute o seguinte comando:
+
+- Configure o `autoexport` para gerar o arquivo `requirements.txt` automaticamente, incluindo as seguintes linhas no arquivo `pyproject.toml`:
+
+```toml
+[[tool.pdm.autoexport]]
+filename = "requirements.txt"
+without-hashes = "true"
+```
+
+Para gerar o arquivo `requirements.txt` automaticamente, instale qualquer pacote com o `pdm`:
+
+```shell
+pdm add django
+```
+
+> A partir de agora, sempre que você instalar um pacote com o `pdm`, o arquivo `requirements.txt` será atualizado automaticamente.
+ 
 
 -----------------
 Marco André Mendes \<marcoandre@gmail.com>
