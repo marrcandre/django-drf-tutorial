@@ -205,6 +205,17 @@ echo "alias python=python3" >> ~/.bashrc
 
 # 2. Criação do projeto
 
+**2.0 O projeto Livraria**
+
+**Modelo Entidade Relacionamento**
+
+![Modelo ER](diagramas/livraria_MER.png "Modelo ER")
+
+
+**Diagrama de Classes**
+
+![Diagrama de Classes](diagramas/livraria_classes.png "Diagrama de Classes")
+
 **2.1 Criação da pasta do projeto**
 
 -   Abra o navegador de arquivos:
