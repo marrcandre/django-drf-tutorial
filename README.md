@@ -1841,13 +1841,15 @@ Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo 
 -   Adicione a importação no arquivo `__init__.py`.
 -   Remova o conteúdo do arquivo.
 
--   Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`. Para isso, execute os seguintes comandos:
+> Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`. 
+
+- Para criar a pasta `views`, execute os seguintes comandos:
 
 ```shell
 mkdir livraria/views && cd livraria/views && touch __init__.py autor.py categoria.py editora.py livro.py && cd ../..
 ```
 
-> Você pode fazer o mesmo para a pasta `serializers`:
+- Você pode fazer o mesmo para a pasta `serializers`:
 
 ```shell
 mkdir livraria/serializers && cd livraria/serializers && touch __init__.py autor.py categoria.py editora.py livro.py && cd ../..
