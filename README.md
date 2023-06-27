@@ -95,7 +95,7 @@ pdm -V
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
-**Configuração do PDM no `bash`**
+**Configuração do PDM no `bash` (Ubuntu e derivados)**
 
 -   Execute o seguinte comando:
 
@@ -103,7 +103,7 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
 ```
 
-**Configuração do PDM no `zsh` com o `Oh! My Zsh`**
+**Configuração do PDM no `zsh` com o `Oh! My Zsh` (Manjaro e derivados)**
 
 -   Execute o seguinte comando:
 
@@ -210,7 +210,6 @@ echo "alias python=python3" >> ~/.bashrc
 **Modelo Entidade Relacionamento**
 
 ![Modelo ER](diagramas/livraria_MER.png "Modelo ER")
-
 
 **Diagrama de Classes**
 
@@ -1477,18 +1476,16 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 **Relação entre nomes das ações**
 
-| Ação | HTTP   | CRUD   | Admin  |
-|-------------------|--------|--------|--------|
-| Criar             | POST   | Create | add    |
-| Ler               | GET    | Read   | view   |
-| Atualizar         | PUT (PATCH)   | Update | change |
-| Deletar           | DELETE | Delete | delete |
-
+| Ação      | HTTP        | CRUD   | Admin  |
+| --------- | ----------- | ------ | ------ |
+| Criar     | POST        | Create | add    |
+| Ler       | GET         | Read   | view   |
+| Atualizar | PUT (PATCH) | Update | change |
+| Deletar   | DELETE      | Delete | delete |
 
 **11.2 Criando grupos e dando permissões**
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
-
 
 -   Crie um grupo chamado `compradores`, com as seguintes permissões:
     -   Visualizar: `autor`, `categoria` e `editora`.
@@ -1605,13 +1602,13 @@ O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
 **Instalação e configuração**
 
-- Para instalar o SimpleJWT, execute o seguinte comando:
+-   Para instalar o SimpleJWT, execute o seguinte comando:
 
 ```shell
 pdm add djangorestframework-simplejwt
 ```
 
-- Adicione o `SimpleJWT` no arquivo `settings.py`:
+-   Adicione o `SimpleJWT` no arquivo `settings.py`:
 
 ```python
 INSTALLED_APPS = [
@@ -1649,7 +1646,7 @@ urlpatterns = [
 ]
 ```
 
-- Feitas essa aterações, coloque o servidor do Django novamente em execução.
+-   Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
 **Exercícios: Testando as permissões com o SimpleJWT**
 
@@ -1661,7 +1658,7 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 
 -   Ao tentar acessar um _endpoint_ com `GET`, como esse:
 
-   [GET] http://localhost:8000/categorias/
+[GET] http://localhost:8000/categorias/
 
 -   Você deverá receber uma resposta parecida com essa:
 
@@ -1694,6 +1691,7 @@ Você deve receber uma resposta semelhante a essa:
     "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYxNjM4NDEwLCJpYXQiOjE2NjE2MzgxMTAsImp0aSI6ImRhYTBmNDcyZDI3YTQ5ZTM4M2I4ZjJhOTcwYjhlMWNmIiwidXNlcl9pZCI6M30.HY2j0L6eQBaPxAoHrPz_KFK_sWyb9lHmR7dQ1sOPTNY"
 }
 ```
+
 > Para verificar as informações do token, acesse os sites [jwt.io](https://jwt.io/) ou [token.dev](https://token.dev/), cole o valor do token no campo `Encoded` e clique no botão `Decode`.
 
 Todas as chamadas ao sistema que precisarem de autenticação deverão ser feitas com o campo `access` token. Para isso, copie o valor do campo `access` e cole no campo `Auth`, opção `Bearer` do Thunder Client.
@@ -1754,7 +1752,6 @@ Resumindo, você vai precisar:
 
 -   Criar uma requisição de autenticação, do tipo `POST`, para a URL `token`, enviando as informações de usuário e senha.
 -   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
-
 
 Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
 
@@ -1844,16 +1841,17 @@ Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo 
 -   Adicione a importação no arquivo `__init__.py`.
 -   Remova o conteúdo do arquivo.
 
-- Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`. Para isso, execute os seguintes comandos:
+-   Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`. Para isso, execute os seguintes comandos:
 
 ```shell
-mkdir livraria/views
-cd livraria/views
-touch __init__.py autor.py categoria.py editora.py livro.py
+mkdir livraria/views && cd livraria/views && touch __init__.py autor.py categoria.py editora.py livro.py && cd ../..
 ```
 
-> Você pode fazer o mesmo para a pasta `serializers`.
+> Você pode fazer o mesmo para a pasta `serializers`:
 
+```shell
+mkdir livraria/serializers && cd livraria/serializers && touch __init__.py autor.py categoria.py editora.py livro.py && cd ../..
+```
 
 Ao final , você terá uma estrutura parecida com essa:
 
@@ -2801,7 +2799,7 @@ Nessa aula, vamos criar um model de compras integrada à model do usuário do pr
 
 **Criando o model de compras**
 
-- Crie um novo arquivo `compras.py` dentro da pasta `models` do app `livraria`, com o seguinte conteúdo:
+-   Crie um novo arquivo `compras.py` dentro da pasta `models` do app `livraria`, com o seguinte conteúdo:
 
 ```python
 from django.db import models
@@ -2825,9 +2823,9 @@ class Compra(models.Model):
 > Note que estamos utilizando o `Usuario` do app `usuario` como `ForeignKey` para o model `Compra`.
 
 > `StatusCompra` é do tipo `IntegerChoices`, que é uma forma de criar um campo `choices` com valores inteiros.
-> `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`. 
+> `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`.
 
-- Adicione o model `Compra` ao `admin.py` do app `livraria`:
+-   Adicione o model `Compra` ao `admin.py` do app `livraria`:
 
 ```python
 ...
@@ -2836,20 +2834,20 @@ from livraria.models import Compras
 admin.site.register(Compra)
 ```
 
-- Execute as migrações:
+-   Execute as migrações:
 
 ```shell
 pdm run python manage.py makemigrations
 pdm run python manage.py migrate
 ```
 
-- Teste o model `Compra` no admin do Django.
+-   Teste o model `Compra` no admin do Django.
 
 # 25. Criando os itens da compra
 
 No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo.
 
-- Vamos adicionar um novo model `ItensCompra` ao arquivo `compras.py`:
+-   Vamos adicionar um novo model `ItensCompra` ao arquivo `compras.py`:
 
 ```python
 class ItensCompra(models.Model):
@@ -2860,20 +2858,19 @@ class ItensCompra(models.Model):
 
 > No atributo `compra`, utilizamos models.CASCADE, pois queremos que, ao deletar uma compra, todos os itens da compra sejam deletados também.
 
-
 > No atributo `livro`, utilizamos models.PROTECT, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
 
-> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`. 
+> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`.
 
-- Execute as migrações (você já sabe como fazer, certo?)
-- Verifique que a tabela `livraria_itenscompra` foi criada no banco de dados.
-- Inclua o model `ItensCompra` no `Admin` do Django.
+-   Execute as migrações (você já sabe como fazer, certo?)
+-   Verifique que a tabela `livraria_itenscompra` foi criada no banco de dados.
+-   Inclua o model `ItensCompra` no `Admin` do Django.
 
 # 26. Uso de `TabularInline` no `Admin` para Itens da Compra
 
 Vamos mostrar os itens da compra no admin do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
 
-- No arquivo `admin.py` do app `livraria`, adicione o seguinte código:
+-   No arquivo `admin.py` do app `livraria`, adicione o seguinte código:
 
 ```python
 class ItensCompraInline(admin.TabularInline):
@@ -2886,14 +2883,13 @@ class CompraAdmin(admin.ModelAdmin):
 
 > Desta forma, quando você editar uma compra no admin do Django, você verá os itens da compra logo abaixo do formulário de edição da compra.
 
-- Teste no admin do Django.
+-   Teste no admin do Django.
 
-
-----
+---
 
 # Apêndices
 
-# A1. Criação de *scripts* PDM
+# A1. Criação de _scripts_ PDM
 
 Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
 
@@ -2979,7 +2975,6 @@ Execute os seguintes comandos:
 pdm run isort .
 pdm run black .
 ```
-
 
 <!--
 -   Crie um arquivo `.flake8` na raiz do projeto:
@@ -3092,23 +3087,24 @@ INSTALLED_APPS = [
 ```shell
 pdm run python manage.py graph_models -g -o livraria.png livraria
 ```
+
 # A5. Resolução de erros
 
 ## Porta em uso
 
-- Ao tentar executar o comando:
+-   Ao tentar executar o comando:
 
 ```python
 pdm run python manage.py runserver
 ```
 
-- Se você receber o seguinte erro:
+-   Se você receber o seguinte erro:
 
 ```shell
 Error: That port is already in use.
 ```
 
-- Execute o seguinte comando:
+-   Execute o seguinte comando:
 
 ```shell
 fuser -k 8000/tcp
@@ -3133,7 +3129,7 @@ pdm run python manage.py runserver <ip_da_maquina>:<porta>
 ```
 
 Exemplo:
-    
+
 ```shell
 pdm run python manage.py runserver 191.52.62.13:19005
 ```
@@ -3143,7 +3139,7 @@ pdm run python manage.py runserver 191.52.62.13:19005
 ## Removendo temporários, migrations e o banco de dados
 
 ```shell
-find . -name "__pycache__" -type d -exec rm -r {} + 
+find . -name "__pycache__" -type d -exec rm -r {} +
 find . -path "*/migrations/*.pyc" -delete
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 rm -rf __pypackages__ pdm.lock
@@ -3154,15 +3150,15 @@ rm db.sqlite3
 
 O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
 
-- Instale o plugin `autoexport` do `pdm`:
+-   Instale o plugin `autoexport` do `pdm`:
 
 ```shell
 pdm plugin add autoexport
 ```
 
-- Execute o seguinte comando:
+-   Execute o seguinte comando:
 
-- Configure o `autoexport` para gerar o arquivo `requirements.txt` automaticamente, incluindo as seguintes linhas no arquivo `pyproject.toml`:
+-   Configure o `autoexport` para gerar o arquivo `requirements.txt` automaticamente, incluindo as seguintes linhas no arquivo `pyproject.toml`:
 
 ```toml
 [[tool.pdm.autoexport]]
@@ -3177,9 +3173,22 @@ pdm add django
 ```
 
 > A partir de agora, sempre que você instalar um pacote com o `pdm`, o arquivo `requirements.txt` será atualizado automaticamente.
- 
 
------------------
+## Pasta `.venv` criada no projeto
+
+-   Se seu projeto tiver a pasta `.venv`, remova-a:
+
+```shell
+rm -rf .venv
+```
+
+- Depois, execute novamente o script de configuração do pdm, da aula 1.
+- Feito isso, execute o `pdm install`novamente.
+- Por fim, execute o `pdm run python manage.py runserver` novamente.
+
+
+---
+
 Marco André Mendes \<marcoandre@gmail.com>
 
 <!-- Aulas futuras -->
@@ -3195,5 +3204,3 @@ Marco André Mendes \<marcoandre@gmail.com>
 <!-- Publicação no Render -->
 
 <!-- https://render.com/docs/deploy-django -->
-
-
