@@ -2092,6 +2092,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
 ```
 
+- Você vai precisar incluir o módulo `os` no início do arquivo `settings.py`:
+
+```python
+import os
+```
+
 -   Inclua o seguinte conteúdo no arquivo `urls.py`:
 
 ```python
