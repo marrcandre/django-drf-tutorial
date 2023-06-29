@@ -1899,6 +1899,15 @@ Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padr
 -   Em nosso exemplo, incluiremos os campos `cpf`, `telefone` e `data_nascimento` ao usuário.
 -   Posteriormente, incluiremos a foto do usuário.
 
+
+**Instalando o setuptools**
+
+-   Instale o pacote `setuptools`:
+
+```shell
+pdm add setuptools
+```
+
 **Instalando a app `usuario`**
 
 -   Baixe e descompacte o arquivo com a app pronta para ser utilizada:
@@ -1972,27 +1981,23 @@ urlpatterns = [
 
 > Ela será acessada através da rota `/api/usuario/`.
 
-**Efetivando as alterações**
-
--   Remova o banco de dados e as migrações:
+**Removendo arquivos temporários, migrations e o banco de dados**
 
 ```shell
+find . -name "__pycache__" -type d -exec rm -r {} +
+find . -path "*/migrations/*.pyc" -delete
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+rm -rf __pypackages__ pdm.lock
 rm db.sqlite3
-rm -rf usuario/migrations/*
-touch usuario/migrations/__init__.py
-rm -rf livraria/migrations/*
-touch livraria/migrations/__init__.py
 ```
 
--   No Windows, utilize os comandos abaixo:
+**Reinstalando as dependências**
 
 ```shell
-del db.sqlite3
-del usuario\migrations\*
-type nul > usuario\migrations\__init__.py
-del livraria\migrations\*
-type nul > livraria\migrations\__init__.py
+pdm install
 ```
+
+**Criando o banco de dados e executando as migrações**
 
 -   Crie novamente o banco de dados e execute as migrações:
 
