@@ -1913,7 +1913,7 @@ pdm add setuptools
 -   Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -O usuario.zip | unzip usuario.zip && rm usuario.zip
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -O usuario.zip && unzip usuario.zip && rm usuario.zip
 ```
 
 No `Windows`, execute os seguintes comandos no `PowerShell`:
