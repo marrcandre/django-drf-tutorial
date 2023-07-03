@@ -1890,12 +1890,12 @@ livraria
 
 Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
 
--   Substituiremos a classe `User` padrão do Django pela nossa própria classe `Usuario`.
--   Não removeremos os campos padrão do usuário.
--   Incluiremos os campos que precisamos no nosso usuário.
--   Teremos que remover o banco de dados e criar um novo, perdendo todos os dados.
--   Faremos a migração do banco de dados.
--   Modificaremos o Admin para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
+-   **Substituiremos** a classe `User` padrão do Django pela nossa própria classe `Usuario`.
+-   **Não removeremos** os campos padrão do usuário.
+-   **Incluiremos** os campos que precisamos no nosso usuário.
+-   **Removeremos** o banco de dados e criaremos um novo, perdendo todos os dados.
+-   Faremos a **migração** do banco de dados.
+-   Modificaremos o **Admin** para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
 -   Em nosso exemplo, incluiremos os campos `cpf`, `telefone` e `data_nascimento` ao usuário.
 -   Posteriormente, incluiremos a foto do usuário.
 
