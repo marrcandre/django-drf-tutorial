@@ -1954,7 +1954,8 @@ usuario
 ```python
 INSTALLED_APPS = [
     ...
-    "usuario",
+    "usuario", # inclua essa linha
+    "livraria",
 ]
 ```
 
