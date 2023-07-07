@@ -2029,7 +2029,7 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip | unzip uploader.zip && rm uploader.zip
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm uploader.zip
 ```
 
 No `Windows`, execute os seguintes comandos no `PowerShell`:
@@ -3150,6 +3150,13 @@ pdm run python manage.py runserver 191.52.62.13:19005
 
 > Essa é uma forma de rodar o Django em um IP específico, por exemplo, para testar a API em um dispositivo móvel.
 
+## Juntando tudo
+
+-   Execute o seguinte comando:
+
+```shell
+pdm run python manage.py runserver $(nmcli device show | grep IP4.ADDRESS | head -1 | awk '{print $2}' | rev | cut -c 4- | rev):19005
+```
 ## Removendo temporários, migrations e o banco de dados
 
 ```shell
@@ -3190,14 +3197,20 @@ pdm add django
 
 ## Pasta `.venv` criada no projeto
 
--   Se seu projeto tiver a pasta `.venv`, remova-a:
+-   Se seu projeto tiver a pasta `.venv`, e não a pasta `__pypackages__`, remova a pasta `.venv`:
 
 ```shell
 rm -rf .venv
 ```
 
 - Depois, execute novamente o script de configuração do pdm, da aula 1.
-- Feito isso, execute o `pdm install`novamente.
+- Opcionalmente, rode o seguinte comando, para configurar o projeto para não usar ambiente virtual:
+
+```shell
+pdm config python.use_venv false
+```
+
+- Feito isso, execute o `pdm install` novamente.
 - Por fim, execute o `pdm run python manage.py runserver` novamente.
 
 
