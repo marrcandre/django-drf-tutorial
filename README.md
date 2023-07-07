@@ -2931,7 +2931,7 @@ dumpdata = "python manage.py dumpdata {args}"
 pdm run dev
 ```
 
-# A2. Instalação e configuração de ferramentas de desenvolvimento
+# A2. isort, black e editorconfig
 
 -   Instale as ferramentas de desenvolvimento `isort` e `black`:
 
@@ -3047,7 +3047,57 @@ pre-commit install
 -   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
  -->
 
-# A3. Testando a API via linha de comando, utilizando o curl
+# A3. Gerando o arquivo requirements.txt automaticamente
+
+O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
+
+-   Instale o plugin `autoexport` do `pdm`:
+
+```shell
+pdm plugin add autoexport
+```
+
+-   Execute o seguinte comando:
+
+-   Configure o `autoexport` para gerar o arquivo `requirements.txt` automaticamente, incluindo as seguintes linhas no arquivo `pyproject.toml`:
+
+```toml
+[[tool.pdm.autoexport]]
+filename = "requirements.txt"
+without-hashes = "true"
+```
+
+Para gerar o arquivo `requirements.txt` automaticamente, instale qualquer pacote com o `pdm`:
+
+```shell
+pdm add django
+```
+
+> A partir de agora, sempre que você instalar um pacote com o `pdm`, o arquivo `requirements.txt` será atualizado automaticamente.
+
+# A4. Gerando um diagrama de banco de dados a partir das models
+
+-   Instale o `django-extensions`:
+
+```shell
+pdm add django-extensions
+```
+
+-   Adicione o `django-extensions` ao `INSTALLED_APPS` do arquivo `settings.py`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    "django_extensions",
+]
+```
+
+-   Gere o diagrama de banco de dados:
+
+```shell
+pdm run python manage.py graph_models -g -o livraria.png livraria
+```
+# A5. Usando curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
@@ -3079,32 +3129,9 @@ curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
 curl -X DELETE http://localhost:8000/categorias/1/
 ```
 
-# A4. Gerando um diagrama de banco de dados a partir das models
+# A6. Resolução de erros
 
--   Instale o `django-extensions`:
-
-```shell
-pdm add django-extensions
-```
-
--   Adicione o `django-extensions` ao `INSTALLED_APPS` do arquivo `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "django_extensions",
-]
-```
-
--   Gere o diagrama de banco de dados:
-
-```shell
-pdm run python manage.py graph_models -g -o livraria.png livraria
-```
-
-# A5. Resolução de erros
-
-## Porta em uso
+## Liberando uma porta em uso
 
 -   Ao tentar executar o comando:
 
@@ -3124,9 +3151,9 @@ Error: That port is already in use.
 fuser -k 8000/tcp
 ```
 
-> Este comando vai matar o processo que está rodando na porta 8000.
+> Este comando vai matar o processo que está rodando na porta 8000. Mude o número da porta conforme necessário.
 
-## Descobrir IP da máquina
+## Descobrindo o IP da máquina
 
 -   Execute o seguinte comando:
 
@@ -3134,7 +3161,7 @@ fuser -k 8000/tcp
 nmcli device show | grep IP4.ADDRESS | head -1 | awk '{print $2}' | rev | cut -c 4- | rev
 ```
 
-## Rodar o Django no IP da máquina
+## Rodando o Django no IP da máquina
 
 -   Execute o seguinte comando:
 
@@ -3148,7 +3175,7 @@ Exemplo:
 pdm run python manage.py runserver 191.52.62.13:19005
 ```
 
-> Essa é uma forma de rodar o Django em um IP específico, por exemplo, para testar a API em um dispositivo móvel.
+> Essa é uma forma de rodar o Django em um IP e porta específicos, por exemplo, para testar a API em um dispositivo móvel.
 
 ## Juntando tudo
 
@@ -3157,6 +3184,7 @@ pdm run python manage.py runserver 191.52.62.13:19005
 ```shell
 pdm run python manage.py runserver $(nmcli device show | grep IP4.ADDRESS | head -1 | awk '{print $2}' | rev | cut -c 4- | rev):19005
 ```
+
 ## Removendo temporários, migrations e o banco de dados
 
 ```shell
@@ -3167,33 +3195,6 @@ rm -rf __pypackages__ pdm.lock
 rm db.sqlite3
 ```
 
-## Gerar o arquivo requirements.txt automaticamente
-
-O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
-
--   Instale o plugin `autoexport` do `pdm`:
-
-```shell
-pdm plugin add autoexport
-```
-
--   Execute o seguinte comando:
-
--   Configure o `autoexport` para gerar o arquivo `requirements.txt` automaticamente, incluindo as seguintes linhas no arquivo `pyproject.toml`:
-
-```toml
-[[tool.pdm.autoexport]]
-filename = "requirements.txt"
-without-hashes = "true"
-```
-
-Para gerar o arquivo `requirements.txt` automaticamente, instale qualquer pacote com o `pdm`:
-
-```shell
-pdm add django
-```
-
-> A partir de agora, sempre que você instalar um pacote com o `pdm`, o arquivo `requirements.txt` será atualizado automaticamente.
 
 ## Pasta `.venv` criada no projeto
 
