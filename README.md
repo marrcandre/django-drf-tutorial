@@ -3077,10 +3077,10 @@ pdm add django
 
 # A4. Gerando um diagrama de banco de dados a partir das models
 
--   Instale o `django-extensions`:
+-   Instale o `django-extensions` e o `pydotplus`:
 
 ```shell
-pdm add django-extensions
+pdm add django-extensions pydotplus
 ```
 
 -   Adicione o `django-extensions` ao `INSTALLED_APPS` do arquivo `settings.py`:
