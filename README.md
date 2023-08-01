@@ -2087,7 +2087,7 @@ INSTALLED_APPS = [
 -   Ainda no `settings.py` faça as seguintes configurações:
 
 ```python
-MEDIA_URL = "http://localhost:8000/api/media/"
+MEDIA_URL = "http://localhost:8000/media/"
 MEDIA_ENDPOINT = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
