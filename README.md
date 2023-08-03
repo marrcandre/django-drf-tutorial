@@ -3129,6 +3129,21 @@ curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
 curl -X DELETE http://localhost:8000/categorias/1/
 ```
 
+# Exercícios
+
+## Exercício 1 segundo trimestre (Garagem)
+
+- Modifique o projeto Garagem para refletir o seguinte modelo:
+
+![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem")
+
+- Crie (ou modifique) as `views`, `urls` e `serializers` necessários para implementar a API REST para o modelo acima.
+- Reestruture o projeto em pastas, para `models`, `views` e `serializers` ficarem em pastas separadas.
+- Modifique o usuário padrão do Django para usar o `email` como `username`.
+- Permita que um carro possa ter várias fotos.
+- Habilite  o Swagger no projeto.
+- Faça o cadastro completo, com fotos, de pelo menos 3 carros.
+
 # A6. Resolução de erros
 
 ## Liberando uma porta em uso
@@ -3229,6 +3244,62 @@ Marco André Mendes \<marcoandre@gmail.com>
 <!-- Endpoint para listagem básica de Compras -->
 <!-- Ajustes na visualização do status de compra e itens de compra -->
 
-<!-- Publicação no Render -->
+# Publicação no Render
 
-<!-- https://render.com/docs/deploy-django -->
+Link para o tutorial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
+
+**Observação:** O Render não suporta o `pdm` ainda. Por isso, vamos usar o `pip` para instalar as dependências.
+
+**Modificações no projeto:**
+
+- Abra o arquivo `settings.py` e encontre a linha que contém a variável` SECRET_KEY`. Não queremos armazenar segredos de produção no código fonte, então vamos pegá-los de variáveis de ambiente que criaremos depois:
+
+```python
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+```
+
+- Para que esse comando funcione, precisamos importar a biblioteca `os` no início do arquivo:
+
+```python  
+import os
+```
+
+- Encontre a declaração da configuração `DEBUG`. Essa configuração nunca deve ser definida como `True` em um ambiente de produção. Você pode detectar se está sendo executado no Render verificando se a variável de ambiente `RENDER` está presente no ambiente da aplicação.
+
+```python
+DEBUG = 'RENDER' not in os.environ
+```
+
+- Quando `DEBUG = False`, o Django não funcionará sem um valor adequado para `ALLOWED_HOSTS`. Você pode obter o nome do host do seu serviço web da variável de ambiente `RENDER_EXTERNAL_HOSTNAME`, que é definida automaticamente pelo Render. Adicione o seguinte código ao arquivo `settings.py`:
+
+```python
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+```
+
+**Arquivos estáticos**
+
+Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
+
+Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema. 
+
+- Adicione o `WhiteNoise` como uma dependência do projeto:
+
+```shell
+pdm add 'whitenoise[brotli]'
+``` 
+
+- Abra o arquivo `settings.py` e adicione o `WhiteNoise` ao final da lista `INSTALLED_APPS`:
+
+
+
+
+```python
+senha supbase: Senha.123@!
+```
+
+
+
