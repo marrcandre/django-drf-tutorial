@@ -2462,247 +2462,170 @@ class LivroAdmin(admin.ModelAdmin):
 
     http://localhost:8000/admin/
 
-# 21. Configurando variáveis de ambiente
+# 21. Implantação no Render
 
-É importante manter informações sensíveis, como chaves de API e senhas, longe de olhares indiscretos. A melhor maneira de fazer isso é não colocá-los no **GitHub**! Para isso, vamos usar o arquivo `.env` para armazenar essas informações.
+Link para o tutorial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
 
--   Instale o pacote `django_environ`:
+**Modificações no projeto:**
 
-```shell
-pdm add django-environ
-```
-
--   Edite o arquivo `config/settings.py`:
+- Abra o arquivo `settings.py` e encontre a linha que contém a variável` SECRET_KEY`. Não queremos armazenar segredos de produção no código fonte, então vamos pegá-los de variáveis de ambiente que criaremos depois:
 
 ```python
-...
-import environ
-...
-# Carrega as variáveis de ambiente do sistema operacional e as prepara para usá-las
-env = environ.Env()
-environ.Env.read_env((os.path.join(BASE_DIR, '.env')))
-
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
-DATABASES = {'default': env.db()}
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 ```
 
-IMPORTANTE: Após incluir essas variáveis, remova as outras referências a elas no arquivo `settings.py`.
+- Para que esse comando funcione, precisamos importar a biblioteca `os` no início do arquivo:
 
--   Crie o arquivo `.env`:
-
-```shell
-touch .env
+```python  
+import os
 ```
 
--   Edite o arquivo `.env`:
+- Encontre a declaração da configuração `DEBUG`. Essa configuração nunca deve ser definida como `True` em um ambiente de produção. Você pode detectar se está sendo executado no Render verificando se a variável de ambiente `RENDER` está presente no ambiente da aplicação.
 
 ```python
-SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
+DEBUG = 'RENDER' not in os.environ
 ```
 
-**IMPORTANTE**:
-
--   Adicione o arquivo `.env` ao arquivo `.gitignore`.
--   Feito isso, esse arquivo não será mais versionado pelo Git.
--   Para ter um modelo de arquivo `.env`, crie um arquivo `.env.example` e adicione-o ao Git.
-
-```shell
-cp .env .env.example
-```
-
-# 22. Publicação no PythonAnywhere
-
-O PythonAnywhere é um serviço de hospedagem de aplicações Python. Ele permite que você hospede seu projeto Django gratuitamente. Para isso, você precisa criar uma conta no PythonAnywhere e seguir os passos abaixo. Para publicar seu projeto no PythonAnywhere, você precisa ter uma conta no **GitHub**.
-
-**Atualização do arquivo `requirements.txt`**
-
-Atualize o arquivo `requirements.txt`:
-
-```shell
-pdm export -o requirements.txt -v --without-hashes
-```
-
-Faça um commit e um push para o **GitHub** antes de continuar.
-
-**Criação da conta no PythonAnywhere**
-
--   Crie uma conta no https://www.pythonanywhere.com/
-
-**Criação do banco de dados no PythonAnywhere**
-
--   Crie o banco de dados em https://www.pythonanywhere.com/dashboard/, na opção `Databases`.
--   Anote as informações de conexão com o banco de dados:
-    -   Host: `sua_conta.mysql.pythonanywhere-services.com`
-    -   Database name: `seu_usuario_bd$seu_bd`
-    -   Username: `seu_usuario_bd`
-    -   Password: `sua_senha_bd`
-
-**IMPORTANTE:**
-
--   Substitua `seu_usuario` pelo seu usuário do **GitHub**.
--   Substitua `seu_projeto` pelo nome do seu projeto no **GitHub**.
--   Substitua `sua_conta` pelo nome da sua conta no PythonAnywhere.
--   Substitua `seu_bd` pelo nome do seu banco de dados.
--   Substitua `seu_usuario_bd` pelo nome do seu usuário no banco de dados.
--   Substitua `sua_senha_bd` pela sua senha no banco de dados.
-
-**Instalação do módulo `mysqlclient`**
-
--   Instale o pacote `libmysqlclient-dev`:
-
-```shell
-sudo apt install libmysqlclient-dev
-```
-
--   Caso você esteja usando Manjaro:
-
-```shell
-sudo pacman -S gcc mysql
-```
-
-O pacote `libmysqlclient-dev` é necessário para instalar o módulo `mysqlclient`.
-
--   Instale o módulo `mysqlclient`:
-
-```shell
-pdm add mysqlclient
-```
-
-O módulo `mysqlclient` é necessário para conectar o Django ao banco de dados MySQL.
-
-**Configuração das variáveis de ambiente**
-
--   Crie um arquivo `.env` na pasta raiz (`/`) do seu usuario no PythonAnywhere. Você pode fazer isso pelo console ou pela interface web, na opção `Files`.
+- Quando `DEBUG = False`, o Django não funcionará sem um valor adequado para `ALLOWED_HOSTS`. Você pode obter o nome do host do seu serviço web da variável de ambiente `RENDER_EXTERNAL_HOSTNAME`, que é definida automaticamente pelo Render. Adicione o seguinte código ao arquivo `settings.py`:
 
 ```python
-SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-DEBUG=False
-ALLOWED_HOSTS=sua_conta.pythonanywhere.com
-DATABASE_URL=mysql://seu_usuario_bd:sua_senha_bd@sua_conta.mysql.pythonanywhere-services.com/seu_usuario_bd$seu_bd
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 ```
 
--   Inclua o seguinte conteúdo no arquivo .virtualenvs/postactivate:
+**Arquivos estáticos**
+
+Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
+
+Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema. 
+
+- Adicione `WhiteNoise` como uma dependência (adicionar suporte para `Brotli` é opcional, mas recomendado):
 
 ```shell
-echo "Copiando o arquivo .env para a pasta do projeto..."
-cp ~/.env ~/sua_conta.pythonanywhere.com/
+pdm add 'whitenoise[brotli]'
+``` 
+
+- Abra o arquivo `settings.py`, encontre a lista `MIDDLEWARE` e adicione o middleware `WhiteNoise` logo após o `SecurityMiddleware`:
+
+```python
+MIDDLEWARE = [
+    ...
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ....
+]
 ```
 
-Esse comando copia o arquivo `.env` dentro da pasta do seu projeto no PythonAnywhere.
+- Encontre a seção onde os arquivos estáticos são configurados. Aplique as seguintes modificações:
 
-**Geração da SECRET_KEY**
+```python
+# Essa configuração informa ao Django em qual URL os arquivos estáticos serão servidos ao usuário.
+# Aqui, eles estarão acessíveis em seu-domínio.onrender.com/static/...
+STATIC_URL = '/static/'
 
--   Para gerar uma nova SECRET_KEY (chave secreta), a ser colocada no arquivo `.env`, execute o comando:
+# As seguintes configurações só fazem sentido em produção e podem causar problemas em ambientes de desenvolvimento.
+if not DEBUG:
+    # Indica ao Django para copiar os arquivos estáticos para o diretório `staticfiles` 
+    # no diretório da sua aplicação no Render.
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-```shell
-python -c "import secrets; print(secrets.token_urlsafe())"
+    # Ativa o backend de armazenamento WhiteNoise, que cuida da compressão dos arquivos estáticos
+    # e cria nomes únicos para cada versão, permitindo que sejam armazenados em cache com segurança para sempre.
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ```
 
--   Você também pode gerar uma nova chave secreta em https://djecrety.ir/
--   Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
+**Criação de um Script de Build**
 
-IMPORTANTE:
 
--   Não esqueça de substituir a chave secreta pelo valor gerado.
--   Não esqueça de substituir os valores das variáveis de ambiente pelos seus valores.
+Precisamos executar uma série de comandos para construir nosso aplicativo. Podemos fazer isso com um script de construção (build script). Crie um script chamado build.sh na raiz do seu repositório:
 
-**Criação da API Token**
-
--   Crie uma API Token em `Account` > `API Token` em https://www.pythonanywhere.com/dashboard/.
-
-**Instalação do cliente do PythonAnywhere**
-
--   Acesse o console (terminal) do PythonAnywhere em https://www.pythonanywhere.com/consoles/
-
--   Instale o cliente do PythonAnywhere no console:
+- Crie um arquivo chamado `build.sh` na raiz do projeto com o seguinte conteúdo:
 
 ```shell
-pip install pythonanywhere --user
-```
+#!/usr/bin/env bash
 
-**Criação do projeto no PythonAnywhere**
+# sai do script se algum comando falhar
+set -o errexit
 
-O script `pa_autoconfigure_django.py` autoconfigura o projeto Django no PythonAnywhere a partir de um repositório do **GitHub**:
+# atualiza o pip
+/opt/render/project/src/.venv/bin/python3.9 -m pip install --upgrade pip
 
--   Faz o clone do repositório do **GitHub**.
--   Cria um virtualenv.
--   Instala as dependências do projeto.
--   Cria uma webapp.
--   Cria o arquivo de configuração `wsgi.py`.
--   Adiciona os arquivos estáticos.
-
--   No console do PythonAnywhere, execute o comando abaixo, substituindo `https://github.com/seu_usuario/seu_projeto.git` pelo link do seu repositório no **GitHub** (aquele mesmo que você usou para clonar o projeto):
-
-```shell
-pa_autoconfigure_django.py --python=3.8 --nuke https://github.com/seu_usuario/seu_projeto.git
-```
-
-**Ativando o virtualenv (se necessário)**
-
--   Se necessário, no console, ative o `virtualenv`:
-
-```shell
-workon marcoandre.pythonanywhere.com
-```
-
-**Migrando o banco de dados**
-
--   No console, execute o comando abaixo para migrar o banco de dados:
-
-```shell
-python manage.py migrate
-```
-
-**Configuração do banco de dados no PythonAnywhere**
-
--   Carregue os dados iniciais:
-
-```shell
-python manage.py loaddata livraria.json
-```
-
-**Remoção do banco de dados local (se necessário)**
-
-Para remover um banco de dados, acesse https://www.pythonanywhere.com/dashboard/, na opção `Databases` e digite:
-
-```shell
-drop database seu_usuario$seu_bd;
-```
-
-**IMPORTANTE:** Não esqueça de substituir `seu_usuario` e `seu_bd` pelos seus valores.
-
-**Baixar novamente o projeto do **GitHub** (se necessário)**
-
--   Se você precisar atualizar o projeto do **GitHub**, sem precisar executar todo o processo novamente execute o comando:
-
-```shell
-git pull
-```
-
--   Em caso de erro, execute o comando:
-
-```shell
-git checkout -- .
-git clean -f -d
-git pull
-```
-
--   Se houverem alterações no arquivo `requirements.txt`, execute o comando:
-
-```shell
+# Instala as dependências do projeto
 pip install -r requirements.txt
-```
 
--   Se houverem alterações nos modelos, faça a migração:
+# Coleta os arquivos estáticos em um único diretório
+python manage.py collectstatic --no-input
 
-```shell
+# Executa as migrações
 python manage.py migrate
 ```
+
+> Nosso projeto utiliza o `pdm` para gerenciar as dependências do projeto. No entanto, o Render ainda não suporta o `pdm`. Por isso, vamos usar o `pip` para instalar as dependências.
+
+- Certifique-se de que o arquivo `build.sh` tenha permissão de execução, antes de fazer o commit:
+
+```shell
+chmod a+x build.sh
+```
+
+> Posteriormente, vamos configurar o **Render** para executar esse script de construção antes de iniciar o aplicativo a cada nova implantação.
+
+- Vamos executar nossa aplicação usando o `gunicorn`, que é um servidor HTTP WSGI para Python. Adicione o `gunicorn` como uma dependência:
+
+```shell
+pdm add gunicorn
+```
+
+**Implantação**
+
+- Crie um arquivo chamado `render.yaml` na raiz do seu repositório com o seguinte conteúdo:
+
+```yaml
+databases:
+  - name: config
+    databaseName: config
+    user: config
+
+services:
+  - type: web
+    name: config
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: config
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+```
+
+- No **Render**, crie um novo Serviço Web (`Web Service`), apontando-o para o repositório do seu aplicativo (conceda permissão ao **Render** para acessá-lo, se ainda não o fez).
+  
+- Selecione Python como `runtime` e configure as seguintes propriedades:
+
+| Propriedade  | Valor                               |
+|--------------|-------------------------------------|
+| Build Command| `./build.sh`                        |
+| Start Command| `gunicorn config.wsgi:application ` |
+| Auto Deploy  | `Yes`                               |
+
+- Adicione as seguintes variáveis de ambiente em `Environment Variables` (variáveis de ambiente):
+
+| Key (Chave)  | Value (Valor)                             |
+|--------------|-------------------------------------------|
+| PYTHON_VERSION  | 3.9.9                                  |
+| SECRET_KEY      | Clique em `Generate` para obter um valor aleatório seguro  |
+| WEB_CONCURRENCY | 4                                      |
+
+- É isso! Salve seu serviço web para implantar sua aplicação Django no **Render**. Ela estará disponível na URL `seu_projeto.onrender.com` assim que a construção for concluída.
+
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -3244,62 +3167,11 @@ Marco André Mendes \<marcoandre@gmail.com>
 <!-- Endpoint para listagem básica de Compras -->
 <!-- Ajustes na visualização do status de compra e itens de compra -->
 
-# Publicação no Render
-
-Link para o tutorial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
-
-**Observação:** O Render não suporta o `pdm` ainda. Por isso, vamos usar o `pip` para instalar as dependências.
-
-**Modificações no projeto:**
-
-- Abra o arquivo `settings.py` e encontre a linha que contém a variável` SECRET_KEY`. Não queremos armazenar segredos de produção no código fonte, então vamos pegá-los de variáveis de ambiente que criaremos depois:
-
-```python
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
-```
-
-- Para que esse comando funcione, precisamos importar a biblioteca `os` no início do arquivo:
-
-```python  
-import os
-```
-
-- Encontre a declaração da configuração `DEBUG`. Essa configuração nunca deve ser definida como `True` em um ambiente de produção. Você pode detectar se está sendo executado no Render verificando se a variável de ambiente `RENDER` está presente no ambiente da aplicação.
-
-```python
-DEBUG = 'RENDER' not in os.environ
-```
-
-- Quando `DEBUG = False`, o Django não funcionará sem um valor adequado para `ALLOWED_HOSTS`. Você pode obter o nome do host do seu serviço web da variável de ambiente `RENDER_EXTERNAL_HOSTNAME`, que é definida automaticamente pelo Render. Adicione o seguinte código ao arquivo `settings.py`:
-
-```python
-ALLOWED_HOSTS = []
-
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-```
-
-**Arquivos estáticos**
-
-Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
-
-Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema. 
-
-- Adicione o `WhiteNoise` como uma dependência do projeto:
-
-```shell
-pdm add 'whitenoise[brotli]'
-``` 
-
-- Abra o arquivo `settings.py` e adicione o `WhiteNoise` ao final da lista `INSTALLED_APPS`:
 
 
-
-
-```python
+<!-- ```python
 senha supbase: Senha.123@!
-```
+``` -->
 
 
 
