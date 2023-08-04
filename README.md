@@ -2539,7 +2539,6 @@ if not DEBUG:
 
 **Criação de um Script de Build**
 
-
 Precisamos executar uma série de comandos para construir nosso aplicativo. Podemos fazer isso com um script de construção (build script). Crie um script chamado build.sh na raiz do seu repositório:
 
 - Crie um arquivo chamado `build.sh` na raiz do projeto com o seguinte conteúdo:
@@ -2606,7 +2605,7 @@ services:
         value: 4
 ```
 
-- No **Render**, crie um novo Serviço Web (`Web Service`), apontando-o para o repositório do seu aplicativo (conceda permissão ao **Render** para acessá-lo, se ainda não o fez).
+- No site do [Render](https://dashboard.render.com/), crie um novo Serviço Web (`Web Service`), apontando-o para o repositório do seu aplicativo (conceda permissão ao **Render** para acessá-lo, se ainda não o fez).
   
 - Selecione Python como `runtime` e configure as seguintes propriedades:
 
@@ -2616,7 +2615,7 @@ services:
 | Start Command| `gunicorn config.wsgi:application ` |
 | Auto Deploy  | `Yes`                               |
 
-- Adicione as seguintes variáveis de ambiente em `Environment Variables` (variáveis de ambiente):
+- Adicione as seguintes variáveis de ambiente em `Environment Variables` (variáveis de ambiente), na opção `Advanced Settings`:
 
 | Key (Chave)  | Value (Valor)                             |
 |--------------|-------------------------------------------|
