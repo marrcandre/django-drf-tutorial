@@ -2973,10 +2973,10 @@ pre-commit install
 
 O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
 
--   Instale o plugin `autoexport` do `pdm`:
+-   Instale o plugin `pdm-autoexport` do `pdm`:
 
 ```shell
-pdm plugin add autoexport
+pdm plugin add pdm-autoexport
 ```
 
 -   Execute o seguinte comando:
