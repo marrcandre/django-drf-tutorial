@@ -1334,7 +1334,7 @@
     "preco": "90.00",
     "categoria": 1,
     "editora": 1,
-    "capa": 1,
+    "capa": null,
     "autores": [
       1
     ]
@@ -1446,7 +1446,7 @@
     "preco": "45.00",
     "categoria": 6,
     "editora": 7,
-    "capa": 9,
+    "capa": null,
     "autores": [
       5
     ]
@@ -1478,7 +1478,7 @@
     "preco": "49.98",
     "categoria": 2,
     "editora": 6,
-    "capa": 1,
+    "capa": null,
     "autores": [
       7
     ]
@@ -1494,7 +1494,7 @@
     "preco": "45.00",
     "categoria": 6,
     "editora": 7,
-    "capa": 10,
+    "capa": null,
     "autores": [
       5
     ]
@@ -1526,7 +1526,7 @@
     "preco": "37.00",
     "categoria": 6,
     "editora": 7,
-    "capa": 11,
+    "capa": null,
     "autores": [
       5
     ]
@@ -1574,7 +1574,7 @@
     "preco": "38.97",
     "categoria": 2,
     "editora": 10,
-    "capa": 1,
+    "capa": null,
     "autores": [
       2
     ]
@@ -1606,7 +1606,7 @@
     "preco": "46.66",
     "categoria": 2,
     "editora": 10,
-    "capa": 1,
+    "capa": null,
     "autores": [
       2
     ]
@@ -1622,7 +1622,7 @@
     "preco": "38.00",
     "categoria": 6,
     "editora": 7,
-    "capa": 13,
+    "capa": null,
     "autores": [
       5
     ]
@@ -1638,7 +1638,7 @@
     "preco": "30.00",
     "categoria": 6,
     "editora": 7,
-    "capa": 15,
+    "capa": null,
     "autores": [
       5
     ]
@@ -1654,7 +1654,7 @@
     "preco": "59.40",
     "categoria": 12,
     "editora": 11,
-    "capa": 2,
+    "capa": null,
     "autores": [
       13
     ]
@@ -1718,7 +1718,7 @@
     "preco": "80.59",
     "categoria": 12,
     "editora": 11,
-    "capa": 3,
+    "capa": null,
     "autores": [
       15,
       16,
@@ -1736,7 +1736,7 @@
     "preco": "89.00",
     "categoria": 12,
     "editora": 11,
-    "capa": 4,
+    "capa": null,
     "autores": [
       18,
       19
@@ -1801,7 +1801,7 @@
     "preco": "55.78",
     "categoria": 12,
     "editora": 11,
-    "capa": 5,
+    "capa": null,
     "autores": [
       20,
       21,
@@ -1867,7 +1867,7 @@
     "preco": "44.90",
     "categoria": 2,
     "editora": 10,
-    "capa": 6,
+    "capa": null,
     "autores": [
       2
     ]
@@ -1883,7 +1883,7 @@
     "preco": "49.53",
     "categoria": 12,
     "editora": 11,
-    "capa": 7,
+    "capa": null,
     "autores": [
       25,
       26,
@@ -1902,7 +1902,7 @@
     "preco": "41.88",
     "categoria": 13,
     "editora": 10,
-    "capa": 8,
+    "capa": null,
     "autores": [
       2
     ]
@@ -2046,7 +2046,7 @@
     "preco": "2.50",
     "categoria": 17,
     "editora": 15,
-    "capa": 12,
+    "capa": null,
     "autores": [
       32
     ]
@@ -2094,7 +2094,7 @@
     "preco": "2.00",
     "categoria": 17,
     "editora": 15,
-    "capa": 14,
+    "capa": null,
     "autores": [
       32
     ]
@@ -2110,7 +2110,7 @@
     "preco": "2.60",
     "categoria": 17,
     "editora": 15,
-    "capa": 16,
+    "capa": null,
     "autores": [
       32
     ]
@@ -2126,7 +2126,7 @@
     "preco": "89.99",
     "categoria": 2,
     "editora": 8,
-    "capa": 1,
+    "capa": null,
     "autores": [
       9
     ]
@@ -2174,7 +2174,7 @@
     "preco": "199.45",
     "categoria": 11,
     "editora": 8,
-    "capa": 15,
+    "capa": null,
     "autores": [
       3
     ]
@@ -2270,7 +2270,7 @@
     "preco": "300.00",
     "categoria": 21,
     "editora": 13,
-    "capa": 15,
+    "capa": null,
     "autores": [
       39
     ]
@@ -2398,7 +2398,7 @@
     "preco": "60.00",
     "categoria": 6,
     "editora": 11,
-    "capa": 11,
+    "capa": null,
     "autores": [
       6
     ]
@@ -2542,7 +2542,7 @@
     "preco": "65.00",
     "categoria": 21,
     "editora": 11,
-    "capa": 1,
+    "capa": null,
     "autores": [
       46
     ]
@@ -2638,7 +2638,7 @@
     "preco": "30.00",
     "categoria": 21,
     "editora": 28,
-    "capa": 1,
+    "capa": null,
     "autores": [
       53
     ]
@@ -2734,7 +2734,7 @@
     "preco": "40.00",
     "categoria": 21,
     "editora": 31,
-    "capa": 1,
+    "capa": null,
     "autores": [
       54
     ]
@@ -2830,7 +2830,7 @@
     "preco": "25.00",
     "categoria": 21,
     "editora": 33,
-    "capa": 1,
+    "capa": null,
     "autores": [
       56
     ]
