@@ -2277,6 +2277,21 @@ urlpatterns = [
 
 Vamos aprender a fazer o _dump_ e _load_ de dados.
 
+**Carga inicial de dados**
+
+- Acesse o seguinte link: 
+
+  - Link: `http://191.52.55.156:19005/admin`
+  - Usuário: `a@a.com`
+  - Senha: `senha.123`
+  
+- Cadastre pelos menos 10 livros, com autor e editora
+- Verifique se o livro, autor ou editora já estão cadastrados.
+- **NÃO USE CAIXA ALTA!!!**
+- Use o formato de nomes de livros, como no exemplo: `O Senhor dos Anéis - A Sociedade do Anel`
+
+
+
 **Cópia de segurança dos dados**
 
 -   Execute o comando `dumpdata`:
