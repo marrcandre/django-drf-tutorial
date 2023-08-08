@@ -2730,21 +2730,24 @@ router.register(r"usuarios", UsuarioViewSet)
 
 -   Inclua uma foto de perfil em um usuário.
 
-# 24. Criação da entidade `compras` integrada ao usuário do projeto
+# 24. Criação da entidade `Compra` integrada ao usuário do projeto
 
 Nessa aula, vamos criar um model de compras integrada à model do usuário do projeto.
 
 **Criando o model de compras**
 
--   Crie um novo arquivo `compras.py` dentro da pasta `models` do app `livraria`, com o seguinte conteúdo:
+-   Crie um novo arquivo `compra.py` dentro da pasta `models` do app `livraria`:
+  
+```shell
+touch livraria/models/compra.py
+```
+
+-   Inclua o seguinte conteúdo no arquivo `compra.py`:
 
 ```python
 from django.db import models
 
 from usuario.models import Usuario
-
-from .livro import Livro
-
 
 class Compra(models.Model):
     class StatusCompra(models.IntegerChoices):
@@ -2754,19 +2757,20 @@ class Compra(models.Model):
         ENTREGUE = (4,"Entregue",)
 
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="compras")
-    status = models.IntegerField(        choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
+    status = models.IntegerField(choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
 ```
 
 > Note que estamos utilizando o `Usuario` do app `usuario` como `ForeignKey` para o model `Compra`.
 
 > `StatusCompra` é do tipo `IntegerChoices`, que é uma forma de criar um campo `choices` com valores inteiros.
+
 > `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`.
 
 -   Adicione o model `Compra` ao `admin.py` do app `livraria`:
 
 ```python
 ...
-from livraria.models import Compras
+from livraria.models import Compra
 
 admin.site.register(Compra)
 ```
@@ -2784,7 +2788,7 @@ pdm run python manage.py migrate
 
 No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo.
 
--   Vamos adicionar um novo model `ItensCompra` ao arquivo `compras.py`:
+-   Vamos adicionar um novo model `ItensCompra` ao arquivo `compra.py`:
 
 ```python
 class ItensCompra(models.Model):
