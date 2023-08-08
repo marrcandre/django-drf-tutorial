@@ -2087,6 +2087,7 @@ INSTALLED_APPS = [
 -   Ainda no `settings.py` faça as seguintes configurações:
 
 ```python
+# App Uploader settings
 MEDIA_URL = "http://localhost:8000/media/"
 MEDIA_ENDPOINT = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
@@ -2150,7 +2151,7 @@ pdm run python manage.py migrate
 
 **Uso no serializer**
 
--   Edite o arquivo `serializers\livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
+-   Edite o arquivo `serializers/livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
 
 ```python
 ...
