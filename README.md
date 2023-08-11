@@ -2818,11 +2818,17 @@ class ItensCompra(models.Model):
     quantidade = models.IntegerField(default=1)
 ```
 
-> No atributo `compra`, utilizamos models.CASCADE, pois queremos que, ao deletar uma compra, todos os itens da compra sejam deletados também.
+> No atributo `compra`, utilizamos `models.CASCADE`, pois queremos que, ao deletar uma compra, todos os itens da compra sejam deletados também.
 
-> No atributo `livro`, utilizamos models.PROTECT, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
+> No atributo `livro`, utilizamos `models.PROTECT`, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
 
 > Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`.
+
+- Inclua o novo model no arquivo `__init__.py` dos models:
+
+```python
+from .compra import Compra, ItensCompra
+```
 
 -   Execute as migrações (você já sabe como fazer, certo?)
 -   Verifique que a tabela `livraria_itenscompra` foi criada no banco de dados.
