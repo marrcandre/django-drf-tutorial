@@ -9698,6 +9698,2866 @@
   }
 },
 {
+  "model": "admin.logentry",
+  "pk": 747,
+  "fields": {
+    "action_time": "2023-08-08T19:29:11.802Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "63",
+    "object_repr": "Educação",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 748,
+  "fields": {
+    "action_time": "2023-08-08T19:29:49.663Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "452",
+    "object_repr": "Pedagogia do oprimido (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 749,
+  "fields": {
+    "action_time": "2023-08-08T19:31:47.706Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "453",
+    "object_repr": "Educação como prática da liberdade (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 750,
+  "fields": {
+    "action_time": "2023-08-08T19:33:36.680Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "454",
+    "object_repr": "Pedagogia da Autonomia (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 751,
+  "fields": {
+    "action_time": "2023-08-08T19:34:55.605Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "455",
+    "object_repr": "Pedagogia da Solidariedade (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 752,
+  "fields": {
+    "action_time": "2023-08-08T19:39:01.038Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "232",
+    "object_repr": "Frank Miller",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 753,
+  "fields": {
+    "action_time": "2023-08-08T19:40:03.736Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "241",
+    "object_repr": "Geoff Johns",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 754,
+  "fields": {
+    "action_time": "2023-08-08T19:40:23.697Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "456",
+    "object_repr": "Batman: Terra Um (23)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 755,
+  "fields": {
+    "action_time": "2023-08-08T19:45:26.942Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "234",
+    "object_repr": "Stephen Chbosky 3",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 756,
+  "fields": {
+    "action_time": "2023-08-08T19:45:31.214Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "235",
+    "object_repr": "Stephen Chbosky 2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 757,
+  "fields": {
+    "action_time": "2023-08-08T19:45:48.613Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "236",
+    "object_repr": "Stephen Chbosky",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 758,
+  "fields": {
+    "action_time": "2023-08-08T19:45:53.352Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "235",
+    "object_repr": "Stephen Chbosky 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 759,
+  "fields": {
+    "action_time": "2023-08-08T19:45:59.111Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "234",
+    "object_repr": "Stephen Chbosky",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 760,
+  "fields": {
+    "action_time": "2023-08-08T19:46:36.558Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "90",
+    "object_repr": "Casa dos Livros",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 761,
+  "fields": {
+    "action_time": "2023-08-08T19:46:50.794Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "121",
+    "object_repr": "Editora Desconhecida",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 762,
+  "fields": {
+    "action_time": "2023-08-08T19:47:10.702Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "88",
+    "object_repr": "Editora Hábito",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 763,
+  "fields": {
+    "action_time": "2023-08-08T19:47:23.632Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "145",
+    "object_repr": "Alpeh",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 764,
+  "fields": {
+    "action_time": "2023-08-08T19:47:44.687Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "83",
+    "object_repr": "Admirável Mundo Novo (15)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 765,
+  "fields": {
+    "action_time": "2023-08-08T19:48:03.578Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "83",
+    "object_repr": "Admirável Mundo Novo (15)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 766,
+  "fields": {
+    "action_time": "2023-08-08T19:48:20.463Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "110",
+    "object_repr": "Biblioteca Azul",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 767,
+  "fields": {
+    "action_time": "2023-08-08T19:48:32.323Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "121",
+    "object_repr": "Desconhecida",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 768,
+  "fields": {
+    "action_time": "2023-08-08T19:48:40.185Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "85",
+    "object_repr": "Europa",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 769,
+  "fields": {
+    "action_time": "2023-08-08T19:48:49.032Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "88",
+    "object_repr": "Hábito",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 770,
+  "fields": {
+    "action_time": "2023-08-08T19:48:58.441Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "100",
+    "object_repr": "JBC",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 771,
+  "fields": {
+    "action_time": "2023-08-08T19:49:03.941Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "87",
+    "object_repr": "Sextante",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 772,
+  "fields": {
+    "action_time": "2023-08-08T19:49:10.242Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "64",
+    "object_repr": "Grupo Editoral Record",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 773,
+  "fields": {
+    "action_time": "2023-08-08T19:49:20.492Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "147",
+    "object_repr": "FEB",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 774,
+  "fields": {
+    "action_time": "2023-08-08T19:49:26.180Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "113",
+    "object_repr": "The Gift Box",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 775,
+  "fields": {
+    "action_time": "2023-08-08T19:49:32.110Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "123",
+    "object_repr": "VR",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 776,
+  "fields": {
+    "action_time": "2023-08-08T19:50:12.046Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "418",
+    "object_repr": "Táticas do Amor (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 777,
+  "fields": {
+    "action_time": "2023-08-08T19:50:35.807Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "143",
+    "object_repr": "Intrínseca",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 778,
+  "fields": {
+    "action_time": "2023-08-08T19:50:55.701Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "140",
+    "object_repr": "LTC",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 779,
+  "fields": {
+    "action_time": "2023-08-08T19:51:03.698Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "139",
+    "object_repr": "LTC",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 780,
+  "fields": {
+    "action_time": "2023-08-08T19:51:11.432Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "138",
+    "object_repr": "LTC",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 781,
+  "fields": {
+    "action_time": "2023-08-11T11:25:34.162Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "428",
+    "object_repr": "3info2 roteiro completo da sitcom (1ª a 3ª temporada) (90)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 782,
+  "fields": {
+    "action_time": "2023-08-11T11:28:35.643Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "242",
+    "object_repr": "Rachel Renée Russel Lisa Veja",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 783,
+  "fields": {
+    "action_time": "2023-08-11T11:28:48.480Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "243",
+    "object_repr": "Arqueiro",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 784,
+  "fields": {
+    "action_time": "2023-08-11T11:29:39.532Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "457",
+    "object_repr": "princesa das cinzas (9)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 785,
+  "fields": {
+    "action_time": "2023-08-11T11:31:11.628Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "244",
+    "object_repr": "Anna Todd",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 786,
+  "fields": {
+    "action_time": "2023-08-11T11:31:53.519Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "148",
+    "object_repr": "Yellowfante",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 787,
+  "fields": {
+    "action_time": "2023-08-11T11:31:53.902Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "458",
+    "object_repr": "Dama da Nevoa (50)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 788,
+  "fields": {
+    "action_time": "2023-08-11T11:32:13.395Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "245",
+    "object_repr": "Chico Buarque",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 789,
+  "fields": {
+    "action_time": "2023-08-11T11:32:23.315Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "149",
+    "object_repr": "‎Intrínseca",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 790,
+  "fields": {
+    "action_time": "2023-08-11T11:32:26.767Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "459",
+    "object_repr": "After 1 (5000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 791,
+  "fields": {
+    "action_time": "2023-08-11T11:32:37.384Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "460",
+    "object_repr": "Rainha das Chamas (90)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 792,
+  "fields": {
+    "action_time": "2023-08-11T11:32:38.921Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "246",
+    "object_repr": "Jenna Evans Welch",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 793,
+  "fields": {
+    "action_time": "2023-08-11T11:33:28.626Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "461",
+    "object_repr": "Chapeuzinho Amarelo (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 794,
+  "fields": {
+    "action_time": "2023-08-11T11:33:54.311Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "462",
+    "object_repr": "After 2 (4000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 795,
+  "fields": {
+    "action_time": "2023-08-11T11:34:26.190Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "463",
+    "object_repr": "Amor & Gelato (544)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 796,
+  "fields": {
+    "action_time": "2023-08-11T11:34:45.181Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "150",
+    "object_repr": "autentica",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 797,
+  "fields": {
+    "action_time": "2023-08-11T11:35:09.170Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "247",
+    "object_repr": "Monteiro Lobato",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 798,
+  "fields": {
+    "action_time": "2023-08-11T11:35:13.428Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "464",
+    "object_repr": "O picapau amarelo (80)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 799,
+  "fields": {
+    "action_time": "2023-08-11T11:35:16.810Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "465",
+    "object_repr": "After 3 (5000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 800,
+  "fields": {
+    "action_time": "2023-08-11T11:35:55.196Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "248",
+    "object_repr": "autentica",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 801,
+  "fields": {
+    "action_time": "2023-08-11T11:36:10.850Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "466",
+    "object_repr": "After 4 (5000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 802,
+  "fields": {
+    "action_time": "2023-08-11T11:36:24.711Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "151",
+    "object_repr": "auntentica",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 803,
+  "fields": {
+    "action_time": "2023-08-11T11:36:29.148Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "467",
+    "object_repr": "Reinações de Narizinho (8)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 804,
+  "fields": {
+    "action_time": "2023-08-11T11:36:29.345Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "249",
+    "object_repr": "F. T. Lukens",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 805,
+  "fields": {
+    "action_time": "2023-08-11T11:37:07.058Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "468",
+    "object_repr": "After 5 (4000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 806,
+  "fields": {
+    "action_time": "2023-08-11T11:37:39.660Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "250",
+    "object_repr": "Ziraldo Alves Pinto",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 807,
+  "fields": {
+    "action_time": "2023-08-11T11:37:50.585Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "152",
+    "object_repr": "Bertrand Brasil",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 808,
+  "fields": {
+    "action_time": "2023-08-11T11:38:04.351Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "469",
+    "object_repr": "Em águas profundas (10)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 809,
+  "fields": {
+    "action_time": "2023-08-11T11:38:07.925Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "251",
+    "object_repr": "Monteira Lobato",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 810,
+  "fields": {
+    "action_time": "2023-08-11T11:38:16.067Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "470",
+    "object_repr": "O saci (450)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 811,
+  "fields": {
+    "action_time": "2023-08-11T11:38:29.021Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "252",
+    "object_repr": "Daniel Wallace",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 812,
+  "fields": {
+    "action_time": "2023-08-11T11:38:47.858Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "471",
+    "object_repr": "Star Wars: Livro dos Sith (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 813,
+  "fields": {
+    "action_time": "2023-08-11T11:38:57.744Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "472",
+    "object_repr": "Before (5000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 814,
+  "fields": {
+    "action_time": "2023-08-11T11:39:22.609Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "473",
+    "object_repr": "A chave do tamanho (80)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 815,
+  "fields": {
+    "action_time": "2023-08-11T11:40:10.268Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "474",
+    "object_repr": "Histórias de Tia Nastácia (45)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 816,
+  "fields": {
+    "action_time": "2023-08-11T11:40:55.340Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "475",
+    "object_repr": "Fábulas (555)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 817,
+  "fields": {
+    "action_time": "2023-08-11T11:40:58.224Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "476",
+    "object_repr": "Para sempre (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 818,
+  "fields": {
+    "action_time": "2023-08-11T11:41:11.411Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "477",
+    "object_repr": "As estrelas entre nós (1000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 819,
+  "fields": {
+    "action_time": "2023-08-11T11:41:21.743Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "253",
+    "object_repr": "Bertrand Brasil",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 820,
+  "fields": {
+    "action_time": "2023-08-11T11:41:25.051Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "478",
+    "object_repr": "Star Wars: Manual do império (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 821,
+  "fields": {
+    "action_time": "2023-08-11T11:41:39.991Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "479",
+    "object_repr": "Caçadas de Pedrinho (99)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 822,
+  "fields": {
+    "action_time": "2023-08-11T11:42:32.859Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "254",
+    "object_repr": "Ali Hazelwood",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 823,
+  "fields": {
+    "action_time": "2023-08-11T11:42:47.662Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "471",
+    "object_repr": "Star Wars: Livro dos Sith (1)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 824,
+  "fields": {
+    "action_time": "2023-08-11T11:42:56.058Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "152",
+    "object_repr": "Bertrand Brasil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 825,
+  "fields": {
+    "action_time": "2023-08-11T11:43:03.099Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "153",
+    "object_repr": "Arqueiro",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 826,
+  "fields": {
+    "action_time": "2023-08-11T11:43:08.347Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "133",
+    "object_repr": "Bertrand Brasil",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 827,
+  "fields": {
+    "action_time": "2023-08-11T11:43:20.070Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "253",
+    "object_repr": "Bertrand Brasil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 828,
+  "fields": {
+    "action_time": "2023-08-11T11:43:41.049Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "480",
+    "object_repr": "the falling (4000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 829,
+  "fields": {
+    "action_time": "2023-08-11T11:43:52.543Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "481",
+    "object_repr": "A hipótese do amor (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 830,
+  "fields": {
+    "action_time": "2023-08-11T11:44:04.491Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "478",
+    "object_repr": "Star Wars: Manual do império (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Autores\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 831,
+  "fields": {
+    "action_time": "2023-08-11T11:44:14.763Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "153",
+    "object_repr": "Arqueiro",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 832,
+  "fields": {
+    "action_time": "2023-08-11T11:44:47.060Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "64",
+    "object_repr": "Finanças Pessoais",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 833,
+  "fields": {
+    "action_time": "2023-08-11T11:44:50.599Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "482",
+    "object_repr": "A hipótese do amor (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 834,
+  "fields": {
+    "action_time": "2023-08-11T11:44:57.050Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "483",
+    "object_repr": "As garotas spring (5000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 835,
+  "fields": {
+    "action_time": "2023-08-11T11:45:01.702Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "484",
+    "object_repr": "Star Wars: Livro dos Sith (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 836,
+  "fields": {
+    "action_time": "2023-08-11T11:46:05.667Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "485",
+    "object_repr": "Nothing Less (3000)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 837,
+  "fields": {
+    "action_time": "2023-08-11T11:46:06.693Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "486",
+    "object_repr": "Star Wars: O Código do Caçador de Recompensa (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 838,
+  "fields": {
+    "action_time": "2023-08-11T11:46:08.110Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "154",
+    "object_repr": "HarperCollins",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 839,
+  "fields": {
+    "action_time": "2023-08-11T11:46:40.042Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "255",
+    "object_repr": "Thiago Lolkus Nigro",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 840,
+  "fields": {
+    "action_time": "2023-08-11T11:46:59.392Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "487",
+    "object_repr": "Do Mil ao Milhão. Sem Cortar o Cafezinho. (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 841,
+  "fields": {
+    "action_time": "2023-08-11T11:47:12.628Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "481",
+    "object_repr": "A hipótese do amor (0)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 842,
+  "fields": {
+    "action_time": "2023-08-11T11:47:26.602Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "488",
+    "object_repr": "Amor, teoricamente (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 843,
+  "fields": {
+    "action_time": "2023-08-11T11:47:31.462Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "256",
+    "object_repr": "Shel Silverstein",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 844,
+  "fields": {
+    "action_time": "2023-08-11T11:47:49.428Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "41",
+    "object_repr": "Algoritmos e Lógica da Programação (16)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 845,
+  "fields": {
+    "action_time": "2023-08-11T11:48:05.438Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "155",
+    "object_repr": "Companhia das Letrinhas",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 846,
+  "fields": {
+    "action_time": "2023-08-11T11:48:38.607Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "447",
+    "object_repr": "Batman: Silêncio (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 847,
+  "fields": {
+    "action_time": "2023-08-11T11:49:18.081Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "217",
+    "object_repr": "Cultos: A Linguagem do Fanatismo (33)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 848,
+  "fields": {
+    "action_time": "2023-08-11T11:49:21.485Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "65",
+    "object_repr": "Aventura infantil",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 849,
+  "fields": {
+    "action_time": "2023-08-11T11:49:22.868Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "489",
+    "object_repr": "A árvore generosa (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 850,
+  "fields": {
+    "action_time": "2023-08-11T11:49:34.662Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "156",
+    "object_repr": "Makron Books",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 851,
+  "fields": {
+    "action_time": "2023-08-11T11:50:42.769Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "157",
+    "object_repr": "Pearson Universidades",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 852,
+  "fields": {
+    "action_time": "2023-08-11T11:51:38.536Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "257",
+    "object_repr": "Kevin D. Mitnick",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 853,
+  "fields": {
+    "action_time": "2023-08-11T11:51:56.374Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "258",
+    "object_repr": "William L. Simon",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 854,
+  "fields": {
+    "action_time": "2023-08-11T11:52:00.740Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "469",
+    "object_repr": "Em Águas Profundas (10)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 855,
+  "fields": {
+    "action_time": "2023-08-11T11:52:06.512Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "158",
+    "object_repr": "Brinque-Book",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 856,
+  "fields": {
+    "action_time": "2023-08-11T11:52:27.097Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "338",
+    "object_repr": "Dragon Ball Super (999)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 857,
+  "fields": {
+    "action_time": "2023-08-11T11:52:38.017Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "259",
+    "object_repr": "Pierre Winters",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 858,
+  "fields": {
+    "action_time": "2023-08-11T11:52:40.444Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "453",
+    "object_repr": "Educação como Prática da Liberdade (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 859,
+  "fields": {
+    "action_time": "2023-08-11T11:52:43.112Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "490",
+    "object_repr": "Estrelas e planetas (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 860,
+  "fields": {
+    "action_time": "2023-08-11T11:52:45.203Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "260",
+    "object_repr": "Paul Barry",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 861,
+  "fields": {
+    "action_time": "2023-08-11T11:53:07.555Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "491",
+    "object_repr": "Use a Cabeça! Python (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 862,
+  "fields": {
+    "action_time": "2023-08-11T11:53:46.686Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "490",
+    "object_repr": "Estrelas e Planetas (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 863,
+  "fields": {
+    "action_time": "2023-08-11T11:54:04.529Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "372",
+    "object_repr": "Fahrenheit 451 (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 864,
+  "fields": {
+    "action_time": "2023-08-11T11:54:23.950Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "492",
+    "object_repr": "A Arte de Enganar: Ataques de Hackers: Controlando o Fator Humano na Segurança da Informação (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 865,
+  "fields": {
+    "action_time": "2023-08-11T11:54:41.928Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "493",
+    "object_repr": "Estrelas e planetas (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 866,
+  "fields": {
+    "action_time": "2023-08-11T11:55:03.599Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "58",
+    "object_repr": "Azul",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 867,
+  "fields": {
+    "action_time": "2023-08-11T11:55:06.260Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "372",
+    "object_repr": "Fahrenheit 451 (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 868,
+  "fields": {
+    "action_time": "2023-08-11T11:55:09.095Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "159",
+    "object_repr": "Novatec",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 869,
+  "fields": {
+    "action_time": "2023-08-11T11:55:20.853Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "493",
+    "object_repr": "Estrelas e planetas (0)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 870,
+  "fields": {
+    "action_time": "2023-08-11T11:56:26.418Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "159",
+    "object_repr": "Novatec",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 871,
+  "fields": {
+    "action_time": "2023-08-11T11:56:44.210Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "261",
+    "object_repr": "Tim Warnes",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 872,
+  "fields": {
+    "action_time": "2023-08-11T11:56:45.373Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "262",
+    "object_repr": "Chetan Giridhar",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 873,
+  "fields": {
+    "action_time": "2023-08-11T11:56:46.069Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "494",
+    "object_repr": "Perigoso! (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 874,
+  "fields": {
+    "action_time": "2023-08-11T11:56:48.388Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "263",
+    "object_repr": "Pete Goodliffe",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 875,
+  "fields": {
+    "action_time": "2023-08-11T11:56:52.658Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "495",
+    "object_repr": "Como ser um Programador Melhor: um Manual Para Programadores que se Importam com Código (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 876,
+  "fields": {
+    "action_time": "2023-08-11T11:56:56.030Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "496",
+    "object_repr": "Aprendendo Padrões de Projeto em Python (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 877,
+  "fields": {
+    "action_time": "2023-08-11T11:57:53.644Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "160",
+    "object_repr": "Pensamento",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 878,
+  "fields": {
+    "action_time": "2023-08-11T11:58:18.165Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "264",
+    "object_repr": "Raymond Buckland",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 879,
+  "fields": {
+    "action_time": "2023-08-11T11:58:23.085Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "497",
+    "object_repr": "O Livro Completo de Bruxaria de Raymond Buckland: Tradição, Rituais, Crenças, História e Prática (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 880,
+  "fields": {
+    "action_time": "2023-08-11T11:58:39.128Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "265",
+    "object_repr": "Luciano Ramalho",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 881,
+  "fields": {
+    "action_time": "2023-08-11T11:58:49.248Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "161",
+    "object_repr": "Gen LTC",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 882,
+  "fields": {
+    "action_time": "2023-08-11T11:58:50.498Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "266",
+    "object_repr": "Milk Shakespeare",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 883,
+  "fields": {
+    "action_time": "2023-08-11T11:58:51.027Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "498",
+    "object_repr": "Python Fluente: Programação Clara, Concisa e Eficaz (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 884,
+  "fields": {
+    "action_time": "2023-08-11T11:59:16.629Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "162",
+    "object_repr": "Milk Shakespeare",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 885,
+  "fields": {
+    "action_time": "2023-08-11T12:01:49.970Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "267",
+    "object_repr": "Raul WAZLAWICK",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 886,
+  "fields": {
+    "action_time": "2023-08-11T12:01:54.715Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "499",
+    "object_repr": "Introdução a Algoritmos e Programação com Python - Uma Abordagem Dirigida Por Testes (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 887,
+  "fields": {
+    "action_time": "2023-08-11T12:01:56.386Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "231",
+    "object_repr": "O Caçador de Pipas (28)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 888,
+  "fields": {
+    "action_time": "2023-08-11T12:02:09.373Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "268",
+    "object_repr": "Miguel Grinberg",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 889,
+  "fields": {
+    "action_time": "2023-08-11T12:02:09.487Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "269",
+    "object_repr": "Max Brallier",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 890,
+  "fields": {
+    "action_time": "2023-08-11T12:02:11.014Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "500",
+    "object_repr": "Os Últimos Jovens da Terra: A Ameaça Cósmica Capa comum (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 891,
+  "fields": {
+    "action_time": "2023-08-11T12:02:12.192Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "501",
+    "object_repr": "Desenvolvimento web com Flask: Desenvolvendo aplicações web com Python (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 892,
+  "fields": {
+    "action_time": "2023-08-11T12:04:00.859Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "340",
+    "object_repr": "Romance Dawn - O Alvorecer do Romance (10)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 893,
+  "fields": {
+    "action_time": "2023-08-11T12:04:00.881Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "270",
+    "object_repr": "José Augusto N. G. Manzano",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 894,
+  "fields": {
+    "action_time": "2023-08-11T12:04:13.700Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "502",
+    "object_repr": "Introdução à Linguagem Python (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 895,
+  "fields": {
+    "action_time": "2023-08-11T12:04:44.900Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "271",
+    "object_repr": "Al Sweigart",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 896,
+  "fields": {
+    "action_time": "2023-08-11T12:04:48.448Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "503",
+    "object_repr": "Automatize Tarefas Maçantes com Python (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 897,
+  "fields": {
+    "action_time": "2023-08-11T12:05:16.402Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "403",
+    "object_repr": "J . Robert  Oppenheimer Uncommon Sense (0)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 898,
+  "fields": {
+    "action_time": "2023-08-11T12:05:32.929Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "362",
+    "object_repr": "O Alquimista (15)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 899,
+  "fields": {
+    "action_time": "2023-08-11T12:05:40.772Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "272",
+    "object_repr": "Nilo Ney Coutinho Menezes",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 900,
+  "fields": {
+    "action_time": "2023-08-11T12:05:45.937Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "400",
+    "object_repr": "O Mito de Sísifo (18)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 901,
+  "fields": {
+    "action_time": "2023-08-11T12:06:01.595Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "457",
+    "object_repr": "Princesa das Cinzas (9)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 902,
+  "fields": {
+    "action_time": "2023-08-11T12:06:07.851Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "504",
+    "object_repr": "Introdução à Programação com Python: Algoritmos e Lógica de Programação Para Iniciantes (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 903,
+  "fields": {
+    "action_time": "2023-08-11T12:06:22.923Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "446",
+    "object_repr": "tresinfotres (3)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 904,
+  "fields": {
+    "action_time": "2023-08-11T12:06:35.754Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "480",
+    "object_repr": "The Falling (4000)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Titulo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 905,
+  "fields": {
+    "action_time": "2023-08-11T12:07:54.680Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "163",
+    "object_repr": "Fluminense FC",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 906,
+  "fields": {
+    "action_time": "2023-08-11T12:08:16.049Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "273",
+    "object_repr": "Fluminense",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 907,
+  "fields": {
+    "action_time": "2023-08-11T12:08:18.080Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "505",
+    "object_repr": "Campeão Carioca 2022 (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 908,
+  "fields": {
+    "action_time": "2023-08-11T12:08:41.385Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "274",
+    "object_repr": "Aurélio Jargas",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 909,
+  "fields": {
+    "action_time": "2023-08-11T12:09:27.110Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "66",
+    "object_repr": "Expressões Regulares",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 910,
+  "fields": {
+    "action_time": "2023-08-11T12:09:45.515Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "506",
+    "object_repr": "Expressões Regulares - 5ª Edição (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 911,
+  "fields": {
+    "action_time": "2023-08-11T12:10:23.539Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "67",
+    "object_repr": "Shell Script",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 912,
+  "fields": {
+    "action_time": "2023-08-11T12:10:25.446Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "164",
+    "object_repr": "LivrosdeFutebol",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 913,
+  "fields": {
+    "action_time": "2023-08-11T12:10:44.524Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "507",
+    "object_repr": "Shell Script Profissional (23)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 914,
+  "fields": {
+    "action_time": "2023-08-11T12:10:44.628Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "275",
+    "object_repr": "Leandro Tavares Fontes",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 915,
+  "fields": {
+    "action_time": "2023-08-11T12:10:45.831Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "508",
+    "object_repr": "Vasco: o clube do povo (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 916,
+  "fields": {
+    "action_time": "2023-08-11T12:11:33.286Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "509",
+    "object_repr": "Expressões Regulares - Guia de Consulta Rápida (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 917,
+  "fields": {
+    "action_time": "2023-08-11T12:11:50.992Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "276",
+    "object_repr": "Antony Beevor",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 918,
+  "fields": {
+    "action_time": "2023-08-11T12:12:05.154Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "277",
+    "object_repr": "Osvaldo Santana",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 919,
+  "fields": {
+    "action_time": "2023-08-11T12:12:44.412Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "510",
+    "object_repr": "Python e Django (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 920,
+  "fields": {
+    "action_time": "2023-08-11T12:13:09.005Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "68",
+    "object_repr": "Guerra",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 921,
+  "fields": {
+    "action_time": "2023-08-11T12:13:11.086Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "511",
+    "object_repr": "A Segunda Guerra Mundial (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 922,
+  "fields": {
+    "action_time": "2023-08-11T12:13:33.062Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "229",
+    "object_repr": "Watchmen (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 923,
+  "fields": {
+    "action_time": "2023-08-11T12:13:59.567Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "242",
+    "object_repr": "Várias Histórias (9)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 924,
+  "fields": {
+    "action_time": "2023-08-11T12:14:21.801Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "63",
+    "object_repr": "Nova Fronteira",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 925,
+  "fields": {
+    "action_time": "2023-08-11T12:15:00.180Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "487",
+    "object_repr": "Do Mil ao Milhão. Sem Cortar o Cafezinho. (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 926,
+  "fields": {
+    "action_time": "2023-08-11T12:15:24.686Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "154",
+    "object_repr": "HarperCollins",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 927,
+  "fields": {
+    "action_time": "2023-08-11T12:15:39.511Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "165",
+    "object_repr": "intrínseca",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 928,
+  "fields": {
+    "action_time": "2023-08-11T12:15:46.855Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "137",
+    "object_repr": "Paralela",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 929,
+  "fields": {
+    "action_time": "2023-08-11T12:15:57.346Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "108",
+    "object_repr": "JBC",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 930,
+  "fields": {
+    "action_time": "2023-08-11T12:15:58.199Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "278",
+    "object_repr": "E. L. James",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 931,
+  "fields": {
+    "action_time": "2023-08-11T12:16:00.021Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "512",
+    "object_repr": "Cinquenta Tons de Cinza (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 932,
+  "fields": {
+    "action_time": "2023-08-11T12:16:25.831Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "56",
+    "object_repr": "Darkside",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 933,
+  "fields": {
+    "action_time": "2023-08-11T12:16:43.062Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "104",
+    "object_repr": "Panini Comics",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 934,
+  "fields": {
+    "action_time": "2023-08-11T12:17:06.323Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "225",
+    "object_repr": "Diário de um zumbi do Minecraft 1: Um Desafio Assustador (1500)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 935,
+  "fields": {
+    "action_time": "2023-08-11T12:17:19.949Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "87",
+    "object_repr": "Sextante",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 936,
+  "fields": {
+    "action_time": "2023-08-11T12:18:03.843Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "467",
+    "object_repr": "Reinações de Narizinho (8)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 937,
+  "fields": {
+    "action_time": "2023-08-11T12:18:24.622Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "151",
+    "object_repr": "auntentica",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 938,
+  "fields": {
+    "action_time": "2023-08-11T12:18:35.744Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "150",
+    "object_repr": "Autentica",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 939,
+  "fields": {
+    "action_time": "2023-08-11T12:19:02.003Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "512",
+    "object_repr": "Cinquenta Tons de Cinza (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Editora\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 940,
+  "fields": {
+    "action_time": "2023-08-11T12:19:13.229Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "165",
+    "object_repr": "intrínseca",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 941,
+  "fields": {
+    "action_time": "2023-08-11T12:21:22.427Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "166",
+    "object_repr": "Editora Mundo Cristão",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 942,
+  "fields": {
+    "action_time": "2023-08-11T12:21:34.388Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "279",
+    "object_repr": "Omar de Souza",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 943,
+  "fields": {
+    "action_time": "2023-08-11T12:21:36.007Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "513",
+    "object_repr": "Fazer amor: Como fazer do sexo um ato de amor (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 944,
+  "fields": {
+    "action_time": "2023-08-11T12:24:23.602Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "69",
+    "object_repr": "manga",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 945,
+  "fields": {
+    "action_time": "2023-08-11T12:24:30.583Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "280",
+    "object_repr": "Eiichiro Oda",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 946,
+  "fields": {
+    "action_time": "2023-08-11T12:24:50.364Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "167",
+    "object_repr": "Panini",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 947,
+  "fields": {
+    "action_time": "2023-08-11T12:24:52.146Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "514",
+    "object_repr": "One Piece Vol. 1 (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 948,
+  "fields": {
+    "action_time": "2023-08-11T12:24:55.659Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "168",
+    "object_repr": "Kodansha Comics",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 949,
+  "fields": {
+    "action_time": "2023-08-11T12:25:36.056Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "281",
+    "object_repr": "Nakaba Suzuki",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 950,
+  "fields": {
+    "action_time": "2023-08-11T12:26:01.849Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "515",
+    "object_repr": "The Seven Deadly Sins, Volume 1 (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 951,
+  "fields": {
+    "action_time": "2023-08-11T12:26:46.076Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "516",
+    "object_repr": "The Seven Deadly Sins 3 (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 952,
+  "fields": {
+    "action_time": "2023-08-11T14:09:08.302Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "282",
+    "object_repr": "Maurice Leblanc",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 953,
+  "fields": {
+    "action_time": "2023-08-11T14:11:35.936Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "169",
+    "object_repr": "Camelot",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 954,
+  "fields": {
+    "action_time": "2023-08-11T14:13:01.951Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "517",
+    "object_repr": "813 - Os Três Crimes de Arsène Lupin (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 955,
+  "fields": {
+    "action_time": "2023-08-11T14:14:22.880Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "518",
+    "object_repr": "Arsène Lupin contra Herlock Sholmes (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 956,
+  "fields": {
+    "action_time": "2023-08-11T14:14:47.800Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "519",
+    "object_repr": "Arsène Lupin, O Ladrão de Casaca (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 957,
+  "fields": {
+    "action_time": "2023-08-11T14:15:30.253Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "520",
+    "object_repr": "A rolha de cristal (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 958,
+  "fields": {
+    "action_time": "2023-08-11T14:16:29.939Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "521",
+    "object_repr": "As confidências de Arsène Lupin (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 959,
+  "fields": {
+    "action_time": "2023-08-11T14:18:13.940Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "522",
+    "object_repr": "A Agulha Oca (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 960,
+  "fields": {
+    "action_time": "2023-08-11T14:21:15.107Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "523",
+    "object_repr": "O Leão, a Feiticeira e o Guarda-Roupa (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 961,
+  "fields": {
+    "action_time": "2023-08-11T14:21:47.435Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "524",
+    "object_repr": "Príncipe Caspian (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 962,
+  "fields": {
+    "action_time": "2023-08-11T14:22:22.905Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "525",
+    "object_repr": "A Viagem do Peregrino da Alvorada (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 963,
+  "fields": {
+    "action_time": "2023-08-11T14:22:42.490Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "526",
+    "object_repr": "A Cadeira de Prata (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 964,
+  "fields": {
+    "action_time": "2023-08-11T14:23:16.808Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "527",
+    "object_repr": "O Cavalo e seu Menino (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 965,
+  "fields": {
+    "action_time": "2023-08-11T14:23:42.829Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "528",
+    "object_repr": "O Sobrinho do Mago (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 966,
+  "fields": {
+    "action_time": "2023-08-11T14:24:13.351Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "529",
+    "object_repr": "A Última Batalha (0)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
   "model": "auth.permission",
   "pk": 1,
   "fields": {
@@ -10303,6 +13163,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "47pe05tkuf0p0sqy9k3i9lsu1kyn6ljk",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qUQFM:NZl8AmkFqdGqDGuxRqSMJyhpIO9FPRFLtYAUCCb_ePo",
+    "expire_date": "2023-08-25T11:24:00.057Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "4hlhw9k43ykuuezjm7mq6iu79h7n6xcp",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qTQ55:oHYYx698DDjUt23Vp8FWe4AJAN8ZmM3pnNtaI_AWrtU",
@@ -10431,6 +13299,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "egmgtndhi2tmlankq8gxeu96w7ha7eaj",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qUQEz:xVh-iHdVlotNr3Zc41grYIDA9T9kNkpbJydp2Mniokc",
+    "expire_date": "2023-08-25T11:23:37.004Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "gmws3gz9umxob9fep8y11x3lyn8f2rwg",
   "fields": {
     "session_data": ".eJxVjDsOwjAQBe_iGln-bDYxJT1nsNbeDQ4gR4qTCnF3iJQC2jcz76UibWuJW5MlTqzOyqrT75YoP6TugO9Ub7POc12XKeld0Qdt-jqzPC-H-3dQqJVvjRyYnIzWhAzUuUGMGQI76x2P3joA7Bl8ypikz1kgGQtGyBN2SIDq_QHf1ze6:1qGjxR:JP9gGm6khpg0hS7zHsRlZjklqhmFKwsRCnb3kCOIpDM",
@@ -10463,6 +13339,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "i5jn7j6277sa3s7tq5z6odg99r0nazlx",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qUQQ9:yuzU5hBh3rApLjbrt4zzHNQI2H2ZNgggcHiC6QKPuv0",
+    "expire_date": "2023-08-25T11:35:09.142Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "jvftb7394hogb7spadflry376c0tjaxq",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qTQ7i:Hmvw6qgjy9D4L_cVUHBHgpg7BsISBBfD_qPhwMekWzU",
@@ -10479,6 +13363,14 @@
 },
 {
   "model": "sessions.session",
+  "pk": "lgyt2nihh833969ucxv99zke12wm68xm",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qUQFw:2tJBEWVbnTbXyaksi40U3YpTWf54johuFmpZcGBsZYQ",
+    "expire_date": "2023-08-25T11:24:36.199Z"
+  }
+},
+{
+  "model": "sessions.session",
   "pk": "mfapptp1563q9rys6mp2djng1nrs5lsa",
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qTRiJ:xlV_A8HFMFLv9ENHGfjvvXz-mLSWmEKSIAf7PTzkBaI",
@@ -10491,6 +13383,14 @@
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qTQ5Q:E_skKEdaentuzMGhCsbJzWvk_6atdLHNG9QeL1788WI",
     "expire_date": "2023-08-22T17:01:36.771Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "n2yy5i0nvdgy0ateyj6fobz7w57l4vg4",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qUQVv:fDdMjWYqbW1APftSaW8JyovIsvVSqXPSfAIwF8gBaAg",
+    "expire_date": "2023-08-25T11:41:07.794Z"
   }
 },
 {
@@ -10531,6 +13431,14 @@
   "fields": {
     "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qTRdd:XGml8zuYiNnC3Jwqewfkl-ZmiGeGMXNRkg8_f2u2xyE",
     "expire_date": "2023-08-22T18:41:01.530Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "rauzdeqymfqli293m75r8s6wjx2mueyc",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBmbAu4dN8zkIEZpGpoUtqV8e7apAvd_vfef6lA21rC1mQJE6uLAnX63SKlh9Qd8J3qbdZprusyRb0r-qBNjzPL83q4fweFWvnW_RlzxojOdkMvbsgmQiIzcEL2wGBczp1nARDqGG0fLSZG4wUsZG_U-wPhBTfL:1qUQFC:54hUXJexJCvdu8Ae3dzG62w2ZvVyoQjCvkvkBcC9EaY",
+    "expire_date": "2023-08-25T11:23:50.340Z"
   }
 },
 {
@@ -10665,7 +13573,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$600000$VzcspEGWSGfqHJQmRKGqxt$57VcJBcfoZI1s2Eh+KpSP9/3KH1D2YaNYFf/cKPJqHM=",
-    "last_login": "2023-08-08T19:07:28.185Z",
+    "last_login": "2023-08-11T11:41:07.787Z",
     "is_superuser": true,
     "first_name": "Marco André",
     "last_name": "Mendes",
@@ -12408,7 +15316,7 @@
   "model": "livraria.autor",
   "pk": 232,
   "fields": {
-    "nome": "Frank MIller",
+    "nome": "Frank Miller",
     "email": null
   }
 },
@@ -12423,22 +15331,6 @@
 {
   "model": "livraria.autor",
   "pk": 234,
-  "fields": {
-    "nome": "Stephen Chbosky",
-    "email": null
-  }
-},
-{
-  "model": "livraria.autor",
-  "pk": 235,
-  "fields": {
-    "nome": "Stephen Chbosky",
-    "email": null
-  }
-},
-{
-  "model": "livraria.autor",
-  "pk": 236,
   "fields": {
     "nome": "Stephen Chbosky",
     "email": null
@@ -12473,6 +15365,334 @@
   "pk": 240,
   "fields": {
     "nome": "Doug Moench",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 241,
+  "fields": {
+    "nome": "Geoff Johns",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 242,
+  "fields": {
+    "nome": "Rachel Renée Russel Lisa Veja",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 243,
+  "fields": {
+    "nome": "Arqueiro",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 244,
+  "fields": {
+    "nome": "Anna Todd",
+    "email": "annatodd@gmail.com"
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 245,
+  "fields": {
+    "nome": "Chico Buarque",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 246,
+  "fields": {
+    "nome": "Jenna Evans Welch",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 247,
+  "fields": {
+    "nome": "Monteiro Lobato",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 248,
+  "fields": {
+    "nome": "autentica",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 249,
+  "fields": {
+    "nome": "F. T. Lukens",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 250,
+  "fields": {
+    "nome": "Ziraldo Alves Pinto",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 251,
+  "fields": {
+    "nome": "Monteira Lobato",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 252,
+  "fields": {
+    "nome": "Daniel Wallace",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 254,
+  "fields": {
+    "nome": "Ali Hazelwood",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 255,
+  "fields": {
+    "nome": "Thiago Lolkus Nigro",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 256,
+  "fields": {
+    "nome": "Shel Silverstein",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 257,
+  "fields": {
+    "nome": "Kevin D. Mitnick",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 258,
+  "fields": {
+    "nome": "William L. Simon",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 259,
+  "fields": {
+    "nome": "Pierre Winters",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 260,
+  "fields": {
+    "nome": "Paul Barry",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 261,
+  "fields": {
+    "nome": "Tim Warnes",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 262,
+  "fields": {
+    "nome": "Chetan Giridhar",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 263,
+  "fields": {
+    "nome": "Pete Goodliffe",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 264,
+  "fields": {
+    "nome": "Raymond Buckland",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 265,
+  "fields": {
+    "nome": "Luciano Ramalho",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 266,
+  "fields": {
+    "nome": "Milk Shakespeare",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 267,
+  "fields": {
+    "nome": "Raul WAZLAWICK",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 268,
+  "fields": {
+    "nome": "Miguel Grinberg",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 269,
+  "fields": {
+    "nome": "Max Brallier",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 270,
+  "fields": {
+    "nome": "José Augusto N. G. Manzano",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 271,
+  "fields": {
+    "nome": "Al Sweigart",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 272,
+  "fields": {
+    "nome": "Nilo Ney Coutinho Menezes",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 273,
+  "fields": {
+    "nome": "Fluminense",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 274,
+  "fields": {
+    "nome": "Aurélio Jargas",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 275,
+  "fields": {
+    "nome": "Leandro Tavares Fontes",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 276,
+  "fields": {
+    "nome": "Antony Beevor",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 277,
+  "fields": {
+    "nome": "Osvaldo Santana",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 278,
+  "fields": {
+    "nome": "E. L. James",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 279,
+  "fields": {
+    "nome": "Omar de Souza",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 280,
+  "fields": {
+    "nome": "Eiichiro Oda",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 281,
+  "fields": {
+    "nome": "Nakaba Suzuki",
+    "email": null
+  }
+},
+{
+  "model": "livraria.autor",
+  "pk": 282,
+  "fields": {
+    "nome": "Maurice Leblanc",
     "email": null
   }
 },
@@ -12876,6 +16096,55 @@
   }
 },
 {
+  "model": "livraria.categoria",
+  "pk": 63,
+  "fields": {
+    "descricao": "Educação"
+  }
+},
+{
+  "model": "livraria.categoria",
+  "pk": 64,
+  "fields": {
+    "descricao": "Finanças Pessoais"
+  }
+},
+{
+  "model": "livraria.categoria",
+  "pk": 65,
+  "fields": {
+    "descricao": "Aventura infantil"
+  }
+},
+{
+  "model": "livraria.categoria",
+  "pk": 66,
+  "fields": {
+    "descricao": "Expressões Regulares"
+  }
+},
+{
+  "model": "livraria.categoria",
+  "pk": 67,
+  "fields": {
+    "descricao": "Shell Script"
+  }
+},
+{
+  "model": "livraria.categoria",
+  "pk": 68,
+  "fields": {
+    "descricao": "Guerra"
+  }
+},
+{
+  "model": "livraria.categoria",
+  "pk": 69,
+  "fields": {
+    "descricao": "manga"
+  }
+},
+{
   "model": "livraria.editora",
   "pk": 1,
   "fields": {
@@ -13261,14 +16530,6 @@
 },
 {
   "model": "livraria.editora",
-  "pk": 56,
-  "fields": {
-    "nome": "Darkside",
-    "site": "https://www.darksidebooks.com.br/"
-  }
-},
-{
-  "model": "livraria.editora",
   "pk": 57,
   "fields": {
     "nome": "Martin Claret",
@@ -13279,7 +16540,7 @@
   "model": "livraria.editora",
   "pk": 58,
   "fields": {
-    "nome": "Rafael Alvaro",
+    "nome": "Azul",
     "site": null
   }
 },
@@ -13304,22 +16565,6 @@
   "pk": 62,
   "fields": {
     "nome": "Kuhn",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
-  "pk": 63,
-  "fields": {
-    "nome": "Nova Fronteira",
-    "site": "https://www.novafronteira.com.br/"
-  }
-},
-{
-  "model": "livraria.editora",
-  "pk": 64,
-  "fields": {
-    "nome": "Grupo Editoral Record",
     "site": null
   }
 },
@@ -13471,7 +16716,7 @@
   "model": "livraria.editora",
   "pk": 85,
   "fields": {
-    "nome": "Editora Europa",
+    "nome": "Europa",
     "site": "http://europa.com.br"
   }
 },
@@ -13485,17 +16730,9 @@
 },
 {
   "model": "livraria.editora",
-  "pk": 87,
-  "fields": {
-    "nome": "Editora Sextante",
-    "site": "https://sextante.com.br/"
-  }
-},
-{
-  "model": "livraria.editora",
   "pk": 88,
   "fields": {
-    "nome": "Editora Habito",
+    "nome": "Hábito",
     "site": "https://www.editorahabito.com.br/"
   }
 },
@@ -13511,7 +16748,7 @@
   "model": "livraria.editora",
   "pk": 90,
   "fields": {
-    "nome": "Casa dos livros",
+    "nome": "Casa dos Livros",
     "site": null
   }
 },
@@ -13575,7 +16812,7 @@
   "model": "livraria.editora",
   "pk": 100,
   "fields": {
-    "nome": "Editora JBC",
+    "nome": "JBC",
     "site": "https://editorajbc.com.br/"
   }
 },
@@ -13599,7 +16836,7 @@
   "model": "livraria.editora",
   "pk": 104,
   "fields": {
-    "nome": "Panini comics",
+    "nome": "Panini Comics",
     "site": null
   }
 },
@@ -13629,25 +16866,9 @@
 },
 {
   "model": "livraria.editora",
-  "pk": 108,
-  "fields": {
-    "nome": "JBC",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
   "pk": 109,
   "fields": {
     "nome": "Cosac Naify",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
-  "pk": 110,
-  "fields": {
-    "nome": "Biblioteca Azul",
     "site": null
   }
 },
@@ -13671,7 +16892,7 @@
   "model": "livraria.editora",
   "pk": 113,
   "fields": {
-    "nome": "The Gift Box Editora",
+    "nome": "The Gift Box",
     "site": null
   }
 },
@@ -13727,7 +16948,7 @@
   "model": "livraria.editora",
   "pk": 121,
   "fields": {
-    "nome": "Editora-Desconhecida",
+    "nome": "Desconhecida",
     "site": "http://naopossui@gmail.com"
   }
 },
@@ -13743,7 +16964,7 @@
   "model": "livraria.editora",
   "pk": 123,
   "fields": {
-    "nome": "VR Editora",
+    "nome": "VR",
     "site": "https://www.vreditora.com.br/"
   }
 },
@@ -13853,38 +17074,6 @@
 },
 {
   "model": "livraria.editora",
-  "pk": 137,
-  "fields": {
-    "nome": "Paralela",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
-  "pk": 138,
-  "fields": {
-    "nome": "LTC",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
-  "pk": 139,
-  "fields": {
-    "nome": "LTC",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
-  "pk": 140,
-  "fields": {
-    "nome": "LTC",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
   "pk": 141,
   "fields": {
     "nome": "Hodder Children's Books",
@@ -13901,14 +17090,6 @@
 },
 {
   "model": "livraria.editora",
-  "pk": 143,
-  "fields": {
-    "nome": "Intrínseca",
-    "site": null
-  }
-},
-{
-  "model": "livraria.editora",
   "pk": 144,
   "fields": {
     "nome": "Edwards of Chilva's",
@@ -13919,7 +17100,7 @@
   "model": "livraria.editora",
   "pk": 145,
   "fields": {
-    "nome": "Editora Alpeh",
+    "nome": "Alpeh",
     "site": null
   }
 },
@@ -13935,7 +17116,135 @@
   "model": "livraria.editora",
   "pk": 147,
   "fields": {
-    "nome": "FEB Editora",
+    "nome": "FEB",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 148,
+  "fields": {
+    "nome": "Yellowfante",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 149,
+  "fields": {
+    "nome": "‎Intrínseca",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 150,
+  "fields": {
+    "nome": "Autentica",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 155,
+  "fields": {
+    "nome": "Companhia das Letrinhas",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 156,
+  "fields": {
+    "nome": "Makron Books",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 157,
+  "fields": {
+    "nome": "Pearson Universidades",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 158,
+  "fields": {
+    "nome": "Brinque-Book",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 160,
+  "fields": {
+    "nome": "Pensamento",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 161,
+  "fields": {
+    "nome": "Gen LTC",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 162,
+  "fields": {
+    "nome": "Milk Shakespeare",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 163,
+  "fields": {
+    "nome": "Fluminense FC",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 164,
+  "fields": {
+    "nome": "LivrosdeFutebol",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 166,
+  "fields": {
+    "nome": "Editora Mundo Cristão",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 167,
+  "fields": {
+    "nome": "Panini",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 168,
+  "fields": {
+    "nome": "Kodansha Comics",
+    "site": null
+  }
+},
+{
+  "model": "livraria.editora",
+  "pk": 169,
+  "fields": {
+    "nome": "Camelot",
     "site": null
   }
 },
@@ -14511,7 +17820,7 @@
   "model": "livraria.livro",
   "pk": 41,
   "fields": {
-    "titulo": "Algoritmos E Lógica Da Programação",
+    "titulo": "Algoritmos e Lógica da Programação",
     "isbn": "978-8522128143",
     "quantidade": 16,
     "preco": "40.00",
@@ -17249,7 +20558,7 @@
   "model": "livraria.livro",
   "pk": 217,
   "fields": {
-    "titulo": "Cultos: A Linguagem do Fanatismo\"",
+    "titulo": "Cultos: A Linguagem do Fanatismo",
     "isbn": "3414333513",
     "quantidade": 33,
     "preco": "3432.00",
@@ -17350,7 +20659,7 @@
     "quantidade": 1500,
     "preco": "750.00",
     "categoria": 46,
-    "editora": 87,
+    "editora": 28,
     "capa": null,
     "autores": [
       142
@@ -17414,7 +20723,7 @@
     "quantidade": 1,
     "preco": "58.99",
     "categoria": 10,
-    "editora": 63,
+    "editora": 43,
     "capa": null,
     "autores": [
       129
@@ -17441,7 +20750,7 @@
   "model": "livraria.livro",
   "pk": 231,
   "fields": {
-    "titulo": "O caçador de pipas",
+    "titulo": "O Caçador de Pipas",
     "isbn": "9780605024274",
     "quantidade": 28,
     "preco": "25.00",
@@ -17622,7 +20931,7 @@
     "quantidade": 9,
     "preco": "23.60",
     "categoria": 7,
-    "editora": 63,
+    "editora": 43,
     "capa": null,
     "autores": [
       81
@@ -19121,7 +22430,7 @@
   "model": "livraria.livro",
   "pk": 338,
   "fields": {
-    "titulo": "Dragon Ball super",
+    "titulo": "Dragon Ball Super",
     "isbn": "1421592541",
     "quantidade": 999,
     "preco": "50.00",
@@ -19153,7 +22462,7 @@
   "model": "livraria.livro",
   "pk": 340,
   "fields": {
-    "titulo": "ROMANCE DAWN - O Alvorecer do Romance",
+    "titulo": "Romance Dawn - O Alvorecer do Romance",
     "isbn": null,
     "quantidade": 10,
     "preco": "1000.00",
@@ -19473,7 +22782,7 @@
   "model": "livraria.livro",
   "pk": 362,
   "fields": {
-    "titulo": "o alquimista",
+    "titulo": "O Alquimista",
     "isbn": "‎978-8408206194",
     "quantidade": 15,
     "preco": "15.10",
@@ -20036,7 +23345,7 @@
   "model": "livraria.livro",
   "pk": 400,
   "fields": {
-    "titulo": "o mito de sísifo",
+    "titulo": "O Mito de Sísifo",
     "isbn": "8501111643",
     "quantidade": 18,
     "preco": "15.00",
@@ -20084,7 +23393,7 @@
   "model": "livraria.livro",
   "pk": 403,
   "fields": {
-    "titulo": "j. robert oppenheimer uncommon sense",
+    "titulo": "J . Robert  Oppenheimer Uncommon Sense",
     "isbn": null,
     "quantidade": 0,
     "preco": null,
@@ -20330,7 +23639,7 @@
     "quantidade": 1,
     "preco": "56.90",
     "categoria": 58,
-    "editora": 143,
+    "editora": 7,
     "capa": null,
     "autores": [
       212,
@@ -20480,22 +23789,6 @@
     "capa": null,
     "autores": [
       2
-    ]
-  }
-},
-{
-  "model": "livraria.livro",
-  "pk": 428,
-  "fields": {
-    "titulo": "3info2 roteiro completo da sitcom (1ª a 3ª temporada)",
-    "isbn": "6942066666",
-    "quantidade": 90,
-    "preco": "100.00",
-    "categoria": 61,
-    "editora": 144,
-    "capa": 5,
-    "autores": [
-      238
     ]
   }
 },
@@ -20773,25 +24066,9 @@
 },
 {
   "model": "livraria.livro",
-  "pk": 446,
-  "fields": {
-    "titulo": "tresinfotres",
-    "isbn": null,
-    "quantidade": 3,
-    "preco": "2.00",
-    "categoria": 41,
-    "editora": 8,
-    "capa": 3,
-    "autores": [
-      229
-    ]
-  }
-},
-{
-  "model": "livraria.livro",
   "pk": 447,
   "fields": {
-    "titulo": "Batman: SIlêncio",
+    "titulo": "Batman: Silêncio",
     "isbn": "9788573512441",
     "quantidade": 2,
     "preco": "100.00",
@@ -20864,6 +24141,1207 @@
     "capa": null,
     "autores": [
       239
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 452,
+  "fields": {
+    "titulo": "Pedagogia do oprimido",
+    "isbn": "8577534189",
+    "quantidade": 1,
+    "preco": "36.99",
+    "categoria": 63,
+    "editora": 38,
+    "capa": null,
+    "autores": [
+      229
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 453,
+  "fields": {
+    "titulo": "Educação como Prática da Liberdade",
+    "isbn": "8577534235",
+    "quantidade": 1,
+    "preco": "33.99",
+    "categoria": 63,
+    "editora": 38,
+    "capa": null,
+    "autores": [
+      224
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 454,
+  "fields": {
+    "titulo": "Pedagogia da Autonomia",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "20.93",
+    "categoria": 63,
+    "editora": 38,
+    "capa": null,
+    "autores": [
+      224
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 455,
+  "fields": {
+    "titulo": "Pedagogia da Solidariedade",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "24.43",
+    "categoria": 63,
+    "editora": 38,
+    "capa": null,
+    "autores": [
+      224
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 456,
+  "fields": {
+    "titulo": "Batman: Terra Um",
+    "isbn": "856548470",
+    "quantidade": 23,
+    "preco": "24.00",
+    "categoria": 12,
+    "editora": 11,
+    "capa": null,
+    "autores": [
+      241
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 457,
+  "fields": {
+    "titulo": "Princesa das Cinzas",
+    "isbn": null,
+    "quantidade": 9,
+    "preco": "45.30",
+    "categoria": 13,
+    "editora": 9,
+    "capa": null,
+    "autores": [
+      243
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 458,
+  "fields": {
+    "titulo": "Dama da Nevoa",
+    "isbn": null,
+    "quantidade": 50,
+    "preco": "49.90",
+    "categoria": 13,
+    "editora": 9,
+    "capa": null,
+    "autores": [
+      159
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 459,
+  "fields": {
+    "titulo": "After 1",
+    "isbn": "8565530825",
+    "quantidade": 5000,
+    "preco": "30.00",
+    "categoria": 58,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 460,
+  "fields": {
+    "titulo": "Rainha das Chamas",
+    "isbn": null,
+    "quantidade": 90,
+    "preco": null,
+    "categoria": 31,
+    "editora": 9,
+    "capa": null,
+    "autores": [
+      159
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 461,
+  "fields": {
+    "titulo": "Chapeuzinho Amarelo",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "39.90",
+    "categoria": 13,
+    "editora": 148,
+    "capa": null,
+    "autores": [
+      245
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 462,
+  "fields": {
+    "titulo": "After 2",
+    "isbn": "8565530842",
+    "quantidade": 4000,
+    "preco": "35.00",
+    "categoria": 58,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 463,
+  "fields": {
+    "titulo": "Amor & Gelato",
+    "isbn": "8551002341",
+    "quantidade": 544,
+    "preco": null,
+    "categoria": 32,
+    "editora": 7,
+    "capa": null,
+    "autores": [
+      246
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 464,
+  "fields": {
+    "titulo": "O picapau amarelo",
+    "isbn": null,
+    "quantidade": 80,
+    "preco": "15.99",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      247
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 465,
+  "fields": {
+    "titulo": "After 3",
+    "isbn": "8565530868",
+    "quantidade": 5000,
+    "preco": "30.00",
+    "categoria": 58,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 466,
+  "fields": {
+    "titulo": "After 4",
+    "isbn": "8584390069",
+    "quantidade": 5000,
+    "preco": "38.00",
+    "categoria": 58,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 467,
+  "fields": {
+    "titulo": "Reinações de Narizinho",
+    "isbn": null,
+    "quantidade": 8,
+    "preco": "19.99",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      247
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 468,
+  "fields": {
+    "titulo": "After 5",
+    "isbn": "9722358873",
+    "quantidade": 4000,
+    "preco": "30.00",
+    "categoria": 58,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 469,
+  "fields": {
+    "titulo": "Em Águas Profundas",
+    "isbn": "6559571386",
+    "quantidade": 10,
+    "preco": "100.00",
+    "categoria": 11,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      249
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 470,
+  "fields": {
+    "titulo": "O saci",
+    "isbn": null,
+    "quantidade": 450,
+    "preco": "14.90",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      251
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 472,
+  "fields": {
+    "titulo": "Before",
+    "isbn": "8584390205",
+    "quantidade": 5000,
+    "preco": "29.00",
+    "categoria": 58,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 473,
+  "fields": {
+    "titulo": "A chave do tamanho",
+    "isbn": null,
+    "quantidade": 80,
+    "preco": "10.00",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      247
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 474,
+  "fields": {
+    "titulo": "Histórias de Tia Nastácia",
+    "isbn": null,
+    "quantidade": 45,
+    "preco": "10.00",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      247
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 475,
+  "fields": {
+    "titulo": "Fábulas",
+    "isbn": null,
+    "quantidade": 555,
+    "preco": "10.00",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      247
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 476,
+  "fields": {
+    "titulo": "Para sempre",
+    "isbn": "655957198",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 11,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      249
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 477,
+  "fields": {
+    "titulo": "As estrelas entre nós",
+    "isbn": "8582467831",
+    "quantidade": 1000,
+    "preco": "25.00",
+    "categoria": 32,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 478,
+  "fields": {
+    "titulo": "Star Wars: Manual do império",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "33.99",
+    "categoria": 11,
+    "editora": 133,
+    "capa": null,
+    "autores": [
+      252
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 479,
+  "fields": {
+    "titulo": "Caçadas de Pedrinho",
+    "isbn": null,
+    "quantidade": 99,
+    "preco": "10.00",
+    "categoria": 17,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      251
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 480,
+  "fields": {
+    "titulo": "The Falling",
+    "isbn": "9781538496329",
+    "quantidade": 4000,
+    "preco": "30.00",
+    "categoria": 32,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 482,
+  "fields": {
+    "titulo": "A hipótese do amor",
+    "isbn": "6559571386",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 32,
+    "editora": 9,
+    "capa": null,
+    "autores": [
+      254
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 483,
+  "fields": {
+    "titulo": "As garotas spring",
+    "isbn": "8550702056",
+    "quantidade": 5000,
+    "preco": "20.00",
+    "categoria": 32,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 484,
+  "fields": {
+    "titulo": "Star Wars: Livro dos Sith",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "87.12",
+    "categoria": 11,
+    "editora": 133,
+    "capa": null,
+    "autores": [
+      252
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 485,
+  "fields": {
+    "titulo": "Nothing Less",
+    "isbn": "8582466940",
+    "quantidade": 3000,
+    "preco": "29.00",
+    "categoria": 32,
+    "editora": 120,
+    "capa": null,
+    "autores": [
+      244
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 486,
+  "fields": {
+    "titulo": "Star Wars: O Código do Caçador de Recompensa",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "39.90",
+    "categoria": 11,
+    "editora": 133,
+    "capa": null,
+    "autores": [
+      252
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 487,
+  "fields": {
+    "titulo": "Do Mil ao Milhão. Sem Cortar o Cafezinho.",
+    "isbn": "9788595083271",
+    "quantidade": 1,
+    "preco": "23.99",
+    "categoria": 64,
+    "editora": 10,
+    "capa": null,
+    "autores": [
+      255
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 488,
+  "fields": {
+    "titulo": "Amor, teoricamente",
+    "isbn": "9786555655254",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 32,
+    "editora": 9,
+    "capa": null,
+    "autores": [
+      254
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 489,
+  "fields": {
+    "titulo": "A árvore generosa",
+    "isbn": "978-8574067537",
+    "quantidade": 1,
+    "preco": "38.99",
+    "categoria": 65,
+    "editora": 155,
+    "capa": null,
+    "autores": [
+      256
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 490,
+  "fields": {
+    "titulo": "Estrelas e Planetas",
+    "isbn": "8574123455",
+    "quantidade": 1,
+    "preco": "31.99",
+    "categoria": 65,
+    "editora": 158,
+    "capa": null,
+    "autores": [
+      259
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 491,
+  "fields": {
+    "titulo": "Use a Cabeça! Python",
+    "isbn": "9788550803401",
+    "quantidade": 1,
+    "preco": "137.00",
+    "categoria": 20,
+    "editora": 1,
+    "capa": null,
+    "autores": [
+      260
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 492,
+  "fields": {
+    "titulo": "A Arte de Enganar: Ataques de Hackers: Controlando o Fator Humano na Segurança da Informação",
+    "isbn": "8534615160",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 16,
+    "editora": 126,
+    "capa": null,
+    "autores": [
+      257
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 494,
+  "fields": {
+    "titulo": "Perigoso!",
+    "isbn": "8538058975",
+    "quantidade": 0,
+    "preco": "18.99",
+    "categoria": 65,
+    "editora": 15,
+    "capa": null,
+    "autores": [
+      261
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 495,
+  "fields": {
+    "titulo": "Como ser um Programador Melhor: um Manual Para Programadores que se Importam com Código",
+    "isbn": "8575224158",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 16,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      263
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 496,
+  "fields": {
+    "titulo": "Aprendendo Padrões de Projeto em Python",
+    "isbn": "8575225235.",
+    "quantidade": 1,
+    "preco": "31.00",
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      262
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 497,
+  "fields": {
+    "titulo": "O Livro Completo de Bruxaria de Raymond Buckland: Tradição, Rituais, Crenças, História e Prática",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "102.81",
+    "categoria": 22,
+    "editora": 160,
+    "capa": null,
+    "autores": [
+      264
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 498,
+  "fields": {
+    "titulo": "Python Fluente: Programação Clara, Concisa e Eficaz",
+    "isbn": "857522462X",
+    "quantidade": 1,
+    "preco": "152.00",
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      265
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 499,
+  "fields": {
+    "titulo": "Introdução a Algoritmos e Programação com Python - Uma Abordagem Dirigida Por Testes",
+    "isbn": "8535290516",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 20,
+    "editora": 161,
+    "capa": null,
+    "autores": [
+      267
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 500,
+  "fields": {
+    "titulo": "Os Últimos Jovens da Terra: A Ameaça Cósmica Capa comum",
+    "isbn": "6586041414",
+    "quantidade": 0,
+    "preco": "28.99",
+    "categoria": 65,
+    "editora": 162,
+    "capa": null,
+    "autores": [
+      266,
+      269
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 501,
+  "fields": {
+    "titulo": "Desenvolvimento web com Flask: Desenvolvendo aplicações web com Python",
+    "isbn": "108575226819",
+    "quantidade": 1,
+    "preco": "84.00",
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      268
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 502,
+  "fields": {
+    "titulo": "Introdução à Linguagem Python",
+    "isbn": "8575227149",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      270
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 503,
+  "fields": {
+    "titulo": "Automatize Tarefas Maçantes com Python",
+    "isbn": "8575224468",
+    "quantidade": 1,
+    "preco": "140.00",
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      271
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 504,
+  "fields": {
+    "titulo": "Introdução à Programação com Python: Algoritmos e Lógica de Programação Para Iniciantes",
+    "isbn": "8575227181",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      272
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 505,
+  "fields": {
+    "titulo": "Campeão Carioca 2022",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "150.00",
+    "categoria": 54,
+    "editora": 163,
+    "capa": null,
+    "autores": [
+      273
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 506,
+  "fields": {
+    "titulo": "Expressões Regulares - 5ª Edição",
+    "isbn": "14543252365",
+    "quantidade": 1,
+    "preco": "1.00",
+    "categoria": 66,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      274
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 507,
+  "fields": {
+    "titulo": "Shell Script Profissional",
+    "isbn": "23423423",
+    "quantidade": 23,
+    "preco": "23.00",
+    "categoria": 67,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      274
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 508,
+  "fields": {
+    "titulo": "Vasco: o clube do povo",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "25.00",
+    "categoria": 54,
+    "editora": 164,
+    "capa": null,
+    "autores": [
+      275
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 509,
+  "fields": {
+    "titulo": "Expressões Regulares - Guia de Consulta Rápida",
+    "isbn": "121",
+    "quantidade": 1,
+    "preco": "11.00",
+    "categoria": 66,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      274
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 510,
+  "fields": {
+    "titulo": "Python e Django",
+    "isbn": "23321432",
+    "quantidade": 1,
+    "preco": "1.00",
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      277
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 511,
+  "fields": {
+    "titulo": "A Segunda Guerra Mundial",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": null,
+    "categoria": 68,
+    "editora": 2,
+    "capa": null,
+    "autores": [
+      276
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 512,
+  "fields": {
+    "titulo": "Cinquenta Tons de Cinza",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "32.99",
+    "categoria": 58,
+    "editora": 7,
+    "capa": null,
+    "autores": [
+      278
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 513,
+  "fields": {
+    "titulo": "Fazer amor: Como fazer do sexo um ato de amor",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "20.90",
+    "categoria": 58,
+    "editora": 166,
+    "capa": null,
+    "autores": [
+      279
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 514,
+  "fields": {
+    "titulo": "One Piece Vol. 1",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 69,
+    "editora": 167,
+    "capa": null,
+    "autores": [
+      280
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 515,
+  "fields": {
+    "titulo": "The Seven Deadly Sins, Volume 1",
+    "isbn": "1612629210",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 69,
+    "editora": 168,
+    "capa": null,
+    "autores": [
+      281
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 516,
+  "fields": {
+    "titulo": "The Seven Deadly Sins 3",
+    "isbn": "6559571386",
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 69,
+    "editora": 168,
+    "capa": null,
+    "autores": [
+      281
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 517,
+  "fields": {
+    "titulo": "813 - Os Três Crimes de Arsène Lupin",
+    "isbn": "14543252365",
+    "quantidade": 1,
+    "preco": "1.00",
+    "categoria": 3,
+    "editora": 169,
+    "capa": null,
+    "autores": [
+      282
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 518,
+  "fields": {
+    "titulo": "Arsène Lupin contra Herlock Sholmes",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 3,
+    "editora": 169,
+    "capa": null,
+    "autores": [
+      282
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 519,
+  "fields": {
+    "titulo": "Arsène Lupin, O Ladrão de Casaca",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 3,
+    "editora": 169,
+    "capa": null,
+    "autores": [
+      282
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 520,
+  "fields": {
+    "titulo": "A rolha de cristal",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 3,
+    "editora": 134,
+    "capa": null,
+    "autores": [
+      282
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 521,
+  "fields": {
+    "titulo": "As confidências de Arsène Lupin",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 3,
+    "editora": 134,
+    "capa": null,
+    "autores": [
+      282
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 522,
+  "fields": {
+    "titulo": "A Agulha Oca",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 3,
+    "editora": 134,
+    "capa": null,
+    "autores": [
+      282
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 523,
+  "fields": {
+    "titulo": "O Leão, a Feiticeira e o Guarda-Roupa",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 524,
+  "fields": {
+    "titulo": "Príncipe Caspian",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 525,
+  "fields": {
+    "titulo": "A Viagem do Peregrino da Alvorada",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 526,
+  "fields": {
+    "titulo": "A Cadeira de Prata",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 527,
+  "fields": {
+    "titulo": "O Cavalo e seu Menino",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 528,
+  "fields": {
+    "titulo": "O Sobrinho do Mago",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
+    ]
+  }
+},
+{
+  "model": "livraria.livro",
+  "pk": 529,
+  "fields": {
+    "titulo": "A Última Batalha",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": null,
+    "categoria": 2,
+    "editora": 3,
+    "capa": null,
+    "autores": [
+      3
     ]
   }
 }
