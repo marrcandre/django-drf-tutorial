@@ -2781,6 +2781,12 @@ class Compra(models.Model):
 
 > `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`.
 
+- Inclua a nova model no arquivo `__init__.py` dos models:
+
+```python
+from .compra import Compra
+```
+
 -   Adicione o model `Compra` ao `admin.py` do app `livraria`:
 
 ```python
