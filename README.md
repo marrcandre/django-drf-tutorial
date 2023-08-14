@@ -2853,6 +2853,236 @@ class CompraAdmin(admin.ModelAdmin):
 
 -   Teste no admin do Django.
 
+# 27. Endpoint para listagem básica de Compras
+
+Vamos criar um endpoint para listagem básica de compras.
+
+**Serializer de Compra**
+
+-   Crie um novo arquivo `compra.py` dentro da pasta `serializers` do app `livraria`:
+
+```shell
+touch livraria/serializers/compra.py
+```
+
+-   Inclua o seguinte conteúdo no arquivo `compra.py`:
+
+```python
+from rest_framework.serializers import ModelSerializer, CharField
+
+from livraria.models import Compra
+
+class CompraSerializer(ModelSerializer):
+    class Meta:
+        model = Compra
+        fields = "__all__"
+```
+
+-   Inclua o novo `CompraSerializer` no arquivo `__init__.py` dos serializers:
+
+```python
+from .compra import CompraSerializer
+```
+
+**Viewset de Compra**
+
+-   Crie um novo arquivo `compra.py` dentro da pasta `views` do app `livraria`:
+
+```shell
+touch livraria/views/compra.py
+```
+
+-   Inclua o seguinte conteúdo no arquivo `compra.py`:
+
+```python
+from rest_framework.viewsets import ModelViewSet
+
+from livraria.models import Compra
+from livraria.serializers import CompraSerializer
+
+
+class CompraViewSet(ModelViewSet):
+    queryset = Compra.objects.all()
+    serializer_class = CompraSerializer
+```
+
+-   Inclua o novo `CompraViewSet` no arquivo `__init__.py` das views:
+
+```python
+from .compra import CompraViewSet
+```
+
+**URL para listagem de compras**
+
+-   Inclua o endpoint no arquivo `urls.py` do app `livraria`:
+
+```python
+...
+from livraria.views import AutorViewSet, CategoriaViewSet, CompraViewSet, EditoraViewSet, LivroViewSet
+...
+router.register(r"compras", CompraViewSet)
+...
+```
+
+-  Teste o endpoint no navegador.
+-  Faça o _commit_ e _push_ das alterações.
+
+**Inclusão do email do usuário na listagem da compra**
+
+-   Vamos incluir o email do usuário na listagem da compra.
+-   No serializer de `Compra`, inclua o seguinte código:
+
+```python
+...
+...
+class CompraSerializer(ModelSerializer):
+    usuario = CharField(source="usuario.email", read_only=True)
+...
+```
+
+> O parâmetro `source` indica qual campo do model `Compra` será utilizado para preencher o campo `usuario` do serializer.
+
+> O parâmetro `read_only` indica que o campo `usuario` não será utilizado para atualizar o model `Compra`.
+
+-   Teste o endpoint no navegador.
+-   Faça o _commit_ e _push_ das alterações.
+
+**Inclusão do status da compra na listagem da compra**
+
+-   Vamos incluir o status da compra na listagem da compra.
+-   No serializer de `Compra`, inclua o seguinte código:
+
+```python
+...
+class CompraSerializer(ModelSerializer):
+    status = CharField(source="get_status_display", read_only=True)
+...
+```
+
+> O parâmetro `source` indica qual método do model `Compra` será utilizado para preencher o campo `status` do serializer. Sempre que utilizamos um campo do tipo `IntegerChoices`, podemos utilizar o método `get_<nome_do_campo>_display` para obter a descrição do campo.
+
+> O parâmetro `read_only` indica que o campo `status` não será utilizado para atualizar o model `Compra`.
+
+-   Teste o endpoint no navegador.
+-   Faça o _commit_ e _push_ das alterações.
+
+# 28. Visualização dos itens da compra no endpoint de listagem de compras
+
+Vamos incluir os itens da compra na listagem de compras.
+
+-   Crie um serializer para `ItensCompra`:
+
+```python
+...
+from livraria.models import Compra, ItensCompra
+...
+
+class ItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = "__all__"
+```
+
+No `ComprasSerializer`, inclua o seguinte código:
+
+```python
+...
+itens = ItensCompraSerializer(many=True, read_only=True)
+...
+```
+
+> O parâmetro `many=True` indica que o campo `itens` é uma lista de itens.
+
+> O parâmetro `read_only=True` indica que o campo `itens` não será utilizado para atualizar o model `Compra`.
+
+-   Teste o endpoint no navegador.
+-   Faça o _commit_ e _push_ das alterações.
+
+**Mostrando os detalhes dos itens da compra na listagem de compras**
+
+-   No serializer de `ItensCompra`, modifique o código:
+
+```python
+class ItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = "__all__"
+        depth = 1
+```
+
+> O parâmetro `depth=1` indica que o serializer deve mostrar os detalhes do model `ItensCompra`. O valor `1` indica que o serializer deve mostrar os detalhes do model `ItensCompra` e dos models relacionados a ele. Se o valor fosse `2`, o serializer mostraria os detalhes do model `ItensCompra`, dos models relacionados a ele e dos models relacionados aos models relacionados a ele.
+
+**Mostrando apenas os campos necessários dos itens da compra na listagem de compras**
+
+Você deve ter percebido que o serializer de `ItensCompra` está mostrando todos os seus campos, incluindo o campo `compra`. Vamos modificar o serializer para mostrar apenas os campos necessários. Nesse exemplo, vamos mostrar apenas os campos`livro` e `quantidade`.
+
+-   No `ItensCompraSerializer`, modifique a linha `fields`:
+
+```python
+fields = ["livro", "quantidade"]
+```
+
+> O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados. 
+
+-   Teste o endpoint no navegador.
+
+Mostrando mais detalhes do livro na listagem de compras
+
+Utilizando depth = 2, podemos mostrar mais detalhes do livro na listagem de compras.
+
+-   No `ItensCompraSerializer`, modifique a linha `depth`:
+
+```python
+depth = 2
+```
+
+> Nesse caso, vamos ver os detalhes dos livros, como editora, autor e categoria.
+
+-  Teste o endpoint no navegador.
+-  Faça o _commit_ e _push_ das alterações.
+
+**Mostrando o total do item na listagem de compras**
+
+O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
+
+-   No `ItensCompraSerializer`, inclua o seguinte código:
+
+```python
+...
+total = SerializerMethodField()
+...
+def get_total(self, obj):
+    return obj.livro.preco * obj.quantidade
+...
+```
+
+> O parâmetro `SerializerMethodField` indica que o campo `total` não existe no model `ItensCompra`. Ele será calculado pelo método `get_total`.
+
+> O método `get_total` recebe como parâmetro o objeto `obj`, que representa o item da compra. A partir dele, podemos acessar os campos do item da compra, como `livro` e `quantidade`.
+
+> O método `get_total` retorna o valor do campo `total`, que é calculado pelo preço do livro multiplicado pela quantidade.
+
+> O método `get_<nome_do_campo>` é um método especial do serializer que é chamado para calcular o valor do campo `<nome_do_campo>`.
+
+-   Teste o endpoint no navegador.
+-   Faça o _commit_ e _push_ das alterações.
+
+<!-- # 29. Totalização dos itens de compra no serializer e model de compra
+
+Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras.  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 # Apêndices
