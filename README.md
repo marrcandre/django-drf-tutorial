@@ -3026,7 +3026,7 @@ fields = ["livro", "quantidade"]
 
 -   Teste o endpoint no navegador.
 
-Mostrando mais detalhes do livro na listagem de compras
+**Mostrando mais detalhes do livro na listagem de compras**
 
 Utilizando depth = 2, podemos mostrar mais detalhes do livro na listagem de compras.
 
