@@ -32,6 +32,9 @@
 - [27. Endpoint para listagem básica de Compras](#27-endpoint-para-listagem-básica-de-compras)
 - [28. Visualização dos itens da compra no endpoint de listagem de compras](#28-visualização-dos-itens-da-compra-no-endpoint-de-listagem-de-compras)
 - [29. Totalização dos itens de compra na `model` e `serializer` de compra](#29-totalização-dos-itens-de-compra-na-model-e-serializer-de-compra)
+- [30. Criação de um endpoint para criar novas compras](#30-criação-de-um-endpoint-para-criar-novas-compras)
+- [31. Criação de um endpoint para atualizar compras](#31-criação-de-um-endpoint-para-atualizar-compras)
+- [32. Criação de uma compra a partir do usuário autenticado](#32-criação-de-uma-compra-a-partir-do-usuário-autenticado)
 - [Apêndices](#apêndices)
 - [A1. Criação de _scripts_ PDM](#a1-criação-de-scripts-pdm)
 - [A2. Formatação de código com isort e black](#a2-formatação-de-código-com-isort-e-black)
@@ -3150,10 +3153,247 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 
 - Teste o endpoint no navegador.
 - Faça o _commit_ e _push_ das alterações.
+
+# 30. Criação de um endpoint para criar novas compras
+
+Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
+
+O formato dos dados para criar uma nova compra é o seguinte:
+
+```json
+{
+    "usuario": 1,
+    "itens": [
+        {
+            "livro": 1,
+            "quantidade": 1
+        },
+        {
+            "livro": 2,
+            "quantidade": 2
+        }
+    ]
+}
+```
+
+Tendo definido o formato dos dados, vamos criar um novo `serializer`, que será usado para criar uma nova compra ou editar uma compra já existente.
+
+- No `serializers.py`, inclua o seguinte código:
+
+```python
+...
+class CriarEditarCompraSerializer(ModelSerializer):
+    itens = ItensCompraSerializer(many=True)
+
+    class Meta:
+        model = Compra
+        fields = ("usuario", "itens")
+...
+
+```
+
+> O parâmetro `many=True` indica que o campo `itens` é uma lista de itens de compra.
+
+Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`.
+
+- No `views.py`, altere o `viewset` de `Compra` para usar o novo `serializer`:
+
+```python
+...
+class CompraViewSet(viewsets.ModelViewSet):
+    queryset = Compra.objects.all()
+    serializer_class = ComprasSerializer
+
+    def get_serializer_class(self):
+        if self.action == "create" or self.action == "update":
+            return CriarEditarCompraSerializer
+        return ComprasSerializer
+...
+```
+
+- Tente criar uma nova compra no endpoint `compras/` no `ThunderClient`, utilizando o método `POST`:
+
+```json
+{
+    "usuario": 1,
+    "itens": [
+        {
+            "livro": 1,
+            "quantidade": 1
+        }
+    ]
+}
+```
+
+Você receberá o seguinte erro:
+
+```
+AssertionError at /api/compras/
+The `.create()` method does not support writable nested fields by default.
+Write an explicit `.create()` method for serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
+```
+
+Traduzindo, chegamos no seguinte:
+
+```
+Erro de afirmação em /api/compras/
+O método `.create()` não suporta campos aninhados graváveis por padrão.
+Escreva um método `.create()` explícito para o serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
+```
+
+O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
+
+- No `serializers.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
+
+```python
+...
+
+class ComprasSerializer(ModelSerializer):
+    itens = ItensCompraSerializer(many=True)
+
+    class Meta:
+        model = Compra
+        fields = ("id", "usuario", "status", "total", "itens")
+
+    def create(self, validated_data):
+        itens_data = validated_data.pop("itens")
+        compra = Compra.objects.create(**validated_data)
+        for item_data in itens_data:
+            ItemCompra.objects.create(compra=compra, **item_data)
+        compra.save()
+        return compra
+
+```
+
+> O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
+
+- Precisamos criar também um novo `serializer`para os itens da compra. No `serializers.py`, inclua o seguinte código:
+
+```python
+...
+class ItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItemCompra
+        fields = ("livro", "quantidade")
+...
+```
+
+> O `serializer` de `ItemCompra` é bem simples, pois ele apenas recebe o livro e a quantidade.
+
+
+- Teste o endpoint no `ThunderClient.
+- Faça o _commit_ e _push_ das alterações.
+
+# 31. Criação de um endpoint para atualizar compras
+
+- Vamos tentar alterar uma compra existente no endpoint `compras/1/` (ou aquela que você preferir) no `ThunderClient`, utilizando o método `PUT`:
+
+```json
+{
+    "usuario": 2,
+    "itens": [
+        {
+            "livro": 2,
+            "quantidade": 2
+        }
+    ]
+}
+```
+
+Você receberá o seguinte erro:
+
+```
+AssertionError at /api/compras/1/
+The `.update()` method does not support writable nested fields by default.
+Write an explicit `.update()` method for serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
+```
+
+Traduzindo, chegamos no seguinte:
+
+```
+Erro de afirmação em /api/compras/1/
+O método `.update()` não suporta campos aninhados graváveis por padrão.
+Escreva um método `.update()` explícito para o serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
+```
+
+> O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
+
+- No `serializers.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
+
+```python
+...
+    def update(self, instance, validated_data):
+        itens = validated_data.pop("itens")
+        if itens:
+            instance.itens.all().delete()
+            for item in itens:
+                ItensCompra.objects.create(compra=instance, **item)
+        instance.save()
+        return instance
+...
+```
+
+> O método `update` é chamado quando uma compra é atualizada. Ele recebe os dados validados e atualiza a compra e os itens da compra.
+
+> O método `update` recebe dois parâmetros: `instance` e `validated_data`. O `instance` é a compra que está sendo atualizada. O `validated_data` são os dados validados que estão sendo atualizados.
+
+> O método `update` remove todos os itens da compra (se houverem) e cria novos itens com os dados validados.
+
+> O método `update` salvamos a compra e retornamos a instância.
+
+- Teste o endpoint no `ThunderClient`:
+  - use o método `PUT`, para atualizar a compra de forma completa;
+  - use o método `PATCH`, para atualizar a compra de forma parcial.
+    - Experimente mudar apenas o usuário;
+    - Experimente mudar apenas a quantidade de um item da compra;
+    - Experimente mudar o livro de um item da compra;
+- Faça o _commit_ e _push_ das alterações.
+
+# 32. Criação de uma compra a partir do usuário autenticado
+
+Ao invés de passar o usuário no corpo da requisição, podemos pegar o usuário autenticado e criar a compra a partir dele. O `Django Rest Framework` nos dá uma forma de fazer isso.
+
+- Primeiro, vamos importar todos os `serializers` de `rest_framework` no `serializers.py`:
+
+```python
+from rest_framework import serializers
+```
+
+- Agora, vamos definir o usuário como um campo oculto, cujo valor padrão é o usuário autenticado:
   
+```python
+class ComprasSerializer(ModelSerializer):
+    itens = ItensCompraSerializer(many=True)
+    usuario = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
+    class Meta:
+        model = Compra
+        fields = ("id", "usuario", "status", "total", "itens")
+```
 
+> O campo `usuario` é um campo oculto, pois foi definido como `serializers.HiddenField`. Ele não é exibido no `serializer`. 
 
+> O valor padrão do campo é o usuário autenticado.
+
+> O `CurrentUserDefault` é um campo padrão que retorna o usuário autenticado.
+
+Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClient`, utilizando o método `POST`:
+
+```json
+{
+    "itens": [
+        {
+            "livro": 2,
+            "quantidade": 2
+        }
+    ]
+}
+```
+
+> Observe que não precisamos mais passar o usuário no corpo da requisição, pois ele pega o usuário autenticado.
+
+- Faça o _commit_ e _push_ das alterações.
+  
 
 
 
@@ -3396,6 +3636,8 @@ curl -X DELETE http://localhost:8000/categorias/1/
 - Permita que um carro possa ter várias fotos.
 - Habilite  o Swagger no projeto.
 - Faça o cadastro completo, com fotos, de pelo menos 3 carros.
+- Instale o `django-extensions` e gere o diagrama de banco de dados do projeto (Aula A4)[#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models]
+- Veja se o diagrama gerado está correto, de acordo com o modelo proposto acima.
 
 # A6. Resolução de erros
 
