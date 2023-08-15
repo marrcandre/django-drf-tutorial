@@ -3067,9 +3067,42 @@ def get_total(self, obj):
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ e _push_ das alterações.
 
-<!-- # 29. Totalização dos itens de compra no serializer e model de compra
+# 29. Totalização dos itens de compra na `model` e `serializer` de compra
 
-Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras.  -->
+Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras. 
+
+- Ao final da `model` `Compra`, inclua o seguinte código:
+
+```python
+...
+    @property
+    def total(self):
+        # total = 0
+        # for item in self.itens.all():
+        #     total += item.livro.preco * item.quantidade
+        # return total
+        return sum(item.livro.preco * item.quantidade for item in self.itens.all())
+```
+> No código acima, temos duas formas de calcular o total da compra. A primeira forma está comentada. A segunda forma está descomentada. A segunda forma é mais simples e mais eficiente, e utiliza uma _list comprehension_.
+
+> O método `property` indica que o campo `total` não existe no model `Compra`. Ele será calculado pelo método `total`.
+
+> O método `total` retorna o valor do campo `total`, que é calculado pela soma dos totais dos itens da compra, que é calculado pelo preço do livro multiplicado pela quantidade do item da compra.
+
+- Precisamos incluir o campo `total` no serializer de `Compra`. No `ComprasSerializer`, inclua o seguinte código:
+
+```python
+...
+        fields = ("id", "usuario", "status", "total", "itens")
+...
+```
+
+> O parâmetro `fields` indica quais campos do model `Compra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados, na ordem da lista.
+
+- Teste o endpoint no navegador.
+- Faça o _commit_ e _push_ das alterações.
+  
+
 
 
 
@@ -3115,7 +3148,9 @@ dumpdata = "python manage.py dumpdata {args}"
 pdm run dev
 ```
 
-# A2. isort, black e editorconfig
+# A2. Formatação de código com isort e black
+
+As ferramentas de formatação de código `isort` e `black` são muito úteis para manter o código Python organizado e legível. Enquanto o `isort` organiza as importações, o `black` formata o código, seguindo as convenções do PEP8.
 
 -   Instale as ferramentas de desenvolvimento `isort` e `black`:
 
@@ -3140,29 +3175,14 @@ sections = FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
 
 [settings]
 profile=black
+skip=.git, __init__.py, __pypackages__/
 ```
 
--   Crie um arquivo `.editorconfig` na raiz do projeto:
-
-```shell
-touch .editorconfig
-```
-
--   Abra o arquivo `.editorconfig` e coloque o seguinte conteúdo:
+-  Abra o arquivo `pyproject.toml` e inclua o seguinte conteúdo:
 
 ```python
-root = true
-
-[*]
-indent_style = space
-indent_size = 4
-charset = utf-8
-trim_trailing_whitespace = true
-
-
-
-[*.py]
-indent_size = 4
+[tool.black]
+line-length = 120
 ```
 
 **Usando o isort e o black**
