@@ -3404,17 +3404,24 @@ Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar apenas
 
 ```python
 ...
-class CompraViewSet(viewsets.ModelViewSet):
-...
-
+class CompraViewSet(ModelViewSet):
+    queryset = Compra.objects.all()
+    
     def get_queryset(self):
-        return Compra.objects.filter(usuario=self.request.user)
+        usuario = self.request.user
+        if usuario.is_superuser:
+            return Compra.objects.all()
+        if usuario.groups.filter(name="Administradores"):
+            return Compra.objects.all()
+        return Compra.objects.filter(usuario=usuario)
 ...
 ```
 
 > O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado.
-
 > O `request` é o objeto que representa a requisição. O `request.user` é o usuário autenticado.
+> Se o usuário for superusuário ou for membro do grupo "*Administradores*", retorna todas as compras.
+
+- Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 
 
 
