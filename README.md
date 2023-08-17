@@ -35,6 +35,7 @@
 - [30. Criação de um endpoint para criar novas compras](#30-criação-de-um-endpoint-para-criar-novas-compras)
 - [31. Criação de um endpoint para atualizar compras](#31-criação-de-um-endpoint-para-atualizar-compras)
 - [32. Criação de uma compra a partir do usuário autenticado](#32-criação-de-uma-compra-a-partir-do-usuário-autenticado)
+- [33. Filtrando apenas as compras do usuário autenticado](#33-filtrando-apenas-as-compras-do-usuário-autenticado)
 - [Apêndices](#apêndices)
 - [A1. Criação de _scripts_ PDM](#a1-criação-de-scripts-pdm)
 - [A2. Formatação de código com isort e black](#a2-formatação-de-código-com-isort-e-black)
@@ -50,6 +51,7 @@
   - [Juntando tudo](#juntando-tudo)
   - [Removendo temporários, migrations e o banco de dados](#removendo-temporários-migrations-e-o-banco-de-dados)
   - [Pasta `.venv` criada no projeto](#pasta-venv-criada-no-projeto)
+  - [Geração da SECRET\_KEY](#geração-da-secret_key)
 
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework).
@@ -3394,6 +3396,27 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 - Faça o _commit_ e _push_ das alterações.
   
+# 33. Filtrando apenas as compras do usuário autenticado
+
+Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar apenas as compras do usuário autenticado.
+
+- No `views.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
+
+```python
+...
+class CompraViewSet(viewsets.ModelViewSet):
+...
+
+    def get_queryset(self):
+        return Compra.objects.filter(usuario=self.request.user)
+...
+```
+
+> O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado.
+
+> O `request` é o objeto que representa a requisição. O `request.user` é o usuário autenticado.
+
+
 
 
 
@@ -3724,6 +3747,21 @@ pdm config python.use_venv false
 - Feito isso, execute o `pdm install` novamente.
 - Por fim, execute o `pdm run python manage.py runserver` novamente.
 
+
+## Geração da SECRET_KEY
+
+-   Para gerar uma nova SECRET_KEY (chave secreta), a ser colocada no arquivo `.env`, execute o comando:
+
+```shell
+python -c "import secrets; print(secrets.token_urlsafe())"
+```
+
+-   Você também pode gerar uma nova chave secreta em https://djecrety.ir/
+-   Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
+
+IMPORTANTE:
+
+-   Não esqueça de substituir a chave secreta pelo valor gerado.
 
 ---
 
