@@ -58,13 +58,15 @@
     </li>
     <li>
       <a href="#a6-resolução-de-erros">A6. Resolução de erros</a>
-      <ul>
-        <li><a href="#a1-criação-de-scripts-pdm">A1. Criação de <em>scripts</em> PDM</a></li>
-        <li><a href="#a2-formatação-de-código-com-isort-e-black">A2. Formatação de código com isort e black</a></li>
-        <li><a href="#a3-gerando-o-arquivo-requirementstxt-automaticamente">A3. Gerando o arquivo <em>requirements.txt</em> automaticamente</a></li>
-        <li><a href="#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models">A4. Gerando um diagrama de banco de dados a partir das models</a></li>
-        <li><a href="#a5-usando-curl-para-testar-a-api-via-linha-de-comando">A5. Usando <code>curl</code> para testar a API via linha de comando</a></li>
-      </ul>
+    <ul>
+      <li><a href="#liberando-uma-porta-em-uso">Liberando uma porta em uso</a></li>
+      <li><a href="#descobrindo-o-ip-da-máquina">Descobrindo o IP da máquina</a></li>
+      <li><a href="#rodando-o-django-no-ip-da-máquina">Rodando o Django no IP da máquina</a></li>
+      <li><a href="#juntando-tudo">Juntando tudo</a></li>
+      <li><a href="#removendo-temporários-migrations-e-o-banco-de-dados">Removendo temporários, migrations e o banco de dados</a></li>
+      <li><a href="#pasta-venv-criada-no-projeto">Pasta <code>.venv</code> criada no projeto</a></li>
+      <li><a href="#geração-da-secret_key">Geração da <code>SECRET_KEY</code></a></li>
+    </ul>
     </li>
   </ol>
 </details>
