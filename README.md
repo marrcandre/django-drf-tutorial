@@ -36,6 +36,7 @@
 - [31. Criação de um endpoint para atualizar compras](#31-criação-de-um-endpoint-para-atualizar-compras)
 - [32. Criação de uma compra a partir do usuário autenticado](#32-criação-de-uma-compra-a-partir-do-usuário-autenticado)
 - [33. Filtrando apenas as compras do usuário autenticado](#33-filtrando-apenas-as-compras-do-usuário-autenticado)
+- [34. Validando a quantidade de itens em estoque](#34-validando-a-quantidade-de-itens-em-estoque)
 - [Apêndices](#apêndices)
 - [A1. Criação de _scripts_ PDM](#a1-criação-de-scripts-pdm)
 - [A2. Formatação de código com isort e black](#a2-formatação-de-código-com-isort-e-black)
@@ -3423,6 +3424,97 @@ class CompraViewSet(ModelViewSet):
 
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 
+# 34. Validando a quantidade de itens em estoque
+
+Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
+
+- No `serializers.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque:
+
+```python
+...
+    def validate(self, data):
+        if data["quantidade"] > data["livro"].quantidade:
+            raise serializers.ValidationError(
+                {"quantidade": "Quantidade solicitada não disponível em estoque."}
+            )
+        return data
+...
+```
+
+- Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
+- Faça o _commit_ e _push_ das alterações.
+
+<!-- # 35. Criando um endpoint para listar os livros mais vendidos
+
+Vamos criar um endpoint para listar os livros mais vendidos. Para isso, vamos criar uma nova view e um novo serializer.
+
+- No `serializers.py`, vamos criar um novo `serializer` chamado `LivroMaisVendidoSerializer`:
+
+```python
+class LivroMaisVendidoSerializer(serializers.Serializer):
+    livro = serializers.CharField()
+    quantidade = serializers.IntegerField()
+```
+
+> O `serializer` `LivroMaisVendidoSerializer` é um `serializer` que não está associado a um modelo. Ele é usado para exibir os livros mais vendidos.
+
+- No `views.py`, vamos criar uma nova view chamada `LivroMaisVendidoViewSet`:
+
+```python
+class LivroMaisVendidoViewSet(ViewSet):
+    def list(self, request):
+        livros = (
+            Livro.objects.annotate(quantidade_vendida=Sum("itens__quantidade"))
+            .order_by("-quantidade_vendida")
+            .values("titulo", "quantidade_vendida")
+        )
+        serializer = LivroMaisVendidoSerializer(livros, many=True)
+        return Response(serializer.data)
+```
+
+> O método `list` é chamado quando a lista de livros mais vendidos é exibida. Ele retorna os livros mais vendidos.
+> O método `annotate` é usado para adicionar uma anotação a cada livro. A anotação é a quantidade vendida de cada livro.
+> O método `order_by` é usado para ordenar os livros pela quantidade vendida.
+> O método `values` é usado para retornar apenas os campos `titulo` e `quantidade_vendida` de cada livro.
+
+
+- No `urls.py`, vamos criar uma nova rota para a view `LivroMaisVendidoViewSet`:
+
+```python
+router = DefaultRouter()
+router.register("livros", LivroViewSet, basename="livros")
+router.register("compras", CompraViewSet, basename="compras")
+router.register("livros-mais-vendidos", LivroMaisVendidoViewSet, basename="livros-mais-vendidos")
+```
+
+> A rota `livros-mais-vendidos` é associada à view `LivroMaisVendidoViewSet`.
+> O `basename` é o nome que será usado para identificar a rota.
+
+
+- Para testar, acesse o endpoint `livros-mais-vendidos/` no `ThunderClient`:
+
+```json
+[
+    {
+        "livro": "O Senhor dos Anéis",
+        "quantidade": 4
+    },
+    {
+        "livro": "O Hobbit",
+        "quantidade": 2
+    },
+    {
+        "livro": "O Silmarillion",
+        "quantidade": 1
+    }
+]
+```
+
+> Observe que os livros estão ordenados pela quantidade vendida.
+> Observe que o campo `quantidade` é a quantidade vendida de cada livro.
+
+- Faça o _commit_ e _push_ das alterações.
+ -->
 
 
 
