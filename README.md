@@ -37,14 +37,14 @@
 - [32. Criação de uma compra a partir do usuário autenticado](#32-criação-de-uma-compra-a-partir-do-usuário-autenticado)
 - [33. Filtrando apenas as compras do usuário autenticado](#33-filtrando-apenas-as-compras-do-usuário-autenticado)
 - [34. Validando a quantidade de itens em estoque](#34-validando-a-quantidade-de-itens-em-estoque)
+- [Exercícios](#exercícios)
+  - [Exercício 1 segundo trimestre (Garagem)](#exercício-1-segundo-trimestre-garagem)
 - [Apêndices](#apêndices)
 - [A1. Criação de _scripts_ PDM](#a1-criação-de-scripts-pdm)
 - [A2. Formatação de código com isort e black](#a2-formatação-de-código-com-isort-e-black)
 - [A3. Gerando o arquivo requirements.txt automaticamente](#a3-gerando-o-arquivo-requirementstxt-automaticamente)
 - [A4. Gerando um diagrama de banco de dados a partir das models](#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models)
 - [A5. Usando curl para testar a API via linha de comando](#a5-usando-curl-para-testar-a-api-via-linha-de-comando)
-- [Exercícios](#exercícios)
-  - [Exercício 1 segundo trimestre (Garagem)](#exercício-1-segundo-trimestre-garagem)
 - [A6. Resolução de erros](#a6-resolução-de-erros)
   - [Liberando uma porta em uso](#liberando-uma-porta-em-uso)
   - [Descobrindo o IP da máquina](#descobrindo-o-ip-da-máquina)
@@ -3529,6 +3529,25 @@ router.register("livros-mais-vendidos", LivroMaisVendidoViewSet, basename="livro
 
 ---
 
+# Exercícios
+
+## Exercício 1 segundo trimestre (Garagem)
+
+- Modifique o projeto Garagem para refletir o seguinte modelo:
+
+![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem")
+
+- Crie (ou modifique) as `views`, `urls` e `serializers` necessários para implementar a API REST para o modelo acima.
+- Reestruture o projeto em pastas, para `models`, `views` e `serializers` ficarem em pastas separadas.
+- Modifique o usuário padrão do Django para usar o `email` como `username`.
+- Permita que um carro possa ter várias fotos.
+- Habilite  o Swagger no projeto.
+- Faça o cadastro completo, com fotos, de pelo menos 3 carros.
+- Instale o `django-extensions` e gere o diagrama de banco de dados do projeto (Aula A4)[#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models]
+- Veja se o diagrama gerado está correto, de acordo com o modelo proposto acima.
+
+---
+
 # Apêndices
 
 # A1. Criação de _scripts_ PDM
@@ -3744,23 +3763,6 @@ curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
 curl -X DELETE http://localhost:8000/categorias/1/
 ```
 
-# Exercícios
-
-## Exercício 1 segundo trimestre (Garagem)
-
-- Modifique o projeto Garagem para refletir o seguinte modelo:
-
-![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem")
-
-- Crie (ou modifique) as `views`, `urls` e `serializers` necessários para implementar a API REST para o modelo acima.
-- Reestruture o projeto em pastas, para `models`, `views` e `serializers` ficarem em pastas separadas.
-- Modifique o usuário padrão do Django para usar o `email` como `username`.
-- Permita que um carro possa ter várias fotos.
-- Habilite  o Swagger no projeto.
-- Faça o cadastro completo, com fotos, de pelo menos 3 carros.
-- Instale o `django-extensions` e gere o diagrama de banco de dados do projeto (Aula A4)[#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models]
-- Veja se o diagrama gerado está correto, de acordo com o modelo proposto acima.
-
 # A6. Resolução de erros
 
 ## Liberando uma porta em uso
@@ -3861,6 +3863,20 @@ python -c "import secrets; print(secrets.token_urlsafe())"
 IMPORTANTE:
 
 -   Não esqueça de substituir a chave secreta pelo valor gerado.
+
+#A7. Aumentando o tempo de vida do token de autenticação JWT
+
+-   Adicione as seguintes linhas ao arquivo `settings.py`:
+
+```shell
+from datetime import timedelta
+...
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=180),
+    "REFRESH_TOKEN_LIFETIME":timedelta(days=1),
+}
+```
+
 
 ---
 
