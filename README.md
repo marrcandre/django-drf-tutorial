@@ -1,59 +1,5 @@
 # Django com DRF
 
-# Sumário
-
-- [Django com DRF](#django-com-drf)
-- [Sumário](#sumário)
-- [1. Preparação do ambiente](#1-preparação-do-ambiente)
-- [2. Criação do projeto](#2-criação-do-projeto)
-- [3. Criação de uma aplicação](#3-criação-de-uma-aplicação)
-- [4. Colocando o projeto no GitHub](#4-colocando-o-projeto-no-github)
-- [5. Criando um segundo projeto](#5-criando-um-segundo-projeto)
-- [6. Criando os outros modelos de dados](#6-criando-os-outros-modelos-de-dados)
-- [7. Criando uma API REST](#7-criando-uma-api-rest)
-- [8. Continuando a criação da API REST](#8-continuando-a-criação-da-api-rest)
-- [9. Aplicação frontend Vuejs e Django CORS Headers](#9-aplicação-frontend-vuejs-e-django-cors-headers)
-- [10. Relacionamento n para n](#10-relacionamento-n-para-n)
-- [11. Autenticação e autorização](#11-autenticação-e-autorização)
-- [12. Usando as permissões do DRF](#12-usando-as-permissões-do-drf)
-- [13. Autenticação com o SimpleJWT](#13-autenticação-com-o-simplejwt)
-- [14. Reestruturação em pastas de _models_, _views_ e _serializers_](#14-reestruturação-em-pastas-de-models-views-e-serializers)
-- [15. Modificando o usuário padrão do Django](#15-modificando-o-usuário-padrão-do-django)
-- [16. Upload e associação de imagens](#16-upload-e-associação-de-imagens)
-- [17. Habilitando o Swagger e Redoc usando DRF Spectacular](#17-habilitando-o-swagger-e-redoc-usando-drf-spectacular)
-- [18. Dump e Load de dados](#18-dump-e-load-de-dados)
-- [19. Uso do Django Shell](#19-uso-do-django-shell)
-- [20. Customização do Admin](#20-customização-do-admin)
-- [23. Inclusão da foto de perfil no usuário](#23-inclusão-da-foto-de-perfil-no-usuário)
-- [24. Criação da entidade `Compra` integrada ao usuário do projeto](#24-criação-da-entidade-compra-integrada-ao-usuário-do-projeto)
-- [25. Criando os itens da compra](#25-criando-os-itens-da-compra)
-- [26. Uso de `TabularInline` no `Admin` para Itens da Compra](#26-uso-de-tabularinline-no-admin-para-itens-da-compra)
-- [27. Endpoint para listagem básica de Compras](#27-endpoint-para-listagem-básica-de-compras)
-- [28. Visualização dos itens da compra no endpoint de listagem de compras](#28-visualização-dos-itens-da-compra-no-endpoint-de-listagem-de-compras)
-- [29. Totalização dos itens de compra na `model` e `serializer` de compra](#29-totalização-dos-itens-de-compra-na-model-e-serializer-de-compra)
-- [30. Criação de um endpoint para criar novas compras](#30-criação-de-um-endpoint-para-criar-novas-compras)
-- [31. Criação de um endpoint para atualizar compras](#31-criação-de-um-endpoint-para-atualizar-compras)
-- [32. Criação de uma compra a partir do usuário autenticado](#32-criação-de-uma-compra-a-partir-do-usuário-autenticado)
-- [33. Filtrando apenas as compras do usuário autenticado](#33-filtrando-apenas-as-compras-do-usuário-autenticado)
-- [34. Validando a quantidade de itens em estoque](#34-validando-a-quantidade-de-itens-em-estoque)
-- [Exercícios](#exercícios)
-  - [Exercício 1 segundo trimestre (Garagem)](#exercício-1-segundo-trimestre-garagem)
-- [Apêndices](#apêndices)
-- [A1. Criação de _scripts_ PDM](#a1-criação-de-scripts-pdm)
-- [A2. Formatação de código com isort e black](#a2-formatação-de-código-com-isort-e-black)
-- [A3. Gerando o arquivo requirements.txt automaticamente](#a3-gerando-o-arquivo-requirementstxt-automaticamente)
-- [A4. Gerando um diagrama de banco de dados a partir das models](#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models)
-- [A5. Usando curl para testar a API via linha de comando](#a5-usando-curl-para-testar-a-api-via-linha-de-comando)
-- [A6. Resolução de erros](#a6-resolução-de-erros)
-  - [Liberando uma porta em uso](#liberando-uma-porta-em-uso)
-  - [Descobrindo o IP da máquina](#descobrindo-o-ip-da-máquina)
-  - [Rodando o Django no IP da máquina](#rodando-o-django-no-ip-da-máquina)
-  - [Juntando tudo](#juntando-tudo)
-  - [Removendo temporários, migrations e o banco de dados](#removendo-temporários-migrations-e-o-banco-de-dados)
-  - [Pasta `.venv` criada no projeto](#pasta-venv-criada-no-projeto)
-  - [Geração da SECRET\_KEY](#geração-da-secret_key)
-
-
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework).
 
 Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva). Recomendo.
@@ -2130,13 +2076,9 @@ pdm add python-magic Pillow
 - Caso você esteja no Windows, para funcionar corretamente, você precisará seguir os seguintes passos:
 
   - **Baixe as DLLs**: Acesse [https://github.com/pidydx/libmagicwin64](https://github.com/pidydx/libmagicwin64) e baixe o arquivo ZIP contendo as DLLs.
-
   - **Descompacte o arquivo ZIP**: Clique com o botão direito no arquivo ZIP baixado e escolha "Extrair tudo..." para extrair o conteúdo.
-
   - **Copie as DLLs**: Dentro da pasta extraída, você encontrará os arquivos DLL (`magic1.dll`, etc.). Selecione esses arquivos, clique com o botão direito e escolha "Copiar."
-
   - **Cole as DLLs no System32**: Navegue até o diretório `C:\Windows\System32`, crie uma pasta chamada `magic`, clique com o botão direito dentro da pasta e escolha "Colar." Você pode precisar de permissões administrativas para fazer isso, então certifique-se de confirmar qualquer solicitação que apareça.
-
   - **Atualize seu código**: No arquivo `utils/files.py`, onde você está usando a biblioteca `magic`, você precisará especificar o caminho para o arquivo `magic.mgc`. Aqui está um exemplo de como você pode fazer isso:
 
     ```python
