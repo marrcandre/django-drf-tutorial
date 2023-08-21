@@ -1,142 +1,19 @@
 # Django com DRF
 
-Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework).
+Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva). 
 
-Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva). Recomendo.
-
-Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma solicitação de contribuição ao projeto.
-
-<!-- TODO: Mover essa seção para os apêndices. -->
-
-**Como contribuir com um projeto privado:**
-
--   Criar um _fork_ do projeto.
--   Clonar o _fork_
--   Criar um _branch_ para a sua contribuição.
--   Fazer as alterações no seu _branch_.
--   Enviar um _pull request_ para o projeto original.
-
+Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
 <!-- TODO: Adicionar link para os demais cursos do Eduardo da Silva e Fábio. -->
-
-<!-- TODO: Mover essa seção para os apêndices. -->
 
 # 1. Preparação do ambiente
 
 A preparação do ambiente será feita apenas uma vez em cada computador. Ela consiste em instalar e configurar o **VS Code**, o **PDM** e o **Python**.
 
-**1.1 VS Code**
-
-**1.1.1 Instalação do VS Code**
-
-Caso não tenha o **VS Code** instalado, instale-o seguindo as instruções [deste link](https://code.visualstudio.com/download).
-
-**1.1.2 Atualização do VS Code**
-
-Para atualizar o **VS Code**, siga as seguintes instruções:
-
-**No Ubuntu/Mint e derivados:**
-
-```shell
-sudo apt install code
-```
-
-**No Manjaro:**
-
-```shell
-yay -Syu visual-studio-code-bin
-```
-
-**No Windows:**
-
--   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
-
-**1.1.3 Instalação de extensões no VS Code**
-
-Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
-
-Eu recomendo as seguintes:
-
--   [Better TOML (Syntaxe Destacada para TOML)](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
--   [Black (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
--   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
--   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
--   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
--   [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
--   [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
--   [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
--   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
--   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
--   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
--   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
--   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
--   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
--   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
-
-**1.1.4 Sinconização de extensões no VS Code**
-
-Você pode configurar a sincronização das extensões entre os computadores. Para isso:
-
--   Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code.
--   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
-
-**1.2 Instalação do PDM**
-
-**1.2.1 Instalação do PDM no Linux**
-
-As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
-
--   Abra um terminal:
-
-    `Ctrl + Alt + T`
-
--   Verifique se o **PDM** está instalado:
-
-```shell
-pdm -V
-```
-
--   Se a versão for inferior a 2, instale a versão mais recente:
-
-```shell
-curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
-```
-
-**Configuração do PDM no `bash` (Ubuntu e derivados)**
-
--   Execute o seguinte comando:
-
-```shell
-curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
-```
-
-**Configuração do PDM no `zsh` com o `Oh! My Zsh` (Manjaro e derivados)**
-
--   Execute o seguinte comando:
-
-```shell
-curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
-```
-
-**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
-
-**1.2.2 Instalação do PDM no Windows**
-Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
-
-```shell
-(Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
-```
-
-Verifique se o **PDM** está configurado para não usar virtualenv:
-
-```shell
-pdm config
-```
-
-**Observação:**
-
-Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
-
+- [Instale ou atualize o VS Code](#a0-instalação-do-vs-code).
+- [Instale e sincronize as extensões do VS Code.](#a0-instalação-e-sincronização-de-extensões-do-vs-code)
+- [Instale e configure o PDM](#a0-instalação-e-configuração-do-pdm)
+  
 <!-- TODO: Inserir na seção de resolução de erros. -->
 
 <!-- **1.2.6 Instalação de plugins do PDM**
@@ -3517,6 +3394,120 @@ router.register("livros-mais-vendidos", LivroMaisVendidoViewSet, basename="livro
 
 # Apêndices
 
+# A0. Instalação do VS Code
+
+**1.1.2 Atualização do VS Code**
+
+Para **instalar** ou **atualizar** o **VS Code**, siga as seguintes instruções:
+
+**No Ubuntu/Mint e derivados:**
+
+```shell
+sudo apt install code
+```
+
+**No Manjaro:**
+
+```shell
+yay -Syu visual-studio-code-bin
+```
+
+**No Windows:**
+
+-   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
+
+# A0. Instalação e sincronização de extensões do VS Code
+
+## Instalação de extensões no VS Code
+
+Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
+
+Eu recomendo as seguintes:
+
+-   [Black Formatter(Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+-   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+-   [Even Better TOML (Melhorias na edição de arquivos TOML)](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)
+-   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+-   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
+-   [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+-   [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+-   [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+-   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
+-   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+-   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+-   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+-   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
+-   [TODO Highlight (Realce de TODOs)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
+-   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
+-   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+
+## Sinconização de extensões no VS Code
+
+Você pode configurar a sincronização das extensões entre os computadores. Para isso:
+
+-   Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code.
+-   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
+
+# A0. Instalação e configuração do PDM
+
+**1.2 Instalação do PDM**
+
+**1.2.1 Instalação do PDM no Linux**
+
+As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
+
+-   Abra um terminal:
+
+    `Ctrl + Alt + T`
+
+-   Verifique se o **PDM** está instalado:
+
+```shell
+pdm -V
+```
+
+-   Se a versão for inferior a 2, instale a versão mais recente:
+
+```shell
+curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
+```
+
+**Configuração do PDM no `bash` (Ubuntu e derivados)**
+
+-   Execute o seguinte comando:
+
+```shell
+curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
+```
+
+**Configuração do PDM no `zsh` com o `Oh! My Zsh` (Manjaro e derivados)**
+
+-   Execute o seguinte comando:
+
+```shell
+curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
+```
+
+**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
+
+**1.2.2 Instalação do PDM no Windows**
+Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
+
+```shell
+(Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
+```
+
+Verifique se o **PDM** está configurado para não usar virtualenv:
+
+```shell
+pdm config
+```
+
+**Observação:**
+
+Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
+
+
 # A1. Criação de _scripts_ PDM
 
 Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
@@ -3831,7 +3822,7 @@ IMPORTANTE:
 
 -   Não esqueça de substituir a chave secreta pelo valor gerado.
 
-#A7. Aumentando o tempo de vida do token de autenticação JWT
+# A7. Aumentando o tempo de vida do token de autenticação JWT
 
 -   Adicione as seguintes linhas ao arquivo `settings.py`:
 
@@ -3844,6 +3835,15 @@ SIMPLE_JWT = {
 }
 ```
 
+# Contribua
+
+**Para contriburi com esse projeto:**
+
+-   Criar um _fork_ do projeto.
+-   Clonar o _fork_
+-   Criar um _branch_ para a sua contribuição.
+-   Fazer as alterações no seu _branch_.
+-   Enviar um _pull request_ para o projeto original.
 
 ---
 
