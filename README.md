@@ -3517,6 +3517,12 @@ pdm add django
 
 # A4. Gerando um diagrama de banco de dados a partir das models
 
+- Instale o `GraphViz`:
+  
+```shell
+sudo apt install graphviz
+```
+
 -   Instale o `django-extensions` e o `pydotplus`:
 
 ```shell
