@@ -2135,13 +2135,13 @@ pdm add python-magic Pillow
 
   - **Copie as DLLs**: Dentro da pasta extraída, você encontrará os arquivos DLL (`magic1.dll`, etc.). Selecione esses arquivos, clique com o botão direito e escolha "Copiar."
 
-  - **Cole as DLLs no System32**: Navegue até o diretório `C:\Windows\System32`, clique com o botão direito dentro da pasta e escolha "Colar." Você pode precisar de permissões administrativas para fazer isso, então certifique-se de confirmar qualquer solicitação que apareça.
+  - **Cole as DLLs no System32**: Navegue até o diretório `C:\Windows\System32`, crie uma pasta chamada `magic`, clique com o botão direito dentro da pasta e escolha "Colar." Você pode precisar de permissões administrativas para fazer isso, então certifique-se de confirmar qualquer solicitação que apareça.
 
   - **Atualize seu código**: No arquivo `utils/files.py`, onde você está usando a biblioteca `magic`, você precisará especificar o caminho para o arquivo `magic.mgc`. Aqui está um exemplo de como você pode fazer isso:
 
     ```python
     import magic
-    file_magic = magic.Magic(magic_file="C:\\Windows\\System32\\magic\\magic.mgc")
+    file_magic = magic.Magic(magic_file="C:\Windows\magic\magic.mgc")
     ```
 
   - **Execute seu servidor Django**: Tente executar seu servidor novamente:
