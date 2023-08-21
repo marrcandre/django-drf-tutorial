@@ -2144,11 +2144,6 @@ pdm add python-magic Pillow
     file_magic = magic.Magic(magic_file="C:\Windows\magic\magic.mgc")
     ```
 
-  - **Execute seu servidor Django**: Tente executar seu servidor novamente:
-    ```shell
-    pdm run python manage.py runserver
-    ```
-
   Seguindo esses passos, você deverá conseguir importar a biblioteca `magic` com sucesso em seu projeto Django no ambiente Windows.
 
 -   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
