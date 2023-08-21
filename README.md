@@ -2503,6 +2503,167 @@ class LivroAdmin(admin.ModelAdmin):
 
     http://localhost:8000/admin/
 
+
+# 21. Configurando diferentes ambientes 
+
+Vamos configurar diferentes ambientes para desenvolvimento, migração e produção. Para isso, vamos criar um arquivo `.env` na raiz do projeto. Nesse arquivo, vamos definir as variáveis de ambiente que queremos que tenham valores diferentes para cada ambiente.
+
+**Instalação do pacote `python-dotenv`**
+
+-   Instale o pacote `python-dotenv`:
+
+```shell
+pdm add python-dotenv
+```
+
+**Configuração do ambiente de desenvolvimento**
+
+-   Edite o arquivo `.env`, incluindo as seguintes variáveis:
+
+```shell
+# Django
+SECRET_KEY=django_insecure_#-
+DEBUG=True
+ALLOWED_HOSTS=['*']
+
+MODE=DEVELOPMENT # DEVELOPMENT, PRODUCTION, MIGRATE
+
+# Supabase
+DATABASE_NAME=postgres
+DATABASE_USER=postgres
+DATABASE_PASSWORD=Senha.123@!
+DATABASE_HOST=db.vqcprcexhnwvyvewgrin.supabase.co
+DATABASE_PORT=5432
+```
+
+-   Edite o arquivo `settings.py`, incluindo o seguinte código:
+
+```python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+MODE = os.getenv("MODE")
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+DEBUG = os.getenv("DEBUG", "False")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.livraria-render-7e92-dev.fl0.io/"]
+...
+```
+
+> As referências às variaveis incluídas no arquivo `.env` foram substituídas pelas variáveis de ambiente.
+
+> Sendo assim, as referências anteriores a elas no arquivo `settings.py` devem ser removidas.
+
+> O comando load_dotenv() carrega as variáveis de ambiente definidas no arquivo `.env` ou no sistema operacional.
+
+> Na variável `CSRF_TRUSTED_ORIGINS` foram incluídos os endereços dos ambientes de desenvolvimento e produção. Isso é necessário para que o Django aceite requisições de outros domínios. Você deve incluir os endereços dos seus ambientes de desenvolvimento e produção.
+
+**Configuração da base de dados**
+
+- As configurações da base de dados também precisam ser modificadas:
+
+```python
+...
+
+f MODE in ["PRODUCTION", "MIGRATE"]:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ.get("DATABASE_NAME"),
+            "USER": os.environ.get("DATABASE_USER"),
+            "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
+            "HOST": os.environ.get("DATABASE_HOST"),
+            "PORT": os.environ.get("DATABASE_PORT"),
+        }
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
+print(MODE, DATABASES)
+```
+
+> A variável `MODE` é definida no arquivo `.env`.
+
+> Nessa configuracão, a base de dados será externa quando o ambiente for `PRODUCTION` ou `MIGRATE`. Caso contrário, será a base de dados local.
+
+> Na configuração local, a base de dados será o `SQLite`.
+
+> Nos demais modos, a base de dados será o `PostgreSQL` de um servidor externo.
+
+> Poderíamos ter um servidor MySQL, por exemplo, e a configuração seria a mesma, bastando alterar o `ENGINE` para `django.db.backends.mysql`.
+
+> Isso tudo pode ser facilmente alterado, de acordo com a necessidade, apenas modificando o arquivo `.env`.
+
+
+**Configuração de arquivos estáticos**
+
+-   Edite o arquivo `settings.py`, incluindo o seguinte código:
+
+```python
+...
+if MODE == "PRODUCTION":
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+```
+
+**Testando a configuração**
+
+-   Execute o comando `pdm run python manage.py runserver` para testar a configuração.
+
+> Tudo deve funcionar como antes, uma vez que as variáveis de ambiente definidas no arquivo `.env` são as mesmas que estavam definidas no arquivo `settings.py`.
+
+> Como definimos o modo de desenvolvimento, a base de dados será a local.
+
+> Posteriormente, vamos alterar o modo para `PRODUCTION` e a base de dados será a do `Supabase` ou algum outro banco de dados remoto.
+
+- Faça o commit das alterações.
+
+
+**Criando um arquivo .env_exemplo**
+
+O arquivo `.env` não deve ser versionado. Para isso, vamos criar um arquivo `.env_exemplo` com as variáveis de ambiente que devem ser definidas.
+
+- Crie um arquivo `.env_exemplo` na raiz do projeto, copiando o conteúdo do arquivo `.env`. Não inclua nesse arquivo nenhuma informação sensível, como senhas, tokens, etc.
+
+- No arquivo `.gitignore`, inclua a linha `.env` para que o arquivo `.env` não seja versionado.
+
+Um exemplo de arquivo `.env_exemplo`:
+
+```shell
+# Django
+SECRET_KEY=django_insecure_#-
+DEBUG=True
+ALLOWED_HOSTS=['*']
+
+MODE=DEVELOPMENT # DEVELOPMENT, PRODUCTION, MIGRATE
+
+# Supabase
+DATABASE_NAME=postgres
+DATABASE_USER=postgres
+DATABASE_PASSWORD=!@SenhA.123@!
+DATABASE_HOST=db.blah.supabase.co
+DATABASE_PORT=5432
+```
+
+**Recriando o arquivo .env**
+
+Sempre que você clonar o projeto, precisará recriar o arquivo `.env` com as informações sensíveis, uma vez que o arquivo `.env` não é versionado.
+
+-   Para recriar o arquivo `.env`, basta copiar o arquivo `.env_exemplo` para `.env` e incluir as informações sensíveis.
+
+> Nos servidores de produção, as variáveis de ambiente são definidas no próprio servidor, não sendo necessário criar o arquivo `.env`.
+
+
+
+
 # 23. Inclusão da foto de perfil no usuário
 
 Vamos incluir a foto de perfil no usuário.
