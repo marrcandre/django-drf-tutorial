@@ -6,6 +6,8 @@ Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https
 
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma solicitação de contribuição ao projeto.
 
+<!-- TODO: Mover essa seção para os apêndices. -->
+
 **Como contribuir com um projeto privado:**
 
 -   Criar um _fork_ do projeto.
@@ -13,6 +15,11 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 -   Criar um _branch_ para a sua contribuição.
 -   Fazer as alterações no seu _branch_.
 -   Enviar um _pull request_ para o projeto original.
+
+
+<!-- TODO: Adicionar link para os demais cursos do Eduardo da Silva e Fábio. -->
+
+<!-- TODO: Mover essa seção para os apêndices. -->
 
 # 1. Preparação do ambiente
 
@@ -130,6 +137,8 @@ pdm config
 
 Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
 
+<!-- TODO: Inserir na seção de resolução de erros. -->
+
 <!-- **1.2.6 Instalação de plugins do PDM**
 
 **1.2.6.1 Instalação do plugin pdm-vscode**
@@ -167,7 +176,8 @@ Para configurar o plugin, edite o arquivo `pyproject.toml` e adicione a seguinte
 [[tool.pdm.autoexport]]
 filename = "requirements.txt"
 without-hashes = "true"
-``` -->
+``` 
+-->
 
 <!-- **1.2.8 Configuração do Navegador de Arquivos**
 
