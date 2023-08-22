@@ -207,33 +207,6 @@ ls -l pdm.lock
 pdm run django-admin --version
 ```
 
-**Instalação do black**
-
-Vamos instalar o **black** para formatar o código do nosso projeto. O **black** é um **formatador de código** que formata o código de acordo com as **regras de estilo** do **PEP8**.
-
--   Instale o **black**:
-
-```shell
-pdm add --dev black
-```
-
--   Crie (ou edite) o arquivo chamado `.vscode/settings.json` com o seguinte conteúdo:
-
-```json
-{
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length=79"]
-}
-```
-
-Para formatar o código:
-
--   use as teclas `Ctrl + Shift + P` e digite `Format Document`.
--   use as teclas `Ctrl + Shift + I`.
--   no terminal, digite :
-
-    `pdm run black .`
-
 **2.5 Criação do projeto no Django**
 
 Um projeto no **Django** é uma pasta com um conjunto de arquivos e pastas que contém o código do seu site. Vamos criar um projeto chamado `config`.
@@ -2524,33 +2497,24 @@ web: gunicorn config.wsgi
 - Se tudo der certo, o projeto estará disponível na URL que você definiu, algo parecido com https://livraria-marrcandre-dev.fl0.io/.
 
 
+# 22B. Criação do Banco de Dados no Supabase
+
+Vamos criar um banco de dados no Supabase. Com isso, os dados não serão perdidos a cada nova implantação.
+
+**Criando um projeto no Supabase**
+
+- Acesse o site do [Supabase](https://supabase.io/) e crie uma conta.
+- Crie um novo projeto no Supabase.
+- Dẽ um nome ao projeto.
+- Selecione uma região.
+- Selecione a opção `Create a new organization`.
+- Dẽ um nome à organização.
+- 
+- 
 
 
-<!-- 22. Implantando o projeto no Heroku
 
-Vamos implantar o projeto no Heroku.
 
-**Criando o app no Heroku**
-
--   Crie um app no Heroku.
--   Na aba `Deploy`, selecione o `Deployment method` como `GitHub`.
--   Faça o login no GitHub e selecione o repositório do projeto.
--   Na aba `Settings`, clique em `Reveal Config Vars` e inclua as variáveis de ambiente definidas no arquivo `.env_exemplo`.
--   Na aba `Resources`, adicione o `Heroku Postgres` e o `Heroku Redis`.
--   Na aba `Resources`, clique no `Heroku Postgres` e, na aba `Settings`, clique em `View Credentials` e copie as informações de conexão com o banco de dados.
--   No arquivo `.env`, inclua as informações de conexão com o banco de dados.
--   No arquivo `settings.py`, altere o valor da variável `MODE` para `PRODUCTION`.
--   No arquivo `settings.py`, altere o valor da variável `ALLOWED_HOSTS` para o domínio do Heroku.
--   No arquivo `settings.py`, altere o valor da variável `DEBUG` para `False`.
-
-**Configurando o Heroku**
-
--   No arquivo `Procfile`, inclua o seguinte código:
-
-```shell
-release: python manage.py migrate
-web: gunicorn livraria.wsgi --log-file -
-``` -->
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -3592,6 +3556,8 @@ Execute os seguintes comandos:
 pdm run isort .
 pdm run black .
 ```
+
+Opcionalmente, você pode utilizador o formatador de código em um arquivo, selecionando o código (`Ctrl` + `A`) e pressionando `Ctrl + Shift + I`.
 
 <!--
 -   Crie um arquivo `.flake8` na raiz do projeto:
