@@ -2404,13 +2404,6 @@ DEBUG=True
 ALLOWED_HOSTS=['*']
 
 MODE=DEVELOPMENT # DEVELOPMENT, PRODUCTION, MIGRATE
-
-# Supabase
-DATABASE_NAME=postgres
-DATABASE_USER=postgres
-DATABASE_PASSWORD=Senha.123@!
-DATABASE_HOST=db.vqcprcexhnwvyvewgrin.supabase.co
-DATABASE_PORT=5432
 ```
 
 -   Edite o arquivo `settings.py`, incluindo o seguinte código:
@@ -2425,57 +2418,17 @@ MODE = os.getenv("MODE")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False")
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.livraria-render-7e92-dev.fl0.io/"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.fl0.io/"]
 ...
 ```
 
-> As referências às variaveis incluídas no arquivo `.env` foram substituídas pelas variáveis de ambiente.
-
-> Sendo assim, as referências anteriores a elas no arquivo `settings.py` devem ser removidas.
+> As referências às variaveis incluídas no arquivo `.env` foram substituídas pelas variáveis de ambiente. Sendo assim, as referências anteriores a elas no arquivo `settings.py` devem ser removidas.
 
 > O comando load_dotenv() carrega as variáveis de ambiente definidas no arquivo `.env` ou no sistema operacional.
 
 > Na variável `CSRF_TRUSTED_ORIGINS` foram incluídos os endereços dos ambientes de desenvolvimento e produção. Isso é necessário para que o Django aceite requisições de outros domínios. Você deve incluir os endereços dos seus ambientes de desenvolvimento e produção.
 
-**Configuração da base de dados**
-
-- As configurações da base de dados também precisam ser modificadas:
-
-```python
-...
-
-f MODE in ["PRODUCTION", "MIGRATE"]:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("DATABASE_NAME"),
-            "USER": os.environ.get("DATABASE_USER"),
-            "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-            "HOST": os.environ.get("DATABASE_HOST"),
-            "PORT": os.environ.get("DATABASE_PORT"),
-        }
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-
-print(MODE, DATABASES)
-```
-
-> A variável `MODE` é definida no arquivo `.env`.
-
-> Nessa configuracão, a base de dados será externa quando o ambiente for `PRODUCTION` ou `MIGRATE`. Caso contrário, será a base de dados local.
-
-> Na configuração local, a base de dados será o `SQLite`.
-
-> Nos demais modos, a base de dados será o `PostgreSQL` de um servidor externo.
-
-> Poderíamos ter um servidor MySQL, por exemplo, e a configuração seria a mesma, bastando alterar o `ENGINE` para `django.db.backends.mysql`.
+> A variável `MODE` é definida no arquivo `.env`. Ela será utilizada para definir o modo de execução do projeto. No caso, o modo de execução é o `DEVELOPMENT`.
 
 > Isso tudo pode ser facilmente alterado, de acordo com a necessidade, apenas modificando o arquivo `.env`.
 
@@ -2497,9 +2450,7 @@ if MODE == "PRODUCTION":
 
 > Tudo deve funcionar como antes, uma vez que as variáveis de ambiente definidas no arquivo `.env` são as mesmas que estavam definidas no arquivo `settings.py`.
 
-> Como definimos o modo de desenvolvimento, a base de dados será a local.
-
-> Posteriormente, vamos alterar o modo para `PRODUCTION` e a base de dados será a do `Supabase` ou algum outro banco de dados remoto.
+> Posteriormente, vamos alterar o modo para `PRODUCTION` e a base de dados será algum outro banco de dados remoto.
 
 - Faça o commit das alterações.
 
@@ -2521,13 +2472,6 @@ DEBUG=True
 ALLOWED_HOSTS=['*']
 
 MODE=DEVELOPMENT # DEVELOPMENT, PRODUCTION, MIGRATE
-
-# Supabase
-DATABASE_NAME=postgres
-DATABASE_USER=postgres
-DATABASE_PASSWORD=!@SenhA.123@!
-DATABASE_HOST=db.blah.supabase.co
-DATABASE_PORT=5432
 ```
 
 **Recriando o arquivo .env**
@@ -2538,8 +2482,75 @@ Sempre que você clonar o projeto, precisará recriar o arquivo `.env` com as in
 
 > Nos servidores de produção, as variáveis de ambiente são definidas no próprio servidor, não sendo necessário criar o arquivo `.env`.
 
+# 22. Implantando no Fl0
+
+Vamos implantar o projeto no Fl0.
+
+**Criando uma conta no Fl0**
+
+Acesse o site do [Fl0](https://fl0.com/) e crie uma conta.
+
+**Criando um novo projeto no Fl0**
+
+-  Crie um novo projeto no Fl0.
+-  Dẽ um nome ao projeto.
+-  Selecione o repositório do projeto.
+-  Habilite a opção `Automatic deployments`.
+-  Selecione a branch `main`.
+
+**Configurando o projeto no Fl0**
+
+- Na aba `Environment variables`, inclua as variáveis de ambiente definidas no arquivo `.env`:
+
+| Configuração   | Valor               |
+|----------------|---------------------|
+| PORT           | 8080                |
+| SECRET_KEY     | [gere uma chave secreta](#geração-da-secret_key). |
+| DEBUG          | False               |
+| MODE           | PRODUCTION          |
+
+**Configurações no projeto**
+
+- Crie um arquivo `Procfile` na raiz do projeto, com o seguinte conteúdo:
+
+```shell
+web: gunicorn config.wsgi
+```
+
+- Assegure-se de que o arquivo `requirements.txt` está atualizado. Caso ele não exista, [siga esses passos](#a3-gerando-o-arquivo-requirementstxt-automaticamente).
+
+- Faça o commit das alterações. O projeto deve ser implantado automaticamente no Fl0.
+- Acompanhe o processo na aba `Deployments`, escolhendo o deployment mais recente, e clicando em `View logs`.
+- Se tudo der certo, o projeto estará disponível na URL que você definiu, algo parecido com https://livraria-marrcandre-dev.fl0.io/.
 
 
+
+
+<!-- 22. Implantando o projeto no Heroku
+
+Vamos implantar o projeto no Heroku.
+
+**Criando o app no Heroku**
+
+-   Crie um app no Heroku.
+-   Na aba `Deploy`, selecione o `Deployment method` como `GitHub`.
+-   Faça o login no GitHub e selecione o repositório do projeto.
+-   Na aba `Settings`, clique em `Reveal Config Vars` e inclua as variáveis de ambiente definidas no arquivo `.env_exemplo`.
+-   Na aba `Resources`, adicione o `Heroku Postgres` e o `Heroku Redis`.
+-   Na aba `Resources`, clique no `Heroku Postgres` e, na aba `Settings`, clique em `View Credentials` e copie as informações de conexão com o banco de dados.
+-   No arquivo `.env`, inclua as informações de conexão com o banco de dados.
+-   No arquivo `settings.py`, altere o valor da variável `MODE` para `PRODUCTION`.
+-   No arquivo `settings.py`, altere o valor da variável `ALLOWED_HOSTS` para o domínio do Heroku.
+-   No arquivo `settings.py`, altere o valor da variável `DEBUG` para `False`.
+
+**Configurando o Heroku**
+
+-   No arquivo `Procfile`, inclua o seguinte código:
+
+```shell
+release: python manage.py migrate
+web: gunicorn livraria.wsgi --log-file -
+``` -->
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -3809,18 +3820,24 @@ pdm config python.use_venv false
 
 ## Geração da SECRET_KEY
 
+A SECRET_KEY é uma chave secreta usada pelo Django para criptografar dados sensíveis. Ela é usada, por exemplo, para criptografar as senhas dos usuários. Em sistemas em produção ela deve ser mantida em segredo. 
+
 -   Para gerar uma nova SECRET_KEY (chave secreta), a ser colocada no arquivo `.env`, execute o comando:
 
 ```shell
 python -c "import secrets; print(secrets.token_urlsafe())"
 ```
+- No Django, o comando é:
+
+```shell
+pdm run python manage.py shell -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
 
 -   Você também pode gerar uma nova chave secreta em https://djecrety.ir/
--   Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
 
-IMPORTANTE:
+> Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
 
--   Não esqueça de substituir a chave secreta pelo valor gerado.
+> Não esqueça de substituir a chave secreta pelo valor gerado.
 
 # A7. Aumentando o tempo de vida do token de autenticação JWT
 
