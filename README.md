@@ -3339,86 +3339,41 @@ Nesse momento, é possível criar uma compra com uma quantidade de itens maior d
 - Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ e _push_ das alterações.
 
-<!-- # 35. Criando um endpoint para listar os livros mais vendidos
 
-Vamos criar um endpoint para listar os livros mais vendidos. Para isso, vamos criar uma nova view e um novo serializer.
+Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
 
-- No `serializers.py`, vamos criar um novo `serializer` chamado `LivroMaisVendidoSerializer`:
-
-```python
-class LivroMaisVendidoSerializer(serializers.Serializer):
-    livro = serializers.CharField()
-    quantidade = serializers.IntegerField()
-```
-
-> O `serializer` `LivroMaisVendidoSerializer` é um `serializer` que não está associado a um modelo. Ele é usado para exibir os livros mais vendidos.
-
-- No `views.py`, vamos criar uma nova view chamada `LivroMaisVendidoViewSet`:
+- Primeiro, precisamos incluir o campo `preco` no model `ItensCompra`:
 
 ```python
-class LivroMaisVendidoViewSet(ViewSet):
-    def list(self, request):
-        livros = (
-            Livro.objects.annotate(quantidade_vendida=Sum("itens__quantidade"))
-            .order_by("-quantidade_vendida")
-            .values("titulo", "quantidade_vendida")
-        )
-        serializer = LivroMaisVendidoSerializer(livros, many=True)
-        return Response(serializer.data)
+...
+class ItensCompra(models.Model):
+    compra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name="itens")
+    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="+")
+    quantidade = models.IntegerField(default=1)
+    preco = models.DecimalField(max_digits=10, decimal_places=2, default=1)
+...
 ```
 
-> O método `list` é chamado quando a lista de livros mais vendidos é exibida. Ele retorna os livros mais vendidos.
-> O método `annotate` é usado para adicionar uma anotação a cada livro. A anotação é a quantidade vendida de cada livro.
-> O método `order_by` é usado para ordenar os livros pela quantidade vendida.
-> O método `values` é usado para retornar apenas os campos `titulo` e `quantidade_vendida` de cada livro.
+- Execute as migrações:
 
+```shell
+pdm run python manage.py makemigrations
+pdm run python manage.py migrate
+```
 
-- No `urls.py`, vamos criar uma nova rota para a view `LivroMaisVendidoViewSet`:
+- No `serializers.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para gravar o preço do livro no item da compra:
 
 ```python
-router = DefaultRouter()
-router.register("livros", LivroViewSet, basename="livros")
-router.register("compras", CompraViewSet, basename="compras")
-router.register("livros-mais-vendidos", LivroMaisVendidoViewSet, basename="livros-mais-vendidos")
+...
+    def create(self, validated_data):
+        item = ItensCompra.objects.create(**validated_data)
+        item.preco = item.livro.preco
+        item.save()
+        return item
+...
 ```
 
-> A rota `livros-mais-vendidos` é associada à view `LivroMaisVendidoViewSet`.
-> O `basename` é o nome que será usado para identificar a rota.
-
-
-- Para testar, acesse o endpoint `livros-mais-vendidos/` no `ThunderClient`:
-
-```json
-[
-    {
-        "livro": "O Senhor dos Anéis",
-        "quantidade": 4
-    },
-    {
-        "livro": "O Hobbit",
-        "quantidade": 2
-    },
-    {
-        "livro": "O Silmarillion",
-        "quantidade": 1
-    }
-]
-```
-
-> Observe que os livros estão ordenados pela quantidade vendida.
-> Observe que o campo `quantidade` é a quantidade vendida de cada livro.
-
-- Faça o _commit_ e _push_ das alterações.
- -->
-
-
-
-
-
-
-
-
-
+- Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 
 
 
@@ -3886,6 +3841,10 @@ pdm run python manage.py shell -c "from django.core.management.utils import get_
 > Para saber mais sobre a chave secreta, acesse a [documentação](https://docs.djangoproject.com/en/4.1/ref/settings/#secret-key) do Django.
 
 > Não esqueça de substituir a chave secreta pelo valor gerado.
+
+## Abrindo um arquivo sqlite3 na web
+
+- Acesse o site https://sqliteviewer.app/ e abra o arquivo `db.sqlite3` do projeto.
 
 # A7. Aumentando o tempo de vida do token de autenticação JWT
 
