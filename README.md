@@ -1533,7 +1533,7 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 ```json
 {
     "username": "comprador1",
-    "password": "minhasenha1"
+    "password": "senha.123"
 }
 ```
 
@@ -1880,6 +1880,20 @@ pdm run python manage.py createsuperuser
 -   Entre no `Admin` e crie um novo usuário.
 
 > Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
+
+Para testar o login, utilize o **Thunder Client**:
+
+-   Faça uma requisição do tipo `POST` para a URL `http://localhost:8000/api/token/`, enviando as informações de usuário e senha no `Body` em `JSON`:
+
+```json
+{
+    "email": "comprador@a.com",
+    "password": "senha.123"
+}
+```
+
+-   Copie o valor do campo `access` e coloque no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
+
 
 # 16. Upload e associação de imagens
 
