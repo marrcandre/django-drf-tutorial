@@ -18,27 +18,6 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 
 <!-- **1.2.6 Instalação de plugins do PDM**
 
-**1.2.6.1 Instalação do plugin pdm-vscode**
-
-Instale o plugin `pdm-vscode`, que permite a integração do **PDM** com o **VS Code**:
-
-```shell
-pdm plugin add pdm-vscode
-```
-
-Na criação do projeto, será criada uma pasta `.vscode` com um arquivo `settings.json` que contém as configurações do **PDM** para o **VS Code**:
-
-```json
-{
-    "python.analysis.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
-    ],
-    "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
-    ]
-}
-```
-
 **1.2.7 Instalação do plugin pdm-autoexport**
 
 Instale o plugin `pdm-autoexport`, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
@@ -3751,6 +3730,35 @@ curl -X DELETE http://localhost:8000/categorias/1/
 
 # A6. Resolução de erros
 
+**Instalação do plugin pdm-vscode**
+
+Se seu projeto não estiver reconhecendo os arquivos do Python ou do Django, você pode instalar o plugin `pdm-vscode`, que permite a integração do **PDM** com o **VS Code**:
+
+
+- Instale o plugin `pdm-vscode`, que permite a integração do **PDM** com o **VS Code**:
+
+```shell
+pdm plugin add pdm-vscode
+```
+
+Na criação do projeto, será criada uma pasta `.vscode` com um arquivo `settings.json` que contém as configurações do **PDM** para o **VS Code**:
+
+```json
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/__pypackages__/3.10/lib"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/__pypackages__/3.10/lib"
+    ]
+}
+```
+
+> Se esse arquivo não for criado, você pode criá-lo manualmente.
+
+> Se esse arquivo existir, mas não tiver o conteúdo acima, você pode incluir o conteúdo acima manualmente.
+
+
 ## Liberando uma porta em uso
 
 -   Ao tentar executar o comando:
@@ -3797,7 +3805,7 @@ pdm run python manage.py runserver 191.52.62.13:19005
 
 > Essa é uma forma de rodar o Django em um IP e porta específicos, por exemplo, para testar a API em um dispositivo móvel.
 
-## Juntando tudo
+## Descobrindo o IP da máquina e rodando o Django no IP da máquina
 
 -   Execute o seguinte comando:
 
