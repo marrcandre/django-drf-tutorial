@@ -2406,6 +2406,7 @@ MODE = os.getenv("MODE")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False")
+ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.fl0.io/"]
 ...
 ```
@@ -2498,6 +2499,14 @@ Acesse o site do [Fl0](https://fl0.com/) e crie uma conta.
 | MODE           | PRODUCTION          |
 
 **Configurações no projeto**
+
+- Adicione o pacote `gunicorn`:
+
+```shell
+pdm add gunicorn
+```
+
+> O `gunicorn` é um servidor HTTP WSGI para Python. Ele é necessário para que o projeto possa ser executado no Fl0.
 
 - Crie um arquivo `Procfile` na raiz do projeto, com o seguinte conteúdo:
 
