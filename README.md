@@ -1932,6 +1932,20 @@ pdm add python-magic Pillow
   - **Descompacte o arquivo ZIP**: Clique com o botão direito no arquivo ZIP baixado e escolha "Extrair tudo..." para extrair o conteúdo.
   - **Copie as DLLs**: Dentro da pasta extraída, você encontrará os arquivos DLL (`magic1.dll`, etc.). Selecione esses arquivos, clique com o botão direito e escolha "Copiar."
   - **Cole as DLLs no System32**: Navegue até o diretório `C:\Windows\System32`, crie uma pasta chamada `magic`, clique com o botão direito dentro da pasta e escolha "Colar." Você pode precisar de permissões administrativas para fazer isso, então certifique-se de confirmar qualquer solicitação que apareça.
+  - **Acrescentando o caminho da pasta**:
+	- Abra o menu Iniciar em seu computador.
+
+	- Utilize a barra de pesquisa para procurar por "Editar as variáveis de ambiente do sistema".
+	- Clique no resultado que corresponde a essa pesquisa para abrir a janela de propriedades do sistema.
+	- Na janela de propriedades do sistema, vá até a aba chamada "Avançado".
+	- Dentro dessa aba, localize o botão com o rótulo "Variáveis de Ambiente" e clique nele. Isso abrirá a janela de Configurações das Variáveis de Ambiente.
+	- Na janela que se abre, procure pela opção chamada "Path" na seção de variáveis do sistema e clique sobre o botão "Editar".
+	- Verifique se o caminho completo para a pasta "magic" está listado na lista de caminhos. Caso não esteja, prossiga com a próxima etapa.
+	- Abra o Explorador de Arquivos e encontre a pasta "magic".
+	- Copie o caminho completo da pasta "magic".
+	- Volte para a janela de "Editar as variáveis de ambiente". Cole o caminho copiado da pasta "magic" no campo apropriado dentro da janela.
+	- Confirme as alterações clicando em "OK".
+
   - **Atualize seu código**: No arquivo `utils/files.py`, onde você está usando a biblioteca `magic`, você precisará especificar o caminho para o arquivo `magic.mgc`. Aqui está um exemplo de como você pode fazer isso:
 
     ```python
