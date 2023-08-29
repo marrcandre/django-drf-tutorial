@@ -3368,6 +3368,53 @@ pdm run python manage.py migrate
 
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 
+# 35. Gravando o preço do livro no item da compra
+
+Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
+
+- Primeiro, precisamos incluir o campo `preco_item` no model `ItensCompra`:
+
+```python
+...
+class ItensCompra(models.Model):
+...
+    preco_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+...
+```
+
+- Execute as migrações.
+
+- No `serializers\compra.py`, vamos alterar a função `create` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
+
+```python
+...
+    def create(self, validated_data):
+        itens = validated_data.pop("itens")
+        compra = Compra.objects.create(**validated_data)
+        for item in itens:
+            item["preco_item"] = item["livro"].preco # Coloca o preço do livro no item de compra
+            ItensCompra.objects.create(compra=compra, **item)
+        compra.save()
+        return compra
+...
+```
+
+> O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
+
+- Para finalizar, precisamos alterar o campo total da compra para considerar o preço do item da compra:
+
+```python
+...
+    @property
+    def total(self):
+        return sum(item.preco_item * item.quantidade for item in self.itens.all())
+...
+```
+
+> Estamos utilizando o campo `preco_item` para calcular o total da compra, ao invés do campo `livro.preco`.
+
+- Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
+- Faça o _commit_ e _push_ das alterações.
 
 
 ---
