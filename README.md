@@ -3583,63 +3583,6 @@ pdm run black .
 
 Opcionalmente, você pode utilizador o formatador de código em um arquivo, selecionando o código (`Ctrl` + `A`) e pressionando `Ctrl + Shift + I`.
 
-<!--
--   Crie um arquivo `.flake8` na raiz do projeto:
-
-```shell
-touch .flake8
-```
-
--   Abra o arquivo `.flake8` e coloque o seguinte conteúdo:
-
-```python
-
-[flake8]
-max-line-length = 88
-extend-ignore = E203, W503
-```
-
--   Crie um arquivo `.pre-commit-config.yaml` na raiz do projeto:
-
-```shell
-touch .pre-commit-config.yaml
-```
-
--   Abra o arquivo `.pre-commit-config.yaml` e coloque o seguinte conteúdo:
-
-```python
-
-repos:
-- repo:
-
-    rev: 3.8.4
-
-    hooks:
-
-    - id: black
-
-    - id: isort
-
-    - id: flake8
-
-```
-
--   Instale o `pre-commit`:
-
-```shell
-pdm install pre-commit
-```
-
--   Ative o `pre-commit`:
-
-```shell
-pre-commit install
-```
-
--   Agora, toda vez que você fizer um commit, o `pre-commit` vai rodar as ferramentas de desenvolvimento `isort`, `black` e `flake8`.
--   Se alguma dessas ferramentas encontrar algum erro, o `pre-commit` vai impedir o commit.
- -->
-
 # A3. Gerando o arquivo requirements.txt automaticamente
 
 O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
@@ -3894,22 +3837,3 @@ SIMPLE_JWT = {
 ---
 
 Marco André Mendes \<marcoandre@gmail.com>
-
-<!-- Aulas futuras -->
-
-<!-- Testes -->
-<!-- Pre commits -->
-<!-- Django Filter -->
-<!-- Vuejs com autenticação e autorização. -->
-<!-- Populate script  -->
-<!-- Endpoint para listagem básica de Compras -->
-<!-- Ajustes na visualização do status de compra e itens de compra -->
-
-
-
-<!-- ```python
-senha supbase: Senha.123@!
-``` -->
-
-
-
