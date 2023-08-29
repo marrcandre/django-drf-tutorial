@@ -1925,9 +1925,9 @@ O projeto ficará com uma estrutura parecida com essa:
 ```shell
 pdm add python-magic Pillow
 ```
+**Configuração no Windows**
 
 - Caso você esteja no Windows, para funcionar corretamente, você precisará seguir os seguintes passos:
-
   - **Baixe as DLLs**: Acesse [https://github.com/pidydx/libmagicwin64](https://github.com/pidydx/libmagicwin64) e baixe o arquivo ZIP contendo as DLLs.
   - **Descompacte o arquivo ZIP**: Clique com o botão direito no arquivo ZIP baixado e escolha "Extrair tudo..." para extrair o conteúdo.
   - **Copie as DLLs**: Dentro da pasta extraída, você encontrará os arquivos DLL (`magic1.dll`, etc.). Selecione esses arquivos, clique com o botão direito e escolha "Copiar."
@@ -1941,6 +1941,8 @@ pdm add python-magic Pillow
 
   Seguindo esses passos, você deverá conseguir importar a biblioteca `magic` com sucesso em seu projeto Django no ambiente Windows.
 
+**Registro da app**
+
 -   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
 
 ```python
@@ -1951,6 +1953,8 @@ INSTALLED_APPS = [
     ...
 ]
 ```
+
+**Configuração no `settings.py`**
 
 -   Ainda no `settings.py` faça as seguintes configurações:
 
@@ -1968,6 +1972,8 @@ FILE_UPLOAD_PERMISSIONS = 0o640
 import os
 ```
 
+**Configuração no `urls.py`**
+
 -   Inclua o seguinte conteúdo no arquivo `urls.py`:
 
 ```python
@@ -1981,6 +1987,8 @@ path("api/media/", include(uploader_router.urls)),
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
 ...
 ```
+
+**Migração do banco de dados**
 
 -   Faça a migração do banco de dados:
 
