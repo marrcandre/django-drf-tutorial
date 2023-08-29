@@ -3316,7 +3316,7 @@ class CompraViewSet(ModelViewSet):
 
 Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
 
-- No `serializers.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque:
+- No `serializers\compra.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque:
 
 ```python
 ...
@@ -3331,42 +3331,6 @@ Nesse momento, é possível criar uma compra com uma quantidade de itens maior d
 
 - Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ e _push_ das alterações.
-
-
-Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
-
-- Primeiro, precisamos incluir o campo `preco` no model `ItensCompra`:
-
-```python
-...
-class ItensCompra(models.Model):
-    compra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name="itens")
-    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="+")
-    quantidade = models.IntegerField(default=1)
-    preco = models.DecimalField(max_digits=10, decimal_places=2, default=1)
-...
-```
-
-- Execute as migrações:
-
-```shell
-pdm run python manage.py makemigrations
-pdm run python manage.py migrate
-```
-
-- No `serializers.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para gravar o preço do livro no item da compra:
-
-```python
-...
-    def create(self, validated_data):
-        item = ItensCompra.objects.create(**validated_data)
-        item.preco = item.livro.preco
-        item.save()
-        return item
-...
-```
-
-- Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 
 # 35. Gravando o preço do livro no item da compra
 
@@ -3416,7 +3380,27 @@ class ItensCompra(models.Model):
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ e _push_ das alterações.
 
+<!-- # 36. Acrescentando a data da compra
 
+Nesse momento, não temos a data da compra. Vamos incluir a data da compra, utilizando a data e hora atual no momento da criação da compra.
+
+- No `models.py`, vamos incluir o campo `data` no model `Compra`:
+
+```python
+...
+class Compra(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT)
+    status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.ABERTA)
+    data = models.DateTimeField(auto_now_add=True)
+...
+```
+
+> O campo `data` é um campo do tipo `DateTimeField`, que armazena a data e a hora da compra. O parâmetro `auto_now_add=True` indica que o campo será preenchido automaticamente com a data e hora atual, quando a compra for criada.
+
+- Execute as migrações.
+- Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
+- Faça o _commit_ e _push_ das alterações.
+   -->
 ---
 
 # Exercícios
