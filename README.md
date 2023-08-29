@@ -2622,7 +2622,7 @@ Vamos incluir a foto de perfil no usuário.
 
 **Criação do campo de foto de perfil**
 
--   No arquivo `models\usuario.py`, inclua o campo `foto`:
+-   No arquivo `models/usuario.py`, inclua o campo `foto`:
 
 ```python
 ...
@@ -3189,11 +3189,11 @@ class ComprasSerializer(ModelSerializer):
 
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
-- Precisamos criar também um novo `serializer`para os itens da compra. No `serializers.py`, inclua o seguinte código:
+- Precisamos criar também um novo `serializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código:
 
 ```python
 ...
-class ItensCompraSerializer(ModelSerializer):
+class CriarEditarItemCompraSerializer(ModelSerializer):
     class Meta:
         model = ItemCompra
         fields = ("livro", "quantidade")
@@ -3347,7 +3347,7 @@ class CompraViewSet(ModelViewSet):
 
 Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
 
-- No `serializers\compra.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque:
+- No `serializers/compra.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque:
 
 ```python
 ...
@@ -3379,7 +3379,7 @@ class ItensCompra(models.Model):
 
 - Execute as migrações.
 
-- No `serializers\compra.py`, vamos alterar a função `create` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
+- No `serializers/compra.py`, vamos alterar a função `create` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
 
 ```python
 ...
