@@ -13,7 +13,7 @@ Esse curso é parte de uma trilha de aprendizado. Siga os links abaixo para aces
 - **[Desenvolvimento Web II](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/)** ([Prof. Eduardo da Silva](https://github.com/eduardo-da-silva))
   - Desenvolvimento front-end com VueJS
 - **[Desenvolvimento Web III](https://github.com/marrcandre/django-drf-tutorial)** ([Prof. Marco André Lopes Mendes](https://github.com/marrcandre/))
-  - Desenvolvimento back-end com Django com DRF.
+  - Desenvolvimento back-end com Django e DRF.
 
 Bons estudos!
 
