@@ -3569,7 +3569,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 - Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
 
-<!-- # 36. Acrescentando a data da compra
+# 36. Acrescentando a data da compra
 
 Nesse momento, não temos a data da compra. Vamos incluir a data da compra, utilizando a data e hora atual no momento da criação da compra.
 
@@ -3589,7 +3589,40 @@ class Compra(models.Model):
 - Execute as migrações.
 - Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
 - Faça o _commit_ e _push_ das alterações.
-   -->
+
+**Modificando o serializer de compra para mostrar a data da compra**
+
+- No `serializers/compra.py`, vamos incluir o campo `data` no `serializer` de `Compra`:
+
+```python
+...
+class ComprasSerializer(ModelSerializer):
+    itens = ItensCompraSerializer(many=True)
+    usuario = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    data = serializers.DateTimeField(read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ("id", "usuario", "status", "total", "data", "itens")
+...
+```
+
+**Acrescentando filtro e ordenação por data**
+
+- No `views.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Compra` para filtrar as compras por `data`.
+- Vamos também alterar o atributo `ordering_fields`, na `viewset` de `Compra` para ordenar as compras por `data`.
+
+```python
+...
+    filterset_fields = ["usuario", "status", "data"]
+    ordering_fields = ["usuario", "status", "data"]
+...
+```
+
+- Para ordenar por data, em ordem descrente:
+  - http://127.0.0.1:8000/api/compras/?ordering=-data
+  
+
 ---
 
 # Exercícios
