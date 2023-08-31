@@ -4,7 +4,20 @@ Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangop
 
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
-<!-- TODO: Adicionar link para os demais cursos do Eduardo da Silva e Fábio. -->
+## Trilha do Curso
+
+Esse curso é parte de uma trilha de aprendizado. Siga os links abaixo para acessar os outros cursos da trilha:
+
+- **[Programação I](https://github.com/ldmfabio/Programacao)**  ([Prof. Fábio Longo de Moura](https://github.com/ldmfabio))
+    - Lógica de Programação usando JavaScript
+- **[Desenvolvimento Web II](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/)** ([Prof. Eduardo da Silva](https://github.com/eduardo-da-silva))
+  - Desenvolvimento front-end com VueJS
+- **[Desenvolvimento Web III](https://github.com/marrcandre/django-drf-tutorial)** ([Prof. Marco André Lopes Mendes](https://github.com/marrcandre/))
+  - Desenvolvimento back-end com Django com DRF.
+
+Bons estudos!
+
+---
 
 # 1. Preparação do ambiente
 
