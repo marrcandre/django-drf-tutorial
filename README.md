@@ -3461,36 +3461,35 @@ class LivroViewSet(viewsets.ModelViewSet):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["categoria"]
+    filterset_fields = ["categoria__descricao"]
 ...
 ```
 
 > O `DjangoFilterBackend` é o filtro do `django-filter`.
 > O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria`.
 
-- Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe o `id` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
-- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=1`. Você verá que apenas os livros da categoria informada foram listados.
+- Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
+- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=Python`. Você verá que apenas os livros da categoria informada foram listados.
 - Faça o _commit_ e _push_ das alterações.
   
 ## Acrescentando outros filtros na listagem de livros
 
 Vamos acrescentar outros filtros na listagem de livros.
 
-- No `views.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria`, `editora` e `autores`:
+- No `views.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria` e `editora`:
 
 ```python
 ...
-    filterset_fields = ["categoria", "editora", "autores"]
+    filterset_fields = ["categoria__descricao", "editora__nome"]
 ...
 ```
 
-- Para filtrar por categoria, editora e livro:
+- Para filtrar por categoria e editora:
+  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python&editora__nome=Novatec
   - http://127.0.0.1:8000/api/livros/?autores=3&categoria=4&editora=1
-- Para filtrar apenas por categoria e editora:
-  - http://127.0.0.1:8000/api/livros/?categoria=4&editora=1
-- Para filtrar apenas por autores:
-  - http://127.0.0.1:8000/api/livros/?autores=3'
-
+- Para filtrar apenas por editora:
+  - http://127.0.0.1:8000/api/livros/?editora__nome=Novatec
+  
 **Exercício**
 
 - Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
@@ -3515,7 +3514,7 @@ from rest_framework.filters import SearchFilter
 class LivroViewSet(viewsets.ModelViewSet):
 ...
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["categoria", "editora", "autores"]
+    filterset_fields = ["categoria__descricao", "editora__nome"]
     search_fields = ["titulo"]
 ...
 ```
@@ -3547,7 +3546,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 class LivroViewSet(viewsets.ModelViewSet):
 ...
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ["categoria", "editora", "autores"]
+    filterset_fields = ["categoria__descricao", "editora__nome"]
     search_fields = ["titulo"]
     ordering_fields = ["titulo", "preco"]
     ordering = ["titulo"]
