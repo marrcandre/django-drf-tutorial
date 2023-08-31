@@ -3424,6 +3424,74 @@ class ItensCompra(models.Model):
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ e _push_ das alterações.
 
+# 36. Filtrando os livros 
+
+
+Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
+
+## Filtrando os livros por categoria
+
+Vamos começar filtrando os livros por categoria. Para isso, utilizaremos o pacote [`django-filter`](https://django-filter.readthedocs.io/en/stable/):
+
+- Instale o pacote `django-filter`:
+
+```shell
+pdm add django-filter
+```
+
+- No `settings.py`, inclua o `django-filter` no `INSTALLED_APPS`:
+
+```python
+...
+INSTALLED_APPS = [
+    ...
+    "django_filters",
+    ...
+]
+...
+```
+
+- No `views.py`, vamos alterar o `viewset` de `Livro` para filtrar os livros por categoria:
+
+```python
+...
+from django_filters.rest_framework import DjangoFilterBackend
+...
+class LivroViewSet(viewsets.ModelViewSet):
+    queryset = Livro.objects.all()
+    serializer_class = LivroSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["categoria"]
+...
+```
+
+> O `DjangoFilterBackend` é o filtro do `django-filter`.
+> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria`.
+
+- Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe o `id` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
+- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=1`. Você verá que apenas os livros da categoria informada foram listados.
+- Faça o _commit_ e _push_ das alterações.
+  
+## Acrescentando outros filtros na listagem de livros
+
+Vamos acrescentar outros filtros na listagem de livros.
+
+- No `views.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria`, `editora` e `autores`:
+
+```python
+...
+    filterset_fields = ["categoria", "editora", "autores"]
+...
+```
+
+- Para filtrar por categoria, editora e livro:
+  - http://127.0.0.1:8000/api/livros/?autores=3&categoria=4&editora=1
+- Para filtrar apenas por categoria e editora:
+  - http://127.0.0.1:8000/api/livros/?categoria=4&editora=1
+- Para filtrar apenas por autores:
+  - http://127.0.0.1:8000/api/livros/?autores=3'
+
+
 <!-- # 36. Acrescentando a data da compra
 
 Nesse momento, não temos a data da compra. Vamos incluir a data da compra, utilizando a data e hora atual no momento da criação da compra.
