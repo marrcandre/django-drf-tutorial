@@ -3522,6 +3522,40 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 - Faça o _commit_ e _push_ das alterações.
 
+# 38. Ordenação dos livros
+
+A ordenação serve para adicionar a funcionalidade de ordenar os resultados de uma consulta.
+
+- Para utilizar a ordenação nos livros, devemos promover três alterações em nossa `ViewSet`:
+- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `OrderingFilter` que irá processar a ordenação; e
+- Adicionar o atributo `ordering_fields`, contendo os campos que permitirão a ordenação.
+- Adicionar o atributo `ordering` com o campo que será utilizado como padrão para ordenação.
+- A `LivroViewSet` ficará assim:
+
+```python
+...
+from rest_framework.filters import SearchFilter, OrderingFilter
+...
+
+class LivroViewSet(viewsets.ModelViewSet):
+...
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ["categoria", "editora", "autores"]
+    search_fields = ["titulo"]
+    ordering_fields = ["titulo", "preco"]
+    ordering = ["titulo"]
+...
+```
+
+- Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado. Por exemplo, para ordenar os livros pelo título, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?ordering=titulo
+- Pode-se ainda juntar a ordenação com a busca textual. Por exemplo, para ordenar os livros pelo título e que contenham a palavra `python` no título, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?ordering=titulo&search=python
+- Para utilizar os filtros e a ordenação, basta adicionar os parâmetros na URL, com os valores desejados. Por exemplo, para ordenar os livros pelo título de uma determinada categoria e editora, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?categoria=1&editora=1&ordering=titulo
+
+- Faça o _commit_ e _push_ das alterações.
+  
 
 
 <!-- # 36. Acrescentando a data da compra
