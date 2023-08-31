@@ -3492,6 +3492,38 @@ Vamos acrescentar outros filtros na listagem de livros.
   - http://127.0.0.1:8000/api/livros/?autores=3'
 
 
+# 37. Busca textual nos livros
+
+A busca textual serve para adicionar a funcionalidade de realizar buscas dentro de determinados valores de texto armazenados na base de dados.
+
+Contudo a busca só funciona para campos de texto, como `CharField` e `TextField`.
+
+- Para utilizar a busca textual nos livros, devemos promover duas alterações em nossa `ViewSet`:
+- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `SearchFilter` que irá processar a busca; e
+- Adicionar o atributo `search_fields`, contendo os campos que permitirão a busca.
+
+- A `LivroViewSet` ficará assim:
+
+```python
+...
+from rest_framework.filters import SearchFilter
+...
+
+class LivroViewSet(viewsets.ModelViewSet):
+...
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ["categoria", "editora", "autores"]
+    search_fields = ["titulo"]
+...
+```
+
+- Para pesquisar por um livro, basta adicionar o parâmetro `search` na URL, com o valor a ser pesquisado. Por exemplo, para pesquisar por livros que contenham a palavra `python` no título, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?search=python
+
+- Faça o _commit_ e _push_ das alterações.
+
+
+
 <!-- # 36. Acrescentando a data da compra
 
 Nesse momento, não temos a data da compra. Vamos incluir a data da compra, utilizando a data e hora atual no momento da criação da compra.
