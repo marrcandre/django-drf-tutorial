@@ -3569,7 +3569,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 - Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
 
-# 36. Acrescentando a data da compra
+# 39. Acrescentando a data da compra
 
 Nesse momento, não temos a data da compra. Vamos incluir a data da compra, utilizando a data e hora atual no momento da criação da compra.
 
@@ -3622,7 +3622,6 @@ class ComprasSerializer(ModelSerializer):
 - Para ordenar por data, em ordem descrente:
   - http://127.0.0.1:8000/api/compras/?ordering=-data
   
-
 ---
 
 # Exercícios
