@@ -3491,6 +3491,9 @@ Vamos acrescentar outros filtros na listagem de livros.
 - Para filtrar apenas por autores:
   - http://127.0.0.1:8000/api/livros/?autores=3'
 
+**Exercício**
+
+- Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
 # 37. Busca textual nos livros
 
@@ -3521,6 +3524,10 @@ class LivroViewSet(viewsets.ModelViewSet):
   - http://127.0.0.1:8000/api/livros/?search=python
 
 - Faça o _commit_ e _push_ das alterações.
+
+**Exercício**
+
+- Acrescente a busca textual nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
 # 38. Ordenação dos livros
 
@@ -3553,9 +3560,14 @@ class LivroViewSet(viewsets.ModelViewSet):
   - http://127.0.0.1:8000/api/livros/?ordering=titulo&search=python
 - Para utilizar os filtros e a ordenação, basta adicionar os parâmetros na URL, com os valores desejados. Por exemplo, para ordenar os livros pelo título de uma determinada categoria e editora, a URL ficaria assim:
   - http://127.0.0.1:8000/api/livros/?categoria=1&editora=1&ordering=titulo
+  - É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
+    - http://127.0.0.1:8000/api/livros/?categoria=20&editora=18&ordering=titulo&search=python
 
 - Faça o _commit_ e _push_ das alterações.
-  
+
+**Exercício**
+
+- Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
 
 <!-- # 36. Acrescentando a data da compra
