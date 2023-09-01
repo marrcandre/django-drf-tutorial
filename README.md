@@ -2434,18 +2434,6 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https
 
 > Isso tudo pode ser facilmente alterado, de acordo com a necessidade, apenas modificando o arquivo `.env`.
 
-
-**Configuração de arquivos estáticos**
-
--   Edite o arquivo `settings.py`, incluindo o seguinte código:
-
-```python
-...
-if MODE == "PRODUCTION":
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-```
-
 **Testando a configuração**
 
 -   Execute o comando `pdm run python manage.py runserver` para testar a configuração.
@@ -2526,6 +2514,45 @@ pdm add gunicorn
 ```shell
 web: gunicorn config.wsgi
 ```
+
+**Configuração de arquivos estáticos**
+
+Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
+
+Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema. 
+
+- Adicione o `WhiteNoise` como uma dependência (adicionar suporte para `Brotli` é opcional, mas recomendado):
+
+```shell
+pdm add 'whitenoise[brotli]'
+``` 
+
+- Abra o arquivo `settings.py`, encontre a lista `MIDDLEWARE` e adicione o middleware `WhiteNoise` logo após o `SecurityMiddleware`:
+
+```python
+MIDDLEWARE = [
+    ...
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ....
+]
+```
+
+-   Edite o arquivo `settings.py`, incluindo o seguinte código:
+
+```python
+...
+if MODE == "PRODUCTION":
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+```
+
+> O `STATIC_ROOT` é o diretório onde os arquivos estáticos serão coletados. O `STATICFILES_STORAGE` é o armazenamento de arquivos estáticos que será utilizado.
+
+> Essas configurações só serão utilizadas no modo `PRODUCTION`.
+
+
+**Finalizando**
 
 - Assegure-se de que o arquivo `requirements.txt` está atualizado. Caso ele não exista, [siga esses passos](#a3-gerando-o-arquivo-requirementstxt-automaticamente).
 
@@ -3621,7 +3648,39 @@ class ComprasSerializer(ModelSerializer):
 
 - Para ordenar por data, em ordem descrente:
   - http://127.0.0.1:8000/api/compras/?ordering=-data
-  
+
+<!-- # 40. Armazenando arquivos estáticos no Cloudinary
+
+Nesse momento, as imagens dos livros são armazenadas no servidor. Vamos armazenar as imagens no [Cloudinary](https://cloudinary.com/).
+
+Com isso, não precisaremos mais nos preocupar com o armazenamento das imagens, pois o Cloudinary cuidará disso para nós.
+
+- Crie uma conta no [Cloudinary](https://cloudinary.com/).
+- Instale o pacote `cloudinary`:
+
+```shell
+pdm add cloudinary
+```
+- No `settings.py`, inclua as seguintes variáveis de ambiente:
+
+```python
+...
+CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
+CLOUDINARY_API_KEY = os.environ.get("CLOUDINARY_API_KEY")
+CLOUDINARY_API_SECRET = os.environ.get("CLOUDINARY_API_SECRET")
+...
+```
+
+- No `settings.py`, inclua o seguinte código:
+
+```python
+...
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
+...
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+... -->
+<!-- ``` -->
+
 ---
 
 # Exercícios
@@ -3638,7 +3697,7 @@ class ComprasSerializer(ModelSerializer):
 - Permita que um carro possa ter várias fotos.
 - Habilite  o Swagger no projeto.
 - Faça o cadastro completo, com fotos, de pelo menos 3 carros.
-- Instale o `django-extensions` e gere o diagrama de banco de dados do projeto (Aula A4)[#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models]
+- Instale o `django-extensions` e [gere o diagrama](#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models) de banco de dados do projeto.
 - Veja se o diagrama gerado está correto, de acordo com o modelo proposto acima.
 
 ---
