@@ -3118,14 +3118,14 @@ O total do item é calculado pelo preço do livro multiplicado pela quantidade. 
 ...
 total = SerializerMethodField()
 ...
-def get_total(self, obj):
-    return obj.livro.preco * obj.quantidade
+def get_total(self, instance):
+    return instance.quantidade * instance.livro.preco
 ...
 ```
 
 > O parâmetro `SerializerMethodField` indica que o campo `total` não existe no model `ItensCompra`. Ele será calculado pelo método `get_total`.
 
-> O método `get_total` recebe como parâmetro o objeto `obj`, que representa o item da compra. A partir dele, podemos acessar os campos do item da compra, como `livro` e `quantidade`.
+> O método `get_total` recebe como parâmetro o objeto `instance`, que representa o item da compra. A partir dele, podemos acessar os campos do item da compra, como `quantidade` e `livro.preco`.
 
 > O método `get_total` retorna o valor do campo `total`, que é calculado pelo preço do livro multiplicado pela quantidade.
 
