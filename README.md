@@ -2654,6 +2654,59 @@ pdm run python manage.py migrate
 
 - Para voltar a usar o banco de dados local, altere o valor da variável `MODE` para `DEVELOPMENT`.
 
+# 22C. Armazenando arquivos estáticos no Cloudinary
+
+Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
+
+**Criando uma conta no Cloudinary**
+
+Acesse o site do [Cloudinary](https://cloudinary.com/) e crie uma conta.
+
+**Instalação do pacote `django-cloudinary-storage`**
+
+- Para instalar, digite:
+
+```shell
+pdm add django-cloudinary-storage
+```
+
+- Adicione os pacotes  `cloudinary_storage` e `cloudinary` ao `INSTALLED_APPS`, no `settings.py`, logo após o pacote `django.contrib.staticfiles`:
+
+```python
+INSTALLED_APPS = [
+    # ...
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
+    # ...
+]
+```
+
+- Nas configurações de arquivos estáticos, inclua o seguinte conteúdo:
+
+```python
+STATIC_URL = "/static/"
+
+if MODE in ["PRODUCTION", "MIGRATE"]:
+    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+```
+
+**Configuração do Cloudinary**
+
+-   Edite o arquivo `.env`, incluindo a seguinte variável:
+
+```shell
+# Cloudinary
+CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
+```
+
+> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
+
+-  Faça o commit das alterações.
+-  Para testar, faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
 
 
 # 23. Inclusão da foto de perfil no usuário
