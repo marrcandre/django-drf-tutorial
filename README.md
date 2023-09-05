@@ -3225,14 +3225,14 @@ Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`.
 
 ```python
 ...
-class CompraViewSet(viewsets.ModelViewSet):
+class CompraViewSet(ModelViewSet):
     queryset = Compra.objects.all()
-    serializer_class = ComprasSerializer
+    serializer_class = CompraSerializer
 
     def get_serializer_class(self):
         if self.action == "create" or self.action == "update":
             return CriarEditarCompraSerializer
-        return ComprasSerializer
+        return CompraSerializer
 ...
 ```
 
