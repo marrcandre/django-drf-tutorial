@@ -2472,7 +2472,9 @@ Sempre que você clonar o projeto, precisará recriar o arquivo `.env` com as in
 
 > Nos servidores de produção, as variáveis de ambiente são definidas no próprio servidor, não sendo necessário criar o arquivo `.env`.
 
-# 22. Implantando no Fl0
+# 22. Implantação do projeto
+
+# 22A. Implantando no Fl0
 
 Vamos implantar o projeto no Fl0.
 
@@ -2629,6 +2631,14 @@ print(MODE, DATABASES)
 > O `print` foi incluído para que você possa verificar se o banco de dados está correto.
 
 > Com essa configuração, podemos acessar o banco de dados do `Supabase` e fazer a migração do banco de dados.
+
+**Instalação do suporte ao PosgreSQL**
+
+- Para acessar o banco de dados PostgreSQL, instale o seguinte pacote:
+
+```shell
+pdm add psycopg2-binary
+```
 
 **Migração do banco de dados**
 
