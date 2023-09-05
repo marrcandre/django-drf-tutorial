@@ -3273,18 +3273,18 @@ O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCom
 ```python
 ...
 
-class ComprasSerializer(ModelSerializer):
-    itens = ItensCompraSerializer(many=True)
+class CriarEditarCompraSerializer(ModelSerializer):
+    itens = CriarEditarItensCompraSerializer(many=True) # Aqui mudou
 
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "status", "total", "itens")
+        fields = ("usuario", "itens")
 
     def create(self, validated_data):
         itens_data = validated_data.pop("itens")
         compra = Compra.objects.create(**validated_data)
         for item_data in itens_data:
-            ItemCompra.objects.create(compra=compra, **item_data)
+            ItensCompra.objects.create(compra=compra, **item_data)
         compra.save()
         return compra
 
@@ -3296,14 +3296,14 @@ class ComprasSerializer(ModelSerializer):
 
 ```python
 ...
-class CriarEditarItemCompraSerializer(ModelSerializer):
+class CriarEditarItensCompraSerializer(ModelSerializer):
     class Meta:
-        model = ItemCompra
+        model = ItensCompra
         fields = ("livro", "quantidade")
 ...
 ```
 
-> O `serializer` de `ItemCompra` é bem simples, pois ele apenas recebe o livro e a quantidade.
+> O `serializer` de `ItensCompra` é bem simples, pois ele apenas recebe o livro e a quantidade.
 
 
 - Teste o endpoint no `ThunderClient.
@@ -3341,7 +3341,7 @@ O método `.update()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.update()` explícito para o serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 ```
 
-> O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
+> O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
 
 - No `serializers.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
 
