@@ -832,34 +832,14 @@ pdm run python manage.py shell
 >>> Categoria.objects.get(id=1).livros.all()
 ```
 
-**6.8 Exercício: criando os demais modelos de dados no projeto Garagem**
+**6.8 [Exercício](#aula-6-crie-os-demais-modelos-de-dados-no-projeto-garagem): Crie os demais modelos de dados no projeto Garagem**
 
-Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
-
--   `Acessório`:
-
-    -   `descricao` (string, máximo 100 caracteres).
-    -   `__str__` (retorna a descrição do acessório).
-
--   `Cor`:
-    -   `descricao` (string, máximo 100 caracteres).
-    -   `__str__` (retorna a descrição da cor).
-
-Crie o modelo `Veículo`, com os seguintes atributos:
-
--   `Veículo`:
-    -   `marca` (chave estrangeira para `Marca`).
-    -   `categoria` (chave estrangeira para `Categoria`).
-    -   `cor` (chave estrangeira para `Cor`).
-    -   `ano` (inteiro, permite nulo, default 0).
-    -   `preco` (decimal, máximo 10, dígitos, 2 casas decimais, permite nulo, default 0).
-    -   `__str__` (retorna a marca, modelo, ano e cor do carro).
 
 # 7. Criando uma API REST
 
 Nessa aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API que permite criar, listar, atualizar e deletar categorias, editoras, autores e livros.
 
-Como exercício, você pode criar uma API para o projeto `garagem`.
+
 
 **7.1 Instalação do DRF**
 
@@ -1005,11 +985,9 @@ Instale uma ou mais das ferramentas sugeridas.
     -   Incluir outra categoria;
     -   Listar todas as categorias.
 
-**7.9 Exercício: Criação da API REST no projeto Garagem**
+**7.9 [Exercício](#aula-7-crie-a-api-rest-no-projeto-garagem): Crie a API REST no projeto Garagem**
 
--   Instale o `djangorestframework`.
--   Crie o serializador para a classe `Marca`.
--   Teste a API com a ferramenta de sua preferência.
+
 
 # 8. Continuando a criação da API REST
 
@@ -1166,15 +1144,9 @@ class LivroListSerializer(ModelSerializer):
 
 -   Teste a API.
 
-**8.5 Exercício: Criação da API REST no projeto Garagem para as demais classes**
+**8.5 [Exercício](#aula-8-crie-a-api-rest-no-projeto-garagem-para-as-demais-classes): Crie a API REST no projeto Garagem para as demais classes**
 
--   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, e `Veiculo`.
-    -   Faça um commit para cada _endpoint_ criado.
--   Crie **3 serializadores** diferentes para a classe `Veículo`:
-    -   Um para a listagem, que mostre apenas o id, o modelo e o ano.
-    -   Outro para a recuperação de um único veículo, que mostre todos os campos, com profundidade 1.
-    -   Outro para a criação e alteração, que mostre todos os campos, sem profundidade.
--   Teste a API com a ferramenta de sua preferência.
+
 
 # 9. Aplicação frontend Vuejs e Django CORS Headers
 
@@ -1246,15 +1218,13 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 Feito isso, reinicie o servidor e tudo deve funcionar.
 
-**9.1 Exercícios**
 
-**9.1.1 Criação de uma aplicação frontend com Vuejs para a Livraria**
+**9.1 Exercício: Crie uma aplicação FrontEnd com Vuejs para a Livraria**
 
 -   Modifique a aplicação frontend com Vuejs para consumir a API REST das demais classes do projeto `Livraria`.
 
-**9.1.2 Criação de uma aplicação frontend com Vuejs para a Garagem**
+**9.1.2 [Exercício](#aula-9-crie-uma-aplicação-frontend-com-vuejs-para-a-garagem): Crie uma aplicação FrontEnd com Vuejs para a Garagem**
 
--   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
 
 # 10. Relacionamento n para n
 
@@ -1298,13 +1268,9 @@ Feito isso, observe no banco de dados que esse campo não foi criado na tabela d
 
 -   Teste a API REST de livros e autores.
 
-**10.2 No projeto Garagem**
+**10.2 [Exercício](#aula-10-crie-um-relacionamento-n-para-n-entre-veiculo-e-acessorio-no-projeto-garagem): Crie um relacionamento n para n entre `Veiculo` e `Acessorio` no projeto Garagem**
 
-**10.2.1 Criação de um relacionamento n para n entre `Veiculo` e `Acessorio`**
 
--   Crie um relacionamento n para n entre `Veiculo` e `Acessorio`, utilizando um campo do tipo `ManyToManyField`.
--   Inclua alguns acessórios em alguns veículos pelo Admin.
--   Teste a API REST de veículos e acessórios.
 
 # 11. Autenticação e autorização
 
@@ -3747,8 +3713,61 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 ---
 
 # Exercícios
+## Garagem
+### [Aula 6](#6-criando-os-outros-modelos-de-dados): Crie os demais modelos de dados no projeto Garagem
 
-## Exercício 1 segundo trimestre (Garagem)
+Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
+
+-   `Acessório`:
+
+    -   `descricao` (string, máximo 100 caracteres).
+    -   `__str__` (retorna a descrição do acessório).
+
+-   `Cor`:
+    -   `descricao` (string, máximo 100 caracteres).
+    -   `__str__` (retorna a descrição da cor).
+
+Crie o modelo `Veículo`, com os seguintes atributos:
+
+-   `Veículo`:
+    -   `marca` (chave estrangeira para `Marca`).
+    -   `categoria` (chave estrangeira para `Categoria`).
+    -   `cor` (chave estrangeira para `Cor`).
+    -   `ano` (inteiro, permite nulo, default 0).
+    -   `preco` (decimal, máximo 10, dígitos, 2 casas decimais, permite nulo, default 0).
+    -   `__str__` (retorna a marca, modelo, ano e cor do carro).
+
+
+### [Aula 7](#7-criando-uma-api-rest): Crie a API REST no projeto Garagem
+
+-   Instale o `djangorestframework`.
+-   Crie o serializador para a classe `Marca`.
+-   Teste a API com a ferramenta de sua preferência.
+
+### [Aula 8](#8-continuando-a-criação-da-api-rest): Crie a API REST no projeto Garagem para as demais classes
+
+-   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, e `Veiculo`.
+    -   Faça um commit para cada _endpoint_ criado.
+-   Crie **3 serializadores** diferentes para a classe `Veículo`:
+    -   Um para a listagem, que mostre apenas o id, o modelo e o ano.
+    -   Outro para a recuperação de um único veículo, que mostre todos os campos, com profundidade 1.
+    -   Outro para a criação e alteração, que mostre todos os campos, sem profundidade.
+-   Teste a API com a ferramenta de sua preferência.
+
+### [Aula 9](#9-aplicação-frontend-vuejs-e-django-cors-headers): Crie uma aplicação FrontEnd com Vuejs para a Garagem
+
+-   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
+
+### [Aula 10](#10-relacionamento-n-para-n): Crie um relacionamento n para n entre `Veiculo` e `Acessorio` no projeto Garagem
+
+
+
+-   Crie um relacionamento n para n entre `Veiculo` e `Acessorio`, utilizando um campo do tipo `ManyToManyField`.
+-   Inclua alguns acessórios em alguns veículos pelo Admin.
+-   Teste a API REST de veículos e acessórios.
+
+
+### Primeira avaliação do segundo trimestre
 
 - Modifique o projeto Garagem para refletir o seguinte modelo:
 
