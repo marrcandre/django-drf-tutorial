@@ -662,33 +662,10 @@ Pronto! Seu projeto está de volta no computador e rodando.
 
 # 5. Criando um segundo projeto
 
-Nessa aula, vamos criar um segundo projeto, com uma aplicação e alguns modelos.
+Nessa aula, vamos criar um segundo projeto, o projeto Garagem, com uma aplicação e alguns modelos.
 
-Seguindo aquilo que você já aprendeu, crie um **novo projeto**:
+**5.1 [Exercício](): Crie o projeto Garagem**
 
--   Crie uma pasta para o projeto.
--   Crie um ambiente virtual para o projeto (pdm).
--   Instale o Django.
--   Crie o projeto Django, e a aplicação:
-    -   Nome do projeto: **config**.
-    -   Nome da aplicação: **garagem**.
-    -   Registre a aplicação no `settings.py`.
--   Suba o projeto pro **GitHub**:
-    -   Não esqueça de criar o arquivo `.gitignore` e de retirar o `db.sqlite3` dele.
-    -   Nomeie o commit como sendo `Criação do projeto`.
--   Crie os modelos conforme a definição abaixo:
-    -   Crie o modelo `Marca`, com as seguintes definições:
-        -   `nome` (string, máximo 50 caracteres).
-        -   `nacionalidade` (string, máximo 50 caracteres, opcional).
-        -   `__str__` (retorna o nome da marca em caixa alta).
-    -   Registre a model `Marca` no `Admin`.
-    -   Faça um commit com a mensagem _"Criação do modelo Marca"_.
-    -   Crie o modelo `Categoria`, com as seguintes definições:
-        -   `descricao` (string, máximo 100 caracteres).
-        -   `__str__` (retorna a descrição da categoria).
-    -   Registre a model `Categoria` no `Admin`.
-    -   Faça um commit com a mensagem _"Criação do modelo Categoria"_.
-    -   Inclua alguns registros no banco de dados.
 
 # 6. Criando os outros modelos de dados
 
@@ -3712,7 +3689,44 @@ DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 ---
 
 # Exercícios
+
 ## Garagem
+
+O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto Livraria.
+
+No final, nosso projeto ficará assim:
+
+![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem")
+
+### [Aula 5](#5-criando-um-segundo-projeto): Crie o projeto Garagem
+
+Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**:
+
+-   Crie uma pasta para o projeto.
+-   Crie um ambiente virtual para o projeto (pdm).
+-   Instale o Django.
+-   Crie o projeto Django, e a aplicação:
+    -   Nome do projeto: **config**.
+    -   Nome da aplicação: **garagem**.
+    -   Registre a aplicação no `settings.py`.
+-   Suba o projeto pro **GitHub**:
+    -   Não esqueça de criar o arquivo `.gitignore` e de retirar o `db.sqlite3` dele.
+    -   Nomeie o commit como sendo `Criação do projeto`.
+-   Crie os modelos conforme a definição abaixo:
+    -   Crie o modelo `Marca`, com as seguintes definições:
+        -   `nome` (string, máximo 50 caracteres).
+        -   `nacionalidade` (string, máximo 50 caracteres, opcional).
+        -   `__str__` (retorna o nome da marca em caixa alta).
+    -   Registre a model `Marca` no `Admin`.
+    -   Faça um commit com a mensagem _"Criação do modelo Marca"_.
+    -   Crie o modelo `Categoria`, com as seguintes definições:
+        -   `descricao` (string, máximo 100 caracteres).
+        -   `__str__` (retorna a descrição da categoria).
+    -   Registre a model `Categoria` no `Admin`.
+    -   Faça um commit com a mensagem _"Criação do modelo Categoria"_.
+    -   Inclua alguns registros no banco de dados.
+
+
 ### [Aula 6](#6-criando-os-outros-modelos-de-dados): Crie os demais modelos de dados no projeto Garagem
 
 Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
