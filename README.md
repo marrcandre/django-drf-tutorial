@@ -2529,35 +2529,24 @@ if MODE == "PRODUCTION":
 - Se tudo der certo, o projeto estará disponível na URL que você definiu, algo parecido com https://livraria-marrcandre-dev.fl0.io/.
 
 
-# 22B. Utilizando um Banco de Dados externo no Supabase
+# 22B. Utilizando um Banco de Dados externo no Fl0
 
-Vamos criar um banco de dados no Supabase. Com isso, os dados não serão perdidos a cada nova implantação.
+Vamos criar um banco de dados externo no Fl0. Assim, não utilizaremos mais o SQLite3, que vinhamos usando no desenvolvimento. Com isso, os dados não serão perdidos a cada nova implantação.
 
-**Criando um projeto no Supabase**
+**Criando um Banco de Dados no Fl0**
 
-- Acesse o site do [Supabase](https://supabase.io/) e crie uma conta.
-- Crie um novo projeto no Supabase.
-- Dẽ um nome ao projeto.
-- Selecione a opção `Create a new organization`.
-- Selecione a região `South America (São Paulo)`.
-- Dẽ um nome à organização.
-- Selecione a opção `Create a new database`.
-- Dê um nome ao banco de dados.
-- Escolha uma senha e **anote-a** (você vai precisar dela).
-
-**Configurando o banco de dados no projeto**
-
-- Entre na aba `Settings` do projeto, na opção `Database Settings`.
-- Anote os valores dos seguintes campos: `Host`, `Port`, `Database`, `User` e `Password`.
-- Edite o arquivo `.env` do projeto, incluindo os valores anotados anteriormente.
-- Um exemplo do arquivo seria:
+- Nas configurações do projeto, clique em `Add New` e em `Postgres database`.
+- Escolha a localização mais perto de sua casa.
+- O Banco de Dados será criado.
+- Clique no Banco de Dados criado e entre na opção `Conection Info`.
+- Copie as informações de conexão, e coloque no seu arquivo `.env`:
 
 ```shell
-# Supabase
+# Fl0 Database
 DATABASE_NAME=postgres
-DATABASE_USER=postgres
-DATABASE_PASSWORD=Senha.123@!
-DATABASE_HOST=db.vqcprcexhnwvyvewgrin.supabase.co
+DATABASE_USER=fl0user
+DATABASE_PASSWORD=senha_do_bd
+DATABASE_HOST=url.do.bd.flo.com
 DATABASE_PORT=5432
 ```
 
@@ -2615,16 +2604,19 @@ pdm add psycopg2-binary
 pdm run python manage.py migrate
 ```
 
-> Observe que o banco de dados foi migrado para o `Supabase`.
-
-- No `Supabase`, acesse o `Table Editor` e verifique que as tabelas foram criadas.
-- Você também pode ver o esquema das tabelas, em `Database`, `Schema Visualizer`.
+> Observe que o banco de dados foi migrado para o `Fl0`.
 
 - Faça o commit das alterações.
 
-> Se o `MODE` estiver definido como `PRODUCTION`, no `Fl0`, o banco de dados será o do `Supabase`.
+> Se o `MODE` estiver definido como `PRODUCTION`, no `Fl0`, o banco de dados será o do `Fl0`.
 
-- Para testar, crie um novo autor no projeto e verifique se ele foi criado no banco de dados do `Supabase`.
+- Para testar, crie um novo autor no projeto e verifique se ele foi criado no banco de dados do `Fl0`.
+
+- Opcionalmente, você pode utrilizar um dump do banco de dados local e carregá-lo no banco de dados do `Fl0`:
+
+```shell
+pdm run python manage.py loaddata livraria.json
+```
 
 > A partir de agora, sempre que você fizer uma nova implantação, os dados não serão perdidos.
 
