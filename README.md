@@ -3654,37 +3654,74 @@ class ComprasSerializer(ModelSerializer):
 - Para ordenar por data, em ordem descrente:
   - http://127.0.0.1:8000/api/compras/?ordering=-data
 
-<!-- # 40. Armazenando arquivos estáticos no Cloudinary
+# 40. Adicionando paginação à API
 
-Nesse momento, as imagens dos livros são armazenadas no servidor. Vamos armazenar as imagens no [Cloudinary](https://cloudinary.com/).
+Nesse momento, a API retorna todos os registros de uma vez. Vamos adicionar paginação à API.
 
-Com isso, não precisaremos mais nos preocupar com o armazenamento das imagens, pois o Cloudinary cuidará disso para nós.
-
-- Crie uma conta no [Cloudinary](https://cloudinary.com/).
-- Instale o pacote `cloudinary`:
-
-```shell
-pdm add cloudinary
-```
-- No `settings.py`, inclua as seguintes variáveis de ambiente:
-
+- No objeto `REST_FRAMEWORK`, no `settings.py`, vamos incluir os seguintes parâmetros:
+  
 ```python
-...
-CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
-CLOUDINARY_API_KEY = os.environ.get("CLOUDINARY_API_KEY")
-CLOUDINARY_API_SECRET = os.environ.get("CLOUDINARY_API_SECRET")
-...
+REST_FRAMEWORK = {
+    ...
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    ...
+}
 ```
 
-- No `settings.py`, inclua o seguinte código:
+> Feito isso, o resultado da API será paginado, com 10 registros por página.
 
-```python
-...
-from cloudinary_storage.storage import RawMediaCloudinaryStorage
-...
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-... -->
-<!-- ``` -->
+> O formato do resultado da API será o seguinte:
+
+```json
+{
+    "count": 2,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "usuario": 1,
+            "status": 1,
+            "total": "100.00",
+            "data": "2021-08-22T21:00:00Z",
+            "itens": [
+                {
+                    "id": 1,
+                    "livro": 1,
+                    "quantidade": 1,
+                    "preco_item": "100.00",
+                    "total": "100.00"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "usuario": 1,
+            "status": 1,
+            "total": "100.00",
+            "data": "2021-08-22T21:00:00Z",
+            "itens": [
+                {
+                    "id": 2,
+                    "livro": 1,
+                    "quantidade": 1,
+                    "preco_item": "100.00",
+                    "total": "100.00"
+                }
+            ]
+        }
+    ]
+}
+```
+
+> O campo `count` indica a quantidade de registros retornados.
+
+> O campo `next` indica a url da próxima página.
+
+> O campo `previous` indica a url da página anterior.
+
+> O campo `results` indica os registros retornados.
 
 ---
 
