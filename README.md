@@ -2581,11 +2581,11 @@ print(MODE, DATABASES)
 ...
 ```
 
-> Note que a variável `DATABASES` foi substituída por um `if` que verifica se o `MODE` é `PRODUCTION` ou `MIGRATE`. Se for, o banco de dados será o `PostgreSQL` do `Supabase`. Caso contrário, será o `SQLite` local.
+> Note que a variável `DATABASES` foi substituída por um `if` que verifica se o `MODE` é `PRODUCTION` ou `MIGRATE`. Se for, o banco de dados será o `PostgreSQL` do `Fl0`. Caso contrário, será o `SQLite` local.
 
 > O `print` foi incluído para que você possa verificar se o banco de dados está correto.
 
-> Com essa configuração, podemos acessar o banco de dados do `Supabase` e fazer a migração do banco de dados.
+> Com essa configuração, podemos acessar o banco de dados do `Fl0` e fazer a migração do banco de dados.
 
 **Instalação do suporte ao PosgreSQL**
 
@@ -2606,13 +2606,20 @@ pdm run python manage.py migrate
 
 > Observe que o banco de dados foi migrado para o `Fl0`.
 
-- Faça o commit das alterações.
 
-> Se o `MODE` estiver definido como `PRODUCTION`, no `Fl0`, o banco de dados será o do `Fl0`.
+
+**Configurando o Banco de Dados externo no Fl0**
+
+- Na aba `Environment variables`, inclua as variáveis de ambiente definidas no arquivo `.env` referentes ao banco de dados.
+- Certifique-se de que o valor da variável `MODE` é `PRODUCTION`.
+- Faça o commit das alterações.
+- Sua aplicação deve estar funcionando normalmente, utilizando o banco de dados do `Fl0`.
+
+**Observações**
 
 - Para testar, crie um novo autor no projeto e verifique se ele foi criado no banco de dados do `Fl0`.
 
-- Opcionalmente, você pode utrilizar um dump do banco de dados local e carregá-lo no banco de dados do `Fl0`:
+- Opcionalmente, você pode utilizar um dump do banco de dados local e carregá-lo no banco de dados do `Fl0`:
 
 ```shell
 pdm run python manage.py loaddata livraria.json
@@ -2620,7 +2627,7 @@ pdm run python manage.py loaddata livraria.json
 
 > A partir de agora, sempre que você fizer uma nova implantação, os dados não serão perdidos.
 
-- Para voltar a usar o banco de dados local, altere o valor da variável `MODE` para `DEVELOPMENT`.
+- Para voltar a usar o banco de dados local, altere o valor da variável `MODE` no arquivo `.env` para `DEVELOPMENT`.
 
 # 22C. Armazenando arquivos estáticos no Cloudinary
 
