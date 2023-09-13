@@ -2510,25 +2510,6 @@ if MODE == "PRODUCTION":
 
 Vamos criar um banco de dados externo no Fl0. Assim, não utilizaremos mais o SQLite3, que vinhamos usando no desenvolvimento. Com isso, os dados não serão perdidos a cada nova implantação.
 
-**Criando um Banco de Dados no Fl0**
-
-- Nas configurações do projeto, clique em `Add New` e em `Postgres database`.
-- Escolha a localização mais perto de sua casa.
-- O Banco de Dados será criado.
-- Clique no Banco de Dados criado e entre na opção `Conection Info`.
-- Copie as informações de conexão, e coloque no seu arquivo `.env`:
-
-```shell
-# Fl0 Database
-DATABASE_NAME=postgres
-DATABASE_USER=fl0user
-DATABASE_PASSWORD=senha_do_bd
-DATABASE_HOST=url.do.bd.flo.com
-DATABASE_PORT=5432
-```
-
-> Altere as informações de acordo com o seu projeto.
-
 **Configurando o arquivo `settings.py`**
 
 - Edite o arquivo `settings.py` do projeto, e substitua o conteúdo da variável `DATABASES` pelo seguinte:
@@ -2562,8 +2543,6 @@ print(MODE, DATABASES)
 
 > O `print` foi incluído para que você possa verificar se o banco de dados está correto.
 
-> Com essa configuração, podemos acessar o banco de dados do `Fl0` e fazer a migração do banco de dados.
-
 **Instalação do suporte ao PosgreSQL**
 
 - Para acessar o banco de dados PostgreSQL, instale o seguinte pacote:
@@ -2571,6 +2550,29 @@ print(MODE, DATABASES)
 ```shell
 pdm add psycopg2-binary
 ```
+
+**Criando um Banco de Dados no Fl0**
+
+- Nas configurações do projeto, clique em `Add New` e em `Postgres database`.
+- Escolha a localização mais perto de sua casa.
+- O Banco de Dados será criado.
+
+**Utilizando as informações do Banco de Dados criado**
+
+- Clique no Banco de Dados criado e entre na opção `Conection Info`.
+- Copie as informações de conexão, e coloque no seu arquivo `.env`:
+
+```shell
+# Fl0 Database
+DATABASE_NAME=postgres
+DATABASE_USER=fl0user
+DATABASE_PASSWORD=senha_do_bd
+DATABASE_HOST=url.do.bd.flo.com
+DATABASE_PORT=5432
+```
+> Altere as informações de acordo com o seu projeto.
+
+- Inclua as informações do Banco de Dados no Fl0, na aba `Environment variables`, incluindo as variáveis de ambiente definidas no arquivo `.env` referentes ao banco de dados.
 
 **Migração do banco de dados**
 
@@ -2583,12 +2585,15 @@ pdm run python manage.py migrate
 
 > Observe que o banco de dados foi migrado para o `Fl0`.
 
+- Crie um super usuário:
 
+```shell
+pdm run python manage.py createsuperuser
+```
 
 **Configurando o Banco de Dados externo no Fl0**
 
-- Na aba `Environment variables`, inclua as variáveis de ambiente definidas no arquivo `.env` referentes ao banco de dados.
-- Certifique-se de que o valor da variável `MODE` é `PRODUCTION`.
+- Na aba `Environment variables`, certifique-se de que o valor da variável `MODE` é `PRODUCTION`.
 - Faça o commit das alterações.
 - Sua aplicação deve estar funcionando normalmente, utilizando o banco de dados do `Fl0`.
 
