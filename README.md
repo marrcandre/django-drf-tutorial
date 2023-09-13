@@ -2649,6 +2649,8 @@ if MODE in ["PRODUCTION", "MIGRATE"]:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/' 
 ```
 
 **Configuração do Cloudinary**
@@ -2662,9 +2664,14 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 
 > Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
 
--  Faça o commit das alterações.
--  Para testar, faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
+- Inclua essa mesma variável no Fl0, na aba `Environment variables`.
 
+**Testando**
+
+- Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
+-  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
+-  Se deu certo, faça o *commit* das alterações.
+-  Sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
 
 # 23. Inclusão da foto de perfil no usuário
 
