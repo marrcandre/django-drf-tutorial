@@ -2337,6 +2337,14 @@ Vamos configurar diferentes ambientes para desenvolvimento, migração e produç
 pdm add python-dotenv
 ```
 
+**Baixe o script de configuração do IP**
+
+-   Baixe o arquivo `set_my_ip.py`:
+
+```shell
+curl https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/set_my_ip.py -o ./scritps/set_my_ip.py
+```
+
 **Configuração do ambiente de desenvolvimento**
 
 -   Edite o arquivo `.env`, incluindo as seguintes variáveis:
@@ -2367,7 +2375,7 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https
 ...
 ```
 
-> As referências às variaveis incluídas no arquivo `.env` foram substituídas pelas variáveis de ambiente. Sendo assim, as referências anteriores a elas no arquivo `settings.py` devem ser removidas.
+> **ATENÇÃO: as referências anteriores a essas variáveis no arquivo `settings.py` devem ser removidas.**
 
 > O comando load_dotenv() carrega as variáveis de ambiente definidas no arquivo `.env` ou no sistema operacional.
 
