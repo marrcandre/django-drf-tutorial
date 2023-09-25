@@ -2342,8 +2342,27 @@ pdm add python-dotenv
 -   Baixe o arquivo `set_my_ip.py`:
 
 ```shell
-curl https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/set_my_ip.py -o ./scritps/set_my_ip.py
+curl https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/set_my_ip.py -o ./scripts/set_my_ip.py
 ```
+
+> Esse script pega o IP da máquina e o coloca no arquivo `.env`, na variável `MY_IP`.
+
+**Configure os scripts de execução do projeto**
+
+-   Edite o arquivo `pyproject.toml ` e inclua o seguinte conteúdo:
+
+```shell
+[tool.pdm.scripts]
+pre_dev = "python ./scripts/set_my_ip.py"
+dev = "python manage.py runserver 0.0.0.0:19003"
+```
+
+> O script `pre_dev` será executado antes do script `dev`.
+
+> O script `pre_dev` executa o script `set_my_ip.py`, que pega o IP da máquina e o coloca no arquivo `.env`, na variável `MY_IP`.
+
+> O script `dev` executa o comando `runserver` do Django, que roda o servidor de desenvolvimento na porta `19003`.
+
 
 **Configuração do ambiente de desenvolvimento**
 
@@ -2373,6 +2392,12 @@ DEBUG = os.getenv("DEBUG", "False")
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.fl0.io/"]
 ...
+
+if MODE in ["PRODUCTION", "MIGRATE"]:
+    MEDIA_URL = '/media/' 
+else:    
+    MY_IP = os.getenv("MY_IP", "127.0.0.1")
+    MEDIA_URL = f"http://{MY_IP}:19003/media/"
 ```
 
 > **ATENÇÃO: as referências anteriores a essas variáveis no arquivo `settings.py` devem ser removidas.**
@@ -2384,6 +2409,9 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https
 > A variável `MODE` é definida no arquivo `.env`. Ela será utilizada para definir o modo de execução do projeto. No caso, o modo de execução é o `DEVELOPMENT`.
 
 > Isso tudo pode ser facilmente alterado, de acordo com a necessidade, apenas modificando o arquivo `.env`.
+
+> Na máquina local, a variável `MEDIA_URL` é definida com o IP da máquina, na porta `19003`. Isso é necessário para que o Django possa servir os arquivos de mídia.
+
 
 **Testando a configuração**
 
@@ -2657,8 +2685,10 @@ if MODE in ["PRODUCTION", "MIGRATE"]:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-MEDIA_URL = '/media/' 
+    MEDIA_URL = '/media/' 
+else:    
+    MY_IP = os.getenv("MY_IP", "127.0.0.1")
+    MEDIA_URL = f"http://{MY_IP}:19003/media/"
 ```
 
 **Configuração do Cloudinary**
