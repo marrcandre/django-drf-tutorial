@@ -2337,13 +2337,30 @@ Vamos configurar diferentes ambientes para desenvolvimento, migração e produç
 pdm add python-dotenv
 ```
 
+**Instalação do `python3-dev` e do `netifaces`**
+
+-   Instale o pacote `python3-dev`:
+
+```shell
+sudo apt install python3-dev
+```
+
+-   Instale o pacote `netifaces`:
+
+```shell
+pdm add netifaces
+```
+
+> O pacote `netifaces` é necessário para que possamos obter o IP da máquina. Ele depende do pacote `python3-dev`.
+
 **Baixe o script de configuração do IP**
 
 -   Baixe o arquivo `set_my_ip.py`:
 
 ```shell
-curl https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/set_my_ip.py -o ./scripts/set_my_ip.py
+mkdir -p scripts && curl https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/set_my_ip.py -o ./scripts/set_my_ip.py
 ```
+> Esse comando baixa o arquivo `set_my_ip.py` e o coloca na pasta `scripts`, criando a pasta caso ela não exista.
 
 > Esse script pega o IP da máquina e o coloca no arquivo `.env`, na variável `MY_IP`.
 
@@ -2362,6 +2379,17 @@ dev = "python manage.py runserver 0.0.0.0:19003"
 > O script `pre_dev` executa o script `set_my_ip.py`, que pega o IP da máquina e o coloca no arquivo `.env`, na variável `MY_IP`.
 
 > O script `dev` executa o comando `runserver` do Django, que roda o servidor de desenvolvimento na porta `19003`.
+
+
+**Rodando o projeto**
+
+- Execute o seguinte comando:
+
+```shell
+pdm run dev
+```
+
+- O projeto ficará disponivel no endereço: `http://localhost:19003/`.
 
 
 **Configuração do ambiente de desenvolvimento**
