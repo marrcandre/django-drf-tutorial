@@ -3223,7 +3223,7 @@ O formato dos dados para criar uma nova compra é o seguinte:
 
 Tendo definido o formato dos dados, vamos criar um novo `serializer`, que será usado para criar uma nova compra ou editar uma compra já existente.
 
-- No `serializers.py`, inclua o seguinte código:
+- No arquivo `serializer/compra.py` , inclua o seguinte código:
 
 ```python
 ...
@@ -3241,7 +3241,7 @@ class CriarEditarCompraSerializer(ModelSerializer):
 
 Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`.
 
-- No `views.py`, altere o `viewset` de `Compra` para usar o novo `serializer`:
+- No arquivo `views/compra.py` altere o `viewset` de `Compra` para usar o novo `serializer`:
 
 ```python
 ...
@@ -3288,7 +3288,7 @@ Escreva um método `.create()` explícito para o serializer `livraria.serializer
 
 O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
 
-- No `serializers.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
+- No arqiuvo `serializers/compra.py` , altere o `serializer` de `Compra` para suportar campos aninhados:
 
 ```python
 ...
@@ -3363,7 +3363,7 @@ Escreva um método `.update()` explícito para o serializer `livraria.serializer
 
 > O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
 
-- No `serializers.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
+- No arquivo `serializers/compra.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
 
 ```python
 ...
@@ -3398,7 +3398,7 @@ Escreva um método `.update()` explícito para o serializer `livraria.serializer
 
 Ao invés de passar o usuário no corpo da requisição, podemos pegar o usuário autenticado e criar a compra a partir dele. O `Django Rest Framework` nos dá uma forma de fazer isso.
 
-- Primeiro, vamos importar todos os `serializers` de `rest_framework` no `serializers.py`:
+- Primeiro, vamos importar todos os `serializers` de `rest_framework` em `serializers/compra.py`:
 
 ```python
 from rest_framework import serializers
@@ -3561,7 +3561,7 @@ INSTALLED_APPS = [
 ...
 ```
 
-- No `views.py`, vamos alterar o `viewset` de `Livro` para filtrar os livros por categoria:
+- No `views/livro.py`, vamos alterar o `viewset` de `Livro` para filtrar os livros por categoria:
 
 ```python
 ...
@@ -3586,7 +3586,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 Vamos acrescentar outros filtros na listagem de livros.
 
-- No `views.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria` e `editora`:
+- No `views/livro.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria` e `editora`:
 
 ```python
 ...
@@ -3719,7 +3719,7 @@ class ComprasSerializer(ModelSerializer):
 
 **Acrescentando filtro e ordenação por data**
 
-- No `views.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Compra` para filtrar as compras por `data`.
+- No `views/compra.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Compra` para filtrar as compras por `data`.
 - Vamos também alterar o atributo `ordering_fields`, na `viewset` de `Compra` para ordenar as compras por `data`.
 
 ```python
