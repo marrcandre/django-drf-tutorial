@@ -3802,7 +3802,7 @@ REST_FRAMEWORK = {
 > O campo `results` indica os registros retornados.
 
 
-# 41. Adicionando tipo de pagamento à compra
+# 41. Adicionando tipo de pagamento à model de Compra
 
 Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto` ou `outros`.
 
@@ -3845,6 +3845,52 @@ class Compra(models.Model):
 
 - Execute as migrações.
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
+- Faça o _commit_ e _push_ das alterações.
+
+# 42. Adicionando o tipo de usuário à model de Usuário
+
+Uma forma de diferenciar os usuários é através do tipo de usuário. Vamos adicionar o tipo de usuário à model de usuário.
+Outra abordagem possível é utilizar o `Group` do Django.
+
+- No `models\usuario.py`, vamos incluir o campo `tipo_usuario` no model `Usuario`:
+
+```python
+...
+class Usuario(AbstractUser):
+    class Tipos(models.TextChoices):
+        CLIENTE = "CLIENTE", "Cliente"
+        VENDEDOR = "VENDEDOR", "Vendedor"
+        GERENTE = "GERENTE", "Gerente"
+...
+    tipo = models.CharField(_("Type"), max_length=50, choices=Tipos.choices, default=Tipos.CLIENTE)
+...
+```
+
+> O campo `tipo` é um campo do tipo `CharField`, que armazena o tipo de usuário. O parâmetro `choices` indica as opções de tipo de usuário. O parâmetro `default` indica o tipo de usuário padrão.
+
+- Execute as migrações.
+- Para testar, crie um novo usuário e verifique que o tipo de usuário foi gravado.
+
+Uma forma de utilizar o tipo de usuário é verificando se o usuário é `GERENTE` e então permitir que ele tenha acesso a todas as compras. Vamos ver como fazer isso.
+
+- No `views/compra.py`, vamos alterar o método `get_queryset` para permitir que o usuário `GERENTE` tenha acesso a todas as compras:
+
+```python
+...
+class CompraViewSet(ModelViewSet):
+...
+    def get_queryset(self):
+        usuario = self.request.user
+...
+        if usuario.tipo == Usuario.Tipos.GERENTE:
+            return Compra.objects.all()
+        return Compra.objects.filter(usuario=usuario)
+...
+```
+
+> O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado, exceto se o usuário for `GERENTE`, que retorna todas as compras.
+
+- Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ e _push_ das alterações.
 
 ---
