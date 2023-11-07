@@ -2863,10 +2863,10 @@ from usuario.models import Usuario
 
 class Compra(models.Model):
     class StatusCompra(models.IntegerChoices):
-        CARRINHO = (1,"Carrinho",)
-        REALIZADO = (2,"Realizado",)
-        PAGO = (3,"Pago",)
-        ENTREGUE = (4,"Entregue",)
+        CARRINHO = 1, "Carrinho"
+        REALIZADO = 2, "Realizado"
+        PAGO = 3, "Pago"
+        ENTREGUE = 4, "Entregue"
 
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="compras")
     status = models.IntegerField(choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
@@ -3812,30 +3812,13 @@ Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `car
 ...
 class Compra(models.Model):
     class TipoPagamento(models.IntegerChoices):
-        CARTAO_CREDITO = (
-            1,
-            "Cartão de crédito",
-        )
-        CARTAO_DEBITO = (
-            2,
-            "Cartão de débito",
-        )
-        PIX = (
-            3,
-            "Pix",
-        )
-        BOLETO = (
-            4,
-            "Boleto",
-        )
-        TRANSFERENCIA_BANCARIA = (
-            5,
-            "Transferência bancária",
-        )
-        OUTROS = (
-            6,
-            "Outros",
-        )
+        CARTAO_CREDITO = 1, "Cartão de Crédito"
+        CARTAO_DEBITO = 2, "Cartão de Débito"
+        PIX = 3, "PIX"
+        BOLETO = 4, "Boleto"
+        TRANSFERENCIA_BANCARIA = 5, "Transferência Bancária"
+        DINHEIRO = 6, "Dinheiro"
+        OUTRO = 7, "Outro"
 ...
     tipo_pagamento = models.IntegerField(choices=TipoPagamento.choices, default=TipoPagamento.CARTAO_CREDITO)
 ...
@@ -3857,16 +3840,16 @@ Outra abordagem possível é utilizar o `Group` do Django.
 ```python
 ...
 class Usuario(AbstractUser):
-    class Tipos(models.TextChoices):
-        CLIENTE = "CLIENTE", "Cliente"
-        VENDEDOR = "VENDEDOR", "Vendedor"
-        GERENTE = "GERENTE", "Gerente"
+    class TipoUsuario(models.IntegerChoices):
+        CLIENTE = 1, "Cliente"
+        VENDEDOR = 2, "Vendedor"
+        GERENTE = 3, "Gerente"
 ...
-    tipo = models.CharField(_("Type"), max_length=50, choices=Tipos.choices, default=Tipos.CLIENTE)
+    tipo_usuario = models.IntegerField(_("User Type"), choices=TipoUsuario.choices, default=TipoUsuario.CLIENTE)
 ...
 ```
 
-> O campo `tipo` é um campo do tipo `CharField`, que armazena o tipo de usuário. O parâmetro `choices` indica as opções de tipo de usuário. O parâmetro `default` indica o tipo de usuário padrão.
+> O campo `tipo_usuario` é um campo do tipo `IntegerField`, que armazena o tipo de usuário. O parâmetro `choices` indica as opções de usuário. O parâmetro `default` indica o tipo de usuário padrão.
 
 - Execute as migrações.
 - Para testar, crie um novo usuário e verifique que o tipo de usuário foi gravado.
