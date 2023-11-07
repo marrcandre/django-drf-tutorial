@@ -1,6 +1,6 @@
 # Django com DRF
 
-Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva). 
+Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
@@ -26,7 +26,7 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 - [Instale ou atualize o VS Code](#a0-instalação-do-vs-code).
 - [Instale e sincronize as extensões do VS Code.](#a0-instalação-e-sincronização-de-extensões-do-vs-code)
 - [Instale e configure o PDM](#a0-instalação-e-configuração-do-pdm)
-  
+
 <!-- TODO: Inserir na seção de resolução de erros. -->
 
 <!-- **1.2.6 Instalação de plugins do PDM**
@@ -45,7 +45,7 @@ Para configurar o plugin, edite o arquivo `pyproject.toml` e adicione a seguinte
 [[tool.pdm.autoexport]]
 filename = "requirements.txt"
 without-hashes = "true"
-``` 
+```
 -->
 
 <!-- **1.2.8 Configuração do Navegador de Arquivos**
@@ -1636,7 +1636,7 @@ Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo 
 -   Adicione a importação no arquivo `__init__.py`.
 -   Remova o conteúdo do arquivo.
 
-> Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`. 
+> Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`.
 
 - Para criar a pasta `views`, execute os seguintes comandos:
 
@@ -2125,12 +2125,12 @@ Vamos aprender a fazer o _dump_ e _load_ de dados.
 
 **Carga inicial de dados**
 
-- Acesse o seguinte link: 
+- Acesse o seguinte link:
 
   - Link: `http://191.52.55.156:19005/admin`
   - Usuário: `a@a.com`
   - Senha: `senha.123`
-  
+
 - Cadastre pelos menos 10 livros, com autor e editora
 - Verifique se o livro, autor ou editora já estão cadastrados.
 - **NÃO USE CAIXA ALTA!!!**
@@ -2325,7 +2325,7 @@ class LivroAdmin(admin.ModelAdmin):
     http://localhost:8000/admin/
 
 
-# 21. Configurando diferentes ambientes 
+# 21. Configurando diferentes ambientes
 
 Vamos configurar diferentes ambientes para desenvolvimento, migração e produção. Para isso, vamos criar um arquivo `.env` na raiz do projeto. Nesse arquivo, vamos definir as variáveis de ambiente que queremos que tenham valores diferentes para cada ambiente.
 
@@ -2422,8 +2422,8 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https
 ...
 
 if MODE in ["PRODUCTION", "MIGRATE"]:
-    MEDIA_URL = '/media/' 
-else:    
+    MEDIA_URL = '/media/'
+else:
     MY_IP = os.getenv("MY_IP", "127.0.0.1")
     MEDIA_URL = f"http://{MY_IP}:19003/media/"
 ```
@@ -2528,13 +2528,13 @@ web: gunicorn config.wsgi
 
 Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
 
-Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema. 
+Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema.
 
 - Adicione o `WhiteNoise` como uma dependência (adicionar suporte para `Brotli` é opcional, mas recomendado):
 
 ```shell
 pdm add 'whitenoise[brotli]'
-``` 
+```
 
 - Abra o arquivo `settings.py`, encontre a lista `MIDDLEWARE` e adicione o middleware `WhiteNoise` logo após o `SecurityMiddleware`:
 
@@ -2713,8 +2713,8 @@ if MODE in ["PRODUCTION", "MIGRATE"]:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    MEDIA_URL = '/media/' 
-else:    
+    MEDIA_URL = '/media/'
+else:
     MY_IP = os.getenv("MY_IP", "127.0.0.1")
     MEDIA_URL = f"http://{MY_IP}:19003/media/"
 ```
@@ -2849,7 +2849,7 @@ Nessa aula, vamos criar um model de compras integrada à model do usuário do pr
 **Criando o model de compras**
 
 -   Crie um novo arquivo `compra.py` dentro da pasta `models` do app `livraria`:
-  
+
 ```shell
 touch livraria/models/compra.py
 ```
@@ -3119,7 +3119,7 @@ Você deve ter percebido que o serializer de `ItensCompra` está mostrando todos
 fields = ["livro", "quantidade"]
 ```
 
-> O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados. 
+> O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados.
 
 -   Teste o endpoint no navegador.
 
@@ -3166,7 +3166,7 @@ def get_total(self, instance):
 
 # 29. Totalização dos itens de compra na `model` e `serializer` de compra
 
-Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras. 
+Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras.
 
 - Ao final da `model` `Compra`, inclua o seguinte código:
 
@@ -3405,7 +3405,7 @@ from rest_framework import serializers
 ```
 
 - Agora, vamos definir o usuário como um campo oculto, cujo valor padrão é o usuário autenticado:
-  
+
 ```python
 class ComprasSerializer(ModelSerializer):
     itens = ItensCompraSerializer(many=True)
@@ -3416,7 +3416,7 @@ class ComprasSerializer(ModelSerializer):
         fields = ("id", "usuario", "status", "total", "itens")
 ```
 
-> O campo `usuario` é um campo oculto, pois foi definido como `serializers.HiddenField`. Ele não é exibido no `serializer`. 
+> O campo `usuario` é um campo oculto, pois foi definido como `serializers.HiddenField`. Ele não é exibido no `serializer`.
 
 > O valor padrão do campo é o usuário autenticado.
 
@@ -3438,7 +3438,7 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 > Observe que não precisamos mais passar o usuário no corpo da requisição, pois ele pega o usuário autenticado.
 
 - Faça o _commit_ e _push_ das alterações.
-  
+
 # 33. Filtrando apenas as compras do usuário autenticado
 
 Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar apenas as compras do usuário autenticado.
@@ -3449,7 +3449,7 @@ Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar apenas
 ...
 class CompraViewSet(ModelViewSet):
     queryset = Compra.objects.all()
-    
+
     def get_queryset(self):
         usuario = self.request.user
         if usuario.is_superuser:
@@ -3534,7 +3534,7 @@ class ItensCompra(models.Model):
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ e _push_ das alterações.
 
-# 36. Filtrando os livros 
+# 36. Filtrando os livros
 
 
 Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
@@ -3581,7 +3581,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 - Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
 - Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=Python`. Você verá que apenas os livros da categoria informada foram listados.
 - Faça o _commit_ e _push_ das alterações.
-  
+
 ## Acrescentando outros filtros na listagem de livros
 
 Vamos acrescentar outros filtros na listagem de livros.
@@ -3599,7 +3599,7 @@ Vamos acrescentar outros filtros na listagem de livros.
   - http://127.0.0.1:8000/api/livros/?autores=3&categoria=4&editora=1
 - Para filtrar apenas por editora:
   - http://127.0.0.1:8000/api/livros/?editora__nome=Novatec
-  
+
 **Exercício**
 
 - Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
@@ -3737,7 +3737,7 @@ class ComprasSerializer(ModelSerializer):
 Nesse momento, a API retorna todos os registros de uma vez. Vamos adicionar paginação à API.
 
 - No objeto `REST_FRAMEWORK`, no `settings.py`, vamos incluir os seguintes parâmetros:
-  
+
 ```python
 REST_FRAMEWORK = {
     ...
@@ -3800,6 +3800,52 @@ REST_FRAMEWORK = {
 > O campo `previous` indica a url da página anterior.
 
 > O campo `results` indica os registros retornados.
+
+
+# 41. Adicionando tipo de pagamento à compra
+
+Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto` ou `outros`.
+
+- No `models\compra.py`, vamos incluir o campo `tipo_pagamento` no model `Compra`:
+
+```python
+...
+class Compra(models.Model):
+    class TipoPagamento(models.IntegerChoices):
+        CARTAO_CREDITO = (
+            1,
+            "Cartão de crédito",
+        )
+        CARTAO_DEBITO = (
+            2,
+            "Cartão de débito",
+        )
+        PIX = (
+            3,
+            "Pix",
+        )
+        BOLETO = (
+            4,
+            "Boleto",
+        )
+        TRANSFERENCIA_BANCARIA = (
+            5,
+            "Transferência bancária",
+        )
+        OUTROS = (
+            6,
+            "Outros",
+        )
+...
+    tipo_pagamento = models.IntegerField(choices=TipoPagamento.choices, default=TipoPagamento.CARTAO_CREDITO)
+...
+```
+
+> O campo `tipo_pagamento` é um campo do tipo `IntegerField`, que armazena o tipo de pagamento da compra. O parâmetro `choices` indica as opções de pagamento. O parâmetro `default` indica o tipo de pagamento padrão.
+
+- Execute as migrações.
+- Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
+- Faça o _commit_ e _push_ das alterações.
 
 ---
 
@@ -4135,7 +4181,7 @@ pdm add django
 # A4. Gerando um diagrama de banco de dados a partir das models
 
 - Instale o `GraphViz`:
-  
+
 ```shell
 sudo apt install graphviz
 ```
@@ -4309,7 +4355,7 @@ pdm config python.use_venv false
 
 ## Geração da SECRET_KEY
 
-A SECRET_KEY é uma chave secreta usada pelo Django para criptografar dados sensíveis. Ela é usada, por exemplo, para criptografar as senhas dos usuários. Em sistemas em produção ela deve ser mantida em segredo. 
+A SECRET_KEY é uma chave secreta usada pelo Django para criptografar dados sensíveis. Ela é usada, por exemplo, para criptografar as senhas dos usuários. Em sistemas em produção ela deve ser mantida em segredo.
 
 -   Para gerar uma nova SECRET_KEY (chave secreta), a ser colocada no arquivo `.env`, execute o comando:
 
