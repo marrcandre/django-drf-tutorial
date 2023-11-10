@@ -2628,7 +2628,7 @@ pdm add psycopg2-binary
 
 ```shell
 # Fl0 Database
-DATABASE_NAME=postgres
+DATABASE_NAME=fl0db
 DATABASE_USER=fl0user
 DATABASE_PASSWORD=senha_do_bd
 DATABASE_HOST=url.do.bd.flo.com
