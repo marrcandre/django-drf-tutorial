@@ -3534,6 +3534,26 @@ class ItensCompra(models.Model):
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ e _push_ das alterações.
 
+Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
+
+```python
+...
+    def update(self, instance, validated_data):
+        itens = validated_data.pop("itens")
+        if itens:
+            instance.itens.all().delete()
+            for item in itens:
+                item["preco_item"] = item["livro"].preco # Coloca o preço do livro no item de compra
+                ItensCompra.objects.create(compra=instance, **item)
+        instance.save()
+        return instance
+...
+```
+
+- Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
+- Faça o _commit_ e _push_ das alterações.
+
+
 # 36. Filtrando os livros
 
 
