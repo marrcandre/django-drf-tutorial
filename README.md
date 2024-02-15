@@ -1,4 +1,4 @@
-# Django com DRF
+# Django com DRF (2024)
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
@@ -30,7 +30,7 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 
 # 2. Criação do projeto
 
-**2.0 O projeto Livraria**
+**2.1 O projeto Livraria**
 
 **Modelo Entidade Relacionamento**
 
@@ -40,165 +40,98 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 
 ![Diagrama de Classes](diagramas/livraria_classes.png "Diagrama de Classes")
 
-**2.1 Criação da pasta do projeto**
+**2.2 Criação do projeto a partir de um template**
 
--   Abra o navegador de arquivos:
+> **IMPORTANTE**: Vamos criar o projeto `livraria` a partir de um repositório de _template_. Se você quiser criar aprender a criar um projeto do zero, acesse o tutorial de [2023](https://github.com/marrcandre/django-drf-tutorial/tree/versao-2023).
 
-    `Windows + E`
+- Acesse o _template_ em https://github.com/marrcandre/template_django_pdm.
+- Clique no botão `Use this template` em `Create a new repository`.
+- Preencha as informações solicitadas:
+  - `Owner`: <seu usuário no GitHub>
+  - `Repository name`: `livraria`
+- Click no botão `Create repository`.
 
--   Entre na pasta **Documentos** ou crie uma pasta **projetos**.
--   Crie uma pasta chamada `livraria` (ou outro nome de sua preferência) para o seu projeto.
--   **IMPORTANTE**:
-    -   Não trabalhe na `Área de Trabalho` ou na pasta `Downloads`.
-    -   Certifique-se de que **nenhuma pasta** no caminho tenha **espaços** ou **acentos** (**se você não fizer isso, terá que recriar todo o projeto**).
--   Dentro dessa pasta, abra um terminal:
+> Feito isso, o repositório `livraria` será criado no seu GitHub.
 
-    _Botao direito do mouse -> Abrir terminal aqui_
+**2.3 Clonando o projeto**
 
-**2.2 Criação do projeto no PDM**
+Você pode clonar o projeto de duas formas:
 
--   Crie uma pasta chamada `livraria` para o seu projeto.
+**2.3.1 Usando o VS Code**
+  - Abra o **VS Code**.
+  - Clique no ícone de **Source Control** na barra lateral esquerda.
+    - Clique no botão `Clone Repository`.
+    - Vocẽ também pode teclar `Control+Shift+P` e digitar `Clone Repository`.
+  - Digite a URL do repositório do projeto (ou procure na lista de repositórios disponíveis).
+  - Escolha a pasta onde o projeto será clonado.
+  - Clique no botão `Clone`.
 
-```shell
-mkdir livraria
-```
-
--   Entre na pasta do projeto:
-
-```shell
-cd livraria
-```
-
--   Crie o projeto com o **PDM**:
-
-```shell
-pdm init
-```
-
--   Você passará por uma tela semelhante a essa:
+**2.3.2 Usando o terminal**
+  - Abra o terminal.
+  - Vá para a pasta onde o projeto será clonado.
+  - Digite o comando:
 
 ```shell
-Creating a pyproject.toml for PDM...
-Please enter the Python interpreter to use
-1. /usr/bin/python (3.10)
-2. /usr/bin/python3.10 (3.10)
-3. /home/marco/.local/share/pdm/venv/bin/python (3.10)
-Please select (0):
-Using Python interpreter: /usr/bin/python (3.10)
-Would you like to create a virtualenv with /usr/bin/python? [y/n] (y): n
-You are using the PEP 582 mode, no virtualenv is created.
-For more info, please visit https://peps.python.org/pep-0582/
-Is the project a library that will be uploaded to PyPI [y/n] (n): n
-License(SPDX name) (MIT):
-Author name (Marco André Mendes):
-Author email (marcoandre@gmail.com):
-Python requires('*' to allow any) (>=3.10):
-Changes are written to pyproject.toml.
+git clone <URL do repositório>
 ```
-
--   Verifique se o **PDM** criou o arquivo `pyproject.toml`:
-
-```shell
-ls -l pyproject.toml
-```
-
-**2.3 Abrindo o projeto no VS Code**
-
--   Abra o projeto no VS Code:
+- Abra o projeto no **VS Code**, digitando:
 
 ```shell
 code .
 ```
 
-Você pode abrir o projeto no VS Code de duas formas:
-
--   Digitando o comando `code .` no terminal.
--   Pelo gereciador de arquivos, clicando com o botão direito do mouse na pasta do projeto e selecionando a opção **Abrir com o VS Code**.
--   Clicando no botão **Abrir pasta** e selecionando a pasta do projeto.
-
-**IMPORTANTE:**
-
--   Sempre abra a **pasta raiz do projeto** no VS Code (repita em voz alta: _"**Nunca** abra um **arquivo**, **sempre** abra a **pasta**."_).
--   O VS Code precisa dessa informação de qual é a pasta raiz do projeto para funcionar corretamente.
-
-**2.4 Instalação do Django**
-
--   Abra o terminal do VS Code:
-
-    Ctrl + Shift + `
-
--   Instale o **Django** no seu projeto:
-
-```shell
-pdm add django
-```
-
--   Verifique se o arquivo `pdm.lock` foi criado:
-
-```shell
-ls -l pdm.lock
-```
-
--   Verifique a versão do **Django** instalado:
-
-```shell
-pdm run django-admin --version
-```
-
-**2.5 Criação do projeto no Django**
-
-Um projeto no **Django** é uma pasta com um conjunto de arquivos e pastas que contém o código do seu site. Vamos criar um projeto chamado `config`.
-
--   Crie o projeto no **Django**:
-
-```shell
-pdm run django-admin startproject config .
-```
-
-**IMPORTANTE**: o ponto no final é importante. Ele indica que o projeto será criado na pasta atual.
-
 O projeto criado ficará assim:
 
-```
-.
-├── .vscode
-│   ├── settings.json
-├── config
-│   ├── asgi.py
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── manage.py
-├── pdm.lock
-├── pyproject.toml
-└── requirements.txt
+![Projeto inicial](imagens/template_arquivos_iniciais.png)
+
+**2.4 Instalando as dependências**
+
+-   Abra o terminal no **VS Code**.
+-   Instale as dependências do projeto:
+
+```shell
+pdm install
 ```
 
-**2.6 Rodando o servidor de desenvolvimento**
+**2.5 Criando o arquivo `.env`**
+
+-   Crie o arquivo `.env` na raiz do projeto:
+
+```shell
+cp .env.example .env
+```
+
+**2.4 Rodando o servidor de desenvolvimento**
 
 -   Para executar o projeto, digite no terminal:
 
 ```shell
-pdm run python manage.py runserver
+pdm run dev
 ```
 
--   Verifique se o projeto está rodando:
+**2.5 Acessando o projeto**
 
-    -   Página inicial: http://localhost:8000
-    -   `Admin`: http://localhost:8000/admin
+-   Acesse o projeto no navegador:
 
--   Ao rodar o projeto pela primeira vez, o arquivo `db.sqlite3` é criado.
--   Também aparecem mensagens de erro importantes.
--   Abra o arquivo `db.sqlite3` dentro do **VS Code**.
--   Verifique que ele ainda não possui nenhuma tabela.
+    http://0.0.0.0:19003/admin
 
--   Vamos abrir cada um desses arquivos e verificar para que eles servem, principalmente os seguintes:
+- Os dados de acesso são:
+  - `Usuário`: `a@a.com
+  - `Senha`: `teste.123`
+- Após acessar, você pode o nome do usuário e a senha.
 
-    -   `manage.py`: é o arquivo que você usa para executar comandos do **Django**.
-    -   `settings.py`: é o arquivo de configuração do projeto.
-    -   `urls.py`: é o arquivo de configuração das rotas do projeto.
-    -   `db.sqlite3`: é o arquivo de banco de dados do projeto.
+> **IMPORTANTE**: O servidor de desenvolvimento deve estar sempre rodando para que o projeto funcione.
+
+**É isso! Seu projeto está inicializado e rodando!!!**
+
+<!--
+    - `app`: é o nome do nosso projeto. Dentro dessa pasta ficam os seguintes arquivos:
+      -   `settings.py`: é o arquivo de configuração do projeto.
+      -   `urls.py`: é o arquivo de configuração das rotas do projeto.
+  - `core`: é no nome da nossa aplicação. Dentro dela ficam
+  -
+-   `manage.py`: é o arquivo que você usa para executar comandos do **Django**.
+-   `db.sqlite3`: é o arquivo de banco de dados do projeto.
 
 **2.7 Executando o servidor**
 
@@ -228,8 +161,9 @@ pdm run python manage.py createsuperuser
 
 -   Crie mais 2 usuários de teste.
 -   Entre no arquivo de banco de dados (`db.sqlite3`), e verifique se os registros foram criados.
+ -->
 
-**2.10 Exercício**
+**2.6 Exercício**
 
 -   Apague o projeto e crie novamente, seguindo as instruções acima.
 -   Verifique se o projeto está rodando e se o `Admin` está em execução.
