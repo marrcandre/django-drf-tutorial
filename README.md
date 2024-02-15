@@ -23,64 +23,10 @@ Bons estudos!
 
 A preparação do ambiente será feita apenas uma vez em cada computador. Ela consiste em instalar e configurar o **VS Code**, o **PDM** e o **Python**.
 
-- [Instale ou atualize o VS Code](#a0-instalação-do-vs-code).
-- [Instale e sincronize as extensões do VS Code.](#a0-instalação-e-sincronização-de-extensões-do-vs-code)
-- [Instale e configure o PDM](#a0-instalação-e-configuração-do-pdm)
+- [Instale ou atualize o VS Code](#a1-instalação-e-atualização-do-vs-code)
+- [Instale e sincronize as extensões do VS Code.](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
+- [Instale e configure o PDM](#a3-instalação-e-configuração-do-pdm)
 
-<!-- TODO: Inserir na seção de resolução de erros. -->
-
-<!-- **1.2.6 Instalação de plugins do PDM**
-
-**1.2.7 Instalação do plugin pdm-autoexport**
-
-Instale o plugin `pdm-autoexport`, que atualiza automaticamente o arquivo `requirements.txt`, cada vez que você instalar um pacote:
-
-```shell
-pdm plugin add pdm-autoexport
-```
-
-Para configurar o plugin, edite o arquivo `pyproject.toml` e adicione a seguinte linha:
-
-```toml
-[[tool.pdm.autoexport]]
-filename = "requirements.txt"
-without-hashes = "true"
-```
--->
-
-<!-- **1.2.8 Configuração do Navegador de Arquivos**
-
--   No **Gnome Shell**, inclua o VS Code no menu de contexto do navegador de arquivos (_"Abrir com Code"_):
-
-```shell
-wget -qO- https://raw.githubusercontent.com/cra0zy/code-nautilus/master/install.sh | bash
-``` -->
-
-<!-- **1.3 Instalação do Python**
-
--   Verifique se o **python** está instalado:
-
-```shell
-python -V
-```
-
--   Se o python não estiver instalado, verifique se o python3 está instalado:
-
-```shell
-python3 -V
-```
-
--   Nesse caso, você pode criar um link simbólico para o python3:
-
-```shell
-sudo ln -s /usr/bin/python3 /usr/bin/python
-```
-
--   Ou ainda, criar um `alias` (apelido) para o python3:
-
-```shell
-echo "alias python=python3" >> ~/.bashrc
-``` -->
 
 # 2. Criação do projeto
 
@@ -4009,9 +3955,7 @@ Crie o modelo `Veículo`, com os seguintes atributos:
 
 # Apêndices
 
-# A0. Instalação do VS Code
-
-**1.1.2 Atualização do VS Code**
+# A1. Instalação e atualização do VS Code
 
 Para **instalar** ou **atualizar** o **VS Code**, siga as seguintes instruções:
 
@@ -4031,7 +3975,7 @@ yay -Syu visual-studio-code-bin
 
 -   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
 
-# A0. Instalação e sincronização de extensões do VS Code
+# A2. Instalação e sincronização de extensões do VS Code
 
 ## Instalação de extensões no VS Code
 
@@ -4063,11 +4007,9 @@ Você pode configurar a sincronização das extensões entre os computadores. Pa
 -   Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code.
 -   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
 
-# A0. Instalação e configuração do PDM
+# A3. Instalação e configuração do PDM
 
-**1.2 Instalação do PDM**
-
-**1.2.1 Instalação do PDM no Linux**
+**Instalação do PDM no Linux**
 
 As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estiver usando outra distribuição ou quiser mais informações, consulte a documentação do [PDM](https://pdm.fming.dev/latest/).
 
@@ -4087,6 +4029,8 @@ pdm -V
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
+> **IMPORTANTE**: Após a instalação do PDM, você precisa rodar o script de configuração, conforme descrito abaixo.
+
 **Configuração do PDM no `bash` (Ubuntu e derivados)**
 
 -   Execute o seguinte comando:
@@ -4105,7 +4049,8 @@ curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm
 
 **Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
-**1.2.2 Instalação do PDM no Windows**
+**Instalação do PDM no Windows**
+
 Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
 
 ```shell
@@ -4118,12 +4063,12 @@ Verifique se o **PDM** está configurado para não usar virtualenv:
 pdm config
 ```
 
-**Observação:**
-
-Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
+> **IMPORTANTE:** Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
 
 
-# A1. Criação de _scripts_ PDM
+# A4. Criação de _scripts_ PDM
+
+> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
 
 Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
 
@@ -4151,9 +4096,14 @@ dumpdata = "python manage.py dumpdata {args}"
 pdm run dev
 ```
 
-# A2. Formatação de código com isort e black
+# A5. Formatação de código com isort e black
+
+> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
 
 As ferramentas de formatação de código `isort` e `black` são muito úteis para manter o código Python organizado e legível. Enquanto o `isort` organiza as importações, o `black` formata o código, seguindo as convenções do PEP8.
+
+- Instale as extensões do `isort` e do `black` no VS Code.
+
 
 -   Instale as ferramentas de desenvolvimento `isort` e `black`:
 
@@ -4199,7 +4149,9 @@ pdm run black .
 
 Opcionalmente, você pode utilizador o formatador de código em um arquivo, selecionando o código (`Ctrl` + `A`) e pressionando `Ctrl + Shift + I`.
 
-# A3. Gerando o arquivo requirements.txt automaticamente
+# A6. Gerando o arquivo requirements.txt automaticamente
+
+> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
 
 O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
 
@@ -4227,7 +4179,9 @@ pdm add django
 
 > A partir de agora, sempre que você instalar um pacote com o `pdm`, o arquivo `requirements.txt` será atualizado automaticamente.
 
-# A4. Gerando um diagrama de banco de dados a partir das models
+# A7. Gerando um diagrama de banco de dados a partir das models
+
+> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
 
 - Instale o `GraphViz`:
 
@@ -4255,7 +4209,7 @@ INSTALLED_APPS = [
 ```shell
 pdm run python manage.py graph_models -g -o livraria.png livraria
 ```
-# A5. Usando curl para testar a API via linha de comando
+# A8. Usando curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
@@ -4287,7 +4241,7 @@ curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
 curl -X DELETE http://localhost:8000/categorias/1/
 ```
 
-# A6. Resolução de erros
+# A9. Resolução de erros
 
 **Instalação do plugin pdm-vscode**
 
@@ -4382,7 +4336,6 @@ rm -rf __pypackages__ pdm.lock
 rm db.sqlite3
 ```
 
-
 ## Pasta `.venv` criada no projeto
 
 -   Se seu projeto tiver a pasta `.venv`, e não a pasta `__pypackages__`, remova a pasta `.venv`:
@@ -4427,7 +4380,7 @@ pdm run python manage.py shell -c "from django.core.management.utils import get_
 
 - Acesse o site https://sqliteviewer.app/ e abra o arquivo `db.sqlite3` do projeto.
 
-# A7. Aumentando o tempo de vida do token de autenticação JWT
+## Aumentando o tempo de vida do token de autenticação JWT
 
 -   Adicione as seguintes linhas ao arquivo `settings.py`:
 
