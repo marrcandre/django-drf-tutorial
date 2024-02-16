@@ -164,7 +164,7 @@ Para maiores informações consulte a [documentação](https://docs.djangoprojec
 
 > Você pode observar que a pasta `models` já contém um modelo de dados, dentro do arquivo `user.py`, chamado `User`. Esse modelo modifica o usuário padrão fornecido pelo **Django** e representa um usuário do sistema.
 
-**3.3 Criação de uma nova model**
+**3.3 Criação da model de Categoria**
 
 -   Vamos começar criando o modelo de dados `Categoria`, que representa uma categoria de livro, como por exemplo: `Ficção`, `Terror`, `Romance`, etc.
 
@@ -274,7 +274,7 @@ Volte ao `Admin` verifique o que mudou na apresentação dos objetos da model `C
     -   Alteração do Marca do Veículo
 
 
-**3.11 Criação do modelo de dados Editora**
+<!-- **3.11 Criação do modelo de dados Editora**
 
 -   Vamos criar o modelo de dados `Editora`, no arquivo `models.py`:
 
@@ -302,7 +302,7 @@ Seu arquivo `admin.py` ficará assim:
 ```python
 from django.contrib import admin
 
-from livraria.models import Categoria, Editora
+from core.models import Categoria, Editora
 
 admin.site.register(Categoria)
 admin.site.register(Editora)
@@ -311,63 +311,6 @@ admin.site.register(Editora)
 Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados.
 
 
-
-**4.7 Baixando novamente o projeto**
-
-Agora que seu projeto está no **GitHub**, você pode baixá-lo onde quiser, seja na aula, em casa ou no trabalho, por exemplo. Vamos testar isso.
-
-**A partir desse ponto, vamos repetir uma série de passos que já fizemos nas aulas anteriores. Em caso de dúvidas, volte nessas aulas para mais detalhes.**
-
--   Feche o projeto no **VS Code**.
--   Abra o terminal na pasta superior à pasta do projeto:
-
-```shell
-Control + Alt + T
-```
-
--   Apague todo o projeto do seu computador (_isso mesmo, coragem_):
-
-```shell
-rm -rf livraria
-# rmdir livraria /s /q # no Windows
-```
-
--   Vá no projeto no **GitHub**, clique no botão **Code** e copie a URL dele. Deve ser algo no seguinte formato: `https://github.com/marrcandre/garagem.git`
--   Clone o projeto para a pasta atual:
-
-```shell
-git clone https://github.com/marrcandre/livraria.git #troque essa URL pela sua
-```
-
--   Vá para a pasta do projeto:
-
-```shell
-cd livraria
-```
-
--   Abra o projeto no **VS Code**:
-
-```shell
-code .
-```
-
--   Instale as dependências do projeto e ative o ambiente virtual:
-
-```shell
-pdm install
-```
-
--   Rode o servidor:
-
-```shell
-pdm run python manage.py runserver
-```
-
--   Acesse o projeto no navegador:
-
-    http://localhost:8000/
-
-Pronto! Seu projeto está de volta no computador e rodando.
 
 # 5. Criando um segundo projeto
 
@@ -464,7 +407,7 @@ editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="liv
 ```python
 from django.contrib import admin
 
-from livraria.models import Autor, Categoria, Editora, Livro
+from core.models import Autor, Categoria, Editora, Livro
 
 admin.site.register(Autor)
 admin.site.register(Categoria)
@@ -514,53 +457,34 @@ pdm run python manage.py shell
 -   Acesse os livros da categoria com `id` 1:
 
 ```python
->>> from livraria.models import Categoria
+>>> from core.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
 ```
 
-**6.8 [Exercício](#aula-6-crie-os-demais-modelos-de-dados-no-projeto-garagem): Crie os demais modelos de dados no projeto Garagem**
+**6.8 [Exercício](#aula-6-crie-os-demais-modelos-de-dados-no-projeto-garagem): Crie os demais modelos de dados no projeto Garagem** -->
 
 
-# 7. Criando uma API REST
+# 4. Criando uma API REST
 
-Nessa aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API que permite criar, listar, atualizar e deletar categorias, editoras, autores e livros.
+Nesta aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API completa, que permite criar, listar, atualizar e deletar categorias.
 
+**4.1 Instalação e configuração do Django Rest Framework (DRF)**
 
+- Observe que o `DRF` já está instalado no projeto, conforme os arquivos `pyproject.toml` e `requirements.txt`.
+- Além disso, o `DRF` já está configurado no arquivo `settings.py`, na seção `INSTALLED_APPS`.
 
-**7.1 Instalação do DRF**
+> Essas configurações já foram feitas no template que utilizamos para criar o projeto. Se você estiver criando um projeto do zero, terá que fazer essas configurações manualmente.
 
--   Instale o `djangorestframework`:
-
-```shell
-pdm add djangorestframework
-```
-
--   Adicione o `rest_framework` no arquivo `settings.py`:
-
-```python
-INSTALLED_APPS = [
-...
-    "rest_framework",
-    "livraria",
-]
-```
-
-**7.2 Criação do serializer**
+**4.2 Criação do serializer**
 
 Um _serializer_ é um objeto que transforma um objeto do banco de dados em um objeto JSON.
 
--   Crie o arquivo `serializers.py` no diretório `livraria`:
-
-```shell
-touch livraria/serializers.py
-```
-
--   Adicione o seguinte código no arquivo `serializers.py`:
+-   Crie o arquivo `categoria.py` na pasta `serializers` da aplicação `core`, e adicione o seguinte código, para criar a `CategoriaSerializer`:
 
 ```python
 from rest_framework.serializers import ModelSerializer
 
-from livraria.models import Categoria
+from core.models import Categoria
 
 class CategoriaSerializer(ModelSerializer):
     class Meta:
@@ -568,88 +492,98 @@ class CategoriaSerializer(ModelSerializer):
         fields = "__all__"
 ```
 
-**7.2.1 Explicando o código**
+**4.2.1 Explicando o código**
 
 -   `model = Categoria`: define o model que será serializado.
 -   `fields = "__all__"`: define que todos os campos serão serializados.
 
-**7.3 Criação da view**
+**4.2.2 Inclusão do serializer no __init__.py**
+
+-   Inclua o serializer no arquivo `__init__.py` da pasta `serializers`:
+
+```python
+from .categoria import CategoriaSerializer
+```
+
+**4.3 Criação da view**
 
 Uma _view_ é um objeto que recebe uma requisição HTTP e retorna uma resposta HTTP.
 
--   Crie a view `CategoriaViewSet` no arquivo `views.py`:
+-   Crie a view `CategoriaViewSet` na pasta `views` da aplicação `core`, no arquivo `categoria.py`:
 
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from livraria.models import Categoria
-from livraria.serializers import CategoriaSerializer
+from core.models import Categoria
+from core.serializers import CategoriaSerializer
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 ```
 
-**7.3.1 Explicando o código**
+**4.3.1 Explicando o código**
 
 -   `queryset = Categoria.objects.all()`: define o conjunto de objetos que será retornado pela view.
--   `serializer_class = CategoriaSerializer`: define o serializer que será utilizado para serializar os objetos.
+-   `serializer_class = CategoriaSerializer`: define o `serializer` que será utilizado para serializar os objetos.
 
-**7.4 Criação das rotas (urls)**
+**4.3.2 Inclusão da view no __init__.py**
 
-As rotas são responsáveis por mapear as URLs para as views.
-
--   Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `config`. Substitua o seu conteúdo por esse:
+-   Inclua a view no arquivo `__init__.py` da pasta `views`:
 
 ```python
-from django.contrib import admin
-from django.urls import include, path
-
-from rest_framework.routers import DefaultRouter
-
-from livraria.views import CategoriaViewSet
-
-router = DefaultRouter()
-router.register(r"categorias", CategoriaViewSet)
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include(router.urls)),
-]
+from .categoria import CategoriaViewSet
 ```
 
-**IMPORTANTE**: as nomes das rotas serão sempre nomes **únicos**, no **plural** e em **minúsculas**.
+**4.4 Criação das rotas (urls)**
 
-**7.5 Testando a API**
+As rotas são responsáveis por mapear as `URLs` para as `views`.
+
+-   Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `app` e adicione as linhas indicadas:
+
+```python
+...
+from core.views import UserViewSet
+from core.views import CategoriaViewSet # nova linha
+
+router = DefaultRouter()
+router.register(r"categorias", CategoriaViewSet) # nova linha
+router.register(r"users", UserViewSet, basename="users")
+...
+```
+
+**IMPORTANTE**: as nomes das rotas serão sempre nomes **únicos**, no **plural** e em **minúsculas**. Na maiorias das vezes, os colocamos em **ordem alfabética**.
+
+**4.5 Testando a API**
 
 -   Para acessar a interface gerada pelo DRF, acesse:
 
-    http://localhost:8000
+    http://0.0.0.0:19003/api/
 
 Se tudo correu bem, você deve ver a interface do DRF.
 
 -   Você pode acessar diretamente a rota da `Categoria`:
-    http://localhost:8000/categorias/
+    http://0.0.0.0:19003/api/categorias/
 
 Isso deve trazer todas as categorias do banco, no formato **JSON**.
 
 -   Para acessar um único registro, use o seguinte formato:
-    http://localhost:8000/categorias/1/
+    http://0.0.0.0:19003/api/categorias/1/
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
 
-**7.6 Opções de manipulação do banco de dados**
+**4.6 Opções de manipulação do banco de dados**
 
 As opções disponíveis para manipulação dos dados são:
 
--   **GET** para **listar** **todos** os registros: http://localhost:8000/categorias/
--   **GET** para **listar** **apenas 1** registro: http://localhost:8000/categorias/1/
--   **POST** (para **criar** um **novo** registro): http://localhost:8000/categorias/
--   **PUT** (para **alterar** um registro existente): http://localhost:8000/categorias/1/
--   **PATCH** (para **alterar parcialmente** um registro): http://localhost:8000/categorias/1/
--   **DELETE** (para **remover** um registro): http://localhost:8000/categorias/1/
+-   **GET** para **listar** **todos** os registros: http://0.0.0.0:19003/api/categorias/
+-   **GET** para **listar** **apenas 1** registro: http://0.0.0.0:19003/api/categorias/1/
+-   **POST** (para **criar** um **novo** registro): http://0.0.0.0:19003/api/categorias/
+-   **PUT** (para **alterar** um registro existente): http://0.0.0.0:19003/api/categorias/1/
+-   **PATCH** (para **alterar parcialmente** um registro): http://0.0.0.0:19003/api/categorias/1/
+-   **DELETE** (para **remover** um registro): http://0.0.0.0:19003/api/categorias/1/
 
-**7.7 Outras ferramentas para testar a API**
+**4.7 Outras ferramentas para testar a API**
 
 A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
 
@@ -658,7 +592,16 @@ A interface do DRF é funcional, porém simples e limitada. Algumas opções de 
 -   [Insomnia](https://docs.insomnia.rest/insomnia/install) (externo)
 -   [Postman](https://www.postman.com/downloads/) (externo)
 
-**7.8 Testando a API e as ferramentas**
+**4.8 Utilizando o Swagger**
+
+O **Swagger** é uma ferramenta que permite a documentação e teste de APIs.
+
+- Para acessar o **Swagger**, acesse:
+
+    http://0.0.0.0:19003/api/swagger/
+
+
+**4.9 Exercícios: testando a API e as ferramentas**
 
 Instale uma ou mais das ferramentas sugeridas.
 
@@ -671,9 +614,12 @@ Instale uma ou mais das ferramentas sugeridas.
     -   Incluir outra categoria;
     -   Listar todas as categorias.
 
-**7.9 [Exercício](#aula-7-crie-a-api-rest-no-projeto-garagem): Crie a API REST no projeto Garagem**
+**4.10 Fazendo um commit**
+
+-   Faça um commit com a mensagem `Criação da API para Categoria`.
 
 
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODE CONTER ERROS E INCONSISTÊNCIAS
 
 # 8. Continuando a criação da API REST
 
@@ -696,7 +642,7 @@ Crie a API para a classe `Editora` seguindo os passos anteriores.
 ```python
 from rest_framework.serializers import ModelSerializer
 
-from livraria.models import Categoria, Editora
+from core.models import Categoria, Editora
 
 class CategoriaSerializer(ModelSerializer):
     class Meta:
@@ -715,8 +661,8 @@ class EditoraSerializer(ModelSerializer):
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from livraria.models import Categoria, Editora
-from livraria.serializers import CategoriaSerializer, EditoraSerializer
+from core.models import Categoria, Editora
+from core.serializers import CategoriaSerializer, EditoraSerializer
 
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
@@ -732,7 +678,7 @@ class EditoraViewSet(ModelViewSet):
 
 ```python
 ...
-from livraria.views import CategoriaViewSet, EditoraViewSet
+from core.views import CategoriaViewSet, EditoraViewSet
 ...
 router.register(r"categorias", CategoriaViewSet)
 router.register(r"editoras", EditoraViewSet)
@@ -1162,7 +1108,7 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 
 -   Ao tentar acessar um _endpoint_ com `GET`, como esse:
 
-[GET] http://localhost:8000/categorias/
+[GET] http://0.0.0.0:19003/api/categorias/
 
 -   Você deverá receber uma resposta parecida com essa:
 
@@ -1183,7 +1129,7 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 
 -   O endereço para envio da requisição é o seguinte:
 
-    [POST] http://localhost:8000/token/
+    [POST] http://0.0.0.0:19003/api/token/
 
 > **IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
 
@@ -1203,7 +1149,7 @@ Todas as chamadas ao sistema que precisarem de autenticação deverão ser feita
 Para testar, acesse com `GET` o seguinte endereço:
 
 ```
-[GET] ​http://localhost:8000/categorias/
+[GET] ​http://0.0.0.0:19003/api/categorias/
 ```
 
 Você deverá conseguir visualizar todas as categorias cadastradas.
@@ -1231,7 +1177,7 @@ Para renovar o token, faça novamente a requisição de autenticação, enviando
 **Tentando alterar uma informação**
 
 ```
-[PUT] ​http://localhost:8000/categorias/10/
+[PUT] ​http://0.0.0.0:19003/api/categorias/10/
 ```
 
 ```json
@@ -1325,7 +1271,7 @@ from .autor import Autor
 ```python
 from django.db import models
 
-from livraria.models import Autor, Categoria, Editora
+from core.models import Autor, Categoria, Editora
 
 
 class Livro(models.Model):
@@ -1527,7 +1473,7 @@ pdm run python manage.py createsuperuser
 
 Para testar o login, utilize o **Thunder Client**:
 
--   Faça uma requisição do tipo `POST` para a URL `http://localhost:8000/api/token/`, enviando as informações de usuário e senha no `Body` em `JSON`:
+-   Faça uma requisição do tipo `POST` para a URL `http://0.0.0.0:19003/api/api/token/`, enviando as informações de usuário e senha no `Body` em `JSON`:
 
 ```json
 {
@@ -1639,7 +1585,7 @@ INSTALLED_APPS = [
 
 ```python
 # App Uploader settings
-MEDIA_URL = "http://localhost:8000/media/"
+MEDIA_URL = "http://0.0.0.0:19003/api/media/"
 MEDIA_ENDPOINT = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
@@ -1735,13 +1681,13 @@ class LivroDetailSerializer(ModelSerializer):
 
 -   Acesse a API de media:
 
-    http://localhost:8000/api/media/images/
+    http://0.0.0.0:19003/api/api/media/images/
 
 -   Faça o upload de uma imagem.
 -   Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
 -   Guarde o valor do campo `capa_attachment_key`.
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
--   Acesse o endpoint `http://localhost:8000/api/media/images/` e observe que a imagem foi associada ao livro.
+-   Acesse o endpoint `http://0.0.0.0:19003/api/api/media/images/` e observe que a imagem foi associada ao livro.
 
 # 17. Habilitando o Swagger e Redoc usando DRF Spectacular
 
@@ -1814,11 +1760,11 @@ urlpatterns = [
 
 -   Acesse o Swagger:
 
-    http://localhost:8000/api/swagger/
+    http://0.0.0.0:19003/api/api/swagger/
 
 **Alteração da URL da API**
 
--   Edite o arquivo `urls.py` altere a URL da API para `http://localhost:8000/api/`:
+-   Edite o arquivo `urls.py` altere a URL da API para `http://0.0.0.0:19003/api/api/`:
 
 ```python
 urlpatterns = [
@@ -1863,11 +1809,11 @@ code livraria_bkp.json
 
 **Arquivo exemplo**
 
--   Baixe o arquivo `livraria.json`:
+-   Baixe o arquivo `core.json`:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria.json
-# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria.json" -OutFile livraria.json # no PowerShell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json
+# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json" -OutFile core.json # no PowerShell
 ```
 
 **Carga dos dados**
@@ -1875,14 +1821,14 @@ wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria
 -   Execute o comando `loaddata`:
 
 ```shell
-pdm run python manage.py loaddata livraria.json
+pdm run python manage.py loaddata core.json
 ```
 
 -   Observe que os dados foram carregados:
 
 ```shell
 pdm run python manage.py shell
->>> from livraria.models import Livro
+>>> from core.models import Livro
 >>> Livro.objects.all()
 ```
 
@@ -1898,10 +1844,10 @@ O Django Shell é uma ferramenta para interagir com o banco de dados.
 pdm run python manage.py shell
 ```
 
--   Importe os modelos de `livraria.models`:
+-   Importe os modelos de `core.models`:
 
 ```python
->>> from livraria.models import Autor, Categoria, Editora, Livro
+>>> from core.models import Autor, Categoria, Editora, Livro
 ```
 
 -   Crie um objeto:
@@ -1955,7 +1901,7 @@ pdm run python manage.py shell
 
 ```python
 >>> categoria.delete()
-(1, {'livraria.Categoria': 1})
+(1, {'core.Categoria': 1})
 ```
 
 -   Observe que o objeto foi removido:
@@ -2031,7 +1977,7 @@ class LivroAdmin(admin.ModelAdmin):
 
 -   Acesse o Admin:
 
-    http://localhost:8000/admin/
+    http://0.0.0.0:19003/api/admin/
 
 
 # 21. Configurando diferentes ambientes
@@ -2127,7 +2073,7 @@ MODE = os.getenv("MODE")
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False")
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://*.fl0.io/"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://0.0.0.0:19003/", "https://*.fl0.io/"]
 ...
 
 if MODE in ["PRODUCTION", "MIGRATE"]:
@@ -2377,7 +2323,7 @@ pdm run python manage.py createsuperuser
 - Opcionalmente, você pode utilizar um dump do banco de dados local e carregá-lo no banco de dados do `Fl0`:
 
 ```shell
-pdm run python manage.py loaddata livraria.json
+pdm run python manage.py loaddata core.json
 ```
 
 > A partir de agora, sempre que você fizer uma nova implantação, os dados não serão perdidos.
@@ -2492,7 +2438,7 @@ class UsuarioAdmin(UserAdmin):
 ```python
 from rest_framework.serializers import ModelSerializer, SlugRelatedField
 
-from livraria.models import Usuario
+from core.models import Usuario
 from uploader.models import Image
 from uploader.serializers import ImageSerializer
 
@@ -2524,8 +2470,8 @@ from .usuario import UsuarioSerializer
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from livraria.models import Usuario
-from livraria.serializers import UsuarioSerializer
+from core.models import Usuario
+from core.serializers import UsuarioSerializer
 
 
 class UsuarioViewSet(ModelViewSet):
@@ -2542,7 +2488,7 @@ from .usuario import UsuarioViewSet
 -   Inclua a nova view no arquivo `urls.py`:
 
 ```python
-from livraria.views import UsuarioViewSet
+from core.views import UsuarioViewSet
 ...
 router.register(r"usuarios", UsuarioViewSet)
 ```
@@ -2597,7 +2543,7 @@ from .compra import Compra
 
 ```python
 ...
-from livraria.models import Compra
+from core.models import Compra
 
 admin.site.register(Compra)
 ```
@@ -2676,7 +2622,7 @@ touch livraria/serializers/compra.py
 ```python
 from rest_framework.serializers import ModelSerializer, CharField
 
-from livraria.models import Compra
+from core.models import Compra
 
 class CompraSerializer(ModelSerializer):
     class Meta:
@@ -2703,8 +2649,8 @@ touch livraria/views/compra.py
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from livraria.models import Compra
-from livraria.serializers import CompraSerializer
+from core.models import Compra
+from core.serializers import CompraSerializer
 
 
 class CompraViewSet(ModelViewSet):
@@ -2724,7 +2670,7 @@ from .compra import CompraViewSet
 
 ```python
 ...
-from livraria.views import AutorViewSet, CategoriaViewSet, CompraViewSet, EditoraViewSet, LivroViewSet
+from core.views import AutorViewSet, CategoriaViewSet, CompraViewSet, EditoraViewSet, LivroViewSet
 ...
 router.register(r"compras", CompraViewSet)
 ...
@@ -2780,7 +2726,7 @@ Vamos incluir os itens da compra na listagem de compras.
 
 ```python
 ...
-from livraria.models import Compra, ItensCompra
+from core.models import Compra, ItensCompra
 ...
 
 class ItensCompraSerializer(ModelSerializer):
@@ -2984,7 +2930,7 @@ Você receberá o seguinte erro:
 ```
 AssertionError at /api/compras/
 The `.create()` method does not support writable nested fields by default.
-Write an explicit `.create()` method for serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
+Write an explicit `.create()` method for serializer `core.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
 ```
 
 Traduzindo, chegamos no seguinte:
@@ -2992,7 +2938,7 @@ Traduzindo, chegamos no seguinte:
 ```
 Erro de afirmação em /api/compras/
 O método `.create()` não suporta campos aninhados graváveis por padrão.
-Escreva um método `.create()` explícito para o serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
+Escreva um método `.create()` explícito para o serializer `core.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 ```
 
 O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
@@ -3059,7 +3005,7 @@ Você receberá o seguinte erro:
 ```
 AssertionError at /api/compras/1/
 The `.update()` method does not support writable nested fields by default.
-Write an explicit `.update()` method for serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
+Write an explicit `.update()` method for serializer `core.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
 ```
 
 Traduzindo, chegamos no seguinte:
@@ -3067,7 +3013,7 @@ Traduzindo, chegamos no seguinte:
 ```
 Erro de afirmação em /api/compras/1/
 O método `.update()` não suporta campos aninhados graváveis por padrão.
-Escreva um método `.update()` explícito para o serializer `livraria.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
+Escreva um método `.update()` explícito para o serializer `core.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 ```
 
 > O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
@@ -3611,7 +3557,7 @@ class CompraViewSet(ModelViewSet):
 
 ## Garagem
 
-O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto Livraria.
+O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto core.
 
 No final, nosso projeto ficará assim:
 
@@ -3970,38 +3916,38 @@ INSTALLED_APPS = [
 -   Gere o diagrama de banco de dados:
 
 ```shell
-pdm run python manage.py graph_models -g -o livraria.png livraria
+pdm run python manage.py graph_models -g -o core.png livraria
 ```
 # A8. Usando curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
 ```shell
-curl -X GET http://localhost:8000/categorias/
+curl -X GET http://0.0.0.0:19003/api/categorias/
 ```
 
 -   Liste uma categoria específica:
 
 ```shell
-curl -X GET http://localhost:8000/categorias/1/
+curl -X GET http://0.0.0.0:19003/api/categorias/1/
 ```
 
 -   Crie uma nova categoria:
 
 ```shell
-curl -X POST http://localhost:8000/categorias/ -d "descricao=Teste"
+curl -X POST http://0.0.0.0:19003/api/categorias/ -d "descricao=Teste"
 ```
 
 -   Atualize uma categoria:
 
 ```shell
-curl -X PUT http://localhost:8000/categorias/1/ -d "descricao=Teste 2"
+curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
 ```
 
 -   Delete uma categoria:
 
 ```shell
-curl -X DELETE http://localhost:8000/categorias/1/
+curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
 ```
 
 # A9. Resolução de erros
