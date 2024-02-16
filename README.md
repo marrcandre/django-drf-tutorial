@@ -58,7 +58,7 @@ O diagrama de classes do projeto é o seguinte:
 
 O modelo de dados do **Django** é o seguinte:
 
-![Modelo de Dados](diagramas/livraria_final.png "Modelo de Dados")
+![Modelo de Dados do Django](diagramas/livraria_final.png "Modelo de Dados do Django")
 
 
 **2.2 Criação do projeto a partir de um template**
@@ -654,6 +654,7 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
   - Criar a `model` Editora em `models.py`.
+  - Fazer a migração e efetivar a migração.
   - Incluir a `model` no `Admin`.
   - Incluir a `model` no `__init__.py` da pasta `models`.
   - Criar o serializador na pasta `serializers`.
@@ -661,6 +662,8 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
   - Criar a `viewset` na pasta `views`.
   - Incluir a `viewset` no `__init__.py` da pasta `views`.
   - Incluir a nova rota em `urls.py`.
+
+**6.2 Criação e modificação dos arquivos**
 
 -   Os arquivos ficarão assim:
 
@@ -671,7 +674,7 @@ from django.db import models
 
 class Editora(models.Model):
     nome = models.CharField(max_length=100)
-    site = models.URLField(null=True, blank=True)
+    site = models.URLField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.nome
@@ -744,13 +747,23 @@ router.register(r"editoras", EditoraViewSet)
 ...
 ```
 
-**6.2 Exercícios: testando da API da Editora**
+**6.3 Fazendo a migração e efetivando a migração**
+
+-   Faça a migração e efetive a migração:
+
+```shell
+pdm run migrate
+```
+
+- Verifique se a tabela `core_editora` foi criada no banco de dados.
+
+**6.4 Exercícios: testando da API da Editora**
 
 -   Teste todas as operações da `Editora`.
 -   Verifique se é possível incluir novas editoras sem incluir todos os campos.
 -   Tente utilizar o PUT e o PATCH sem informar todos os campos.
 
-**6.3 Fazendo um commit**
+**6.5 Fazendo um commit**
 
 -   Faça um commit com a mensagem `Criação da API para Editora`.
 
