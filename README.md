@@ -124,45 +124,6 @@ pdm run dev
 
 **É isso! Seu projeto está inicializado e rodando!!!**
 
-<!--
-    - `app`: é o nome do nosso projeto. Dentro dessa pasta ficam os seguintes arquivos:
-      -   `settings.py`: é o arquivo de configuração do projeto.
-      -   `urls.py`: é o arquivo de configuração das rotas do projeto.
-  - `core`: é no nome da nossa aplicação. Dentro dela ficam
-  -
--   `manage.py`: é o arquivo que você usa para executar comandos do **Django**.
--   `db.sqlite3`: é o arquivo de banco de dados do projeto.
-
-**2.7 Executando o servidor**
-
-Desse ponto em diante, abra um outro terminal lado a lado no **VS Code**, mantendo sempre o django em execução (`runserver`) no outro terminal.
-
-Se precisar parar a execução do projeto, aperte `Control+C` e depois o execute novamente.
-
-**2.8 Criando a base de dados inicial**
-
--   Para resolver o erro informado no momento de rodar o projeto, execute o seguinte comando:
-
-```shell
-pdm run python manage.py migrate
-```
-
-Verifique se o projeto continua rodando e se o [Admin](http://localhost:8000) está em execução.
-
-**2.9 Criando o superusuário**
-
--   Crie o super usuário para poder fazer o login:
-
-```shell
-pdm run python manage.py createsuperuser
-```
-
--   Agora sim, seu projeto está rodando e você consegue entrar no `Admin`:
-
--   Crie mais 2 usuários de teste.
--   Entre no arquivo de banco de dados (`db.sqlite3`), e verifique se os registros foram criados.
- -->
-
 **2.6 Exercício**
 
 -   Apague o projeto e crie novamente, seguindo as instruções acima.
@@ -171,75 +132,44 @@ pdm run python manage.py createsuperuser
 
 # 3. Criação de uma aplicação
 
+**3.1 Compreendendo uma aplicação**
+
 Uma aplicação no **Django** é um conjunto de arquivos e pastas que contém o código de uma funcionalidade específica do seu site.
 
-**3.1 Criando uma aplicação**
+Uma aplicação pode ser criada dentro de um projeto ou importada de outro projeto.
 
--   Para criar uma aplicação, execute o seguinte comando:
+Em nosso projeto, temos uma aplicação criada, chamada `core`, conforme a imagem abaixo:
 
-```shell
-pdm run python manage.py startapp livraria
-```
+![App core](imagens/core_app.png)
 
-**3.2 Instalando a aplicação**
+> Todas as aplicações precisam ser adicionadas ao arquivo `settings.py` do projeto, na seção `INSTALLED_APPS`.
 
--   Acrescente a aplicação `livraria` na seção `INSTALLED_APPS` do arquivo `settings.py` do seu projeto.
+Dentro da pasta `core` temos alguns arquivos e pastas, mas os mais importantes são:
 
-```python
-INSTALLED_APPS = [
-    ...
-    "livraria",
-]
-```
-
-Após criar a aplicação, sua pasta deve parecer com isso:
-
-```
-.
-├── config
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── db.sqlite3
-├── livraria
-│   ├── admin.py
-│   ├── apps.py
-│   ├── migrations
-│   ├── models.py
-│   ├── tests.py
-│   └── views.py
-├── manage.py
-├── pdm.lock
-└── pyproject.toml
-```
-
-Dentro da pasta `livraria` foram criados alguns arquivos, mas os mais importantes são:
-
--   `admin.py`: é o arquivo de configuração do `Admin`, uma ferramenta que permite que você gerencie os dados do seu site.
--   `models.py`: é o arquivo de configuração dos modelos (entidades) da aplicação.
--   `views.py`: é o arquivo de configuração das `views` da aplicação.
 -   `migrations`: é a pasta de migrações de banco de dados da aplicação.
+-   `models`: é a pasta onde ficam as `models` (tabelas) da aplicação.
+-   `serializers`: é a pasta onde ficam os serializadores da aplicação.
+-   `views`: é a pasta onde ficam as views da aplicação.
+-   `admin.py`: é o arquivo de configuração do `Admin`, uma ferramenta que permite que você gerencie os dados do seu site.
+
+> O arquivo `__init__.py` é um arquivo que indica que a pasta é um pacote Python. Ele vai aparecer em todas as pastas que contêm código Python. Muitas vezes, ele é um arquivo vazio.
 
 Posteriormente, iremos modificar esses arquivos, bem como incluir alguns arquivos novos.
 
-**3.3 Resumo**
-
-Nesse ponto, temos:
-
--   O projeto criado no `PDM`;
--   O projeto django chamado `config` criado;
--   A aplicação `livraria` criada e instalada no projeto.
-
-**3.4 Criação do primeiro modelo de dados**
+**3.2 Model User**
 
 Um modelo (`model`) no **Django** é uma classe que representa uma tabela no banco de dados. Cada atributo (variável) dessa classe representa um campo da tabela.
 
 Para maiores informações consulte a [documentação](https://docs.djangoproject.com/en/4.0/topics/db/models/) do **Django** sobre `models`.
 
+> Você pode observar que a pasta `models` já contém um modelo de dados, dentro do arquivo `user.py`, chamado `User`. Esse modelo modifica o usuário padrão fornecido pelo **Django** e representa um usuário do sistema.
+
+**3.3 Criação de uma nova model**
+
 -   Vamos começar criando o modelo de dados `Categoria`, que representa uma categoria de livro, como por exemplo: `Ficção`, `Terror`, `Romance`, etc.
 
--   Abra o arquivo `models.py` da aplicação `livraria` e adicione o seguinte código:
+-   Dentro da pasta `models` da aplicação `core` crie um arquivo chamado `categoria.py`.
+-   Adicione o seguinte código no arquivo `categoria.py`:
 
 ```python
 from django.db import models
@@ -252,55 +182,54 @@ Nesse código, você:
 
 -   Importou o pacote necessário para criar a `model`;
 -   Criou a classe `Categoria`;
--   Incluiu o campo `descricao`.
+-   Incluiu o campo `descricao`, que é uma `string` de no máximo 100 caracteres. Esse campo é obrigatório.
+
+-  **IMPORTANTE**:
+   -  O nome da classe deve ser sempre no singular e com a primeira letra maiúscula.
+   -  O nome dos campos deve ser sempre no singular e com a primeira letra minúscula.
+
+**3.4 Inclusão da `model` no arquivo `__init__.py`**
+
+- Precisamos ainda incluir a `model` no arquivo `__init__.py` da pasta `models`:
+
+```python
+from .categoria import Categoria
+```
 
 **3.5 Efetivando a criação da tabela**
 
-Precisamos agora efetivar a criação da tabela no banco de dados.
+Precisamos ainda efetivar a criação da tabela no banco de dados.
 
 -   Abra um novo terminal, deixando o terminal antigo executando o servidor do projeto.
 
 -   Crie as migrações:
 
 ```shell
-pdm run python manage.py makemigrations
+pdm run migrate
 ```
 
--   Execute as migrações:
+> Esse comando executará 3 comandos em sequência:
+> - `makemigrations`: cria as migrações de banco de dados.
+> - `migrate`: efetiva as migrações no banco de dados.
+> - `graph_models`: cria/atualiza um diagrama de classes do modelo de dados.
 
-```shell
-pdm run python manage.py migrate
-```
-
--   Acesse o arquivo do banco de dados (`db.sqlite3`) e verifique se a tabela `livraria_categoria` foi criada.
--   Acesse o [Admin](http://localhost:8000) do projeto e verifique se a nova tabela aparece lá.
+-   Acesse o arquivo do banco de dados (`db.sqlite3`) e verifique se a tabela `core_categoria` foi criada.
+-   Para ver o diagrama de classes atualizado, acesse o arquivo `core.png` na pasta raiz do projeto.
+-   Acesse o `Admin` do projeto e verifique se a nova tabela aparece lá.
 
 **3.6 Inclusão no Admin**
 
 A tabela ainda não apareceu, certo? Isso acontece poque ainda não incluímos a `model` no `Admin`.
 
--   Vamos incluir a `model` no `Admin`. Abra o arquivo `admin.py` da aplicação `livraria` e adicione o seguinte código:
+-   Vamos incluir a `model` no `Admin`. Abra o arquivo `admin.py` da aplicação `core` e adicione o seguinte código no final do arquivo:
 
 ```python
-from django.contrib import admin
-
-from .models import Categoria
-
-admin.site.register(Categoria)
+admin.site.register(models.Categoria)
 ```
 
-Acesse novamente o [Admin](http://localhost:8000/admin) e inclua algumas categorias no banco de dados.
+**3.7 Exercício**
 
-**3.7 Mudando a língua e time zone**
-
-Encontre e edite as seguintes linhas no arquivo no arquivo `settings.py`:
-
-```python
-LANGUAGE_CODE = "pt-br"
-TIME_ZONE = "America/Sao_Paulo"
-```
-
-Acesse novamente o [`Admin`](http://localhost:8000) e verifique que agora ele está em português.
+- Acesse novamente o `Admin` e inclua algumas categorias no banco de dados.
 
 **3.8 O campo `id`**
 
@@ -309,14 +238,14 @@ O campo `id` é criado automaticamente pelo **Django**. Ele é o identificador �
 **3.9 Mudando a forma de exibição dos registros criados**
 
 -   Inclua algumas categorias no banco de dados.
--   Você perceberá que a descrição dos informações que você inclui está meio estranha.
--   Para resolver, isso, vamos fazer uma pequena modificação na `model Categoria`.
+-   Você perceberá que a descrição dos informações que você inclui está meio estranha, algo como `Categoria object (1)` e assim por diante.
+-   Para resolver, isso, vamos fazer uma pequena modificação na `model` Categoria.
 
 **3.10 O método `__str__`**
 
 O método `__str__` é um método especial que é chamado quando você tenta imprimir um objeto. Ele é utilizado no `Admin` e em outros locais para definir como o objeto será exibido.
 
--   Vamos incluir o método `__str__` na `model Categoria`:
+-   Vamos incluir o método `__str__` na `model` Categoria:
 
 ```python
 ...
@@ -324,7 +253,26 @@ O método `__str__` é um método especial que é chamado quando você tenta imp
         return self.descricao
 ```
 
-Volte ao [`Admin`](http://localhost:8000) verifique o que mudou na apresentação dos objetos da model `Categoria`.
+> Isso fará com que a descrição da categoria seja exibida no lugar de `Categoria object (1)`.
+> O método `__str__` é um método especial do Python e deve sempre retornar uma `string`.
+
+Volte ao `Admin` verifique o que mudou na apresentação dos objetos da model `Categoria`.
+
+**3.11 Hora de fazer um commit**
+
+- Verifique antes se seu computador está configurado corretamente para o **git** com as suas credenciais. Veja como fazer isso [aqui](#4-1-um-aviso-importante).
+-  Faça um commit com a mensagem `Criação da model de Categoria`.
+
+**IMPORTANTE: Escrevendo uma boa mensagem de commit**
+
+-   Escreva uma mensagem de commit que descreva o que foi feito.
+-   Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
+-   Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
+-   Escreva mensagens como:
+    -   Modificação do arquivo `models.py`
+    -   Inclusão da Categoria de Veículos
+    -   Alteração do Marca do Veículo
+
 
 **3.11 Criação do modelo de dados Editora**
 
@@ -362,126 +310,7 @@ admin.site.register(Editora)
 
 Após fazer isso tudo, inclua algumas editoras na tabela e veja como ficou o seu banco de dados.
 
-# 4. Colocando o projeto no GitHub
 
-**4.1 Um aviso importante**
-
-Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
-
--   **Antes de clicar ou responder, leia atentamente as instruções.**
--   **Leia atentamente as instruções antes de clicar ou responder.**
--   **Nunca clique ou responda sem antes ler atentamente as instruções.**
-
-As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
-
-**4.2 Configurando o projeto git**
-
--   Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
--   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
--   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
--   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
--   Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
-
-```shell
-rm -Rf ~/.git
-```
-
--   Recarregue a janela do **VS Code**:
-
-```shell
-Control + Shift + P + "Recarregar a Janela"
-```
-
--   Verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
-
-**4.3 Configurando as variáveis do git**
-
--   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
-
-```shell
-git config --global user.name "Seu Nome"
-git config --global user.email "seuEmailNoGitHub@gmail.com"
-```
-
--   Para verificar se as variáveis foram configuradas corretamente, digite:
-
-```shell
-git config -l
-```
-
--   Se aparecer outro nome de usuário ou outras informações estranhas, remova o arquivo com as configurações globais do git:
-
-```shell
-rm ~/.gitconfig
-```
-
-Repita o processo de configuração de nome e email.
-
-**4.4 Criando o arquivo `.gitignore`**
-
-Vamos criar um arquivo chamado `.gitignore` na raiz do projeto. Esse arquivo serve para indicar quais arquivos não devem ser versionados (monitorados pelo **git**).
-
--   Vá no site [gitignore.io](https://gitignore.io/)
--   Escolha as opções `Python` e `Django`.
--   Clique em `Criar`.
--   Selecione todo o texto (`Control + A`) e copie (`Control + C`).
--   Crie um arquivo novo na raiz do projeto e dê o nome de `.gitignore`:
-
-```shell
-touch .gitignore
-```
-
--   Cole o conteúdo copiado (`Control + V`).
--   Encontre as linhas que se referem a "`db.sqlite3`" e comente-as (`Control + /`).
-
-**4.5 Publicando o projeto**
-
--   Escreva uma descrição para o commit (`"commit Inicial"`, por exemplo.).
--   Tecle `Control+ENTER` para fazer o envio para o servidor do **GitHub**.
--   Leia atentamente as instruções relacionadas a autenticação no **GitHub** e criação do projeto.
--   Ao final, seu projeto será incluído no **GitHub** e você poderá visulizá-lo lá.
-
-**4.6 Fazendo alterações no projeto e enviando novamente**
-
-Vamos agora realizar algumas mudanças no projeto e enviá-lo novamente para o **GitHub**.
-
--   Abra o arquivo `models.py`:
-
-```shell
-Control + P + models.py
-```
-
--   Selecione todo o texto (`Control + A`) e mande formatar o código:
-
-```shell
-Control + Shift + I
-```
-
-ou
-
-```shell
-Control + Shift + P + "Formatar o Documento"
-```
-
--   Deve aparecer uma mensagem pedindo para instalar um **formatador de código** (`black`). Concorde com a instalação.
--   Após a instalação, execute o comando para formatar novamente. O arquivo deve ser formatado.
--   Faça a mesma coisa com o arquivo `admin.py`.
--   Altere outros arquivos. Por exemplo: apague os comentários iniciais dos arquivos `settings.py` e `urls.py`.
--   Nesse ponto, você já deve ter vários arquivos modificados.
--   Vá para a aba do **GitHub** no **VS Code** e coloque o nome do **commit** como sendo `Formatação dos arquivos do projeto`.
--   Confirme o **commit** teclando `Control+ENTER`.
--   Faça o envio (`push`), clicando no ícone de envio.
--   Vá no seu projeto no **GitHub**, atualize a página e verifique as modificações.
-
-**IMPORTANTE: Escrevendo uma boa mensagem de commit**
-
--   Escreva uma mensagem de commit que descreva o que foi feito.
--   Dessa forma fica mais fácil identificar as mudanças sem precisar ver o código.
--   Não escreva mensagens como `Alteração 1`, `Alteração 2`, `Alteração 3`, etc.
--   Escreva mensagens como:
-    -   Modificação do arquivo `models.py`
-    -   Inclusão da Categoria de Veículos
-    -   Alteração do Marca do Veículo
 
 **4.7 Baixando novamente o projeto**
 
@@ -4326,6 +4155,64 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME":timedelta(days=1),
 }
 ```
+
+
+# A10. Configurando o git
+
+**Um aviso importante**
+
+Antes de mais nada, seguem **3 regras** a serem consideradas ao seguir as instruções:
+
+-   **Antes de clicar ou responder, leia atentamente as instruções.**
+-   **Leia atentamente as instruções antes de clicar ou responder.**
+-   **Nunca clique ou responda sem antes ler atentamente as instruções.**
+
+As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
+
+**Configurando o projeto git**
+
+-   Se o computador estiver configurado com contas individuais, você precisará fazer isso apenas uma vez. Ainda assim, é bom verificar se está tudo certo.
+-   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
+-   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
+-   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
+-   Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
+
+```shell
+rm -Rf ~/.git
+```
+
+-   Recarregue a janela do **VS Code**:
+
+```shell
+Control + Shift + P + "Recarregar a Janela"
+```
+
+-   Verifique se o número mudou para algo mais razoável (em torno de 100 arquivos).
+
+**Configurando as variáveis do git**
+
+-   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
+
+```shell
+git config --global user.name "Seu Nome"
+git config --global user.email "seuEmailNoGitHub@gmail.com"
+```
+
+-   Para verificar se as variáveis foram configuradas corretamente, digite:
+
+```shell
+git config -l
+```
+
+-   Se aparecer outro nome de usuário ou outras informações estranhas, remova o arquivo com as configurações globais do git:
+
+```shell
+rm ~/.gitconfig
+```
+
+Repita o processo de configuração de nome e email.
+
+-----
 
 # Contribua
 
