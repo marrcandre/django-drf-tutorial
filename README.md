@@ -32,13 +32,34 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 
 **2.1 O projeto Livraria**
 
+Este projeto consiste em uma API REST para uma livraria. Ele terá as seguintes classes:
+
+-   `Categoria`: representa a categoria de um livro.
+-   `Editora`: representa a editora de um livro.
+-   `Autor`: representa o autor de um livro.
+-   `Livro`: representa um livro.
+-   `User`: representa um usuário do sistema.
+-   `Compra`: representa uma compra de livros.
+-   `ItemCompra`: representa um item de uma compra.
+
 **Modelo Entidade Relacionamento**
+
+O modelo entidade relacionamento (MER) do projeto é o seguinte:
 
 ![Modelo ER](diagramas/livraria_MER.png "Modelo ER")
 
 **Diagrama de Classes**
 
+O diagrama de classes do projeto é o seguinte:
+
 ![Diagrama de Classes](diagramas/livraria_classes.png "Diagrama de Classes")
+
+**Modelo de Dados do Django**
+
+O modelo de dados do **Django** é o seguinte:
+
+![Modelo de Dados](diagramas/livraria_final.png "Modelo de Dados")
+
 
 **2.2 Criação do projeto a partir de um template**
 
@@ -618,45 +639,80 @@ Instale uma ou mais das ferramentas sugeridas.
 
 -   Faça um commit com a mensagem `Criação da API para Categoria`.
 
+# 5. Aplicação frontend Vuejs
 
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODE CONTER ERROS E INCONSISTÊNCIAS
+Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
 
-# 8. Continuando a criação da API REST
+> Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
 
-Vamos continuar a criação da API REST para o projeto `livraria`.
 
-**8.1 Criação da API para a classe Editora**
+# 6. Incluindo a Editora no projeto Livraria
 
-Crie a API para a classe `Editora` seguindo os passos anteriores.
+Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Editora` e a API para ela.
 
--   Os passos são:
+**6.1 Criação da API para a classe Editora**
 
-    -   Criar o serializador em `serializers.py`
-    -   Criar a viewset em `views.py`.
-    -   Incluir a nova rota em `urls.py`
+- Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
+  - Criar a `model` Editora em `models.py`.
+  - Incluir a `model` no `Admin`.
+  - Incluir a `model` no `__init__.py` da pasta `models`.
+  - Criar o serializador na pasta `serializers`.
+  - Incuir o serializador no `__init__.py` da pasta `serializers`.
+  - Criar a `viewset` na pasta `views`.
+  - Incluir a `viewset` no `__init__.py` da pasta `views`.
+  - Incluir a nova rota em `urls.py`.
 
 -   Os arquivos ficarão assim:
 
-**`serializers.py`**
+**`models/editora.py`**
+
+```python
+from django.db import models
+
+class Editora(models.Model):
+    nome = models.CharField(max_length=100)
+    site = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.nome
+```
+
+**models/__init__.py**
+
+```python
+...
+from .editora import Editora
+```
+
+**`admin.py`**
+
+```python
+...
+admin.site.register(Editora)
+```
+
+
+**`serializers/editora.py`**
 
 ```python
 from rest_framework.serializers import ModelSerializer
 
 from core.models import Categoria, Editora
-
-class CategoriaSerializer(ModelSerializer):
-    class Meta:
-        model = Categoria
-        fields = "__all__"
-
-
+...
 class EditoraSerializer(ModelSerializer):
     class Meta:
         model = Editora
         fields = "__all__"
 ```
 
-**`views.py`**
+**`serializers/__init__.py`**
+
+```python
+...
+from .editora import EditoraSerializer
+```
+
+**`views/editora.py`**
 
 ```python
 from rest_framework.viewsets import ModelViewSet
@@ -664,14 +720,17 @@ from rest_framework.viewsets import ModelViewSet
 from core.models import Categoria, Editora
 from core.serializers import CategoriaSerializer, EditoraSerializer
 
-class CategoriaViewSet(ModelViewSet):
-    queryset = Categoria.objects.all()
-    serializer_class = CategoriaSerializer
-
-
+...
 class EditoraViewSet(ModelViewSet):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializer
+```
+
+**`views/__init__.py`**
+
+```python
+...
+from .editora import EditoraViewSet
 ```
 
 **`urls.py`**
@@ -685,12 +744,19 @@ router.register(r"editoras", EditoraViewSet)
 ...
 ```
 
-**8.2 Teste da API da Editora**
+**6.2 Exercícios: testando da API da Editora**
 
 -   Teste todas as operações da `Editora`.
 -   Verifique se é possível incluir novas editoras sem incluir todos os campos.
 -   Tente utilizar o PUT e o PATCH sem informar todos os campos.
--   Tente remover uma editora com livros associados a ela.
+
+**6.3 Fazendo um commit**
+
+-   Faça um commit com a mensagem `Criação da API para Editora`.
+
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
 
 **8.3 Criação da API para Autor e Livro**
 
@@ -780,82 +846,7 @@ class LivroListSerializer(ModelSerializer):
 
 
 
-# 9. Aplicação frontend Vuejs e Django CORS Headers
 
-**9.1 Executando uma aplicação _frontend_ de exemplo**
-
-Faça um `fork` do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
-
-```shell
-npm install
-```
-
-```shell
-npm run dev
-```
-
-> Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
-
-Se tudo correu bem, execute a aplicação:
-
-http://localhost:3000
-
-> Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
-> Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.
-
-**9.2 Inclusão do Django CORS headers no projeto**
-
-Adicionar o Django CORS headers permite que seu projeto seja acessado de outros domínios. Isso é necessário, por exemplo, para acessar a API através de uma aplicação de _frontend_ feita em _vuejs_.
-
-**No projeto `livraria` (backend), faça o seguinte:**
-
--   Instale o pacote `django-cors-headers`:
-
-```shell
-pdm add django-cors-headers
-```
-
--   Adicione o pacote `corsheaders` em `INSTALLED_APPS` em `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...,
-    "corsheaders",
-    "rest_framework",
-    "livraria",
-    ...,
-]
-```
-
-> Não esqueça da vírgula no final de cada linha e procure manter nessa mesma ordem.
-
--   Adicione o Middleware `corsheaders.middleware.CorsMiddleware` em `MIDDLEWARE` em `settings.py`:
-
-```python
-MIDDLEWARE = [
-    ...,
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    ...,
-]
-```
-
-> **IMPORTANTE**: a ordem aqui precisa ser essa.
-
-Por fim, adicione a seguinte linha ao final do arquivo `settings.py`:
-
-```python
-CORS_ALLOW_ALL_ORIGINS = True
-```
-
-Feito isso, reinicie o servidor e tudo deve funcionar.
-
-
-**9.1 Exercício: Crie uma aplicação FrontEnd com Vuejs para a Livraria**
-
--   Modifique a aplicação frontend com Vuejs para consumir a API REST das demais classes do projeto `Livraria`.
-
-**9.1.2 [Exercício](#aula-9-crie-uma-aplicação-frontend-com-vuejs-para-a-garagem): Crie uma aplicação FrontEnd com Vuejs para a Garagem**
 
 
 # 10. Relacionamento n para n
@@ -1204,286 +1195,6 @@ Resumindo, você vai precisar:
 -   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
 
 Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
-
-# 14. Reestruturação em pastas de _models_, _views_ e _serializers_
-
-Por padrão, as _models_, as _views_ e os _serializers_ são criados todos em um único arquivo, chamados respectivamente de `models.py`, `views.py` e `serializers.py`. Na medida em que o projeto vai crescendo e vão aumento o número de entidades, percebemos que é importante organizar essas entidades em arquivos separados. Obtemos com isso as seguintes vantagens:
-
--   Os arquivos ficam menores e mais fácil de encontrar o ponto correto de modificação.
--   Os conflitos no **GitHub** são evitados, pois normalmente as pessoas da equipe trabalham em entidades diferentes ao mesmo tempo.
-
-Sendo assim, vamos fazer a separação dessas entidades em arquivos distintos, organizados dentro de uma pasta.
-
-> **IMPORTANTE:** essa mudança não afeta a forma de uso desses componentes, nem desempenho da aplicação e nem o banco de dados. É uma simples refatoração de código.
-
-**Colocando os modelos em arquivos separados**
-
-Siga os passos:
-
--   Crie uma pasta `models` dentro da pasta da aplicação (`livraria`):
-
-```shell
-mkdir livraria/models
-```
-
--   Crie um arquivo `__init__.py` dentro da pasta `models` recém criada:
-
-```shell
-touch livraria/models/__init__.py
-```
-
-> O arquivo `__init__.py` é necessário para que o Python reconheça a pasta como um módulo.
-
-> Quando o Python importa um módulo, ele executa o código do arquivo `__init__.py` antes de importar os outros arquivos.
-
--   Crie um arquivo `autor.py` (será nossa primeira entidade) dentro da pasta `models`:
-
-```shell
-touch livraria/models/autor.py
-```
-
--   Copie o conteúdo referente à entidade `Autor` do arquivo `models.py` para o arquivo `models/autor.py`.
-
-```python
-from django.db import models
-
-class Autor(models.Model):
-    nome = models.CharField(max_length=255)
-    email = models.EmailField()
-
-    def __str__(self):
-        return self.nome
-
-    class Meta:
-        verbose_name_plural = "Autores"
-```
-
--   Remova o conteúdo copiado no arquivo `models.py`. Não remova a linha do `import`, pois ela será utilizada por todas as entidades.
--   Inclua a importação da entidade `Autor` no arquivo `__init__.py`:
-
-```python
-from .autor import Autor
-```
-
--   Repita os mesmos passos para as demais entidades (Categoria, Editora, Livro, etc.)
--   Observe que a entidade livro referencia as demais entidades, portanto elas precisam ser importadas em `livro.py`:
-
-```python
-from django.db import models
-
-from core.models import Autor, Categoria, Editora
-
-
-class Livro(models.Model):
-...
-```
-
-> Ao final desse processo o arquivo `model.py` deverá estar vazio e poderá ser removido. A aplicação deve continuar rodando perfeitamente.
-
-**Separando _views_ e _serializers_ em arquivos**
-
-Para separar as _views_ e os _serializers_ em arquivos, repita o mesmo processo feito para as _models_:
-
--   Crie a pasta correspondente (`views` e `serializers`).
--   Crie o arquivo `__init__.py` dentro de cada pasta.
--   Crie um arquivo para cada entidade dentro da pasta.
--   Copie o conteúdo do arquivo para o arquivo correspondente dentro da pasta.
--   Adicione a importação no arquivo `__init__.py`.
--   Remova o conteúdo do arquivo.
-
-> Opcionalmente, você pode criar a estrutura de pastas e arquivos via linha de comando, usando o comando `mkdir` e `touch`.
-
-- Para criar a pasta `views`, execute os seguintes comandos:
-
-```shell
-mkdir livraria/views && cd livraria/views && touch __init__.py autor.py categoria.py editora.py livro.py && cd ../..
-```
-
-- Você pode fazer o mesmo para a pasta `serializers`:
-
-```shell
-mkdir livraria/serializers && cd livraria/serializers && touch __init__.py autor.py categoria.py editora.py livro.py && cd ../..
-```
-
-Ao final , você terá uma estrutura parecida com essa:
-
-```
-livraria
-├── __init__.py
-├── admin.py
-├── apps.py
-├── migrations
-├── models
-│   ├── __init__.py
-│   ├── autor.py
-│   ├── categoria.py
-│   ├── editora.py
-│   └── livro.py
-├── serializers
-│   ├── __init__.py
-│   ├── autor.py
-│   ├── categoria.py
-│   ├── editora.py
-│   └── livro.py
-├── tests.py
-└── views
-    ├── __init__.py
-    ├── autor.py
-    ├── categoria.py
-    ├── editora.py
-    └── livro.py
-```
-
-> A partir dessa organização, cada nova entidade criada terá seus arquivos correspondentes. Nada impede, no entanto, de agrupar entidades relacionadas em, um único conjunto de arquivos. Por exemplo, as entidades `Compra` e `ItensCompra` poderiam ficar em arquivos `compra.py`.
-
-# 15. Modificando o usuário padrão do Django
-
-Utilizaremos uma estratégia simples para a inclusão de campos ao usuário padrão do Django. Essa estratégia terá as seguintes características:
-
--   **Substituiremos** a classe `User` padrão do Django pela nossa própria classe `Usuario`.
--   **Não removeremos** os campos padrão do usuário.
--   **Incluiremos** os campos que precisamos no nosso usuário.
--   **Removeremos** o banco de dados e criaremos um novo, perdendo todos os dados.
--   Faremos a **migração** do banco de dados.
--   Modificaremos o **Admin** para que ele utilize a nossa classe `Usuario` e não a classe `User` padrão.
--   Em nosso exemplo, incluiremos os campos `cpf`, `telefone` e `data_nascimento` ao usuário.
--   Posteriormente, incluiremos a foto do usuário.
-
-
-**Instalando o setuptools**
-
--   Instale o pacote `setuptools`:
-
-```shell
-pdm add setuptools
-```
-
-**Instalando a app `usuario`**
-
--   Baixe e descompacte o arquivo com a app pronta para ser utilizada:
-
-```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -O usuario.zip && unzip usuario.zip && rm usuario.zip
-```
-
-No `Windows`, execute os seguintes comandos no `PowerShell`:
-
-```shell
-Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -OutFile usuario.zip
-```
-
-```shell
-Expand-Archive -Path usuario.zip -DestinationPath .
-```
-
-```shell
-Remove-Item -Force usuario.zip
-```
-
-A pasta ficará assim:
-
-```
-usuario
-├── admin.py
-├── apps.py
-├── forms.py
-├── __init__.py
-├── managers.py
-├── migrations
-│   └── __init__.py
-├── models.py
-├── router.py
-├── serializers.py
-└── views.py
-```
-
-**Adicionando a app `usuario` ao projeto**
-
--   Edite o arquivo `settings.py` e inclua a app `usuario` na lista de apps instaladas:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "usuario", # inclua essa linha
-    "livraria",
-]
-```
-
--   Edite o arquivo `settings.py` e inclua a configuração abaixo:
-
-```python
-AUTH_USER_MODEL = "usuario.Usuario"
-```
-
-> Essa configuração indica ao Django que a classe `Usuario` da app `usuario` será utilizada como classe de usuário padrão.
-
--   Edite o arquivo `urls.py` e inclua as rotas da app `usuario`:
-
-```python
-...
-from usuario.router import router as usuario_router
-...
-
-urlpatterns = [
-    ...
-    path("api/", include(usuario_router.urls)),
-]
-```
-
-> Ela será acessada através da rota `/api/usuario/`.
-
-**Removendo arquivos temporários, migrations e o banco de dados**
-
-```shell
-find . -name "__pycache__" -type d -exec rm -r {} +
-find . -path "*/migrations/*.pyc" -delete
-find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
-rm -rf __pypackages__ pdm.lock
-rm db.sqlite3
-```
-
-**Reinstalando as dependências**
-
-```shell
-pdm install
-```
-
-**Criando o banco de dados e executando as migrações**
-
--   Crie novamente o banco de dados e execute as migrações:
-
-```shell
-pdm run python manage.py makemigrations
-pdm run python manage.py migrate
-```
-
-**Criando um novo usuário**
-
--   Crie um novo superusuário:
-
-```shell
-pdm run python manage.py createsuperuser
-```
-
-> Ao criar um novo usuário, observe que o `email` é agora o campo principal, no lugar do `username`.
-
--   Entre no `Admin` e crie um novo usuário.
-
-> Observe que os campos `cpf`, `telefone` e `data_nascimento` foram incluídos.
-
-Para testar o login, utilize o **Thunder Client**:
-
--   Faça uma requisição do tipo `POST` para a URL `http://0.0.0.0:19003/api/api/token/`, enviando as informações de usuário e senha no `Body` em `JSON`:
-
-```json
-{
-    "email": "comprador@a.com",
-    "password": "senha.123"
-}
-```
-
--   Copie o valor do campo `access` e coloque no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
-
 
 # 16. Upload e associação de imagens
 
