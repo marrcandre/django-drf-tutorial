@@ -643,6 +643,21 @@ Instale uma ou mais das ferramentas sugeridas.
 
 Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
 
+- Faça um fork do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
+
+```shell
+    npm install
+```
+
+```shell
+    npm run dev
+```
+Se tudo correu bem, execute a aplicação:
+
+- http://localhost:3000
+
+> Se os dados não aparecerem, entre na opção Inspecionar do seu navegador (F12)
+
 > Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
 
 
@@ -3480,7 +3495,7 @@ curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
 ```
 
-**Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
+- **Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
 **Instalação do PDM no Windows**
 
@@ -3498,7 +3513,7 @@ pdm config
 
 > **IMPORTANTE:** Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
 
-**Para instalar o Python:**
+**Se precisar instalar o Python:**
 
     sudo apt install python-is-python3 python3.10-venv
 
