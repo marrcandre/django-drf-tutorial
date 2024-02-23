@@ -3498,6 +3498,10 @@ pdm config
 
 > **IMPORTANTE:** Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
 
+**Para instalar o Python:**
+
+    sudo apt install python-is-python3 python3.10-venv
+
 
 # A4. Criação de _scripts_ PDM
 
