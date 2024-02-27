@@ -137,8 +137,8 @@ pdm run dev
     http://0.0.0.0:19003/admin
 
 - Os dados de acesso são:
-  - `Usuário`: a@a.com
-  - `Senha`: `teste.123`
+  - **Usuário**: `a@a.com`
+  - **Senha**: `teste.123`
 - Após acessar, você pode o nome do usuário e a senha.
 
 > **IMPORTANTE**: O servidor de desenvolvimento deve estar sempre rodando para que o projeto funcione.
