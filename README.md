@@ -137,7 +137,7 @@ pdm run dev
     http://0.0.0.0:19003/admin
 
 - Os dados de acesso são:
-  - `Usuário`: `a@a.com
+  - `Usuário`: a@a.com
   - `Senha`: `teste.123`
 - Após acessar, você pode o nome do usuário e a senha.
 
