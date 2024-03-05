@@ -107,7 +107,7 @@ O projeto criado ficará assim:
 
 **2.4 Instalando as dependências**
 
--   Abra o terminal no **VS Code**.
+-   Abra o terminal no **VS Code** (Ctrl+Shift+´).
 -   Instale as dependências do projeto:
 
 ```shell
@@ -116,10 +116,15 @@ pdm install
 
 **2.5 Criando o arquivo `.env`**
 
--   Crie o arquivo `.env` na raiz do projeto:
+-   Crie o arquivo `.env`, a partir do arquivo `.env.exemplo`:
+  - Abra o arquivo `.env.exemplo`.
+  - Escolha a opção `Salvar como...` (Ctrl+Shift+S).
+  - Salve o arquivo como `.env`.
+
+> Opcionalmente, você pode criar o arquivo `.env` a partir do terminal, digitando:
 
 ```shell
-cp .env.example .env
+cp .env.exemplo .env
 ```
 
 **2.4 Rodando o servidor de desenvolvimento**
@@ -3445,7 +3450,6 @@ Eu recomendo as seguintes:
 -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
 -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
 -   [TODO Highlight (Realce de TODOs)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
--   [TypeScript Vue Plugin (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vue)
 -   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
 ## Sinconização de extensões no VS Code
@@ -3471,11 +3475,13 @@ As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estive
 pdm -V
 ```
 
--   Se a versão for inferior a 2, instale a versão mais recente:
+-   Se não estiver instalado, instale a versão mais recente:
 
 ```shell
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
+
+- Após a instalação, feche o terminal (`Ctrl + D`) e abra um novo terminal (`Ctrl + Alt + T`).
 
 > **IMPORTANTE**: Após a instalação do PDM, você precisa rodar o script de configuração, conforme descrito abaixo.
 
@@ -3494,8 +3500,6 @@ curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm
 ```shell
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
 ```
-
-- **Após executar os comandos acima, reinicie o terminal, e verifique se o PDM está instalado.**
 
 **Instalação do PDM no Windows**
 
