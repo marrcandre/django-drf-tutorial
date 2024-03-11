@@ -648,7 +648,10 @@ Instale uma ou mais das ferramentas sugeridas.
 
 Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
 
-- Faça um fork do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
+- Entre no repositório do template: https://github.com/marrcandre/livraria-vue-3.
+-  Clique no botão `Use this template` em `Create a new repository`.
+-  Clone o projeto para o seu computador.
+- Execute os seguintes comandos:
 
 ```shell
     npm install
