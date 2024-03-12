@@ -790,6 +790,24 @@ pdm run migrate
 
 -   Faça um commit com a mensagem `Criação da API para Editora`.
 
+# 7. Criação da API para Autor
+
+Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Autor` e a API para ela. Os passos são os mesmos que fizemos para as classes `Categoria` e `Editora`.
+
+- Crie a API para a classe `Autor`.
+
+O autor terá os seguintes atributos:
+
+-   `nome`: `string` de no máximo 100 caracteres.
+-   `email`: campo do tipo email de no máximo 100 caracteres, que pode ser nulo.
+
+- Teste a API.
+- Faça o commit, com a mensagem `Criação da API para Autor`.
+
+Exercícios:
+
+- Crie no Vuejs a tela para listar, incluir, alterar e excluir autores.
+
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
