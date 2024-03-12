@@ -677,9 +677,9 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
   - Criar a `model` Editora em `models.py`.
-  - Fazer a migração e efetivar a migração.
-  - Incluir a `model` no `Admin`.
   - Incluir a `model` no `__init__.py` da pasta `models`.
+  - Incluir a `model` no `Admin`.
+  - Fazer a migração e efetivar a migração.
   - Criar o serializador na pasta `serializers`.
   - Incuir o serializador no `__init__.py` da pasta `serializers`.
   - Criar a `viewset` na pasta `views`.
@@ -714,7 +714,7 @@ from .editora import Editora
 
 ```python
 ...
-admin.site.register(Editora)
+admin.site.register(models.Editora)
 ```
 
 
@@ -763,7 +763,7 @@ from .editora import EditoraViewSet
 
 ```python
 ...
-from core.views import CategoriaViewSet, EditoraViewSet
+from core.views import UserViewSet, CategoriaViewSet, EditoraViewSet
 ...
 router.register(r"categorias", CategoriaViewSet)
 router.register(r"editoras", EditoraViewSet)
