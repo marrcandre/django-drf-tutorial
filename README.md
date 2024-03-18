@@ -676,7 +676,7 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
 **6.1 Criação da API para a classe Editora**
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
-  1. Criar a `model` Editora em `models.py`.
+  1. Criar a `model` Editora na pasta `models`.
   1. Incluir a `model` no `__init__.py` da pasta `models`.
   1. Incluir a `model` no `Admin`.
   1. Fazer a migração e efetivar a migração.
