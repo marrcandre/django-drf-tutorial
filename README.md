@@ -3318,45 +3318,38 @@ class CompraViewSet(ModelViewSet):
 
 ---
 
-# Exercícios
-
-## Garagem
+# Exercícios Garagem
 
 O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto core.
 
-No final, nosso projeto ficará assim:
+<!-- No final, nosso projeto ficará assim:
 
-![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem")
+![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem") -->
 
-### [Aula 5](#5-criando-um-segundo-projeto): Crie o projeto Garagem
+# E1. Crie o projeto Garagem
 
-Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**:
+Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do template.
 
--   Crie uma pasta para o projeto.
--   Crie um ambiente virtual para o projeto (pdm).
--   Instale o Django.
--   Crie o projeto Django, e a aplicação:
-    -   Nome do projeto: **config**.
-    -   Nome da aplicação: **garagem**.
-    -   Registre a aplicação no `settings.py`.
--   Suba o projeto pro **GitHub**:
-    -   Não esqueça de criar o arquivo `.gitignore` e de retirar o `db.sqlite3` dele.
-    -   Nomeie o commit como sendo `Criação do projeto`.
--   Crie os modelos conforme a definição abaixo:
-    -   Crie o modelo `Marca`, com as seguintes definições:
-        -   `nome` (string, máximo 50 caracteres).
-        -   `nacionalidade` (string, máximo 50 caracteres, opcional).
-        -   `__str__` (retorna o nome da marca em caixa alta).
-    -   Registre a model `Marca` no `Admin`.
-    -   Faça um commit com a mensagem _"Criação do modelo Marca"_.
-    -   Crie o modelo `Categoria`, com as seguintes definições:
+1. O projeto será chamado `Garagem`.
+2. Nomeie o commit como sendo `Criação do projeto`.
+3. Crie as seguintes APIs, **fazendo um commit para cada uma**:
+    -   `Acessório`:
         -   `descricao` (string, máximo 100 caracteres).
-        -   `__str__` (retorna a descrição da categoria).
-    -   Registre a model `Categoria` no `Admin`.
-    -   Faça um commit com a mensagem _"Criação do modelo Categoria"_.
-    -   Inclua alguns registros no banco de dados.
+        -   `__str__` (retorna a descrição e o id).
+    -   `Categoria`:
+        -   `descricao` (string, máximo 100 caracteres).
+        -   `__str__` (retorna a descrição e o id.
+    -   `Cor`:
+        -   `nome` (string, máximo 100 caracteres).
+        -   `__str__` (retorna o nome e o id).
+    -   `Marca`:
+        -   `nome` (string, máximo 50 caracteres).
+        -   `nacionalidade` (string, máximo 50 caracteres, permite nulo).
+        -   `__str__` (retorna o nome **em caixa alta** e o id).
+4. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
 
 
+<!--
 ### [Aula 6](#6-criando-os-outros-modelos-de-dados): Crie os demais modelos de dados no projeto Garagem
 
 Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
@@ -3424,7 +3417,7 @@ Crie o modelo `Veículo`, com os seguintes atributos:
 - Faça o cadastro completo, com fotos, de pelo menos 3 carros.
 - Instale o `django-extensions` e [gere o diagrama](#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models) de banco de dados do projeto.
 - Veja se o diagrama gerado está correto, de acordo com o modelo proposto acima.
-
+ -->
 ---
 
 # Apêndices
@@ -3542,6 +3535,7 @@ pdm config
 
     sudo apt install python-is-python3 python3.10-venv
 
+[Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
 # A4. Criação de _scripts_ PDM
 
