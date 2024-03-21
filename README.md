@@ -3466,6 +3466,11 @@ Eu recomendo as seguintes:
 -   [TODO Highlight (Realce de TODOs)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
 -   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
 
+**Extensão Vue.js devtools no Google Chrome**
+
+-   [Vue.js devtools](https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd)
+
+
 ## Sinconização de extensões no VS Code
 
 Você pode configurar a sincronização das extensões entre os computadores. Para isso:
