@@ -1,4 +1,4 @@
-# Django com DRF
+# Django com DRF - 2023
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
@@ -1141,11 +1141,86 @@ npm run dev
 
 > Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
 
+**9.1.1 Diferenças no JSON de retorno com e sem paginação**
+
+Quando a paginação não está ativada, o JSON de retorno é um objeto com a lista de objetos. Quando a paginação está ativada, o JSON de retorno é um objeto com a lista de objetos, mas a lista de objetos está dentro de um objeto `results`.
+
+**Exemplo de `categorias` com a paginação desativada**
+
+```json
+[
+    {
+        "id": 1,
+        "descricao": "Ficção"
+    },
+    {
+        "id": 2,
+        "descricao": "Terror"
+    },
+    {
+        "id": 3,
+        "descricao": "Romance"
+    }
+]
+```
+
+**Exemplo de `categorias` com a paginação ativada**
+
+```json
+{
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "descricao": "Ficção"
+        },
+        {
+            "id": 2,
+            "descricao": "Terror"
+        },
+        {
+            "id": 3,
+            "descricao": "Romance"
+        }
+    ]
+}
+```
+Sendo assim, é importante que a aplicação _frontend_ esteja preparada para lidar com essas diferenças. Essa alterações deverão ser feitas nos arquivos da pasta `src/api` do projeto _frontend_.
+
+Um exemplo é o arquivo `categorias.js`:
+
+```javascript
+import axios from "axios";
+export default class CategoriasApi {
+  async buscarTodasAsCategorias() {
+    const { data } = await axios.get("/categorias/");
+    return data.results;
+  }
+  async adicionarCategoria(categoria) {
+    const { data } = await axios.post("/categorias/", categoria);
+    return data.results;
+  }
+  async atualizarCategoria(categoria) {
+    const { data } = await axios.put(`/categorias/${categoria.id}/`, categoria);
+    return data.results;
+  }
+  async excluirCategoria(id) {
+    const { data } = await axios.delete(`/categorias/${id}/`);
+    return data.results;
+  }
+}
+```
+
+-----
+
 Se tudo correu bem, execute a aplicação:
 
 http://localhost:3000
 
-> Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
+
+> **ATENÇÃO:** Se os dados não aparecerem, entre na opção **Inspecionar** do seu navegador (`Control`+`Shift`+I ou **botão direto - Inspecionar**.)
 > Na opção `Console`, verifique se aparece um erro de **CORS**. Se isso ocorrer, siga o tutorial a seguir.
 
 **9.2 Inclusão do Django CORS headers no projeto**
