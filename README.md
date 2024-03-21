@@ -2196,9 +2196,9 @@ urlpatterns = [
 
 # 18. Dump e Load de dados
 
-Vamos aprender a fazer o _dump_ e _load_ de dados.
+Vamos aprender a fazer o _dump_ e _load_ de dados. O _dump_ é a exportação dos dados do banco de dados para um arquivo, enquanto o _load_ é a importação dos dados de um arquivo para o banco de dados. Isso é útil para fazer cópias de segurança, migração de dados entre ambientes e carga inicial de dados.
 
-**Carga inicial de dados**
+<!-- **Carga inicial de dados**
 
 - Acesse o seguinte link:
 
@@ -2209,7 +2209,7 @@ Vamos aprender a fazer o _dump_ e _load_ de dados.
 - Cadastre pelos menos 10 livros, com autor e editora
 - Verifique se o livro, autor ou editora já estão cadastrados.
 - **NÃO USE CAIXA ALTA!!!**
-- Use o formato de nomes de livros, como no exemplo: `O Senhor dos Anéis - A Sociedade do Anel`
+- Use o formato de nomes de livros, como no exemplo: `O Senhor dos Anéis - A Sociedade do Anel` -->
 
 
 
@@ -2227,7 +2227,7 @@ pdm run python manage.py dumpdata --indent 2 > livraria_bkp.json
 code livraria_bkp.json
 ```
 
-**Arquivo exemplo**
+**Carga dos dados**
 
 -   Baixe o arquivo `livraria.json`:
 
