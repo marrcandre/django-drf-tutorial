@@ -648,7 +648,7 @@ Instale uma ou mais das ferramentas sugeridas.
 
 Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
 
-- Entre no repositório do template: https://github.com/marrcandre/livraria-vue-3.
+- Entre no repositório do template: https://github.com/marrcandre/livraria-vue3.
 -  Clique no botão `Use this template` em `Create a new repository`.
 -  Clone o projeto para o seu computador.
 - Execute os seguintes comandos:
@@ -807,6 +807,134 @@ O autor terá os seguintes atributos:
 Exercícios:
 
 - Crie no Vuejs a tela para listar, incluir, alterar e excluir autores.
+
+# 8. Criação da API para Livro
+
+Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Livro` e a API para ela. Os passos iniciais são os mesmos que fizemos para as classes `Categoria`, `Editora` e `Autor`.
+
+**8.1 Criação dos arquivos necessários**
+
+Utilizando um comando no terminal, é possível criar todos os arquivos necessários para a criação da API para a classe `Livro`.
+
+```shell
+touch core/models/livro.py core/serializers/livro.py core/views/livro.py
+```
+
+É possivel também abrir todos os arquivos de uma vez, utilizando o comando:
+
+```shell
+code core/models/livro.py core/models/__init__.py core/serializers/livro.py core/serializers/__init__.py core/views/livro.py core/views/__init__.py app/urls.py core/admin.py
+```
+
+**8.2 Criando o modelo de dados `Livro`**
+
+-   Vamos criar o modelo de dados `Livro`, no arquivo `models.py`:
+
+```python
+
+class Livro(models.Model):
+    titulo = models.CharField(max_length=255)
+    isbn = models.CharField(max_length=32, null=True, blank=True)
+    quantidade = models.IntegerField(default=0,  null=True, blank=True)
+    preco = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.titulo} ({self.quantidade})"
+```
+
+Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chaves estrangeiras no modelo `Livro`.
+
+**8.3 Incluindo chaves estrangeiras no modelo**
+
+Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`.
+
+**8.3.1 Campo `categoria` no `Livro`**
+
+-   Inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
+
+```python
+...
+    categoria = models.ForeignKey(
+        Categoria, on_delete=models.PROTECT, related_name="livros"
+    )
+...
+```
+
+-   Vamos entender cada parte:
+    -   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
+    -   `Categoria`: o model que será associado a esse campo.
+    -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
+    -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
+
+**8.3.2 Campo `editora` no `Livro`**
+
+-   De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
+
+```python
+editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros")
+```
+
+**8.4 Inclusão dos modelos no `Admin`**
+
+-   Inclua os modelos criados no arquivo `admin.py`:
+
+```python
+from django.contrib import admin
+
+from livraria.models import Autor, Categoria, Editora, Livro
+
+admin.site.register(Autor)
+admin.site.register(Categoria)
+admin.site.register(Editora)
+admin.site.register(Livro)
+```
+
+**8.5 Efetivando as alterações no banco de dados**
+
+-   Prepare as migrações:
+
+```shell
+pdm run python manage.py makemigrations
+```
+
+-   Efetive as migrações:
+
+```shell
+pdm run python manage.py migrate
+```
+
+**8.6 Testando o atributo `on_delete`**
+
+Feito isso, verifique se tudo funcionou.
+
+No `Admin`:
+
+-   Cadastre algumas categorias, editoras, autores e livros.
+-   Note como os livros acessam as categorias e editoras já cadastradas.
+-   Tente apagar uma editora ou categoria **com** livros associados.
+    -   O que aconteceu?
+    -   Por que isso aconteceu?
+-   Tente apagar uma editora ou categoria **sem** livros associados.
+    -   O que aconteceu?
+    -   Por que isso aconteceu?
+
+**8.7 Testando o atributo related_name no Django Shell**
+
+No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a **todos os livros de uma categoria** usando algo parecido com isso:
+
+-   Abra o Django shell:
+
+```shell
+pdm run python manage.py shell
+```
+
+-   Acesse os livros da categoria com `id` 1:
+
+```python
+>>> from livraria.models import Categoria
+>>> Categoria.objects.get(id=1).livros.all()
+```
+
 
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
@@ -3940,3 +4068,4 @@ Repita o processo de configuração de nome e email.
 ---
 
 Marco André Mendes \<marcoandre@gmail.com>
+
