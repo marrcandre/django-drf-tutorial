@@ -3257,8 +3257,184 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
+# A4. Criação do Banco de Dados no Supabase
 
-# A6. Resolução de erros
+Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados SQLite local será utilizado apenas para desenvolvimento.
+
+**Criando um projeto no Supabase**
+
+Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
+
+-   Acesse o site do [Supabase](https://supabase.com/).
+-   Crie uma conta ou conecte-se no **Supabase**.
+-   Clique na opção [Start your project](https://supabase.com/dashboard/projects).
+- Dẽ um nome ao projeto.
+- Selecione a opção `Create a new organization`.
+- Selecione a região `South America (São Paulo)`.
+- Dẽ um nome à organização.
+- Selecione a opção `Create a new database`.
+- Dê um nome ao banco de dados.
+- Escolha uma senha e **guarde-a** (você vai precisar dela).
+
+**Configurando o banco de dados no projeto**
+
+- Entre no [Dashboard](https://supabase.com/dashboard/projects) do projeto, e escolha o projeto criado.
+- Escolha a opção `Project settings` e depois `Database`.
+- Copia a linha de conexão do banco de dados (URI).
+  - Ela deve ser parecida com isso: `postgres://postgres:[YOUR-PASSWORD]@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres`.
+- Troque `[YOUR-PASSWORD` pela senha que você havia guardado.
+- Copie a linha de conexão e cole no arquivo `.env` do projeto, como no exemplo:
+
+```shell
+# Supabase
+DATABASE_URL=postgres://postgres:Senha.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
+```
+
+**Instalando o pacote `dj_database_url`**
+
+O pacote `dj_database_url` facilita a configuração do banco de dados no Django, pois ele converte a URL do banco de dados para o formato que o Django entende.
+
+- Instale o pacote `dj_database_url`:
+
+```shell
+pdm add dj-database-url
+```
+
+- Adicione o pacote `dj_database_url` ao arquivo `settings.py`:
+
+```python
+import dj_database_url
+´´´
+
+- Substitua a configuração do banco de dados no arquivo `settings.py`:
+
+```python
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
+```
+
+> Essa configuração permite que o Django use o banco de dados local em desenvolvimento e o banco de dados do **Supabase** em produção, definindo a variável de ambiente `DATABASE_URL`.
+
+**Migrando o banco de dados**
+
+- No arquivo `.env`:
+  - Altere o valor da variável `MODE` para `MIGRATE`.
+  - Descomente a linha `DATABASE_URL`.
+- Faça a migracão do banco de dados:
+
+```shell
+pdm run python migrate
+```
+
+> Observe que o banco de dados foi migrado no `Supabase`.
+
+> Para testar, crie alguns registros no banco de dados. Depois volte a configuração local e perceba que os dados são diferentes na base local e na base do **Supabase**.
+
+- No site do `Supabase`, acesse o `Table Editor` e verifique que as tabelas foram criadas.
+- Você também pode ver o esquema das tabelas, em `Database`, `Schema Visualizer`.
+
+- Para voltar a usar o banco de dados local, no arquivo `.env`:
+  - Altere o valor da variável `MODE` para `DEVELOPMENT`.
+  - Comente a linha `DATABASE_URL`.
+
+**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de migração, tanto no banco de dados local quanto no banco de dados do **Supabase**.
+
+# A5. Publicando o projeto no `Render`
+
+O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
+
+
+**Criando um script de Build**
+
+Precisamos executar uma série de comandos para construir nosso aplicativo. Podemos fazer isso com um script de construção (`build script`).
+
+- Crie um arquivo chamado `build.sh` na raiz do projeto com o seguinte conteúdo:
+
+```shell
+#!/usr/bin/env bash
+# Exit on error
+set -o errexit
+
+# Update pip
+pip install --upgrade pip
+
+# Modify this line as needed for your package manager (pip, poetry, etc.)
+pip install -r requirements.txt
+
+# Convert static asset files
+python manage.py collectstatic --no-input
+
+# Apply any outstanding database migrations
+python manage.py migrate
+```
+
+- Torne o script executável:
+
+```shell
+chmod a+x build.sh
+```
+
+- Adicione os pacotes `Uvicorn` e `Gunicorn` ao projeto:
+
+```shell
+pdm add uvicorn gunicorn
+```
+
+**Testando a execução localmente**
+
+- Execute a seguinte linha de comando para testar a execução localmente:
+
+```shell
+pdm run python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker
+```
+
+- Acesse o endereço `http://localhost:8000` no navegador para verificar se a aplicação está funcionando.
+
+> O que fizemos foi substituir o servidor de desenvolvimento do Django pelo servidor `Uvicorn` e `Gunicorn`.
+
+**Configurando o Render**
+
+- Acesse o site do [Render](https://render.com/) e crie uma conta.
+- Crie um novo serviço (web service) e siga as instruções.
+-
+
+
+
+# A6. Armazenando arquivos estáticos no Cloudinary
+
+Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
+
+**Criando uma conta no Cloudinary**
+
+- Acesse o site do [Cloudinary](https://cloudinary.com/) e crie uma conta.
+
+**Configurando o Cloudinary**
+
+-   Edite o arquivo `.env`, incluindo a seguinte variável:
+
+```shell
+# Cloudinary
+CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
+```
+
+> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
+
+- Inclua essa mesma variável no `Render` (ou no serviço de hospedagem que você estiver utilizando), na opção `Environment variables`.
+
+**Testando**
+
+- Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
+-  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
+-  Se deu certo, faça o *commit* das alterações.
+-  Sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
+
+
+# A7. Resolução de erros
 
 ## Liberando uma porta em uso
 
@@ -3349,7 +3525,7 @@ SIMPLE_JWT = {
 }
 ```
 
-# A7. Configurando o git
+# A8. Configurando o git
 
 **Um aviso importante**
 
@@ -3405,7 +3581,7 @@ rm ~/.gitconfig
 Repita o processo de configuração de nome e email.
 
 
-# A8. Usando curl para testar a API via linha de comando
+# A9. Usando curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 

@@ -1,6 +1,6 @@
 # 21. Implantação no Render
 
-Link para o tutorial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
+Link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
 
 **Modificações no projeto:**
 
@@ -12,7 +12,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 - Para que esse comando funcione, precisamos importar a biblioteca `os` no início do arquivo:
 
-```python  
+```python
 import os
 ```
 
@@ -36,13 +36,13 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
 
-Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema. 
+Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema.
 
 - Adicione `WhiteNoise` como uma dependência (adicionar suporte para `Brotli` é opcional, mas recomendado):
 
 ```shell
 pdm add 'whitenoise[brotli]'
-``` 
+```
 
 - Abra o arquivo `settings.py`, encontre a lista `MIDDLEWARE` e adicione o middleware `WhiteNoise` logo após o `SecurityMiddleware`:
 
@@ -64,7 +64,7 @@ STATIC_URL = '/static/'
 
 # As seguintes configurações só fazem sentido em produção e podem causar problemas em ambientes de desenvolvimento.
 if not DEBUG:
-    # Indica ao Django para copiar os arquivos estáticos para o diretório `staticfiles` 
+    # Indica ao Django para copiar os arquivos estáticos para o diretório `staticfiles`
     # no diretório da sua aplicação no Render.
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -142,7 +142,7 @@ services:
 ```
 
 - No site do [Render](https://dashboard.render.com/), crie um novo Serviço Web (`Web Service`), apontando-o para o repositório do seu aplicativo (conceda permissão ao **Render** para acessá-lo, se ainda não o fez).
-  
+
 - Selecione Python como `runtime` e configure as seguintes propriedades:
 
 | Propriedade  | Valor                               |
