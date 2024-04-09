@@ -1873,419 +1873,6 @@ class LivroAdmin(admin.ModelAdmin):
     http://0.0.0.0:19003/api/admin/
 
 
-# 21. Configurando diferentes ambientes
-
-Vamos configurar diferentes ambientes para desenvolvimento, migração e produção. Para isso, vamos criar um arquivo `.env` na raiz do projeto. Nesse arquivo, vamos definir as variáveis de ambiente que queremos que tenham valores diferentes para cada ambiente.
-
-**Instalação do pacote `python-dotenv`**
-
--   Instale o pacote `python-dotenv`:
-
-```shell
-pdm add python-dotenv
-```
-
-**Instalação do `python3-dev` e do `netifaces`**
-
--   Instale o pacote `python3-dev`:
-
-```shell
-sudo apt install python3-dev
-```
-
--   Instale o pacote `netifaces`:
-
-```shell
-pdm add netifaces
-```
-
-> O pacote `netifaces` é necessário para que possamos obter o IP da máquina. Ele depende do pacote `python3-dev`.
-
-**Baixe o script de configuração do IP**
-
--   Baixe o arquivo `set_my_ip.py`:
-
-```shell
-mkdir -p scripts && curl https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/main/scripts/set_my_ip.py -o ./scripts/set_my_ip.py
-```
-> Esse comando baixa o arquivo `set_my_ip.py` e o coloca na pasta `scripts`, criando a pasta caso ela não exista.
-
-> Esse script pega o IP da máquina e o coloca no arquivo `.env`, na variável `MY_IP`.
-
-**Configure os scripts de execução do projeto**
-
--   Edite o arquivo `pyproject.toml ` e inclua o seguinte conteúdo:
-
-```shell
-[tool.pdm.scripts]
-pre_dev = "python ./scripts/set_my_ip.py"
-dev = "python manage.py runserver 0.0.0.0:19003"
-```
-
-> O script `pre_dev` será executado antes do script `dev`.
-
-> O script `pre_dev` executa o script `set_my_ip.py`, que pega o IP da máquina e o coloca no arquivo `.env`, na variável `MY_IP`.
-
-> O script `dev` executa o comando `runserver` do Django, que roda o servidor de desenvolvimento na porta `19003`.
-
-
-**Rodando o projeto**
-
-- Execute o seguinte comando:
-
-```shell
-pdm run dev
-```
-
-- O projeto ficará disponivel no endereço: `http://localhost:19003/`.
-
-
-**Configuração do ambiente de desenvolvimento**
-
--   Edite o arquivo `.env`, incluindo as seguintes variáveis:
-
-```shell
-# Django
-SECRET_KEY=django_insecure_#-
-DEBUG=True
-ALLOWED_HOSTS=['*']
-
-MODE=DEVELOPMENT # DEVELOPMENT, PRODUCTION, MIGRATE
-```
-
--   Edite o arquivo `settings.py`, incluindo o seguinte código:
-
-```python
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-MODE = os.getenv("MODE")
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG", "False")
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://0.0.0.0:19003/", "https://*.fl0.io/"]
-...
-
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    MEDIA_URL = '/media/'
-else:
-    MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
-```
-
-> **ATENÇÃO: as referências anteriores a essas variáveis no arquivo `settings.py` devem ser removidas.**
-
-> O comando load_dotenv() carrega as variáveis de ambiente definidas no arquivo `.env` ou no sistema operacional.
-
-> Na variável `CSRF_TRUSTED_ORIGINS` foram incluídos os endereços dos ambientes de desenvolvimento e produção. Isso é necessário para que o Django aceite requisições de outros domínios. Você deve incluir os endereços dos seus ambientes de desenvolvimento e produção.
-
-> A variável `MODE` é definida no arquivo `.env`. Ela será utilizada para definir o modo de execução do projeto. No caso, o modo de execução é o `DEVELOPMENT`.
-
-> Isso tudo pode ser facilmente alterado, de acordo com a necessidade, apenas modificando o arquivo `.env`.
-
-> Na máquina local, a variável `MEDIA_URL` é definida com o IP da máquina, na porta `19003`. Isso é necessário para que o Django possa servir os arquivos de mídia.
-
-
-**Testando a configuração**
-
--   Execute o comando `pdm run python manage.py runserver` para testar a configuração.
-
-> Tudo deve funcionar como antes, uma vez que as variáveis de ambiente definidas no arquivo `.env` são as mesmas que estavam definidas no arquivo `settings.py`.
-
-> Posteriormente, vamos alterar o modo para `PRODUCTION` e a base de dados será algum outro banco de dados remoto.
-
-- Faça o commit das alterações.
-
-
-**Criando um arquivo .env_exemplo**
-
-O arquivo `.env` não deve ser versionado. Para isso, vamos criar um arquivo `.env_exemplo` com as variáveis de ambiente que devem ser definidas.
-
-- Crie um arquivo `.env_exemplo` na raiz do projeto, copiando o conteúdo do arquivo `.env`. Não inclua nesse arquivo nenhuma informação sensível, como senhas, tokens, etc.
-
-- No arquivo `.gitignore`, inclua a linha `.env` para que o arquivo `.env` não seja versionado.
-
-Um exemplo de arquivo `.env_exemplo`:
-
-```shell
-# Django
-SECRET_KEY=django_insecure_#-
-DEBUG=True
-ALLOWED_HOSTS=['*']
-
-MODE=DEVELOPMENT # DEVELOPMENT, PRODUCTION, MIGRATE
-```
-
-**Recriando o arquivo .env**
-
-Sempre que você clonar o projeto, precisará recriar o arquivo `.env` com as informações sensíveis, uma vez que o arquivo `.env` não é versionado.
-
--   Para recriar o arquivo `.env`, basta copiar o arquivo `.env_exemplo` para `.env` e incluir as informações sensíveis.
-
-> Nos servidores de produção, as variáveis de ambiente são definidas no próprio servidor, não sendo necessário criar o arquivo `.env`.
-
-# 22. Implantação do projeto
-
-# 22A. Implantando no Fl0
-
-Vamos implantar o projeto no Fl0.
-
-**Criando uma conta no Fl0**
-
-Acesse o site do [Fl0](https://fl0.com/) e crie uma conta.
-
-**Criando um novo projeto no Fl0**
-
--  Crie um novo projeto no Fl0.
--  Dẽ um nome ao projeto.
--  Selecione o repositório do projeto.
--  Habilite a opção `Automatic deployments`.
--  Selecione a branch `main`.
-
-**Configurando o projeto no Fl0**
-
-- Na aba `Environment variables`, inclua as variáveis de ambiente definidas no arquivo `.env`:
-
-| Configuração   | Valor               |
-|----------------|---------------------|
-| PORT           | 8080                |
-| SECRET_KEY     | [gere uma chave secreta](#geração-da-secret_key). |
-| DEBUG          | False               |
-| MODE           | PRODUCTION          |
-
-**Configurações no projeto**
-
-- Adicione o pacote `gunicorn`:
-
-```shell
-pdm add gunicorn
-```
-
-> O `gunicorn` é um servidor HTTP WSGI para Python. Ele é necessário para que o projeto possa ser executado no Fl0.
-
-- Crie um arquivo `Procfile` na raiz do projeto, com o seguinte conteúdo:
-
-```shell
-web: gunicorn config.wsgi
-```
-
-**Configuração de arquivos estáticos**
-
-Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
-
-Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema.
-
-- Adicione o `WhiteNoise` como uma dependência (adicionar suporte para `Brotli` é opcional, mas recomendado):
-
-```shell
-pdm add 'whitenoise[brotli]'
-```
-
-- Abra o arquivo `settings.py`, encontre a lista `MIDDLEWARE` e adicione o middleware `WhiteNoise` logo após o `SecurityMiddleware`:
-
-```python
-MIDDLEWARE = [
-    ...
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    ....
-]
-```
-
--   Edite o arquivo `settings.py`, incluindo o seguinte código:
-
-```python
-...
-if MODE == "PRODUCTION":
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-```
-
-> O `STATIC_ROOT` é o diretório onde os arquivos estáticos serão coletados. O `STATICFILES_STORAGE` é o armazenamento de arquivos estáticos que será utilizado.
-
-> Essas configurações só serão utilizadas no modo `PRODUCTION`.
-
-
-**Finalizando**
-
-- Assegure-se de que o arquivo `requirements.txt` está atualizado. Caso ele não exista, [siga esses passos](#a3-gerando-o-arquivo-requirementstxt-automaticamente).
-
-- Faça o commit das alterações. O projeto deve ser implantado automaticamente no Fl0.
-- Acompanhe o processo na aba `Deployments`, escolhendo o deployment mais recente, e clicando em `View logs`.
-- Se tudo der certo, o projeto estará disponível na URL que você definiu, algo parecido com https://livraria-marrcandre-dev.fl0.io/.
-
-
-# 22B. Utilizando um Banco de Dados externo no Fl0
-
-Vamos criar um banco de dados externo no Fl0. Assim, não utilizaremos mais o SQLite3, que vinhamos usando no desenvolvimento. Com isso, os dados não serão perdidos a cada nova implantação.
-
-**Configurando o arquivo `settings.py`**
-
-- Edite o arquivo `settings.py` do projeto, e substitua o conteúdo da variável `DATABASES` pelo seguinte:
-
-```python
-...
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("DATABASE_NAME"),
-            "USER": os.getenv("DATABASE_USER"),
-            "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-            "HOST": os.getenv("DATABASE_HOST"),
-            "PORT": os.getenv("DATABASE_PORT"),
-        }
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-
-print(MODE, DATABASES)
-...
-```
-
-> Note que a variável `DATABASES` foi substituída por um `if` que verifica se o `MODE` é `PRODUCTION` ou `MIGRATE`. Se for, o banco de dados será o `PostgreSQL` do `Fl0`. Caso contrário, será o `SQLite` local.
-
-> O `print` foi incluído para que você possa verificar se o banco de dados está correto.
-
-**Instalação do suporte ao PosgreSQL**
-
-- Para acessar o banco de dados PostgreSQL, instale o seguinte pacote:
-
-```shell
-pdm add psycopg2-binary
-```
-
-**Criando um Banco de Dados no Fl0**
-
-- Nas configurações do projeto, clique em `Add New` e em `Postgres database`.
-- Escolha a localização mais perto de sua casa.
-- O Banco de Dados será criado.
-
-**Utilizando as informações do Banco de Dados criado**
-
-- Clique no Banco de Dados criado e entre na opção `Conection Info`.
-- Copie as informações de conexão, e coloque no seu arquivo `.env`:
-
-```shell
-# Fl0 Database
-DATABASE_NAME=fl0db
-DATABASE_USER=fl0user
-DATABASE_PASSWORD=senha_do_bd
-DATABASE_HOST=url.do.bd.flo.com
-DATABASE_PORT=5432
-```
-> Altere as informações de acordo com o seu projeto.
-
-- Inclua as informações do Banco de Dados no Fl0, na aba `Environment variables`, incluindo as variáveis de ambiente definidas no arquivo `.env` referentes ao banco de dados.
-
-**Migração do banco de dados**
-
-- No arquivo `.env`, altere o valor da variável `MODE` para `MIGRATE`.
-- Faça a migracão do banco de dados:
-
-```shell
-pdm run python manage.py migrate
-```
-
-> Observe que o banco de dados foi migrado para o `Fl0`.
-
-- Crie um super usuário:
-
-```shell
-pdm run python manage.py createsuperuser
-```
-
-**Configurando o Banco de Dados externo no Fl0**
-
-- Na aba `Environment variables`, certifique-se de que o valor da variável `MODE` é `PRODUCTION`.
-- Faça o commit das alterações.
-- Sua aplicação deve estar funcionando normalmente, utilizando o banco de dados do `Fl0`.
-
-**Observações**
-
-- Para testar, crie um novo autor no projeto e verifique se ele foi criado no banco de dados do `Fl0`.
-
-- Opcionalmente, você pode utilizar um dump do banco de dados local e carregá-lo no banco de dados do `Fl0`:
-
-```shell
-pdm run python manage.py loaddata core.json
-```
-
-> A partir de agora, sempre que você fizer uma nova implantação, os dados não serão perdidos.
-
-- Para voltar a usar o banco de dados local, altere o valor da variável `MODE` no arquivo `.env` para `DEVELOPMENT`.
-
-# 22C. Armazenando arquivos estáticos no Cloudinary
-
-Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
-
-**Criando uma conta no Cloudinary**
-
-Acesse o site do [Cloudinary](https://cloudinary.com/) e crie uma conta.
-
-**Instalação do pacote `django-cloudinary-storage`**
-
-- Para instalar, digite:
-
-```shell
-pdm add django-cloudinary-storage
-```
-
-- Adicione os pacotes  `cloudinary_storage` e `cloudinary` ao `INSTALLED_APPS`, no `settings.py`, logo após o pacote `django.contrib.staticfiles`:
-
-```python
-INSTALLED_APPS = [
-    # ...
-    'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
-    # ...
-]
-```
-
-- Nas configurações de arquivos estáticos, inclua o seguinte conteúdo:
-
-```python
-STATIC_URL = "/static/"
-
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    MEDIA_URL = '/media/'
-else:
-    MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
-```
-
-**Configuração do Cloudinary**
-
--   Edite o arquivo `.env`, incluindo a seguinte variável:
-
-```shell
-# Cloudinary
-CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
-```
-
-> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
-
-- Inclua essa mesma variável no Fl0, na aba `Environment variables`.
-
-**Testando**
-
-- Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
--  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
--  Se deu certo, faça o *commit* das alterações.
--  Sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -3670,211 +3257,8 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
-# A4. Criação de _scripts_ PDM
 
-> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
-
-Como o `npm run`, com o `PDM`, você pode executar _scripts_ ou comandos arbitrários com pacotes locais carregados.
-
-Aqui estão alguns exemplos de scripts que você pode adicionar ao seu `pyproject.toml`:
-
--   Edite o arquivo `pyproject.toml` na raiz do projeto:
-
-```python
-[tool.pdm.scripts]
-dev = "python manage.py runserver"
-runserver = "python manage.py runserver"
-createsuperuser = "python manage.py createsuperuser"
-migrate = "python manage.py migrate"
-makemigrations = "python manage.py makemigrations"
-shell = "python manage.py shell"
-test = "python manage.py test"
-startapp = "python manage.py startapp {args}"
-loaddata = "python manage.py loaddata {args}"
-dumpdata = "python manage.py dumpdata {args}"
-```
-
--   Agora, você pode executar os comandos do Django com o `pdm run`, por exemplo:
-
-```shell
-pdm run dev
-```
-
-# A5. Formatação de código com isort e black
-
-> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
-
-As ferramentas de formatação de código `isort` e `black` são muito úteis para manter o código Python organizado e legível. Enquanto o `isort` organiza as importações, o `black` formata o código, seguindo as convenções do PEP8.
-
-- Instale as extensões do `isort` e do `black` no VS Code.
-
-
--   Instale as ferramentas de desenvolvimento `isort` e `black`:
-
-```shell
-pdm add --dev isort black
-```
-
--   Crie um arquivo `.isort.cfg` na raiz do projeto:
-
-```shell
-touch .isort.cfg
-```
-
--   Abra o arquivo `.isort.cfg` e coloque o seguinte conteúdo:
-
-```python
-[isort]
-default_section = THIRDPARTY
-known_first_party = config  # change it for the name of your django project
-known_django = django
-sections = FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
-
-[settings]
-profile=black
-skip=.git, __init__.py, __pypackages__/
-```
-
--  Abra o arquivo `pyproject.toml` e inclua o seguinte conteúdo:
-
-```python
-[tool.black]
-line-length = 120
-```
-
-**Usando o isort e o black**
-
-Execute os seguintes comandos:
-
-```shell
-pdm run isort .
-pdm run black .
-```
-
-Opcionalmente, você pode utilizador o formatador de código em um arquivo, selecionando o código (`Ctrl` + `A`) e pressionando `Ctrl + Shift + I`.
-
-# A6. Gerando o arquivo requirements.txt automaticamente
-
-> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
-
-O arquivo `requirements.txt` é utilizado para instalar as dependências do projeto em um ambiente virtual. Ele será utilizado pelo Heroku, Render, PythonAnywhere e outros servidores de hospedagem para instalar as dependências do projeto.
-
--   Instale o plugin `pdm-autoexport` do `pdm`:
-
-```shell
-pdm plugin add pdm-autoexport
-```
-
--   Execute o seguinte comando:
-
--   Configure o `autoexport` para gerar o arquivo `requirements.txt` automaticamente, incluindo as seguintes linhas no arquivo `pyproject.toml`:
-
-```toml
-[[tool.pdm.autoexport]]
-filename = "requirements.txt"
-without-hashes = "true"
-```
-
-Para gerar o arquivo `requirements.txt` automaticamente, instale qualquer pacote com o `pdm`:
-
-```shell
-pdm add django
-```
-
-> A partir de agora, sempre que você instalar um pacote com o `pdm`, o arquivo `requirements.txt` será atualizado automaticamente.
-
-# A7. Gerando um diagrama de banco de dados a partir das models
-
-> **AVISO**: Se você baixou o template fornecido, você não precisa seguir essas instruções, pois tudo já estará configurado. Se você está começando um projeto do zero, ou quer aprender a configurar esse recurso, pode continuar lendo.
-
-- Instale o `GraphViz`:
-
-```shell
-sudo apt install graphviz
-```
-
--   Instale o `django-extensions` e o `pydotplus`:
-
-```shell
-pdm add django-extensions pydotplus
-```
-
--   Adicione o `django-extensions` ao `INSTALLED_APPS` do arquivo `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "django_extensions",
-]
-```
-
--   Gere o diagrama de banco de dados:
-
-```shell
-pdm run python manage.py graph_models -g -o core.png livraria
-```
-# A8. Usando curl para testar a API via linha de comando
-
--   Liste todas as categorias:
-
-```shell
-curl -X GET http://0.0.0.0:19003/api/categorias/
-```
-
--   Liste uma categoria específica:
-
-```shell
-curl -X GET http://0.0.0.0:19003/api/categorias/1/
-```
-
--   Crie uma nova categoria:
-
-```shell
-curl -X POST http://0.0.0.0:19003/api/categorias/ -d "descricao=Teste"
-```
-
--   Atualize uma categoria:
-
-```shell
-curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
-```
-
--   Delete uma categoria:
-
-```shell
-curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
-```
-
-# A9. Resolução de erros
-
-**Instalação do plugin pdm-vscode**
-
-Se seu projeto não estiver reconhecendo os arquivos do Python ou do Django, você pode instalar o plugin `pdm-vscode`, que permite a integração do **PDM** com o **VS Code**:
-
-
-- Instale o plugin `pdm-vscode`, que permite a integração do **PDM** com o **VS Code**:
-
-```shell
-pdm plugin add pdm-vscode
-```
-
-Na criação do projeto, será criada uma pasta `.vscode` com um arquivo `settings.json` que contém as configurações do **PDM** para o **VS Code**:
-
-```json
-{
-    "python.analysis.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
-    ],
-    "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
-    ]
-}
-```
-
-> Se esse arquivo não for criado, você pode criá-lo manualmente.
-
-> Se esse arquivo existir, mas não tiver o conteúdo acima, você pode incluir o conteúdo acima manualmente.
-
+# A6. Resolução de erros
 
 ## Liberando uma porta em uso
 
@@ -3897,38 +3281,6 @@ fuser -k 8000/tcp
 ```
 
 > Este comando vai matar o processo que está rodando na porta 8000. Mude o número da porta conforme necessário.
-
-## Descobrindo o IP da máquina
-
--   Execute o seguinte comando:
-
-```shell
-nmcli device show | grep IP4.ADDRESS | head -1 | awk '{print $2}' | rev | cut -c 4- | rev
-```
-
-## Rodando o Django no IP da máquina
-
--   Execute o seguinte comando:
-
-```shell
-pdm run python manage.py runserver <ip_da_maquina>:<porta>
-```
-
-Exemplo:
-
-```shell
-pdm run python manage.py runserver 191.52.62.13:19005
-```
-
-> Essa é uma forma de rodar o Django em um IP e porta específicos, por exemplo, para testar a API em um dispositivo móvel.
-
-## Descobrindo o IP da máquina e rodando o Django no IP da máquina
-
--   Execute o seguinte comando:
-
-```shell
-pdm run python manage.py runserver $(nmcli device show | grep IP4.ADDRESS | head -1 | awk '{print $2}' | rev | cut -c 4- | rev):19005
-```
 
 ## Removendo temporários, migrations e o banco de dados
 
@@ -3956,7 +3308,7 @@ pdm config python.use_venv false
 ```
 
 - Feito isso, execute o `pdm install` novamente.
-- Por fim, execute o `pdm run python manage.py runserver` novamente.
+- Por fim, execute o `pdm run dev` novamente.
 
 
 ## Geração da SECRET_KEY
@@ -3997,8 +3349,7 @@ SIMPLE_JWT = {
 }
 ```
 
-
-# A10. Configurando o git
+# A7. Configurando o git
 
 **Um aviso importante**
 
@@ -4053,6 +3404,38 @@ rm ~/.gitconfig
 
 Repita o processo de configuração de nome e email.
 
+
+# A8. Usando curl para testar a API via linha de comando
+
+-   Liste todas as categorias:
+
+```shell
+curl -X GET http://0.0.0.0:19003/api/categorias/
+```
+
+-   Liste uma categoria específica:
+
+```shell
+curl -X GET http://0.0.0.0:19003/api/categorias/1/
+```
+
+-   Crie uma nova categoria:
+
+```shell
+curl -X POST http://0.0.0.0:19003/api/categorias/ -d "descricao=Teste"
+```
+
+-   Atualize uma categoria:
+
+```shell
+curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
+```
+
+-   Delete uma categoria:
+
+```shell
+curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
+```
 -----
 
 # Contribua
