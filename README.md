@@ -1129,7 +1129,7 @@ class LivroListSerializer(ModelSerializer):
 
 **9.1 Executando uma aplicação _frontend_ de exemplo**
 
-Faça um `fork` do repositório https://github.com/marrcandre/livraria-vue-3 e execute os seguintes comandos:
+Faça um `fork` do repositório [https://github.com/marrcandre/livraria-vue-3](https://github.com/marrcandre/livraria-vue3.git) e execute os seguintes comandos:
 
 ```shell
 npm install
