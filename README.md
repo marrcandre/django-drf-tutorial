@@ -3257,9 +3257,10 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
+
 # A4. Criação do Banco de Dados no Supabase
 
-Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados SQLite local será utilizado apenas para desenvolvimento.
+Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
 
 **Criando um projeto no Supabase**
 
@@ -3270,11 +3271,10 @@ Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
 -   Clique na opção [Start your project](https://supabase.com/dashboard/projects).
 - Dẽ um nome ao projeto.
 - Selecione a opção `Create a new organization`.
-- Selecione a região `South America (São Paulo)`.
 - Dẽ um nome à organização.
-- Selecione a opção `Create a new database`.
 - Dê um nome ao banco de dados.
 - Escolha uma senha e **guarde-a** (você vai precisar dela).
+- Selecione a região `South America (São Paulo)`.
 
 **Configurando o banco de dados no projeto**
 
@@ -3304,7 +3304,7 @@ pdm add dj-database-url
 
 ```python
 import dj_database_url
-´´´
+```
 
 - Substitua a configuração do banco de dados no arquivo `settings.py`:
 
@@ -3338,6 +3338,8 @@ pdm run python migrate
 - No site do `Supabase`, acesse o `Table Editor` e verifique que as tabelas foram criadas.
 - Você também pode ver o esquema das tabelas, em `Database`, `Schema Visualizer`.
 
+**Utilizando o banco de dados local**
+
 - Para voltar a usar o banco de dados local, no arquivo `.env`:
   - Altere o valor da variável `MODE` para `DEVELOPMENT`.
   - Comente a linha `DATABASE_URL`.
@@ -3357,19 +3359,19 @@ Precisamos executar uma série de comandos para construir nosso aplicativo. Pode
 
 ```shell
 #!/usr/bin/env bash
-# Exit on error
+# Sai do script se houver algum erro
 set -o errexit
 
-# Update pip
+# Atualiza o pip
 pip install --upgrade pip
 
-# Modify this line as needed for your package manager (pip, poetry, etc.)
+# Instala as dependências
 pip install -r requirements.txt
 
-# Convert static asset files
+# Coleta os arquivos estáticos
 python manage.py collectstatic --no-input
 
-# Apply any outstanding database migrations
+# Aplica as migrações
 python manage.py migrate
 ```
 
@@ -3399,11 +3401,37 @@ pdm run python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker
 
 **Configurando o Render**
 
-- Acesse o site do [Render](https://render.com/) e crie uma conta.
-- Crie um novo serviço (web service) e siga as instruções.
--
+- **Acesse** o site do [Render](https://render.com/)
+- **Crie** uma conta ou **conecte-se** a uma conta existente.
+- Crie um novo serviço (**Web Service**).
+- Escolha a opção `Build and deploy from a Git repository` (Construir e implantar a partir de um repositório Git).
+- Escolha o repositório do projeto.
+- Preencha as informações necessárias:
+  - Name: `nome-do-projeto`.
+  - Region: `Ohio (US East)`.
+  - Branch: `main`.
+  - Runtime: `Python`.
+  - Build command: `./build.sh`.
+  - Start command: `python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker`.
+  - Instance Type: `Free`.
 
+- Environment Variables: clique em `Add from .env` e adicione as informações do seu arquivo `.env`:
 
+```ini
+MODE=PRODUCTION
+DEBUG=False
+SECRET_KEY=[sua_secret_key]
+WEB_CONCURRENCY=4
+DATABASE_URL=[sua_database_url]
+CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
+```
+> Crie uma `SECRET_KEY` nova. Veja como [aqui](#geração-da-secret_key). Coloque essa chave no lugar de `[sua_secret_key]`.
+
+> Coloque a URL do banco de dados do **Supabase** no lugar de `[sua_database_url]`.
+
+- Clique em `Create Web Service`.
+
+> Se tudo estiver correto, o projeto será implantado no **Render**.
 
 # A6. Armazenando arquivos estáticos no Cloudinary
 
