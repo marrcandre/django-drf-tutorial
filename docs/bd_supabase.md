@@ -12,23 +12,23 @@ Vamos criar um banco de dados no Supabase. Com isso, os dados não serão perdid
 - Dẽ um nome à organização.
 - Selecione a opção `Create a new database`.
 - Dê um nome ao banco de dados.
-- Escolha uma senha e **anote-a** (você vai precisar dela).
+- Escolha uma senha e **guarde-a** (você vai precisar dela).
 
 **Configurando o banco de dados no projeto**
 
-- Entre na aba `Settings` do projeto, na opção `Database Settings`.
-- Anote os valores dos seguintes campos: `Host`, `Port`, `Database`, `User` e `Password`.
-- Edite o arquivo `.env` do projeto, incluindo os valores anotados anteriormente.
-- Um exemplo do arquivo seria:
+- Entre no [Dashboard](https://supabase.com/dashboard/projects) do projeto, e escolha o projeto criado.
+- Escolha a opção `Project settings` e depois `Database`.
+- Copia a linha de conexão do banco de dados (URI).
+  - Ela deve ser parecida com isso: `postgres://postgres:[YOUR-PASSWORD]@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres`.
+- Troque `[YOUR-PASSWORD` pela senha que você havia guardado.
+- Copie a linha de conexão e cole no arquivo `.env` do projeto, como no exemplo:
 
 ```shell
 # Supabase
-DATABASE_NAME=postgres
-DATABASE_USER=postgres
-DATABASE_PASSWORD=Senha.123@!
-DATABASE_HOST=db.vqcprcexhnwvyvewgrin.supabase.co
-DATABASE_PORT=5432
+DATABASE_URL=postgres://postgres:Senha.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
 ```
+
+
 
 > Altere as informações de acordo com o seu projeto.
 
