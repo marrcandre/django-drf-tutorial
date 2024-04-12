@@ -2554,265 +2554,11 @@ Sempre que você clonar o projeto, precisará recriar o arquivo `.env` com as in
 
 > Nos servidores de produção, as variáveis de ambiente são definidas no próprio servidor, não sendo necessário criar o arquivo `.env`.
 
-# 22. Implantação do projeto
+# 22. Implantação (Deploy) do projeto
 
-# 22A. Implantando no Fl0
+Esta parte foi modificada. Não utilizaremos mais o **Fl0** para a implantação do projeto. Em vez disso, utilizaremos o **Supabase** para o banco de dados e o **Render** para a implantação do projeto.
 
-Vamos implantar o projeto no Fl0.
-
-**Criando uma conta no Fl0**
-
-Acesse o site do [Fl0](https://fl0.com/) e crie uma conta.
-
-**Criando um novo projeto no Fl0**
-
--  Crie um novo projeto no Fl0.
--  Dẽ um nome ao projeto.
--  Selecione o repositório do projeto.
--  Habilite a opção `Automatic deployments`.
--  Selecione a branch `main`.
-
-**Configurando o projeto no Fl0**
-
-- Na aba `Environment variables`, inclua as variáveis de ambiente definidas no arquivo `.env`:
-
-| Configuração   | Valor               |
-|----------------|---------------------|
-| PORT           | 8080                |
-| SECRET_KEY     | [gere uma chave secreta](#geração-da-secret_key). |
-| DEBUG          | False               |
-| MODE           | PRODUCTION          |
-
-**Configurações no projeto**
-
-- Adicione o pacote `gunicorn`:
-
-```shell
-pdm add gunicorn
-```
-
-> O `gunicorn` é um servidor HTTP WSGI para Python. Ele é necessário para que o projeto possa ser executado no Fl0.
-
-- Crie um arquivo `Procfile` na raiz do projeto, com o seguinte conteúdo:
-
-```shell
-web: gunicorn config.wsgi
-```
-
-**Configuração de arquivos estáticos**
-
-Websites geralmente precisam servir arquivos adicionais, como imagens, JavaScript e CSS. No Django, esses arquivos são chamados de arquivos estáticos, e ele fornece um módulo dedicado para coletá-los em um único local para servir em produção.
-
-Nesta etapa, vamos configurar o `WhiteNoise`, que é uma solução muito popular para esse problema.
-
-- Adicione o `WhiteNoise` como uma dependência (adicionar suporte para `Brotli` é opcional, mas recomendado):
-
-```shell
-pdm add 'whitenoise[brotli]'
-```
-
-- Abra o arquivo `settings.py`, encontre a lista `MIDDLEWARE` e adicione o middleware `WhiteNoise` logo após o `SecurityMiddleware`:
-
-```python
-MIDDLEWARE = [
-    ...
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    ....
-]
-```
-
--   Edite o arquivo `settings.py`, incluindo o seguinte código:
-
-```python
-...
-if MODE == "PRODUCTION":
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-```
-
-> O `STATIC_ROOT` é o diretório onde os arquivos estáticos serão coletados. O `STATICFILES_STORAGE` é o armazenamento de arquivos estáticos que será utilizado.
-
-> Essas configurações só serão utilizadas no modo `PRODUCTION`.
-
-
-**Finalizando**
-
-- Assegure-se de que o arquivo `requirements.txt` está atualizado. Caso ele não exista, [siga esses passos](#a3-gerando-o-arquivo-requirementstxt-automaticamente).
-
-- Faça o commit das alterações. O projeto deve ser implantado automaticamente no Fl0.
-- Acompanhe o processo na aba `Deployments`, escolhendo o deployment mais recente, e clicando em `View logs`.
-- Se tudo der certo, o projeto estará disponível na URL que você definiu, algo parecido com https://livraria-marrcandre-dev.fl0.io/.
-
-
-# 22B. Utilizando um Banco de Dados externo no Fl0
-
-Vamos criar um banco de dados externo no Fl0. Assim, não utilizaremos mais o SQLite3, que vinhamos usando no desenvolvimento. Com isso, os dados não serão perdidos a cada nova implantação.
-
-**Configurando o arquivo `settings.py`**
-
-- Edite o arquivo `settings.py` do projeto, e substitua o conteúdo da variável `DATABASES` pelo seguinte:
-
-```python
-...
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("DATABASE_NAME"),
-            "USER": os.getenv("DATABASE_USER"),
-            "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-            "HOST": os.getenv("DATABASE_HOST"),
-            "PORT": os.getenv("DATABASE_PORT"),
-        }
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-
-print(MODE, DATABASES)
-...
-```
-
-> Note que a variável `DATABASES` foi substituída por um `if` que verifica se o `MODE` é `PRODUCTION` ou `MIGRATE`. Se for, o banco de dados será o `PostgreSQL` do `Fl0`. Caso contrário, será o `SQLite` local.
-
-> O `print` foi incluído para que você possa verificar se o banco de dados está correto.
-
-**Instalação do suporte ao PosgreSQL**
-
-- Para acessar o banco de dados PostgreSQL, instale o seguinte pacote:
-
-```shell
-pdm add psycopg2-binary
-```
-
-**Criando um Banco de Dados no Fl0**
-
-- Nas configurações do projeto, clique em `Add New` e em `Postgres database`.
-- Escolha a localização mais perto de sua casa.
-- O Banco de Dados será criado.
-
-**Utilizando as informações do Banco de Dados criado**
-
-- Clique no Banco de Dados criado e entre na opção `Conection Info`.
-- Copie as informações de conexão, e coloque no seu arquivo `.env`:
-
-```shell
-# Fl0 Database
-DATABASE_NAME=fl0db
-DATABASE_USER=fl0user
-DATABASE_PASSWORD=senha_do_bd
-DATABASE_HOST=url.do.bd.flo.com
-DATABASE_PORT=5432
-```
-> Altere as informações de acordo com o seu projeto.
-
-- Inclua as informações do Banco de Dados no Fl0, na aba `Environment variables`, incluindo as variáveis de ambiente definidas no arquivo `.env` referentes ao banco de dados.
-
-**Migração do banco de dados**
-
-- No arquivo `.env`, altere o valor da variável `MODE` para `MIGRATE`.
-- Faça a migracão do banco de dados:
-
-```shell
-pdm run python manage.py migrate
-```
-
-> Observe que o banco de dados foi migrado para o `Fl0`.
-
-- Crie um super usuário:
-
-```shell
-pdm run python manage.py createsuperuser
-```
-
-**Configurando o Banco de Dados externo no Fl0**
-
-- Na aba `Environment variables`, certifique-se de que o valor da variável `MODE` é `PRODUCTION`.
-- Faça o commit das alterações.
-- Sua aplicação deve estar funcionando normalmente, utilizando o banco de dados do `Fl0`.
-
-**Observações**
-
-- Para testar, crie um novo autor no projeto e verifique se ele foi criado no banco de dados do `Fl0`.
-
-- Opcionalmente, você pode utilizar um dump do banco de dados local e carregá-lo no banco de dados do `Fl0`:
-
-```shell
-pdm run python manage.py loaddata livraria.json
-```
-
-> A partir de agora, sempre que você fizer uma nova implantação, os dados não serão perdidos.
-
-- Para voltar a usar o banco de dados local, altere o valor da variável `MODE` no arquivo `.env` para `DEVELOPMENT`.
-
-# 22C. Armazenando arquivos estáticos no Cloudinary
-
-Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
-
-**Criando uma conta no Cloudinary**
-
-Acesse o site do [Cloudinary](https://cloudinary.com/) e crie uma conta.
-
-**Instalação do pacote `django-cloudinary-storage`**
-
-- Para instalar, digite:
-
-```shell
-pdm add django-cloudinary-storage
-```
-
-- Adicione os pacotes  `cloudinary_storage` e `cloudinary` ao `INSTALLED_APPS`, no `settings.py`, logo após o pacote `django.contrib.staticfiles`:
-
-```python
-INSTALLED_APPS = [
-    # ...
-    'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
-    # ...
-]
-```
-
-- Nas configurações de arquivos estáticos, inclua o seguinte conteúdo:
-
-```python
-STATIC_URL = "/static/"
-
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    MEDIA_URL = '/media/'
-else:
-    MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
-```
-
-**Configuração do Cloudinary**
-
--   Edite o arquivo `.env`, incluindo a seguinte variável:
-
-```shell
-# Cloudinary
-CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
-```
-
-> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
-
-- Inclua essa mesma variável no Fl0, na aba `Environment variables`.
-
-**Testando**
-
-- Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
--  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
--  Se deu certo, faça o *commit* das alterações.
--  Sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
+Acesse [aqui](#a99-implantação-deploy-do-projeto).
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -4519,6 +4265,247 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME":timedelta(days=1),
 }
 ```
+# A99. Implantação (Deploy) do projeto
+
+# A99a. Criação do Banco de Dados no Supabase
+
+Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
+
+**Criando um projeto no Supabase**
+
+Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
+
+-   Acesse o site do [Supabase](https://supabase.com/).
+-   Crie uma conta ou conecte-se no **Supabase**.
+-   Clique na opção [Start your project](https://supabase.com/dashboard/projects).
+- Dẽ um nome ao projeto.
+- Selecione a opção `Create a new organization`.
+- Dẽ um nome à organização.
+- Dê um nome ao banco de dados.
+- Escolha uma senha e **guarde-a** (você vai precisar dela).
+- Selecione a região `South America (São Paulo)`.
+
+**Configurando o banco de dados no projeto**
+
+- Entre no [Dashboard](https://supabase.com/dashboard/projects) do projeto, e escolha o projeto criado.
+- Escolha a opção `Project settings` e depois `Database`.
+- Copia a linha de conexão do banco de dados (URI).
+  - Ela deve ser parecida com isso: `postgres://postgres:[YOUR-PASSWORD]@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres`.
+- Troque `[YOUR-PASSWORD` pela senha que você havia guardado.
+- Copie a linha de conexão e cole no arquivo `.env` do projeto, como no exemplo:
+
+```shell
+# Supabase
+DATABASE_URL=postgres://postgres:Senha.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
+```
+
+**Instalando o pacote `dj_database_url`**
+
+O pacote `dj_database_url` facilita a configuração do banco de dados no Django, pois ele converte a URL do banco de dados para o formato que o Django entende.
+
+- Instale o pacote `dj_database_url`:
+
+```shell
+pdm add dj-database-url
+```
+
+- Adicione o pacote `dj_database_url` ao arquivo `settings.py`:
+
+```python
+import dj_database_url
+```
+
+- Substitua a configuração do banco de dados no arquivo `settings.py`:
+
+```python
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
+```
+
+> Essa configuração permite que o Django use o banco de dados local em desenvolvimento e o banco de dados do **Supabase** em produção, definindo a variável de ambiente `DATABASE_URL`.
+
+**Migrando o banco de dados**
+
+- No arquivo `.env`:
+  - Altere o valor da variável `MODE` para `MIGRATE`.
+  - Descomente a linha `DATABASE_URL`.
+- Faça a migracão do banco de dados:
+
+```shell
+pdm run python migrate
+```
+
+> Observe que o banco de dados foi migrado no `Supabase`.
+
+> Para testar, crie alguns registros no banco de dados. Depois volte a configuração local e perceba que os dados são diferentes na base local e na base do **Supabase**.
+
+- No site do `Supabase`, acesse o `Table Editor` e verifique que as tabelas foram criadas.
+- Você também pode ver o esquema das tabelas, em `Database`, `Schema Visualizer`.
+
+**Utilizando o banco de dados local**
+
+- Para voltar a usar o banco de dados local, no arquivo `.env`:
+  - Altere o valor da variável `MODE` para `DEVELOPMENT`.
+  - Comente a linha `DATABASE_URL`.
+
+**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de migração, tanto no banco de dados local quanto no banco de dados do **Supabase**.
+
+# A99b. Publicação o projeto no `Render`
+
+O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
+
+
+**Criando um script de Build**
+
+Precisamos executar uma série de comandos para construir nosso aplicativo. Podemos fazer isso com um script de construção (`build script`).
+
+- Crie um arquivo chamado `build.sh` na raiz do projeto com o seguinte conteúdo:
+
+```shell
+#!/usr/bin/env bash
+# Sai do script se houver algum erro
+set -o errexit
+
+# Atualiza o pip
+pip install --upgrade pip
+
+# Instala as dependências
+pip install -r requirements.txt
+
+# Coleta os arquivos estáticos
+python manage.py collectstatic --no-input
+
+# Aplica as migrações
+python manage.py migrate
+```
+
+- Torne o script executável:
+
+```shell
+chmod a+x build.sh
+```
+
+- Adicione os pacotes `Uvicorn` e `Gunicorn` ao projeto:
+
+```shell
+pdm add uvicorn gunicorn
+```
+
+**Testando a execução localmente**
+
+- Execute a seguinte linha de comando para testar a execução localmente:
+
+```shell
+pdm run python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker
+```
+
+- Acesse o endereço `http://localhost:8000` no navegador para verificar se a aplicação está funcionando.
+
+> O que fizemos foi substituir o servidor de desenvolvimento do Django pelo servidor `Uvicorn` e `Gunicorn`.
+
+**Configurando o Render**
+
+- **Acesse** o site do [Render](https://render.com/)
+- **Crie** uma conta ou **conecte-se** a uma conta existente.
+- Crie um novo serviço (**Web Service**).
+- Escolha a opção `Build and deploy from a Git repository` (Construir e implantar a partir de um repositório Git).
+- Escolha o repositório do projeto.
+- Preencha as informações necessárias:
+  - Name: `nome-do-projeto`.
+  - Region: `Ohio (US East)`.
+  - Branch: `main`.
+  - Runtime: `Python`.
+  - Build command: `./build.sh`.
+  - Start command: `python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker`.
+  - Instance Type: `Free`.
+
+- Environment Variables: clique em `Add from .env` e adicione as informações do seu arquivo `.env`:
+
+```ini
+MODE=PRODUCTION
+DEBUG=False
+SECRET_KEY=[sua_secret_key]
+WEB_CONCURRENCY=4
+DATABASE_URL=[sua_database_url]
+CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
+```
+> Crie uma `SECRET_KEY` nova. Veja como [aqui](#geração-da-secret_key). Coloque essa chave no lugar de `[sua_secret_key]`.
+
+> Coloque a URL do banco de dados do **Supabase** no lugar de `[sua_database_url]`.
+
+- Clique em `Create Web Service`.
+
+> Se tudo estiver correto, o projeto será implantado no **Render**.
+
+# A99c. Armazenando arquivos estáticos no Cloudinary
+
+Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
+
+**Criando uma conta no Cloudinary**
+
+Acesse o site do [Cloudinary](https://cloudinary.com/) e crie uma conta.
+
+**Instalação do pacote `django-cloudinary-storage`**
+
+- Para instalar, digite:
+
+```shell
+pdm add django-cloudinary-storage
+```
+
+- Adicione os pacotes  `cloudinary_storage` e `cloudinary` ao `INSTALLED_APPS`, no `settings.py`, logo após o pacote `django.contrib.staticfiles`:
+
+```python
+INSTALLED_APPS = [
+    # ...
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
+    # ...
+]
+```
+
+- Nas configurações de arquivos estáticos, inclua o seguinte conteúdo:
+
+```python
+STATIC_URL = "/static/"
+
+if MODE in ["PRODUCTION", "MIGRATE"]:
+    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    MEDIA_URL = '/media/'
+else:
+    MY_IP = os.getenv("MY_IP", "127.0.0.1")
+    MEDIA_URL = f"http://{MY_IP}:19003/media/"
+```
+
+**Configuração do Cloudinary**
+
+-   Edite o arquivo `.env`, incluindo a seguinte variável:
+
+```shell
+# Cloudinary
+CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
+```
+
+> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
+
+- Inclua essa mesma variável no Fl0, na aba `Environment variables`.
+
+**Testando**
+
+- Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
+-  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
+-  Se deu certo, faça o *commit* das alterações.
+-  Sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
+
 
 # Contribua
 
