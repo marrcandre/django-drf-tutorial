@@ -826,6 +826,10 @@ touch core/models/livro.py core/serializers/livro.py core/views/livro.py
 code core/models/livro.py core/models/__init__.py core/serializers/livro.py core/serializers/__init__.py core/views/livro.py core/views/__init__.py app/urls.py core/admin.py
 ```
 
+> Se você preferir, pode criar os arquivos utilizando o **VS Code**, como já fizemos anteriormente.
+
+Você deve estar se perguntando: posso criar um comando para fazer isso automaticamente? Sim, pergunte-me como. :)
+
 **8.2 Criando o modelo de dados `Livro`**
 
 -   Vamos criar o modelo de dados `Livro`, no arquivo `models.py`:
@@ -842,68 +846,71 @@ class Livro(models.Model):
         return f"{self.titulo} ({self.quantidade})"
 ```
 
-Antes de efetivarmos as alterações no banco de dados, vamos incluir duas chaves estrangeiras no modelo `Livro`.
+Inclua o modelo no arquivo `__init__.py` da pasta `models`:
 
-**8.3 Incluindo chaves estrangeiras no modelo**
+```python
+from .livro import Livro
+```
+
+- Faça as migrações e veja o resultado no banco de dados.
+
+Seu projeto deve ficar assim:
+
+![Projeto com a model Livro](diagramas/core_categoria_editora_autor_livro1.png)
+
+**8.3 Criando a API para a classe Livro**
+
+Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vamos criar a API para a classe `Livro`.
+
+[Siga os passos conforme já definimos.](#6-incluindo-a-editora-no-projeto-livraria)
+
+- Após a criação da API, teste todas as operações de CRUD para a classe `Livro`.
+- Faça um commit com a mensagem `Criação da API para Livro`.
+
+# 9. Incluindo chaves estrangeiras no modelo Livro
 
 Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`.
 
-**8.3.1 Campo `categoria` no `Livro`**
+**9.1 Campo `categoria` no `Livro`**
 
 -   Inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
 
 ```python
+from .categoria import Categoria
 ...
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.PROTECT, related_name="livros"
+        Categoria, on_delete=models.PROTECT, related_name="livros", null=True, blank=True
     )
 ...
 ```
 
 -   Vamos entender cada parte:
     -   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
-    -   `Categoria`: o model que será associado a esse campo.
+    -   `Categoria`: o `model` que será associado a esse campo.
     -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
     -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
+    -   `null=True, blank=True`: permite que o campo seja nulo e em branco. Isso é útil para evitar problemas na migração.
 
-**8.3.2 Campo `editora` no `Livro`**
+**9.2 Campo `editora` no `Livro`**
 
 -   De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
 
 ```python
-editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros")
+from .editora import Editora
+...
+editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros", null=True, blank=True)
 ```
+> Observe que os atributos `null=True` e `blank=True` não foram utilizados, pois os campos `categoria` e `editora` são obrigatórios.
 
-**8.4 Inclusão dos modelos no `Admin`**
+- Faça a migração dos dados.
 
--   Inclua os modelos criados no arquivo `admin.py`:
+> Observe que os campos `categoria_id` e `editora_id` foram criados no banco de dados, na tabela `core_livro`. Eles são os campos que fazem referência às tabelas `core_categoria` e `core_editora`.
 
-```python
-from django.contrib import admin
+A model `Livro` ficará assim:
 
-from livraria.models import Autor, Categoria, Editora, Livro
+![Projeto com a model Livro](diagramas/core_categoria_editora_autor_livro2.png)
 
-admin.site.register(Autor)
-admin.site.register(Categoria)
-admin.site.register(Editora)
-admin.site.register(Livro)
-```
-
-**8.5 Efetivando as alterações no banco de dados**
-
--   Prepare as migrações:
-
-```shell
-pdm run python manage.py makemigrations
-```
-
--   Efetive as migrações:
-
-```shell
-pdm run python manage.py migrate
-```
-
-**8.6 Testando o atributo `on_delete`**
+**9.3 Testando o atributo `on_delete`**
 
 Feito isso, verifique se tudo funcionou.
 
@@ -918,23 +925,25 @@ No `Admin`:
     -   O que aconteceu?
     -   Por que isso aconteceu?
 
-**8.7 Testando o atributo related_name no Django Shell**
+**9.4 Testando o atributo related_name no Django Shell**
 
 No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a **todos os livros de uma categoria** usando algo parecido com isso:
 
 -   Abra o Django shell:
 
 ```shell
-pdm run python manage.py shell
+pdm run shellp
 ```
 
 -   Acesse os livros da categoria com `id` 1:
 
 ```python
->>> from livraria.models import Categoria
 >>> Categoria.objects.get(id=1).livros.all()
 ```
 
+> O comando `pdm run shellp` é utilizado para abrir o Django Shell Plus com o ambiente virtual do projeto.
+
+-  Faça um commit com a mensagem `Adiciona relacionamento de Livro com Categoria e Editora`.
 
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
