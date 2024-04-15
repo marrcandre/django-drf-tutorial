@@ -869,7 +869,7 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 
 # 9. Incluindo chaves estrangeiras no modelo Livro
 
-Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`.
+Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`. Esse relacionamento é do tipo **n para 1**. Posteriormente, vamos incluir um relacionamento **n para n** entre `Livro` e `Autor`.
 
 **9.1 Campo `categoria` no `Livro`**
 
@@ -945,22 +945,44 @@ pdm run shellp
 
 -  Faça um commit com a mensagem `Adiciona relacionamento de Livro com Categoria e Editora`.
 
+# 10. Relacionamento n para n
+
+**10.1 Model com ManyToManyField - Livros com vários autores**
+
+Um livro pode ter vários autores, por isso criaremos agora um relacionamento **n para n** entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
+
+-   Inclua o campo `autores` no modelo `Livro`:
+
+```python
+from .autor import Autor
+...
+autores = models.ManyToManyField(Autor, related_name="livros")
+...
+```
+
+- Execute as migrações.
+
+> Observe que o campo `autores` não foi criado na tabela `core_livro`. Ao invés disso, uma **tabela associativa** foi criada, com o nome `core_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento **n para n** no Django.
+
+> Nesse caso, não é necessário usar o atributo `null=True` e `blank=True`, pois um campo do tipo `ManyToManyField` cria uma tabela associativa.
+
+- A model `Livro` ficará assim:
+
+![Projeto com a model Livro](diagramas/core_categoria_editora_autor_livro3.png)
+
+> Note que na ligação entre `Livro` e `Autor` existem uma "bolinha" em cada lado, indicando que o relacionamento é **n para n**.
+
+> Observe as alterações no banco de dados, no Admin e na API.
+
+**10.2 Exercícios**
+
+-   Teste a API REST de livros e autores.
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
 
-**8.3 Criação da API para Autor e Livro**
+**8.3.2 Modificação da API para Livro**
 
-**8.3.1 Criação da API para Autor**
-
--   Crie a API para a classe `Autor` seguindo os passos anteriores.
--   Teste o funcionamento.
--   Faça o commit.
-
-**8.3.2 Criação da API para Livro**
-
--   Crie a API para a classe `Livro` seguindo os passos anteriores.
--   Teste o funcionamento.
 -   **Observou que no `Livro`, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
 
 **8.4 Criação de múltiplos serializadores**
@@ -1034,56 +1056,6 @@ class LivroListSerializer(ModelSerializer):
 -   Teste a API.
 
 **8.5 [Exercício](#aula-8-crie-a-api-rest-no-projeto-garagem-para-as-demais-classes): Crie a API REST no projeto Garagem para as demais classes**
-
-
-
-
-
-
-# 10. Relacionamento n para n
-
-**Model com ManyToManyField - Livros com vários autores**
-
-Um livro pode ter vários autores, por isso criaremos agora um relacionamento n para n entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
-
--   Inclua o campo `autores` no modelo `Livro`:
-
-```python
-...
-autores = models.ManyToManyField(Autor, related_name="livros")
-...
-```
-
--   Crie as migrações:
-
-```shell
-pdm run python manage.py makemigrations
-```
-
--   Execute as migrações:
-
-```shell
-pdm run python manage.py migrate
-```
-
-Feito isso, observe no banco de dados que esse campo não foi criado na tabela de livros. Ao invés disso, uma **tabela associativa** foi criada, com o nome `livraria_livro_autores`, contendo os campos `livro_id` e `autor_id`. É assim que é feito um relacionamento n para n no Django.
-
-**10.1 Exercícios**
-
-**10.1.1 No projeto Livraria**
-
-**10.1.1.1 No Admin**:
-
--   Entre no **Admin**;
--   Cadastre alguns autores;
--   Cadastre alguns livros com mais do que um autor.
-
-**10.1.1.2 Na API**:
-
--   Teste a API REST de livros e autores.
-
-**10.2 [Exercício](#aula-10-crie-um-relacionamento-n-para-n-entre-veiculo-e-acessorio-no-projeto-garagem): Crie um relacionamento n para n entre `Veiculo` e `Acessorio` no projeto Garagem**
-
 
 
 # 11. Autenticação e autorização
