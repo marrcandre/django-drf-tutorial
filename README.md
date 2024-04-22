@@ -3018,11 +3018,7 @@ class CompraViewSet(ModelViewSet):
 
 O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto core.
 
-<!-- No final, nosso projeto ficará assim:
-
-![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem") -->
-
-# E1. Crie o projeto Garagem
+## E1. Crie o projeto Garagem
 
 Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do template.
 
@@ -3044,76 +3040,34 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
         -   `__str__` (retorna o nome **em caixa alta** e o id).
 4. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
 
+## E2. Crie o modelo `Modelo`
 
-<!--
-### [Aula 6](#6-criando-os-outros-modelos-de-dados): Crie os demais modelos de dados no projeto Garagem
+Vamos incluir o modelo `Modelo` no projeto `Garagem`.
 
-Crie os modelos de dados `Acessório` e `Cor`, com os seguintes atributos:
+- Crie o modelo `Modelo`, com os seguintes atributos:
+  -   `nome` (string, máximo 100 caracteres).
+  -   `marca` (chave estrangeira para `Marca`).
+  -   `categoria` (chave estrangeira para `Categoria`).
+  -   `__str__` (retorna o nome do modelo e a marca).
+-   Crie a API REST para o modelo `Modelo`.
+-   Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Modelo`.
+-   Faça um commit para cada etapa.
 
--   `Acessório`:
+## E3. Crie o modelo `Veiculo`
 
-    -   `descricao` (string, máximo 100 caracteres).
-    -   `__str__` (retorna a descrição do acessório).
+Vamos incluir o modelo `Veiculo` no projeto `Garagem`.
 
--   `Cor`:
-    -   `descricao` (string, máximo 100 caracteres).
-    -   `__str__` (retorna a descrição da cor).
+- Crie o modelo `Veiculo`, com os seguintes atributos:
+  -   `modelo` (chave estrangeira para `Modelo`).
+  -   `cor` (chave estrangeira para `Cor`).
+  -   `ano` (inteiro, permite nulo, default 0).
+  -   `preco` (decimal, máximo 10 dígitos, 2 casas decimais, permite nulo, default 0).
+  -   `acessorios` (chave estrangeira para `Acessorio`, muitos para muitos).
+  -   `__str__` (retorna o modelo, ano e cor do carro).
+-  Crie a API REST para o modelo `Veiculo`.
+-  Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Veiculo`.
+-  Faça um commit para cada etapa.
 
-Crie o modelo `Veículo`, com os seguintes atributos:
-
--   `Veículo`:
-    -   `marca` (chave estrangeira para `Marca`).
-    -   `categoria` (chave estrangeira para `Categoria`).
-    -   `cor` (chave estrangeira para `Cor`).
-    -   `ano` (inteiro, permite nulo, default 0).
-    -   `preco` (decimal, máximo 10, dígitos, 2 casas decimais, permite nulo, default 0).
-    -   `__str__` (retorna a marca, modelo, ano e cor do carro).
-
-
-### [Aula 7](#7-criando-uma-api-rest): Crie a API REST no projeto Garagem
-
--   Instale o `djangorestframework`.
--   Crie o serializador para a classe `Marca`.
--   Teste a API com a ferramenta de sua preferência.
-
-### [Aula 8](#8-continuando-a-criação-da-api-rest): Crie a API REST no projeto Garagem para as demais classes
-
--   Crie a API para as classes `Categoria`, `Cor`, `Acessorio`, e `Veiculo`.
-    -   Faça um commit para cada _endpoint_ criado.
--   Crie **3 serializadores** diferentes para a classe `Veículo`:
-    -   Um para a listagem, que mostre apenas o id, o modelo e o ano.
-    -   Outro para a recuperação de um único veículo, que mostre todos os campos, com profundidade 1.
-    -   Outro para a criação e alteração, que mostre todos os campos, sem profundidade.
--   Teste a API com a ferramenta de sua preferência.
-
-### [Aula 9](#9-aplicação-frontend-vuejs-e-django-cors-headers): Crie uma aplicação FrontEnd com Vuejs para a Garagem
-
--   Criação de uma aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`.
-
-### [Aula 10](#10-relacionamento-n-para-n): Crie um relacionamento n para n entre `Veiculo` e `Acessorio` no projeto Garagem
-
-
-
--   Crie um relacionamento n para n entre `Veiculo` e `Acessorio`, utilizando um campo do tipo `ManyToManyField`.
--   Inclua alguns acessórios em alguns veículos pelo Admin.
--   Teste a API REST de veículos e acessórios.
-
-
-### Primeira avaliação do segundo trimestre
-
-- Modifique o projeto Garagem para refletir o seguinte modelo:
-
-![Modelo Garagem](diagramas/garagem_mer.png "Modelo Garagem")
-
-- Crie (ou modifique) as `views`, `urls` e `serializers` necessários para implementar a API REST para o modelo acima.
-- Reestruture o projeto em pastas, para `models`, `views` e `serializers` ficarem em pastas separadas.
-- Modifique o usuário padrão do Django para usar o `email` como `username`.
-- Permita que um carro possa ter várias fotos.
-- Habilite  o Swagger no projeto.
-- Faça o cadastro completo, com fotos, de pelo menos 3 carros.
-- Instale o `django-extensions` e [gere o diagrama](#a4-gerando-um-diagrama-de-banco-de-dados-a-partir-das-models) de banco de dados do projeto.
-- Veja se o diagrama gerado está correto, de acordo com o modelo proposto acima.
- -->
 ---
 
 # Apêndices
