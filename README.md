@@ -978,16 +978,21 @@ autores = models.ManyToManyField(Autor, related_name="livros")
 
 -   Teste a API REST de livros e autores.
 
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+# 11. Modificação da API para Livro
 
+- Acesse a API do Livro e veja como está a apresentação dos autores:
 
-**8.3.2 Modificação da API para Livro**
+    http://0.0.0.0:19003/api/livros/
 
--   **Observou que no `Livro`, aparecem apenas os campos `id` da categoria e da editora, e não o nome?**
+> **Observou que no `Livro`, aparecem apenas os campos `id` da categoria, da editora e dos autores e não as descrições?**
 
-**8.4 Criação de múltiplos serializadores**
+- Vamos resolver isso.
 
-**8.4.1 Apresentação das informações de categoria e editora no livro**
+**Criação de múltiplos serializadores**
+
+Podemos criar múltiplos serializadores para um mesmo modelo, de forma a apresentar as informações de diferentes formas, dependendo da operação.
+
+**Apresentação das informações detalhadas no Livro**
 
 Uma forma de mostrar essas informações é essa, em `serializers.py`:
 
@@ -1001,7 +1006,7 @@ class LivroSerializer(ModelSerializer):
 
 Teste e você verá que isso resolve a listagem (GET), mas gera problema no criação e alteração (POST, PUT e PATCH).
 
-Para resolver isso, podemos criar dois (ou mais) serializadores, como no exemplo:
+- Para resolver isso, vamos criar dois (ou mais) serializadores, sendo um para a listagem e outro para a recuperação de um único livro:
 
 ```python
 class LivroSerializer(ModelSerializer):
@@ -1017,11 +1022,24 @@ class LivroDetailSerializer(ModelSerializer):
         depth = 1
 ```
 
-Na viewset, escolhemos o serializador conforme a operação:
+- Inclua o serializador `LivroDetailSerializer` no arquivo `serializers/__init__.py`:
 
 ```python
+from .livro import LivroDetailSerializer, LivroSerializer
+```
+
+> Observe que no `LivroDetailSerializer` foi incluído o atributo `depth = 1`, que permite a apresentação dos dados relacionados.
+
+- Na viewset, escolhemos o serializador conforme a operação:
+
+```python
+...
+from core.serializers import LivroDetailSerializer, LivroSerializer
+
+
 class LivroViewSet(ModelViewSet):
     queryset = Livro.objects.all()
+    serializer_class = LivroSerializer
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
@@ -1029,9 +1047,17 @@ class LivroViewSet(ModelViewSet):
         return LivroSerializer
 ```
 
-**8.4.2 Criação de um serializador para a listagem de livros**
+> Nesse caso, o serializador `LivroDetailSerializer` é utilizado para a listagem e recuperação de um único livro, enquanto o `LivroSerializer` é utilizado para as demais operações, ou seja, criação e alteração.
 
--   Crie um serializador para a listagem de livros, que mostre apenas o id, o título e o preço.
+- Teste a API.
+- Faça um commit com a mensagem `Dois serializadores para Livro`.
+
+
+**Criação de um serializador para a listagem de livros**
+
+Podemos criar um serializador para a listagem de livros, que mostre apenas o `id`, o `título` e o `preço`. Isso pode ser útil, pois traz menos informações, o que pode tornar a listagem mais rápida.
+
+-   Inclua um serializador para a listagem de livros, que mostre apenas o `id`, o `título` e o `preço`:
 
 ```python
 class LivroListSerializer(ModelSerializer):
@@ -1051,9 +1077,188 @@ class LivroListSerializer(ModelSerializer):
         return LivroSerializer
 ```
 
--   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
+> Observe que o serializador `LivroListSerializer` é utilizado apenas na listagem, enquanto o `LivroDetailSerializer` é utilizado na recuperação de um único livro e o `LivroSerializer` é utilizado nas demais operações.
 
--   Teste a API.
+-   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
+-  Faça um commit com a mensagem `Múltiplos serializadores para Livro`.
+
+# 12. Upload e associação de imagens
+
+Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos. Com isso poderemos associar imagens aos livros, ao perfil do usuário, etc.
+
+Essa aplicação não será instalada através do comando `pdm add <pacote>`, pois é uma aplicação que não está disponível no `PyPI`. Ela será instalada manualmente, baixando e descopactando um arquivo compactado.
+
+**Baixando o pacote**
+
+Baixe e descompacte o arquivo com a `app` pronta para ser utilizada.
+
+- No `Linux`, execute o seguinte comando no terminal:
+
+```shell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm uploader.zip
+```
+
+- No `Windows`, execute os seguintes comandos no `PowerShell`:
+
+```shell
+Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -OutFile uploader.zip
+```
+
+```shell
+Expand-Archive -Path uploader.zip -DestinationPath .
+```
+
+```shell
+Remove-Item -Force uploader.zip
+```
+
+O projeto ficará com uma estrutura parecida com essa:
+
+![App Uploader](imagens/uploader_app.png)
+
+**Instalando as dependências**
+
+-   Instale os pacotes `Pillow e python-magic`:
+
+```shell
+pdm add Pillow
+pdm add "python-magic; sys_platform=='linux'"
+pdm add "python-magic-bin; sys_platform=='win32, darwin'"
+```
+
+> O pacote `python-magic` é utilizado para identificar o tipo de arquivo, enquanto o `Pillow` é utilizado para manipulação de imagens.
+
+> O pacote `python-magic-bin` é utilizado no Windows e MacOS, enquanto o `python-magic` é utilizado no Linux.
+
+**Registro da app**
+
+-   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
+
+```python
+INSTALLED_APPS = [
+    ...
+    "uploader", # nova linha
+    "core",
+    ...
+]
+```
+
+**IMPORTANTE:** Não esqueça da vírgula no final da linha.
+
+**Configuração no `settings.py`**
+
+-   Ainda no `settings.py` faça as seguintes configurações, logo após a configuração do `STATIC_URL`:
+
+```python
+# App Uploader settings
+MEDIA_ENDPOINT = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+FILE_UPLOAD_PERMISSIONS = 0o640
+```
+
+**Configuração no `urls.py`**
+
+-   Inclua o seguinte conteúdo no arquivo `urls.py`:
+
+```python
+from django.conf import settings
+from django.conf.urls.static import static
+...
+from uploader.router import router as uploader_router
+...
+path("api/media/", include(uploader_router.urls)),
+...
+urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
+...
+```
+
+**Migração do banco de dados**
+
+-   Faça a migração do banco de dados:
+
+```shell
+pdm run migrate
+```
+
+- Se o seu projeto já foi publicado, não esqueça de fazer a migração também no servidor.
+
+**Uso em modelos**
+
+Agora que a aplicação `uploader` está configurada, vamos utilizá-la para associar imagens aos livros.
+
+-   Edite o arquivo `models/livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
+
+```python
+...
+from uploader.models import Image
+
+
+class Livro(models.Model):
+...
+    capa = models.ForeignKey(
+        Image,
+        related_name="+",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        default=None,
+    )
+```
+
+> O campo `capa` é uma chave estrangeira para a tabela `uploader_image`.
+
+-   Faça novamente a migração do banco de dados:
+
+```shell
+pdm run migrate
+```
+
+**Uso no serializer**
+
+-   Edite o arquivo `serializers/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
+
+```python
+...
+from rest_framework.serializers import ModelSerializer, SlugRelatedField
+
+from uploader.models import Image
+from uploader.serializers import ImageSerializer
+...
+class LivroSerializer(ModelSerializer):
+    capa_attachment_key = SlugRelatedField(
+        source="capa",
+        queryset=Image.objects.all(),
+        slug_field="attachment_key",
+        required=False,
+        write_only=True,
+    )
+    capa = ImageSerializer(required=False, read_only=True)
+
+...
+class LivroDetailSerializer(ModelSerializer):
+...
+    capa = ImageSerializer(required=False)
+```
+
+> Alteramos dois serializadores: um para a gravação e outro para a recuperação de um único livro.
+
+**Teste de upload e associação com o livro**
+
+-   Acesse a API de media:
+
+    http://0.0.0.0:19003/api/media/images/
+
+-   Faça o upload de uma imagem.
+-   Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
+-   Guarde o valor do campo `capa_attachment_key`.
+-   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
+-   Acesse o endpoint `http://0.0.0.0:19003/api/media/images/` e observe que a imagem foi associada ao livro.
+
+
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
+
 
 **8.5 [Exercício](#aula-8-crie-a-api-rest-no-projeto-garagem-para-as-demais-classes): Crie a API REST no projeto Garagem para as demais classes**
 
@@ -1359,209 +1564,6 @@ Resumindo, você vai precisar:
 
 Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
 
-# 16. Upload e associação de imagens
-
-Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos.
-
-**Configuração**
-Baixe e descompacte o arquivo com a app pronta para ser utilizada:
-
-```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm uploader.zip
-```
-
-No `Windows`, execute os seguintes comandos no `PowerShell`:
-
-```shell
-Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -OutFile uploader.zip
-```
-
-```shell
-Expand-Archive -Path uploader.zip -DestinationPath .
-```
-
-```shell
-Remove-Item -Force uploader.zip
-```
-
-O projeto ficará com uma estrutura parecida com essa:
-
-```
-.
-├── livraria
-├── config
-├── uploader
-│   ├── models
-│   │   ├── document.py
-│   │   ├── image.py
-│   │   └── __init__.py
-│   ├── router.py
-│   ├── serializers
-│   │   ├── document.py
-│   │   ├── image.py
-│   │   └── __init__.py
-├── static
-└── utils
-    └── files.py
-```
-
--   Instalar os pacotes `python-magic` e `Pillow`:
-
-```shell
-pdm add python-magic Pillow
-```
-**Configuração no Windows**
-
-- Caso você esteja no Windows, para funcionar corretamente, você precisará seguir os seguintes passos:
-  - **Baixe as DLLs**: Acesse [https://github.com/pidydx/libmagicwin64](https://github.com/pidydx/libmagicwin64) e baixe o arquivo ZIP contendo as DLLs.
-  - **Descompacte o arquivo ZIP**: Clique com o botão direito no arquivo ZIP baixado e escolha "Extrair tudo..." para extrair o conteúdo.
-  - **Copie as DLLs**: Dentro da pasta extraída, você encontrará os arquivos DLL (`magic1.dll`, etc.). Selecione esses arquivos, clique com o botão direito e escolha "Copiar."
-  - **Cole as DLLs no System32**: Navegue até o diretório `C:\Windows\System32`, crie uma pasta chamada `magic`, clique com o botão direito dentro da pasta e escolha "Colar." Você pode precisar de permissões administrativas para fazer isso, então certifique-se de confirmar qualquer solicitação que apareça.
-  - **Acrescentando o caminho da pasta**:
-	- Abra o menu Iniciar em seu computador.
-
-	- Utilize a barra de pesquisa para procurar por "Editar as variáveis de ambiente do sistema".
-	- Clique no resultado que corresponde a essa pesquisa para abrir a janela de propriedades do sistema.
-	- Na janela de propriedades do sistema, vá até a aba chamada "Avançado".
-	- Dentro dessa aba, localize o botão com o rótulo "Variáveis de Ambiente" e clique nele. Isso abrirá a janela de Configurações das Variáveis de Ambiente.
-	- Na janela que se abre, procure pela opção chamada "Path" na seção de variáveis do sistema e clique sobre o botão "Editar".
-	- Verifique se o caminho completo para a pasta "magic" está listado na lista de caminhos. Caso não esteja, prossiga com a próxima etapa.
-	- Abra o Explorador de Arquivos e encontre a pasta "magic".
-	- Copie o caminho completo da pasta "magic".
-	- Volte para a janela de "Editar as variáveis de ambiente". Cole o caminho copiado da pasta "magic" no campo apropriado dentro da janela.
-	- Confirme as alterações clicando em "OK".
-
-  - **Atualize seu código**: No arquivo `utils/files.py`, onde você está usando a biblioteca `magic`, você precisará especificar o caminho para o arquivo `magic.mgc`. Aqui está um exemplo de como você pode fazer isso:
-
-    ```python
-    import magic
-    file_magic = magic.Magic(magic_file="C:\Windows\magic\magic.mgc")
-    ```
-
-  Seguindo esses passos, você deverá conseguir importar a biblioteca `magic` com sucesso em seu projeto Django no ambiente Windows.
-
-**Registro da app**
-
--   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "uploader",
-    "livraria",
-    ...
-]
-```
-
-**Configuração no `settings.py`**
-
--   Ainda no `settings.py` faça as seguintes configurações:
-
-```python
-# App Uploader settings
-MEDIA_URL = "http://0.0.0.0:19003/api/media/"
-MEDIA_ENDPOINT = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-FILE_UPLOAD_PERMISSIONS = 0o640
-```
-
-- Você vai precisar incluir o módulo `os` no início do arquivo `settings.py`:
-
-```python
-import os
-```
-
-**Configuração no `urls.py`**
-
--   Inclua o seguinte conteúdo no arquivo `urls.py`:
-
-```python
-from django.conf import settings
-from django.conf.urls.static import static
-...
-from uploader.router import router as uploader_router
-...
-path("api/media/", include(uploader_router.urls)),
-...
-urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
-...
-```
-
-**Migração do banco de dados**
-
--   Faça a migração do banco de dados:
-
-```shell
-pdm run python manage.py makemigrations uploader
-pdm run python manage.py migrate
-```
-
-**Uso em modelos**
-
--   Edite o arquivo `models/livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
-
-```python
-...
-from uploader.models import Image
-
-
-class Livro(models.Model):
-...
-    capa = models.ForeignKey(
-        Image,
-        related_name="+",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        default=None,
-    )
-```
-
--   Faça novamente a migração do banco de dados:
-
-```shell
-pdm run python manage.py makemigrations livraria
-pdm run python manage.py migrate
-```
-
-**Uso no serializer**
-
--   Edite o arquivo `serializers/livro.py` da aplicação `livraria` e inclua o seguinte conteúdo:
-
-```python
-...
-from rest_framework.serializers import ModelSerializer, SlugRelatedField
-
-from uploader.models import Image
-from uploader.serializers import ImageSerializer
-...
-class LivroSerializer(ModelSerializer):
-    capa_attachment_key = SlugRelatedField(
-        source="capa",
-        queryset=Image.objects.all(),
-        slug_field="attachment_key",
-        required=False,
-        write_only=True,
-    )
-    capa = ImageSerializer(required=False, read_only=True)
-
-...
-class LivroDetailSerializer(ModelSerializer):
-...
-    capa = ImageSerializer(required=False)
-```
-
-**Teste de upload e associação com o livro**
-
--   Acesse a API de media:
-
-    http://0.0.0.0:19003/api/api/media/images/
-
--   Faça o upload de uma imagem.
--   Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
--   Guarde o valor do campo `capa_attachment_key`.
--   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
--   Acesse o endpoint `http://0.0.0.0:19003/api/api/media/images/` e observe que a imagem foi associada ao livro.
 
 # 17. Habilitando o Swagger e Redoc usando DRF Spectacular
 
