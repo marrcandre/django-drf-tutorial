@@ -1254,6 +1254,171 @@ class LivroDetailSerializer(ModelSerializer):
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
 -   Acesse o endpoint `http://0.0.0.0:19003/api/media/images/` e observe que a imagem foi associada ao livro.
 
+# 13. Dump e Load de dados
+
+O **dump** dos dados permite que você salve os dados do banco de dados em um arquivo. O **load** dos dados permite que você carregue os dados de um arquivo para o banco de dados. Isso é útil para fazer cópias de segurança, para transferir dados entre bancos de dados, para carregar dados iniciais, etc.
+
+**Carga inicial de dados**
+
+- Acesse o seguinte link:
+
+  - Link: `http://191.52.55.156:19005/admin`
+  - Usuário: `a@a.com`
+  - Senha: `senha.123`
+
+- Cadastre pelos menos 10 livros, com autor e editora
+- Verifique se o livro, autor ou editora já estão cadastrados, para evitar duplicidade.
+- **NÃO USE CAIXA ALTA!!!**
+- Use o formato de nomes de livros, como no exemplo: `O Senhor dos Anéis - A Sociedade do Anel`
+
+**Cópia de segurança dos dados**
+
+-   Execute o comando `dumpdata`:
+
+```shell
+pdm run dumpdata > core_bkp.json
+```
+
+-   Observe que o arquivo `core_bkp.json` foi criado:
+
+```shell
+code core_bkp.json
+```
+
+**Arquivo exemplo**
+
+-   Baixe o arquivo `core.json`:
+
+**No Linux:**
+
+```shell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json
+```
+
+**No Windows:**
+
+```shell
+Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json" -OutFile core.json
+```
+
+**Carga dos dados**
+
+-   Execute o comando `loaddata`:
+
+```shell
+pdm run loaddata
+```
+
+-  Utilizando o Django Shell Plus, observe que os dados foram carregados:
+
+```shell
+pdm run shellp
+```
+E dentro dele, execute:
+
+```python
+>>> Livro.objects.all()
+```
+
+Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
+
+# 14. Uso do Django Shell e do Django Shell Plus
+
+O Django Shell é uma ferramenta para interagir com o banco de dados. O Django Shell Plus é uma extensão do Django Shell que inclui alguns recursos adicionais, como a inclusão automática dos modelos.
+
+-   Acesse o shell:
+
+```shell
+pdm run shellp
+```
+
+-   Crie um objeto:
+
+```python
+>>> categoria = Categoria.objects.create(descricao="Desenvolvimento Web")
+```
+
+-   Observe que o objeto foi criado:
+
+```python
+>>> categoria
+<Categoria: Desenvolvimento Web>
+```
+
+-   Liste os objetos:
+
+```python
+>>> Categoria.objects.all()
+<QuerySet [<Categoria: Desenvolvimento Web>]>
+```
+
+-   Obtenha o objeto:
+
+```python
+>>> categoria = Categoria.objects.get(descricao="Desenvolvimento Web")
+```
+
+-   Observe que o objeto foi obtido:
+
+```python
+>>> categoria
+<Categoria: Desenvolvimento Web>
+```
+
+-   Atualize o objeto:
+
+```python
+>>> categoria.descricao = "Desenvolvimento Web com Django"
+>>> categoria.save()
+```
+
+-   Observe que o objeto foi atualizado:
+
+```python
+>>> categoria
+<Categoria: Desenvolvimento Web com Django>
+```
+
+-   Remova o objeto:
+
+```python
+>>> categoria.delete()
+(1, {'core.Categoria': 1})
+```
+
+-   Observe que o objeto foi removido:
+
+```python
+>>> Categoria.objects.all()
+<QuerySet []>
+```
+
+**Useando o atributo `related_name`**
+
+-   Acesso a todos os livros de um autor:
+
+```python
+Autor.objects.get(id=1).livros.all()
+```
+
+-   Acesso a todos os livros de uma categoria:
+
+```python
+Categoria.objects.get(id=1).livros.all()
+```
+
+-   Acesso a todos os livros de uma editora:
+
+```python
+Editora.objects.get(id=1).livros.all()
+```
+
+-   Encerre o shell:
+
+```python
+>>> exit()
+```
+
 
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
@@ -1648,167 +1813,6 @@ urlpatterns = [
     path("api/", include(router.urls)),
     ...
 ]
-```
-
-# 18. Dump e Load de dados
-
-Vamos aprender a fazer o _dump_ e _load_ de dados.
-
-**Carga inicial de dados**
-
-- Acesse o seguinte link:
-
-  - Link: `http://191.52.55.156:19005/admin`
-  - Usuário: `a@a.com`
-  - Senha: `senha.123`
-
-- Cadastre pelos menos 10 livros, com autor e editora
-- Verifique se o livro, autor ou editora já estão cadastrados.
-- **NÃO USE CAIXA ALTA!!!**
-- Use o formato de nomes de livros, como no exemplo: `O Senhor dos Anéis - A Sociedade do Anel`
-
-
-
-**Cópia de segurança dos dados**
-
--   Execute o comando `dumpdata`:
-
-```shell
-pdm run python manage.py dumpdata --indent 2 > livraria_bkp.json
-```
-
--   Observe que o arquivo `livraria_bkp.json` foi criado:
-
-```shell
-code livraria_bkp.json
-```
-
-**Arquivo exemplo**
-
--   Baixe o arquivo `core.json`:
-
-```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json
-# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json" -OutFile core.json # no PowerShell
-```
-
-**Carga dos dados**
-
--   Execute o comando `loaddata`:
-
-```shell
-pdm run python manage.py loaddata core.json
-```
-
--   Observe que os dados foram carregados:
-
-```shell
-pdm run python manage.py shell
->>> from core.models import Livro
->>> Livro.objects.all()
-```
-
-Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
-
-# 19. Uso do Django Shell
-
-O Django Shell é uma ferramenta para interagir com o banco de dados.
-
--   Acesse o shell:
-
-```shell
-pdm run python manage.py shell
-```
-
--   Importe os modelos de `core.models`:
-
-```python
->>> from core.models import Autor, Categoria, Editora, Livro
-```
-
--   Crie um objeto:
-
-```python
->>> categoria = Categoria.objects.create(descricao="Desenvolvimento Web")
-```
-
--   Observe que o objeto foi criado:
-
-```python
->>> categoria
-<Categoria: Desenvolvimento Web>
-```
-
--   Liste os objetos:
-
-```python
->>> Categoria.objects.all()
-<QuerySet [<Categoria: Desenvolvimento Web>]>
-```
-
--   Obtenha o objeto:
-
-```python
->>> categoria = Categoria.objects.get(descricao="Desenvolvimento Web")
-```
-
--   Observe que o objeto foi obtido:
-
-```python
->>> categoria
-<Categoria: Desenvolvimento Web>
-```
-
--   Atualize o objeto:
-
-```python
->>> categoria.descricao = "Desenvolvimento Web com Django"
->>> categoria.save()
-```
-
--   Observe que o objeto foi atualizado:
-
-```python
->>> categoria
-<Categoria: Desenvolvimento Web com Django>
-```
-
--   Remova o objeto:
-
-```python
->>> categoria.delete()
-(1, {'core.Categoria': 1})
-```
-
--   Observe que o objeto foi removido:
-
-```python
->>> Categoria.objects.all()
-<QuerySet []>
-```
-
--   Acesso a todos os livros de um autor:
-
-```python
-Autor.objects.get(id=1).livros.all()
-```
-
--   Acesso a todos os livros de uma categoria:
-
-```python
-Categoria.objects.get(id=1).livros.all()
-```
-
--   Acesso a todos os livros de uma editora:
-
-```python
-Editora.objects.get(id=1).livros.all()
-```
-
--   Encerre o shell:
-
-```python
->>> exit()
 ```
 
 # 20. Customização do Admin
