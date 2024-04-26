@@ -1213,6 +1213,10 @@ class Livro(models.Model):
 pdm run migrate
 ```
 
+O modelo `Livro` ficará assim:
+
+![Projeto com a model Livro com capa](diagramas/core_categoria_editora_autor_livro_com_capa.png)
+
 **Uso no serializer**
 
 -   Edite o arquivo `serializers/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
