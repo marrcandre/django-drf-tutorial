@@ -1423,6 +1423,79 @@ Editora.objects.get(id=1).livros.all()
 >>> exit()
 ```
 
+# 15. Customização do Admin
+
+O Admin é uma ferramenta para gerenciar os dados do banco de dados. Ele pode ser customizado para melhorar a experiência do usuário.
+
+-   Edite o arquivo `core/admin.py`:
+
+**Importação das models**
+
+Vamos importar as models de forma explícita:
+
+```python
+from core.models import Autor, Categoria, Editora, Livro, User
+```
+
+**Registro das models através do decorator `@admin.register`**
+
+Vamos registrar as models através do decorator `@admin.register`:
+
+```python
+@admin.register(User)
+class UserAdmin(UserAdmin):
+...
+```
+
+**Customização do Admin**
+
+```python
+...
+@admin.register(Autor)
+class AutorAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'email')
+    search_fields = ('nome', 'email')
+    list_filter = ('nome',)
+    ordering = ('nome', 'email')
+
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ('descricao',)
+    search_fields = ('descricao',)
+    list_filter = ('descricao',)
+    ordering = ('descricao',)
+
+@admin.register(Editora)
+class EditoraAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    search_fields = ('nome',)
+    list_filter = ('nome',)
+    ordering = ('nome',)
+
+@admin.register(Livro)
+class LivroAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'editora', 'categoria')
+    search_fields = ('titulo', 'editora__nome', 'categoria__descricao')
+    list_filter = ('editora', 'categoria')
+    ordering = ('titulo', 'editora', 'categoria')
+    list_per_page = 25
+```
+
+- As linhas com `admin.site.register()` devem ser removidas.
+
+> O atributo `list_display` é uma tupla que define os campos que serão exibidos na listagem.
+
+> O atributo `search_fields` é uma tupla que define os campos que serão utilizados na busca.
+
+> O atributo `list_filter` é uma tupla que define os campos que serão utilizados para filtrar os registros.
+
+> O atributo `ordering` é uma tupla que define a ordem de exibição default dos registros.
+
+-   Acesse o `Admin` e veja as midificações:
+
+    http://0.0.0.0:19003/api/admin/
+
+-  Faça um commit com a mensagem `Customização do Admin`.
 
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
@@ -1818,52 +1891,6 @@ urlpatterns = [
     ...
 ]
 ```
-
-# 20. Customização do Admin
-
-O Admin é uma ferramenta para gerenciar os dados do banco de dados. Ele pode ser customizado para melhorar a experiência do usuário.
-
-**Customização do Admin**
-
--   Edite o arquivo `livraria/admin.py`:
-
-```python
-...
-@admin.register(Autor)
-class AutorAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email')
-    search_fields = ('nome', 'email')
-    list_filter = ('nome',)
-    ordering = ('nome', 'email')
-
-@admin.register(Categoria)
-class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('descricao',)
-    search_fields = ('descricao',)
-    list_filter = ('descricao',)
-    ordering = ('descricao',)
-
-@admin.register(Editora)
-class EditoraAdmin(admin.ModelAdmin):
-    list_display = ('nome',)
-    search_fields = ('nome',)
-    list_filter = ('nome',)
-    ordering = ('nome',)
-
-@admin.register(Livro)
-class LivroAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'editora', 'categoria')
-    search_fields = ('titulo', 'editora__nome', 'categoria__descricao')
-    list_filter = ('editora', 'categoria')
-    ordering = ('titulo', 'editora', 'categoria')
-    list_per_page = 25
-```
-
--   Acesse o Admin:
-
-    http://0.0.0.0:19003/api/admin/
-
-
 
 # 23. Inclusão da foto de perfil no usuário
 
