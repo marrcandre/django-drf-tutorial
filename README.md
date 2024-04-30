@@ -1268,7 +1268,7 @@ O **dump** dos dados permite que você salve os dados do banco de dados em um ar
 
   - Link: `http://191.52.55.156:19005/admin`
   - Usuário: `a@a.com`
-  - Senha: `senha.123`
+  - Senha: `teste.123`
 
 - Cadastre pelos menos 10 livros, com autor e editora
 - Verifique se o livro, autor ou editora já estão cadastrados, para evitar duplicidade.
@@ -1501,13 +1501,9 @@ class LivroAdmin(admin.ModelAdmin):
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
 
+# 16. Autenticação e autorização
 
-**8.5 [Exercício](#aula-8-crie-a-api-rest-no-projeto-garagem-para-as-demais-classes): Crie a API REST no projeto Garagem para as demais classes**
-
-
-# 11. Autenticação e autorização
-
-11.1 Introdução
+**Introdução**
 
 Vamos trabalhar agora os conceitos de segurança relacionados a **autenticação** (_login_) e **autorização** (_permissão_). Utilizaremos aquilo que o Django já oferece, em termos de usuários e grupos.
 
@@ -1527,31 +1523,40 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 **Relação entre nomes das ações**
 
-| Ação      | HTTP        | CRUD   | Admin  |
-| --------- | ----------- | ------ | ------ |
-| Criar     | POST        | Create | add    |
-| Ler       | GET         | Read   | view   |
-| Atualizar | PUT (PATCH) | Update | change |
-| Deletar   | DELETE      | Delete | delete |
+Podemos perceber uma relação as ações que compôem o CRUD, os termos utilizados no Admin e os verbos HTTP:
 
-**11.2 Criando grupos e dando permissões**
+Aqui está a tabela com a terceira coluna movida para o lugar da quarta:
+
+| Ação      | CRUD   | Admin  | HTTP        |
+| --------- | ------ | ------ | ----------- |
+| Criar     | Create | add    | POST        |
+| Ler       | Read   | view   | GET         |
+| Atualizar | Update | change | PUT (PATCH) |
+| Deletar   | Delete | delete | DELETE      |
+
+
+**Exercício:**
+
+No `Admin`, crie os seguintes usuários e grupos e dê as permissões necessárias:
+
+**a. Criando grupos e dando permissões**
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
+-   Crie um grupo chamado `administradores`, com as seguintes as permissões:
+    -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
 -   Crie um grupo chamado `compradores`, com as seguintes permissões:
     -   Visualizar: `autor`, `categoria` e `editora`.
     -   Adicionar, editar e visualizar: `livro`.
--   Crie um grupo chamado `administradores`, com as seguintes as permissões:
-    -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
 
-**11.3 Criando usuários e adicionando aos grupos**
+**b. Criando usuários e adicionando aos grupos**
 
--   Crie um usuário `admin1` e o inclua no grupo `administradores`.
--   Crie um usuário `comprador1` e o inclua no grupo `compradores`.
+-   Crie um usuário `admin1@a.com` e o inclua no grupo `administradores`.
+-   Crie um usuário `comprador1@a.com` e o inclua no grupo `compradores`.
 
-# 12. Usando as permissões do DRF
+# 17. Usando as permissões do DRF
 
-**12.1 Autenticação e permissão**
+**Autenticação e permissão**
 
 _A **autenticação** ou **identificação** por si só geralmente não é suficiente para obter acesso à informação ou código. Para isso, a entidade que solicita o acesso deve ter **autorização**._ [(Permissões no DRF)](https://www.django-rest-framework.org/api-guide/permissions/)
 
@@ -1561,11 +1566,19 @@ _A **autenticação** ou **identificação** por si só geralmente não é sufic
 
 Por padrão, qualquer usuário, mesmo sem autenticação, tem acesso irrestrito e permissão de fazer qualquer coisa em uma aplicação.
 
-As permissões podem ser definidas a nível de objeto (nas _views_ ou _viewsets_, por exemplo) ou de forma global, no arquivo `settings.py`.
+As permissões podem ser definidas:
 
-**12.2 Exemplo de uso de permisssão na viewset**
+1. a nível de objeto (nas `views` ou `viewsets`, por exemplo);
+1. de forma global, no arquivo `settings.py`;
+1. com o uso de classes de permissão do `Django REST Framework`.
 
-Como ilustração, modifique o arquivo `views.py`, da seguinte forma.
+Vamos analisar cada uma dessas formas.
+
+**a. Exemplo de uso de permisssão na `viewset`**
+
+Vamos ver um exemplo de uso de permissão em uma `viewset`. No exemplo, vamos permitir acesso apenas a usuários autenticados na model `Categoria`.
+
+Como ilustração, modifique o arquivo `views/categoria.py`, da seguinte forma.
 
 -   Importe a seguinte função:
 
@@ -1581,18 +1594,22 @@ permission_classes = [IsAuthenticated]
 
 Para testar:
 
--   Encerre a sessão do **Admin**
+-   Encerre a sessão do **Admin**.
 -   Tente acessar as **categorias** pelo DRF.
--   Você deve receber um erro.
+-   Você deve receber o seguinte erro: `"As credenciais de autenticação não foram fornecidas."`
 -   Agora entre novamente pelo **Admin**.
 -   Tente acessar as **categorias** pelo DRF.
--   Você deve conseguir.
+-   Você deve conseguir acessar novamente.
 
-**12.3 Exemplo de uso de permisssão no `settings.py`**
+> **Resumindo**, utilizamos a classe `IsAuthenticated` para permitir acesso apenas a usuários autenticados.
 
-> IMPORTANTE: Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`. Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+**b. Exemplo de uso de permisssão no `settings.py`**
 
-Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, permitir acesso aos _endpoints_ apenas para usuários autenticados, é configurar desse modo o arquivo `settings.py`:
+Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`.
+
+> **IMPORTANTE:** Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+
+Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, permitir acesso aos _endpoints_ **apenas para usuários autenticados**, é configurar desse modo o arquivo `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
@@ -1602,9 +1619,13 @@ REST_FRAMEWORK = {
 }
 ```
 
-> Inclua o código acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
+Para testar:
 
-**12.4 Permissões com o `DjangoModelPermissions`**
+- Inclua o código acima e teste novamente o acesso aos _endpoints_ do DRF (categorias, editoras, etc.) com e sem uma sessão autenticada.
+
+> **Resumindo**, utilizamos a classe `IsAuthenticated` no `settings.py` para permitir acesso apenas a usuários autenticados.
+
+**c. Permissões com o `DjangoModelPermissions`**
 
 Apesar de ser possível definir a autorização das formas que vimos anteriormente, adotaremos uma outra forma. Essa forma que iremos adotar para o gerenciamento de permissões será com o uso do [DjangoModelPermissions](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions).
 
@@ -1616,7 +1637,7 @@ A autorização só será concedida se o usuário estiver autenticado e tiver as
 -   As solicitações `PUT` e `PATCH` exigem que o usuário tenha a permissão de alteração (`change`) no modelo.
 -   As solicitações `DELETE` exigem que o usuário tenha a permissão de exclusão (`remove`) no modelo.
 
-Para isso, teremos que alterar a classe de autenticação, substituindo o que colocamos anteriormente:
+Para isso, teremos que alterar a classe de autenticação, substituindo o que colocamos anteriormente, por isso:
 
 ```python
 REST_FRAMEWORK = {
@@ -1632,7 +1653,7 @@ REST_FRAMEWORK = {
 
 Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Para isso, utilizaremos o **SimpleJWT**.
 
-# 13. Autenticação com o SimpleJWT
+# 18. Autenticação com o SimpleJWT
 
 **Um resumo sobre autenticação e autorização**
 
@@ -1645,57 +1666,29 @@ Relembrando o que estudamos até aqui em termos de autenticação e autorizaçã
 
 Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Framework**.
 
-> **Resumindo**, utilizaremos o **SimpleJWT** para _autenticação_ e a _estrutura de permissões do Django_ para **autorização**.
+> **Resumindo**, utilizaremos o `SimpleJWT` para **autenticação** e a _estrutura de permissões do Django_ para **autorização**.
 
 **O SimpleJWT**
 
 O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) é um plug-in de autenticação JSON Web Token para o Django REST Framework.
 
-**Instalação e configuração**
+**Ativando o SIMPLEJWT**
 
--   Para instalar o SimpleJWT, execute o seguinte comando:
-
-```shell
-pdm add djangorestframework-simplejwt
-```
-
--   Adicione o `SimpleJWT` no arquivo `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "rest_framework_simplejwt",
-    ...
-]
-```
-
--   Adicione o `SimpleJWT` no arquivo `settings.py`:
+-   Adicione (ou descomente) o `SimpleJWT` no arquivo `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
     ...
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",), # essa linha!
     ...
 }
 ```
 
--   Adicione o `SimpleJWT` no arquivo `urls.py`:
+-   Observe que já existem duas entradas referentes ao `SimpleJWT` no arquivo `urls.py`:
 
-```python
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+    - http://0.0.0.0:19003/token/
+    - http://0.0.0.0:19003/token/refresh/
 
-urlpatterns = [
-    ...
-    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    ...
-]
-```
 
 -   Feitas essa aterações, coloque o servidor do Django novamente em execução.
 
@@ -1719,12 +1712,14 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 }
 ```
 
--   Para fazer a autenticação, precisamos enviar as informações de `usuário` e `senha`. Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações, no `Body` em `JSON`:
+Para fazer a autenticação, precisamos enviar as informações de `usuário` e `senha`.
+
+-  Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações, no `Body` em `JSON`:
 
 ```json
 {
-    "username": "comprador1",
-    "password": "senha.123"
+    "email": "comprador1@a.com",
+    "password": "teste.123"
 }
 ```
 
@@ -1806,91 +1801,9 @@ Resumindo, você vai precisar:
 
 Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
 
+**Finalizando**
 
-# 17. Habilitando o Swagger e Redoc usando DRF Spectacular
-
-Vamos instalar uma aplicação para gerar a documentação da API usando o Swagger e o Redoc.
-
-**Instalação e Configuração**
-
--   Instale o pacote `drf-spectacular`:
-
-```shell
-pdm add drf-spectacular
-```
-
--   Adicione o pacote `drf_spectacular` na lista de `INSTALLED_APPS`, no `settings.py`:
-
-```python
-INSTALLED_APPS = [
-    ...
-    "drf_spectacular",
-    ...
-]
-```
-
--   Registre o pacote no `settings.py`:
-
-```python
-REST_FRAMEWORK = {
-    ...
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-}
-```
-
--   Faça ainda algumas configurações no `settings.py`:
-
-```python
-SPECTACULAR_SETTINGS = {
-    "TITLE": "Livraria API",
-    "DESCRIPTION": "API para gerenciamento de livraria, incluindo endpoints e documentação.",
-    "VERSION": "1.0.0",
-}
-```
-
--   Inclua o seguinte conteúdo no arquivo `urls.py`, **organizando-o adequadamente**:
-
-```python
-from drf_spectacular.views import (
-    SpectacularAPIView,
-    SpectacularRedocView,
-    SpectacularSwaggerView,
-)
-...
-urlpatterns = [
-    ...
-    # OpenAPI 3
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path(
-        "api/swagger/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
-        name="swagger-ui",
-    ),
-    path(
-        "api/redoc/",
-        SpectacularRedocView.as_view(url_name="schema"),
-        name="redoc",
-    ),
-]
-```
-
-**Teste**
-
--   Acesse o Swagger:
-
-    http://0.0.0.0:19003/api/api/swagger/
-
-**Alteração da URL da API**
-
--   Edite o arquivo `urls.py` altere a URL da API para `http://0.0.0.0:19003/api/api/`:
-
-```python
-urlpatterns = [
-    ...
-    path("api/", include(router.urls)),
-    ...
-]
-```
+- Faça um commit com a mensagem `Autenticação com o SimpleJWT`.
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -3259,7 +3172,7 @@ Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
 
 ```shell
 # Supabase
-DATABASE_URL=postgres://postgres:Senha.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
+DATABASE_URL=postgres://postgres:teste.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
 ```
 
 **Instalando o pacote `dj_database_url`**
