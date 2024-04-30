@@ -1497,10 +1497,6 @@ class LivroAdmin(admin.ModelAdmin):
 
 -  Faça um commit com a mensagem `Customização do Admin`.
 
-
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
-
 # 16. Autenticação e autorização
 
 **Introdução**
@@ -1804,6 +1800,9 @@ Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autoriz
 **Finalizando**
 
 - Faça um commit com a mensagem `Autenticação com o SimpleJWT`.
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
 
 # 23. Inclusão da foto de perfil no usuário
 
@@ -3166,8 +3165,8 @@ Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
 - Entre no [Dashboard](https://supabase.com/dashboard/projects) do projeto, e escolha o projeto criado.
 - Escolha a opção `Project settings` e depois `Database`.
 - Copia a linha de conexão do banco de dados (URI).
-  - Ela deve ser parecida com isso: `postgres://postgres:[YOUR-PASSWORD]@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres`.
-- Troque `[YOUR-PASSWORD` pela senha que você havia guardado.
+  - Ela deve ser parecida com isso: `postgres://postgres:[YOUR-PASSWORD]@site.supabase.co:5432/postgres`.
+- Coloque as informações da sua conta.
 - Copie a linha de conexão e cole no arquivo `.env` do projeto, como no exemplo:
 
 ```shell
