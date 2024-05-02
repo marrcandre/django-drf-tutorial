@@ -1217,6 +1217,8 @@ O modelo `Livro` ficará assim:
 
 ![Projeto com a model Livro com capa](diagramas/core_categoria_editora_autor_livro_com_capa.png)
 
+> Observe que o campo `capa_id` foi criado na tabela `core_livro`, fazendo referência à tabela `uploader_image`.
+
 **Uso no serializer**
 
 -   Edite o arquivo `serializers/livro.py` da aplicação `core` e inclua o seguinte conteúdo:
@@ -1625,7 +1627,7 @@ Para testar:
 
 Apesar de ser possível definir a autorização das formas que vimos anteriormente, adotaremos uma outra forma. Essa forma que iremos adotar para o gerenciamento de permissões será com o uso do [DjangoModelPermissions](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions).
 
-Esta classe de permissão está ligada às permissões do modelo `django.contrib.auth` padrão do Django. Essa permissão deve ser aplicada apenas a visualizações que tenham uma propriedade `.queryset` ou método `get_queryset()` (exatamente o que temos).
+Esta classe de permissão está ligada às permissões do modelo `django.contrib.auth` padrão do Django. Essa permissão deve ser aplicada apenas a `views` que tenham uma propriedade `.queryset` ou método `get_queryset()` (exatamente o que temos).
 
 A autorização só será concedida se o usuário estiver autenticado e tiver as permissões de modelo relevantes atribuídas, da seguinte forma:
 
@@ -1801,22 +1803,19 @@ Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autoriz
 
 - Faça um commit com a mensagem `Autenticação com o SimpleJWT`.
 
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+# 19. Inclusão da foto de perfil no usuário
 
-
-# 23. Inclusão da foto de perfil no usuário
-
-Vamos incluir a foto de perfil no usuário.
+Vamos aproveitar a aplicação `uploader` para incluir a foto de perfil no usuário.
 
 **Criação do campo de foto de perfil**
 
--   No arquivo `models/usuario.py`, inclua o campo `foto`:
+-   No arquivo `models/user.py`, inclua o campo `foto`:
 
 ```python
 ...
 from uploader.models import Image
 ...
-class Usuario(AbstractUser):
+class User(AbstractUser):
     foto = models.ForeignKey(
         Image,
         on_delete=models.SET_NULL,
@@ -1826,24 +1825,40 @@ class Usuario(AbstractUser):
     )
 ```
 
+> O campo `foto` é uma chave estrangeira para a tabela `uploader_image`.
+
+> A foto será opcional, por isso utilizamos `null=True` e `blank=True`.
+
+> O campo `foto` será `null` por padrão, por isso utilizamos `default=None`.
+
+> Se a foto for deletada, o campo `foto` será `null`, por isso utilizamos `on_delete=models.SET_NULL`.
+
 -   Faça as migrações:
 
-```shell
-pdm run python manage.py makemigrations livraria
-pdm run python manage.py migrate
-```
+Seu projeto deve ficar assim:
+
+![Projeto com a model Livro](diagramas/core_categoria_editora_autor_livro_com_capa_usuario_com_foto.png)
+
+> Observe a ligação entre a model `Usuario` e a model `Image`, através da chave estrangeira `foto`.
+
+**Inclusão da foto no `Admin`**
 
 -   No arquivo `admin.py`, inclua o campo `foto`:
 
 ```python
 ...
-class UsuarioAdmin(UserAdmin):
+class UserAdmin(UserAdmin):
     ...
-    "fields": ("first_name","last_name","foto",...),
+        (_("Personal Info"), {"fields": ("name","foto")}), # inclua a foto aqui
+
     ...
 ```
 
--   Crie um serializador para o usuário:
+- Teste a inclusão da foto de um usuário pelo `Admin`.
+
+**Inclusão da foto no `Serializer`**
+
+-   Modifique o serializador para o usuário, em `serializers/user.py`:
 
 ```python
 from rest_framework.serializers import ModelSerializer, SlugRelatedField
@@ -1868,44 +1883,22 @@ class UsuarioSerializer(ModelSerializer):
         fields = "__all__"
 ```
 
--   Inclua o novo serializador no arquivo
-    `__init__.py` dos serializadores:
+> O atributo `write_only=True` indica que o campo `foto_attachment_key` é apenas para escrita. Isso significa que ele não será exibido na resposta da API.
 
-```python
-from .usuario import UsuarioSerializer
-```
-
--   Crie uma nova view para o usuário:
-
-```python
-from rest_framework.viewsets import ModelViewSet
-
-from core.models import Usuario
-from core.serializers import UsuarioSerializer
-
-
-class UsuarioViewSet(ModelViewSet):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
-```
-
--   Inclua a nova view no arquivo `__init__.py` das views:
-
-```python
-from .usuario import UsuarioViewSet
-```
-
--   Inclua a nova view no arquivo `urls.py`:
-
-```python
-from core.views import UsuarioViewSet
-...
-router.register(r"usuarios", UsuarioViewSet)
-```
+> O atributo `read_only=True` indica que o campo `foto` é apenas para leitura. Isso significa que ele não será aceito na requisição da API.
 
 **Testando**
 
--   Inclua uma foto de perfil em um usuário.
+-   Inclua uma foto de perfil em um usuário, através da API.
+
+**Finalizando**
+
+- Faça as alterações no sistema publicado.
+- Faça um commit com a mensagem `Inclusão da foto de perfil no usuário`.
+
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
 
 # 24. Criação da entidade `Compra` integrada ao usuário do projeto
 
