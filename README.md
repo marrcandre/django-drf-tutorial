@@ -2034,11 +2034,7 @@ class CompraAdmin(admin.ModelAdmin):
 -   Teste no admin do Django.
 -   Faça um commit com a mensagem `Uso de TabularInline no Admin para Itens da Compra`.
 
-
-
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
-# 27. Endpoint para a listagem básica de compras
+# 23. Endpoint para a listagem básica de compras
 
 Vamos começar a criar os endpoints para a entidade `Compra`, começando pela listagem básica de compras. Posteriormente, vamos incluir os itens da compra e criar os endpoints para adicionar, editar e excluir compras.
 
@@ -2137,13 +2133,14 @@ class CompraSerializer(ModelSerializer):
 
 **Inclusão do status da compra na listagem da compra**
 
--   Vamos incluir o status da compra na listagem da compra.
+De forma semelhante ao email do usuário, vamos incluir o status da compra na listagem da compra.
+
 -   No serializer de `Compra`, inclua o seguinte código:
 
 ```python
 ...
 class CompraSerializer(ModelSerializer):
-    status = CharField(source="get_status_display", read_only=True)
+    status = CharField(source="get_status_display", read_only=True) # inclua essa linha
 ...
 ```
 
@@ -2152,7 +2149,13 @@ class CompraSerializer(ModelSerializer):
 > O parâmetro `read_only` indica que o campo `status` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ e _push_ das alterações.
+-   Faça o commit com a mensagem `Inclusão do status da compra na listagem da compra`.
+
+> Estes são apenas dois exemplos de como podemos modificar a listagem de compras. Você pode incluir outros campos, como o total da compra, por exemplo.
+
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
 
 # 28. Visualização dos itens da compra no endpoint de listagem de compras
 
