@@ -2011,22 +2011,32 @@ O seu projeto deve ficar assim:
 
 # 26. Uso de `TabularInline` no `Admin` para Itens da Compra
 
+Da forma que configuramos o `Admin` para a model `ItensCompra`, não é possível adicionar itens da compra diretamente na tela de edição da compra. Isso é pouco natural, pois há uma relação direta entre a compra e seus itens.
+
 Vamos mostrar os itens da compra no admin do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
 
--   No arquivo `admin.py` do app `core`, adicione o seguinte código:
+-   No arquivo `admin.py` do app `core`, modifique o código das models `Compra` e `ItensCompra` da seguinte forma:
 
 ```python
 class ItensCompraInline(admin.TabularInline):
     model = ItensCompra
+    extra = 1 # Quantidade de itens adicionais
+
 
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):
+    list_display = ("usuario", "status")
+    search_fields = ("usuario", "status")
+    list_filter = ("usuario", "status")
+    ordering = ("usuario", "status")
+    list_per_page = 25
     inlines = [ItensCompraInline]
 ```
 
 > Desta forma, quando você editar uma compra no admin do Django, você verá os itens da compra logo abaixo do formulário de edição da compra.
 
 -   Teste no admin do Django.
+-   Faça um commit com a mensagem `Uso de TabularInline no Admin para Itens da Compra`.
 
 # 27. Endpoint para listagem básica de Compras
 
