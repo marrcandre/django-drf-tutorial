@@ -2115,14 +2115,16 @@ router.register(r"compras", CompraViewSet)
 
 **Inclusão do email do usuário na listagem da compra**
 
--   Vamos incluir o email do usuário na listagem da compra.
+Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos substituir o `id` pelo `email` do usuário.
+
 -   No serializer de `Compra`, inclua o seguinte código:
 
 ```python
 ...
+from rest_framework.serializers import CharField, ModelSerializer
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.email", read_only=True)
+    usuario = CharField(source="user.email", read_only=True) # inclua essa linha
 ...
 ```
 
@@ -2131,7 +2133,7 @@ class CompraSerializer(ModelSerializer):
 > O parâmetro `read_only` indica que o campo `usuario` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ e _push_ das alterações.
+-   Faça o commit com a mensagem `Inclusão do email do usuário na listagem da compra`.
 
 **Inclusão do status da compra na listagem da compra**
 
