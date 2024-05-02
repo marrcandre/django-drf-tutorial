@@ -1957,6 +1957,10 @@ admin.site.register(Compra)
 
 -   Execute as migrações.
 
+O seu projeto deve ficar assim:
+
+![Projeto com a model Compra](diagramas/core_compra1.png)
+
 **Testando a model `Compra`**
 
 -   Teste o model `Compra` no admin do Django.
