@@ -1896,10 +1896,6 @@ class UsuarioSerializer(ModelSerializer):
 - Faça as alterações no sistema publicado.
 - Faça um commit com a mensagem `Inclusão da foto de perfil no usuário`.
 
-
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
-
 # 20. Criação da entidade `Compra` integrada ao usuário do projeto
 
 Nessa aula, vamos criar um entidade de compras integrada à entidade do usuário do projeto.
@@ -2009,7 +2005,7 @@ O seu projeto deve ficar assim:
 -   Faça um commit com a mensagem `Criação dos itens da compra`.
 
 
-# 26. Uso de `TabularInline` no `Admin` para Itens da Compra
+# 22. Uso de `TabularInline` no `Admin` para Itens da Compra
 
 Da forma que configuramos o `Admin` para a model `ItensCompra`, não é possível adicionar itens da compra diretamente na tela de edição da compra. Isso é pouco natural, pois há uma relação direta entre a compra e seus itens.
 
@@ -2038,22 +2034,27 @@ class CompraAdmin(admin.ModelAdmin):
 -   Teste no admin do Django.
 -   Faça um commit com a mensagem `Uso de TabularInline no Admin para Itens da Compra`.
 
-# 27. Endpoint para listagem básica de Compras
 
-Vamos criar um endpoint para listagem básica de compras.
 
-**Serializer de Compra**
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
+# 27. Endpoint para a listagem básica de compras
+
+Vamos começar a criar os endpoints para a entidade `Compra`, começando pela listagem básica de compras. Posteriormente, vamos incluir os itens da compra e criar os endpoints para adicionar, editar e excluir compras.
+
+
+**Criação do serializer de Compra**
 
 -   Crie um novo arquivo `compra.py` dentro da pasta `serializers` do app `core`:
 
 ```shell
-touch livraria/serializers/compra.py
+touch core/serializers/compra.py
 ```
 
--   Inclua o seguinte conteúdo no arquivo `compra.py`:
+-   Inclua o seguinte conteúdo no arquivo `compra.py` recém criado:
 
 ```python
-from rest_framework.serializers import ModelSerializer, CharField
+from rest_framework.serializers import ModelSerializer
 
 from core.models import Compra
 
@@ -2069,15 +2070,15 @@ class CompraSerializer(ModelSerializer):
 from .compra import CompraSerializer
 ```
 
-**Viewset de Compra**
+**Criação da Viewset de Compra**
 
 -   Crie um novo arquivo `compra.py` dentro da pasta `views` do app `core`:
 
 ```shell
-touch livraria/views/compra.py
+touch core/views/compra.py
 ```
 
--   Inclua o seguinte conteúdo no arquivo `compra.py`:
+-   Inclua o seguinte conteúdo no arquivo `compra.py` recém criado:
 
 ```python
 from rest_framework.viewsets import ModelViewSet
@@ -2110,7 +2111,7 @@ router.register(r"compras", CompraViewSet)
 ```
 
 -  Teste o endpoint no navegador.
--  Faça o _commit_ e _push_ das alterações.
+-  Faça o commit com a mensagem `Endpoint para a listagem básica de compras`.
 
 **Inclusão do email do usuário na listagem da compra**
 
