@@ -1900,24 +1900,24 @@ class UsuarioSerializer(ModelSerializer):
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
 
-# 24. Criação da entidade `Compra` integrada ao usuário do projeto
+# 20. Criação da entidade `Compra` integrada ao usuário do projeto
 
-Nessa aula, vamos criar um model de compras integrada à model do usuário do projeto.
+Nessa aula, vamos criar um entidade de compras integrada à entidade do usuário do projeto.
 
-**Criando o model de compras**
+**Criando o `model` de compras**
 
--   Crie um novo arquivo `compra.py` dentro da pasta `models` do app `livraria`:
+-   Crie um novo arquivo `compra.py` dentro da pasta `models` do app `core`, digitando no terminal:
 
 ```shell
-touch livraria/models/compra.py
+touch core/models/compra.py
 ```
 
--   Inclua o seguinte conteúdo no arquivo `compra.py`:
+-   Inclua o seguinte conteúdo no arquivo `compra.py` recém criado:
 
 ```python
 from django.db import models
 
-from usuario.models import Usuario
+from .user import User
 
 class Compra(models.Model):
     class StatusCompra(models.IntegerChoices):
@@ -1930,19 +1930,21 @@ class Compra(models.Model):
     status = models.IntegerField(choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
 ```
 
-> Note que estamos utilizando o `Usuario` do app `usuario` como `ForeignKey` para o model `Compra`.
+> Note que estamos utilizando a model `User` como `ForeignKey` para o model `Compra`.
 
 > `StatusCompra` é do tipo `IntegerChoices`, que é uma forma de criar um campo `choices` com valores inteiros.
 
 > `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`.
 
-- Inclua a nova model no arquivo `__init__.py` dos models:
+- Inclua a nova model no arquivo `core/models/__init__.py`:
 
 ```python
 from .compra import Compra
 ```
 
--   Adicione o model `Compra` ao `admin.py` do app `livraria`:
+**Adicionando a model `Compra` ao `Admin`**
+
+-   Adicione o model `Compra` ao `admin.py` do app `core`:
 
 ```python
 ...
@@ -1951,14 +1953,18 @@ from core.models import Compra
 admin.site.register(Compra)
 ```
 
--   Execute as migrações:
+**Executando as migrações**
 
-```shell
-pdm run python manage.py makemigrations
-pdm run python manage.py migrate
-```
+-   Execute as migrações.
+
+**Testando a model `Compra`**
 
 -   Teste o model `Compra` no admin do Django.
+
+**Finalizando**
+
+- Faça um commit com a mensagem `Criação da entidade Compra integrada ao usuário do projeto`.
+
 
 # 25. Criando os itens da compra
 
@@ -1993,7 +1999,7 @@ from .compra import Compra, ItensCompra
 
 Vamos mostrar os itens da compra no admin do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
 
--   No arquivo `admin.py` do app `livraria`, adicione o seguinte código:
+-   No arquivo `admin.py` do app `core`, adicione o seguinte código:
 
 ```python
 class ItensCompraInline(admin.TabularInline):
@@ -2014,7 +2020,7 @@ Vamos criar um endpoint para listagem básica de compras.
 
 **Serializer de Compra**
 
--   Crie um novo arquivo `compra.py` dentro da pasta `serializers` do app `livraria`:
+-   Crie um novo arquivo `compra.py` dentro da pasta `serializers` do app `core`:
 
 ```shell
 touch livraria/serializers/compra.py
@@ -2041,7 +2047,7 @@ from .compra import CompraSerializer
 
 **Viewset de Compra**
 
--   Crie um novo arquivo `compra.py` dentro da pasta `views` do app `livraria`:
+-   Crie um novo arquivo `compra.py` dentro da pasta `views` do app `core`:
 
 ```shell
 touch livraria/views/compra.py
@@ -2069,7 +2075,7 @@ from .compra import CompraViewSet
 
 **URL para listagem de compras**
 
--   Inclua o endpoint no arquivo `urls.py` do app `livraria`:
+-   Inclua o endpoint no arquivo `urls.py` do app `core`:
 
 ```python
 ...
