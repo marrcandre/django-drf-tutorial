@@ -1970,13 +1970,16 @@ O seu projeto deve ficar assim:
 - Faça um commit com a mensagem `Criação da entidade Compra integrada ao usuário do projeto`.
 
 
-# 25. Criando os itens da compra
+# 21. Criando os itens da compra
 
-No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo.
+No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forna, vamos criar "manualmente" a **tabela associativa**, que será chamada de `ItensCompra`.
 
--   Vamos adicionar um novo model `ItensCompra` ao arquivo `compra.py`:
+-   Vamos adicionar um nova entidade `ItensCompra` ao arquivo `core/models/compra.py`:
 
 ```python
+...
+from .livro import Livro
+...
 class ItensCompra(models.Model):
     compra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name="itens")
     livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="+")
@@ -1996,8 +1999,15 @@ from .compra import Compra, ItensCompra
 ```
 
 -   Execute as migrações (você já sabe como fazer, certo?)
--   Verifique que a tabela `livraria_itenscompra` foi criada no banco de dados.
+
+O seu projeto deve ficar assim:
+
+![Projeto com a model Compra](diagramas/core_compra_com_itens.png)
+
+-   Verifique que a tabela `core_itenscompra` foi criada no banco de dados.
 -   Inclua o model `ItensCompra` no `Admin` do Django.
+-   Faça um commit com a mensagem `Criação dos itens da compra`.
+
 
 # 26. Uso de `TabularInline` no `Admin` para Itens da Compra
 
