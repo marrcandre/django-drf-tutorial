@@ -2154,10 +2154,7 @@ class CompraSerializer(ModelSerializer):
 > Estes são apenas dois exemplos de como podemos modificar a listagem de compras. Você pode incluir outros campos, como o total da compra, por exemplo.
 
 
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
-
-# 28. Visualização dos itens da compra no endpoint da listagem de compras
+# 24. Visualização dos itens da compra no endpoint da listagem de compras
 
 De forma semelhante ao que fizemos no `Admin`, vamos incluir os itens da compra na listagem de compras.
 
@@ -2203,7 +2200,9 @@ class ItensCompraSerializer(ModelSerializer):
         depth = 1
 ```
 
-> O parâmetro `depth=1` indica que o serializer deve mostrar os detalhes do model `ItensCompra`. O valor `1` indica que o serializer deve mostrar os detalhes do model `ItensCompra` e dos models relacionados a ele. Se o valor fosse `2`, o serializer mostraria os detalhes do model `ItensCompra`, dos models relacionados a ele e dos models relacionados aos models relacionados a ele.
+> O parâmetro `depth=1` indica que o serializer deve mostrar os detalhes do model `ItensCompra`. O valor `1` indica que o serializer deve mostrar os detalhes do model `ItensCompra` e dos models relacionados a ele (nesse caso, o livro). Se o valor fosse `2`, o serializer mostraria os detalhes do model `ItensCompra`, dos models relacionados a ele e dos models relacionados aos models relacionados a ele (nesse caso, a categoria, a editora e o autor).
+
+- Experimente alterar o valor de `depth` e veja o resultado no navegador.
 
 **Mostrando apenas os campos necessários dos itens da compra na listagem de compras**
 
@@ -2212,41 +2211,37 @@ Você deve ter percebido que o serializer de `ItensCompra` está mostrando todos
 -   No `ItensCompraSerializer`, modifique a linha `fields`:
 
 ```python
-fields = ["livro", "quantidade"]
+fields = ("livro", "quantidade")
 ```
 
-> O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados.
+> O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma sequência de campos, apenas esses campos serão mostrados.
 
 -   Teste o endpoint no navegador.
-
-**Mostrando mais detalhes do livro na listagem de compras**
-
-Utilizando depth = 2, podemos mostrar mais detalhes do livro na listagem de compras.
-
--   No `ItensCompraSerializer`, modifique a linha `depth`:
-
-```python
-depth = 2
-```
-
-> Nesse caso, vamos ver os detalhes dos livros, como editora, autor e categoria.
-
--  Teste o endpoint no navegador.
--  Faça o _commit_ e _push_ das alterações.
+-   Faça o commit com a mensagem `Limitando os campos dos itens da compra na listagem de compras`.
 
 **Mostrando o total do item na listagem de compras**
 
 O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
 
--   No `ItensCompraSerializer`, inclua o seguinte código:
+- Primeiro, importe o `SerializerMethodField` no arquivo `serializers/compra.py`:
 
 ```python
-...
-total = SerializerMethodField()
-...
-def get_total(self, instance):
-    return instance.quantidade * instance.livro.preco
-...
+from rest_framework.serializers import CharField, ModelSerializer, SerializerMethodField
+```
+
+- Depois, modifique o `ItensCompraSerializer`, para que fique desse jeito:
+
+```python
+class ItensCompraSerializer(ModelSerializer):
+    total = SerializerMethodField()
+
+    def get_total(self, instance):
+        return instance.livro.preco * instance.quantidade
+
+    class Meta:
+        model = ItensCompra
+        fields = ("livro", "quantidade", "total")
+        depth = 1
 ```
 
 > O parâmetro `SerializerMethodField` indica que o campo `total` não existe no model `ItensCompra`. Ele será calculado pelo método `get_total`.
@@ -2257,10 +2252,12 @@ def get_total(self, instance):
 
 > O método `get_<nome_do_campo>` é um método especial do serializer que é chamado para calcular o valor do campo `<nome_do_campo>`.
 
--   Teste o endpoint no navegador.
--   Faça o _commit_ e _push_ das alterações.
+> Incluimos o campo `total` no `fields` do serializer.
 
-# 29. Totalização dos itens de compra na `model` e `serializer` de compra
+-   Teste o endpoint no navegador.
+-   Faça o commit com a mensagem `Mostrando o total do item na listagem de compras`.
+
+# 25. Inclusão do total da compra na listagem de compras
 
 Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras.
 
@@ -2276,7 +2273,7 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
         # return total
         return sum(item.livro.preco * item.quantidade for item in self.itens.all())
 ```
-> No código acima, temos duas formas de calcular o total da compra. A primeira forma está comentada. A segunda forma está descomentada. A segunda forma é mais simples e mais eficiente, e utiliza uma _list comprehension_.
+> No código acima, temos duas formas de calcular o total da compra. A primeira forma está comentada. A segunda forma está descomentada. A segunda forma é mais simples e mais eficiente, e utiliza uma compreensão de lista (_list comprehension_).
 
 > O método `property` indica que o campo `total` não existe no model `Compra`. Ele será calculado pelo método `total`.
 
@@ -2293,7 +2290,9 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 > O parâmetro `fields` indica quais campos do model `Compra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados, na ordem da lista.
 
 - Teste o endpoint no navegador.
-- Faça o _commit_ e _push_ das alterações.
+- Faça o commit com a mensagem `Inclusão do total da compra na listagem de compras`.
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
 # 30. Criação de um endpoint para criar novas compras
 
