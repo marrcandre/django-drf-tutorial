@@ -2157,11 +2157,13 @@ class CompraSerializer(ModelSerializer):
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
 
-# 28. Visualização dos itens da compra no endpoint de listagem de compras
+# 28. Visualização dos itens da compra no endpoint da listagem de compras
 
-Vamos incluir os itens da compra na listagem de compras.
+De forma semelhante ao que fizemos no `Admin`, vamos incluir os itens da compra na listagem de compras.
 
--   Crie um serializer para `ItensCompra`:
+-   Crie um serializer para `ItensCompra`, no arquivo `serializers/compra.py`:
+
+```shell
 
 ```python
 ...
@@ -2187,7 +2189,7 @@ itens = ItensCompraSerializer(many=True, read_only=True)
 > O parâmetro `read_only=True` indica que o campo `itens` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ e _push_ das alterações.
+-   Faça o commit com a mensagem `Visualização dos itens da compra na listagem da compra`.
 
 **Mostrando os detalhes dos itens da compra na listagem de compras**
 
