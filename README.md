@@ -2294,7 +2294,7 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 
 # DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
-# 30. Criação de um endpoint para criar novas compras
+# 26. Criação de um endpoint para criar novas compras
 
 Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
 
@@ -2316,9 +2316,11 @@ O formato dos dados para criar uma nova compra é o seguinte:
 }
 ```
 
+**Criando um serializer para os itens da compra**
+
 Tendo definido o formato dos dados, vamos criar um novo `serializer`, que será usado para criar uma nova compra ou editar uma compra já existente.
 
-- No arquivo `serializer/compra.py` , inclua o seguinte código:
+- No arquivo `serializer/compra.py` , inclua o seguinte `serializer` no final do arquivo:
 
 ```python
 ...
@@ -2334,18 +2336,28 @@ class CriarEditarCompraSerializer(ModelSerializer):
 
 > O parâmetro `many=True` indica que o campo `itens` é uma lista de itens de compra.
 
-Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`.
+- Inclua também o `serializer` no arquivo `__init__.py` dos `serializers`:
+
+```python
+from .compra import CompraSerializer, CriarEditarCompraSerializer, ItensCompraSerializer
+```
+
+**Alterando o `viewset` de `Compra` para usar o novo `serializer`**
+
+Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`, nas operações de criação e edição.
 
 - No arquivo `views/compra.py` altere o `viewset` de `Compra` para usar o novo `serializer`:
 
 ```python
+...
+from core.serializers import CompraSerializer, CriarEditarCompraSerializer
 ...
 class CompraViewSet(ModelViewSet):
     queryset = Compra.objects.all()
     serializer_class = CompraSerializer
 
     def get_serializer_class(self):
-        if self.action == "create" or self.action == "update":
+        if self.action in ("create", "update"):
             return CriarEditarCompraSerializer
         return CompraSerializer
 ...
@@ -2383,7 +2395,9 @@ Escreva um método `.create()` explícito para o serializer `core.serializers.co
 
 O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
 
-- No arqiuvo `serializers/compra.py` , altere o `serializer` de `Compra` para suportar campos aninhados:
+**Alterando o método `create` do `serializer` de `Compra`**
+
+- No arquivo `serializers/compra.py` , altere o `serializer` de `Compra` para suportar campos aninhados:
 
 ```python
 ...
@@ -2407,7 +2421,7 @@ class CriarEditarCompraSerializer(ModelSerializer):
 
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
-- Precisamos criar também um novo `serializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código:
+- Precisamos criar também o novo `serializer` `CriarEditarItensCompraSerializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código, após o `ItensCompraSerializer`:
 
 ```python
 ...
@@ -2418,11 +2432,11 @@ class CriarEditarItensCompraSerializer(ModelSerializer):
 ...
 ```
 
-> O `serializer` de `ItensCompra` é bem simples, pois ele apenas recebe o livro e a quantidade.
-
+> O `serializer` de `ItensCompra` é bem simples, pois ele recebe apenas o livro e a quantidade.
 
 - Teste o endpoint no `ThunderClient.
-- Faça o _commit_ e _push_ das alterações.
+- Faça o commit com a mensagem `Criação de um endpoint para criar novas compras`.
+
 
 # 31. Criação de um endpoint para atualizar compras
 
