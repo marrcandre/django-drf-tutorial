@@ -1541,16 +1541,16 @@ No `Admin`, crie os seguintes usuários e grupos e dê as permissões necessári
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
--   Crie um grupo chamado `administradores`, com as seguintes as permissões:
+-   Crie um grupo chamado `Administradores`, com as seguintes as permissões:
     -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
--   Crie um grupo chamado `compradores`, com as seguintes permissões:
+-   Crie um grupo chamado `Compradores`, com as seguintes permissões:
     -   Visualizar: `autor`, `categoria` e `editora`.
     -   Adicionar, editar e visualizar: `livro`.
 
 **b. Criando usuários e adicionando aos grupos**
 
--   Crie um usuário `admin1@a.com` e o inclua no grupo `administradores`.
--   Crie um usuário `comprador1@a.com` e o inclua no grupo `compradores`.
+-   Crie um usuário `admin1@a.com` e o inclua no grupo `Administradores`.
+-   Crie um usuário `comprador1@a.com` e o inclua no grupo `Compradores`.
 
 # 17. Usando as permissões do DRF
 
@@ -2292,8 +2292,6 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 - Teste o endpoint no navegador.
 - Faça o _commit_ com a mensagem `Inclusão do total da compra na listagem de compras`.
 
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
 # 26. Criação de um endpoint para criar novas compras
 
 Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
@@ -2551,9 +2549,11 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 - Faça o _commit_ com a mensagem `Criação de uma compra a partir do usuário autenticado`.
 
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
 # 33. Filtrando apenas as compras do usuário autenticado
 
-Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar apenas as compras do usuário autenticado.
+Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar da seguinte forma: se o usuário for um usuário normal, ele só pode ver as suas compras. Se o usuário for um administrador, ele pode ver todas as compras.
 
 - No `views.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
 
@@ -2572,11 +2572,14 @@ class CompraViewSet(ModelViewSet):
 ...
 ```
 
-> O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado.
+> O método `get_queryset` é chamado quando uma compra é listada.
+
 > O `request` é o objeto que representa a requisição. O `request.user` é o usuário autenticado.
-> Se o usuário for superusuário ou for membro do grupo "*Administradores*", retorna todas as compras.
+
+> Se o usuário for um superusuário ou for membro do grupo "*Administradores*", retorna todas as compras. Caso contrário, retorna apenas as compras do usuário autenticado.
 
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
+- Faça o _commit_ com a mensagem `Filtrando apenas as compras do usuário autenticado`.
 
 # 34. Validando a quantidade de itens em estoque
 
