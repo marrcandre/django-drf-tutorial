@@ -2437,8 +2437,7 @@ class CriarEditarItensCompraSerializer(ModelSerializer):
 - Teste o endpoint no `ThunderClient.
 - Faça o commit com a mensagem `Criação de um endpoint para criar novas compras`.
 
-
-# 31. Criação de um endpoint para atualizar compras
+# 27. Criação de um endpoint para atualizar compras
 
 - Vamos tentar alterar uma compra existente no endpoint `compras/1/` (ou aquela que você preferir) no `ThunderClient`, utilizando o método `PUT`:
 
@@ -2472,7 +2471,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 > O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
 
-- No arquivo `serializers/compra.py`, altere o `serializer` de `Compra` para suportar campos aninhados:
+- No arquivo `serializers/compra.py`, redefina o método `update` do `serializer` de `CriarEditarCompraSerializer`:
 
 ```python
 ...
@@ -2483,7 +2482,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
             for item in itens:
                 ItensCompra.objects.create(compra=instance, **item)
         instance.save()
-        return instance
+        return super().update(instance, validated_data)
 ...
 ```
 
@@ -2493,7 +2492,9 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 > O método `update` remove todos os itens da compra (se houverem) e cria novos itens com os dados validados.
 
-> O método `update` salvamos a compra e retornamos a instância.
+> O método `update` salva a compra e retornamos a instância.
+
+> O comando `super().update(instance, validated_data)` chama o método `update` da classe pai, que é o método padrão de atualização.
 
 - Teste o endpoint no `ThunderClient`:
   - use o método `PUT`, para atualizar a compra de forma completa;
@@ -2501,7 +2502,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
     - Experimente mudar apenas o usuário;
     - Experimente mudar apenas a quantidade de um item da compra;
     - Experimente mudar o livro de um item da compra;
-- Faça o _commit_ e _push_ das alterações.
+- Faça o commit com a mensagem `Criação de um endpoint para atualizar compras`.
 
 # 32. Criação de uma compra a partir do usuário autenticado
 
