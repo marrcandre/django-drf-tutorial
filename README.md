@@ -2549,8 +2549,6 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 - Faça o _commit_ com a mensagem `Criação de uma compra a partir do usuário autenticado`.
 
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
 # 29. Filtrando apenas as compras do usuário autenticado
 
 Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar da seguinte forma: se o usuário for um usuário normal, ele só pode ver as suas compras. Se o usuário for um administrador, ele pode ver todas as compras.
@@ -2609,21 +2607,26 @@ from rest_framework.serializers import (
 - Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ com a mensagem `Validando a quantidade de itens em estoque`.
 
-# 35. Gravando o preço do livro no item da compra
+# 31. Gravando o preço do livro no item da compra
 
 Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
 
-- Primeiro, precisamos incluir o campo `preco_item` no model `ItensCompra`:
+
+**Inclui o campo `preco` na entidade `ItensCompra`**
+
+- Primeiro, precisamos incluir o campo `preco` na entidade `ItensCompra`, em `models/compra.py`:
 
 ```python
 ...
 class ItensCompra(models.Model):
 ...
-    preco_item = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    preco = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 ...
 ```
 
 - Execute as migrações.
+
+**Gravando o preço do livro na criação do item da compra**
 
 - No `serializers/compra.py`, vamos alterar a função `create` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
 
@@ -2633,7 +2636,7 @@ class ItensCompra(models.Model):
         itens = validated_data.pop("itens")
         compra = Compra.objects.create(**validated_data)
         for item in itens:
-            item["preco_item"] = item["livro"].preco # Coloca o preço do livro no item de compra
+            item["preco"] = item["livro"].preco # nova linha
             ItensCompra.objects.create(compra=compra, **item)
         compra.save()
         return compra
@@ -2642,20 +2645,23 @@ class ItensCompra(models.Model):
 
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
-- Para finalizar, precisamos alterar o campo total da compra para considerar o preço do item da compra:
+**Alterando o campo total da compra para considerar o preço do item da compra**
+
+- Para finalizar, precisamos alterar o campo total da compra para considerar o preço do item da compra, e não o preço do livro. No `models/compra.py`, altere o método `total` da `model` `Compra`:
 
 ```python
 ...
     @property
     def total(self):
-        return sum(item.preco_item * item.quantidade for item in self.itens.all())
+        return sum(item.preco * item.quantidade for item in self.itens.all())
 ...
 ```
 
-> Estamos utilizando o campo `preco_item` para calcular o total da compra, ao invés do campo `livro.preco`.
+> Estamos utilizando o campo `preco` para calcular o total da compra, ao invés do campo `livro.preco`.
 
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
-- Faça o _commit_ e _push_ das alterações.
+
+**Gravando o preço do livro na atualização do item da compra**
 
 Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
 
@@ -2666,15 +2672,18 @@ Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarC
         if itens:
             instance.itens.all().delete()
             for item in itens:
-                item["preco_item"] = item["livro"].preco # Coloca o preço do livro no item de compra
+                item["preco"] = item["livro"].preco # nova linha
                 ItensCompra.objects.create(compra=instance, **item)
         instance.save()
-        return instance
+        return super().update(instance, validated_data)
 ...
 ```
 
 - Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
-- Faça o _commit_ e _push_ das alterações.
+- Faça o _commit_ com a mensagem `Gravando o preço do livro no item da compra`.
+
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
 
 
 # 36. Filtrando os livros
@@ -2911,7 +2920,7 @@ REST_FRAMEWORK = {
                     "id": 1,
                     "livro": 1,
                     "quantidade": 1,
-                    "preco_item": "100.00",
+                    "preco": "100.00",
                     "total": "100.00"
                 }
             ]
@@ -2927,7 +2936,7 @@ REST_FRAMEWORK = {
                     "id": 2,
                     "livro": 1,
                     "quantidade": 1,
-                    "preco_item": "100.00",
+                    "preco": "100.00",
                     "total": "100.00"
                 }
             ]
