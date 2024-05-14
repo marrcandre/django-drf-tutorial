@@ -2625,6 +2625,7 @@ class ItensCompra(models.Model):
 ```
 
 - Execute as migrações.
+- Lembre-se de migrar também o banco de dados publicado, caso você esteja utilizando.
 
 **Gravando o preço do livro na criação do item da compra**
 
@@ -2681,155 +2682,6 @@ Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarC
 
 - Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ com a mensagem `Gravando o preço do livro no item da compra`.
-
-
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
-
-# 36. Filtrando os livros
-
-
-Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
-
-## Filtrando os livros por categoria
-
-Vamos começar filtrando os livros por categoria. Para isso, utilizaremos o pacote [`django-filter`](https://django-filter.readthedocs.io/en/stable/):
-
-- Instale o pacote `django-filter`:
-
-```shell
-pdm add django-filter
-```
-
-- No `settings.py`, inclua o `django-filter` no `INSTALLED_APPS`:
-
-```python
-...
-INSTALLED_APPS = [
-    ...
-    "django_filters",
-    ...
-]
-...
-```
-
-- No `views/livro.py`, vamos alterar o `viewset` de `Livro` para filtrar os livros por categoria:
-
-```python
-...
-from django_filters.rest_framework import DjangoFilterBackend
-...
-class LivroViewSet(viewsets.ModelViewSet):
-    queryset = Livro.objects.all()
-    serializer_class = LivroSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["categoria__descricao"]
-...
-```
-
-> O `DjangoFilterBackend` é o filtro do `django-filter`.
-> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria`.
-
-- Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
-- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=Python`. Você verá que apenas os livros da categoria informada foram listados.
-- Faça o _commit_ e _push_ das alterações.
-
-## Acrescentando outros filtros na listagem de livros
-
-Vamos acrescentar outros filtros na listagem de livros.
-
-- No `views/livro.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria` e `editora`:
-
-```python
-...
-    filterset_fields = ["categoria__descricao", "editora__nome"]
-...
-```
-
-- Para filtrar por categoria e editora:
-  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python&editora__nome=Novatec
-  - http://127.0.0.1:8000/api/livros/?autores=3&categoria=4&editora=1
-- Para filtrar apenas por editora:
-  - http://127.0.0.1:8000/api/livros/?editora__nome=Novatec
-
-**Exercício**
-
-- Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
-
-# 37. Busca textual nos livros
-
-A busca textual serve para adicionar a funcionalidade de realizar buscas dentro de determinados valores de texto armazenados na base de dados.
-
-Contudo a busca só funciona para campos de texto, como `CharField` e `TextField`.
-
-- Para utilizar a busca textual nos livros, devemos promover duas alterações em nossa `ViewSet`:
-- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `SearchFilter` que irá processar a busca; e
-- Adicionar o atributo `search_fields`, contendo os campos que permitirão a busca.
-
-- A `LivroViewSet` ficará assim:
-
-```python
-...
-from rest_framework.filters import SearchFilter
-...
-
-class LivroViewSet(viewsets.ModelViewSet):
-...
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["categoria__descricao", "editora__nome"]
-    search_fields = ["titulo"]
-...
-```
-
-- Para pesquisar por um livro, basta adicionar o parâmetro `search` na URL, com o valor a ser pesquisado. Por exemplo, para pesquisar por livros que contenham a palavra `python` no título, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?search=python
-
-- Faça o _commit_ e _push_ das alterações.
-
-**Exercício**
-
-- Acrescente a busca textual nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
-
-# 38. Ordenação dos livros
-
-A ordenação serve para adicionar a funcionalidade de ordenar os resultados de uma consulta.
-
-- Para utilizar a ordenação nos livros, devemos promover três alterações em nossa `ViewSet`:
-- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `OrderingFilter` que irá processar a ordenação; e
-- Adicionar o atributo `ordering_fields`, contendo os campos que permitirão a ordenação.
-- Adicionar o atributo `ordering` com o campo que será utilizado como padrão para ordenação.
-- A `LivroViewSet` ficará assim:
-
-```python
-...
-from rest_framework.filters import SearchFilter, OrderingFilter
-...
-
-class LivroViewSet(viewsets.ModelViewSet):
-...
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ["categoria__descricao", "editora__nome"]
-    search_fields = ["titulo"]
-    ordering_fields = ["titulo", "preco"]
-    ordering = ["titulo"]
-...
-```
-
-- Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado. Por exemplo, para ordenar os livros pelo título, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?ordering=titulo
-- Pode-se ainda juntar a ordenação com a busca textual. Por exemplo, para ordenar os livros pelo título e que contenham a palavra `python` no título, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?ordering=titulo&search=python
-- Para utilizar os filtros e a ordenação, basta adicionar os parâmetros na URL, com os valores desejados. Por exemplo, para ordenar os livros pelo título de uma determinada categoria e editora, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?categoria=1&editora=1&ordering=titulo
-  - É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
-    - http://127.0.0.1:8000/api/livros/?categoria=20&editora=18&ordering=titulo&search=python
-
-- Faça o _commit_ e _push_ das alterações.
-
-**Exercício**
-
-- Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
-
 
 # 39. Acrescentando a data da compra
 
@@ -3096,6 +2948,135 @@ class Compra(models.Model):
   - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
 
 - Faça o _commit_ com a mensagem `Finalizando a compra e atualizando a quantidade de itens em estoque`.
+
+# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
+
+
+# 36. Utilizando filtros
+
+Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
+
+**Filtrando os livros por categoria**
+
+Vamos começar filtrando os livros por categoria.
+
+- No `views/livro.py`, vamos alterar o `viewset` de `Livro` para filtrar os livros por categoria:
+
+```python
+...
+from django_filters.rest_framework import DjangoFilterBackend
+...
+class LivroViewSet(viewsets.ModelViewSet):
+    queryset = Livro.objects.all()
+    serializer_class = LivroSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["categoria__descricao"]
+...
+```
+
+> O `DjangoFilterBackend` é o filtro do `django-filter`.
+
+> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria`.
+
+- Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
+- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=Python`. Você verá que apenas os livros da categoria informada foram listados.
+- Faça o _commit_ e _push_ das alterações.
+
+**Acrescentando outros filtros na listagem de livros**
+
+Vamos acrescentar outros filtros na listagem de livros.
+
+- No `views/livro.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria` e `editora`:
+
+```python
+...
+    filterset_fields = ["categoria__descricao", "editora__nome"]
+...
+```
+
+- Para filtrar por categoria e editora:
+  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python&editora__nome=Novatec
+  - http://127.0.0.1:8000/api/livros/?autores=3&categoria=4&editora=1
+- Para filtrar apenas por editora:
+  - http://127.0.0.1:8000/api/livros/?editora__nome=Novatec
+
+**Exercício**
+
+- Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
+
+# 37. Busca textual
+
+A busca textual serve para adicionar a funcionalidade de realizar buscas dentro de determinados valores de texto armazenados na base de dados.
+
+Contudo a busca só funciona para campos de texto, como `CharField` e `TextField`.
+
+- Para utilizar a busca textual nos livros, devemos promover duas alterações em nossa `ViewSet`:
+- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `SearchFilter` que irá processar a busca; e
+- Adicionar o atributo `search_fields`, contendo os campos que permitirão a busca.
+
+- A `LivroViewSet` ficará assim:
+
+```python
+...
+from rest_framework.filters import SearchFilter
+...
+
+class LivroViewSet(viewsets.ModelViewSet):
+...
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ["categoria__descricao", "editora__nome"]
+    search_fields = ["titulo"]
+...
+```
+
+- Para pesquisar por um livro, basta adicionar o parâmetro `search` na URL, com o valor a ser pesquisado. Por exemplo, para pesquisar por livros que contenham a palavra `python` no título, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?search=python
+
+- Faça o _commit_ e _push_ das alterações.
+
+**Exercício**
+
+- Acrescente a busca textual nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
+
+# 38. Ordenação dos resultados
+
+A ordenação serve para adicionar a funcionalidade de ordenar os resultados de uma consulta.
+
+- Para utilizar a ordenação nos livros, devemos promover três alterações em nossa `ViewSet`:
+- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `OrderingFilter` que irá processar a ordenação; e
+- Adicionar o atributo `ordering_fields`, contendo os campos que permitirão a ordenação.
+- Adicionar o atributo `ordering` com o campo que será utilizado como padrão para ordenação.
+- A `LivroViewSet` ficará assim:
+
+```python
+...
+from rest_framework.filters import SearchFilter, OrderingFilter
+...
+
+class LivroViewSet(viewsets.ModelViewSet):
+...
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ["categoria__descricao", "editora__nome"]
+    search_fields = ["titulo"]
+    ordering_fields = ["titulo", "preco"]
+    ordering = ["titulo"]
+...
+```
+
+- Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado. Por exemplo, para ordenar os livros pelo título, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?ordering=titulo
+- Pode-se ainda juntar a ordenação com a busca textual. Por exemplo, para ordenar os livros pelo título e que contenham a palavra `python` no título, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?ordering=titulo&search=python
+- Para utilizar os filtros e a ordenação, basta adicionar os parâmetros na URL, com os valores desejados. Por exemplo, para ordenar os livros pelo título de uma determinada categoria e editora, a URL ficaria assim:
+  - http://127.0.0.1:8000/api/livros/?categoria=1&editora=1&ordering=titulo
+  - É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
+    - http://127.0.0.1:8000/api/livros/?categoria=20&editora=18&ordering=titulo&search=python
+
+- Faça o _commit_ e _push_ das alterações.
+
+**Exercício**
+
+- Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
 
 
