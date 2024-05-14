@@ -2683,58 +2683,66 @@ Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarC
 - Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ com a mensagem `Gravando o preço do livro no item da compra`.
 
-# 39. Acrescentando a data da compra
+# 32. Acrescentando a data da compra
 
-Nesse momento, não temos a data da compra. Vamos incluir a data da compra, utilizando a data e hora atual no momento da criação da compra.
+No momento, não existe nenhum registro da data da compra. Vamos incluir a data da compra, que será definida automaticamente no momento da criação da compra.
 
-- No `models.py`, vamos incluir o campo `data` no model `Compra`:
+- Vamos incluir o campo `data` na entidade `Compra`, em `models/compra.py`:
 
 ```python
 ...
 class Compra(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.PROTECT)
-    status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.ABERTA)
-    data = models.DateTimeField(auto_now_add=True)
+...
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name="compras")
+    status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.CARRINHO)
+    data = models.DateTimeField(auto_now_add=True) # campo novo
 ...
 ```
 
-> O campo `data` é um campo do tipo `DateTimeField`, que armazena a data e a hora da compra. O parâmetro `auto_now_add=True` indica que o campo será preenchido automaticamente com a data e hora atual, quando a compra for criada.
+> O campo `data` é um campo do tipo `DateTimeField`, que armazena a data e a hora da compra.
+
+> O parâmetro `auto_now_add=True` indica que o campo será preenchido automaticamente com a data e hora atual, quando a compra for criada.
 
 - Execute as migrações.
-- Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
-- Faça o _commit_ e _push_ das alterações.
+
+Vocẽ receberá um erro na migration, pois o campo `data` não pode ser nulo.
+
+- Escolha a opção 2, que é a opção de preencher o campo com a data atual (`timezone.now`).
+
+- Execute as migrações no banco de dados publicado, caso você esteja utilizando.
 
 **Modificando o serializer de compra para mostrar a data da compra**
+
+Para que a data da compra seja mostrada no endpoint, precisamos modificar o `serializer` de `Compra` para incluir o campo `data`.
 
 - No `serializers/compra.py`, vamos incluir o campo `data` no `serializer` de `Compra`:
 
 ```python
+from rest_framework.serializers import (
+    CharField,
+    CurrentUserDefault,
+    DateTimeField, # novo
+    HiddenField,
+    ModelSerializer,
+    SerializerMethodField,
+    ValidationError,
+)
 ...
 class ComprasSerializer(ModelSerializer):
-    itens = ItensCompraSerializer(many=True)
-    usuario = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    data = serializers.DateTimeField(read_only=True)
+    usuario = CharField(source="usuario.email", read_only=True)
+    status = CharField(source="get_status_display", read_only=True)
+    data = serializers.DateTimeField(read_only=True) # novo campo
+    itens = ItensCompraSerializer(many=True, read_only=True)
 
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "status", "total", "data", "itens")
+        fields = ("id", "usuario", "status", "total", "data", "itens") # modificado
 ...
 ```
 
-**Acrescentando filtro e ordenação por data**
+- Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
+- Faça o _commit_ com a mensagem `Acrescentando a data da compra`.
 
-- No `views/compra.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Compra` para filtrar as compras por `data`.
-- Vamos também alterar o atributo `ordering_fields`, na `viewset` de `Compra` para ordenar as compras por `data`.
-
-```python
-...
-    filterset_fields = ["usuario", "status", "data"]
-    ordering_fields = ["usuario", "status", "data"]
-...
-```
-
-- Para ordenar por data, em ordem descrente:
-  - http://127.0.0.1:8000/api/compras/?ordering=-data
 
 # 40. Adicionando paginação à API
 
@@ -3071,6 +3079,22 @@ class LivroViewSet(viewsets.ModelViewSet):
   - http://127.0.0.1:8000/api/livros/?categoria=1&editora=1&ordering=titulo
   - É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
     - http://127.0.0.1:8000/api/livros/?categoria=20&editora=18&ordering=titulo&search=python
+
+**Acrescentando filtro e ordenação por data**
+
+- No `views/compra.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Compra` para filtrar as compras por `data`.
+- Vamos também alterar o atributo `ordering_fields`, na `viewset` de `Compra` para ordenar as compras por `data`.
+
+```python
+...
+    filterset_fields = ["usuario", "status", "data"]
+    ordering_fields = ["usuario", "status", "data"]
+...
+```
+
+- Para ordenar por data, em ordem descrente:
+  - http://127.0.0.1:8000/api/compras/?ordering=-data
+
 
 - Faça o _commit_ e _push_ das alterações.
 
