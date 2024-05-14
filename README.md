@@ -2603,75 +2603,6 @@ Nesse momento, é possível criar uma compra com uma quantidade de itens maior d
 - Faça o _commit_ com a mensagem `Validando a quantidade de itens em estoque`.
 
 
-# 31. Finalizando a compra e atualizando a quantidade de itens em estoque
-
-Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
-
-- No `models/compra.py`, vamos criar um método `finalizar` na model `Compra`:
-
-```python
-from django.db import transaction
-
-from rest_framework import status
-from rest_framework.decorators import action
-from rest_framework.response import Response
-...
-class Compra(models.Model):
-...
-    @action(detail=True, methods=["post"])
-    def finalizar(self, request, pk=None):
-        compra = self.get_object()
-        if compra.status != Compra.StatusCompra.CARRINHO:
-            return Response(
-                status=status.HTTP_400_BAD_REQUEST,
-                data={"status": "Compra já finalizada"},
-            )
-        with transaction.atomic():
-            for item in compra.itens.all():
-                if item.quantidade > item.livro.quantidade:
-                    return Response(
-                        status=status.HTTP_400_BAD_REQUEST,
-                        data={
-                            "status": "Quantidade insuficiente",
-                            "livro": item.livro.titulo,
-                        },
-                    )
-                item.livro.quantidade -= item.quantidade
-                item.livro.save()
-            compra.status = Compra.StatusCompra.REALIZADO
-            compra.save()
-        return Response(status=status.HTTP_200_OK, data={"status": "Compra finalizada"})
-
-```
-
-> O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `compras/api/<id>/finalizar/`.
-
-> O método `finalizar` é um método de ação que finaliza a compra. Ele recebe a compra que está sendo finalizada.
-
-> Se a compra já foi finalizada, retorna um erro.
-
-> Se a quantidade de itens em estoque for menor do que a quantidade de itens comprados, retorna um erro.
-
-> Se a quantidade de itens em estoque for maior ou igual à quantidade de itens comprados, atualiza a quantidade de itens em estoque e finaliza a compra.
-
-> O comando `with transaction.atomic()` garante que todas as operações dentro do bloco `with` sejam executadas ou nenhuma seja executada.
-
-> O método `save` é chamado para salvar a compra e o livro.
-
-> O método `Response` retorna uma resposta HTTP.
-
-> O status `HTTP_200_OK` indica que a requisição foi bem sucedida.
-
-> O status `HTTP_400_BAD_REQUEST` indica que a requisição não foi bem sucedida.
-
-- Para testar:
-  - Tente finalizar uma compra que não foi finalizada.
-  - Tente finalizar uma compra que já foi finalizada.
-  - Tente finalizar uma compra com quantidade de itens maior do que a quantidade em estoque.
-  - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
-
-- Faça o _commit_ com a mensagem `Finalizando a compra e atualizando a quantidade de itens em estoque`.
-
 
 # 35. Gravando o preço do livro no item da compra
 
@@ -3082,6 +3013,79 @@ class CompraViewSet(ModelViewSet):
 
 - Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ e _push_ das alterações.
+
+# 31. Finalizando a compra e atualizando a quantidade de itens em estoque
+
+Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
+
+- No `models/compra.py`, vamos criar um método `finalizar` na model `Compra`:
+
+```python
+from django.db import transaction
+
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+...
+class Compra(models.Model):
+...
+    @action(detail=True, methods=["post"])
+    def finalizar(self, request, pk=None):
+        compra = self.get_object()
+        if compra.status != Compra.StatusCompra.CARRINHO:
+            return Response(
+                status=status.HTTP_400_BAD_REQUEST,
+                data={"status": "Compra já finalizada"},
+            )
+        with transaction.atomic():
+            for item in compra.itens.all():
+                if item.quantidade > item.livro.quantidade:
+                    return Response(
+                        status=status.HTTP_400_BAD_REQUEST,
+                        data={
+                            "status": "Quantidade insuficiente",
+                            "livro": item.livro.titulo,
+                        },
+                    )
+                item.livro.quantidade -= item.quantidade
+                item.livro.save()
+            compra.status = Compra.StatusCompra.REALIZADO
+            compra.save()
+        return Response(status=status.HTTP_200_OK, data={"status": "Compra finalizada"})
+
+```
+
+> O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `compras/api/<id>/finalizar/`.
+
+> O método `finalizar` é um método de ação que finaliza a compra. Ele recebe a compra que está sendo finalizada.
+
+> Se a compra já foi finalizada, retorna um erro.
+
+> Se a quantidade de itens em estoque for menor do que a quantidade de itens comprados, retorna um erro.
+
+> Se a quantidade de itens em estoque for maior ou igual à quantidade de itens comprados, atualiza a quantidade de itens em estoque e finaliza a compra.
+
+> O comando `with transaction.atomic()` garante que todas as operações dentro do bloco `with` sejam executadas ou nenhuma seja executada.
+
+> O método `save` é chamado para salvar a compra e o livro.
+
+> O método `Response` retorna uma resposta HTTP.
+
+> O status `HTTP_200_OK` indica que a requisição foi bem sucedida.
+
+> O status `HTTP_400_BAD_REQUEST` indica que a requisição não foi bem sucedida.
+
+- Para testar:
+  - Tente finalizar uma compra que não foi finalizada.
+  - Tente finalizar uma compra que já foi finalizada.
+  - Tente finalizar uma compra com quantidade de itens maior do que a quantidade em estoque.
+  - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
+
+- Faça o _commit_ com a mensagem `Finalizando a compra e atualizando a quantidade de itens em estoque`.
+
+
+
+
 
 ---
 
