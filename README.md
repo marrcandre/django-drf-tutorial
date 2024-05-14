@@ -2585,24 +2585,29 @@ class CompraViewSet(ModelViewSet):
 
 Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
 
-- No `serializers/compra.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque:
+- No `serializers/compra.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade de itens em estoque, de forma a não permitir que a quantidade de itens solicitada seja maior do que a quantidade em estoque:
 
 ```python
 ...
+from rest_framework.serializers import (
+    CharField,
+    CurrentUserDefault,
+    HiddenField,
+    ModelSerializer,
+    SerializerMethodField,
+    ValidationError, # novo
+)
+...
     def validate(self, data):
         if data["quantidade"] > data["livro"].quantidade:
-            raise serializers.ValidationError(
-                {"quantidade": "Quantidade solicitada não disponível em estoque."}
-            )
+            raise ValidationError("Quantidade de itens maior do que a quantidade em estoque.")
         return data
 ...
 ```
-
+> O método `validate` é chamado quando os dados são validados. Ele recebe os dados e retorna os dados validados.
 
 - Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ com a mensagem `Validando a quantidade de itens em estoque`.
-
-
 
 # 35. Gravando o preço do livro no item da compra
 
@@ -3014,7 +3019,7 @@ class CompraViewSet(ModelViewSet):
 - Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ e _push_ das alterações.
 
-# 31. Finalizando a compra e atualizando a quantidade de itens em estoque
+# 43. Finalizando a compra e atualizando a quantidade de itens em estoque
 
 Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
 
