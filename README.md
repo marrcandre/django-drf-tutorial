@@ -2743,9 +2743,9 @@ class ComprasSerializer(ModelSerializer):
 - Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
 - Faça o _commit_ com a mensagem `Acrescentando a data da compra`.
 
-# 41. Adicionando tipo de pagamento à model de Compra
+# 33. Adicionando tipo de pagamento à entidade de Compra
 
-Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto` ou `outros`.
+Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto`, `transferência bancária`, `dinheiro` ou `outro`.
 
 - No `models\compra.py`, vamos incluir o campo `tipo_pagamento` no model `Compra`:
 
@@ -2769,7 +2769,7 @@ class Compra(models.Model):
 
 - Execute as migrações.
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
-- Faça o _commit_ e _push_ das alterações.
+- Faça o _commit_ com a mensagem `Adicionando tipo de pagamento à entidade de Compra`.
 
 # 34. Adicionando o tipo de usuário à model de Usuário
 
