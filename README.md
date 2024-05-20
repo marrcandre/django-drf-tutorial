@@ -2771,16 +2771,15 @@ class Compra(models.Model):
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
 - Faça o _commit_ e _push_ das alterações.
 
-# 42. Adicionando o tipo de usuário à model de Usuário
+# 34. Adicionando o tipo de usuário à model de Usuário
 
-Uma forma de diferenciar os usuários é através do tipo de usuário. Vamos adicionar o tipo de usuário à model de usuário.
-Outra abordagem possível é utilizar o `Group` do Django.
+Inicialmente, utilizamos os grupos do Django para diferenciar os usuários. Uma outra forma de diferenciar os usuários é através de um campo tipo de usuário. Vamos adicionar o tipo de usuário na entidade  **Usuario**.
 
-- No `models\usuario.py`, vamos incluir o campo `tipo_usuario` no model `Usuario`:
+- Em `models/user.py`, vamos incluir o campo `tipo_usuario` na entidade `User`:
 
 ```python
 ...
-class Usuario(AbstractUser):
+class User(AbstractBaseUser, PermissionsMixin):
     class TipoUsuario(models.IntegerChoices):
         CLIENTE = 1, "Cliente"
         VENDEDOR = 2, "Vendedor"
@@ -2794,6 +2793,27 @@ class Usuario(AbstractUser):
 
 - Execute as migrações.
 - Para testar, crie um novo usuário e verifique que o tipo de usuário foi gravado.
+
+**Adicionando o campo ao Admin**
+
+Vamos adicionar o campo `tipo_usuario` ao Admin.
+
+- Em `admin/user.py`, vamos incluir o campo `tipo_usuario` no `UserAdmin`:
+
+```python
+...
+class UserAdmin(BaseUserAdmin):
+    fieldsets = (
+...
+        (_("Personal Info"), {"fields": ("name", "foto", "tipo_usuario")}),
+    )
+...
+```
+
+> O campo `tipo_usuario` foi incluído no campo `Personal info`.
+
+
+**Utilizando o tipo de usuário**
 
 Uma forma de utilizar o tipo de usuário é verificando se o usuário é `GERENTE` e então permitir que ele tenha acesso a todas as compras. Vamos ver como fazer isso.
 
@@ -2815,7 +2835,7 @@ class CompraViewSet(ModelViewSet):
 > O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado, exceto se o usuário for `GERENTE`, que retorna todas as compras.
 
 - Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
-- Faça o _commit_ e _push_ das alterações.
+- Faça o _commit_ com a mensagem `Adicionando o tipo de usuário à model de Usuário`.
 
 # 43. Finalizando a compra e atualizando a quantidade de itens em estoque
 
