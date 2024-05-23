@@ -2938,7 +2938,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 > O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria__descricao`.
 
 - Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
-- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria__descricao=Python`. Você verá que apenas os livros da categoria informada foram listados.
+- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://0.0.0.0:19003/api/livros/?categoria__descricao=Python`. Você verá que apenas os livros da categoria informada foram listados.
 
 **Acrescentando outros filtros na listagem de livros**
 
@@ -2957,11 +2957,11 @@ Vamos acrescentar outros filtros na listagem de livros.
 > Da mesma forma, por outros campos.
 
 - Para filtrar por categoria e editora:
-  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python&editora__nome=Novatec
+  - http://0.0.0.0:19003/api/livros/?categoria__descricao=Python&editora__nome=Novatec
 - Para filtrar apenas por editora:
-  - http://127.0.0.1:8000/api/livros/?editora__nome=Novatec
+  - http://0.0.0.0:19003/api/livros/?editora__nome=Novatec
 - Para filtrar apenas por categoria:
-  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python
+  - http://0.0.0.0:19003/api/livros/?categoria__descricao=Python
 
 **Exercício**
 
@@ -2995,7 +2995,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 ```
 
 - Para pesquisar por um livro, basta adicionar o parâmetro `search` na URL, com o valor a ser pesquisado. Por exemplo, para pesquisar por livros que contenham a palavra `python` no título, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?search=python
+  - http://0.0.0.0:19003/api/livros/?search=python
 
 
 **Exercício**
@@ -3005,6 +3005,10 @@ class LivroViewSet(viewsets.ModelViewSet):
 - Faça o _commit_ com a mensagem `Adicionando busca textual`.
 
 # 38. Ordenação dos resultados
+
+Toda `viewset` possui um atributo chamado `ordering_fields`, que é uma lista de campos que podem ser utilizados para ordenar os resultados. Além disso, o atributo `ordering` é utilizado para definir o campo padrão de ordenação. Se você ainda quiser permitir a ordenação reversa, basta adicionar um sinal de menos (-) na frente do campo.
+
+Independentemente dessa ordenação padrão, o usuário pode ordenar os resultados de acordo com o campo desejado, passando o nome do campo como parâmetro na URL.
 
 A ordenação serve para adicionar a funcionalidade de ordenar os resultados de uma consulta.
 
@@ -3029,16 +3033,27 @@ class LivroViewSet(viewsets.ModelViewSet):
 ...
 ```
 
-- Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado. Por exemplo, para ordenar os livros pelo título, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?ordering=titulo
+- Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado.
+- Se você não coloca o parâmetro `ordering`, a ordenação será feita pelo campo definido no atributo `ordering`, nesse caso, `titulo`:
+  - http://0.0.0.0:19003/api/livros/
+- Compare com esse exemplo, e perceba que a saída é a mesma:
+  - http://0.0.0.0:19003/api/livros/?ordering=titulo
+- Para mostrar na ordem reversa, basta adicionar um sinal de menos (-) na frente do campo:
+  - http://0.0.0.0:19003/api/livros/?ordering=-titulo
+- Ou mostrar os livros ordenando pelo preço:
+  - http://0.0.0.0:19003/api/livros/?ordering=preco
 - Pode-se ainda juntar a ordenação com a busca textual. Por exemplo, para ordenar os livros pelo título e que contenham a palavra `python` no título, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?ordering=titulo&search=python
+  - http://0.0.0.0:19003/api/livros/?ordering=titulo&search=python
 - Para utilizar os filtros e a ordenação, basta adicionar os parâmetros na URL, com os valores desejados. Por exemplo, para ordenar os livros pelo título de uma determinada categoria e editora, a URL ficaria assim:
-  - http://127.0.0.1:8000/api/livros/?categoria=1&editora=1&ordering=titulo
-  - É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
-    - http://127.0.0.1:8000/api/livros/?categoria=20&editora=18&ordering=titulo&search=python
+  - http://0.0.0.0:19003/api/livros/?categoria__descricao=Python&editora_nome=Novatec&ordering=titulo
+- É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
+    - http://0.0.0.0:19003/api/livros/?categoria_descricao=Python&editora_nome=Novatec&ordering=titulo&search=python
+
+Esses são apenas alguns exemplos de como utilizar os filtros, a pesquisa textual e a ordenação. Você pode combinar esses recursos da forma que desejar.
 
 **Acrescentando filtro e ordenação por data**
+
+Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 
 - No `views/compra.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Compra` para filtrar as compras por `data`.
 - Vamos também alterar o atributo `ordering_fields`, na `viewset` de `Compra` para ordenar as compras por `data`.
@@ -3050,19 +3065,14 @@ class LivroViewSet(viewsets.ModelViewSet):
 ...
 ```
 
+
 - Para ordenar por data, em ordem descrente:
-  - http://127.0.0.1:8000/api/compras/?ordering=-data
-
-
-- Faça o _commit_ e _push_ das alterações.
+  - http://0.0.0.0:19003/api/compras/?ordering=-data
 
 **Exercício**
 
 - Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
-
-
-
-
+- Faça o _commit_ com a mensagem `Adicionando ordenação`.
 
 ---
 
