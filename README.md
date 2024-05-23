@@ -2913,6 +2913,8 @@ class Compra(models.Model):
 
 Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
 
+Para isso, vamos utilizar o pacote `django-filter`, que nos permite filtrar os resultados de uma consulta. Ele já está instalado no projeto.
+
 **Filtrando os livros por categoria**
 
 Vamos começar filtrando os livros por categoria.
@@ -2973,7 +2975,7 @@ A busca textual serve para adicionar a funcionalidade de realizar buscas dentro 
 
 Contudo a busca só funciona para campos de texto, como `CharField` e `TextField`.
 
-- Para utilizar a busca textual nos livros, devemos promover duas alterações em nossa `ViewSet`:
+- Para utilizar a busca textual nos livros, devemos promover duas alterações em nossa `viewset`:
 - Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `SearchFilter` que irá processar a busca; e
 - Adicionar o atributo `search_fields`, contendo os campos que permitirão a busca.
 
@@ -2995,11 +2997,12 @@ class LivroViewSet(viewsets.ModelViewSet):
 - Para pesquisar por um livro, basta adicionar o parâmetro `search` na URL, com o valor a ser pesquisado. Por exemplo, para pesquisar por livros que contenham a palavra `python` no título, a URL ficaria assim:
   - http://127.0.0.1:8000/api/livros/?search=python
 
-- Faça o _commit_ e _push_ das alterações.
 
 **Exercício**
 
 - Acrescente a busca textual nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
+
+- Faça o _commit_ com a mensagem `Adicionando busca textual`.
 
 # 38. Ordenação dos resultados
 
