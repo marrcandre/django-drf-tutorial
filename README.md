@@ -2837,7 +2837,7 @@ class CompraViewSet(ModelViewSet):
 - Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ com a mensagem `Adicionando o tipo de usuário à model de Usuário`.
 
-# 43. Finalizando a compra e atualizando a quantidade de itens em estoque
+# 35. Finalizando a compra e atualizando a quantidade de itens em estoque
 
 Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
 
@@ -2933,17 +2933,16 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 > O `DjangoFilterBackend` é o filtro do `django-filter`.
 
-> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria`.
+> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria__descricao`.
 
 - Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
-- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria=Python`. Você verá que apenas os livros da categoria informada foram listados.
-- Faça o _commit_ e _push_ das alterações.
+- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://127.0.0.1:8000/api/livros/?categoria__descricao=Python`. Você verá que apenas os livros da categoria informada foram listados.
 
 **Acrescentando outros filtros na listagem de livros**
 
 Vamos acrescentar outros filtros na listagem de livros.
 
-- No `views/livro.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria` e `editora`:
+- No `views/livro.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria__descricao` e `editora__nome`:
 
 ```python
 ...
@@ -2951,15 +2950,22 @@ Vamos acrescentar outros filtros na listagem de livros.
 ...
 ```
 
+> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando pelos campos `categoria__descricao` e `editora__nome`.
+
+> Da mesma forma, por outros campos.
+
 - Para filtrar por categoria e editora:
   - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python&editora__nome=Novatec
-  - http://127.0.0.1:8000/api/livros/?autores=3&categoria=4&editora=1
 - Para filtrar apenas por editora:
   - http://127.0.0.1:8000/api/livros/?editora__nome=Novatec
+- Para filtrar apenas por categoria:
+  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python
 
 **Exercício**
 
-- Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
+- Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora`, `Livro` e `Compra`.
+
+- Faça o _commit_ com a mensagem `Utilizando filtros`.
 
 # 37. Busca textual
 
