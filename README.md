@@ -3060,11 +3060,13 @@ Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 
 ```python
 ...
-    filterset_fields = ["usuario", "status", "data"]
-    ordering_fields = ["usuario", "status", "data"]
+    filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
+    filterset_fields = ["usuario__email", "status", "data"]
+    search_fields = ["usuario__email"]
+    ordering_fields = ["usuario__email", "status", "data"]
+    ordering = ["-data"]
 ...
 ```
-
 
 - Para ordenar por data, em ordem descrente:
   - http://0.0.0.0:19003/api/compras/?ordering=-data
@@ -3162,7 +3164,8 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
 
 Eu recomendo as seguintes:
 
--   [Black Formatter(Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+-   [Black Formatter (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+-   [DotENV (Suporte a arquivos `.env`) ](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 -   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 -   [Even Better TOML (Melhorias na edição de arquivos TOML)](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)
 -   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
@@ -3176,7 +3179,9 @@ Eu recomendo as seguintes:
 -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
 -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
 -   [TODO Highlight (Realce de TODOs)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
--   [Vue Language Features (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+-   [vscode-icons (Ícones para o VS Code)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+-   [Vue - Official (Desenvolvimento de aplicações Vue.js)](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+-   [Vue 3 Support - All in One (Suporte ao Vue 3)](https://marketplace.visualstudio.com/items?itemName=znck.vue3)
 
 **Extensão Vue.js devtools no Google Chrome**
 
@@ -3254,8 +3259,93 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
+# A4. Publicando o projeto no Seenode
 
-# A4. Criação do Banco de Dados no Supabase
+O **Seenode** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o [tutorial oficial](hhttps://docs.seenode.com/docs).
+
+## **Criando um Banco de Dados no Seenode**
+
+Para criar o banco de dados no **Seenode**, siga as instruções a seguir, ou leia a [documentação oficial](https://docs.seenode.com/docs/getting-started/create-database):
+
+- Acesse o site do [Seenode](https://seenode.com/).
+- Crie uma conta ou conecte-se no **Seenode**.
+- Clique na opção **Create - Database**.
+    - Escolha o tipo **MySQL**.
+    - Escolha uma **região** onde criar o banco de dados.
+    - Escolha o tipo de pacote **Free**.
+    - Se preferir, mude o nome do banco de dados.
+  - Clique em **Create database**.
+
+  Obtendo as informações do banco de dados:
+
+- Acesse o banco de dados criado.
+- Em **Connection Details**, clique em **show password**.
+- Em **Connection Parameters**, clique em URI.
+- Copie a **URI** do banco de dados, sem o "db:" inicial.
+- Armazene a **URI** do banco de dados no arquivo `.env` do projeto, como no exemplo:
+
+```shell
+# Seenode
+DATABASE_URL=mysql://user:password@host:port/database
+```
+
+> Com essa informação no arquivo `.env`, o Django vai usar o banco de dados do **Seenode**. Você já pode executar o projeto, migrar a base de dados, criar um superuser ou fazer o upload dos dados e testar a aplicação executando localmente mas acessando o banco de dados remotamente.
+
+## **Incluindo suporte ao MySQL no projeto**
+
+**Instale o MySQL no sistema:**
+
+- No Ubuntu:
+
+```shell
+sudo apt install mysql-server
+```
+
+- No Manjaro:
+
+```shell
+sudo pacman -S mysql
+```
+
+**Instale o pacote `mysqlclient` no projeto:**
+
+```shell
+pdm add mysqlclient
+```
+
+## Criando uma aplicação no Seenode
+
+Vamos criar uma aplicação no Seenode para publicar o projeto. Para isso, siga as instruções a seguir ou leia a [documentação oficial](https://docs.seenode.com/docs/getting-started/create-web):
+
+- Escolha a opção **Create - Web**.
+- Escolha um repositorio do **GitHub** e clique em **Continue**.
+- Escolha a branch **main** e clique em **Continue**.
+- Escolha a versão do **Python** de acordo com o seu projeto.
+- Em **Build Command**, coloque o comando `pip install -r requirements.txt`
+- Em Run Command, coloque o comando `gunicorn app.wsgi --workers 2 --bind :80 --access-logfile -`
+- Escolha uma região para hospedar a aplicação.
+- Escolha o tipo de pacote **Free**.
+- Clique em **Create service**.
+
+## Adicionando variáveis de ambiente
+
+- Adicione as variáveis de ambiente do arquivo `.env` no Seenode, em **Variables**.
+
+## Testando a aplicação
+
+- Acesse a URL da aplicação no Seenode e verifique se a aplicação está funcionando corretamente. Ela aparece na aba **Domains**.
+
+# A5. Criação do Banco de Dados no Supabase
+
+**Escolhendo uma plataforma de hospedagem**
+
+Além da publicação do projeto no **Seenode**, podemos publicar em outras plataformas. Uma das vantagem do **Seenode** é que ele oferece tanto um banco de dados PostgreSQL gratuito quanto hospedagem de aplicações web.
+
+Se não formos utilizar o banco de dados do **Seenode**, podemos utilizar o banco de dados do **Supabase** para armazenar os dados da aplicação, enquanto a aplicação é publicada em outra plataforma, como o **Render**, que utilizarmos nesse tutorial.
+
+> **IMPORTANTE:** Você não precisa seguir esse passo e o próximo, se for utilizar o banco de dados e a aplicaçãoi web do **Seenode**.
+
+**Criando um banco de dados no Supabase**
 
 Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
 
@@ -3343,7 +3433,7 @@ pdm run python migrate
 
 **IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de migração, tanto no banco de dados local quanto no banco de dados do **Supabase**.
 
-# A5. Publicando o projeto no `Render`
+# A6. Publicando o projeto no `Render`
 
 O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
 
@@ -3430,7 +3520,7 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 
 > Se tudo estiver correto, o projeto será implantado no **Render**.
 
-# A6. Armazenando arquivos estáticos no Cloudinary
+# A7. Armazenando arquivos estáticos no Cloudinary
 
 Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
 
@@ -3447,7 +3537,7 @@ Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as image
 CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 ```
 
-> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudinary.com/console) na opção `Dashboard`.
+> Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudin**IMPORTANTE:**ary.com/console) na opção `Dashboard`.
 
 - Inclua essa mesma variável no `Render` (ou no serviço de hospedagem que você estiver utilizando), na opção `Environment variables`.
 
@@ -3455,11 +3545,10 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 
 - Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
 -  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
--  Se deu certo, faça o *_commit_* das alterações.
--  Sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
+-  Se deu certo, sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
+- Faça o _commit_ com a mensagem `Adicionando Cloudinary`.
 
-
-# A7. Resolução de erros
+# A8. Resolução de erros
 
 ## Liberando uma porta em uso
 
@@ -3478,10 +3567,10 @@ Error: That port is already in use.
 -   Execute o seguinte comando:
 
 ```shell
-fuser -k 8000/tcp
+fuser -k 19003/tcp
 ```
 
-> Este comando vai matar o processo que está rodando na porta 8000. Mude o número da porta conforme necessário.
+> Este comando vai matar o processo que está rodando na porta 19003. Mude o número da porta conforme necessário.
 
 ## Removendo temporários, migrations e o banco de dados
 
@@ -3550,7 +3639,7 @@ SIMPLE_JWT = {
 }
 ```
 
-# A8. Configurando o git
+# A9. Configurando o git
 
 **Um aviso importante**
 
@@ -3606,7 +3695,7 @@ rm ~/.gitconfig
 Repita o processo de configuração de nome e email.
 
 
-# A9. Usando curl para testar a API via linha de comando
+# A10. Usando curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
@@ -3638,82 +3727,6 @@ curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
 curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
 ```
 -----
-
-# A10. Publicando o projeto no Seenode
-
-O **Seenode** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o [tutorial oficial](hhttps://docs.seenode.com/docs).
-
-## **Criando um Banco de Dados no Seenode**
-
-Para criar o banco de dados no **Seenode**, siga as instruções a seguir, ou leia a [documentação oficial](https://docs.seenode.com/docs/getting-started/create-database):
-
-- Acesse o site do [Seenode](https://seenode.com/).
-- Crie uma conta ou conecte-se no **Seenode**.
-- Clique na opção **Create - Database**.
-    - Escolha o tipo **MySQL**.
-    - Escolha uma **região** onde criar o banco de dados.
-    - Escolha o tipo de pacote **Free**.
-    - Se preferir, mude o nome do banco de dados.
-  - Clique em **Create database**.
-
-  Obtendo as informações do banco de dados:
-
-- Acesse o banco de dados criado.
-- Em **Connection Details**, clique em **show password**.
-- Em **Connection Parameters**, clique em URI.
-- Copie a **URI** do banco de dados, sem o "db:" inicial.
-- Armazene a **URI** do banco de dados no arquivo `.env` do projeto, como no exemplo:
-
-```shell
-# Seenode
-DATABASE_URL=mysql://user:password@host:port/database
-```
-
-> Com essa informação no arquivo `.env`, o Django vai usar o banco de dados do **Seenode**. Você já pode executar o projeto, migrar a base de dados, criar um superuser ou fazer o upload dos dados e testar a aplicação executando localmente mas acessando o banco de dados remotamente.
-
-## **Incluindo suporte ao MySQL no projeto**
-
-**Instale o MySQL no sistema:**
-
-- No Ubuntu:
-
-```shell
-sudo apt install mysql-server
-```
-
-- No Manjaro:
-
-```shell
-sudo pacman -S mysql
-```
-
-**Instale o pacote `mysqlclient` no projeto:**
-
-```shell
-pdm add mysqlclient
-```
-
-## Criando uma aplicação no Seenode
-
-Vamos criar uma aplicação no Seenode para publicar o projeto. Para isso, siga as instruções a seguir ou leia a [documentação oficial](https://docs.seenode.com/docs/getting-started/create-web):
-
-- Escolha a opção **Create - Web**.
-- Escolha um repositorio do **GitHub** e clique em **Continue**.
-- Escolha a branch **main** e clique em **Continue**.
-- Escolha a versão do **Python** de acordo com o seu projeto.
-- Em **Build Command**, coloque o comando `pip install -r requirements.txt`
-- Em Run Command, coloque o comando `gunicorn app.wsgi --workers 2 --bind :80 --access-logfile -`
-- Escolha uma região para hospedar a aplicação.
-- Escolha o tipo de pacote **Free**.
-- Clique em **Create service**.
-
-## Adicionando variáveis de ambiente
-
-- Adicione as variáveis de ambiente do arquivo `.env` no Seenode, em **Variables**.
-
-## Testando a aplicação
-
-- Acesse a URL da aplicação no Seenode e verifique se a aplicação está funcionando corretamente. Ela aparece na aba **Domains**.
 
 
 # Contribua
