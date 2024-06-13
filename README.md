@@ -2878,7 +2878,7 @@ class Compra(models.Model):
 
 ```
 
-> O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `compras/api/<id>/finalizar/`.
+> O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `api/compras/{id}/finalizar`.
 
 > O método `finalizar` é um método de ação que finaliza a compra. Ele recebe a compra que está sendo finalizada.
 
@@ -2905,9 +2905,6 @@ class Compra(models.Model):
   - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
 
 - Faça o _commit_ com a mensagem `Finalizando a compra e atualizando a quantidade de itens em estoque`.
-
-# DAQUI PRA FRENTE O TUTORIAL NÃO ESTÁ REVISADO, PODENDO CONTER ERROS E INCONSISTÊNCIAS
-
 
 # 36. Utilizando filtros
 
@@ -3742,4 +3739,3 @@ curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
 ---
 
 Marco André Mendes \<marcoandre@gmail.com>
-
