@@ -1951,40 +1951,19 @@ O projeto ficará com uma estrutura parecida com essa:
     └── files.py
 ```
 
--   Instalar os pacotes `python-magic` e `Pillow`:
+**Instalando as dependências**
+
+-   Instale os pacotes `Pillow e python-magic`:
 
 ```shell
-pdm add python-magic Pillow
+pdm add Pillow
+pdm add "python-magic; sys_platform=='linux'"
+pdm add "python-magic-bin; sys_platform=='win32, darwin'"
 ```
-**Configuração no Windows**
 
-- Caso você esteja no Windows, para funcionar corretamente, você precisará seguir os seguintes passos:
-  - **Baixe as DLLs**: Acesse [https://github.com/pidydx/libmagicwin64](https://github.com/pidydx/libmagicwin64) e baixe o arquivo ZIP contendo as DLLs.
-  - **Descompacte o arquivo ZIP**: Clique com o botão direito no arquivo ZIP baixado e escolha "Extrair tudo..." para extrair o conteúdo.
-  - **Copie as DLLs**: Dentro da pasta extraída, você encontrará os arquivos DLL (`magic1.dll`, etc.). Selecione esses arquivos, clique com o botão direito e escolha "Copiar."
-  - **Cole as DLLs no System32**: Navegue até o diretório `C:\Windows\System32`, crie uma pasta chamada `magic`, clique com o botão direito dentro da pasta e escolha "Colar." Você pode precisar de permissões administrativas para fazer isso, então certifique-se de confirmar qualquer solicitação que apareça.
-  - **Acrescentando o caminho da pasta**:
-	- Abra o menu Iniciar em seu computador.
+> O pacote `python-magic` é utilizado para identificar o tipo de arquivo, enquanto o `Pillow` é utilizado para manipulação de imagens.
 
-	- Utilize a barra de pesquisa para procurar por "Editar as variáveis de ambiente do sistema".
-	- Clique no resultado que corresponde a essa pesquisa para abrir a janela de propriedades do sistema.
-	- Na janela de propriedades do sistema, vá até a aba chamada "Avançado".
-	- Dentro dessa aba, localize o botão com o rótulo "Variáveis de Ambiente" e clique nele. Isso abrirá a janela de Configurações das Variáveis de Ambiente.
-	- Na janela que se abre, procure pela opção chamada "Path" na seção de variáveis do sistema e clique sobre o botão "Editar".
-	- Verifique se o caminho completo para a pasta "magic" está listado na lista de caminhos. Caso não esteja, prossiga com a próxima etapa.
-	- Abra o Explorador de Arquivos e encontre a pasta "magic".
-	- Copie o caminho completo da pasta "magic".
-	- Volte para a janela de "Editar as variáveis de ambiente". Cole o caminho copiado da pasta "magic" no campo apropriado dentro da janela.
-	- Confirme as alterações clicando em "OK".
-
-  - **Atualize seu código**: No arquivo `utils/files.py`, onde você está usando a biblioteca `magic`, você precisará especificar o caminho para o arquivo `magic.mgc`. Aqui está um exemplo de como você pode fazer isso:
-
-    ```python
-    import magic
-    file_magic = magic.Magic(magic_file="C:\Windows\magic\magic.mgc")
-    ```
-
-  Seguindo esses passos, você deverá conseguir importar a biblioteca `magic` com sucesso em seu projeto Django no ambiente Windows.
+> O pacote `python-magic-bin` é utilizado no Windows e MacOS, enquanto o `python-magic` é utilizado no Linux.
 
 **Registro da app**
 
