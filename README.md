@@ -1782,21 +1782,17 @@ pdm add setuptools
 
 -   Baixe e descompacte o arquivo com a app pronta para ser utilizada:
 
+- No Linux:
+
 ```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -O usuario.zip && unzip usuario.zip && rm usuario.zip
 ```
 
-No `Windows`, execute os seguintes comandos no `PowerShell`:
+- No `Windows`:
 
 ```shell
 Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/usuario.zip -OutFile usuario.zip
-```
-
-```shell
 Expand-Archive -Path usuario.zip -DestinationPath .
-```
-
-```shell
 Remove-Item -Force usuario.zip
 ```
 
@@ -1854,12 +1850,25 @@ urlpatterns = [
 
 **Removendo arquivos temporários, migrations e o banco de dados**
 
+- No Linux:
+
 ```shell
 find . -name "__pycache__" -type d -exec rm -r {} +
 find . -path "*/migrations/*.pyc" -delete
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 rm -rf __pypackages__ pdm.lock
 rm db.sqlite3
+```
+
+- No Windows:
+
+```shell
+Get-ChildItem -Path . -Recurse -Directory -Filter "_pycache_" | Remove-Item -Recurse -Force
+Get-ChildItem -Path . -Recurse -File -Filter ".pyc" -Path "\migrations\" | Remove-Item -Force
+Get-ChildItem -Path . -Recurse -File -Filter ".py" -Path "\migrations\" | Where-Object { $.Name -ne "init_.py" } | Remove-Item -Force
+Remove-Item -Path "_pypackages_" -Recurse -Force
+Remove-Item -Path "pdm.lock" -Force
+Remove-Item -Path "db.sqlite3" -Force
 ```
 
 **Reinstalando as dependências**
