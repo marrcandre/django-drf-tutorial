@@ -673,18 +673,18 @@ Se tudo correu bem, execute a aplicação:
 
 Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Editora` e a API para ela.
 
-**6.1 Criação da API para a classe Editora**
+## 6.1 Criação da API para a classe Editora**
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
   1. Criar a `model` Editora na pasta `models`.
   1. Incluir a `model` no `__init__.py` da pasta `models`.
-  1. Incluir a `model` no `Admin`.
-  1. Fazer a migração e efetivar a migração.
-  1. Criar o serializador na pasta `serializers`.
-  1. Incuir o serializador no `__init__.py` da pasta `serializers`.
-  1. Criar a `viewset` na pasta `views`.
-  1. Incluir a `viewset` no `__init__.py` da pasta `views`.
-  1. Incluir a nova rota em `urls.py`.
+  2. Fazer a migração e efetivar a migração.
+  3. Incluir a `model` no `Admin`.
+  4. Criar o serializador na pasta `serializers`.
+  5. Incluir o serializador no `__init__.py` da pasta `serializers`.
+  6. Criar a `viewset` na pasta `views`.
+  7. Incluir a `viewset` no `__init__.py` da pasta `views`.
+  8. Incluir a nova rota em `urls.py`.
 
 **6.2 Criação e modificação dos arquivos**
 
@@ -3085,8 +3085,9 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
 
 1. O projeto será chamado `Garagem`.
 2. Nomeie o _commit_ como sendo `Criação do projeto`.
-3. Crie as seguintes APIs, **fazendo um _commit_ para cada uma**:
-    -   `Acessório`:
+3. Siga [esses passos](#61-criação-da-api-para-a-classe-editora) para criar a API.
+4. Crie as seguintes APIs, **fazendo um _commit_ para cada uma**:
+    -   `Acessorio`:
         -   `descricao` (string, máximo 100 caracteres).
         -   `__str__` (retorna a descrição e o id).
     -   `Categoria`:
@@ -3099,7 +3100,7 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
         -   `nome` (string, máximo 50 caracteres).
         -   `nacionalidade` (string, máximo 50 caracteres, permite nulo).
         -   `__str__` (retorna o nome **em caixa alta** e o id).
-4. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
+5. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
 
 ## E2. Crie o modelo `Modelo`
 
