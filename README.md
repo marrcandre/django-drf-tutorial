@@ -673,7 +673,7 @@ Se tudo correu bem, execute a aplicação:
 
 Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Editora` e a API para ela.
 
-## 6.1 Criação da API para a classe Editora**
+## 6.1 Criação da API para a classe Editora
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
   1. Criar a `model` Editora na pasta `models`.
