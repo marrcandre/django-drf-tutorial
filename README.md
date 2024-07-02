@@ -3090,16 +3090,20 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
     -   `Acessorio`:
         -   `descricao` (string, máximo 100 caracteres).
         -   `__str__` (retorna a descrição e o id).
+        -   Exemplos: `Ar condicionado`, `Direção hidráulica`, `Vidros elétricos`, `Travas elétricas`, `Alarme`, `Airbag`, `Freios ABS`.
     -   `Categoria`:
         -   `descricao` (string, máximo 100 caracteres).
         -   `__str__` (retorna a descrição e o id.
+        -   Exemplos: `Sedan`, `Hatch`, `SUV`, `Picape`, `Caminhonete`, `Conversível`, `Esportivo`, `Utilitário`.
     -   `Cor`:
         -   `nome` (string, máximo 100 caracteres).
         -   `__str__` (retorna o nome e o id).
+        -   Exemplo: `Preto`, `Branco`, `Prata`, `Vermelho`,  `Cinza`, `Grafite`.
     -   `Marca`:
         -   `nome` (string, máximo 50 caracteres).
         -   `nacionalidade` (string, máximo 50 caracteres, permite nulo).
         -   `__str__` (retorna o nome **em caixa alta** e o id).
+        -   Exemplo: `FORD`, `CHEVROLET`, `VOLKSWAGEN`, `FIAT`, `RENAULT`, `TOYOTA`, `HONDA`, `HYUNDAI`, `KIA`, `NISSAN`, `PEUGEOT`, `CITROEN`, `JEEP`, `MITSUBISHI`, `MERCEDES-BENZ`, `BMW`, `AUDI`, `VOLVO`.
 5. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
 
 ## E2. Crie o modelo `Modelo`
@@ -3111,6 +3115,7 @@ Vamos incluir o modelo `Modelo` no projeto `Garagem`.
   -   `marca` (chave estrangeira para `Marca`).
   -   `categoria` (chave estrangeira para `Categoria`).
   -   `__str__` (retorna o nome do modelo e a marca).
+  -   Exemplo: `KA`, `FIESTA`, `ECOSPORT`, `RANGER`, `ONIX`, `PRISMA`, `TRACKER`, `S10`, `GOL`, `POLO`, `TAOS`, `AMAROK`, `ARGO`, `TORO`, `UNO`, `CRONOS`, `COMPASS`, `CIVIC`, `HR-V`, `FIT`, `CITY`, `HB20`, `CRETA`, `TUCSON`, `KICKS`, `FRONTIER`, `208`, `3008`, `C3`, `C4`, `COMPASS`, `A3`, `A4`, `Q3`, `Q5`, `XC40`, `XC60`.
 -   Crie a API REST para o modelo `Modelo`.
 -   Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Modelo`.
 -   Faça um _commit_ para cada etapa.
