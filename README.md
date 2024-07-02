@@ -2217,11 +2217,18 @@ code livraria_bkp.json
 
 **Carga dos dados**
 
--   Baixe o arquivo `livraria.json`:
+Baixe o arquivo `livraria.json`.
+
+- No Linux:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria.json
-# Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/livraria.json" -OutFile livraria.json # no PowerShell
+wget https://github.com/marrcandre/django-drf-tutorial/raw/versao-2023/scripts/livraria.json
+```
+
+- No Windows:
+
+```shell
+Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/versao-2023/scripts/livraria.json" -OutFile livraria.json
 ```
 
 **Carga dos dados**
