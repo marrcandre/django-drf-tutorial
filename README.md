@@ -8,12 +8,14 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 
 Esse curso é parte de uma trilha de aprendizado. Siga os links abaixo para acessar os outros cursos da trilha:
 
-- **[Programação I](https://github.com/ldmfabio/Programacao)**  ([Prof. Fábio Longo de Moura](https://github.com/ldmfabio))
+1. **[Programação I](https://github.com/ldmfabio/Programacao)**  ([Prof. Fábio Longo de Moura](https://github.com/ldmfabio))
     - Lógica de Programação usando JavaScript
-- **[Desenvolvimento Web II](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/)** ([Prof. Eduardo da Silva](https://github.com/eduardo-da-silva))
-  - Desenvolvimento front-end com VueJS
-- **[Desenvolvimento Web III](https://github.com/marrcandre/django-drf-tutorial)** ([Prof. Marco André Lopes Mendes](https://github.com/marrcandre/))
-  - Desenvolvimento back-end com Django e DRF.
+1. **[Desenvolvimento Web II](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/)** ([Prof. Eduardo da Silva](https://github.com/eduardo-da-silva))
+     - Desenvolvimento front-end com VueJS
+1. **[Desenvolvimento Web III](https://github.com/marrcandre/django-drf-tutorial)** ([Prof. Marco André Lopes Mendes](https://github.com/marrcandre/))
+     - Desenvolvimento back-end com Django e DRF.
+1. **[Desenvolvimento Mobile](hhttps://eduardo-da-silva.github.io/aula-desenvolvimento-mobile/)** ([Prof. Eduardo da Silva](https://github.com/eduardo-da-silva))
+    - Desenvolvimento para dispositivos móveis com Vue + Vite + PWA.
 
 Bons estudos!
 
@@ -3902,23 +3904,23 @@ As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estive
 pdm -V
 ```
 
--   Se a versão for inferior a 2, instale a versão mais recente:
+-   Se a versão for inferior a 2, instale a versão mais recente.
+
+**1- Instale**
 
 ```shell
 curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
-**Configuração do PDM no `bash` (Ubuntu e derivados)**
+**2- Configure**
 
--   Execute o seguinte comando:
+**No `bash` (Ubuntu e derivados)**
 
 ```shell
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
 ```
 
-**Configuração do PDM no `zsh` com o `Oh! My Zsh` (Manjaro e derivados)**
-
--   Execute o seguinte comando:
+**No `zsh` com o `Oh! My Zsh` (mac, Manjaro e derivados)**
 
 ```shell
 curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
