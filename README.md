@@ -648,7 +648,7 @@ Instale uma ou mais das ferramentas sugeridas.
 
 Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
 
-- Entre no repositório do template: https://github.com/marrcandre/livraria-vue3.
+- Entre no repositório do template: https://github.com/marrcandre/template-vue3.
 -  Clique no botão `Use this template` em `Create a new repository`.
 -  Clone o projeto para o seu computador.
 - Execute os seguintes comandos:
@@ -823,16 +823,16 @@ touch core/models/livro.py core/serializers/livro.py core/views/livro.py
 É possivel também abrir todos os arquivos de uma vez, utilizando o comando:
 
 ```shell
-code core/models/livro.py core/models/__init__.py core/serializers/livro.py core/serializers/__init__.py core/views/livro.py core/views/__init__.py app/urls.py core/admin.py
+code core/models/livro.py core/models/__init__.py core/admin.py core/serializers/livro.py core/serializers/__init__.py core/views/livro.py core/views/__init__.py app/urls.py
 ```
 
 > Se você preferir, pode criar os arquivos utilizando o **VS Code**, como já fizemos anteriormente.
 
-Você deve estar se perguntando: posso criar um comando para fazer isso automaticamente? Sim, pergunte-me como. :)
+> Você deve estar se perguntando: posso criar um comando para fazer isso automaticamente? Sim, pergunte-me como. :)
 
 **8.2 Criando o modelo de dados `Livro`**
 
--   Vamos criar o modelo de dados `Livro`, no arquivo `models.py`:
+-   Vamos criar o modelo de dados `Livro`, no arquivo `models/livro.py`:
 
 ```python
 
@@ -843,7 +843,7 @@ class Livro(models.Model):
     preco = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.titulo} ({self.quantidade})"
+        return f"({self.id}) {self.titulo} ({self.quantidade})"
 ```
 
 Inclua o modelo no arquivo `__init__.py` da pasta `models`:
@@ -865,11 +865,11 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 [Siga os passos conforme já definimos.](#6-incluindo-a-editora-no-projeto-livraria)
 
 - Após a criação da API, teste todas as operações de CRUD para a classe `Livro`.
-- Faça um _commit_ com a mensagem `Criação da API para Livro`.
+- Faça um _commit_ com a mensagem `Criação da entidade para Livro`.
 
 # 9. Incluindo chaves estrangeiras no modelo Livro
 
-Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão chaves estrageiras, referenciando os modelos `Categoria` e `Editora`. Esse relacionamento é do tipo **n para 1**. Posteriormente, vamos incluir um relacionamento **n para n** entre `Livro` e `Autor`.
+Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão ch**aves estrageiras**, referenciando os modelos `Categoria` e `Editora`. Esse relacionamento é do tipo **n para 1**. Posteriormente, vamos incluir um relacionamento **n para n** entre `Livro` e `Autor`.
 
 **9.1 Campo `categoria` no `Livro`**
 
@@ -889,18 +889,17 @@ from .categoria import Categoria
     -   `Categoria`: o `model` que será associado a esse campo.
     -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
     -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
-    -   `null=True, blank=True`: permite que o campo seja nulo e em branco. Isso é útil para evitar problemas na migração.
+    -   `null=True, blank=True`: permite que o campo seja nulo e em branco, ou seja, **não obrigatório**. Isso é útil para evitar problemas na migração.
 
 **9.2 Campo `editora` no `Livro`**
 
--   De forma semelhante, vamos associar o livro a uma editora, incluindo logo em seguida à categoria, a seguinte linha:
+-   De forma semelhante, vamos associar o **livro** a uma **editora**, incluindo logo em seguida à **categoria**, a seguinte linha:
 
 ```python
 from .editora import Editora
 ...
 editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros", null=True, blank=True)
 ```
-> Observe que os atributos `null=True` e `blank=True` não foram utilizados, pois os campos `categoria` e `editora` são obrigatórios.
 
 - Faça a migração dos dados.
 
@@ -927,7 +926,7 @@ No `Admin`:
 
 **9.4 Testando o atributo related_name no Django Shell**
 
-No `Django Shell` (que iremos estudar em mais detalhes em uma aula mais adiante), é possível testar o acesso a **todos os livros de uma categoria** usando algo parecido com isso:
+No `Django Shell` (que iremos estudar em mais detalhes em uma [aula mais adiante](#14-uso-do-django-shell-e-do-django-shell-plus)), é possível testar o acesso a **todos os livros de uma categoria** usando algo parecido com isso:
 
 -   Abra o Django shell:
 
@@ -949,7 +948,9 @@ pdm run shellp
 
 **10.1 Model com ManyToManyField - Livros com vários autores**
 
-Um livro pode ter vários autores, por isso criaremos agora um relacionamento **n para n** entre `Livro` e `Autor`. Para isso utilizaremos um campo do tipo `ManyToManyField`.
+Um livro pode ter vários autores, e um autor pode escrever vários livros. Sendo assim, criaremos agora um relacionamento **n para n** entre `Livro` e `Autor`. Para isso, utilizaremos um campo do tipo `ManyToManyField`.
+
+> Uma outra forma de fazer isso seria criar uma **tabela associativa** (o que faremos posteriormente). Isso seria útil se quiséssemos armazenar informações adicionais sobre o relacionamento, como o papel do autor no livro (autor principal, coautor, etc.).
 
 -   Inclua o campo `autores` no modelo `Livro`:
 
@@ -972,7 +973,9 @@ autores = models.ManyToManyField(Autor, related_name="livros")
 
 > Note que na ligação entre `Livro` e `Autor` existem uma "bolinha" em cada lado, indicando que o relacionamento é **n para n**.
 
-> Observe as alterações no banco de dados, no Admin e na API.
+> Já no caso de `Livro` com `Categoria` e `Editora`, existe uma "bolinha" em `Livro` e um "pino" em `Categoria` e `Editora`, indicando que o relacionamento é **n para 1**.
+
+> Observe as alterações no **banco de dados**, no **Admin** e na **API**.
 
 **10.2 Exercícios**
 
