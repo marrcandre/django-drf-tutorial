@@ -957,7 +957,7 @@ Um livro pode ter vários autores, e um autor pode escrever vários livros. Send
 ```python
 from .autor import Autor
 ...
-autores = models.ManyToManyField(Autor, related_name="livros")
+autores = models.ManyToManyField(Autor, related_name="livros", blank=True)
 ...
 ```
 
