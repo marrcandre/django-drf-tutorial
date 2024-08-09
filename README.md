@@ -1246,7 +1246,10 @@ class LivroSerializer(ModelSerializer):
         required=False,
         write_only=True,
     )
-    capa = ImageSerializer(required=False, read_only=True)
+    capa = ImageSerializer(
+        required=False,
+        read_only=True
+    )
 
 ...
 class LivroDetailSerializer(ModelSerializer):
@@ -1770,7 +1773,10 @@ class UsuarioSerializer(ModelSerializer):
         required=False,
         write_only=True,
     )
-    foto = ImageSerializer(required=False, read_only=True)
+    foto = ImageSerializer(
+        required=False,
+        read_only=True
+    )
 
     class Meta:
         model = Usuario
@@ -1792,7 +1798,7 @@ class UsuarioSerializer(ModelSerializer):
 
 # 20. Criação da entidade `Compra` integrada ao usuário do projeto
 
-Nessa aula, vamos criar um entidade de compras integrada à entidade do usuário do projeto.
+A partir dessa aula, vamos implementar o processo de compra de livros, na nossa aplicação. Nessa aula, vamos criar um entidade de compras integrada à entidade do usuário do projeto.
 
 **Criando o `model` de compras**
 
@@ -1824,7 +1830,7 @@ class Compra(models.Model):
 
 > `StatusCompra` é do tipo `IntegerChoices`, que é uma forma de criar um campo `choices` com valores inteiros.
 
-> `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`.
+> `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`, que no caso é `1`.
 
 - Inclua a nova model no arquivo `core/models/__init__.py`:
 
@@ -1880,7 +1886,7 @@ class ItensCompra(models.Model):
 
 > No atributo `livro`, utilizamos `models.PROTECT`, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
 
-> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`.
+> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`. 
 
 - Inclua o novo model no arquivo `__init__.py` dos models:
 
