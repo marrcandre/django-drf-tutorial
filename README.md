@@ -1170,7 +1170,11 @@ from django.conf.urls.static import static
 ...
 from uploader.router import router as uploader_router
 ...
-path("api/media/", include(uploader_router.urls)),
+urlpatterns = [
+    ...
+    path("api/media/", include(uploader_router.urls)),  # nova linha
+    ...
+]
 ...
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
 ...
@@ -1251,6 +1255,9 @@ class LivroDetailSerializer(ModelSerializer):
 ```
 
 > Alteramos dois serializadores: um para a gravação e outro para a recuperação de um único livro.
+
+> O campo `capa_attachment_key` é utilizado para a gravação da imagem, enquanto o campo `capa` é utilizado para a recuperação da imagem.
+
 
 **Teste de upload e associação com o livro**
 
