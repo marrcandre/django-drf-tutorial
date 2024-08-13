@@ -1067,7 +1067,7 @@ Podemos criar um serializador para a listagem de livros, que mostre apenas o `id
 class LivroListSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = ["id", "titulo", "preco"]
+        fields = ("id", "titulo", "preco")
 ```
 
 -   Altere a viewset para utilizar esse serializador na listagem:
@@ -1099,7 +1099,7 @@ Baixe e descompacte o arquivo com a `app` pronta para ser utilizada.
 - No `Linux`, execute o seguinte comando no terminal:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm uploader.zip
+wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm -v uploader.zip
 ```
 
 - No `Windows`, execute os seguintes comandos no `PowerShell`:
@@ -1886,7 +1886,7 @@ class ItensCompra(models.Model):
 
 > No atributo `livro`, utilizamos `models.PROTECT`, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
 
-> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`. 
+> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`.
 
 - Inclua o novo model no arquivo `__init__.py` dos models:
 
