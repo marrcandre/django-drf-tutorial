@@ -1198,6 +1198,12 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 ...
 ```
 
+- Adicione o app `uploader` no imagem do projeto:
+
+```shell
+post_migrate = "python manage.py graph_models --disable-sort-fields -g -o core.png core uploader"
+```
+
 **Migração do banco de dados**
 
 -   Faça a migração do banco de dados:
@@ -1291,6 +1297,8 @@ class LivroDetailSerializer(ModelSerializer):
 -   Guarde o valor do campo `capa_attachment_key`.
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
 -   Acesse o endpoint `http://0.0.0.0:19003/api/media/images/` e observe que a imagem foi associada ao livro.
+
+- Faça um _commit_ com a mensagem `Upload e associação de imagens`.
 
 # 13. Dump e Load de dados
 
