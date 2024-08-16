@@ -1122,6 +1122,24 @@ O projeto ficará com uma estrutura parecida com essa:
 
 **Instalando as dependências**
 
+- Remova a pasta `__pypackages__`  e o arquivo `pdm.lock`:
+
+```shell
+rm -rf __pypackages__ pdm.lock
+```
+
+- Recrie o arquivo `pdm.lock`:
+
+```shell
+pdm lock
+```
+
+- Instale as dependências:
+
+```shell
+pdm install
+```
+
 -   Instale os pacotes `Pillow e python-magic`:
 
 ```shell
