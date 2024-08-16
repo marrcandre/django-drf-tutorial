@@ -12062,15 +12062,5 @@
       283
     ]
   }
-},
-{
-  "model": "core.compra",
-  "pk": 1,
-  "fields": {
-    "usuario": 1,
-    "status": 2,
-    "tipo_pagamento": 1,
-    "data": "2024-05-14T17:05:08.669Z"
-  }
 }
 ]
