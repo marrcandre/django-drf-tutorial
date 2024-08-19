@@ -1308,7 +1308,7 @@ O **dump** dos dados permite que você salve os dados do banco de dados em um ar
 
 - Acesse o seguinte link:
 
-  - Link: `http://191.52.55.156:19005/admin`
+  - Link: `http://191.52.55.44:19003/admin/` (ou peça ao professor)
   - Usuário: `a@a.com`
   - Senha: `teste.123`
 
