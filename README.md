@@ -1766,7 +1766,7 @@ Seu projeto deve ficar assim:
 
 ![Projeto com a model Livro](diagramas/core_categoria_editora_autor_livro_com_capa_usuario_com_foto.png)
 
-> Observe a ligação entre a model `Usuario` e a model `Image`, através da chave estrangeira `foto`.
+> Observe a ligação entre a model `User` e a model `Image`, através da chave estrangeira `foto`.
 
 **Inclusão da foto no `Admin`**
 
@@ -1790,12 +1790,12 @@ class UserAdmin(UserAdmin):
 ```python
 from rest_framework.serializers import ModelSerializer, SlugRelatedField
 
-from core.models import Usuario
+from core.models import User
 from uploader.models import Image
 from uploader.serializers import ImageSerializer
 
 
-class UsuarioSerializer(ModelSerializer):
+class UserSerializer(ModelSerializer):
     foto_attachment_key = SlugRelatedField(
         source="foto",
         queryset=Image.objects.all(),
@@ -1809,7 +1809,7 @@ class UsuarioSerializer(ModelSerializer):
     )
 
     class Meta:
-        model = Usuario
+        model = User
         fields = "__all__"
 ```
 
@@ -1852,7 +1852,7 @@ class Compra(models.Model):
         PAGO = 3, "Pago"
         ENTREGUE = 4, "Entregue"
 
-    usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT, related_name="compras")
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name="compras")
     status = models.IntegerField(choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
 ```
 
@@ -2703,7 +2703,7 @@ class Compra(models.Model):
 
 # 34. Adicionando o tipo de usuário à model de Usuário
 
-Inicialmente, utilizamos os grupos do Django para diferenciar os usuários. Uma outra forma de diferenciar os usuários é através de um campo tipo de usuário. Vamos adicionar o tipo de usuário na entidade  **Usuario**.
+Inicialmente, utilizamos os grupos do Django para diferenciar os usuários. Uma outra forma de diferenciar os usuários é através de um campo tipo de usuário. Vamos adicionar o tipo de usuário na entidade  **User**.
 
 - Em `models/user.py`, vamos incluir o campo `tipo_usuario` na entidade `User`:
 
@@ -2756,7 +2756,7 @@ class CompraViewSet(ModelViewSet):
     def get_queryset(self):
         usuario = self.request.user
 ...
-        if usuario.tipo == Usuario.Tipos.GERENTE:
+        if usuario.tipo == User.Tipos.GERENTE:
             return Compra.objects.all()
         return Compra.objects.filter(usuario=usuario)
 ...
