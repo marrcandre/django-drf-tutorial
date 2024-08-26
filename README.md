@@ -1564,17 +1564,14 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 **Relação entre nomes das ações**
 
-Podemos perceber uma relação as ações que compôem o CRUD, os termos utilizados no Admin e os verbos HTTP:
+Podemos perceber uma relação as ações que compôem o **CRUD**, os termos utilizados no **Admin** e os verbos **HTTP** e as **actions** dos **serializadores** do **Django REST Framework**.:
 
-Aqui está a tabela com a terceira coluna movida para o lugar da quarta:
-
-| Ação      | CRUD   | Admin  | HTTP        |
-| --------- | ------ | ------ | ----------- |
-| Criar     | Create | add    | POST        |
-| Ler       | Read   | view   | GET         |
-| Atualizar | Update | change | PUT (PATCH) |
-| Deletar   | Delete | delete | DELETE      |
-
+| Ação      | CRUD   | Admin  | HTTP        | DRF Actions |
+| --------- | ------ | ------ | ----------- | ------------------ |
+| Criar     | **C**reate | `add`    | `POST`        | `create`           |
+| Ler       | **R**ead   | `view`   | `GET`         | `retrieve`, `list` |
+| Atualizar | **U**pdate | `change` | `PUT (PATCH)` | `update`, `partial_update` |
+| Deletar   | **D**elete | `delete` | `DELETE`      | `destroy`          |
 
 **Exercício:**
 
