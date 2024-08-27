@@ -673,7 +673,7 @@ Se tudo correu bem, execute a aplicação:
 
 Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Editora` e a API para ela.
 
-## 6.1 Criação da API para a classe Editora
+**6.1 Criação da API para a classe Editora**
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
   1. Criar a `model` Editora na pasta `models`.
@@ -1566,7 +1566,7 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 Podemos perceber uma relação as ações que compôem o **CRUD**, os termos utilizados no **Admin** e os verbos **HTTP** e as **actions** dos **serializadores** do **Django REST Framework**.:
 
-| Ação      | CRUD   | Admin  | HTTP        | DRF Actions |
+| Ação      | CRUD   | Admin  | HTTP        | FDRF Actions |
 | --------- | ------ | ------ | ----------- | ------------------ |
 | Criar     | **C**reate | `add`    | `POST`        | `create`           |
 | Ler       | **R**ead   | `view`   | `GET`         | `retrieve`, `list` |
@@ -1853,7 +1853,7 @@ class Compra(models.Model):
     status = models.IntegerField(choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
 ```
 
-> Note que estamos utilizando a model `User` como `ForeignKey` para o model `Compra`.
+> Note que estamos utilizando a model `User` como `ForeignKey` para a model `Compra`.
 
 > `StatusCompra` é do tipo `IntegerChoices`, que é uma forma de criar um campo `choices` com valores inteiros.
 
@@ -1867,7 +1867,7 @@ from .compra import Compra
 
 **Adicionando a model `Compra` ao `Admin`**
 
--   Adicione o model `Compra` ao `admin.py` do app `core`:
+-   Adicione a model `Compra` ao `admin.py` do app `core`:
 
 ```python
 ...
@@ -1886,7 +1886,7 @@ O seu projeto deve ficar assim:
 
 **Testando a model `Compra`**
 
--   Teste o model `Compra` no admin do Django.
+-   Teste a model `Compra` no admin do Django.
 
 **Finalizando**
 
@@ -1895,7 +1895,7 @@ O seu projeto deve ficar assim:
 
 # 21. Criando os itens da compra
 
-No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forna, vamos criar "manualmente" a **tabela associativa**, que será chamada de `ItensCompra`.
+No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forma, vamos criar "manualmente" a **tabela associativa**, que será chamada de `ItensCompra`.
 
 -   Vamos adicionar um nova entidade `ItensCompra` ao arquivo `core/models/compra.py`:
 
@@ -1957,6 +1957,8 @@ class CompraAdmin(admin.ModelAdmin):
 ```
 
 > Desta forma, quando você editar uma compra no admin do Django, você verá os itens da compra logo abaixo do formulário de edição da compra.
+
+> Opcionalmente, você pode utilizar o `StackedInline` ao invés do `TabularInline`. Experimente e veja a diferença.
 
 -   Teste no admin do Django.
 -   Faça um _commit_ com a mensagem `Uso de TabularInline no Admin para Itens da Compra`.
@@ -2027,7 +2029,14 @@ from .compra import CompraViewSet
 
 ```python
 ...
-from core.views import AutorViewSet, CategoriaViewSet, CompraViewSet, EditoraViewSet, LivroViewSet
+from core.views import (
+    AutorViewSet,
+    CategoriaViewSet,
+    CompraViewSet, # inclua essa linha
+    EditoraViewSet,
+    LivroViewSet,
+    UserViewSet,
+)
 ...
 router.register(r"compras", CompraViewSet)
 ...
@@ -2087,8 +2096,6 @@ De forma semelhante ao que fizemos no `Admin`, vamos incluir os itens da compra 
 
 -   Crie um serializer para `ItensCompra`, no arquivo `serializers/compra.py`:
 
-```shell
-
 ```python
 ...
 from core.models import Compra, ItensCompra
@@ -2100,7 +2107,7 @@ class ItensCompraSerializer(ModelSerializer):
         fields = "__all__"
 ```
 
-No `ComprasSerializer`, inclua o seguinte código:
+No `CompraSerializer`, inclua o seguinte código:
 
 ```python
 ...
@@ -2127,7 +2134,7 @@ class ItensCompraSerializer(ModelSerializer):
         depth = 1
 ```
 
-> O parâmetro `depth=1` indica que o serializer deve mostrar os detalhes do model `ItensCompra`. O valor `1` indica que o serializer deve mostrar os detalhes do model `ItensCompra` e dos models relacionados a ele (nesse caso, o livro). Se o valor fosse `2`, o serializer mostraria os detalhes do model `ItensCompra`, dos models relacionados a ele e dos models relacionados aos models relacionados a ele (nesse caso, a categoria, a editora e o autor).
+> O parâmetro `depth=1` indica que o serializer deve mostrar os detalhes do model `ItensCompra`. O valor `1` indica que o serializer deve mostrar os detalhes do model `ItensCompra` e dos models relacionados a ele (nesse caso, o `livro`). Se o valor fosse `2`, o serializer mostraria os detalhes do model `ItensCompra`, dos models relacionados a ele e dos models relacionados aos models relacionados a ele (nesse caso, a `categoria`, a `editora` e o `autor`).
 
 - Experimente alterar o valor de `depth` e veja o resultado no navegador.
 
@@ -2206,7 +2213,7 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 
 > O método `total` retorna o valor do campo `total`, que é calculado pela soma dos totais dos itens da compra, que é calculado pelo preço do livro multiplicado pela quantidade do item da compra.
 
-- Precisamos incluir o campo `total` no serializer de `Compra`. No `ComprasSerializer`, inclua o seguinte código:
+- Precisamos incluir o campo `total` no serializer de `Compra`. No `CompraSerializer`, inclua o seguinte código:
 
 ```python
 ...
@@ -2304,19 +2311,15 @@ class CompraViewSet(ModelViewSet):
 
 Você receberá o seguinte erro:
 
-```
-AssertionError at /api/compras/
+AssertionError at `/api/compras/`
 The `.create()` method does not support writable nested fields by default.
 Write an explicit `.create()` method for serializer `core.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
-```
 
 Traduzindo, chegamos no seguinte:
 
-```
-Erro de afirmação em /api/compras/
+Erro de afirmação em `/api/compras/`
 O método `.create()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.create()` explícito para o serializer `core.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
-```
 
 O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
 
@@ -2345,6 +2348,10 @@ class CriarEditarCompraSerializer(ModelSerializer):
 ```
 
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
+
+> O método `create` recebe um parâmetro `validated_data`, que são os dados validados que estão sendo criados.
+
+> `validade_data.pop("itens")` remove os itens da compra dos dados validados.
 
 - Precisamos criar também o novo `serializer` `CriarEditarItensCompraSerializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código, após o `ItensCompraSerializer`:
 
@@ -2380,19 +2387,15 @@ class CriarEditarItensCompraSerializer(ModelSerializer):
 
 Você receberá o seguinte erro:
 
-```
-AssertionError at /api/compras/1/
+AssertionError at `/api/compras/1/`
 The `.update()` method does not support writable nested fields by default.
 Write an explicit `.update()` method for serializer `core.serializers.compra.CriarEditarCompraSerializer`, or set `read_only=True` on nested serializer fields.
-```
 
-Traduzindo, chegamos no seguinte:
+Traduzindo:
 
-```
-Erro de afirmação em /api/compras/1/
+Erro de afirmação em `/api/compras/1/`
 O método `.update()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.update()` explícito para o serializer `core.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
-```
 
 > O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
 
@@ -2655,7 +2658,7 @@ from rest_framework.serializers import (
     ValidationError,
 )
 ...
-class ComprasSerializer(ModelSerializer):
+class CompraSerializer(ModelSerializer):
     usuario = CharField(source="usuario.email", read_only=True)
     status = CharField(source="get_status_display", read_only=True)
     data = serializers.DateTimeField(read_only=True) # novo campo
