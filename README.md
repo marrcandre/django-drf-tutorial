@@ -1198,7 +1198,7 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 ...
 ```
 
-- Adicione o app `uploader` no imagem do projeto:
+- Modifique a linha `post_migrate` no arquivo `pyproject.toml` para incluir a geração do diagrama da app `uploader`:
 
 ```shell
 post_migrate = "python manage.py graph_models --disable-sort-fields -g -o core.png core uploader"
