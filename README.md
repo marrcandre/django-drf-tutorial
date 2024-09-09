@@ -1859,6 +1859,8 @@ class Compra(models.Model):
 
 > `status` é um campo `IntegerField` que utiliza o `choices` `StatusCompra.choices` e tem o valor padrão `StatusCompra.CARRINHO`, que no caso é `1`.
 
+> Opcionalmente, poderíamos ter criado uma entidade `StatusCompra` e utilizado um campo `ForeignKey` para ela. No entanto, como temos um número pequeno de status, optamos por utilizar o `IntegerField` com `choices`.
+
 - Inclua a nova model no arquivo `core/models/__init__.py`:
 
 ```python
