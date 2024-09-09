@@ -1888,7 +1888,7 @@ O seu projeto deve ficar assim:
 
 **Testando a model `Compra`**
 
--   Teste a model `Compra` no admin do Django.
+-   Teste a model `Compra` no `Admin` do Django.
 
 **Finalizando**
 
@@ -1897,7 +1897,7 @@ O seu projeto deve ficar assim:
 
 # 21. Criando os itens da compra
 
-No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forma, vamos criar "manualmente" a **tabela associativa**, que será chamada de `ItensCompra`.
+No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forma, vamos criar "manualmente" a **entidade associativa**, que será chamada de `ItensCompra`.
 
 -   Vamos adicionar um nova entidade `ItensCompra` ao arquivo `core/models/compra.py`:
 
@@ -1938,7 +1938,7 @@ O seu projeto deve ficar assim:
 
 Da forma que configuramos o `Admin` para a model `ItensCompra`, não é possível adicionar itens da compra diretamente na tela de edição da compra. Isso é pouco natural, pois há uma relação direta entre a compra e seus itens.
 
-Vamos mostrar os itens da compra no admin do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
+Sendo assim, vamos mostrar os itens da compra no `Admin` do Django, utilizando o `TabularInline`. Desta forma, podemos adicionar os itens da compra diretamente na tela de edição da compra.
 
 -   No arquivo `admin.py` do app `core`, modifique o código das models `Compra` e `ItensCompra` da seguinte forma:
 
@@ -1958,11 +1958,11 @@ class CompraAdmin(admin.ModelAdmin):
     inlines = [ItensCompraInline]
 ```
 
-> Desta forma, quando você editar uma compra no admin do Django, você verá os itens da compra logo abaixo do formulário de edição da compra.
+> Desta forma, quando você editar uma compra no `Admin` do Django, você verá os itens da compra logo abaixo do formulário de edição da compra.
 
 > Opcionalmente, você pode utilizar o `StackedInline` ao invés do `TabularInline`. Experimente e veja a diferença.
 
--   Teste no admin do Django.
+-   Teste no `Admin` do Django.
 -   Faça um _commit_ com a mensagem `Uso de TabularInline no Admin para Itens da Compra`.
 
 # 23. Endpoint para a listagem básica de compras
