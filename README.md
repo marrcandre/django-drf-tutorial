@@ -1,10 +1,10 @@
-# Django com DRF (2024)
+**DJANGO COM DRF (2024)**
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
-## Trilha do Curso
+**Trilha do Curso**
 
 Esse curso é parte de uma trilha de aprendizado. Siga os links abaixo para acessar os outros cursos da trilha:
 
@@ -16,6 +16,74 @@ Esse curso é parte de uma trilha de aprendizado. Siga os links abaixo para aces
   - Desenvolvimento back-end com Django e DRF.
 
 Bons estudos!
+
+---
+
+**SUMÁRIO**
+
+- [1. Preparação do ambiente](#1-preparação-do-ambiente)
+- [2. Criação do projeto](#2-criação-do-projeto)
+- [3. Criação de uma aplicação](#3-criação-de-uma-aplicação)
+- [4. Criando uma API REST](#4-criando-uma-api-rest)
+- [5. Aplicação frontend Vuejs](#5-aplicação-frontend-vuejs)
+- [6. Incluindo a Editora no projeto Livraria](#6-incluindo-a-editora-no-projeto-livraria)
+- [7. Criação da API para Autor](#7-criação-da-api-para-autor)
+- [8. Criação da API para Livro](#8-criação-da-api-para-livro)
+- [9. Incluindo chaves estrangeiras no modelo Livro](#9-incluindo-chaves-estrangeiras-no-modelo-livro)
+- [10. Incluindo relacionamento n para n no modelo do Livro](#10-incluindo-relacionamento-n-para-n-no-modelo-do-livro)
+- [11. Modificação da API para Livro](#11-modificação-da-api-para-livro)
+- [12. Upload e associação de imagens](#12-upload-e-associação-de-imagens)
+- [13. Dump e Load de dados](#13-dump-e-load-de-dados)
+- [14. Customização do Admin](#14-customização-do-admin)
+- [15. Uso do Django Shell e do Django Shell Plus](#15-uso-do-django-shell-e-do-django-shell-plus)
+- [16. Autenticação e autorização](#16-autenticação-e-autorização)
+- [17. Usando as permissões do DRF](#17-usando-as-permissões-do-drf)
+- [18. Autenticação com Passage](#18-autenticação-com-passage)
+- [19. Inclusão da foto de perfil no usuário](#19-inclusão-da-foto-de-perfil-no-usuário)
+- [20. Criação da entidade `Compra` integrada ao usuário do projeto](#20-criação-da-entidade-compra-integrada-ao-usuário-do-projeto)
+- [21. Criando os itens da compra](#21-criando-os-itens-da-compra)
+- [22. Uso de `TabularInline` no `Admin` para Itens da Compra](#22-uso-de-tabularinline-no-admin-para-itens-da-compra)
+- [23. Endpoint para a listagem básica de compras](#23-endpoint-para-a-listagem-básica-de-compras)
+- [24. Visualização dos itens da compra no endpoint da listagem de compras](#24-visualização-dos-itens-da-compra-no-endpoint-da-listagem-de-compras)
+- [24b. Mostrando o total do item na listagem de compras](#24b-mostrando-o-total-do-item-na-listagem-de-compras)
+- [25. Inclusão do total da compra na listagem de compras](#25-inclusão-do-total-da-compra-na-listagem-de-compras)
+- [26. Criação de um endpoint para criar novas compras](#26-criação-de-um-endpoint-para-criar-novas-compras)
+- [27. Criação de um endpoint para atualizar compras](#27-criação-de-um-endpoint-para-atualizar-compras)
+- [28. Criação de uma compra a partir do usuário autenticado](#28-criação-de-uma-compra-a-partir-do-usuário-autenticado)
+- [29. Filtrando apenas as compras do usuário autenticado](#29-filtrando-apenas-as-compras-do-usuário-autenticado)
+- [30. Validando a quantidade de itens em estoque](#30-validando-a-quantidade-de-itens-em-estoque)
+- [31. Gravando o preço do livro no item da compra](#31-gravando-o-preço-do-livro-no-item-da-compra)
+- [32. Acrescentando a data da compra](#32-acrescentando-a-data-da-compra)
+- [33. Adicionando tipo de pagamento à entidade de Compra](#33-adicionando-tipo-de-pagamento-à-entidade-de-compra)
+- [34. Adicionando o tipo de usuário à model de Usuário](#34-adicionando-o-tipo-de-usuário-à-model-de-usuário)
+- [35. Finalizando a compra e atualizando a quantidade de itens em estoque](#35-finalizando-a-compra-e-atualizando-a-quantidade-de-itens-em-estoque)
+- [36. Utilizando filtros](#36-utilizando-filtros)
+- [37. Busca textual](#37-busca-textual)
+- [38. Ordenação dos resultados](#38-ordenação-dos-resultados)
+- [Exercícios Garagem](#exercícios-garagem)
+  - [E1. Crie o projeto Garagem](#e1-crie-o-projeto-garagem)
+  - [E2. Crie o modelo `Modelo`](#e2-crie-o-modelo-modelo)
+  - [E3. Crie o modelo `Veiculo`](#e3-crie-o-modelo-veiculo)
+- [Apêndices](#apêndices)
+- [A1. Instalação e atualização do VS Code](#a1-instalação-e-atualização-do-vs-code)
+- [A2. Instalação e sincronização de extensões do VS Code](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
+  - [Instalação de extensões no VS Code](#instalação-de-extensões-no-vs-code)
+  - [Sinconização de extensões no VS Code](#sinconização-de-extensões-no-vs-code)
+- [A3. Instalação e configuração do PDM](#a3-instalação-e-configuração-do-pdm)
+- [A4. Criando o Banco de Dados no Supabase](#a4-criando-o-banco-de-dados-no-supabase)
+- [A5. Publicando o projeto no `Render`](#a5-publicando-o-projeto-no-render)
+- [A6. Armazenando arquivos estáticos no Cloudinary](#a6-armazenando-arquivos-estáticos-no-cloudinary)
+- [A7. Resolução de erros](#a7-resolução-de-erros)
+  - [Liberando uma porta em uso](#liberando-uma-porta-em-uso)
+  - [Removendo temporários, migrations e o banco de dados](#removendo-temporários-migrations-e-o-banco-de-dados)
+  - [Pasta `.venv` criada no projeto](#pasta-venv-criada-no-projeto)
+  - [Geração da SECRET\_KEY](#geração-da-secret_key)
+  - [Abrindo um arquivo sqlite3 na web](#abrindo-um-arquivo-sqlite3-na-web)
+  - [Aumentando o tempo de vida do token de autenticação JWT](#aumentando-o-tempo-de-vida-do-token-de-autenticação-jwt)
+- [A8. Configurando o git](#a8-configurando-o-git)
+- [A9. Usando curl para testar a API via linha de comando](#a9-usando-curl-para-testar-a-api-via-linha-de-comando)
+- [Contribua](#contribua)
+
 
 ---
 
@@ -2155,7 +2223,7 @@ fields = ("livro", "quantidade")
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ com a mensagem `Limitando os campos dos itens da compra na listagem de compras`.
 
-**Mostrando o total do item na listagem de compras**
+# 24b. Mostrando o total do item na listagem de compras
 
 O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
 
@@ -2188,7 +2256,7 @@ class ItensCompraSerializer(ModelSerializer):
 
 > O método `get_<nome_do_campo>` é um método especial do serializer que é chamado para calcular o valor do campo `<nome_do_campo>`.
 
-> Incluimos o campo `total` no `fields` do serializer.
+> Incluimos o campo `total` no atributo `fields` do serializer.
 
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ com a mensagem `Mostrando o total do item na listagem de compras`.
