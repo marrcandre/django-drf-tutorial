@@ -40,9 +40,9 @@ Bons estudos!
 - [17. Usando as permissões do DRF](#17-usando-as-permissões-do-drf)
 - [18. Autenticação com Passage](#18-autenticação-com-passage)
 - [19. Inclusão da foto de perfil no usuário](#19-inclusão-da-foto-de-perfil-no-usuário)
-- [20. Criação da entidade `Compra` integrada ao usuário do projeto](#20-criação-da-entidade-compra-integrada-ao-usuário-do-projeto)
+- [20. Criação da entidade Compra integrada ao usuário do projeto](#20-criação-da-entidade-compra-integrada-ao-usuário-do-projeto)
 - [21. Criando os itens da compra](#21-criando-os-itens-da-compra)
-- [22. Uso de `TabularInline` no `Admin` para Itens da Compra](#22-uso-de-tabularinline-no-admin-para-itens-da-compra)
+- [22. Uso de TabularInline no Admin para Itens da Compra](#22-uso-de-tabularinline-no-admin-para-itens-da-compra)
 - [23. Endpoint para a listagem básica de compras](#23-endpoint-para-a-listagem-básica-de-compras)
 - [24. Visualização dos itens da compra no endpoint da listagem de compras](#24-visualização-dos-itens-da-compra-no-endpoint-da-listagem-de-compras)
 - [25. Mostrando o total do item na listagem de compras](#25-mostrando-o-total-do-item-na-listagem-de-compras)
@@ -61,8 +61,8 @@ Bons estudos!
 - [38. Ordenação dos resultados](#38-ordenação-dos-resultados)
 - [Exercícios Garagem](#exercícios-garagem)
   - [E1. Crie o projeto Garagem](#e1-crie-o-projeto-garagem)
-  - [E2. Crie o modelo `Modelo`](#e2-crie-o-modelo-modelo)
-  - [E3. Crie o modelo `Veiculo`](#e3-crie-o-modelo-veiculo)
+  - [E2. Crie o modelo Modelo](#e2-crie-o-modelo-modelo)
+  - [E3. Crie o modelo Veiculo](#e3-crie-o-modelo-veiculo)
 - [Apêndices](#apêndices)
 - [A1. Instalação e atualização do VS Code](#a1-instalação-e-atualização-do-vs-code)
 - [A2. Instalação e sincronização de extensões do VS Code](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
@@ -70,12 +70,12 @@ Bons estudos!
   - [Sinconização de extensões no VS Code](#sinconização-de-extensões-no-vs-code)
 - [A3. Instalação e configuração do PDM](#a3-instalação-e-configuração-do-pdm)
 - [A4. Criando o Banco de Dados no Supabase](#a4-criando-o-banco-de-dados-no-supabase)
-- [A5. Publicando o projeto no `Render`](#a5-publicando-o-projeto-no-render)
+- [A5. Publicando o projeto no Render](#a5-publicando-o-projeto-no-render)
 - [A6. Armazenando arquivos estáticos no Cloudinary](#a6-armazenando-arquivos-estáticos-no-cloudinary)
 - [A7. Resolução de erros](#a7-resolução-de-erros)
   - [Liberando uma porta em uso](#liberando-uma-porta-em-uso)
   - [Removendo temporários, migrations e o banco de dados](#removendo-temporários-migrations-e-o-banco-de-dados)
-  - [Pasta `.venv` criada no projeto](#pasta-venv-criada-no-projeto)
+  - [Pasta .venv criada no projeto](#pasta-venv-criada-no-projeto)
   - [Geração da SECRET\_KEY](#geração-da-secret_key)
   - [Abrindo um arquivo sqlite3 na web](#abrindo-um-arquivo-sqlite3-na-web)
   - [Aumentando o tempo de vida do token de autenticação JWT](#aumentando-o-tempo-de-vida-do-token-de-autenticação-jwt)
@@ -1890,7 +1890,7 @@ class UserSerializer(ModelSerializer):
 - Faça as alterações no sistema publicado.
 - Faça um _commit_ com a mensagem `Inclusão da foto de perfil no usuário`.
 
-# 20. Criação da entidade `Compra` integrada ao usuário do projeto
+# 20. Criação da entidade Compra integrada ao usuário do projeto
 
 A partir dessa aula, vamos implementar o processo de compra de livros, na nossa aplicação. Nessa aula, vamos criar um entidade de compras integrada à entidade do usuário do projeto.
 
@@ -2001,7 +2001,7 @@ O seu projeto deve ficar assim:
 -   Faça um _commit_ com a mensagem `Criação dos itens da compra`.
 
 
-# 22. Uso de `TabularInline` no `Admin` para Itens da Compra
+# 22. Uso de TabularInline no Admin para Itens da Compra
 
 Da forma que configuramos o `Admin` para a model `ItensCompra`, não é possível adicionar itens da compra diretamente na tela de edição da compra. Isso é pouco natural, pois há uma relação direta entre a compra e seus itens.
 
@@ -3039,7 +3039,7 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
         -   Exemplo: `FORD`, `CHEVROLET`, `VOLKSWAGEN`, `FIAT`, `RENAULT`, `TOYOTA`, `HONDA`, `HYUNDAI`, `KIA`, `NISSAN`, `PEUGEOT`, `CITROEN`, `JEEP`, `MITSUBISHI`, `MERCEDES-BENZ`, `BMW`, `AUDI`, `VOLVO`.
 5. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
 
-## E2. Crie o modelo `Modelo`
+## E2. Crie o modelo Modelo
 
 Vamos incluir o modelo `Modelo` no projeto `Garagem`.
 
@@ -3053,7 +3053,7 @@ Vamos incluir o modelo `Modelo` no projeto `Garagem`.
 -   Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Modelo`.
 -   Faça um _commit_ para cada etapa.
 
-## E3. Crie o modelo `Veiculo`
+## E3. Crie o modelo Veiculo
 
 Vamos incluir o modelo `Veiculo` no projeto `Garagem`.
 
@@ -3293,7 +3293,7 @@ pdm run python migrate
 
 **IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de migração, tanto no banco de dados local quanto no banco de dados do **Supabase**.
 
-# A5. Publicando o projeto no `Render`
+# A5. Publicando o projeto no Render
 
 O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
 
@@ -3442,7 +3442,7 @@ rm -rf __pypackages__ pdm.lock
 rm db.sqlite3
 ```
 
-## Pasta `.venv` criada no projeto
+## Pasta .venv criada no projeto
 
 -   Se seu projeto tiver a pasta `.venv`, e não a pasta `__pypackages__`, remova a pasta `.venv`:
 
