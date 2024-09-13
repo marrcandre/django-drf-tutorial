@@ -2125,7 +2125,7 @@ Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos sub
 from rest_framework.serializers import CharField, ModelSerializer
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="user.email", read_only=True) # inclua essa linha
+    usuario = CharField(source="usuario.email", read_only=True) # inclua essa linha
 ...
 ```
 
