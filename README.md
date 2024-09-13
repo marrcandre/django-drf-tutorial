@@ -2707,7 +2707,7 @@ class Compra(models.Model):
 
 Vocẽ receberá um erro na migration, pois o campo `data` não pode ser nulo.
 
-- Escolha a opção 2, que é a opção de preencher o campo com a data atual (`timezone.now`).
+- Escolha a opção 1, que é a opção de preencher o campo com a data atual (`timezone.now`).
 
 - Execute as migrações no banco de dados publicado, caso você esteja utilizando.
 
@@ -2731,7 +2731,7 @@ from rest_framework.serializers import (
 class CompraSerializer(ModelSerializer):
     usuario = CharField(source="usuario.email", read_only=True)
     status = CharField(source="get_status_display", read_only=True)
-    data = serializers.DateTimeField(read_only=True) # novo campo
+    data = DateTimeField(read_only=True) # novo campo
     itens = ItensCompraSerializer(many=True, read_only=True)
 
     class Meta:
