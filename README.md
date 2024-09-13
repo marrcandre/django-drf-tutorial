@@ -2155,7 +2155,7 @@ fields = ("livro", "quantidade")
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ com a mensagem `Limitando os campos dos itens da compra na listagem de compras`.
 
-**Mostrando o total do item na listagem de compras**
+# 24b. Mostrando o total do item na listagem de compras
 
 O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
 
