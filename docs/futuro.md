@@ -7,7 +7,7 @@ python manage.py shell
 ```
 
 - Importe os modelos de `core.models`:
-  
+
 # DRAFT: Fake data
 
 - Instale o pacote `django-faker`:
@@ -106,4 +106,69 @@ class LivroAdmin(admin.ModelAdmin):
 
 
 
+# 34. Adicionando o tipo de usuário à model de Usuário
+
+Inicialmente, utilizamos os grupos do Django para diferenciar os usuários. Uma outra forma de diferenciar os usuários é através de um campo tipo de usuário. Vamos adicionar o tipo de usuário na entidade  **User**.
+
+- Em `models/user.py`, vamos incluir o campo `tipo_usuario` na entidade `User`:
+
+```python
+...
+class User(AbstractBaseUser, PermissionsMixin):
+    class TipoUsuario(models.IntegerChoices):
+        CLIENTE = 1, "Cliente"
+        VENDEDOR = 2, "Vendedor"
+        GERENTE = 3, "Gerente"
+...
+    tipo_usuario = models.IntegerField(_("User Type"), choices=TipoUsuario.choices, default=TipoUsuario.CLIENTE)
+...
+```
+
+> O campo `tipo_usuario` é um campo do tipo `IntegerField`, que armazena o tipo de usuário. O parâmetro `choices` indica as opções de usuário. O parâmetro `default` indica o tipo de usuário padrão.
+
+- Execute as migrações.
+- Para testar, crie um novo usuário e verifique que o tipo de usuário foi gravado.
+
+**Adicionando o campo ao Admin**
+
+Vamos adicionar o campo `tipo_usuario` ao Admin.
+
+- Em `admin/user.py`, vamos incluir o campo `tipo_usuario` no `UserAdmin`:
+
+```python
+...
+class UserAdmin(BaseUserAdmin):
+    fieldsets = (
+...
+        (_("Personal Info"), {"fields": ("name", "foto", "tipo_usuario")}),
+    )
+...
+```
+
+> O campo `tipo_usuario` foi incluído no campo `Personal info`.
+
+
+**Utilizando o tipo de usuário**
+
+Uma forma de utilizar o tipo de usuário é verificando se o usuário é `GERENTE` e então permitir que ele tenha acesso a todas as compras. Vamos ver como fazer isso.
+
+- No `views/compra.py`, vamos alterar o método `get_queryset` para permitir que o usuário `GERENTE` tenha acesso a todas as compras:
+
+```python
+...
+class CompraViewSet(ModelViewSet):
+...
+    def get_queryset(self):
+        usuario = self.request.user
+...
+        if usuario.tipo == User.Tipos.GERENTE:
+            return Compra.objects.all()
+        return Compra.objects.filter(usuario=usuario)
+...
+```
+
+> O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado, exceto se o usuário for `GERENTE`, que retorna todas as compras.
+
+- Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
+- Faça o _commit_ com a mensagem `Adicionando o tipo de usuário à model de Usuário`.
 

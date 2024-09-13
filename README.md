@@ -45,17 +45,16 @@ Bons estudos!
 - [22. Uso de `TabularInline` no `Admin` para Itens da Compra](#22-uso-de-tabularinline-no-admin-para-itens-da-compra)
 - [23. Endpoint para a listagem básica de compras](#23-endpoint-para-a-listagem-básica-de-compras)
 - [24. Visualização dos itens da compra no endpoint da listagem de compras](#24-visualização-dos-itens-da-compra-no-endpoint-da-listagem-de-compras)
-- [24b. Mostrando o total do item na listagem de compras](#24b-mostrando-o-total-do-item-na-listagem-de-compras)
-- [25. Inclusão do total da compra na listagem de compras](#25-inclusão-do-total-da-compra-na-listagem-de-compras)
-- [26. Criação de um endpoint para criar novas compras](#26-criação-de-um-endpoint-para-criar-novas-compras)
-- [27. Criação de um endpoint para atualizar compras](#27-criação-de-um-endpoint-para-atualizar-compras)
-- [28. Criação de uma compra a partir do usuário autenticado](#28-criação-de-uma-compra-a-partir-do-usuário-autenticado)
-- [29. Filtrando apenas as compras do usuário autenticado](#29-filtrando-apenas-as-compras-do-usuário-autenticado)
-- [30. Validando a quantidade de itens em estoque](#30-validando-a-quantidade-de-itens-em-estoque)
-- [31. Gravando o preço do livro no item da compra](#31-gravando-o-preço-do-livro-no-item-da-compra)
-- [32. Acrescentando a data da compra](#32-acrescentando-a-data-da-compra)
-- [33. Adicionando tipo de pagamento à entidade de Compra](#33-adicionando-tipo-de-pagamento-à-entidade-de-compra)
-- [34. Adicionando o tipo de usuário à model de Usuário](#34-adicionando-o-tipo-de-usuário-à-model-de-usuário)
+- [25. Mostrando o total do item na listagem de compras](#25-mostrando-o-total-do-item-na-listagem-de-compras)
+- [26. Inclusão do total da compra na listagem de compras](#26-inclusão-do-total-da-compra-na-listagem-de-compras)
+- [27. Criação de um endpoint para criar novas compras](#27-criação-de-um-endpoint-para-criar-novas-compras)
+- [28. Criação de um endpoint para atualizar compras](#28-criação-de-um-endpoint-para-atualizar-compras)
+- [29. Criação de uma compra a partir do usuário autenticado](#29-criação-de-uma-compra-a-partir-do-usuário-autenticado)
+- [30. Filtrando apenas as compras do usuário autenticado](#30-filtrando-apenas-as-compras-do-usuário-autenticado)
+- [31. Validando a quantidade de itens em estoque](#31-validando-a-quantidade-de-itens-em-estoque)
+- [32. Gravando o preço do livro no item da compra](#32-gravando-o-preço-do-livro-no-item-da-compra)
+- [33. Acrescentando a data da compra](#33-acrescentando-a-data-da-compra)
+- [34. Adicionando tipo de pagamento à entidade de Compra](#34-adicionando-tipo-de-pagamento-à-entidade-de-compra)
 - [35. Finalizando a compra e atualizando a quantidade de itens em estoque](#35-finalizando-a-compra-e-atualizando-a-quantidade-de-itens-em-estoque)
 - [36. Utilizando filtros](#36-utilizando-filtros)
 - [37. Busca textual](#37-busca-textual)
@@ -2223,7 +2222,7 @@ fields = ("livro", "quantidade")
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ com a mensagem `Limitando os campos dos itens da compra na listagem de compras`.
 
-# 24b. Mostrando o total do item na listagem de compras
+# 25. Mostrando o total do item na listagem de compras
 
 O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
 
@@ -2261,7 +2260,7 @@ class ItensCompraSerializer(ModelSerializer):
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ com a mensagem `Mostrando o total do item na listagem de compras`.
 
-# 25. Inclusão do total da compra na listagem de compras
+# 26. Inclusão do total da compra na listagem de compras
 
 Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras.
 
@@ -2296,7 +2295,7 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 - Teste o endpoint no navegador.
 - Faça o _commit_ com a mensagem `Inclusão do total da compra na listagem de compras`.
 
-# 26. Criação de um endpoint para criar novas compras
+# 27. Criação de um endpoint para criar novas compras
 
 Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
 
@@ -2439,7 +2438,7 @@ class CriarEditarItensCompraSerializer(ModelSerializer):
 - Teste o endpoint no `ThunderClient.
 - Faça o _commit_ com a mensagem `Criação de um endpoint para criar novas compras`.
 
-# 27. Criação de um endpoint para atualizar compras
+# 28. Criação de um endpoint para atualizar compras
 
 - Vamos tentar alterar uma compra existente no endpoint `compras/1/` (ou aquela que você preferir) no `ThunderClient`, utilizando o método `PUT`:
 
@@ -2502,7 +2501,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
     - Experimente mudar o livro de um item da compra;
 - Faça o _commit_ com a mensagem `Criação de um endpoint para atualizar compras`.
 
-# 28. Criação de uma compra a partir do usuário autenticado
+# 29. Criação de uma compra a partir do usuário autenticado
 
 Ao invés de passar o usuário no corpo da requisição, podemos pegar o usuário autenticado e criar a compra a partir dele. O `Django Rest Framework` nos dá uma forma de fazer isso.
 
@@ -2549,7 +2548,7 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 - Faça o _commit_ com a mensagem `Criação de uma compra a partir do usuário autenticado`.
 
-# 29. Filtrando apenas as compras do usuário autenticado
+# 30. Filtrando apenas as compras do usuário autenticado
 
 Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar da seguinte forma: se o usuário for um usuário normal, ele só pode ver as suas compras. Se o usuário for um administrador, ele pode ver todas as compras.
 
@@ -2579,7 +2578,7 @@ class CompraViewSet(ModelViewSet):
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ com a mensagem `Filtrando apenas as compras do usuário autenticado`.
 
-# 30. Validando a quantidade de itens em estoque
+# 31. Validando a quantidade de itens em estoque
 
 Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
 
@@ -2607,7 +2606,7 @@ from rest_framework.serializers import (
 - Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ com a mensagem `Validando a quantidade de itens em estoque`.
 
-# 31. Gravando o preço do livro no item da compra
+# 32. Gravando o preço do livro no item da compra
 
 Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
 
@@ -2683,7 +2682,7 @@ Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarC
 - Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ com a mensagem `Gravando o preço do livro no item da compra`.
 
-# 32. Acrescentando a data da compra
+# 33. Acrescentando a data da compra
 
 No momento, não existe nenhum registro da data da compra. Vamos incluir a data da compra, que será definida automaticamente no momento da criação da compra.
 
@@ -2743,7 +2742,7 @@ class CompraSerializer(ModelSerializer):
 - Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
 - Faça o _commit_ com a mensagem `Acrescentando a data da compra`.
 
-# 33. Adicionando tipo de pagamento à entidade de Compra
+# 34. Adicionando tipo de pagamento à entidade de Compra
 
 Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto`, `transferência bancária`, `dinheiro` ou `outro`.
 
@@ -2770,72 +2769,6 @@ class Compra(models.Model):
 - Execute as migrações.
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
 - Faça o _commit_ com a mensagem `Adicionando tipo de pagamento à entidade de Compra`.
-
-# 34. Adicionando o tipo de usuário à model de Usuário
-
-Inicialmente, utilizamos os grupos do Django para diferenciar os usuários. Uma outra forma de diferenciar os usuários é através de um campo tipo de usuário. Vamos adicionar o tipo de usuário na entidade  **User**.
-
-- Em `models/user.py`, vamos incluir o campo `tipo_usuario` na entidade `User`:
-
-```python
-...
-class User(AbstractBaseUser, PermissionsMixin):
-    class TipoUsuario(models.IntegerChoices):
-        CLIENTE = 1, "Cliente"
-        VENDEDOR = 2, "Vendedor"
-        GERENTE = 3, "Gerente"
-...
-    tipo_usuario = models.IntegerField(_("User Type"), choices=TipoUsuario.choices, default=TipoUsuario.CLIENTE)
-...
-```
-
-> O campo `tipo_usuario` é um campo do tipo `IntegerField`, que armazena o tipo de usuário. O parâmetro `choices` indica as opções de usuário. O parâmetro `default` indica o tipo de usuário padrão.
-
-- Execute as migrações.
-- Para testar, crie um novo usuário e verifique que o tipo de usuário foi gravado.
-
-**Adicionando o campo ao Admin**
-
-Vamos adicionar o campo `tipo_usuario` ao Admin.
-
-- Em `admin/user.py`, vamos incluir o campo `tipo_usuario` no `UserAdmin`:
-
-```python
-...
-class UserAdmin(BaseUserAdmin):
-    fieldsets = (
-...
-        (_("Personal Info"), {"fields": ("name", "foto", "tipo_usuario")}),
-    )
-...
-```
-
-> O campo `tipo_usuario` foi incluído no campo `Personal info`.
-
-
-**Utilizando o tipo de usuário**
-
-Uma forma de utilizar o tipo de usuário é verificando se o usuário é `GERENTE` e então permitir que ele tenha acesso a todas as compras. Vamos ver como fazer isso.
-
-- No `views/compra.py`, vamos alterar o método `get_queryset` para permitir que o usuário `GERENTE` tenha acesso a todas as compras:
-
-```python
-...
-class CompraViewSet(ModelViewSet):
-...
-    def get_queryset(self):
-        usuario = self.request.user
-...
-        if usuario.tipo == User.Tipos.GERENTE:
-            return Compra.objects.all()
-        return Compra.objects.filter(usuario=usuario)
-...
-```
-
-> O método `get_queryset` é chamado quando uma compra é listada. Ele retorna apenas as compras do usuário autenticado, exceto se o usuário for `GERENTE`, que retorna todas as compras.
-
-- Para testar, autentique-se com um usuário normal e depois com um que seja `GERENTE`. Você verá que o `GERENTE` consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
-- Faça o _commit_ com a mensagem `Adicionando o tipo de usuário à model de Usuário`.
 
 # 35. Finalizando a compra e atualizando a quantidade de itens em estoque
 
