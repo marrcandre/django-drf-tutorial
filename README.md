@@ -150,7 +150,7 @@ Você pode clonar o projeto de duas formas:
   - Abra o **VS Code**.
   - Clique no ícone de **Source Control** na barra lateral esquerda.
     - Clique no botão `Clone Repository`.
-    - Vocẽ também pode teclar `Control+Shift+P` e digitar `Clone Repository`.
+    - Você também pode teclar `Control+Shift+P` e digitar `Clone Repository`.
   - Digite a URL do repositório do projeto (ou procure na lista de repositórios disponíveis).
   - Escolha a pasta onde o projeto será clonado.
   - Clique no botão `Clone`.
@@ -746,7 +746,7 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 
 # 9. Incluindo chaves estrangeiras no modelo Livro
 
-Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão ch**aves estrageiras**, referenciando os modelos `Categoria` e `Editora`. Esse relacionamento é do tipo **n para 1**. Posteriormente, vamos incluir um relacionamento **n para n** entre `Livro` e `Autor`.
+Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão **chaves estrangeiras**, referenciando os modelos `Categoria` e `Editora`. Esse relacionamento é do tipo **n para 1**. Posteriormente, vamos incluir um relacionamento **n para n** entre `Livro` e `Autor`.
 
 **9.1 Campo `categoria` no `Livro`**
 
@@ -967,7 +967,7 @@ class LivroListSerializer(ModelSerializer):
 
 Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos. Com isso poderemos associar imagens aos livros, ao perfil do usuário, etc.
 
-Essa aplicação não será instalada através do comando `pdm add <pacote>`, pois é uma aplicação que não está disponível no `PyPI`. Ela será instalada manualmente, baixando e descopactando um arquivo compactado.
+Essa aplicação não será instalada através do comando `pdm add <pacote>`, pois é uma aplicação que não está disponível no `PyPI`. Ela será instalada manualmente, baixando e descompactando um arquivo compactado.
 
 **Baixando o pacote**
 
@@ -2514,7 +2514,7 @@ class Compra(models.Model):
 
 - Execute as migrações.
 
-Vocẽ receberá um erro na migration, pois o campo `data` não pode ser nulo.
+Você receberá um erro na migration, pois o campo `data` não pode ser nulo.
 
 - Escolha a opção 1, que é a opção de preencher o campo com a data atual (`timezone.now`).
 
