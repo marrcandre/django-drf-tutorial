@@ -2775,7 +2775,7 @@ class Compra(models.Model):
 
 Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
 
-- No `models/compra.py`, vamos criar um método `finalizar` na model `Compra`:
+- No `views/compra.py`, vamos criar um método `finalizar` na view `CompraViewSet`:
 
 ```python
 from django.db import transaction
@@ -2784,7 +2784,7 @@ from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 ...
-class Compra(models.Model):
+class CompraViewSet(ModelViewSet):
 ...
     @action(detail=True, methods=["post"])
     def finalizar(self, request, pk=None):
