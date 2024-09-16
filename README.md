@@ -61,25 +61,14 @@ Bons estudos!
 - [37. Busca textual](#37-busca-textual)
 - [38. Ordenação dos resultados](#38-ordenação-dos-resultados)
 - [Exercícios Garagem](#exercícios-garagem)
-  - [E1. Crie o projeto Garagem](#e1-crie-o-projeto-garagem)
-  - [E2. Crie o modelo Modelo](#e2-crie-o-modelo-modelo)
-  - [E3. Crie o modelo Veiculo](#e3-crie-o-modelo-veiculo)
 - [Apêndices](#apêndices)
 - [A1. Instalação e atualização do VS Code](#a1-instalação-e-atualização-do-vs-code)
 - [A2. Instalação e sincronização de extensões do VS Code](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
-  - [Instalação de extensões no VS Code](#instalação-de-extensões-no-vs-code)
-  - [Sinconização de extensões no VS Code](#sinconização-de-extensões-no-vs-code)
 - [A3. Instalação e configuração do PDM](#a3-instalação-e-configuração-do-pdm)
 - [A4. Criando o Banco de Dados no Supabase](#a4-criando-o-banco-de-dados-no-supabase)
 - [A5. Publicando o projeto no Render](#a5-publicando-o-projeto-no-render)
 - [A6. Armazenando arquivos estáticos no Cloudinary](#a6-armazenando-arquivos-estáticos-no-cloudinary)
 - [A7. Resolução de erros](#a7-resolução-de-erros)
-  - [Liberando uma porta em uso](#liberando-uma-porta-em-uso)
-  - [Removendo temporários, migrations e o banco de dados](#removendo-temporários-migrations-e-o-banco-de-dados)
-  - [Pasta .venv criada no projeto](#pasta-venv-criada-no-projeto)
-  - [Geração da SECRET\_KEY](#geração-da-secret_key)
-  - [Abrindo um arquivo sqlite3 na web](#abrindo-um-arquivo-sqlite3-na-web)
-  - [Aumentando o tempo de vida do token de autenticação JWT](#aumentando-o-tempo-de-vida-do-token-de-autenticação-jwt)
 - [A8. Configurando o git](#a8-configurando-o-git)
 - [A9. Usando curl para testar a API via linha de comando](#a9-usando-curl-para-testar-a-api-via-linha-de-comando)
 - [Contribua](#contribua)
@@ -2282,26 +2271,26 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 ```python
 ...
-    def update(self, instance, validated_data):
-        itens = validated_data.pop("itens")
-        if itens:
-            instance.itens.all().delete()
-            for item in itens:
-                ItensCompra.objects.create(compra=instance, **item)
-        instance.save()
-        return super().update(instance, validated_data)
+    def update(self, compra, validated_data):
+        itens_data = validated_data.pop("itens")
+        if itens_data:
+            compra.itens.all().delete()
+            for item_data in itens_data:
+                ItensCompra.objects.create(compra=compra, **item_data)
+        compra.save()
+        return super().update(compra, validated_data)
 ...
 ```
 
 > O método `update` é chamado quando uma compra é atualizada. Ele recebe os dados validados e atualiza a compra e os itens da compra.
 
-> O método `update` recebe dois parâmetros: `instance` e `validated_data`. O `instance` é a compra que está sendo atualizada. O `validated_data` são os dados validados que estão sendo atualizados.
+> O método `update` recebe dois parâmetros: `compra` e `validated_data`. O parâmetro `compra` é a compra que está sendo atualizada. O parâmetro `validated_data` são os dados validados que estão sendo atualizados.
 
 > O método `update` remove todos os itens da compra (se houverem) e cria novos itens com os dados validados.
 
 > O método `update` salva a compra e retornamos a instância.
 
-> O comando `super().update(instance, validated_data)` chama o método `update` da classe pai, que é o método padrão de atualização.
+> O comando `super().update(compra, validated_data)` chama o método `update` da classe pai, que é o método padrão de atualização.
 
 - Teste o endpoint no `ThunderClient`:
   - use o método `PUT`, para atualizar a compra de forma completa;
