@@ -1393,7 +1393,7 @@ pdm run shellp
 <QuerySet []>
 ```
 
-**Useando o atributo `related_name`**
+**Usando o atributo `related_name`**
 
 -   Acesso a todos os livros de um autor:
 
