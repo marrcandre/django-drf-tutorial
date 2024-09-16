@@ -313,7 +313,7 @@ pdm run migrate
 
 **3.6 Inclusão no Admin**
 
-A tabela ainda não apareceu, certo? Isso acontece poque ainda não incluímos a `model` no `Admin`.
+A tabela ainda não apareceu, certo? Isso acontece porque ainda não incluímos a `model` no `Admin`.
 
 -   Vamos incluir a `model` no `Admin`. Abra o arquivo `admin.py` da aplicação `core` e adicione o seguinte código no final do arquivo:
 
@@ -332,7 +332,7 @@ O campo `id` é criado automaticamente pelo **Django**. Ele é o identificador �
 **3.9 Mudando a forma de exibição dos registros criados**
 
 -   Inclua algumas categorias no banco de dados.
--   Você perceberá que a descrição dos informações que você inclui está meio estranha, algo como `Categoria object (1)` e assim por diante.
+-   Você perceberá que a descrição das informações que você inclui está meio estranha, algo como `Categoria object (1)` e assim por diante.
 -   Para resolver, isso, vamos fazer uma pequena modificação na `model` Categoria.
 
 **3.10 O método `__str__`**
@@ -365,7 +365,7 @@ Volte ao `Admin` verifique o que mudou na apresentação dos objetos da model `C
 -   Escreva mensagens como:
     -   Modificação do arquivo `models.py`
     -   Inclusão da Categoria de Veículos
-    -   Alteração do Marca do Veículo
+    -   Alteração da Marca do Veículo
 
 # 4. Criando uma API REST
 
@@ -455,7 +455,7 @@ router.register(r"users", UserViewSet, basename="users")
 ...
 ```
 
-**IMPORTANTE**: as nomes das rotas serão sempre nomes **únicos**, no **plural** e em **minúsculas**. Na maiorias das vezes, os colocamos em **ordem alfabética**.
+**IMPORTANTE**: os nomes das rotas serão sempre nomes **únicos**, no **plural** e em **minúsculas**. Nas maiorias das vezes, os colocamos em **ordem alfabética**.
 
 **4.5 Testando a API**
 
@@ -885,7 +885,7 @@ class LivroSerializer(ModelSerializer):
         depth = 1
 ```
 
-Teste e você verá que isso resolve a listagem (GET), mas gera problema no criação e alteração (POST, PUT e PATCH).
+Teste e você verá que isso resolve a listagem (GET), mas gera problema na criação e alteração (POST, PUT e PATCH).
 
 - Para resolver isso, vamos criar dois (ou mais) serializadores, sendo um para a listagem e outro para a recuperação de um único livro:
 
@@ -965,7 +965,7 @@ class LivroListSerializer(ModelSerializer):
 
 # 12. Upload e associação de imagens
 
-Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelos. Com isso poderemos associar imagens aos livros, ao perfil do usuário, etc.
+Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associação ao nosso modelo. Com isso poderemos associar imagens aos livros, ao perfil do usuário, etc.
 
 Essa aplicação não será instalada através do comando `pdm add <pacote>`, pois é uma aplicação que não está disponível no `PyPI`. Ela será instalada manualmente, baixando e descompactando um arquivo compactado.
 
@@ -1316,7 +1316,7 @@ class LivroAdmin(admin.ModelAdmin):
 
 > O atributo `ordering` é uma tupla que define a ordem de exibição default dos registros.
 
--   Acesse o `Admin` e veja as midificações:
+-   Acesse o `Admin` e veja as modificações:
 
     http://0.0.0.0:19003/api/admin/
 
@@ -1441,7 +1441,7 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 **Relação entre nomes das ações**
 
-Podemos perceber uma relação as ações que compôem o **CRUD**, os termos utilizados no **Admin** e os verbos **HTTP** e as **actions** dos **serializadores** do **Django REST Framework**.:
+Podemos perceber uma relação as ações que compõem o **CRUD**, os termos utilizados no **Admin** e os verbos **HTTP** e as **actions** dos **serializadores** do **Django REST Framework**.:
 
 | Ação      | CRUD   | Admin  | HTTP        | FDRF Actions |
 | --------- | ------ | ------ | ----------- | ------------------ |
@@ -1475,7 +1475,7 @@ Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
 _A **autenticação** ou **identificação** por si só geralmente não é suficiente para obter acesso à informação ou código. Para isso, a entidade que solicita o acesso deve ter **autorização**._ [(Permissões no DRF)](https://www.django-rest-framework.org/api-guide/permissions/)
 
-**Autenticação** significa que um usuário foi **identificado** em um sistema, portanto ele é **conhecido**. Isso se dá, normamente por um sistema de **_login_**.
+**Autenticação** significa que um usuário foi **identificado** em um sistema, portanto ele é **conhecido**. Isso se dá, normalmente por um sistema de **_login_**.
 
 **Permissão (autorização)** se dá por um esquema de **conceder privilégios**, seja a usuários ou grupos.
 
@@ -1489,7 +1489,7 @@ As permissões podem ser definidas:
 
 Vamos analisar cada uma dessas formas.
 
-**a. Exemplo de uso de permisssão na `viewset`**
+**a. Exemplo de uso de permissão na `viewset`**
 
 Vamos ver um exemplo de uso de permissão em uma `viewset`. No exemplo, vamos permitir acesso apenas a usuários autenticados na model `Categoria`.
 
@@ -1518,7 +1518,7 @@ Para testar:
 
 > **Resumindo**, utilizamos a classe `IsAuthenticated` para permitir acesso apenas a usuários autenticados.
 
-**b. Exemplo de uso de permisssão no `settings.py`**
+**b. Exemplo de uso de permissão no `settings.py`**
 
 Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`.
 
@@ -1776,7 +1776,7 @@ O seu projeto deve ficar assim:
 
 No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forma, vamos criar "manualmente" a **entidade associativa**, que será chamada de `ItensCompra`.
 
--   Vamos adicionar um nova entidade `ItensCompra` ao arquivo `core/models/compra.py`:
+-   Vamos adicionar uma nova entidade `ItensCompra` ao arquivo `core/models/compra.py`:
 
 ```python
 ...
@@ -2200,7 +2200,7 @@ Erro de afirmação em `/api/compras/`
 O método `.create()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.create()` explícito para o serializer `core.serializers.compra.CriarEditarCompraSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 
-O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
+O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estrangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
 
 **Alterando o método `create` do `serializer` de `Compra`**
 
