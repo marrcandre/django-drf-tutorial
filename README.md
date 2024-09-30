@@ -2244,6 +2244,75 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
     - Experimente mudar o livro de um item da compra;
 - Faça o _commit_ com a mensagem `Criação de um endpoint para atualizar compras`.
 
+# 28b Criando um serializador específico para a listagem de compras
+
+Como fizemos com o `Livro`, vamos criar um serializador específico para a listagem de compras, que vai mostrar apenas os campos necessários. Com isso, a listagem de compras ficará mais enxuta.
+
+- No arquivo `serializers/compra.py`, crie um novo serializador chamado `ListarCompraSerializer`:
+
+```python
+...
+class ListarCompraSerializer(ModelSerializer):
+    usuario = CharField(source="usuario.email", read_only=True)
+    itens = ListarItensCompraSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ("id", "usuario", "itens")
+...
+```
+
+> O `serializer` `ListarCompraSerializer` é um `serializer` específico para a listagem de compras. Ele mostra apenas os campos necessários.
+
+Vamos criar também um serializador específico para os itens da compra:
+
+```python
+...
+class ListarItensCompraSerializer(ModelSerializer):
+    livro = CharField(source="livro.titulo", read_only=True)
+
+    class Meta:
+        model = ItensCompra
+        fields = ("quantidade", "livro")
+        depth = 1
+...
+```
+
+Temos que incluir o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+
+```python
+...
+from .compra import (
+    CompraSerializer,
+    CriarEditarCompraSerializer,
+    ListarCompraSerializer, # novo
+    ItensCompraSerializer,
+    CriarEditarItensCompraSerializer,
+    ListarItensCompraSerializer, # novo
+)
+...
+```
+
+- No `viewset` de `Compra`, vamos alterar o `serializer_class` para usar o novo `serializer`:
+
+```python
+...
+from .serializers import CompraSerializer, CriarEditarCompraSerializer, ListarCompraSerializer # novo
+...
+class CompraViewSet(ModelViewSet):
+...
+    def get_serializer_class(self):
+        if self.action == "list":
+            return ListarCompraSerializer
+        if self.action in ("create", "update"):
+            return CriarEditarCompraSerializer
+        return CompraSerializer
+...
+```
+
+- Teste o endpoint no navegador.
+- Faça o _commit_ com a mensagem `Criando um serializador específico para a listagem de compras`.
+
 # 29. Criação de uma compra a partir do usuário autenticado
 
 Ao invés de passar o usuário no corpo da requisição, podemos pegar o usuário autenticado e criar a compra a partir dele. O `Django Rest Framework` nos dá uma forma de fazer isso.
@@ -2320,74 +2389,6 @@ class CompraViewSet(ModelViewSet):
 
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ com a mensagem `Filtrando apenas as compras do usuário autenticado`.
-
-# 30b Criando um serializador específico para a listagem de compras
-
-Como fizemos com o Livro, vamos criar um serializador específico para a listagem de compras, que vai mostrar apenas os campos necessários. Com isso, a listagem de compras ficará mais enxuta.
-
-- No arquivo `serializers/compra.py`, crie um novo serializador chamado `ListarCompraSerializer`:
-
-```python
-...
-class ListarCompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.email", read_only=True)
-    itens = ListarItensCompraSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Compra
-        fields = ("id", "usuario", "itens")
-...
-```
-
-> O `serializer` `ListarCompraSerializer` é um `serializer` específico para a listagem de compras. Ele mostra apenas os campos necessários.
-
-Vamos criar também um serializador específico para os itens da compra:
-
-```python
-...
-class ListarItensCompraSerializer(ModelSerializer):
-    livro = CharField(source="livro.titulo", read_only=True)
-
-    class Meta:
-        model = ItensCompra
-        fields = ("quantidade", "livro")
-        depth = 1
-...
-```
-
-Temos que incluir o novo `serializer` no arquivo `__init__.py` dos `serializers`:
-
-```python
-...
-from .compra import (
-    CompraSerializer,
-    CriarEditarCompraSerializer,
-    ListarCompraSerializer, # novo
-    ItensCompraSerializer,
-    CriarEditarItensCompraSerializer,
-    ListarItensCompraSerializer, # novo
-)
-...
-```
-
-- No `viewset` de `Compra`, vamos alterar o `serializer_class` para usar o novo `serializer`:
-
-```python
-...
-class CompraViewSet(ModelViewSet):
-...
-    def get_serializer_class(self):
-        if self.action == "list":
-            return ListarCompraSerializer
-        if self.action in ("create", "update"):
-            return CriarEditarCompraSerializer
-        return CompraSerializer
-...
-```
-
-- Teste o endpoint no navegador.
-- Faça o _commit_ com a mensagem `Criando um serializador específico para a listagem de compras`.
-
 
 # 31. Validando a quantidade de itens em estoque
 
