@@ -20,62 +20,6 @@ Bons estudos!
 
 ---
 
-**SUMÁRIO**
-
-- [1. Preparação do ambiente](#1-preparação-do-ambiente)
-- [2. Criação do projeto](#2-criação-do-projeto)
-- [3. Criação de uma aplicação](#3-criação-de-uma-aplicação)
-- [4. Criando uma API REST](#4-criando-uma-api-rest)
-- [5. Aplicação frontend Vuejs](#5-aplicação-frontend-vuejs)
-- [6. Incluindo a Editora no projeto Livraria](#6-incluindo-a-editora-no-projeto-livraria)
-- [7. Criação da API para Autor](#7-criação-da-api-para-autor)
-- [8. Criação da API para Livro](#8-criação-da-api-para-livro)
-- [9. Incluindo chaves estrangeiras no modelo Livro](#9-incluindo-chaves-estrangeiras-no-modelo-livro)
-- [10. Incluindo relacionamento n para n no modelo do Livro](#10-incluindo-relacionamento-n-para-n-no-modelo-do-livro)
-- [11. Modificação da API para Livro](#11-modificação-da-api-para-livro)
-- [12. Upload e associação de imagens](#12-upload-e-associação-de-imagens)
-- [13. Dump e Load de dados](#13-dump-e-load-de-dados)
-- [14. Customização do Admin](#14-customização-do-admin)
-- [15. Uso do Django Shell e do Django Shell Plus](#15-uso-do-django-shell-e-do-django-shell-plus)
-- [16. Autenticação e autorização](#16-autenticação-e-autorização)
-- [17. Usando as permissões do DRF](#17-usando-as-permissões-do-drf)
-- [18. Autenticação com Passage](#18-autenticação-com-passage)
-- [19. Inclusão da foto de perfil no usuário](#19-inclusão-da-foto-de-perfil-no-usuário)
-- [20. Criação da entidade Compra integrada ao usuário do projeto](#20-criação-da-entidade-compra-integrada-ao-usuário-do-projeto)
-- [21. Criando os itens da compra](#21-criando-os-itens-da-compra)
-- [22. Uso de TabularInline no Admin para Itens da Compra](#22-uso-de-tabularinline-no-admin-para-itens-da-compra)
-- [23. Endpoint para a listagem básica de compras](#23-endpoint-para-a-listagem-básica-de-compras)
-- [24. Visualização dos itens da compra no endpoint da listagem de compras](#24-visualização-dos-itens-da-compra-no-endpoint-da-listagem-de-compras)
-- [25. Mostrando o total do item na listagem de compras](#25-mostrando-o-total-do-item-na-listagem-de-compras)
-- [26. Inclusão do total da compra na listagem de compras](#26-inclusão-do-total-da-compra-na-listagem-de-compras)
-- [27. Criação de um endpoint para criar novas compras](#27-criação-de-um-endpoint-para-criar-novas-compras)
-- [28. Criação de um endpoint para atualizar compras](#28-criação-de-um-endpoint-para-atualizar-compras)
-- [29. Criação de uma compra a partir do usuário autenticado](#29-criação-de-uma-compra-a-partir-do-usuário-autenticado)
-- [30. Filtrando apenas as compras do usuário autenticado](#30-filtrando-apenas-as-compras-do-usuário-autenticado)
-- [31. Validando a quantidade de itens em estoque](#31-validando-a-quantidade-de-itens-em-estoque)
-- [32. Gravando o preço do livro no item da compra](#32-gravando-o-preço-do-livro-no-item-da-compra)
-- [33. Acrescentando a data da compra](#33-acrescentando-a-data-da-compra)
-- [34. Adicionando tipo de pagamento à entidade de Compra](#34-adicionando-tipo-de-pagamento-à-entidade-de-compra)
-- [35. Finalizando a compra e atualizando a quantidade de itens em estoque](#35-finalizando-a-compra-e-atualizando-a-quantidade-de-itens-em-estoque)
-- [36. Utilizando filtros](#36-utilizando-filtros)
-- [37. Busca textual](#37-busca-textual)
-- [38. Ordenação dos resultados](#38-ordenação-dos-resultados)
-- [Exercícios Garagem](#exercícios-garagem)
-- [Apêndices](#apêndices)
-- [A1. Instalação e atualização do VS Code](#a1-instalação-e-atualização-do-vs-code)
-- [A2. Instalação e sincronização de extensões do VS Code](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
-- [A3. Instalação e configuração do PDM](#a3-instalação-e-configuração-do-pdm)
-- [A4. Criando o Banco de Dados no Supabase](#a4-criando-o-banco-de-dados-no-supabase)
-- [A5. Publicando o projeto no Render](#a5-publicando-o-projeto-no-render)
-- [A6. Armazenando arquivos estáticos no Cloudinary](#a6-armazenando-arquivos-estáticos-no-cloudinary)
-- [A7. Resolução de erros](#a7-resolução-de-erros)
-- [A8. Configurando o git](#a8-configurando-o-git)
-- [A9. Usando curl para testar a API via linha de comando](#a9-usando-curl-para-testar-a-api-via-linha-de-comando)
-- [Contribua](#contribua)
-
-
----
-
 # 1. Preparação do ambiente
 
 A preparação do ambiente será feita apenas uma vez em cada computador. Ela consiste em instalar e configurar o **VS Code**, o **PDM** e o **Python**.
@@ -2376,6 +2320,74 @@ class CompraViewSet(ModelViewSet):
 
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ com a mensagem `Filtrando apenas as compras do usuário autenticado`.
+
+# 30b Criando um serializador específico para a listagem de compras
+
+Como fizemos com o Livro, vamos criar um serializador específico para a listagem de compras, que vai mostrar apenas os campos necessários. Com isso, a listagem de compras ficará mais enxuta.
+
+- No arquivo `serializers/compra.py`, crie um novo serializador chamado `ListarCompraSerializer`:
+
+```python
+...
+class ListarCompraSerializer(ModelSerializer):
+    usuario = CharField(source="usuario.email", read_only=True)
+    itens = ListarItensCompraSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ("id", "usuario", "itens")
+...
+```
+
+> O `serializer` `ListarCompraSerializer` é um `serializer` específico para a listagem de compras. Ele mostra apenas os campos necessários.
+
+Vamos criar também um serializador específico para os itens da compra:
+
+```python
+...
+class ListarItensCompraSerializer(ModelSerializer):
+    livro = CharField(source="livro.titulo", read_only=True)
+
+    class Meta:
+        model = ItensCompra
+        fields = ("quantidade", "livro")
+        depth = 1
+...
+```
+
+Temos que incluir o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+
+```python
+...
+from .compra import (
+    CompraSerializer,
+    CriarEditarCompraSerializer,
+    ListarCompraSerializer, # novo
+    ItensCompraSerializer,
+    CriarEditarItensCompraSerializer,
+    ListarItensCompraSerializer, # novo
+)
+...
+```
+
+- No `viewset` de `Compra`, vamos alterar o `serializer_class` para usar o novo `serializer`:
+
+```python
+...
+class CompraViewSet(ModelViewSet):
+...
+    def get_serializer_class(self):
+        if self.action == "list":
+            return ListarCompraSerializer
+        if self.action in ("create", "update"):
+            return CriarEditarCompraSerializer
+        return CompraSerializer
+...
+```
+
+- Teste o endpoint no navegador.
+- Faça o _commit_ com a mensagem `Criando um serializador específico para a listagem de compras`.
+
 
 # 31. Validando a quantidade de itens em estoque
 
