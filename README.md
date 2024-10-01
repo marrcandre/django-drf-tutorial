@@ -3398,8 +3398,165 @@ curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
 ```shell
 curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
 ```
------
 
+# A10. Django Shell - Comandos úteis
+
+Seguem abaixo alguns comandos úteis para serem executados no **Django Shell**:
+
+-   **Criar um objeto:**
+
+```python
+from core.models import Categoria
+c = Categoria(descricao="Teste")
+c.save()
+```
+
+-   **Listar todos os objetos:**
+
+```python
+Categoria.objects.all()
+```
+
+-   **Listar um objeto específico:**
+
+```python
+Categoria.objects.get(id=1)
+```
+
+-   **Atualizar um objeto:**
+
+```python
+c = Categoria.objects.get(id=1)
+c.descricao = "Teste 2"
+c.save()
+```
+
+-   **Deletar um objeto:**
+
+```python
+c = Categoria.objects.get(id=1)
+c.delete()
+```
+
+- Listar todos os livros com preço igual a zero:
+
+```python
+from core.models import Livro
+Livro.objects.filter(preco=10)
+```
+
+- Mostrar a quantidade de livros com preço igual a zero:
+
+```python
+Livro.objects.filter(preco=0).count()
+```
+
+ou
+
+```python
+len(Livro.objects.filter(preco=0))
+```
+
+- Alterar o preço de todos os livros com preço igual a zero:
+
+```python
+Livro.objects.filter(preco=0).update(preco=10)
+```
+
+- Listar todos os livros com preço nulo:
+
+```python
+Livro.objects.filter(preco__isnull=True)
+```
+
+- Alterar a editora de todos os livros de um editora específica:
+
+```python
+for livro in Editora.objects.get(id=167).livros.all():
+    livro.editora_id = 11
+    livro.save()
+```
+
+- Listar todos os livros de uma categoria específica (usando o atributo `related_name`):
+
+```python
+Categoria.objects.get(descricao="Comédia").livros.all()
+```
+
+- Listar todos os livros de uma categoria específica (usando o atributo `categoria`):
+
+```python
+Livro.objects.filter(categoria__descricao="Comédia")
+```
+
+- Remover todas as categorias que não possuem livros:
+
+```python
+for categoria in Categoria.objects.all():
+    if len(categoria.livros.all()) == 0:
+        print(categoria)
+        categoria.delete()
+```
+
+# A11. DBShell - Comandos úteis
+
+Antes de utilizar o **DBShell**, é necessário instalar o pacote `sqlite3`.
+
+Ubuntu/Mint e derivados:
+
+```shell
+sudo apt install sqlite3
+```
+
+Manjaro:
+
+```shell
+sudo pacman -S sqlite3
+```
+
+Seguem abaixo alguns comandos úteis para serem executados no **DBShell**:
+
+- Remover todos os registros de uma tabela:
+
+```shell
+DELETE FROM core_categoria;
+```
+
+- Remover todos os usuários, com exceção do primeiro usuário cadastrado:
+
+```shell
+DELETE FROM core_user WHERE id > 1;
+```
+
+- Atualizar o preço de todos os livros com preço nulo para 10:
+
+```shell
+UPDATE core_livro SET preco = 10 WHERE preco IS NULL;
+```
+
+- Atualizar o preço de todos os livros com preço igual a zero para 10:
+
+```shell
+UPDATE core_livro SET preco = 10 WHERE preco = 0;
+```
+
+- Listar todos os livros com preço igual a zero:
+
+```shell
+SELECT * FROM core_livro WHERE preco = 0;
+```
+
+- Listar todos os livros com preço nulo:
+
+```shell
+SELECT * FROM core_livro WHERE preco IS NULL;
+```
+
+- Listar todos os livros de uma categoria específica:
+
+```shell
+SELECT * FROM core_livro WHERE categoria_id = 1;
+```
 
 # Contribua
 
