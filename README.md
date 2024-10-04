@@ -2407,15 +2407,15 @@ from rest_framework.serializers import (
     ValidationError, # novo
 )
 ...
-    def validate(self, data):
-        if data["quantidade"] > data["livro"].quantidade:
+    def validate(self, item):
+        if item["quantidade"] > item["livro"].quantidade:
             raise ValidationError("Quantidade de itens maior do que a quantidade em estoque.")
-        return data
+        return item
 ...
 ```
-> O método `validate` é chamado quando os dados são validados. Ele recebe os dados e retorna os dados validados.
+> A função `validate` permite adicionar validações de campo que dependem de múltiplos valores ao mesmo tempo. Nesse caso, ela está verificando se a quantidade solicitada do item (`item["quantidade"]`) não excede a quantidade disponível em estoque (`item["livro"].quantidade`).
 
-- Para testar, tente criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Você verá que a compra não é criada e é exibida uma mensagem de erro.
+- Para testar, tente criar uma compra com um item com a quantidade maior do que a quantidade em estoque daquele item. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ com a mensagem `Validando a quantidade de itens em estoque`.
 
 # 32. Gravando o preço do livro no item da compra
