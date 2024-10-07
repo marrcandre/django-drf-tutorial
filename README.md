@@ -1523,7 +1523,7 @@ No arquivo `.env`, preencha as seguintes variáveis com os valores da sua aplica
 
 ```shell
 PASSAGE_APP_ID=sua_app_id
-PASSAGE_APP_SECRET=sua_app_secret
+PASSAGE_APP_KEY=sua_app_key
 ```
 
 **Configuração do Passage no frontend Vue**
@@ -2390,7 +2390,42 @@ class CompraViewSet(ModelViewSet):
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ com a mensagem `Filtrando apenas as compras do usuário autenticado`.
 
-# 31. Validando a quantidade de itens em estoque
+# 31. Validando campos no serializer
+
+**Não permitindo itens com quantidade zero**
+
+Nesse momento, é possível criar uma compra com um item com quantidade zero. Vamos validar isso.
+
+- No `serializers/compra.py`, vamos alterar o `serializer` `CriarEditarItensCompraSerializer` para validar a quantidade do item da compra:
+
+```python
+...
+from rest_framework.serializers import (
+    CharField,
+    CurrentUserDefault,
+    HiddenField,
+    ModelSerializer,
+    SerializerMethodField,
+    ValidationError, # novo
+)
+
+class CriarEditarItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = ("livro", "quantidade")
+
+    def validate_quantidade(self, quantidade):
+        if quantidade <= 0:
+            raise ValidationError("A quantidade deve ser maior do que zero.")
+        return quantidade
+...
+```
+
+> A função `validate_<nome_do_campo>` é chamada quando um campo é validado. Nesse caso, ela está verificando se a quantidade do item da compra (`quantidade`) é maior do que zero.
+
+> Se a quantidade for menor ou igual a zero, é lançada uma exceção `ValidationError`.
+
+**Não permitindo quantidade de itens maior do que a quantidade em estoque**
 
 Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
 
@@ -2416,7 +2451,7 @@ from rest_framework.serializers import (
 > A função `validate` permite adicionar validações de campo que dependem de múltiplos valores ao mesmo tempo. Nesse caso, ela está verificando se a quantidade solicitada do item (`item["quantidade"]`) não excede a quantidade disponível em estoque (`item["livro"].quantidade`).
 
 - Para testar, tente criar uma compra com um item com a quantidade maior do que a quantidade em estoque daquele item. Você verá que a compra não é criada e é exibida uma mensagem de erro.
-- Faça o _commit_ com a mensagem `Validando a quantidade de itens em estoque`.
+- Faça o _commit_ com a mensagem `Validando a quantidade de itens na compra`.
 
 # 32. Gravando o preço do livro no item da compra
 
