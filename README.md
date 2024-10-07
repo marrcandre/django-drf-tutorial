@@ -2453,6 +2453,25 @@ from rest_framework.serializers import (
 - Para testar, tente criar uma compra com um item com a quantidade maior do que a quantidade em estoque daquele item. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ com a mensagem `Validando a quantidade de itens na compra`.
 
+**Formatando dados antes de salvar**
+
+Podemos usar as funções de validação para formatar os dados antes de salvar. Por exemplo, podemos gravar o email da Editora em minúsculas.
+
+- No `serializers/editora.py`, vamos alterar o `serializer` `EditoraSerializer` para formatar o email da Editora em minúsculas:
+
+```python
+...
+    def validate_email(self, email):
+        return email.lower()
+...
+```
+
+> A função `validate_<nome_do_campo>` é chamada quando um campo é validado. Nesse caso, ela está formatando o email da Editora em minúsculas.
+
+
+- Para testar, altere o email de uma Editora para maiúsculas e veja que o email foi gravado em minúsculas.
+- Faça o _commit_ com a mensagem `Formatando dados antes de salvar`.
+
 # 32. Gravando o preço do livro no item da compra
 
 Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
@@ -2510,7 +2529,7 @@ class ItensCompra(models.Model):
 
 **Gravando o preço do livro na atualização do item da compra**
 
-Da mesma forma, podemos alterar o método `update` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
+Da mesma forma, precisamos alterar o método `update` do `serializer` `CriarEditarCompraSerializer` para gravar o preço do livro no item da compra:
 
 ```python
 ...
