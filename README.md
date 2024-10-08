@@ -2533,15 +2533,15 @@ Da mesma forma, precisamos alterar o método `update` do `serializer` `CriarEdit
 
 ```python
 ...
-    def update(self, instance, validated_data):
+    def update(self, compra, validated_data):
         itens = validated_data.pop("itens")
         if itens:
-            instance.itens.all().delete()
+            compra.itens.all().delete()
             for item in itens:
-                item["preco"] = item["livro"].preco # nova linha
-                ItensCompra.objects.create(compra=instance, **item)
-        instance.save()
-        return super().update(instance, validated_data)
+                item["preco"] = item["livro"].preco  # nova linha
+                ItensCompra.objects.create(compra=compra, **item)
+        compra.save()
+        return super().update(compra, validated_data)
 ...
 ```
 
