@@ -1049,6 +1049,10 @@ class Livro(models.Model):
 
 > O campo `capa` é uma chave estrangeira para a tabela `uploader_image`.
 
+> O atributo `related_name="+"` indica que não será criado um atributo inverso na tabela `uploader_image`.
+
+> O atributo `on_delete=models.SET_NULL` indica que, ao apagar a imagem, o campo `capa` será setado como `NULL`.
+
 -   Faça novamente a migração do banco de dados:
 
 ```shell
