@@ -2637,6 +2637,30 @@ class Compra(models.Model):
 > O campo `tipo_pagamento` é um campo do tipo `IntegerField`, que armazena o tipo de pagamento da compra. O parâmetro `choices` indica as opções de pagamento. O parâmetro `default` indica o tipo de pagamento padrão.
 
 - Execute as migrações.
+
+- Inclua o campo `tipo_pagamento` no `serializer` de `Compra`:
+
+```python
+...
+class CompraSerializer(ModelSerializer):
+    usuario = CharField(source="usuario.email", read_only=True)
+    status = CharField(source="get_status_display", read_only=True)
+    data = DateTimeField(read_only=True)
+    tipo_pagamento = CharField(source="get_tipo_pagamento_display", read_only=True) # novo campo
+    itens = ItensCompraSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ("id", "usuario", "status", "total", "data", "tipo_pagamento", "itens") # modificado
+...
+```
+
+> O campo `tipo_pagamento` é um campo do tipo `CharField`, que mostra o tipo de pagamento da compra. O parâmetro `source` indica o método que retorna o tipo de pagamento.
+
+> O método `get_tipo_pagamento_display` é um método especial do model que retorna o valor legível do campo `tipo_pagamento`.
+
+> O campo `tipo_pagamento` foi incluído no atributo `fields` do serializer.
+
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
 - Faça o _commit_ com a mensagem `Adicionando tipo de pagamento à entidade de Compra`.
 
