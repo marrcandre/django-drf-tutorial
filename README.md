@@ -2674,7 +2674,7 @@ Ações personalizadas são métodos definidos dentro de uma viewset e decorados
 
 ## Alterando o preço de um livro
 
-Vamos criar uma ação personalizada para alterar o preço de um livro. Essa ação será aplicada a um recurso específico, ou seja, a um livro específico.
+Vamos criar uma ação personalizada para alterar o preço de um livro. Essa ação será aplicada a um **recurso específico**, ou seja, a um livro específico.
 
 - No `views/livro.py`, vamos criar um método `alterar_preco` na view `LivroViewSet`:
 
@@ -2730,7 +2730,7 @@ Vamos criar uma ação personalizada para alterar o preço de um livro. Essa aç
 
 ## Ajustando o estoque de um livro
 
-Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa ação será aplicada a um recurso específico, ou seja, a um livro específico.
+Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa ação será aplicada a um **recurso específico**, ou seja, a um livro específico.
 
 - No `views/livro.py`, vamos criar um método `ajustar_estoque` na view `LivroViewSet`:
 
@@ -2896,6 +2896,49 @@ class CompraViewSet(ModelViewSet):
   - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
 
 - Faça o _commit_ com a mensagem `Finalizando a compra e atualizando a quantidade de itens em estoque`.
+
+## Gerando um relatório de vendas do mês
+
+Vamos criar uma ação personalizada para gerar um relatório de vendas do mês. Essa ação será aplicada a uma **coleção**, ou seja, a todas as compras.
+
+- No `views/compra.py`, vamos criar um método `relatorio_vendas_mes` na view `CompraViewSet`:
+
+```python
+    @action(detail=False, methods=["get"])
+    def relatorio_vendas_mes(self, request):
+        # Define o início do mês atual
+        agora = timezone.now()
+        inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+        # Filtra as compras realizadas desde o início do mês até o presente momento
+        compras = Compra.objects.filter(status=Compra.StatusCompra.REALIZADO, data__gte=inicio_mes)
+
+        # Calcula o total de vendas e a quantidade de vendas
+        total_vendas = sum(compra.total for compra in compras)
+        quantidade_vendas = compras.count()
+
+        # Retorna o relatório
+        return Response(
+            {
+                "status": "Relatório de vendas deste mês",
+                "total_vendas": total_vendas,
+                "quantidade_vendas": quantidade_vendas,
+            },
+            status=status.HTTP_200_OK,
+        )
+```
+
+> O decorador `@action` cria um endpoint para a ação `relatorio_vendas_mes`, no formato `api/compras/relatorio_vendas_mes`.
+
+> O método `relatorio_vendas_mes` é um método de ação que gera um relatório de vendas do mês.
+
+> O método `timezone.now()` retorna a data e hora atuais.
+
+- Para testar:
+  - Gere um relatório de vendas do mês.
+- Faça o _commit_ com a mensagem `Gerando um relatório de vendas do mês`.
+
+
 
 # 36. Utilizando filtros
 
