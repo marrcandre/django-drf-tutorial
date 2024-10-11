@@ -2640,7 +2640,151 @@ class Compra(models.Model):
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
 - Faça o _commit_ com a mensagem `Adicionando tipo de pagamento à entidade de Compra`.
 
-# 35. Finalizando a compra e atualizando a quantidade de itens em estoque
+# 35. Adicionado ações personalizadas
+
+No **Django REST Framework (DRF)**, **ações personalizadas** são endpoints adicionais que você pode criar em uma viewset usando o decorador `@action`. Elas permitem que você estenda as funcionalidades das viewsets além dos métodos RESTful padrão, como `list`, `retrieve`, `create`, `update` e `destroy`. Essas ações são úteis para operações específicas que não se encaixam perfeitamente nas operações CRUD tradicionais.
+
+**Como funcionam as ações personalizadas**
+
+Ações personalizadas são métodos definidos dentro de uma viewset e decorados com `@action`, que define o comportamento específico do endpoint, incluindo o verbo HTTP que será utilizado e se a ação é aplicada a um **recurso específico** ou a uma **coleção**.
+
+## Alterando o preço de um livro
+
+Vamos criar uma ação personalizada para alterar o preço de um livro. Essa ação será aplicada a um recurso específico, ou seja, a um livro específico.
+
+- No `views/livro.py`, vamos criar um método `alterar_preco` na view `LivroViewSet`:
+
+```python
+    @action(detail=True, methods=["patch"])
+    def alterar_preco(self, request, pk=None):
+        # Busca o livro pelo ID usando self.get_object()
+        livro = self.get_object()
+
+        # Obtém o novo preço do corpo da requisição
+        novo_preco = request.data.get("preco")
+
+        # Verifica se o preço foi fornecido e se é um número válido
+        if novo_preco is None:
+            return Response({"detail": "O preço é obrigatório."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            novo_preco = float(novo_preco)
+        except ValueError:
+            return Response({"detail": "O preço deve ser um número válido."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Atualiza o preço do livro e salva
+        livro.preco = novo_preco
+        livro.save()
+
+        # Retorna uma resposta de sucesso
+        return Response(
+            {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
+        )
+
+```
+
+> O decorador `@action` cria um endpoint para a ação `alterar_preco`, no formato `api/livros/{id}/alterar_preco`.
+
+> O método `alterar_preco` é um método de ação que altera o preço de um livro. Ele recebe o livro que está sendo alterado.
+
+> O método `get_object()` é um método que recupera um objeto com base no `pk` fornecido.
+
+> O método `request.data.get("preco")` recupera o novo preço do livro do corpo da requisição.
+
+> O método `Response` retorna uma resposta HTTP.
+
+> O status `HTTP_200_OK` indica que a requisição foi bem sucedida.
+
+> O status `HTTP_400_BAD_REQUEST` indica que a requisição não foi bem sucedida.
+
+- Para testar:
+  - Altere o preço de um livro.
+  - Altere o preço de um livro com um preço inválido.
+  - Altere o preço de um livro sem fornecer o preço.
+
+- Faça o _commit_ com a mensagem `Alterando o preço de um livro`.
+
+## Ajustando o estoque de um livro
+
+Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa ação será aplicada a um recurso específico, ou seja, a um livro específico.
+
+- No `views/livro.py`, vamos criar um método `ajustar_estoque` na view `LivroViewSet`:
+
+```python
+    @action(detail=True, methods=["patch"])
+    def alterar_preco(self, request, pk=None):
+        # Busca o livro pelo ID usando self.get_object()
+        livro = self.get_object()
+
+        # Obtém o novo preço do corpo da requisição
+        novo_preco = request.data.get("preco")
+
+        # Verifica se o preço foi fornecido e se é um número válido
+        if novo_preco is None:
+            return Response({"detail": "O preço é obrigatório."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            novo_preco = float(novo_preco)
+        except ValueError:
+            return Response({"detail": "O preço deve ser um número válido."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Atualiza o preço do livro e salva
+        livro.preco = novo_preco
+        livro.save()
+
+        # Retorna uma resposta de sucesso
+        return Response(
+            {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
+        )
+
+    @action(detail=True, methods=["post"])
+    def ajustar_estoque(self, request, pk=None):
+        # Recupera o livro pelo ID usando self.get_object()
+        livro = self.get_object()
+
+        # Recupera o valor de ajuste passado no body da requisição
+        quantidade_ajuste = request.data.get("quantidade")
+
+        if quantidade_ajuste is None:
+            return Response(
+                {"erro": "Por favor, informe uma quantidade para ajustar."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            # Tenta converter o valor para um número inteiro
+            quantidade_ajuste = int(quantidade_ajuste)
+        except ValueError:
+            return Response(
+                {"erro": "O valor de ajuste deve ser um número inteiro."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Atualiza a quantidade em estoque
+        livro.quantidade += quantidade_ajuste
+
+        # Garante que o estoque não seja negativo
+        if livro.quantidade < 0:
+            return Response(
+                {"erro": "A quantidade em estoque não pode ser negativa."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Salva as alterações no banco de dados
+        livro.save()
+
+        # Retorna uma resposta com o novo valor em estoque
+        return Response(
+            {"status": "Quantidade ajustada com sucesso", "novo_estoque": livro.quantidade}, status=status.HTTP_200_OK
+        )
+```
+
+> O decorador `@action` cria um endpoint para a ação `ajustar_estoque`, no formato `api/livros/{id}/ajustar_estoque`.
+
+- Para testar:
+  - Ajuste o estoque de um livro.
+  - Ajuste o estoque de um livro com um valor inválido.
+  - Ajuste o estoque de um livro sem fornecer um valor.
+- Faça o _commit_ com a mensagem `Ajustando o estoque de um livro`.
+
+## Finalizando a compra e atualizando a quantidade de itens em estoque
 
 Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
 
@@ -2657,28 +2801,48 @@ class CompraViewSet(ModelViewSet):
 ...
     @action(detail=True, methods=["post"])
     def finalizar(self, request, pk=None):
+        # Recupera o objeto 'compra' usando self.get_object(), com base no pk fornecido.
         compra = self.get_object()
+
+        # Verifica se o status da compra é diferente de 'CARRINHO'.
+        # Se não for, a compra já foi finalizada e não pode ser finalizada novamente.
         if compra.status != Compra.StatusCompra.CARRINHO:
             return Response(
                 status=status.HTTP_400_BAD_REQUEST,
                 data={"status": "Compra já finalizada"},
             )
+
+        # Abre uma transação atômica para garantir que todas as operações no banco
+        # de dados ocorram de forma consistente (ou todas são salvas ou nenhuma).
         with transaction.atomic():
+            # Itera sobre todos os itens da compra.
             for item in compra.itens.all():
+
+                # Verifica se a quantidade de um item é maior que a quantidade disponível no estoque do livro.
                 if item.quantidade > item.livro.quantidade:
+                    # Se a quantidade solicitada for maior que o estoque disponível, retorna um erro.
                     return Response(
                         status=status.HTTP_400_BAD_REQUEST,
                         data={
-                            "status": "Quantidade insuficiente",
-                            "livro": item.livro.titulo,
+                            "status": "Quantidade insuficiente",  # Mensagem de erro
+                            "livro": item.livro.titulo,  # Informa qual livro tem estoque insuficiente
+                            "quantidade_disponivel": item.livro.quantidade,  # Mostra a quantidade disponível
                         },
                     )
-                item.livro.quantidade -= item.quantidade
-                item.livro.save()
-            compra.status = Compra.StatusCompra.REALIZADO
-            compra.save()
-        return Response(status=status.HTTP_200_OK, data={"status": "Compra finalizada"})
 
+                # Se o estoque for suficiente, subtrai a quantidade do item do estoque do livro.
+                item.livro.quantidade -= item.quantidade
+                # Salva as alterações no livro (atualiza o estoque no banco de dados).
+                item.livro.save()
+
+            # Após todos os itens serem processados e o estoque ser atualizado,
+            # atualiza o status da compra para 'REALIZADO'.
+            compra.status = Compra.StatusCompra.REALIZADO
+            # Salva as alterações da compra no banco de dados.
+            compra.save()
+
+        # Retorna uma resposta de sucesso indicando que a compra foi finalizada.
+        return Response(status=status.HTTP_200_OK, data={"status": "Compra finalizada"})
 ```
 
 > O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `api/compras/{id}/finalizar`.
