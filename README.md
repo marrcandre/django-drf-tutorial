@@ -2674,37 +2674,82 @@ Ações personalizadas são métodos definidos dentro de uma viewset e decorados
 
 ## Alterando o preço de um livro
 
-Vamos criar uma ação personalizada para alterar o preço de um livro. Essa ação será aplicada a um **recurso específico**, ou seja, a um livro específico.
+
+**Criando um serializer específico para a ação**
+
+É uma boa prática usar um serializer específico na `action` `ajustar_preco`. Isso traria várias vantagens, como validação mais robusta dos dados de entrada e organização do código. Ao usar um serializer dedicado, você garante que a lógica de validação e conversão dos dados está separada da view, seguindo o princípio de responsabilidade única e tornando o código mais limpo e reutilizável.
+
+Vamos incluir um novo `serializer` chamado `AjustarPrecoSerializer` no arquivo `serializers/livro.py`:
+
+```python
+from rest_framework.serializers import (
+    DecimalField,
+    ModelSerializer,
+    Serializer,
+    SlugRelatedField,
+    ValidationError,
+)
+...
+class AlterarPrecoSerializer(serializers.Serializer):
+    preco = serializers.DecimalField(max_digits=10, decimal_places=2)
+
+    def validate_preco(self, value):
+        """Valida se o preço é um valor positivo."""
+        if value <= 0:
+            raise serializers.ValidationError("O preço deve ser um valor positivo.")
+        return value
+...
+```
+
+- Inclua o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+
+```python
+...
+from .livro import (
+    AlterarPrecoSerializer,
+    LivroDetailSerializer,
+    LivroListSerializer,
+    LivroSerializer,
+)
+...
+```
+
+**Criando uma ação personalizada para alterar o preço de um livro**
+
+Vamos agora criar uma ação personalizada para alterar o preço de um livro. Essa ação será aplicada a um **recurso específico**, ou seja, a um livro específico.
 
 - No `views/livro.py`, vamos criar um método `alterar_preco` na view `LivroViewSet`:
 
 ```python
-    @action(detail=True, methods=["patch"])
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
+
+from core.models import Livro
+from core.serializers import (
+    AlterarPrecoSerializer,
+    LivroDetailSerializer,
+    LivroListSerializer,
+    LivroSerializer,
+)
+...
+   @action(detail=True, methods=["patch"])
     def alterar_preco(self, request, pk=None):
-        # Busca o livro pelo ID usando self.get_object()
         livro = self.get_object()
 
-        # Obtém o novo preço do corpo da requisição
-        novo_preco = request.data.get("preco")
+        serializer = AlterarPrecoSerializer(data=request.data)
 
-        # Verifica se o preço foi fornecido e se é um número válido
-        if novo_preco is None:
-            return Response({"detail": "O preço é obrigatório."}, status=status.HTTP_400_BAD_REQUEST)
+        if serializer.is_valid():
+            livro.preco = serializer.validated_data["preco"]
+            livro.save()
 
-        try:
-            novo_preco = float(novo_preco)
-        except ValueError:
-            return Response({"detail": "O preço deve ser um número válido."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
+            )
 
-        # Atualiza o preço do livro e salva
-        livro.preco = novo_preco
-        livro.save()
-
-        # Retorna uma resposta de sucesso
-        return Response(
-            {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
-        )
-
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
 
 > O decorador `@action` cria um endpoint para a ação `alterar_preco`, no formato `api/livros/{id}/alterar_preco`.
@@ -2713,7 +2758,11 @@ Vamos criar uma ação personalizada para alterar o preço de um livro. Essa aç
 
 > O método `get_object()` é um método que recupera um objeto com base no `pk` fornecido.
 
-> O método `request.data.get("preco")` recupera o novo preço do livro do corpo da requisição.
+> O método `AlterarPrecoSerializer` é um `serializer` específico para a ação `alterar_preco`. Ele valida o preço fornecido.
+
+> O método `is_valid()` é um método que verifica se os dados fornecidos são válidos.
+
+> O método `validated_data` é um atributo que contém os dados validados.
 
 > O método `Response` retorna uma resposta HTTP.
 
@@ -2723,7 +2772,7 @@ Vamos criar uma ação personalizada para alterar o preço de um livro. Essa aç
 
 - Para testar:
   - Altere o preço de um livro.
-  - Altere o preço de um livro com um preço inválido.
+  - Altere o preço de um livro com um preço inválido ou negativo.
   - Altere o preço de um livro sem fornecer o preço.
 
 - Faça o _commit_ com a mensagem `Alterando o preço de um livro`.
