@@ -829,26 +829,26 @@ class LivroSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class LivroDetailSerializer(ModelSerializer):
+class LivroListRetrieveSerializer(ModelSerializer):
     class Meta:
         model = Livro
         fields = "__all__"
         depth = 1
 ```
 
-- Inclua o serializador `LivroDetailSerializer` no arquivo `serializers/__init__.py`:
+- Inclua o serializador `LivroListRetrieveSerializer` no arquivo `serializers/__init__.py`:
 
 ```python
-from .livro import LivroDetailSerializer, LivroSerializer
+from .livro import LivroListRetrieveSerializer, LivroSerializer
 ```
 
-> Observe que no `LivroDetailSerializer` foi incluído o atributo `depth = 1`, que permite a apresentação dos dados relacionados.
+> Observe que no `LivroListRetrieveSerializer` foi incluído o atributo `depth = 1`, que permite a apresentação dos dados relacionados.
 
 - Na viewset, escolhemos o serializador conforme a operação:
 
 ```python
 ...
-from core.serializers import LivroDetailSerializer, LivroSerializer
+from core.serializers import LivroListRetrieveSerializer, LivroSerializer
 
 
 class LivroViewSet(ModelViewSet):
@@ -857,11 +857,11 @@ class LivroViewSet(ModelViewSet):
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
-            return LivroDetailSerializer
+            return LivroListRetrieveSerializer
         return LivroSerializer
 ```
 
-> Nesse caso, o serializador `LivroDetailSerializer` é utilizado para a listagem e recuperação de um único livro, enquanto o `LivroSerializer` é utilizado para as demais operações, ou seja, criação e alteração.
+> Nesse caso, o serializador `LivroListRetrieveSerializer` é utilizado para a listagem e recuperação de um único livro, enquanto o `LivroSerializer` é utilizado para as demais operações, ou seja, criação e alteração.
 
 - Teste a API.
 - Faça um _commit_ com a mensagem `Dois serializadores para Livro`.
@@ -871,13 +871,21 @@ class LivroViewSet(ModelViewSet):
 
 Podemos criar um serializador para a listagem de livros, que mostre apenas o `id`, o `título` e o `preço`. Isso pode ser útil, pois traz menos informações, o que pode tornar a listagem mais rápida.
 
--   Inclua um serializador para a listagem de livros, que mostre apenas o `id`, o `título` e o `preço`:
+-   Inclua um serializador `LivroListSerializer` para a listagem de livros, que mostre apenas o `id`, o `título` e o `preço` e renomeie o serializador `LivroListRetrieveSerializer` para `LivroRetrieveSerializer`:
 
 ```python
+from core.serializers import , LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
+...
 class LivroListSerializer(ModelSerializer):
     class Meta:
         model = Livro
         fields = ("id", "titulo", "preco")
+
+class LivroRetrieveSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = "__all__"
+        depth = 1
 ```
 
 -   Altere a viewset para utilizar esse serializador na listagem:
@@ -887,11 +895,17 @@ class LivroListSerializer(ModelSerializer):
         if self.action == "list":
             return LivroListSerializer
         elif self.action == "retrieve":
-            return LivroDetailSerializer
+            return LivroRetrieveSerializer
         return LivroSerializer
 ```
 
-> Observe que o serializador `LivroListSerializer` é utilizado apenas na listagem, enquanto o `LivroDetailSerializer` é utilizado na recuperação de um único livro e o `LivroSerializer` é utilizado nas demais operações.
+> Observe que o serializador `LivroListSerializer` é utilizado apenas na listagem, enquanto o `LivroRetrieveSerializer` é utilizado na recuperação de um único livro e o `LivroSerializer` é utilizado nas demais operações.
+
+- Não eaqueça de atualizar o arquivo `serializers/__init__.py`:
+
+```python
+from .livro import LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
+```
 
 -   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
 -  Faça um _commit_ com a mensagem `Múltiplos serializadores para Livro`.
@@ -1090,7 +1104,7 @@ class LivroSerializer(ModelSerializer):
     )
 
 ...
-class LivroDetailSerializer(ModelSerializer):
+class LivroListRetrieveSerializer(ModelSerializer):
 ...
     capa = ImageSerializer(required=False)
 ```
@@ -2707,7 +2721,7 @@ class AlterarPrecoSerializer(serializers.Serializer):
 ...
 from .livro import (
     AlterarPrecoSerializer,
-    LivroDetailSerializer,
+    LivroListRetrieveSerializer,
     LivroListSerializer,
     LivroSerializer,
 )
@@ -2730,7 +2744,7 @@ from rest_framework.viewsets import ModelViewSet
 from core.models import Livro
 from core.serializers import (
     AlterarPrecoSerializer,
-    LivroDetailSerializer,
+    LivroListRetrieveSerializer,
     LivroListSerializer,
     LivroSerializer,
 )
