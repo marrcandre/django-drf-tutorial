@@ -2688,7 +2688,6 @@ Ações personalizadas são métodos definidos dentro de uma viewset e decorados
 
 ## Alterando o preço de um livro
 
-
 **Criando um serializer específico para a ação**
 
 É uma boa prática usar um serializer específico na `action` `ajustar_preco`. Isso traria várias vantagens, como validação mais robusta dos dados de entrada e organização do código. Ao usar um serializer dedicado, você garante que a lógica de validação e conversão dos dados está separada da view, seguindo o princípio de responsabilidade única e tornando o código mais limpo e reutilizável.
@@ -2749,21 +2748,19 @@ from core.serializers import (
     LivroSerializer,
 )
 ...
-   @action(detail=True, methods=["patch"])
+    @action(detail=True, methods=["patch"])
     def alterar_preco(self, request, pk=None):
         livro = self.get_object()
 
         serializer = LivroAlterarPrecoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        if serializer.is_valid():
-            livro.preco = serializer.validated_data["preco"]
-            livro.save()
+        livro.preco = serializer.validated_data["preco"]
+        livro.save()
 
-            return Response(
-                {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
-            )
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
+        )
 ```
 
 > O decorador `@action` cria um endpoint para a ação `alterar_preco`, no formato `api/livros/{id}/alterar_preco`.
@@ -2774,15 +2771,13 @@ from core.serializers import (
 
 > O método `LivroAlterarPrecoSerializer` é um `serializer` específico para a ação `alterar_preco`. Ele valida o preço fornecido.
 
-> O método `is_valid()` é um método que verifica se os dados fornecidos são válidos.
+> O método `is_valid(raise_exception=True)` é um método que valida os dados fornecidos. Se os dados não forem válidos, ele lança uma exceção.
 
 > O método `validated_data` é um atributo que contém os dados validados.
 
 > O método `Response` retorna uma resposta HTTP.
 
 > O status `HTTP_200_OK` indica que a requisição foi bem sucedida.
-
-> O status `HTTP_400_BAD_REQUEST` indica que a requisição não foi bem sucedida.
 
 - Para testar:
   - Altere o preço de um livro.
@@ -2793,74 +2788,63 @@ from core.serializers import (
 
 ## Ajustando o estoque de um livro
 
+**Criando um serializer específico para a ação**
+
+Vamos incluir um novo `serializer` chamado `LivroAjustarEstoqueSerializer` no arquivo `serializers/livro.py`:
+
+```python
+...
+class LivroAjustarEstoqueSerializer(serializers.Serializer):
+    quantidade = serializers.IntegerField()
+
+    def validate_quantidade(self, value):
+        # Acessa o objeto livro no contexto do serializer
+        livro = self.context.get("livro")
+        if livro:
+            nova_quantidade = livro.quantidade + value
+            if nova_quantidade < 0:
+                raise serializers.ValidationError("A quantidade em estoque não pode ser negativa.")
+        return value
+...
+```
+
+- Inclua o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+
+```python
+...
+from .livro import (
+    LivroAjustarEstoqueSerializer, # novo
+    LivroAlterarPrecoSerializer,
+    LivroListSerializer,
+    LivroRetrieveSerializer,
+    LivroSerializer,
+)
+...
+```
+
+**Criando uma ação personalizada para ajustar o estoque de um livro**
+
 Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa ação será aplicada a um **recurso específico**, ou seja, a um livro específico.
 
 - No `views/livro.py`, vamos criar um método `ajustar_estoque` na view `LivroViewSet`:
 
 ```python
-    @action(detail=True, methods=["patch"])
-    def alterar_preco(self, request, pk=None):
-        # Busca o livro pelo ID usando self.get_object()
-        livro = self.get_object()
-
-        # Obtém o novo preço do corpo da requisição
-        novo_preco = request.data.get("preco")
-
-        # Verifica se o preço foi fornecido e se é um número válido
-        if novo_preco is None:
-            return Response({"detail": "O preço é obrigatório."}, status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            novo_preco = float(novo_preco)
-        except ValueError:
-            return Response({"detail": "O preço deve ser um número válido."}, status=status.HTTP_400_BAD_REQUEST)
-
-        # Atualiza o preço do livro e salva
-        livro.preco = novo_preco
-        livro.save()
-
-        # Retorna uma resposta de sucesso
-        return Response(
-            {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
-        )
-
-    @action(detail=True, methods=["post"])
+     @action(detail=True, methods=["post"])
     def ajustar_estoque(self, request, pk=None):
-        # Recupera o livro pelo ID usando self.get_object()
         livro = self.get_object()
 
-        # Recupera o valor de ajuste passado no body da requisição
-        quantidade_ajuste = request.data.get("quantidade")
+        serializer = LivroAjustarEstoqueSerializer(data=request.data, context={"livro": livro})
+        serializer.is_valid(raise_exception=True)
 
-        if quantidade_ajuste is None:
-            return Response(
-                {"erro": "Por favor, informe uma quantidade para ajustar."}, status=status.HTTP_400_BAD_REQUEST
-            )
+        quantidade_ajuste = serializer.validated_data["quantidade"]
 
-        try:
-            # Tenta converter o valor para um número inteiro
-            quantidade_ajuste = int(quantidade_ajuste)
-        except ValueError:
-            return Response(
-                {"erro": "O valor de ajuste deve ser um número inteiro."}, status=status.HTTP_400_BAD_REQUEST
-            )
-
-        # Atualiza a quantidade em estoque
         livro.quantidade += quantidade_ajuste
-
-        # Garante que o estoque não seja negativo
-        if livro.quantidade < 0:
-            return Response(
-                {"erro": "A quantidade em estoque não pode ser negativa."}, status=status.HTTP_400_BAD_REQUEST
-            )
-
-        # Salva as alterações no banco de dados
         livro.save()
 
-        # Retorna uma resposta com o novo valor em estoque
         return Response(
             {"status": "Quantidade ajustada com sucesso", "novo_estoque": livro.quantidade}, status=status.HTTP_200_OK
         )
+
 ```
 
 > O decorador `@action` cria um endpoint para a ação `ajustar_estoque`, no formato `api/livros/{id}/ajustar_estoque`.
