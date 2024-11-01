@@ -1520,9 +1520,24 @@ Para utilizar essa estrutura de permissões corretamente, precisaremos de um sis
 
 # 18. Autenticação com Passage
 
-**Configuração do Passage**
+**Criação da conta no Passage**
 
-Para configurar o Passage, acesse [essa página](https://eduardo-da-silva.github.io/aula-desenvolvimento-mobile/autenticacao/configuracao-passage.html) (no tutorial do Prof. Eduardo da Silva) e siga as instruções.
+Se você ainda não tem uma conta no **Passage**:
+- Crie uma conta em [https://passage.id/](https://passage.id/).
+- Clique em `Login` e depois em `Registre-se` para criar uma conta. Siga os passos solicitados para criar a conta.
+
+**Criação de um aplicativo no Passage**
+
+Após criar a conta, você deve criar um aplicativo:
+- Clique em `Create App`.
+- Escolha a opção `Passkey complete` e clique no botão `Continue`.
+- Escolha a opção `Embedded login experience` e preencha os campos solicitados:
+    - `Name your app`: `livraria`
+    - `Enter the domain for your app`: `http://localhost:5173`
+    - `Enter the redirect URL`: `/`
+- Clique em Create App para finalizar a criação do aplicativo
+
+> Importante: o domínio e a porta devem ser os mesmos que você está utilizando para desenvolver o seu PWA. No nosso caso, estamos utilizando o domínio http://localhost:5173. Quando você for colocar o seu PWA em produção, você deve alterar o domínio para o domínio do seu site.
 
 **Configuração do Passage no backend Django**
 
