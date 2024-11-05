@@ -1884,7 +1884,7 @@ pdm install
 -   Crie novamente o banco de dados e execute as migrações:
 
 ```shell
-pdm run python manage.py makemigrations
+pdm run python manage.py makemigrations usuario
 pdm run python manage.py migrate
 ```
 
@@ -2563,7 +2563,7 @@ Vamos incluir a foto de perfil no usuário.
 
 **Criação do campo de foto de perfil**
 
--   No arquivo `models/usuario.py`, inclua o campo `foto`:
+-   No arquivo `/usuario/models.py`, inclua o campo `foto`:
 
 ```python
 ...
@@ -2708,7 +2708,11 @@ from .compra import Compra
 ...
 from livraria.models import Compra
 
-admin.site.register(Compra)
+@admin.register(Compra)
+class Compra(admin.ModelAdmin):
+    list_display = ("usuario", "status")
+    ordering = ("-id",)
+    list_per_page = 25
 ```
 
 -   Execute as migrações:
@@ -2885,7 +2889,7 @@ class CompraSerializer(ModelSerializer):
 
 Vamos incluir os itens da compra na listagem de compras.
 
--   Crie um serializer para `ItensCompra`:
+-   Crie um serializer para `ItensCompra` **antes** do serializer de `Compra`:
 
 ```python
 ...
@@ -2963,6 +2967,8 @@ O total do item é calculado pelo preço do livro multiplicado pela quantidade. 
 -   No `ItensCompraSerializer`, inclua o seguinte código:
 
 ```python
+...
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 ...
 total = SerializerMethodField()
 ...
@@ -3225,7 +3231,7 @@ from rest_framework import serializers
 - Agora, vamos definir o usuário como um campo oculto, cujo valor padrão é o usuário autenticado:
 
 ```python
-class ComprasSerializer(ModelSerializer):
+class CriarEditarCompraSerializer(ModelSerializer):
     itens = ItensCompraSerializer(many=True)
     usuario = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
@@ -3261,7 +3267,7 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar apenas as compras do usuário autenticado.
 
-- No `views.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
+- No arquivo `/views/compra.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
 
 ```python
 ...
