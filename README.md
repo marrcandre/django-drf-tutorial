@@ -3360,16 +3360,6 @@ pdm config
 
 # A4. Criando o Banco de Dados no Supabase
 
-**Escolhendo uma plataforma de hospedagem**
-
-Além da publicação do projeto no **Seenode**, podemos publicar em outras plataformas. Uma das vantagem do **Seenode** é que ele oferece tanto um banco de dados PostgreSQL gratuito quanto hospedagem de aplicações web.
-
-Se não formos utilizar o banco de dados do **Seenode**, podemos utilizar o banco de dados do **Supabase** para armazenar os dados da aplicação, enquanto a aplicação é publicada em outra plataforma, como o **Render**, que utilizarmos nesse tutorial.
-
-> **IMPORTANTE:** Você não precisa seguir esse passo e o próximo, se for utilizar o banco de dados e a aplicaçãoi web do **Seenode**.
-
-**Criando um banco de dados no Supabase**
-
 Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
 
 **Criando um projeto no Supabase**
@@ -3399,36 +3389,6 @@ Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
 # Supabase
 DATABASE_URL=postgres://postgres:teste.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
 ```
-
-**Instalando o pacote `dj_database_url`**
-
-O pacote `dj_database_url` facilita a configuração do banco de dados no Django, pois ele converte a URL do banco de dados para o formato que o Django entende.
-
-- Instale o pacote `dj_database_url`:
-
-```shell
-pdm add dj-database-url
-```
-
-- Adicione o pacote `dj_database_url` ao arquivo `settings.py`:
-
-```python
-import dj_database_url
-```
-
-- Substitua a configuração do banco de dados no arquivo `settings.py`:
-
-```python
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
-```
-
-> Essa configuração permite que o Django use o banco de dados local em desenvolvimento e o banco de dados do **Supabase** em produção, definindo a variável de ambiente `DATABASE_URL`.
 
 **Migrando o banco de dados**
 
