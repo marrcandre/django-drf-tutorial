@@ -3398,7 +3398,7 @@ DATABASE_URL=postgres://postgres:teste.123@!@db.vqcprcexhnwvyvewgrin.supabase.co
 - Faça a migracão do banco de dados:
 
 ```shell
-pdm run python migrate
+pdm run migrate
 ```
 
 > Observe que o banco de dados foi migrado no `Supabase`.
