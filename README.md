@@ -3408,6 +3408,14 @@ pdm run python migrate
 - No site do `Supabase`, acesse o `Table Editor` e verifique que as tabelas foram criadas.
 - Você também pode ver o esquema das tabelas, em `Database`, `Schema Visualizer`.
 
+**Carregando os dados iniciais**
+
+- Para carregar os dados iniciais no banco de dados do **Supabase**, execute o comando:
+
+```shell
+pdm run loaddata
+```
+
 **Utilizando o banco de dados local**
 
 - Para voltar a usar o banco de dados local, no arquivo `.env`:
