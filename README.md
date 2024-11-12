@@ -1150,16 +1150,24 @@ O **dump** dos dados permite que você salve os dados do banco de dados em um ar
 -   Execute o comando `dumpdata`:
 
 ```shell
-pdm run dumpdata > core_bkp.json
+pdm run dumpdata > core.json
 ```
 
 -   Observe que o arquivo `core_bkp.json` foi criado:
 
 ```shell
-code core_bkp.json
+code core.json
 ```
 
-**Arquivo exemplo**
+**IMPORTANTE:** Se o arquivo tiver algumas linhas semelhantes a essas no seu início, apague-as:
+
+```ini
+MODE = 'DEVELOPMENT'
+MEDIA_URL = 'http://191.52.55.44:19003/media/'
+DATABASES = {'default': {'NAME': 'db.sqlite3', 'USER': '', 'PASSWORD': '', 'HOST': '', 'PORT': '', 'CONN_MAX_AGE': 600, 'CONN_HEALTH_CHECKS': True, 'DISABLE_SERVER_SIDE_CURSORS': False, 'ENGINE': 'django.db.backends.sqlite3'}}
+```
+
+**Arquivo exemplo:**
 
 -   Baixe o arquivo `core.json`:
 
@@ -1182,6 +1190,10 @@ Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/ma
 ```shell
 pdm run loaddata
 ```
+
+> O comando espera um arquivo `core.json` na pasta raiz do projeto.
+
+**Verificando se a carga dos dados funcionou**
 
 -  Utilizando o Django Shell Plus, observe que os dados foram carregados:
 
@@ -2693,7 +2705,7 @@ class CompraSerializer(ModelSerializer):
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
 - Faça o _commit_ com a mensagem `Adicionando tipo de pagamento à entidade de Compra`.
 
-# 35. Adicionado ações personalizadas
+# 35. Adicionando ações personalizadas
 
 No **Django REST Framework (DRF)**, **ações personalizadas** são endpoints adicionais que você pode criar em uma viewset usando o decorador `@action`. Elas permitem que você estenda as funcionalidades das viewsets além dos métodos RESTful padrão, como `list`, `retrieve`, `create`, `update` e `destroy`. Essas ações são úteis para operações específicas que não se encaixam perfeitamente nas operações CRUD tradicionais.
 
@@ -3410,19 +3422,17 @@ pdm run migrate
 
 **Carregando os dados iniciais**
 
-- Para carregar os dados iniciais no banco de dados do **Supabase**, execute o comando:
-
-```shell
-pdm run loaddata
-```
+- Para carregar os dados iniciais no banco de dados do **Supabase**, acesse a [aula sobre dump e load de dados](#13-dump-e-load-de-dados).
 
 **Utilizando o banco de dados local**
+
+Após fazer as alterações no banco de dados remoto, volte a configuração para utilizar o banco de dados local:
 
 - Para voltar a usar o banco de dados local, no arquivo `.env`:
   - Altere o valor da variável `MODE` para `DEVELOPMENT`.
   - Comente a linha `DATABASE_URL`.
 
-**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de migração, tanto no banco de dados local quanto no banco de dados do **Supabase**.
+**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
 
 # A5. Publicando o projeto no Render
 
