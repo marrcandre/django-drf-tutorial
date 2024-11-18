@@ -1485,7 +1485,7 @@ Para testar:
 
 Outra forma de gerenciamento de permissões é feita no arquivo `settings.py`.
 
-> **IMPORTANTE:** Para utilizá-la, comente as últimas alterações feitas no arquivo `views.py`.
+> **IMPORTANTE:** Para utilizá-la, comente as últimas alterações feitas no arquivo `views/categoria.py`.
 
 Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, isto é, permitir acesso aos _endpoints_ **apenas para usuários autenticados**, é configurar desse modo o arquivo `settings.py`:
 
@@ -1559,7 +1559,7 @@ Após criar a conta, você deve criar um aplicativo:
 REST_FRAMEWORK = {
     ...
     "DEFAULT_AUTHENTICATION_CLASSES": ("core.authentication.TokenAuthentication",), # Autenticação no passage.id
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated"), # Permissão total para usuários autenticados
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly", ),  # autorização de acesso
     ...
 }
 ```
@@ -2409,7 +2409,7 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar da seguinte forma: se o usuário for um usuário normal, ele só pode ver as suas compras. Se o usuário for um administrador, ele pode ver todas as compras.
 
-- No `views.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
+- No `views/compra.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
 
 ```python
 ...
