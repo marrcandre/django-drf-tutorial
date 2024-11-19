@@ -3183,6 +3183,63 @@ Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 
 ---
 
+# 39. Limitando a um Carrinho de Compras por Usuário
+
+Nesse momento, um usuário pode ter vários carrinhos de compras. Vamos limitar a um carrinho de compras por usuário. Faremos isso verificando se o usuário já possui um carrinho de compras. Se ele já tiver, retornaremos o carrinho existente. Caso contrário, criaremos um novo carrinho. Vamos aproveitar e verificar se um livro já foi adicionado ao carrinho. Se ele já foi adicionado, vamos incrementar a quantidade.
+
+Uma vantagem dessa abordagem é que podemos incluir um livro no carrinho simplesmente enviando o `id` do livro e a quantidade. Se o livro já estiver no carrinho, a quantidade será incrementada. Se o livro não estiver no carrinho, ele será adicionado.
+
+- No `serializers/compra.py`, vamos alterar o `serializer` chamado `CompraCreateUpdateSerializer`:
+
+```python
+class CompraCreateUpdateSerializer(ModelSerializer):
+    usuario = HiddenField(default=CurrentUserDefault())
+    itens = ItensCompraCreateUpdateSerializer(many=True)
+
+    class Meta:
+        model = Compra
+        fields = ("usuario", "itens")
+
+    def create(self, validated_data):
+        itens = validated_data.pop("itens")
+        usuario = validated_data["usuario"]
+
+        compra, criada = Compra.objects.get_or_create(
+            usuario=usuario, status=Compra.StatusCompra.CARRINHO, defaults=validated_data
+        )
+
+        for item in itens:
+            item_existente = compra.itens.filter(livro=item["livro"]).first()
+
+            if item_existente:
+                item_existente.quantidade += item["quantidade"]
+                item_existente.preco = item["livro"].preco
+                item_existente.save()
+            else:
+                item["preco"] = item["livro"].preco
+                ItensCompra.objects.create(compra=compra, **item)
+
+        return compra
+
+    def update(self, compra, validated_data):
+        itens = validated_data.pop("itens", [])
+        if itens:
+            compra.itens.all().delete()
+            for item in itens:
+                item["preco"] = item["livro"].preco
+                ItensCompra.objects.create(compra=compra, **item)
+
+        return super().update(compra, validated_data)
+
+```
+
+> O método `get_or_create` retorna um objeto `Compra` existente ou cria um novo objeto `Compra` se ele não existir.
+
+> O método `filter` retorna um objeto `ItensCompra` que atenda aos critérios de pesquisa.
+
+> O método `first` retorna o primeiro objeto `ItensCompra` que atenda aos critérios de pesquisa ou `None` se não houver objetos.
+
+
 # Exercícios Garagem
 
 O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto core.
