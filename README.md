@@ -1700,7 +1700,7 @@ from .user import User
 class Compra(models.Model):
     class StatusCompra(models.IntegerChoices):
         CARRINHO = 1, "Carrinho"
-        REALIZADO = 2, "Realizado"
+        FINALIZADO = 2, "Realizado"
         PAGO = 3, "Pago"
         ENTREGUE = 4, "Entregue"
 
@@ -2266,7 +2266,6 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
             compra.itens.all().delete()
             for item_data in itens_data:
                 ItensCompra.objects.create(compra=compra, **item_data)
-        compra.save()
         return super().update(compra, validated_data)
 ...
 ```
@@ -2275,9 +2274,9 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 > O método `update` recebe dois parâmetros: `compra` e `validated_data`. O parâmetro `compra` é a compra que está sendo atualizada. O parâmetro `validated_data` são os dados validados que estão sendo atualizados.
 
-> O método `update` remove todos os itens da compra (se houverem) e cria novos itens com os dados validados.
+> O comando `compra.itens.all().delete()` remove todos os itens da compra (se houverem)
 
-> O método `update` salva a compra e retornamos a instância.
+> O comando `ItensCompra.objects.create(compra=compra, **item_data)` cria novos itens com os dados validados.
 
 > O comando `super().update(compra, validated_data)` chama o método `update` da classe pai, que é o método padrão de atualização.
 
@@ -2825,7 +2824,6 @@ class LivroAjustarEstoqueSerializer(serializers.Serializer):
     quantidade = serializers.IntegerField()
 
     def validate_quantidade(self, value):
-        # Acessa o objeto livro no contexto do serializer
         livro = self.context.get("livro")
         if livro:
             nova_quantidade = livro.quantidade + value
@@ -2884,7 +2882,7 @@ Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa a�
 
 ## Finalizando a compra e atualizando a quantidade de itens em estoque
 
-Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `REALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
+Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `FINALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
 
 - No `views/compra.py`, vamos criar um método `finalizar` na view `CompraViewSet`:
 
@@ -2899,47 +2897,33 @@ class CompraViewSet(ModelViewSet):
 ...
     @action(detail=True, methods=["post"])
     def finalizar(self, request, pk=None):
-        # Recupera o objeto 'compra' usando self.get_object(), com base no pk fornecido.
         compra = self.get_object()
 
-        # Verifica se o status da compra é diferente de 'CARRINHO'.
-        # Se não for, a compra já foi finalizada e não pode ser finalizada novamente.
         if compra.status != Compra.StatusCompra.CARRINHO:
             return Response(
                 status=status.HTTP_400_BAD_REQUEST,
                 data={"status": "Compra já finalizada"},
             )
 
-        # Abre uma transação atômica para garantir que todas as operações no banco
-        # de dados ocorram de forma consistente (ou todas são salvas ou nenhuma).
         with transaction.atomic():
-            # Itera sobre todos os itens da compra.
             for item in compra.itens.all():
 
-                # Verifica se a quantidade de um item é maior que a quantidade disponível no estoque do livro.
                 if item.quantidade > item.livro.quantidade:
-                    # Se a quantidade solicitada for maior que o estoque disponível, retorna um erro.
                     return Response(
                         status=status.HTTP_400_BAD_REQUEST,
                         data={
-                            "status": "Quantidade insuficiente",  # Mensagem de erro
-                            "livro": item.livro.titulo,  # Informa qual livro tem estoque insuficiente
-                            "quantidade_disponivel": item.livro.quantidade,  # Mostra a quantidade disponível
+                            "status": "Quantidade insuficiente",
+                            "livro": item.livro.titulo,
+                            "quantidade_disponivel": item.livro.quantidade,
                         },
                     )
 
-                # Se o estoque for suficiente, subtrai a quantidade do item do estoque do livro.
                 item.livro.quantidade -= item.quantidade
-                # Salva as alterações no livro (atualiza o estoque no banco de dados).
                 item.livro.save()
 
-            # Após todos os itens serem processados e o estoque ser atualizado,
-            # atualiza o status da compra para 'REALIZADO'.
-            compra.status = Compra.StatusCompra.REALIZADO
-            # Salva as alterações da compra no banco de dados.
+            compra.status = Compra.StatusCompra.FINALIZADO
             compra.save()
 
-        # Retorna uma resposta de sucesso indicando que a compra foi finalizada.
         return Response(status=status.HTTP_200_OK, data={"status": "Compra finalizada"})
 ```
 
@@ -2980,18 +2964,14 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
 ```python
     @action(detail=False, methods=["get"])
     def relatorio_vendas_mes(self, request):
-        # Define o início do mês atual
         agora = timezone.now()
         inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
 
-        # Filtra as compras realizadas desde o início do mês até o presente momento
-        compras = Compra.objects.filter(status=Compra.StatusCompra.REALIZADO, data__gte=inicio_mes)
+        compras = Compra.objects.filter(status=Compra.StatusCompra.FINALIZADO, data__gte=inicio_mes)
 
-        # Calcula o total de vendas e a quantidade de vendas
         total_vendas = sum(compra.total for compra in compras)
         quantidade_vendas = compras.count()
 
-        # Retorna o relatório
         return Response(
             {
                 "status": "Relatório de vendas deste mês",
@@ -3011,8 +2991,6 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
 - Para testar:
   - Gere um relatório de vendas do mês.
 - Faça o _commit_ com a mensagem `Gerando um relatório de vendas do mês`.
-
-
 
 # 36. Utilizando filtros
 
