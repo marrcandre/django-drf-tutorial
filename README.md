@@ -300,7 +300,7 @@ Volte ao `Admin` verifique o que mudou na apresentação dos objetos da model `C
     -   Inclusão da Categoria de Veículos
     -   Alteração da Marca do Veículo
 
-# 4. Criando uma API REST
+# 4. Criação de uma API REST
 
 Nesta aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API completa, que permite criar, listar, atualizar e deletar categorias.
 
@@ -479,7 +479,7 @@ Se tudo correu bem, execute a aplicação:
 > Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
 
 
-# 6. Incluindo a Editora no projeto Livraria
+# 6. Inclusão da Editora no projeto Livraria
 
 Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Editora` e a API para ela.
 
@@ -677,7 +677,7 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 - Após a criação da API, teste todas as operações de CRUD para a classe `Livro`.
 - Faça um _commit_ com a mensagem `Criação da entidade para Livro`.
 
-# 9. Incluindo chaves estrangeiras no modelo Livro
+# 9. Inclusão das chaves estrangeiras no modelo Livro
 
 Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir campos que serão **chaves estrangeiras**, referenciando os modelos `Categoria` e `Editora`. Esse relacionamento é do tipo **n para 1**. Posteriormente, vamos incluir um relacionamento **n para n** entre `Livro` e `Autor`.
 
@@ -754,7 +754,7 @@ pdm run shellp
 
 -  Faça um _commit_ com a mensagem `Adiciona relacionamento de Livro com Categoria e Editora`.
 
-# 10. Incluindo relacionamento n para n no modelo do Livro
+# 10. Inclusão do relacionamento n para n no modelo do Livro
 
 **10.1 Model com ManyToManyField - Livros com vários autores**
 
@@ -1432,7 +1432,7 @@ Vamos começar criando 2 grupos e dando a eles permissões distintas:
 -   Crie um usuário `admin1@a.com` e o inclua no grupo `Administradores`.
 -   Crie um usuário `comprador1@a.com` e o inclua no grupo `Compradores`.
 
-# 17. Usando as permissões do DRF
+# 17. Utilização das permissões do DRF
 
 **Autenticação e permissão**
 
@@ -1750,7 +1750,7 @@ O seu projeto deve ficar assim:
 - Faça um _commit_ com a mensagem `Criação da entidade Compra integrada ao usuário do projeto`.
 
 
-# 21. Criando os itens da compra
+# 21. Criação dos itens da compra
 
 No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forma, vamos criar "manualmente" a **entidade associativa**, que será chamada de `ItensCompra`.
 
@@ -2010,7 +2010,7 @@ fields = ("livro", "quantidade")
 -   Teste o endpoint no navegador.
 -   Faça o _commit_ com a mensagem `Limitando os campos dos itens da compra na listagem de compras`.
 
-# 25. Mostrando o total do item na listagem de compras
+# 25. Exibição do total do item na listagem de compras
 
 O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
 
@@ -2288,7 +2288,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
     - Experimente mudar o livro de um item da compra;
 - Faça o _commit_ com a mensagem `Criação de um endpoint para atualizar compras`.
 
-# 28b Criando um serializador específico para a listagem de compras
+# 28b. Criação de um serializador específico para a listagem de compras
 
 Como fizemos com o `Livro`, vamos criar um serializador específico para a listagem de compras, que vai mostrar apenas os campos necessários. Com isso, a listagem de compras ficará mais enxuta.
 
@@ -2404,7 +2404,7 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 
 - Faça o _commit_ com a mensagem `Criação de uma compra a partir do usuário autenticado`.
 
-# 30. Filtrando apenas as compras do usuário autenticado
+# 30. Filtragem de apenas as compras do usuário autenticado
 
 Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar da seguinte forma: se o usuário for um usuário normal, ele só pode ver as suas compras. Se o usuário for um administrador, ele pode ver todas as compras.
 
@@ -2434,7 +2434,7 @@ class CompraViewSet(ModelViewSet):
 - Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
 - Faça o _commit_ com a mensagem `Filtrando apenas as compras do usuário autenticado`.
 
-# 31. Validando campos no serializer
+# 31. Validação dos campos no serializer
 
 **Não permitindo itens com quantidade zero**
 
@@ -2516,7 +2516,7 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 - Para testar, altere o email de uma Editora para maiúsculas e veja que o email foi gravado em minúsculas.
 - Faça o _commit_ com a mensagem `Formatando dados antes de salvar`.
 
-# 32. Gravando o preço do livro no item da compra
+# 32. Gravação do preço do livro no item da compra
 
 Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
 
@@ -2592,7 +2592,7 @@ Da mesma forma, precisamos alterar o método `update` do `serializer` `CompraCre
 - Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
 - Faça o _commit_ com a mensagem `Gravando o preço do livro no item da compra`.
 
-# 33. Acrescentando a data da compra
+# 33. Inclusão da data da compra
 
 No momento, não existe nenhum registro da data da compra. Vamos incluir a data da compra, que será definida automaticamente no momento da criação da compra.
 
@@ -2652,7 +2652,7 @@ class CompraSerializer(ModelSerializer):
 - Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
 - Faça o _commit_ com a mensagem `Acrescentando a data da compra`.
 
-# 34. Adicionando tipo de pagamento à entidade de Compra
+# 34. Inclusão do tipo de pagamento à entidade de Compra
 
 Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto`, `transferência bancária`, `dinheiro` ou `outro`.
 
@@ -2704,7 +2704,7 @@ class CompraSerializer(ModelSerializer):
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
 - Faça o _commit_ com a mensagem `Adicionando tipo de pagamento à entidade de Compra`.
 
-# 35. Adicionando ações personalizadas
+# 35. Incluisão de ações personalizadas
 
 No **Django REST Framework (DRF)**, **ações personalizadas** são endpoints adicionais que você pode criar em uma viewset usando o decorador `@action`. Elas permitem que você estenda as funcionalidades das viewsets além dos métodos RESTful padrão, como `list`, `retrieve`, `create`, `update` e `destroy`. Essas ações são úteis para operações específicas que não se encaixam perfeitamente nas operações CRUD tradicionais.
 
@@ -2992,7 +2992,7 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
   - Gere um relatório de vendas do mês.
 - Faça o _commit_ com a mensagem `Gerando um relatório de vendas do mês`.
 
-# 36. Utilizando filtros
+# 36. Utilização de filtros
 
 Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
 
@@ -3052,7 +3052,7 @@ Vamos acrescentar outros filtros na listagem de livros.
 
 - Faça o _commit_ com a mensagem `Utilizando filtros`.
 
-# 37. Busca textual
+# 37. Utilização de busca textual
 
 A busca textual serve para adicionar a funcionalidade de realizar buscas dentro de determinados valores de texto armazenados na base de dados.
 
@@ -3087,7 +3087,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 - Faça o _commit_ com a mensagem `Adicionando busca textual`.
 
-# 38. Ordenação dos resultados
+# 38. Utilização de ordenação dos resultados
 
 Toda `viewset` possui um atributo chamado `ordering_fields`, que é uma lista de campos que podem ser utilizados para ordenar os resultados. Além disso, o atributo `ordering` é utilizado para definir o campo padrão de ordenação. Se você ainda quiser permitir a ordenação reversa, basta adicionar um sinal de menos (-) na frente do campo.
 
@@ -3161,7 +3161,7 @@ Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 
 ---
 
-# 39. Limitando a um Carrinho de Compras por Usuário
+# 39. Inclusão do limite de um carrinho de compras por usuário
 
 Nesse momento, um usuário pode ter vários carrinhos de compras. Vamos limitar a um carrinho de compras por usuário. Faremos isso verificando se o usuário já possui um carrinho de compras. Se ele já tiver, retornaremos o carrinho existente. Caso contrário, criaremos um novo carrinho. Vamos aproveitar e verificar se um livro já foi adicionado ao carrinho. Se ele já foi adicionado, vamos incrementar a quantidade.
 
@@ -3405,7 +3405,7 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
-# A4. Criando o Banco de Dados no Supabase
+# A4. Criação do Banco de Dados no Supabase
 
 Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
 
@@ -3469,7 +3469,7 @@ Após fazer as alterações no banco de dados remoto, volte a configuração par
 
 **IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
 
-# A5. Publicando o projeto no Render
+# A5. Publicação do projeto no Render
 
 O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
 
@@ -3556,9 +3556,9 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 
 > Se tudo estiver correto, o projeto será implantado no **Render**.
 
-# A6. Armazenando arquivos estáticos no Cloudinary
+# A6. Armazenanamento de arquivos estáticos no Cloudinary
 
-Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Detsa forma, os arquivos não serão perdidos a cada nova implantação.
+Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Desta forma, os arquivos não serão perdidos a cada nova implantação.
 
 **Criando uma conta no Cloudinary**
 
@@ -3675,7 +3675,7 @@ SIMPLE_JWT = {
 }
 ```
 
-# A8. Configurando o git
+# A8. Configuração do git
 
 **Um aviso importante**
 
@@ -3731,7 +3731,7 @@ rm ~/.gitconfig
 Repita o processo de configuração de nome e email.
 
 
-# A9. Usando curl para testar a API via linha de comando
+# A9. Uso do curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
