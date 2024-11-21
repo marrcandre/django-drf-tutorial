@@ -3217,6 +3217,97 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O método `first` retorna o primeiro objeto `ItensCompra` que atenda aos critérios de pesquisa ou `None` se não houver objetos.
 
+# 40. Inclusão do total da compra na model de compra
+
+Adicionar um campo `total` ao modelo de `Compra` para armazenar o valor total é uma solução eficaz em termos de **performance** e **facilidade de uso** em consultas frequentes. Com isso, o valor total será calculado e armazenado diretamente no banco de dados, permitindo que você ordene ou filtre pelas compras com eficiência.
+
+- No `models/compra.py`, vamos adicionar o campo `total` ao modelo `Compra`:
+
+```python
+class Compra(models.Model):
+    ...
+    total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    ...
+```
+
+Vamos também incluir um método `save` para calcular o total da compra:
+
+```python
+class Compra(models.Model):
+    ...
+    def save(self, *args, **kwargs):
+        self.total = sum(item.preco * item.quantidade for item in self.itens.all())
+        super().save(*args, **kwargs)
+    ...
+```
+
+> O método `save` é um método especial que é chamado sempre que um objeto é salvo no banco de dados.
+
+> O método `super().save(*args, **kwargs)` chama o método `save` da classe pai.
+
+> O método `sum` retorna a soma de todos os valores em um iterável.
+
+> O método `self.itens.all()` retorna todos os itens da compra.
+
+Podemos **retirar** a property `total` da classe `Compra`:
+
+```python
+class Compra(models.Model):
+    ...
+    @property
+    def total(self):
+        return sum(item.preco * item.quantidade for item in self.itens.all())
+    ...
+```
+
+Precisamos ainda incluir o salvamento da compra no método `create` do serializer `CompraCreateUpdateSerializer`:
+
+```python
+class CompraCreateUpdateSerializer(ModelSerializer):
+    ...
+    def create(self, validated_data):
+        ...
+        compra.save() # linha adicionada para salvar a compra
+        return compra
+    ...
+```
+
+> O método `save` é chamado para salvar a compr, atualizando assim o campo `total`.
+
+- Execute as migrações.
+
+- Atualize os valores do campo `total` para as compras existentes:
+
+```python
+pdm run shellp
+
+for compra in Compra.objects.all():
+    compra.save()
+```
+
+- Para testar se o campo `total` está sendo preenchido corretamente:
+  - crie uma nova compra
+  - inclua um novo livro no carrinho
+  - altera a quantidade do livro
+
+**Ordenações e consultas**
+
+Após adicionar o campo total, você pode usá-lo diretamente em consultas para ordenar ou filtrar as compras.
+
+- Ordenar as compras pelo total, em ordem decrescente:
+
+```python
+compras = Compra.objects.all().order_by("-total")
+```
+
+- Filtrar as compras pelo total, com um valor mínimo de 100:
+
+```python
+compras = Compra.objects.filter(total__gte=100)
+```
+
+- Faça o _commit_ com a mensagem `Adicionando o total da compra`.
+
 
 # Exercícios Garagem
 
