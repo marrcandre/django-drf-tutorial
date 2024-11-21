@@ -3276,11 +3276,9 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 - Execute as migrações.
 
-- Atualize os valores do campo `total` para as compras existentes:
+- Atualize os valores do campo `total` para as compras existentes, utilizando o shell do Django:
 
 ```python
-pdm run shellp
-
 for compra in Compra.objects.all():
     compra.save()
 ```
@@ -3292,7 +3290,7 @@ for compra in Compra.objects.all():
 
 **Ordenações e consultas**
 
-Após adicionar o campo total, você pode usá-lo diretamente em consultas para ordenar ou filtrar as compras.
+Após adicionar o campo total, você pode usá-lo diretamente no shell do Django em consultas para ordenar ou filtrar as compras.
 
 - Ordenar as compras pelo total, em ordem decrescente:
 
