@@ -1228,15 +1228,19 @@ from core.models import Autor, Categoria, Editora, Livro, User
 
 **Registro das models através do decorator `@admin.register`**
 
-Vamos registrar as models através do decorator `@admin.register`:
+Vamos registrar as models através do decorator `@admin.register`, ao invés de utilizar a função `admin.site.register()`. Por exemplo, para a model `User`:
 
 ```python
 @admin.register(User)
-class UserAdmin(UserAdmin):
+class UserAdmin(BaseUserAdmin):
 ...
 ```
 
+- A linha `admin.site.register(User, BaseUserAdmin)` deve ser removida.
+
 **Customização do Admin**
+
+Vamos customizar o Admin para as models `Autor`, `Categoria`, `Editora` e `Livro`:
 
 ```python
 ...
