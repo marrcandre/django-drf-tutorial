@@ -874,7 +874,11 @@ Podemos criar um serializador para a listagem de livros, que mostre apenas o `id
 -   Inclua um serializador `LivroListSerializer` para a listagem de livros, que mostre apenas o `id`, o `título` e o `preço` e renomeie o serializador `LivroListRetrieveSerializer` para `LivroRetrieveSerializer`:
 
 ```python
-from core.serializers import , LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
+from core.serializers import (
+    LivroListSerializer,
+    LivroRetrieveSerializer,
+    LivroSerializer,
+)
 ...
 class LivroListSerializer(ModelSerializer):
     class Meta:
