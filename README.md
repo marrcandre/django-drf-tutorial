@@ -3644,6 +3644,8 @@ SECRET_KEY=[sua_secret_key]
 WEB_CONCURRENCY=4
 DATABASE_URL=[sua_database_url]
 CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
+PASSAGE_APP_ID=sua_app_id
+PASSAGE_API_KEY=sua_api_key
 ```
 > Crie uma `SECRET_KEY` nova. Veja como [aqui](#geração-da-secret_key). Coloque essa chave no lugar de `[sua_secret_key]`.
 
