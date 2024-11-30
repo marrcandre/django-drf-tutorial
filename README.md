@@ -3000,6 +3000,70 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
   - Gere um relatório de vendas do mês.
 - Faça o _commit_ com a mensagem `Gerando um relatório de vendas do mês`.
 
+## Listando os livros com mais de 10 cópias vendidas
+
+Vamos criar uma ação personalizada para listar os livros com mais de 10 cópias vendidas. Essa ação será aplicada a uma **coleção**, ou seja, a todos os livros.
+
+Para listar os livros que possuem mais de 10 unidades vendidas, você pode usar `annotate` para calcular o total de unidades vendidas com base no relacionamento entre os livros e os itens de compra.
+
+A primeira coisa que precisamos fazer é incluir um related_name no campo livro da entidade ItensCompra, em `models/compra.py`:
+
+```python
+...
+class ItensCompra(models.Model):
+...
+    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="itens_compra")
+...
+```
+
+- Execute as migrações.
+
+- No `views/livro.py`, vamos criar um método `mais_vendidos` na view `LivroViewSet`:
+
+```python
+from django.db.models.aggregates import Sum
+...
+    @action(detail=False, methods=["get"])
+    def mais_vendidos(self, request):
+        livros = Livro.objects.annotate(total_vendidos=Sum("itenscompra__quantidade")).filter(total_vendidos__gt=10)
+
+        data = [
+            {
+                "id": livro.id,
+                "titulo": livro.titulo,
+                "total_vendidos": livro.total_vendidos,
+            }
+            for livro in livros
+        ]
+
+        return Response(data, status=status.HTTP_200_OK)
+```
+
+> O decorador `@action` cria um endpoint para a ação `mais_vendidos`, no formato `api/livros/mais_vendidos`.
+
+> Utilizamos o método `annotate` com `Sum` para somar a quantidade de cada livro vendido, usando o relacionamento com a tabela `ItensCompra` (`itenscompra` sendo o `related_name` definido na model).
+
+> A filtragem é feita com `filter(total_vendidos__gt=10)` para incluir apenas livros que tenham mais de 10 unidades vendidas.
+
+Os dados retornados são compostos pelo id e título do livro (`livro.id` e l`ivro.titulo`) e pelo total de unidades vendidas (`livro.total_vendidos`), obtido pelo `annotate`.
+
+Ao fazer uma solicitação `GET` para o endpoint `/api/livros/mais_vendidos/`, a resposta será algo assim:
+
+```json
+[
+  {
+    "id": 1,
+    "titulo": "O Código Limpo",
+    "total_vendidos": 33
+  },
+  {
+    "id": 2,
+    "titulo": "O Codificador Limpo",
+    "total_vendidos": 25
+  },
+]
+```
+
 # 36. Utilização de filtros
 
 Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
