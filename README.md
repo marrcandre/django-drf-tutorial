@@ -2389,7 +2389,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 ...
 ```
 
-> O campo `usuario` é um campo oculto, pois foi definido como `serializers.HiddenField`. Ele não é exibido no `serializer`.
+> O campo `usuario` é um campo oculto, pois foi definido como `HiddenField`. Ele não é exibido no `serializer`.
 
 > O valor padrão do campo é o usuário autenticado.
 
@@ -2737,13 +2737,13 @@ from rest_framework.serializers import (
     ValidationError,
 )
 ...
-class LivroAlterarPrecoSerializer(serializers.Serializer):
-    preco = serializers.DecimalField(max_digits=10, decimal_places=2)
+class LivroAlterarPrecoSerializer(Serializer):
+    preco = DecimalField(max_digits=10, decimal_places=2)
 
     def validate_preco(self, value):
         """Valida se o preço é um valor positivo."""
         if value <= 0:
-            raise serializers.ValidationError("O preço deve ser um valor positivo.")
+            raise ValidationError("O preço deve ser um valor positivo.")
         return value
 ...
 ```
@@ -2828,15 +2828,15 @@ Vamos incluir um novo `serializer` chamado `LivroAjustarEstoqueSerializer` no ar
 
 ```python
 ...
-class LivroAjustarEstoqueSerializer(serializers.Serializer):
-    quantidade = serializers.IntegerField()
+class LivroAjustarEstoqueSerializer(Serializer):
+    quantidade = IntegerField()
 
     def validate_quantidade(self, value):
         livro = self.context.get("livro")
         if livro:
             nova_quantidade = livro.quantidade + value
             if nova_quantidade < 0:
-                raise serializers.ValidationError("A quantidade em estoque não pode ser negativa.")
+                raise ValidationError("A quantidade em estoque não pode ser negativa.")
         return value
 ...
 ```
