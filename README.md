@@ -2,7 +2,7 @@
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
-Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [email](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
+Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [e-mail](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
 ---
 
@@ -609,7 +609,7 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
 O autor terá os seguintes atributos:
 
 -   `nome`: `string` de no máximo 100 caracteres.
--   `email`: campo do tipo email de no máximo 100 caracteres, que pode ser nulo.
+-   `e-mail`: campo do tipo e-mail de no máximo 100 caracteres, que pode ser nulo.
 
 - Teste a API.
 - Faça o _commit_, com a mensagem `Criação da API para Autor`.
@@ -696,7 +696,7 @@ from .categoria import Categoria
 
 -   Vamos entender cada parte:
     -   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
-    -   `Categoria`: o `model` que será associado a esse campo.
+    -   `Categoria`: o `model` que será associado a este campo.
     -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
     -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
     -   `null=True, blank=True`: permite que o campo seja nulo e em branco, ou seja, **não obrigatório**. Isso é útil para evitar problemas na migração.
@@ -892,7 +892,7 @@ class LivroRetrieveSerializer(ModelSerializer):
         depth = 1
 ```
 
--   Altere a viewset para utilizar esse serializador na listagem:
+-   Altere a viewset para utilizar este serializador na listagem:
 
 ```python
     def get_serializer_class(self):
@@ -1246,10 +1246,10 @@ Vamos customizar o Admin para as models `Autor`, `Categoria`, `Editora` e `Livro
 ...
 @admin.register(Autor)
 class AutorAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email')
-    search_fields = ('nome', 'email')
+    list_display = ('nome', 'e-mail')
+    search_fields = ('nome', 'e-mail')
     list_filter = ('nome',)
-    ordering = ('nome', 'email')
+    ordering = ('nome', 'e-mail')
     list_per_page = 10
 
 @admin.register(Categoria)
@@ -1262,10 +1262,10 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Editora)
 class EditoraAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email', 'cidade')
-    search_fields = ('nome', 'email', 'cidade')
-    list_filter = ('nome', 'email', 'cidade')
-    ordering = ('nome', 'email', 'cidade')
+    list_display = ('nome', 'e-mail', 'cidade')
+    search_fields = ('nome', 'e-mail', 'cidade')
+    list_filter = ('nome', 'e-mail', 'cidade')
+    ordering = ('nome', 'e-mail', 'cidade')
     list_per_page = 10
 
 @admin.register(Livro)
@@ -1399,7 +1399,7 @@ Vamos trabalhar agora os conceitos de segurança relacionados a **autenticação
 Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 -   Criar **grupos** para perfis de usuários específicos.
--   Definir as **permissões** que esse grupo de usuários terá.
+-   Definir as **permissões** que este grupo de usuários terá.
 -   Criar um **usuário** para cada pessoa que utilizará a aplicação.
 -   **Incluir** os usuários nos grupos, dando assim as permissões.
 -   No caso de mudanças nas permissões, elas são sempre feitas nos **grupos**, refletindo nos usuários.
@@ -1910,9 +1910,9 @@ router.register(r"compras", CompraViewSet)
 -  Teste o endpoint no navegador.
 -  Faça o _commit_ com a mensagem `Endpoint para a listagem básica de compras`.
 
-**Inclusão do email do usuário na listagem da compra**
+**Inclusão do e-mail do usuário na listagem da compra**
 
-Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos substituir o `id` pelo `email` do usuário.
+Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos substituir o `id` pelo `e-mail` do usuário.
 
 -   No serializer de `Compra`, inclua o seguinte código:
 
@@ -1921,7 +1921,7 @@ Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos sub
 from rest_framework.serializers import CharField, ModelSerializer
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.email", read_only=True) # inclua essa linha
+    usuario = CharField(source="usuario.e-mail", read_only=True) # inclua essa linha
 ...
 ```
 
@@ -1930,11 +1930,11 @@ class CompraSerializer(ModelSerializer):
 > O parâmetro `read_only` indica que o campo `usuario` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ com a mensagem `Inclusão do email do usuário na listagem da compra`.
+-   Faça o _commit_ com a mensagem `Inclusão do e-mail do usuário na listagem da compra`.
 
 **Inclusão do status da compra na listagem da compra**
 
-De forma semelhante ao email do usuário, vamos incluir o status da compra na listagem da compra.
+De forma semelhante ao e-mail do usuário, vamos incluir o status da compra na listagem da compra.
 
 -   No serializer de `Compra`, inclua o seguinte código:
 
@@ -2020,7 +2020,7 @@ fields = ("livro", "quantidade")
 
 # 25. Exibição do total do item na listagem de compras
 
-O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir esse campo na listagem de compras.
+O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir este campo na listagem de compras.
 
 - Primeiro, importe o `SerializerMethodField` no arquivo `serializers/compra.py`:
 
@@ -2058,7 +2058,7 @@ class ItensCompraSerializer(ModelSerializer):
 
 # 26. Inclusão do total da compra na listagem de compras
 
-Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir esse campo na listagem de compras.
+Vamos incluir o total da compra na listagem de compras. O total da compra é calculado pela soma dos totais dos itens da compra. Esse é um campo calculado, que não existe no model `Compra`. Vamos incluir este campo na listagem de compras.
 
 - Ao final da `model` `Compra`, inclua o seguinte código:
 
@@ -2305,7 +2305,7 @@ Como fizemos com o `Livro`, vamos criar um serializador específico para a lista
 ```python
 ...
 class CompraListSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.email", read_only=True)
+    usuario = CharField(source="usuario.e-mail", read_only=True)
     itens = ItensCompraListSerializer(many=True, read_only=True)
 
     class Meta:
@@ -2507,21 +2507,21 @@ from rest_framework.serializers import (
 
 **Formatando dados antes de salvar**
 
-Podemos usar as funções de validação para formatar os dados antes de salvar. Por exemplo, podemos gravar o email da Editora em minúsculas.
+Podemos usar as funções de validação para formatar os dados antes de salvar. Por exemplo, podemos gravar o e-mail da Editora em minúsculas.
 
-- No `serializers/editora.py`, vamos alterar o `serializer` `EditoraSerializer` para formatar o email da Editora em minúsculas:
+- No `serializers/editora.py`, vamos alterar o `serializer` `EditoraSerializer` para formatar o e-mail da Editora em minúsculas:
 
 ```python
 ...
-    def validate_email(self, email):
-        return email.lower()
+    def validate_email(self, e-mail):
+        return e-mail.lower()
 ...
 ```
 
-> A função `validate_<nome_do_campo>` é chamada quando um campo é validado. Nesse caso, ela está formatando o email da Editora em minúsculas.
+> A função `validate_<nome_do_campo>` é chamada quando um campo é validado. Nesse caso, ela está formatando o e-mail da Editora em minúsculas.
 
 
-- Para testar, altere o email de uma Editora para maiúsculas e veja que o email foi gravado em minúsculas.
+- Para testar, altere o e-mail de uma Editora para maiúsculas e veja que o e-mail foi gravado em minúsculas.
 - Faça o _commit_ com a mensagem `Formatando dados antes de salvar`.
 
 # 32. Gravação do preço do livro no item da compra
@@ -2646,7 +2646,7 @@ from rest_framework.serializers import (
 )
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.email", read_only=True)
+    usuario = CharField(source="usuario.e-mail", read_only=True)
     status = CharField(source="get_status_display", read_only=True)
     data = DateTimeField(read_only=True) # novo campo
     itens = ItensCompraSerializer(many=True, read_only=True)
@@ -2691,7 +2691,7 @@ class Compra(models.Model):
 ```python
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.email", read_only=True)
+    usuario = CharField(source="usuario.e-mail", read_only=True)
     status = CharField(source="get_status_display", read_only=True)
     data = DateTimeField(read_only=True)
     tipo_pagamento = CharField(source="get_tipo_pagamento_display", read_only=True) # novo campo
@@ -3191,7 +3191,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 - Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado.
 - Se você não coloca o parâmetro `ordering`, a ordenação será feita pelo campo definido no atributo `ordering`, nesse caso, `titulo`:
   - http://0.0.0.0:19003/api/livros/
-- Compare com esse exemplo, e perceba que a saída é a mesma:
+- Compare com este exemplo, e perceba que a saída é a mesma:
   - http://0.0.0.0:19003/api/livros/?ordering=titulo
 - Para mostrar na ordem reversa, basta adicionar um sinal de menos (-) na frente do campo:
   - http://0.0.0.0:19003/api/livros/?ordering=-titulo
@@ -3628,7 +3628,7 @@ Após fazer as alterações no banco de dados remoto, volte a configuração par
   - Altere o valor da variável `MODE` para `DEVELOPMENT`.
   - Comente a linha `DATABASE_URL`.
 
-**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir esse processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
+**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir este processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
 
 # A5. Publicação do projeto no Render
 
@@ -3856,7 +3856,7 @@ As 3 regras falam a mesma coisa? Sim, você entendeu o recado. ;-)
 -   Verifique se já não existe uma conta conectada ao **GitHub** no **VS Code**, clicando no ícone **Contas** na barra lateral esquerda. Deve ser o penúltimo ícone da baixo pra cima. Se houver, **desconecte primeiro**.
 -   Inicialize o repositório **git**. Clique no ícone do **git** no painel lateral esquerdo. Deve ser o segundo ícone, de cima pra baixo. Opcionalmente, tecle (`Control+Shift+G`). Depois, clique no botão `Initialize repository`.
 -   Se aparecer uma bolinha azul no ícone do git com um número, o repositório foi ativado. Esse número indica o número de arquivos que foram criados ou alterados.
--   Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague esse repositório assim:
+-   Se aparecem muitos arquivos alterados (10 mil, por exemplo), é provável que exista um repositório **git** criado na pasta raiz do usuário. Apague este repositório assim:
 
 ```shell
 rm -Rf ~/.git
@@ -3872,11 +3872,11 @@ Control + Shift + P + "Recarregar a Janela"
 
 **Configurando as variáveis do git**
 
--   Informe seu nome e email no git. Para isso, abra o terminal do VS Code e digite:
+-   Informe seu nome e e-mail no git. Para isso, abra o terminal do VS Code e digite:
 
 ```shell
 git config --global user.name "Seu Nome"
-git config --global user.email "seuEmailNoGitHub@gmail.com"
+git config --global user.e-mail "seuEmailNoGitHub@gmail.com"
 ```
 
 -   Para verificar se as variáveis foram configuradas corretamente, digite:
@@ -3891,7 +3891,7 @@ git config -l
 rm ~/.gitconfig
 ```
 
-Repita o processo de configuração de nome e email.
+Repita o processo de configuração de nome e e-mail.
 
 
 # A9. Uso do curl para testar a API via linha de comando
@@ -4087,7 +4087,7 @@ SELECT * FROM core_livro WHERE categoria_id = 1;
 
 # Contribua
 
-**Para contriburi com esse projeto:**
+**Para contriburi com este projeto:**
 
 -   Criar um _fork_ do projeto.
 -   Clonar o _fork_
