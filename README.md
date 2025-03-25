@@ -3471,18 +3471,16 @@ Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar a
 
 Eu recomendo as seguintes:
 
--   [Black Formatter (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 -   [DotENV (Suporte a arquivos `.env`) ](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 -   [ESLint (JavaScript)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 -   [Even Better TOML (Melhorias na edição de arquivos TOML)](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)
 -   [Intellicode (Desenvolvimento Inteligente)](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
--   [isort (Organização de imports)](https://marketplace.visualstudio.com/items?itemName=Tyriar.sort-lines)
 -   [Markdown All in One (Edição de arquivos Markdown)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
--   [Material Icon Theme (Temas de ícones)](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
 -   [Peacock (Personalização de cores)](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 -   [Portuguese (Brazil) Language Pack for Visual Studio Code (Tradução para Português da interface do VS Code)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
 -   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 -   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+-   [Ruff (Linter e formatador de código)](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
 -   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
 -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
 -   [TODO Highlight (Realce de TODOs)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
@@ -3494,6 +3492,12 @@ Eu recomendo as seguintes:
 
 -   [Vue.js devtools](https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd)
 
+
+**Tema de cores**
+
+Utilizo o tema de cores `Escuro +` do **VS Code**. Dẽ preferência, utilize este tema, pois facilita na visualização do erros no seu código.
+
+Para alterar o tema de cores, useo atalho `Ctrl + K` e depois `Ctrl + T`.
 
 ## Sinconização de extensões no VS Code
 
