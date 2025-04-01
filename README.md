@@ -498,14 +498,14 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
 **6.1 Criação da API para a classe Editora**
 
 - Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
-  1. Criar a `model` Editora na pasta `models`.
-  1. Incluir a `model` no `__init__.py` da pasta `models`.
-  2. Fazer a migração e efetivar a migração.
-  3. Incluir a `model` no `Admin`.
-  4. Criar o serializador na pasta `serializers`.
-  5. Incluir o serializador no `__init__.py` da pasta `serializers`.
-  6. Criar a `viewset` na pasta `views`.
-  7. Incluir a `viewset` no `__init__.py` da pasta `views`.
+  1. Criar a `model` Editora no arquivo `editora.py` na pasta `models`.
+  1. Incluir a `model` no arquivo `__init__.py` da pasta `models`.
+  2. Fazer a migração.
+  3. Registrar a `model` no arquivo `admin.py`.
+  4. Criar o serializador no arquivo `editora.py`na pasta `serializers`.
+  5. Incluir o serializador no arquivo `__init__.py` da pasta `serializers`.
+  6. Criar a viewset no arquivo `editora.py`na pasta `views`.
+  7. Incluir a `viewset` no arquivo `__init__.py` da pasta `views`.
   8. Incluir a nova rota em `urls.py`.
 
 **6.2 Criação e modificação dos arquivos**
@@ -545,8 +545,8 @@ admin.site.register(models.Editora)
 ```python
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Categoria, Editora
-...
+from core.models import Editora
+
 class EditoraSerializer(ModelSerializer):
     class Meta:
         model = Editora
@@ -565,8 +565,8 @@ from .editora import EditoraSerializer
 ```python
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Categoria, Editora
-from core.serializers import CategoriaSerializer, EditoraSerializer
+from core.models import Editora
+from core.serializers import EditoraSerializer
 
 ...
 class EditoraViewSet(ModelViewSet):
@@ -585,7 +585,7 @@ from .editora import EditoraViewSet
 
 ```python
 ...
-from core.views import UserViewSet, CategoriaViewSet, EditoraViewSet
+from core.views import CategoriaViewSet, EditoraViewSet, UserViewSet
 ...
 router.register(r"categorias", CategoriaViewSet)
 router.register(r"editoras", EditoraViewSet)
@@ -604,6 +604,7 @@ pdm run migrate
 
 **6.4 Exercícios: testando da API da Editora**
 
+-   Acesse o endpoint: http://0.0.0.0:19003/api/editoras/
 -   Teste todas as operações da `Editora`.
 -   Verifique se é possível incluir novas editoras sem incluir todos os campos.
 -   Tente utilizar o PUT e o PATCH sem informar todos os campos.
