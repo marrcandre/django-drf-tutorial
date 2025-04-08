@@ -635,23 +635,19 @@ Exercícios:
 
 Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Livro` e a API para ela. Os passos iniciais são os mesmos que fizemos para as classes `Categoria`, `Editora` e `Autor`.
 
-**8.1 Criação dos arquivos necessários**
+**8.1 Criação automática dos arquivos necessários**
 
-Utilizando um comando no terminal, é possível criar todos os arquivos necessários para a criação da API para a classe `Livro`.
+Para facilitar a criação dos arquivos necessários para a model `Livro`, utilizar um script que cria automaticamente os arquivos necessários. Além disso, ele abre todos os arquivos necessários para criar a API, na ordem correta.
 
-```shell
-touch core/models/livro.py core/serializers/livro.py core/views/livro.py
-```
+- Antes de executar o script, feche todas as abas do **VS Code** com o atalho `Ctrl+K W`.
 
-É possivel também abrir todos os arquivos de uma vez, utilizando o comando:
+- Execute o seguinte comando no terminal:
 
 ```shell
-code core/models/livro.py core/models/__init__.py core/admin.py core/serializers/livro.py core/serializers/__init__.py core/views/livro.py core/views/__init__.py app/urls.py
+pdm cria_api livro
 ```
 
-> Se você preferir, pode criar os arquivos utilizando o **VS Code**, como já fizemos anteriormente.
-
-> Você deve estar se perguntando: posso criar um comando para fazer isso automaticamente? Sim, pergunte-me como. :)
+> O comando `pdm cria_api livro` é um comando que executa um script Python que cria automaticamente os arquivos necessários para a model `Livro`. Ele também abre todos os arquivos necessários para criar a API, na ordem correta.
 
 **8.2 Criando o modelo de dados `Livro`**
 
