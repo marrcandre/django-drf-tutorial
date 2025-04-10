@@ -4098,6 +4098,110 @@ SELECT * FROM core_livro WHERE preco IS NULL;
 SELECT * FROM core_livro WHERE categoria_id = 1;
 ```
 
+# A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
+
+Os *12 Fatores* são princípios criados pela equipe da Heroku para o desenvolvimento de aplicações modernas, escaláveis e prontas para a nuvem. Eles ajudam a manter o código limpo, a implantação simples e a aplicação resiliente. Abaixo, explicamos cada um deles, aplicando diretamente ao nosso projeto.
+
+Para maiores informações, assista ao vídeo [A Forma Ideal de Projetos Web | Os 12 Fatores](https://www.youtube.com/watch?v=gpJgtED36U4) de [Fábio Akita](https://www.youtube.com/@Akitando) ou acesse o site [12factors.net](https://12factor.net/). A documentação em português pode ser encontrada [aqui](https://12factor.net/pt_br/).
+
+---
+
+**1. Código-base – Uma base de código por aplicação**
+Uma aplicação deve ter uma única base de código, versionada em um sistema de controle de versão (ex: Git). O código deve ser separado do ambiente de execução.
+
+*Nosso projeto backend Django/DRF está em um repositório GitHub, separado do frontend Vue.js, também versionado no Git. Ambos seguem o princípio de um repositório por código-base, facilitando controle, versionamento e CI/CD.*
+
+---
+
+**2. Dependências – Declare e isole as dependências**
+As dependências devem ser declaradas explicitamente e isoladas do sistema. Isso garante que a aplicação funcione em qualquer ambiente.
+
+*No backend, usamos o PDM com o `pyproject.toml` para declarar pacotes como Django, DRF, passage.id, etc. No frontend, usamos `package.json` com Pinia, Axios e Vue. Assim, qualquer ambiente pode reproduzir o mesmo setup com `pdm install` ou `npm install`.*
+
+---
+
+**3. Configurações – Armazene as configurações no ambiente**
+
+As configurações devem ser armazenadas como variáveis de ambiente, separadas do código. Isso permite que a aplicação funcione em diferentes ambientes (dev, test, stage, prod) sem alterações no código.
+
+*As configurações são armazenadas em um arquivo `.env`, que não é versionado. O Django usa `django-environ` para carregar variáveis do `.env`, como `DATABASE_URL`, `SECRET_KEY`, `DEBUG`, etc. O Vue.js utiliza o plugin `dotenv` para carregar variáveis prefixadas com `VITE_`. Assim, as configurações são mantidas fora do código-fonte e podem ser alteradas facilmente.*
+
+---
+
+**4. Serviços de Apoio – Trate serviços de apoio como recursos anexos**
+
+Serviços externos como banco de dados ou armazenamento devem ser tratados como recursos externos e facilmente substituíveis.
+*O projeto usa PostgreSQL no Supabase e Cloudinary para armazenamento de imagens. O Vue.js consome a API do Django, que se conecta ao banco de dados. O passage.id é usado para autenticação. Todos esses serviços são configurados via variáveis de ambiente, permitindo fácil troca entre ambientes. Nosso app pode usar SQLite localmente e PostgreSQL na produção, sem alterar o código.*
+
+---
+
+**5. Build, Release, Run – Separe os estágios de build e execução**
+
+A aplicação deve ter um processo claro de *build*, *release* e *run*. O build prepara o código, o release configura o ambiente e o run executa a aplicação.
+
+*No Django, fazemos `pdm install` (build), configuramos variáveis (release) e rodamos `pdm run dev` ou Gunicorn (run). O frontend Vue é empacotado com `npm run build` e serve arquivos estáticos via Render.*
+
+---
+
+**6. Processos – Execute a aplicação como um ou mais processos stateless**
+
+A aplicação deve ser executada como um ou mais processos independentes, sem estado. Isso permite escalar horizontalmente e reiniciar processos sem perda de dados.
+
+*O Django é executado com Gunicorn, que inicia múltiplos workers. O Vue.js é uma SPA, servida como arquivos estáticos. Ambos não mantêm estado entre requisições. O estado é gerenciado no frontend (Vuex) ou via tokens JWT. Isso permite escalar horizontalmente e reiniciar processos sem perda de dados.*
+
+---
+
+**7. Vínculo com Portas – Exporte serviços via binding de porta**
+
+A aplicação deve se comunicar através de portas bem definidas, permitindo que serviços externos acessem a aplicação.
+
+*O backend Django é exposto via porta definida por `PORT`, compatível com o Render. O frontend Vue se comunica com o backend via Axios, apontando para a URL da API configurada em tempo de build.*
+
+---
+
+**8. Concorrência – Escale por processo**
+
+Aplicações devem ser escaláveis através da execução de múltiplos processos idênticos.
+
+*Podemos escalar horizontalmente a API com múltiplos workers Gunicorn. O frontend Vue pode ser replicado em várias instâncias no Render, atendendo a múltiplos usuários simultaneamente.*
+
+---
+
+**9. Descartabilidade – Maximize a robustez com inicialização e desligamento rápidos**
+Processos devem ser iniciados e parados rapidamente, permitindo fácil escalabilidade e recuperação de falhas.
+
+*Nosso app inicia com `pdm run dev` em segundos, e pode ser reiniciado sem perda de dados. O frontend Vue também é estático, com build e deploy rápidos.*
+
+---
+
+**10. Paridade entre Ambientes – Mantenha desenvolvimento, staging e produção o mais similares possível**
+
+Ambientes de desenvolvimento, staging e produção devem ser o mais semelhantes possível para evitar problemas de compatibilidade.
+
+*A diferença principal entre dev e produção é o banco (SQLite vs PostgreSQL), mas toda a configuração é mantida via `.env`. Com isso, conseguimos boa paridade entre ambientes.*
+
+---
+
+**11. Logs – Trate logs como fluxo de eventos**
+
+Os logs devem ser emitidos para `stdout`/`stderr` e tratados como fluxo contínuo
+
+*Os logs do Django são enviados para o console, permitindo fácil monitoramento. No Render, os logs são capturados automaticamente. O Vue.js registra mensagens importantes no console para debug, facilitando a identificação de problemas.*
+
+---
+
+**12. Processos Administrativos – Execute tarefas admin como processos pontuais**
+
+Tarefas como migrações ou comandos de manutenção devem ser executadas como processos avulsos.
+
+*Usamos comandos como `pdm run migrate`, `createsuperuser` ou `shell_plus` para tarefas administrativas. No Vue.js, comandos de build e lint também são pontuais.*
+
+---
+
+**Conclusão**
+Nosso projeto Django + Vue.js segue os 12 fatores de forma consistente, o que nos permite ter uma aplicação modular, escalável, fácil de manter e com deploy contínuo. Essas boas práticas são fundamentais para garantir qualidade e estabilidade tanto em desenvolvimento quanto em produção.
+
+
 # Contribua
 
 **Para contriburi com este projeto:**
