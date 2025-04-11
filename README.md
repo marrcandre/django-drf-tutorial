@@ -3390,63 +3390,70 @@ compras = Compra.objects.filter(total__gte=100)
 
 # Exercícios Garagem
 
-O projeto Garagem é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto core.
+O projeto **Garagem** é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto da **Livraria**.
 
 ## E1. Crie o projeto Garagem
 
-Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do template.
+Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do [template](https://github.com/marrcandre/template_django_pdm).
 
-1. O projeto será chamado `Garagem`.
+1. O projeto será chamado `garagem`.
 2. Nomeie o _commit_ como sendo `feat: Criação do projeto`.
-3. Siga [esses passos](#61-criação-da-api-para-a-classe-editora) para criar a API.
-4. Crie as seguintes APIs, **fazendo um _commit_ para cada uma**:
+3. Siga [esses passos](#6-inclusão-da-editora-no-projeto-livraria) para criar a API.
+   - Você pode utilizar o script de criação da API também, conforme explicado [aqui](#8-criação-da-api-para-livro).
+4. Crie as seguintes APIs, **fazendo um _commit_ para cada etapa**:
     -   `Acessorio`:
         -   `descricao` (string, máximo 100 caracteres).
-        -   `__str__` (retorna a descrição e o id).
+        -   `__str__` (retorna o id e a a descrição).
         -   Exemplos: `Ar condicionado`, `Direção hidráulica`, `Vidros elétricos`, `Travas elétricas`, `Alarme`, `Airbag`, `Freios ABS`.
+    -   `Cor`:
+        -   `nome` (string, máximo 40 caracteres).
+        -   `__str__` (retorna o nome e o id).
+        -   Exemplo: `Preto`, `Branco`, `Prata`, `Vermelho`,  `Cinza`, `Grafite`.
+    -   `Modelo`:
+        -   `nome` (string, máximo 80 caracteres).
+        -   `marca`(string, máximo 80 caracteres, não obrigatório).
+        -   `categoria` (string, máximo 80 caracteres, não obrigatório).
+        -   `__str__` (retorna id, marca e nome do modelo maiúsculas).
+        -   Exemplo: `KA`, `FIESTA`, `ECOSPORT`, `RANGER`, `ONIX`, `PRISMA`, `TRACKER`, `S10`, `GOL`, `POLO`, `TAOS`, `AMAROK`, `ARGO`, `TORO`, `UNO`, `CRONOS`, `COMPASS`, `CIVIC`, `HR-V`, `FIT`, `CITY`, `HB20`, `CRETA`, `TUCSON`, `KICKS`, `FRONTIER`, `208`, `3008`, `C3`, `C4`.
+5. Crie a API para o `Veiculo` no projeto `Garagem`.
+   - Crie o modelo `Veiculo`, com os seguintes atributos:
+     -   `ano` (inteiro, permite nulo, default 0).
+     -   `preco` (decimal, máximo 10 dígitos, 2 casas decimais, permite nulo, default 0).
+     -   `modelo` (chave estrangeira para `Modelo`).
+     -   `cor` (chave estrangeira para `Cor`).
+     -   `acessorios` (chave estrangeira para `Acessorio`, muitos para muitos).
+     -   `__str__` (retorna o id, modelo, cor e ano do carro).
+   -  Crie a API REST para o modelo `Veiculo`.
+
+Ao final, o diagrama no arquivo `core.png` deve ficar assim:
+
+![Diagrama do projeto Garagem](./diagramas/garagem_1.png)
+
+
+<!-- ## E2. Crie o modelo Categoria
+Vamos incluir o modelo `Categoria` no projeto `Garagem`.
+- Crie o modelo `Categoria`, com os seguintes atributos:
     -   `Categoria`:
         -   `descricao` (string, máximo 100 caracteres).
         -   `__str__` (retorna a descrição e o id.
         -   Exemplos: `Sedan`, `Hatch`, `SUV`, `Picape`, `Caminhonete`, `Conversível`, `Esportivo`, `Utilitário`.
-    -   `Cor`:
-        -   `nome` (string, máximo 100 caracteres).
-        -   `__str__` (retorna o nome e o id).
-        -   Exemplo: `Preto`, `Branco`, `Prata`, `Vermelho`,  `Cinza`, `Grafite`.
+
+
+-   Crie a API REST para o modelo `Modelo`.
+-   Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Modelo`.
+-   Faça um _commit_ para cada etapa.
+
+
     -   `Marca`:
         -   `nome` (string, máximo 50 caracteres).
         -   `nacionalidade` (string, máximo 50 caracteres, permite nulo).
         -   `__str__` (retorna o nome **em caixa alta** e o id).
         -   Exemplo: `FORD`, `CHEVROLET`, `VOLKSWAGEN`, `FIAT`, `RENAULT`, `TOYOTA`, `HONDA`, `HYUNDAI`, `KIA`, `NISSAN`, `PEUGEOT`, `CITROEN`, `JEEP`, `MITSUBISHI`, `MERCEDES-BENZ`, `BMW`, `AUDI`, `VOLVO`.
-5. Crie a aplicação frontend com Vuejs para consumir a API REST do projeto `Garagem`. Pode utilizar o template do projeto da `livraria-vue3` como base.
-
-## E2. Crie o modelo Modelo
-
-Vamos incluir o modelo `Modelo` no projeto `Garagem`.
-
-- Crie o modelo `Modelo`, com os seguintes atributos:
-  -   `nome` (string, máximo 100 caracteres).
-  -   `marca` (chave estrangeira para `Marca`).
-  -   `categoria` (chave estrangeira para `Categoria`).
-  -   `__str__` (retorna o nome do modelo e a marca).
-  -   Exemplo: `KA`, `FIESTA`, `ECOSPORT`, `RANGER`, `ONIX`, `PRISMA`, `TRACKER`, `S10`, `GOL`, `POLO`, `TAOS`, `AMAROK`, `ARGO`, `TORO`, `UNO`, `CRONOS`, `COMPASS`, `CIVIC`, `HR-V`, `FIT`, `CITY`, `HB20`, `CRETA`, `TUCSON`, `KICKS`, `FRONTIER`, `208`, `3008`, `C3`, `C4`, `COMPASS`, `A3`, `A4`, `Q3`, `Q5`, `XC40`, `XC60`.
--   Crie a API REST para o modelo `Modelo`.
--   Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Modelo`.
--   Faça um _commit_ para cada etapa.
 
 ## E3. Crie o modelo Veiculo
 
-Vamos incluir o modelo `Veiculo` no projeto `Garagem`.
 
-- Crie o modelo `Veiculo`, com os seguintes atributos:
-  -   `modelo` (chave estrangeira para `Modelo`).
-  -   `cor` (chave estrangeira para `Cor`).
-  -   `ano` (inteiro, permite nulo, default 0).
-  -   `preco` (decimal, máximo 10 dígitos, 2 casas decimais, permite nulo, default 0).
-  -   `acessorios` (chave estrangeira para `Acessorio`, muitos para muitos).
-  -   `__str__` (retorna o modelo, ano e cor do carro).
--  Crie a API REST para o modelo `Veiculo`.
--  Crie a aplicação frontend com Vuejs para consumir a API REST do modelo `Veiculo`.
--  Faça um _commit_ para cada etapa.
+-  Faça um _commit_ para cada etapa. -->
 
 ---
 
