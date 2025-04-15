@@ -704,11 +704,19 @@ from .categoria import Categoria
 ```
 
 -   Vamos entender cada parte:
-    -   `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
-    -   `Categoria`: o `model` que será associado a este campo.
-    -   `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados.
-    -   `related_name="livros"`: cria um atributo `livros` na classe `Categoria`, permitindo acessar todos os livros de uma categoria.
-    -   `null=True, blank=True`: permite que o campo seja nulo e em branco, ou seja, **não obrigatório**. Isso é útil para evitar problemas na migração.
+    - `models.ForeignKey`: define o campo como sendo uma chave estrangeira.
+    - `Categoria`: o `model` que será associado a este campo.
+    - `on_delete=models.PROTECT`: impede de apagar uma _categoria_ que possua _livros_ associados. É conhecido **integridade referencial**. Outras formas de definir o comportamento são:
+        - `models.PROTECT`: impede a exclusão de um objeto que possui referências em outros objetos.
+        - `models.CASCADE`: exclui todos os objetos associados ao objeto que está sendo excluído.
+        - `models.SET_NULL`: define o campo como nulo quando o objeto associado é excluído.
+        - `models.SET_DEFAULT`: define o campo como o valor padrão quando o objeto associado é excluído.
+    - `related_name="livros"`: é chamado de **relacionamento reverso**. Cria um atributo na classe `Categoria` que permite acessar todos os livros de uma categoria. Ou seja, quando você acessar uma categoria, poderá acessar todos os livros associados a ela.
+    - `null=True, blank=True`:
+        - `null=True`: permite que o campo seja nulo no banco de dados.
+        - `blank=True`: permite que o campo seja nulo no formulário do Django Admin.
+        - Na prática, juntos eles permitem que o campo seja **não obrigatório**.
+        - Isso é útil para evitar problemas na migração.
 
 **9.2 Campo `editora` no `Livro`**
 
