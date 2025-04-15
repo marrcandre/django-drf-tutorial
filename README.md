@@ -806,8 +806,7 @@ autores = models.ManyToManyField(Autor, related_name="livros", blank=True)
 
 **10.2 Exercícios**
 
--   Faça a API para Livros (serializador, viewset e rota).
--   Teste a API REST de livros.
+-   Teste a API REST de livros com modificações feitas.
 
 # 11. Modificação da API para Livro
 
