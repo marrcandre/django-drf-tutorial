@@ -804,9 +804,12 @@ autores = models.ManyToManyField(Autor, related_name="livros", blank=True)
 
 > Observe as alterações no **banco de dados**, no **Admin** e na **API**.
 
+- Faça um _commit_ com a mensagem `feat: inclusão do relacionamento n para n entre Livro e Autor`.
+
 **10.2 Exercícios**
 
 -   Teste a API REST de livros com modificações feitas.
+
 
 # 11. Modificação da API para Livro
 
