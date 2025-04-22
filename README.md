@@ -808,8 +808,8 @@ autores = models.ManyToManyField(Autor, related_name="livros", blank=True)
 
 **10.2 Exercícios**
 
--   Teste a API REST de livros com modificações feitas.
-
+- Teste a API REST de livros com modificações feitas.
+- Faça o [Exercício da Garagem (E1)](#e1-crie-o-projeto-garagem) para praticar o que foi aprendido até aqui.
 
 # 11. Modificação da API para Livro
 
