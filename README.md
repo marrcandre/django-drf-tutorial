@@ -3406,7 +3406,7 @@ O projeto **Garagem** é um projeto de uma garagem de carros. O objetivo é prat
 
 Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do [template](https://github.com/marrcandre/template_django_pdm).
 
-1. O projeto será chamado `garagem`.
+1. Pode chamar o repositório de `garagem`.
 2. Nomeie o _commit_ como sendo `feat: Criação do projeto`.
 3. Siga [esses passos](#6-inclusão-da-editora-no-projeto-livraria) para criar a API.
    - Você pode utilizar o script de criação da API também, conforme explicado [aqui](#8-criação-da-api-para-livro).
@@ -3423,7 +3423,7 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
         -   `nome` (string, máximo 80 caracteres).
         -   `marca`(string, máximo 80 caracteres, não obrigatório).
         -   `categoria` (string, máximo 80 caracteres, não obrigatório).
-        -   `__str__` (retorna id, marca e nome do modelo maiúsculas).
+        -   `__str__` (retorna id, marca (maiúsculas) e nome do modelo (maiúsculas).
         -   Exemplo: `KA`, `FIESTA`, `ECOSPORT`, `RANGER`, `ONIX`, `PRISMA`, `TRACKER`, `S10`, `GOL`, `POLO`, `TAOS`, `AMAROK`, `ARGO`, `TORO`, `UNO`, `CRONOS`, `COMPASS`, `CIVIC`, `HR-V`, `FIT`, `CITY`, `HB20`, `CRETA`, `TUCSON`, `KICKS`, `FRONTIER`, `208`, `3008`, `C3`, `C4`.
 5. Crie a API para o `Veiculo` no projeto `Garagem`.
    - Crie o modelo `Veiculo`, com os seguintes atributos:
@@ -3435,7 +3435,7 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
      -   `__str__` (retorna o id, modelo, cor e ano do carro).
    -  Crie a API REST para o modelo `Veiculo`.
 
-Ao final, o diagrama no arquivo `core.png` deve ficar assim:
+Ao final, o diagrama no arquivo `core.png`, **que é obrigatório**, deve ficar assim:
 
 ![Diagrama do projeto Garagem](./diagramas/garagem_1.png)
 
