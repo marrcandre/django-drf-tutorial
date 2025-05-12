@@ -987,7 +987,7 @@ pdm lock
 pdm install
 ```
 
--   Instale os pacotes `Pillow e python-magic`:
+<!-- -   Instale os pacotes `Pillow e python-magic`:
 
 ```shell
 pdm add Pillow
@@ -997,7 +997,7 @@ pdm add "python-magic-bin; sys_platform=='win32, darwin'"
 
 > O pacote `python-magic` é utilizado para identificar o tipo de arquivo, enquanto o `Pillow` é utilizado para manipulação de imagens.
 
-> O pacote `python-magic-bin` é utilizado no Windows e MacOS, enquanto o `python-magic` é utilizado no Linux.
+> O pacote `python-magic-bin` é utilizado no Windows e MacOS, enquanto o `python-magic` é utilizado no Linux. -->
 
 **Registro da app**
 
@@ -1014,7 +1014,7 @@ INSTALLED_APPS = [
 
 **IMPORTANTE:** Não esqueça da vírgula no final da linha.
 
-**Configuração no `settings.py`**
+<!-- **Configuração no `settings.py`**
 
 -   Ainda no `settings.py` faça as seguintes configurações, logo após a configuração do `STATIC_URL`:
 
@@ -1023,7 +1023,7 @@ INSTALLED_APPS = [
 MEDIA_ENDPOINT = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 FILE_UPLOAD_PERMISSIONS = 0o640
-```
+``` -->
 
 **Configuração no `urls.py`**
 
@@ -1048,7 +1048,7 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 - Modifique a linha `post_migrate` no arquivo `pyproject.toml` para incluir a geração do diagrama da app `uploader`:
 
 ```shell
-post_migrate = "python manage.py graph_models --disable-sort-fields -g -o core.png core uploader"
+post_migrate = "python manage.py graph_models --disable-sort-fields -S -g -o core.png core uploader"
 ```
 
 **Migração do banco de dados**
@@ -1113,23 +1113,27 @@ from rest_framework.serializers import ModelSerializer, SlugRelatedField
 from uploader.models import Image
 from uploader.serializers import ImageSerializer
 ...
+class LivroRetrieveSerializer(ModelSerializer):
+    capa = ImageSerializer(required=False)
+
+    class Meta:
+        model = Livro
+        fields = '__all__'
+        depth = 1
+...
 class LivroSerializer(ModelSerializer):
     capa_attachment_key = SlugRelatedField(
-        source="capa",
+        source='capa',
         queryset=Image.objects.all(),
-        slug_field="attachment_key",
+        slug_field='attachment_key',
         required=False,
         write_only=True,
     )
-    capa = ImageSerializer(
-        required=False,
-        read_only=True
-    )
+    capa = ImageSerializer(required=False, read_only=True)
 
-...
-class LivroListRetrieveSerializer(ModelSerializer):
-...
-    capa = ImageSerializer(required=False)
+    class Meta:
+        model = Livro
+        fields = '__all__'
 ```
 
 > Alteramos dois serializadores: um para a gravação e outro para a recuperação de um único livro.
