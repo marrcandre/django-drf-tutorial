@@ -3753,7 +3753,7 @@ PASSAGE_API_KEY=sua_api_key
 
 > Se tudo estiver correto, o projeto será implantado no **Render**.
 
-# A6. Armazenanamento de arquivos estáticos no Cloudinary
+# A6. Armazenamento de arquivos estáticos no Cloudinary
 
 Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Desta forma, os arquivos não serão perdidos a cada nova implantação.
 
