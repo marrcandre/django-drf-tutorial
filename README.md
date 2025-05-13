@@ -3600,7 +3600,7 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
-# A4. Criação do Banco de Dados no Supabase
+# A4. Publicação do banco de dados no Supabase
 
 Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
 
@@ -3753,7 +3753,7 @@ PASSAGE_API_KEY=sua_api_key
 
 > Se tudo estiver correto, o projeto será implantado no **Render**.
 
-# A6. Armazenamento de arquivos estáticos no Cloudinary
+# A6. Publicação: armazenamento de arquivos estáticos no Cloudinary
 
 Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Desta forma, os arquivos não serão perdidos a cada nova implantação.
 
