@@ -1178,7 +1178,7 @@ DATABASES = {'default': {'NAME': 'db.sqlite3', 'USER': '', 'PASSWORD': '', 'HOST
 **No Linux:**
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json
+wget https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/refs/heads/main/scripts/core.json
 ```
 
 **No Windows:**
