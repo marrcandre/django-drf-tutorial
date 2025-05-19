@@ -1140,12 +1140,12 @@ O **dump** dos dados permite que você salve os dados do banco de dados em um ar
 
 - Acesse o seguinte link:
 
-  - Link: `http://191.52.55.44:19003/admin/` (ou peça ao professor)
+  - Link: `http://191.52.55.236:19003/admin/` (ou peça ao professor)
   - Usuário: `a@a.com`
   - Senha: `teste.123`
 
 - Cadastre pelos menos 10 livros, com autor e editora
-- Verifique se o livro, autor ou editora já estão cadastrados, para evitar duplicidade.
+- Verifique se o livro, categoria, autor ou editora já estão cadastrados, para **evitar duplicidade**.
 - **NÃO USE CAIXA ALTA!!!**
 - Use o formato de nomes de livros, como no exemplo: `O Senhor dos Anéis - A Sociedade do Anel`
 
