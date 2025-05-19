@@ -987,18 +987,6 @@ pdm lock
 pdm install
 ```
 
-<!-- -   Instale os pacotes `Pillow e python-magic`:
-
-```shell
-pdm add Pillow
-pdm add "python-magic; sys_platform=='linux'"
-pdm add "python-magic-bin; sys_platform=='win32, darwin'"
-```
-
-> O pacote `python-magic` é utilizado para identificar o tipo de arquivo, enquanto o `Pillow` é utilizado para manipulação de imagens.
-
-> O pacote `python-magic-bin` é utilizado no Windows e MacOS, enquanto o `python-magic` é utilizado no Linux. -->
-
 **Registro da app**
 
 -   Adicione o pacote `uploader` na lista de `INSTALLED_APPS`, no `settings.py`:
@@ -1013,17 +1001,6 @@ INSTALLED_APPS = [
 ```
 
 **IMPORTANTE:** Não esqueça da vírgula no final da linha.
-
-<!-- **Configuração no `settings.py`**
-
--   Ainda no `settings.py` faça as seguintes configurações, logo após a configuração do `STATIC_URL`:
-
-```python
-# App Uploader settings
-MEDIA_ENDPOINT = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-FILE_UPLOAD_PERMISSIONS = 0o640
-``` -->
 
 **Configuração no `urls.py`**
 
