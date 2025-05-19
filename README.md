@@ -3615,27 +3615,26 @@ Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
 - Selecione a opção `Create a new organization`.
 - Dẽ um nome à organização.
 - Dê um nome ao banco de dados.
-- Escolha uma senha e **guarde-a** (você vai precisar dela).
+- Escolha uma senha uma clique ana oção de gerar uma senha e **guarde-a** (você vai precisar dela).
 - Selecione a região `South America (São Paulo)`.
 
 **Configurando o banco de dados no projeto**
 
 - Entre no [Dashboard](https://supabase.com/dashboard/projects) do projeto, e escolha o projeto criado.
-- Escolha a opção `Project settings` e depois `Database`.
-- Copia a linha de conexão do banco de dados (URI).
-  - Ela deve ser parecida com isso: `postgres://postgres:[YOUR-PASSWORD]@site.supabase.co:5432/postgres`.
-- Coloque as informações da sua conta.
+- Clique na opção `Connect` (Conectar), ao lado do nome do projeto.
+- Copia a linha de conexão do banco de dados da opção `Session Pooler`.
+  - Ela deve ser parecida com isso: `postgresql://postgres.kfjxquvsjldesrrjqgzo:[YOUR-PASSWORD]@aws-0-sa-east-1.pooler.supabase.com:5432/postgres`
+- Coloque a senha que você gerou no campo `[YOUR-PASSWORD]`.
 - Copie a linha de conexão e cole no arquivo `.env` do projeto, como no exemplo:
 
 ```shell
 # Supabase
-DATABASE_URL=postgres://postgres:teste.123@!@db.vqcprcexhnwvyvewgrin.supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres.kfjxquvsjldesrrjqgzo:senha123@aws-0-sa-east-1.pooler.supabase.com:5432/postgres
 ```
 
 **Migrando o banco de dados**
 
 - No arquivo `.env`:
-  - Altere o valor da variável `MODE` para `MIGRATE`.
   - Descomente a linha `DATABASE_URL`.
 - Faça a migracão do banco de dados:
 
@@ -3659,7 +3658,6 @@ pdm run migrate
 Após fazer as alterações no banco de dados remoto, volte a configuração para utilizar o banco de dados local:
 
 - Para voltar a usar o banco de dados local, no arquivo `.env`:
-  - Altere o valor da variável `MODE` para `DEVELOPMENT`.
   - Comente a linha `DATABASE_URL`.
 
 **IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir este processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
