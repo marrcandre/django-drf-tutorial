@@ -3648,37 +3648,7 @@ O **Render** é uma plataforma de hospedagem que permite publicar aplicações w
 
 Precisamos executar uma série de comandos para construir nosso aplicativo. Podemos fazer isso com um script de construção (`build script`).
 
-- Crie um arquivo chamado `build.sh` na raiz do projeto com o seguinte conteúdo:
-
-```shell
-#!/usr/bin/env bash
-# Sai do script se houver algum erro
-set -o errexit
-
-# Atualiza o pip
-pip install --upgrade pip
-
-# Instala as dependências
-pip install -r requirements.txt
-
-# Coleta os arquivos estáticos
-python manage.py collectstatic --no-input
-
-# Aplica as migrações
-python manage.py migrate
-```
-
-- Torne o script executável:
-
-```shell
-chmod a+x build.sh
-```
-
-- Adicione os pacotes `Uvicorn` e `Gunicorn` ao projeto:
-
-```shell
-pdm add uvicorn gunicorn
-```
+- Verifique se seu projeto já possui o arquivo `build.sh` na raiz do projeto.
 
 **Testando a execução localmente**
 
