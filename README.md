@@ -1197,6 +1197,22 @@ pdm run loaddata
 
 > O comando espera um arquivo `core.json` na pasta raiz do projeto.
 
+**Criando os campos email e cidade para Editora**
+
+Você deve receber uma mensagem de erro ao tentar fazer o "load" dos dados, pois os campos `email` e `cidade` não existem na model `Editora`. Para resolver isso, você deve criar esses campos na model `Editora`.
+
+
+-   Edite o arquivo `models/editora.py` e adicione os campos `email` e `cidade`:
+
+```python
+class Editora(models.Model):
+...
+    email = models.EmailField(max_length=100, blank=True, null=True)
+    cidade = models.CharField(max_length=100, blank=True, null=True)
+
+```
+-   Faça a migração dos dados e tente fazer o "load" novamente:
+
 **Verificando se a carga dos dados funcionou**
 
 -  Utilizando o Django Shell Plus, observe que os dados foram carregados:
