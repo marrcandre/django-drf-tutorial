@@ -1311,7 +1311,7 @@ class LivroAdmin(admin.ModelAdmin):
 
 # 15. Uso do Django Shell e do Django Shell Plus
 
-O Django Shell é uma ferramenta para interagir com o banco de dados. O Django Shell Plus é uma extensão do Django Shell que inclui alguns recursos adicionais, como a inclusão automática dos modelos.
+O **Django Shell** é uma ferramenta para interagir com o banco de dados. O **Django Shell Plus** é uma extensão do Django Shell que inclui alguns recursos adicionais, como a inclusão automática dos modelos.
 
 -   Acesse o shell:
 
@@ -1405,6 +1405,7 @@ Editora.objects.get(id=1).livros.all()
 ```python
 >>> exit()
 ```
+Para mais exemplos de uso do Django Shell Plus, acesse este [anexo](#a10-django-shell---comandos-úteis).
 
 # 16. Autenticação e autorização
 
