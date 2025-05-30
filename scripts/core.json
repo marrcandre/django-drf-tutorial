@@ -1,2721 +1,5 @@
 [
 {
-  "model": "uploader.image",
-  "pk": 1,
-  "fields": {
-    "attachment_key": "bb48d27c-36db-46c4-80ab-adf4ec29526a",
-    "public_id": "3cb2c686-618c-4315-9ea9-71f8e621775b",
-    "file": "images/3cb2c686-618c-4315-9ea9-71f8e621775b.jpg",
-    "description": "Hobbit",
-    "uploaded_on": "2024-04-25T18:54:38.389Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 2,
-  "fields": {
-    "attachment_key": "07194d95-26ec-4ea4-ad96-a5c86c361ef2",
-    "public_id": "6c68ed45-cade-45fa-b6f9-f7796e314e02",
-    "file": "images/6c68ed45-cade-45fa-b6f9-f7796e314e02.jpg",
-    "description": "Marco André",
-    "uploaded_on": "2024-05-02T13:05:15.675Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 3,
-  "fields": {
-    "attachment_key": "186d8586-ae4d-43d9-b196-6ec9fbefc854",
-    "public_id": "428be4d1-f111-45dc-aaf1-38f45bd0c611",
-    "file": "images/428be4d1-f111-45dc-aaf1-38f45bd0c611.png",
-    "description": "Joaquim",
-    "uploaded_on": "2024-05-02T13:59:52.169Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 4,
-  "fields": {
-    "attachment_key": "7ac4de23-fef4-48e4-b569-515e45fd89c6",
-    "public_id": "00d576e2-085c-4a19-beb1-a62c9d6a9785",
-    "file": "images/00d576e2-085c-4a19-beb1-a62c9d6a9785.png",
-    "description": "Chefão",
-    "uploaded_on": "2024-08-09T14:22:24.351Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 5,
-  "fields": {
-    "attachment_key": "27c577b6-c06b-4a3c-8bfc-bb06c2ea65cc",
-    "public_id": "854e1d60-165c-42e7-9ad7-c2e71c867e46",
-    "file": "images/854e1d60-165c-42e7-9ad7-c2e71c867e46.jpg",
-    "description": "Missal romano",
-    "uploaded_on": "2024-08-19T14:22:02.717Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 6,
-  "fields": {
-    "attachment_key": "f1751989-5849-4ce0-9683-7f69b8e675ab",
-    "public_id": "2f01764f-14f3-4ba0-87fa-beaf83dd394a",
-    "file": "images/2f01764f-14f3-4ba0-87fa-beaf83dd394a.png",
-    "description": "Palavra do senhor",
-    "uploaded_on": "2024-08-19T14:22:59.409Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 7,
-  "fields": {
-    "attachment_key": "bae49981-9da3-4648-ada1-5d85911b8aab",
-    "public_id": "6df5bbf6-fec8-40cf-933d-14e95073648e",
-    "file": "images/6df5bbf6-fec8-40cf-933d-14e95073648e.jpg",
-    "description": "Bíblia Zíper Média Marrom",
-    "uploaded_on": "2024-08-19T14:27:17.212Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 8,
-  "fields": {
-    "attachment_key": "188c20ef-aa37-4b2c-84bd-85c5bda45f94",
-    "public_id": "1bdeb27c-cba5-48e0-8960-7bb69763e1bc",
-    "file": "images/1bdeb27c-cba5-48e0-8960-7bb69763e1bc.jpg",
-    "description": "Biblia da pastoral",
-    "uploaded_on": "2024-08-19T14:28:34.701Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 9,
-  "fields": {
-    "attachment_key": "2dd635a1-aa68-4a25-b07e-077ef278f0c6",
-    "public_id": "de0a3b69-6ee8-455a-b3ee-6a45bc64c3d8",
-    "file": "images/de0a3b69-6ee8-455a-b3ee-6a45bc64c3d8.jpg",
-    "description": "Catecismo da Igreja Católica",
-    "uploaded_on": "2024-08-19T14:29:38.023Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 10,
-  "fields": {
-    "attachment_key": "32b1184f-d930-489b-b6be-57ebee156539",
-    "public_id": "eeaa5950-a5ca-4ede-a572-15a9755f6004",
-    "file": "images/eeaa5950-a5ca-4ede-a572-15a9755f6004.jpg",
-    "description": "lenin é foda",
-    "uploaded_on": "2024-08-19T14:33:01.953Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 11,
-  "fields": {
-    "attachment_key": "c07e8feb-d84d-4eb2-be4d-b751987d6106",
-    "public_id": "da4a1a73-4909-4f2a-8302-e1729d63721c",
-    "file": "images/da4a1a73-4909-4f2a-8302-e1729d63721c.jpg",
-    "description": "Novena de Nossa Senhora de Guadalupe",
-    "uploaded_on": "2024-08-19T14:33:19.998Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 12,
-  "fields": {
-    "attachment_key": "a51bd1e7-defc-4a97-9724-95ab4fa0a358",
-    "public_id": "d324bf90-4c8c-4e36-b6f7-8f151a7fc4ee",
-    "file": "images/d324bf90-4c8c-4e36-b6f7-8f151a7fc4ee.jpg",
-    "description": "São Bento",
-    "uploaded_on": "2024-08-19T14:33:29.231Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 13,
-  "fields": {
-    "attachment_key": "3ff7e9d3-d773-468b-91f6-5767c091008e",
-    "public_id": "6348d4c6-ff09-4fd2-9964-557a4b213bd1",
-    "file": "images/6348d4c6-ff09-4fd2-9964-557a4b213bd1.jpg",
-    "description": "Rito Da Missa Celebrada Com O Povo",
-    "uploaded_on": "2024-08-19T14:36:01.572Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 14,
-  "fields": {
-    "attachment_key": "58f3ca48-3b79-4e17-9e29-ea6ea3533b76",
-    "public_id": "0014a0a8-3b64-435f-b842-674bc49b17f5",
-    "file": "images/0014a0a8-3b64-435f-b842-674bc49b17f5.jpg",
-    "description": "Em Defesa da Vida - Textos Oficiais da Cnbb Sobre o Aborto",
-    "uploaded_on": "2024-08-19T14:38:33.648Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 15,
-  "fields": {
-    "attachment_key": "e0ce529f-e499-4ec0-a68b-a87c15aa3261",
-    "public_id": "ed7c85df-a2b5-4d0e-8349-6f0368f18aaf",
-    "file": "images/ed7c85df-a2b5-4d0e-8349-6f0368f18aaf.png",
-    "description": "lenin é foda",
-    "uploaded_on": "2024-08-19T14:40:22.258Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 16,
-  "fields": {
-    "attachment_key": "ff183d85-8860-4a49-9a31-2ecc1c48ad2c",
-    "public_id": "c85ba851-7e83-46bd-9662-2efb0427c816",
-    "file": "images/c85ba851-7e83-46bd-9662-2efb0427c816.webp",
-    "description": "colo de Deus",
-    "uploaded_on": "2024-08-19T14:40:32.420Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 17,
-  "fields": {
-    "attachment_key": "16613945-1c66-491b-9046-5a1085321efc",
-    "public_id": "d7544b57-7713-4062-881d-7fc3d87012c2",
-    "file": "images/d7544b57-7713-4062-881d-7fc3d87012c2.jpg",
-    "description": "CRITÉRIOS E ITINERÁRIOS PARA A INSTITUIÇÃO DO MINISTÉRIO DE CATEQUISTA",
-    "uploaded_on": "2024-08-19T14:43:45.390Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 18,
-  "fields": {
-    "attachment_key": "4e20dac6-a47c-40d8-8fe7-aa285cd4df77",
-    "public_id": "9f488c77-6f98-49ff-b0a9-74fad7c09ba7",
-    "file": "images/9f488c77-6f98-49ff-b0a9-74fad7c09ba7.jpg",
-    "description": "Coração de Tinta",
-    "uploaded_on": "2024-08-19T17:53:14.673Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 19,
-  "fields": {
-    "attachment_key": "80b1f8a6-9931-4058-a371-ded38c6a7b7a",
-    "public_id": "d32e78a8-4971-49bc-84dd-ed5deca4f0b5",
-    "file": "images/d32e78a8-4971-49bc-84dd-ed5deca4f0b5.jpg",
-    "description": "Corinthians campeão",
-    "uploaded_on": "2024-08-19T17:59:32.336Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 20,
-  "fields": {
-    "attachment_key": "108c102f-71bc-4477-bd07-fffaf87a36bc",
-    "public_id": "e904cae2-64cc-43a6-95a4-94367395f431",
-    "file": "images/e904cae2-64cc-43a6-95a4-94367395f431.jpg",
-    "description": "Invasão Corinthiana",
-    "uploaded_on": "2024-08-19T18:00:31.868Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 21,
-  "fields": {
-    "attachment_key": "7bf829eb-3979-4fb3-9017-d0f2bb58f858",
-    "public_id": "ac91e197-d504-48a2-9fd3-0f43d3910a25",
-    "file": "images/ac91e197-d504-48a2-9fd3-0f43d3910a25.jpg",
-    "description": "Sócrates",
-    "uploaded_on": "2024-08-19T18:03:52.242Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 22,
-  "fields": {
-    "attachment_key": "e7320df1-a1f4-4798-84a8-f7ff9a80a852",
-    "public_id": "6c148b4c-a746-4c73-a7fa-2a7a5f315ad2",
-    "file": "images/6c148b4c-a746-4c73-a7fa-2a7a5f315ad2.jpg",
-    "description": "Cassio",
-    "uploaded_on": "2024-08-19T18:07:23.828Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 23,
-  "fields": {
-    "attachment_key": "8810e493-638b-43fc-b84b-bbdcc0e05711",
-    "public_id": "cd43b0bb-79e9-426e-9c99-80bc75523d18",
-    "file": "images/cd43b0bb-79e9-426e-9c99-80bc75523d18.jpg",
-    "description": "Youcat",
-    "uploaded_on": "2024-08-19T18:10:07.580Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 24,
-  "fields": {
-    "attachment_key": "80bf5d43-2af1-4072-9852-42d57d5c5293",
-    "public_id": "7862b8a2-0bca-4b72-9cf5-550c2c23825c",
-    "file": "images/7862b8a2-0bca-4b72-9cf5-550c2c23825c.jpg",
-    "description": "capa-arte-da-guerra",
-    "uploaded_on": "2024-08-20T11:15:53.601Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 25,
-  "fields": {
-    "attachment_key": "b22ccf0a-90d0-47aa-9bc3-b9a2b571ac08",
-    "public_id": "97ab78d9-dfa4-4405-88aa-034d98470cf4",
-    "file": "images/97ab78d9-dfa4-4405-88aa-034d98470cf4.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:16:54.890Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 26,
-  "fields": {
-    "attachment_key": "8f7d2bc5-f899-41e6-b6a8-6a7e4e7807ce",
-    "public_id": "338f564a-b0bb-43d8-8b18-649784f54fba",
-    "file": "images/338f564a-b0bb-43d8-8b18-649784f54fba.jpg",
-    "description": "A bilbioteca",
-    "uploaded_on": "2024-08-20T11:17:27.333Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 27,
-  "fields": {
-    "attachment_key": "d3ae10d5-7220-4fe5-8024-bb25acc4d1ed",
-    "public_id": "ba7110a1-411f-4369-949f-9545ef85ae01",
-    "file": "images/ba7110a1-411f-4369-949f-9545ef85ae01.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:19:38.597Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 28,
-  "fields": {
-    "attachment_key": "96fea55c-56e0-4399-a025-6a1315d648ec",
-    "public_id": "387f1f89-cd2e-42c2-a3a1-86bff66dfc45",
-    "file": "images/387f1f89-cd2e-42c2-a3a1-86bff66dfc45.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:20:45.780Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 29,
-  "fields": {
-    "attachment_key": "6bd91832-dc77-4901-b98c-e8a84fb7eda8",
-    "public_id": "91b5547a-58e1-458a-8bba-47c9c271545c",
-    "file": "images/91b5547a-58e1-458a-8bba-47c9c271545c.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:23:21.622Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 30,
-  "fields": {
-    "attachment_key": "17119983-90c6-4edb-9666-ad5fd3568b66",
-    "public_id": "e94edba5-d576-4dbe-a57a-70a748b6cb6e",
-    "file": "images/e94edba5-d576-4dbe-a57a-70a748b6cb6e.jpg",
-    "description": "Alice no país das maravilhas",
-    "uploaded_on": "2024-08-20T11:23:49.149Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 31,
-  "fields": {
-    "attachment_key": "bbb7e245-299a-43c6-a928-60ddf996d723",
-    "public_id": "52a727e2-8c65-4368-908c-b738ec0d036e",
-    "file": "images/52a727e2-8c65-4368-908c-b738ec0d036e.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:24:05.334Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 32,
-  "fields": {
-    "attachment_key": "4988f889-f6e5-4afe-898c-69eca7f16ce5",
-    "public_id": "147cef4c-5a45-4d80-bfce-03c9a412209f",
-    "file": "images/147cef4c-5a45-4d80-bfce-03c9a412209f.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:25:27.789Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 33,
-  "fields": {
-    "attachment_key": "32aa3781-835c-4f25-9ad9-73710dbb105c",
-    "public_id": "25ac94d8-89ab-4963-9a29-1bab92151526",
-    "file": "images/25ac94d8-89ab-4963-9a29-1bab92151526.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:25:37.679Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 34,
-  "fields": {
-    "attachment_key": "904bed67-0095-4179-84de-5b48b3760786",
-    "public_id": "769ae0e2-61b1-46c0-9a47-aa37fe7799b5",
-    "file": "images/769ae0e2-61b1-46c0-9a47-aa37fe7799b5.jpg",
-    "description": "eu-robo",
-    "uploaded_on": "2024-08-20T11:25:40.283Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 35,
-  "fields": {
-    "attachment_key": "da6ce6f8-8298-469d-b824-f611bf4b16e8",
-    "public_id": "cfbd9ed1-cc39-492e-bc3a-fc196a1e7c1c",
-    "file": "images/cfbd9ed1-cc39-492e-bc3a-fc196a1e7c1c.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:25:49.002Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 36,
-  "fields": {
-    "attachment_key": "0e365ce6-a419-4c21-838d-e6db175d6db4",
-    "public_id": "44e354fd-ee6f-4e1f-9ea1-ffb6eae81f5d",
-    "file": "images/44e354fd-ee6f-4e1f-9ea1-ffb6eae81f5d.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:27:26.109Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 37,
-  "fields": {
-    "attachment_key": "3cce9b46-2236-4a83-8b64-bf897cf5e818",
-    "public_id": "6a468ca8-6dc8-4cad-8b21-4a16bf18daf6",
-    "file": "images/6a468ca8-6dc8-4cad-8b21-4a16bf18daf6.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:29:24.223Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 38,
-  "fields": {
-    "attachment_key": "3e1e111b-f7df-4885-aba6-50e99d0b88f1",
-    "public_id": "7b4c8f19-9a4c-4bd5-aae9-bc1527ff5776",
-    "file": "images/7b4c8f19-9a4c-4bd5-aae9-bc1527ff5776.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:31:11.031Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 39,
-  "fields": {
-    "attachment_key": "643e61ea-1d4e-48c1-b500-00a6584eacb3",
-    "public_id": "9a477e02-fef7-411a-a41e-8cc3f5753ad4",
-    "file": "images/9a477e02-fef7-411a-a41e-8cc3f5753ad4.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:32:39.002Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 40,
-  "fields": {
-    "attachment_key": "d4bd7128-66b2-4647-ae1a-13533425ecc6",
-    "public_id": "66334618-a73d-4ee9-904f-4662b8d61d7d",
-    "file": "images/66334618-a73d-4ee9-904f-4662b8d61d7d.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:36:52.031Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 41,
-  "fields": {
-    "attachment_key": "fb96475d-a51d-488d-b66b-3d96574b068d",
-    "public_id": "0db4585e-8727-45b0-8b61-7c7d46e889ea",
-    "file": "images/0db4585e-8727-45b0-8b61-7c7d46e889ea.jpg",
-    "description": "diario-de-um-banana-2",
-    "uploaded_on": "2024-08-20T11:37:18.412Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 42,
-  "fields": {
-    "attachment_key": "5c58b326-6688-4643-a0c0-44054696168a",
-    "public_id": "17031841-50fe-4e08-a27a-44cc68380b6f",
-    "file": "images/17031841-50fe-4e08-a27a-44cc68380b6f.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:39:13.461Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 43,
-  "fields": {
-    "attachment_key": "eb032077-368d-496a-9f19-7a9811423678",
-    "public_id": "cf80695f-d95e-40b5-b6f0-7c5419eae90f",
-    "file": "images/cf80695f-d95e-40b5-b6f0-7c5419eae90f.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:43:11.428Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 44,
-  "fields": {
-    "attachment_key": "ac160abb-c124-4291-b825-69029ac7fc00",
-    "public_id": "ba8c6894-787f-4b85-9c8f-6099cfe9b0f1",
-    "file": "images/ba8c6894-787f-4b85-9c8f-6099cfe9b0f1.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:45:17.726Z"
-  }
-},
-{
-  "model": "uploader.image",
-  "pk": 45,
-  "fields": {
-    "attachment_key": "ea986bcb-3ae5-4b29-9101-bdf4d94d006d",
-    "public_id": "1ea91506-cbf0-4568-93ec-e4dcbd295294",
-    "file": "images/1ea91506-cbf0-4568-93ec-e4dcbd295294.jpg",
-    "description": "",
-    "uploaded_on": "2024-08-20T11:46:47.079Z"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 1,
-  "fields": {
-    "descricao": "Engenharia de Software"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 2,
-  "fields": {
-    "descricao": "Fantasia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 3,
-  "fields": {
-    "descricao": "Policial"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 4,
-  "fields": {
-    "descricao": "Javascript"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 6,
-  "fields": {
-    "descricao": "Aventura"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 7,
-  "fields": {
-    "descricao": "Contos"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 8,
-  "fields": {
-    "descricao": "Clássico"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 9,
-  "fields": {
-    "descricao": "Literatura Gótica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 10,
-  "fields": {
-    "descricao": "Ciências Sociais"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 11,
-  "fields": {
-    "descricao": "Ficção Científica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 12,
-  "fields": {
-    "descricao": "História em Quadrinhos"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 13,
-  "fields": {
-    "descricao": "Ficção"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 14,
-  "fields": {
-    "descricao": "Drama adolescente"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 15,
-  "fields": {
-    "descricao": "Romance Histórico"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 16,
-  "fields": {
-    "descricao": "Programação"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 17,
-  "fields": {
-    "descricao": "Infantil"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 18,
-  "fields": {
-    "descricao": "SQL"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 19,
-  "fields": {
-    "descricao": "Distopia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 20,
-  "fields": {
-    "descricao": "Python"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 21,
-  "fields": {
-    "descricao": "Biografia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 22,
-  "fields": {
-    "descricao": "Religioso"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 23,
-  "fields": {
-    "descricao": "Linux"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 24,
-  "fields": {
-    "descricao": "Literatura Infantil"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 25,
-  "fields": {
-    "descricao": "Desenvolvimento Pessoal"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 26,
-  "fields": {
-    "descricao": "Sociologia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 27,
-  "fields": {
-    "descricao": "Filosofia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 28,
-  "fields": {
-    "descricao": "Poesia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 30,
-  "fields": {
-    "descricao": "Suspense"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 31,
-  "fields": {
-    "descricao": "Drama"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 32,
-  "fields": {
-    "descricao": "Romance"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 34,
-  "fields": {
-    "descricao": "Autoajuda"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 35,
-  "fields": {
-    "descricao": "Política"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 36,
-  "fields": {
-    "descricao": "Romance/Drama"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 37,
-  "fields": {
-    "descricao": "Comédia Romântica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 38,
-  "fields": {
-    "descricao": "Infanto-Juvenil"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 39,
-  "fields": {
-    "descricao": "Carnavalesco"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 40,
-  "fields": {
-    "descricao": "Comédia Ácida"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 41,
-  "fields": {
-    "descricao": "Terror"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 42,
-  "fields": {
-    "descricao": "Western"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 43,
-  "fields": {
-    "descricao": "Mistério"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 45,
-  "fields": {
-    "descricao": "Pos-apocalíptico"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 46,
-  "fields": {
-    "descricao": "Comédia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 47,
-  "fields": {
-    "descricao": "Literatura Fantástica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 48,
-  "fields": {
-    "descricao": "Ficção Juvenil"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 49,
-  "fields": {
-    "descricao": "Sátira Política"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 51,
-  "fields": {
-    "descricao": "Ficção Distópica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 52,
-  "fields": {
-    "descricao": "Não-Ficção"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 53,
-  "fields": {
-    "descricao": "Homem vs Natureza"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 54,
-  "fields": {
-    "descricao": "Esporte"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 55,
-  "fields": {
-    "descricao": "Dark Romance"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 56,
-  "fields": {
-    "descricao": "Java"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 57,
-  "fields": {
-    "descricao": "Literatura Ergódica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 58,
-  "fields": {
-    "descricao": "Hot"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 59,
-  "fields": {
-    "descricao": "Crime Real"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 60,
-  "fields": {
-    "descricao": "Física"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 61,
-  "fields": {
-    "descricao": "Roteiro"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 62,
-  "fields": {
-    "descricao": "Espiritismo"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 63,
-  "fields": {
-    "descricao": "Educação"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 64,
-  "fields": {
-    "descricao": "Finanças Pessoais"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 65,
-  "fields": {
-    "descricao": "Aventura Infantil"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 66,
-  "fields": {
-    "descricao": "Expressões Regulares"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 67,
-  "fields": {
-    "descricao": "Shell Script"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 68,
-  "fields": {
-    "descricao": "Guerra"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 69,
-  "fields": {
-    "descricao": "Mangá"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 70,
-  "fields": {
-    "descricao": "Desenvolvimento Web"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 77,
-  "fields": {
-    "descricao": "Catolica"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 78,
-  "fields": {
-    "descricao": "Vida Cristã"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 80,
-  "fields": {
-    "descricao": "Futebol"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 81,
-  "fields": {
-    "descricao": "Economia"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 82,
-  "fields": {
-    "descricao": "Gestão e Liderança"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 83,
-  "fields": {
-    "descricao": "Clássicos de Ficção"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 84,
-  "fields": {
-    "descricao": "Documentário"
-  }
-},
-{
-  "model": "core.categoria",
-  "pk": 85,
-  "fields": {
-    "descricao": "Ciências Tecnológicas"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 1,
-  "fields": {
-    "nome": "Alta Books",
-    "site": "http://altabooks.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 2,
-  "fields": {
-    "nome": "Record",
-    "site": "http://record.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 3,
-  "fields": {
-    "nome": "Martins Fontes",
-    "site": "http://martinsfontes.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 4,
-  "fields": {
-    "nome": "Thomas Nelson",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 5,
-  "fields": {
-    "nome": "Companhia das Letras",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 6,
-  "fields": {
-    "nome": "Suma",
-    "site": "https://www.instagram.com/editorasuma/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 7,
-  "fields": {
-    "nome": "Intrínseca",
-    "site": "https://www.intrinseca.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 8,
-  "fields": {
-    "nome": "Elefante",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 9,
-  "fields": {
-    "nome": "Arqueiro",
-    "site": "https://www.editoraarqueiro.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 10,
-  "fields": {
-    "nome": "HarperCollins",
-    "site": "https://harpercollins.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 11,
-  "fields": {
-    "nome": "Panini",
-    "site": "https://panini.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 12,
-  "fields": {
-    "nome": "Amulet Books",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 13,
-  "fields": {
-    "nome": "Saraiva",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 14,
-  "fields": {
-    "nome": "Magalu",
-    "site": "https://www.magazineluiza.com.br/livro-algoritmos-e-logica-da-programacao/p/dbhkj801ja/li/lgta/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 15,
-  "fields": {
-    "nome": "Ciranda Cultural",
-    "site": "https://www.cirandacultural.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 16,
-  "fields": {
-    "nome": "Aleph",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 18,
-  "fields": {
-    "nome": "Novatec",
-    "site": "https://www.novatec.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 19,
-  "fields": {
-    "nome": "Farol Literário",
-    "site": "https://www.instagram.com/farolliterario/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 20,
-  "fields": {
-    "nome": "Gutenberg",
-    "site": "http://Gutenberg.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 21,
-  "fields": {
-    "nome": "Melhoramentos",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 22,
-  "fields": {
-    "nome": "Thomas Nelson Brasil",
-    "site": "http://ThomasNelson.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 23,
-  "fields": {
-    "nome": "Rocco Jovens Leitores",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 24,
-  "fields": {
-    "nome": "Montecristo",
-    "site": "https://montecristoeditora.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 25,
-  "fields": {
-    "nome": "Planeta Minotauro",
-    "site": "https://www.planetadelivros.com.br/coleccion-planeta-minotauro/0057519996",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 26,
-  "fields": {
-    "nome": "Seguinte",
-    "site": "https://www.editoraseguinte.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 27,
-  "fields": {
-    "nome": "Faro Editorial",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 28,
-  "fields": {
-    "nome": "Sextante",
-    "site": "http://editorasextante@editora.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 29,
-  "fields": {
-    "nome": "Darkside",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 30,
-  "fields": {
-    "nome": "Biblioteca Azul",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 31,
-  "fields": {
-    "nome": "Buzz",
-    "site": "http://buzz@editora.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 33,
-  "fields": {
-    "nome": "Edipro",
-    "site": "http://edipro@editora.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 34,
-  "fields": {
-    "nome": "Best Seller",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 35,
-  "fields": {
-    "nome": "Quill Tree Books",
-    "site": "https://www.storytel.com/in/en/publishers/10635-Quill-Tree-Books",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 36,
-  "fields": {
-    "nome": "Alfaguara",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 37,
-  "fields": {
-    "nome": "Veneta",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 38,
-  "fields": {
-    "nome": "Paz & Terra",
-    "site": "https://pazeterra.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 39,
-  "fields": {
-    "nome": "Vozes",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 40,
-  "fields": {
-    "nome": "Lafonte",
-    "site": "https://editoralafonte.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 41,
-  "fields": {
-    "nome": "Tordesilhas",
-    "site": "https://www.alaude.com.br/vitrine/tordesilhas",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 42,
-  "fields": {
-    "nome": "Unicamp",
-    "site": "https://editoraunicamp.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 43,
-  "fields": {
-    "nome": "Nova Fronteira",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 46,
-  "fields": {
-    "nome": "L&PM",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 49,
-  "fields": {
-    "nome": "Citadel",
-    "site": "https://www.citadel.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 50,
-  "fields": {
-    "nome": "Principis",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 51,
-  "fields": {
-    "nome": "Penguin",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 52,
-  "fields": {
-    "nome": "Todavia",
-    "site": "https://todavialivros.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 53,
-  "fields": {
-    "nome": "Brasil",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 54,
-  "fields": {
-    "nome": "Casa Lygia Bojunga",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 55,
-  "fields": {
-    "nome": "Typ. de Viana & Filhos",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 57,
-  "fields": {
-    "nome": "Martin Claret",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 58,
-  "fields": {
-    "nome": "Azul",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 60,
-  "fields": {
-    "nome": "Marabraz",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 61,
-  "fields": {
-    "nome": "Ultrajano",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 62,
-  "fields": {
-    "nome": "Kuhn",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 65,
-  "fields": {
-    "nome": "Livraria Garnier",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 66,
-  "fields": {
-    "nome": "Astral Cultural",
-    "site": "http://astralcultural.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 67,
-  "fields": {
-    "nome": "Grand Central Publishing",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 68,
-  "fields": {
-    "nome": "Random House",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 69,
-  "fields": {
-    "nome": "Companhia de Bolso",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 71,
-  "fields": {
-    "nome": "Versos Intemporais",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 72,
-  "fields": {
-    "nome": "Moderna",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 73,
-  "fields": {
-    "nome": "Trilhas do Crime",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 74,
-  "fields": {
-    "nome": "Épica Fantasia",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 75,
-  "fields": {
-    "nome": "Mistérios Urbanos",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 76,
-  "fields": {
-    "nome": "Melodias do Coração",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 77,
-  "fields": {
-    "nome": "Páginas Esquecidas",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 78,
-  "fields": {
-    "nome": "Universo Infinito",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 79,
-  "fields": {
-    "nome": "Conhecimento Arcano",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 80,
-  "fields": {
-    "nome": "Mistérios Antigos",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 81,
-  "fields": {
-    "nome": "Luz da Alma",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 83,
-  "fields": {
-    "nome": "BV BUX",
-    "site": "http://bvbooks.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 84,
-  "fields": {
-    "nome": "Globo Livros",
-    "site": "http://www.globolivros.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 85,
-  "fields": {
-    "nome": "Europa",
-    "site": "http://europa.com.br",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 86,
-  "fields": {
-    "nome": "IF: World of Science Fiction",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 88,
-  "fields": {
-    "nome": "Hábito",
-    "site": "https://www.editorahabito.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 89,
-  "fields": {
-    "nome": "Seker and Walberg",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 90,
-  "fields": {
-    "nome": "Casa dos Livros",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 91,
-  "fields": {
-    "nome": "Contraponto",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 92,
-  "fields": {
-    "nome": "Cida Pedrosa",
-    "site": "http://CidaPedrosa@gmail.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 93,
-  "fields": {
-    "nome": "Marco Zero",
-    "site": "https://www.estantevirtual.com.br/editora/marco-zero?qed=marco-zero&sugestao=1",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 94,
-  "fields": {
-    "nome": "Pe da Letra",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 96,
-  "fields": {
-    "nome": "Knopf",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 98,
-  "fields": {
-    "nome": "Alfred A. Knopf",
-    "site": "https://knopfdoubleday.com/imprint/knopf/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 99,
-  "fields": {
-    "nome": "Galera",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 100,
-  "fields": {
-    "nome": "JBC",
-    "site": "https://editorajbc.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 101,
-  "fields": {
-    "nome": "Liveright Publishing Corporation",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 102,
-  "fields": {
-    "nome": "Mariner Books",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 104,
-  "fields": {
-    "nome": "Panini Comics",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 105,
-  "fields": {
-    "nome": "VIZ Media LLC",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 106,
-  "fields": {
-    "nome": "É Realizações",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 107,
-  "fields": {
-    "nome": "Independente",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 109,
-  "fields": {
-    "nome": "Cosac Naify",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 111,
-  "fields": {
-    "nome": "Keri Smith",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 112,
-  "fields": {
-    "nome": "Houghton Mifflin",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 113,
-  "fields": {
-    "nome": "The Gift Box",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 114,
-  "fields": {
-    "nome": "Amazon KDP",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 116,
-  "fields": {
-    "nome": "‎Penguin Companhia",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 117,
-  "fields": {
-    "nome": "Verus",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 118,
-  "fields": {
-    "nome": "Companhia Editora Nacional",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 119,
-  "fields": {
-    "nome": "Jaime Mc.Guire",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 120,
-  "fields": {
-    "nome": "Paralela",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 121,
-  "fields": {
-    "nome": "Desconhecida",
-    "site": "http://naopossui@gmail.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 122,
-  "fields": {
-    "nome": "Grande Área",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 123,
-  "fields": {
-    "nome": "VR",
-    "site": "https://www.vreditora.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 124,
-  "fields": {
-    "nome": "Alta Cult",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 125,
-  "fields": {
-    "nome": "Universo dos Livros",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 126,
-  "fields": {
-    "nome": "Pearson",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 127,
-  "fields": {
-    "nome": "Trinitas",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 128,
-  "fields": {
-    "nome": "Casa do Código",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 129,
-  "fields": {
-    "nome": "Birkhäuser",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 130,
-  "fields": {
-    "nome": "LVM",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 131,
-  "fields": {
-    "nome": "Bookman",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 132,
-  "fields": {
-    "nome": "34",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 133,
-  "fields": {
-    "nome": "Bertrand Brasil",
-    "site": "https://www.record.com.br/editoras/bertrand-brasil/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 134,
-  "fields": {
-    "nome": "Zahar",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 135,
-  "fields": {
-    "nome": "Vide",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 136,
-  "fields": {
-    "nome": "InterSaberes",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 141,
-  "fields": {
-    "nome": "Hodder Children's Books",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 142,
-  "fields": {
-    "nome": "LTC",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 144,
-  "fields": {
-    "nome": "Edwards of Chilva's",
-    "site": "http://Ed.Chilva@gmail.com",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 145,
-  "fields": {
-    "nome": "Alpeh",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 146,
-  "fields": {
-    "nome": "Pandorga",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 147,
-  "fields": {
-    "nome": "FEB",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 148,
-  "fields": {
-    "nome": "Yellowfante",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 149,
-  "fields": {
-    "nome": "‎Intrínseca",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 150,
-  "fields": {
-    "nome": "Autêntica",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 155,
-  "fields": {
-    "nome": "Companhia das Letrinhas",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 156,
-  "fields": {
-    "nome": "Makron Books",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 157,
-  "fields": {
-    "nome": "Pearson Universidades",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 158,
-  "fields": {
-    "nome": "Brinque-Book",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 160,
-  "fields": {
-    "nome": "Pensamento",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 161,
-  "fields": {
-    "nome": "Gen LTC",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 162,
-  "fields": {
-    "nome": "Milk Shakespeare",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 163,
-  "fields": {
-    "nome": "Fluminense FC",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 164,
-  "fields": {
-    "nome": "Livros de Futebol",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 166,
-  "fields": {
-    "nome": "Mundo Cristão",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 167,
-  "fields": {
-    "nome": "Panini - DUPLICADO",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 168,
-  "fields": {
-    "nome": "Kodansha Comics",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 169,
-  "fields": {
-    "nome": "Camelot",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 170,
-  "fields": {
-    "nome": "Alta Life",
-    "site": "https://altabooks.com.br/categoria-produto/nossos-selos/alta-life/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 171,
-  "fields": {
-    "nome": "Objetiva",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 172,
-  "fields": {
-    "nome": "CNBB",
-    "site": "https://www.edicoescnbb.com.br/?gad_source=1&gclid=Cj0KCQjw2ou2BhCCARIsANAwM2HIoPKaJmC0MhTuDevm2RDbRIf4rZsTH2DL2I4IIZVpRpImw3LnJBUaAjCMEALw_wcB",
-    "email": "cnbb@gmail.com",
-    "cidade": "Rio de Janeiro"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 173,
-  "fields": {
-    "nome": "Paulus",
-    "site": "https://www.amazon.com.br/Palavra-Senhor-Lecion%C3%A1rio-Dominical-B/dp/8534903468/ref=pd_sim_d_sccl_2_2/147-9172028-3210663?pd_rd_w=zxoEo&content-id=amzn1.sym.8555f615-361b-42f7-96c4-206bb8a5174e&pf_",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 174,
-  "fields": {
-    "nome": "Impacto Publicações",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 175,
-  "fields": {
-    "nome": "Vida",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 177,
-  "fields": {
-    "nome": "Expressão popular",
-    "site": "https://expressaopopular.com.br",
-    "email": "expressaopop@gmail.com",
-    "cidade": "São Paulo"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 178,
-  "fields": {
-    "nome": "Canção Nova",
-    "site": "https://cancaonova.com/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 179,
-  "fields": {
-    "nome": "Santuário",
-    "site": "https://www.lojasantuarionacional.com.br/papelaria/livros?gclid=Cj0KCQjw2ou2BhCCARIsANAwM2F_NZx_1zicpQAV4HKnKeu_Q1qdsTerFcPFVOn302-wmZy68CsajGkaAttGEALw_wcB",
-    "email": "EditoraSanturario@gmail.com",
-    "cidade": "Rio de Janeiro"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 180,
-  "fields": {
-    "nome": "Betânia",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 181,
-  "fields": {
-    "nome": "Ganier",
-    "site": "http://www.editoraitatiaia.com.br.",
-    "email": "lofti4172@uorak.com",
-    "cidade": "Belo Horizonte"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 182,
-  "fields": {
-    "nome": "United Press",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 183,
-  "fields": {
-    "nome": "Ave Maria",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 184,
-  "fields": {
-    "nome": "HarperKids",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 185,
-  "fields": {
-    "nome": "Vozes - DUPLICADO",
-    "site": "http://www.livrariavozes.com.br",
-    "email": "vendas@vozes.com.br",
-    "cidade": "São Paulo"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 186,
-  "fields": {
-    "nome": "SBB",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 187,
-  "fields": {
-    "nome": "Companhia de Bolso",
-    "site": "http://www.editoraitatiaia.com.br.",
-    "email": "atendimento@varejao.com.br",
-    "cidade": "São Paulo"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 188,
-  "fields": {
-    "nome": "Outro Planeta",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 189,
-  "fields": {
-    "nome": "Livraria da Física",
-    "site": "https://www.livrariadafisica.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 190,
-  "fields": {
-    "nome": "Grupo Editorial Presença.",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 191,
-  "fields": {
-    "nome": "Geração Editora",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 192,
-  "fields": {
-    "nome": "Plataforma21",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 193,
-  "fields": {
-    "nome": "‎Fundamento",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 194,
-  "fields": {
-    "nome": "Ecclesiae",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 195,
-  "fields": {
-    "nome": "Fundamento",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 196,
-  "fields": {
-    "nome": "Objetiva - DUPLICADO",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 197,
-  "fields": {
-    "nome": "‎Fundamento - DUPLICADO",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 198,
-  "fields": {
-    "nome": "Pixel",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 200,
-  "fields": {
-    "nome": "GF Books",
-    "site": "https://www.amazon.com.br/",
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 201,
-  "fields": {
-    "nome": "Panda Books",
-    "site": "https://www.pandabooks.com.br/",
-    "email": "pandabooks@gmail.com",
-    "cidade": "São Paulo"
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 202,
-  "fields": {
-    "nome": "Vergara e Riba",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
-  "model": "core.editora",
-  "pk": 203,
-  "fields": {
-    "nome": "Planeta",
-    "site": null,
-    "email": null,
-    "cidade": null
-  }
-},
-{
   "model": "core.autor",
   "pk": 1,
   "fields": {
@@ -5148,13 +2432,2778 @@
   }
 },
 {
+  "model": "core.autor",
+  "pk": 355,
+  "fields": {
+    "nome": "NIKOLAI GOGOL",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 356,
+  "fields": {
+    "nome": "NIKOLAI GOGOL",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 357,
+  "fields": {
+    "nome": "Tobias Mueller",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 358,
+  "fields": {
+    "nome": "Akira Toriyama",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 359,
+  "fields": {
+    "nome": "C.J Tudor",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 360,
+  "fields": {
+    "nome": "Ailton Krenak",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 361,
+  "fields": {
+    "nome": "Carolina Maria de Jesus",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 362,
+  "fields": {
+    "nome": "Immanuel Kant",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 363,
+  "fields": {
+    "nome": "Tomás de Kempis",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 364,
+  "fields": {
+    "nome": "São Luís Maria Grignion de Montfort",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 365,
+  "fields": {
+    "nome": "Leslie Wolfe",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 366,
+  "fields": {
+    "nome": "Santo Agostinho",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 367,
+  "fields": {
+    "nome": "Elayne Baeta",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 368,
+  "fields": {
+    "nome": "Santa Teresinha do Menino Jesus",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 369,
+  "fields": {
+    "nome": "Robert Curran",
+    "email": "robert.curran@gmail.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 370,
+  "fields": {
+    "nome": "Janet e Jack Smurl",
+    "email": "janet.jack.smurl@gmail.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 371,
+  "fields": {
+    "nome": "Morgan Housel",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 372,
+  "fields": {
+    "nome": "Christie Golden",
+    "email": "Christie00@gmai.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 373,
+  "fields": {
+    "nome": "São Francisco de Sales",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 374,
+  "fields": {
+    "nome": "raiam santos",
+    "email": "contato@raiamsantos.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 375,
+  "fields": {
+    "nome": "Thereza Nahas",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 376,
+  "fields": {
+    "nome": "Raphael Miziana",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 377,
+  "fields": {
+    "nome": "Leone Pereira",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 378,
+  "fields": {
+    "nome": "Luciano Martinez",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 379,
+  "fields": {
+    "nome": "Kelly Quindlen",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 380,
+  "fields": {
+    "nome": "Jeff Benedict",
+    "email": "benedicdepat@o.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 381,
+  "fields": {
+    "nome": "Zlatan Ibrahimovic",
+    "email": "zlataneomior@r.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 382,
+  "fields": {
+    "nome": "Vários autores",
+    "email": "autoresdiversospontocom@g.com"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 383,
+  "fields": {
+    "nome": "gabriel marques",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 384,
+  "fields": {
+    "nome": "Penelope Douglas",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 385,
+  "fields": {
+    "nome": "Benjamin Alire Sáenz",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 386,
+  "fields": {
+    "nome": "Aditya Y. Bhargava",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 387,
+  "fields": {
+    "nome": "Clarice Lispector",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 388,
+  "fields": {
+    "nome": "Andy McNab",
+    "email": "booking.agent@nmp.co.uk"
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 389,
+  "fields": {
+    "nome": "Maurício Samy Silva",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 390,
+  "fields": {
+    "nome": "David Flanagan",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 391,
+  "fields": {
+    "nome": "David Hume",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 392,
+  "fields": {
+    "nome": "Juliano Niederauer",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 393,
+  "fields": {
+    "nome": "Anna  Skoulikari",
+    "email": null
+  }
+},
+{
+  "model": "core.autor",
+  "pk": 394,
+  "fields": {
+    "nome": "Tom Taulli",
+    "email": null
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 1,
+  "fields": {
+    "descricao": "Engenharia de Software"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 2,
+  "fields": {
+    "descricao": "Fantasia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 3,
+  "fields": {
+    "descricao": "Policial"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 4,
+  "fields": {
+    "descricao": "Javascript"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 6,
+  "fields": {
+    "descricao": "Aventura"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 7,
+  "fields": {
+    "descricao": "Contos"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 8,
+  "fields": {
+    "descricao": "Clássico"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 9,
+  "fields": {
+    "descricao": "Literatura Gótica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 10,
+  "fields": {
+    "descricao": "Ciências Sociais"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 11,
+  "fields": {
+    "descricao": "Ficção Científica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 12,
+  "fields": {
+    "descricao": "História em Quadrinhos"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 13,
+  "fields": {
+    "descricao": "Ficção"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 14,
+  "fields": {
+    "descricao": "Drama adolescente"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 15,
+  "fields": {
+    "descricao": "Romance Histórico"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 16,
+  "fields": {
+    "descricao": "Programação"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 17,
+  "fields": {
+    "descricao": "Infantil"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 18,
+  "fields": {
+    "descricao": "SQL"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 19,
+  "fields": {
+    "descricao": "Distopia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 20,
+  "fields": {
+    "descricao": "Python"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 21,
+  "fields": {
+    "descricao": "Biografia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 22,
+  "fields": {
+    "descricao": "Religioso"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 23,
+  "fields": {
+    "descricao": "Linux"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 24,
+  "fields": {
+    "descricao": "Literatura Infantil"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 25,
+  "fields": {
+    "descricao": "Desenvolvimento Pessoal"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 26,
+  "fields": {
+    "descricao": "Sociologia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 27,
+  "fields": {
+    "descricao": "Filosofia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 28,
+  "fields": {
+    "descricao": "Poesia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 30,
+  "fields": {
+    "descricao": "Suspense"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 31,
+  "fields": {
+    "descricao": "Drama"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 32,
+  "fields": {
+    "descricao": "Romance"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 34,
+  "fields": {
+    "descricao": "Autoajuda"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 35,
+  "fields": {
+    "descricao": "Política"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 36,
+  "fields": {
+    "descricao": "Romance/Drama"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 37,
+  "fields": {
+    "descricao": "Comédia Romântica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 38,
+  "fields": {
+    "descricao": "Infanto-Juvenil"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 39,
+  "fields": {
+    "descricao": "Carnavalesco"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 40,
+  "fields": {
+    "descricao": "Comédia Ácida"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 41,
+  "fields": {
+    "descricao": "Terror"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 42,
+  "fields": {
+    "descricao": "Western"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 43,
+  "fields": {
+    "descricao": "Mistério"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 45,
+  "fields": {
+    "descricao": "Pos-apocalíptico"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 46,
+  "fields": {
+    "descricao": "Comédia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 47,
+  "fields": {
+    "descricao": "Literatura Fantástica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 48,
+  "fields": {
+    "descricao": "Ficção Juvenil"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 49,
+  "fields": {
+    "descricao": "Sátira Política"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 51,
+  "fields": {
+    "descricao": "Ficção Distópica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 52,
+  "fields": {
+    "descricao": "Não-Ficção"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 53,
+  "fields": {
+    "descricao": "Homem vs Natureza"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 54,
+  "fields": {
+    "descricao": "Esporte"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 55,
+  "fields": {
+    "descricao": "Dark Romance"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 56,
+  "fields": {
+    "descricao": "Java"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 57,
+  "fields": {
+    "descricao": "Literatura Ergódica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 58,
+  "fields": {
+    "descricao": "Hot"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 59,
+  "fields": {
+    "descricao": "Crime Real"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 60,
+  "fields": {
+    "descricao": "Física"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 61,
+  "fields": {
+    "descricao": "Roteiro"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 62,
+  "fields": {
+    "descricao": "Espiritismo"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 63,
+  "fields": {
+    "descricao": "Educação"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 64,
+  "fields": {
+    "descricao": "Finanças Pessoais"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 65,
+  "fields": {
+    "descricao": "Aventura Infantil"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 66,
+  "fields": {
+    "descricao": "Expressões Regulares"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 67,
+  "fields": {
+    "descricao": "Shell Script"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 68,
+  "fields": {
+    "descricao": "Guerra"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 69,
+  "fields": {
+    "descricao": "Mangá"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 70,
+  "fields": {
+    "descricao": "Desenvolvimento Web"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 77,
+  "fields": {
+    "descricao": "Catolica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 78,
+  "fields": {
+    "descricao": "Vida Cristã"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 80,
+  "fields": {
+    "descricao": "Futebol"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 81,
+  "fields": {
+    "descricao": "Economia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 82,
+  "fields": {
+    "descricao": "Gestão e Liderança"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 83,
+  "fields": {
+    "descricao": "Clássicos de Ficção"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 84,
+  "fields": {
+    "descricao": "Documentário"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 85,
+  "fields": {
+    "descricao": "Ciências Tecnológicas"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 86,
+  "fields": {
+    "descricao": "Literatura russa"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 87,
+  "fields": {
+    "descricao": "informatica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 88,
+  "fields": {
+    "descricao": "Fantasia Romântica"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 89,
+  "fields": {
+    "descricao": "Devocionais"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 90,
+  "fields": {
+    "descricao": "Fé"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 91,
+  "fields": {
+    "descricao": "Espiritualidade"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 92,
+  "fields": {
+    "descricao": "Apologética"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 93,
+  "fields": {
+    "descricao": "historia"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 94,
+  "fields": {
+    "descricao": "Direito"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 95,
+  "fields": {
+    "descricao": "Album de figurinhas"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 96,
+  "fields": {
+    "descricao": "romance"
+  }
+},
+{
+  "model": "core.categoria",
+  "pk": 97,
+  "fields": {
+    "descricao": "Web design"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 1,
+  "fields": {
+    "nome": "Alta Books",
+    "site": "http://altabooks.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 2,
+  "fields": {
+    "nome": "Record",
+    "site": "http://record.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 3,
+  "fields": {
+    "nome": "Martins Fontes",
+    "site": "http://martinsfontes.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 4,
+  "fields": {
+    "nome": "Thomas Nelson",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 5,
+  "fields": {
+    "nome": "Companhia das Letras",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 6,
+  "fields": {
+    "nome": "Suma",
+    "site": "https://www.instagram.com/editorasuma/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 7,
+  "fields": {
+    "nome": "Intrínseca",
+    "site": "https://www.intrinseca.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 8,
+  "fields": {
+    "nome": "Elefante",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 9,
+  "fields": {
+    "nome": "Arqueiro",
+    "site": "https://www.editoraarqueiro.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 10,
+  "fields": {
+    "nome": "HarperCollins",
+    "site": "https://harpercollins.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 11,
+  "fields": {
+    "nome": "Panini",
+    "site": "https://panini.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 12,
+  "fields": {
+    "nome": "Amulet Books",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 13,
+  "fields": {
+    "nome": "Saraiva",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 14,
+  "fields": {
+    "nome": "Magalu",
+    "site": "https://www.magazineluiza.com.br/livro-algoritmos-e-logica-da-programacao/p/dbhkj801ja/li/lgta/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 15,
+  "fields": {
+    "nome": "Ciranda Cultural",
+    "site": "https://www.cirandacultural.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 16,
+  "fields": {
+    "nome": "Aleph",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 18,
+  "fields": {
+    "nome": "Novatec",
+    "site": "https://www.novatec.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 19,
+  "fields": {
+    "nome": "Farol Literário",
+    "site": "https://www.instagram.com/farolliterario/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 20,
+  "fields": {
+    "nome": "Gutenberg",
+    "site": "http://Gutenberg.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 21,
+  "fields": {
+    "nome": "Melhoramentos",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 22,
+  "fields": {
+    "nome": "Thomas Nelson Brasil",
+    "site": "http://ThomasNelson.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 23,
+  "fields": {
+    "nome": "Rocco Jovens Leitores",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 24,
+  "fields": {
+    "nome": "Montecristo",
+    "site": "https://montecristoeditora.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 25,
+  "fields": {
+    "nome": "Planeta Minotauro",
+    "site": "https://www.planetadelivros.com.br/coleccion-planeta-minotauro/0057519996",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 26,
+  "fields": {
+    "nome": "Seguinte",
+    "site": "https://www.editoraseguinte.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 27,
+  "fields": {
+    "nome": "Faro Editorial",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 28,
+  "fields": {
+    "nome": "Sextante",
+    "site": "http://editorasextante@editora.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 29,
+  "fields": {
+    "nome": "Darkside",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 30,
+  "fields": {
+    "nome": "Biblioteca Azul",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 31,
+  "fields": {
+    "nome": "Buzz",
+    "site": "http://buzz@editora.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 33,
+  "fields": {
+    "nome": "Edipro",
+    "site": "http://edipro@editora.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 34,
+  "fields": {
+    "nome": "Best Seller",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 35,
+  "fields": {
+    "nome": "Quill Tree Books",
+    "site": "https://www.storytel.com/in/en/publishers/10635-Quill-Tree-Books",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 36,
+  "fields": {
+    "nome": "Alfaguara",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 37,
+  "fields": {
+    "nome": "Veneta",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 38,
+  "fields": {
+    "nome": "Paz & Terra",
+    "site": "https://pazeterra.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 39,
+  "fields": {
+    "nome": "Vozes",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 40,
+  "fields": {
+    "nome": "Lafonte",
+    "site": "https://editoralafonte.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 41,
+  "fields": {
+    "nome": "Tordesilhas",
+    "site": "https://www.alaude.com.br/vitrine/tordesilhas",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 42,
+  "fields": {
+    "nome": "Unicamp",
+    "site": "https://editoraunicamp.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 43,
+  "fields": {
+    "nome": "Nova Fronteira",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 46,
+  "fields": {
+    "nome": "L&PM",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 49,
+  "fields": {
+    "nome": "Citadel",
+    "site": "https://www.citadel.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 50,
+  "fields": {
+    "nome": "Principis",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 51,
+  "fields": {
+    "nome": "Penguin",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 52,
+  "fields": {
+    "nome": "Todavia",
+    "site": "https://todavialivros.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 53,
+  "fields": {
+    "nome": "Brasil",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 54,
+  "fields": {
+    "nome": "Casa Lygia Bojunga",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 55,
+  "fields": {
+    "nome": "Typ. de Viana & Filhos",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 57,
+  "fields": {
+    "nome": "Martin Claret",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 58,
+  "fields": {
+    "nome": "Azul",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 60,
+  "fields": {
+    "nome": "Marabraz",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 61,
+  "fields": {
+    "nome": "Ultrajano",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 62,
+  "fields": {
+    "nome": "Kuhn",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 65,
+  "fields": {
+    "nome": "Livraria Garnier",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 66,
+  "fields": {
+    "nome": "Astral Cultural",
+    "site": "http://astralcultural.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 67,
+  "fields": {
+    "nome": "Grand Central Publishing",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 68,
+  "fields": {
+    "nome": "Random House",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 69,
+  "fields": {
+    "nome": "Companhia de Bolso",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 71,
+  "fields": {
+    "nome": "Versos Intemporais",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 72,
+  "fields": {
+    "nome": "Moderna",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 73,
+  "fields": {
+    "nome": "Trilhas do Crime",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 74,
+  "fields": {
+    "nome": "Épica Fantasia",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 75,
+  "fields": {
+    "nome": "Mistérios Urbanos",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 76,
+  "fields": {
+    "nome": "Melodias do Coração",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 77,
+  "fields": {
+    "nome": "Páginas Esquecidas",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 78,
+  "fields": {
+    "nome": "Universo Infinito",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 79,
+  "fields": {
+    "nome": "Conhecimento Arcano",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 80,
+  "fields": {
+    "nome": "Mistérios Antigos",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 81,
+  "fields": {
+    "nome": "Luz da Alma",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 83,
+  "fields": {
+    "nome": "BV BUX",
+    "site": "http://bvbooks.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 84,
+  "fields": {
+    "nome": "Globo Livros",
+    "site": "http://www.globolivros.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 85,
+  "fields": {
+    "nome": "Europa",
+    "site": "http://europa.com.br",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 86,
+  "fields": {
+    "nome": "IF: World of Science Fiction",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 88,
+  "fields": {
+    "nome": "Hábito",
+    "site": "https://www.editorahabito.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 89,
+  "fields": {
+    "nome": "Seker and Walberg",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 90,
+  "fields": {
+    "nome": "Casa dos Livros",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 91,
+  "fields": {
+    "nome": "Contraponto",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 92,
+  "fields": {
+    "nome": "Cida Pedrosa",
+    "site": "http://CidaPedrosa@gmail.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 93,
+  "fields": {
+    "nome": "Marco Zero",
+    "site": "https://www.estantevirtual.com.br/editora/marco-zero?qed=marco-zero&sugestao=1",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 94,
+  "fields": {
+    "nome": "Pe da Letra",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 96,
+  "fields": {
+    "nome": "Knopf",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 98,
+  "fields": {
+    "nome": "Alfred A. Knopf",
+    "site": "https://knopfdoubleday.com/imprint/knopf/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 99,
+  "fields": {
+    "nome": "Galera",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 100,
+  "fields": {
+    "nome": "JBC",
+    "site": "https://editorajbc.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 101,
+  "fields": {
+    "nome": "Liveright Publishing Corporation",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 102,
+  "fields": {
+    "nome": "Mariner Books",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 104,
+  "fields": {
+    "nome": "Panini Comics",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 105,
+  "fields": {
+    "nome": "VIZ Media LLC",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 106,
+  "fields": {
+    "nome": "É Realizações",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 107,
+  "fields": {
+    "nome": "Independente",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 109,
+  "fields": {
+    "nome": "Cosac Naify",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 111,
+  "fields": {
+    "nome": "Keri Smith",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 112,
+  "fields": {
+    "nome": "Houghton Mifflin",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 113,
+  "fields": {
+    "nome": "The Gift Box",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 114,
+  "fields": {
+    "nome": "Amazon KDP",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 116,
+  "fields": {
+    "nome": "‎Penguin Companhia",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 117,
+  "fields": {
+    "nome": "Verus",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 118,
+  "fields": {
+    "nome": "Companhia Editora Nacional",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 119,
+  "fields": {
+    "nome": "Jaime Mc.Guire",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 120,
+  "fields": {
+    "nome": "Paralela",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 121,
+  "fields": {
+    "nome": "Desconhecida",
+    "site": "http://naopossui@gmail.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 122,
+  "fields": {
+    "nome": "Grande Área",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 123,
+  "fields": {
+    "nome": "VR",
+    "site": "https://www.vreditora.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 124,
+  "fields": {
+    "nome": "Alta Cult",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 125,
+  "fields": {
+    "nome": "Universo dos Livros",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 126,
+  "fields": {
+    "nome": "Pearson",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 127,
+  "fields": {
+    "nome": "Trinitas",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 128,
+  "fields": {
+    "nome": "Casa do Código",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 129,
+  "fields": {
+    "nome": "Birkhäuser",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 130,
+  "fields": {
+    "nome": "LVM",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 131,
+  "fields": {
+    "nome": "Bookman",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 132,
+  "fields": {
+    "nome": "34",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 133,
+  "fields": {
+    "nome": "Bertrand Brasil",
+    "site": "https://www.record.com.br/editoras/bertrand-brasil/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 134,
+  "fields": {
+    "nome": "Zahar",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 135,
+  "fields": {
+    "nome": "Vide",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 136,
+  "fields": {
+    "nome": "InterSaberes",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 141,
+  "fields": {
+    "nome": "Hodder Children's Books",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 142,
+  "fields": {
+    "nome": "LTC",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 144,
+  "fields": {
+    "nome": "Edwards of Chilva's",
+    "site": "http://Ed.Chilva@gmail.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 145,
+  "fields": {
+    "nome": "Alpeh",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 146,
+  "fields": {
+    "nome": "Pandorga",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 147,
+  "fields": {
+    "nome": "FEB",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 148,
+  "fields": {
+    "nome": "Yellowfante",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 149,
+  "fields": {
+    "nome": "‎Intrínseca",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 150,
+  "fields": {
+    "nome": "Autêntica",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 155,
+  "fields": {
+    "nome": "Companhia das Letrinhas",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 156,
+  "fields": {
+    "nome": "Makron Books",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 157,
+  "fields": {
+    "nome": "Pearson Universidades",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 158,
+  "fields": {
+    "nome": "Brinque-Book",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 160,
+  "fields": {
+    "nome": "Pensamento",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 161,
+  "fields": {
+    "nome": "Gen LTC",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 162,
+  "fields": {
+    "nome": "Milk Shakespeare",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 163,
+  "fields": {
+    "nome": "Fluminense FC",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 164,
+  "fields": {
+    "nome": "Livros de Futebol",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 166,
+  "fields": {
+    "nome": "Mundo Cristão",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 167,
+  "fields": {
+    "nome": "Panini - DUPLICADO",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 168,
+  "fields": {
+    "nome": "Kodansha Comics",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 169,
+  "fields": {
+    "nome": "Camelot",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 170,
+  "fields": {
+    "nome": "Alta Life",
+    "site": "https://altabooks.com.br/categoria-produto/nossos-selos/alta-life/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 171,
+  "fields": {
+    "nome": "Objetiva",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 172,
+  "fields": {
+    "nome": "CNBB",
+    "site": "https://www.edicoescnbb.com.br/?gad_source=1&gclid=Cj0KCQjw2ou2BhCCARIsANAwM2HIoPKaJmC0MhTuDevm2RDbRIf4rZsTH2DL2I4IIZVpRpImw3LnJBUaAjCMEALw_wcB",
+    "email": "cnbb@gmail.com",
+    "cidade": "Rio de Janeiro"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 173,
+  "fields": {
+    "nome": "Paulus",
+    "site": "https://www.amazon.com.br/Palavra-Senhor-Lecion%C3%A1rio-Dominical-B/dp/8534903468/ref=pd_sim_d_sccl_2_2/147-9172028-3210663?pd_rd_w=zxoEo&content-id=amzn1.sym.8555f615-361b-42f7-96c4-206bb8a5174e&pf_",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 174,
+  "fields": {
+    "nome": "Impacto Publicações",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 175,
+  "fields": {
+    "nome": "Vida",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 177,
+  "fields": {
+    "nome": "Expressão popular",
+    "site": "https://expressaopopular.com.br",
+    "email": "expressaopop@gmail.com",
+    "cidade": "São Paulo"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 178,
+  "fields": {
+    "nome": "Canção Nova",
+    "site": "https://cancaonova.com/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 179,
+  "fields": {
+    "nome": "Santuário",
+    "site": "https://www.lojasantuarionacional.com.br/papelaria/livros?gclid=Cj0KCQjw2ou2BhCCARIsANAwM2F_NZx_1zicpQAV4HKnKeu_Q1qdsTerFcPFVOn302-wmZy68CsajGkaAttGEALw_wcB",
+    "email": "EditoraSanturario@gmail.com",
+    "cidade": "Rio de Janeiro"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 180,
+  "fields": {
+    "nome": "Betânia",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 181,
+  "fields": {
+    "nome": "Ganier",
+    "site": "http://www.editoraitatiaia.com.br.",
+    "email": "lofti4172@uorak.com",
+    "cidade": "Belo Horizonte"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 182,
+  "fields": {
+    "nome": "United Press",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 183,
+  "fields": {
+    "nome": "Ave Maria",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 184,
+  "fields": {
+    "nome": "HarperKids",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 185,
+  "fields": {
+    "nome": "Vozes - DUPLICADO",
+    "site": "http://www.livrariavozes.com.br",
+    "email": "vendas@vozes.com.br",
+    "cidade": "São Paulo"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 186,
+  "fields": {
+    "nome": "SBB",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 187,
+  "fields": {
+    "nome": "Companhia de Bolso",
+    "site": "http://www.editoraitatiaia.com.br.",
+    "email": "atendimento@varejao.com.br",
+    "cidade": "São Paulo"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 188,
+  "fields": {
+    "nome": "Outro Planeta",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 189,
+  "fields": {
+    "nome": "Livraria da Física",
+    "site": "https://www.livrariadafisica.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 190,
+  "fields": {
+    "nome": "Grupo Editorial Presença.",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 191,
+  "fields": {
+    "nome": "Geração Editora",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 192,
+  "fields": {
+    "nome": "Plataforma21",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 193,
+  "fields": {
+    "nome": "‎Fundamento",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 194,
+  "fields": {
+    "nome": "Ecclesiae",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 195,
+  "fields": {
+    "nome": "Fundamento",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 196,
+  "fields": {
+    "nome": "Objetiva - DUPLICADO",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 197,
+  "fields": {
+    "nome": "‎Fundamento - DUPLICADO",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 198,
+  "fields": {
+    "nome": "Pixel",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 200,
+  "fields": {
+    "nome": "GF Books",
+    "site": "https://www.amazon.com.br/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 201,
+  "fields": {
+    "nome": "Panda Books",
+    "site": "https://www.pandabooks.com.br/",
+    "email": "pandabooks@gmail.com",
+    "cidade": "São Paulo"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 202,
+  "fields": {
+    "nome": "Vergara e Riba",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 203,
+  "fields": {
+    "nome": "Planeta",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 204,
+  "fields": {
+    "nome": "Lulu.com",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 205,
+  "fields": {
+    "nome": "Atica",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 206,
+  "fields": {
+    "nome": "Edições 70",
+    "site": "http://www.edicoes70.pt",
+    "email": "geral@edicoes70.pt",
+    "cidade": "Lisboa"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 207,
+  "fields": {
+    "nome": "Boitempo",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 208,
+  "fields": {
+    "nome": "Universo Geek",
+    "site": "http://amazon.com",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 209,
+  "fields": {
+    "nome": "Kobe",
+    "site": "https://kobemedia.com/",
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 210,
+  "fields": {
+    "nome": "Revista dos Tribunais",
+    "site": "http://www.livrariart.com.br",
+    "email": null,
+    "cidade": "São paulo"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 211,
+  "fields": {
+    "nome": "Alt",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 212,
+  "fields": {
+    "nome": "Realejo",
+    "site": "http://amazon.com",
+    "email": "realejo.robloxmitobr@gamil.com",
+    "cidade": "Instanbul"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 213,
+  "fields": {
+    "nome": "Rocco",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 214,
+  "fields": {
+    "nome": "São Paulo: Centauro, 2001.",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 215,
+  "fields": {
+    "nome": "Paco Editorial",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 216,
+  "fields": {
+    "nome": "Método",
+    "site": "https://www.grupogen.com.br/editora-metodo",
+    "email": "grupogen@grupogen.com.br",
+    "cidade": "Rio de Janeiro - RJ"
+  }
+},
+{
+  "model": "core.editora",
+  "pk": 217,
+  "fields": {
+    "nome": "UNESP",
+    "site": null,
+    "email": null,
+    "cidade": null
+  }
+},
+{
   "model": "core.livro",
   "pk": 1,
   "fields": {
     "titulo": "O Código Limpo",
     "isbn": null,
-    "quantidade": 34,
-    "preco": "90.00",
+    "quantidade": 8,
+    "preco": "8.90",
     "categoria": 1,
     "editora": 1,
     "capa": null,
@@ -5169,8 +5218,8 @@
   "fields": {
     "titulo": "O Codificador Limpo",
     "isbn": null,
-    "quantidade": 12,
-    "preco": "12.00",
+    "quantidade": 13,
+    "preco": "10.24",
     "categoria": 1,
     "editora": 1,
     "capa": null,
@@ -5265,7 +5314,7 @@
   "fields": {
     "titulo": "O Jogador",
     "isbn": null,
-    "quantidade": 12,
+    "quantidade": 0,
     "preco": "36.99",
     "categoria": 8,
     "editora": 3,
@@ -6921,7 +6970,7 @@
     "titulo": "O Capital: crítica da Economia Política",
     "isbn": "12151321231",
     "quantidade": 20,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": 10,
     "editora": 34,
     "capa": null,
@@ -7222,7 +7271,7 @@
   "model": "core.livro",
   "pk": 137,
   "fields": {
-    "titulo": "Os sertões",
+    "titulo": "Os Sertões",
     "isbn": "978-6550970390",
     "quantidade": 1,
     "preco": "16.00",
@@ -7305,7 +7354,7 @@
     "titulo": "Manifesto Comunista",
     "isbn": null,
     "quantidade": 13,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": 35,
     "editora": 33,
     "capa": null,
@@ -7449,7 +7498,7 @@
     "titulo": "Iracema",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 55,
     "capa": null,
@@ -7481,7 +7530,7 @@
     "titulo": "A Culpa é das Estrelas",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 7,
     "capa": null,
@@ -7561,7 +7610,7 @@
     "titulo": "Senhora",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 65,
     "capa": null,
@@ -7754,7 +7803,7 @@
     "titulo": "A Viuvinha",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 13,
     "editora": 72,
     "capa": null,
@@ -7882,7 +7931,7 @@
     "titulo": "Diva",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 13,
     "editora": 65,
     "capa": null,
@@ -7994,7 +8043,7 @@
     "titulo": "Diario de um banana 1",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 6,
     "editora": 53,
     "capa": null,
@@ -8123,7 +8172,7 @@
     "titulo": "O Gaúcho",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 13,
     "editora": 65,
     "capa": null,
@@ -8267,7 +8316,7 @@
     "titulo": "O Cortiço",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 65,
     "capa": null,
@@ -8635,7 +8684,7 @@
     "titulo": "Eclipse",
     "isbn": null,
     "quantidade": 12,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 7,
     "capa": null,
@@ -8875,7 +8924,7 @@
     "titulo": "O Teorema Katherine",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 7,
     "capa": null,
@@ -8939,7 +8988,7 @@
     "titulo": "Quem é Você, Alasca?",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 7,
     "capa": null,
@@ -9083,7 +9132,7 @@
     "titulo": "Diario de um banana 2",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": 31,
     "editora": 53,
     "capa": null,
@@ -9211,7 +9260,7 @@
     "titulo": "Bíblia",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 11,
     "editora": 73,
     "capa": null,
@@ -9273,7 +9322,7 @@
     "titulo": "Harry Potter e a Câmara Secreta",
     "isbn": null,
     "quantidade": 15,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 23,
     "capa": null,
@@ -9385,7 +9434,7 @@
     "titulo": "Harry Potter e o Cálice de Fogo",
     "isbn": null,
     "quantidade": 7,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 23,
     "capa": null,
@@ -9433,7 +9482,7 @@
     "titulo": "Harry Potter e a Ordem da Fênix",
     "isbn": null,
     "quantidade": 10,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 23,
     "capa": null,
@@ -9481,7 +9530,7 @@
     "titulo": "Solo para Vialejo",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 28,
     "editora": 29,
     "capa": null,
@@ -9497,7 +9546,7 @@
     "titulo": "Harry Potter e o Enigma do Príncipe",
     "isbn": null,
     "quantidade": 15,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 23,
     "capa": null,
@@ -9529,7 +9578,7 @@
     "titulo": "Harry Potter e as Relíquias da Morte",
     "isbn": null,
     "quantidade": 13,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 23,
     "capa": null,
@@ -9673,7 +9722,7 @@
     "titulo": "Mataram Marielle",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 41,
     "editora": 49,
     "capa": null,
@@ -10041,7 +10090,7 @@
     "titulo": "Clodoaldo e o Racismo Eterno",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 34,
     "editora": 92,
     "capa": null,
@@ -10198,7 +10247,7 @@
   "model": "core.livro",
   "pk": 333,
   "fields": {
-    "titulo": "The drowned World",
+    "titulo": "The Drowned World",
     "isbn": "9780871403629",
     "quantidade": 999,
     "preco": "80.00",
@@ -10537,7 +10586,7 @@
     "titulo": "Mitologia Nordica",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 11,
     "editora": 39,
     "capa": null,
@@ -10791,7 +10840,7 @@
     "titulo": "Jumanji",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 112,
     "capa": null,
@@ -10807,7 +10856,7 @@
     "titulo": "A Cartomante",
     "isbn": null,
     "quantidade": 5,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 65,
     "capa": null,
@@ -10933,8 +10982,8 @@
     "titulo": "Album da Copa 2022",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
-    "categoria": 54,
+    "preco": "10.99",
+    "categoria": 95,
     "editora": 11,
     "capa": null,
     "autores": []
@@ -10979,7 +11028,7 @@
     "titulo": "Um Apólogo",
     "isbn": null,
     "quantidade": 12,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 13,
     "editora": 65,
     "capa": null,
@@ -11027,7 +11076,7 @@
     "titulo": "Fácil Aprendizagem Java: Passo a passo para levar os iniciantes a aprender Java melhor e rápido",
     "isbn": null,
     "quantidade": 2,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 56,
     "editora": 126,
     "capa": null,
@@ -11112,9 +11161,9 @@
     "editora": 123,
     "capa": null,
     "autores": [
-      191,
       192,
-      200
+      200,
+      191
     ]
   }
 },
@@ -11157,7 +11206,7 @@
     "titulo": "Orientação a Objetos: Aprenda seus conceitos e suas aplicabilidades de forma efetiva",
     "isbn": null,
     "quantidade": 41,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 56,
     "editora": 128,
     "capa": null,
@@ -11189,7 +11238,7 @@
     "titulo": "Dom Quixote",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 6,
     "editora": 5,
     "capa": null,
@@ -11221,7 +11270,7 @@
     "titulo": "J . Robert  Oppenheimer Uncommon Sense",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 21,
     "editora": 129,
     "capa": null,
@@ -11253,7 +11302,7 @@
     "titulo": "Princípios de Mecânica Quântica",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 60,
     "editora": 131,
     "capa": null,
@@ -11266,7 +11315,7 @@
   "model": "core.livro",
   "pk": 406,
   "fields": {
-    "titulo": "A carteira",
+    "titulo": "A Carteira",
     "isbn": null,
     "quantidade": 50,
     "preco": "100.00",
@@ -11301,7 +11350,7 @@
     "titulo": "Crime e Castigo",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 6,
     "editora": 132,
     "capa": null,
@@ -11349,7 +11398,7 @@
     "titulo": "Orgulho e Preconceito",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 6,
     "editora": 134,
     "capa": null,
@@ -11365,7 +11414,7 @@
     "titulo": "Pai contra Mãe",
     "isbn": null,
     "quantidade": 125,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 65,
     "capa": null,
@@ -11414,7 +11463,7 @@
     "titulo": "Física Moderna",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 60,
     "editora": 142,
     "capa": null,
@@ -11446,7 +11495,7 @@
     "titulo": "Ensaio sobre a Cegueira",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 6,
     "editora": 5,
     "capa": null,
@@ -11467,9 +11516,9 @@
     "editora": 7,
     "capa": null,
     "autores": [
-      212,
       216,
-      217
+      217,
+      212
     ]
   }
 },
@@ -11528,7 +11577,7 @@
     "titulo": "A Casa dos Espíritos",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 6,
     "editora": 133,
     "capa": null,
@@ -11576,7 +11625,7 @@
     "titulo": "O enfermeiro",
     "isbn": null,
     "quantidade": 17,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 13,
     "editora": 65,
     "capa": null,
@@ -11736,7 +11785,7 @@
     "titulo": "Birthday Girl",
     "isbn": null,
     "quantidade": 1,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 55,
     "editora": 16,
     "capa": null,
@@ -11960,7 +12009,7 @@
     "titulo": "O Livro dos Espíritos",
     "isbn": "‎ 8594662912",
     "quantidade": 3,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 62,
     "editora": 147,
     "capa": null,
@@ -12098,7 +12147,7 @@
     "titulo": "Rainha das Chamas",
     "isbn": null,
     "quantidade": 90,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 31,
     "editora": 9,
     "capa": null,
@@ -12146,7 +12195,7 @@
     "titulo": "Amor & Gelato",
     "isbn": "8551002341",
     "quantidade": 544,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 7,
     "capa": null,
@@ -12287,7 +12336,7 @@
   "model": "core.livro",
   "pk": 473,
   "fields": {
-    "titulo": "A chave do tamanho",
+    "titulo": "A Chave do Tamanho",
     "isbn": null,
     "quantidade": 80,
     "preco": "10.00",
@@ -12338,7 +12387,7 @@
     "titulo": "Para sempre",
     "isbn": "655957198",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 11,
     "editora": 27,
     "capa": null,
@@ -12418,7 +12467,7 @@
     "titulo": "A hipótese do amor",
     "isbn": "6559571386",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 9,
     "capa": null,
@@ -12514,7 +12563,7 @@
     "titulo": "Amor, teoricamente",
     "isbn": "9786555655254",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 32,
     "editora": 9,
     "capa": null,
@@ -12527,7 +12576,7 @@
   "model": "core.livro",
   "pk": 489,
   "fields": {
-    "titulo": "A árvore generosa",
+    "titulo": "A Árvore Generosa",
     "isbn": "978-8574067537",
     "quantidade": 1,
     "preco": "38.99",
@@ -12578,7 +12627,7 @@
     "titulo": "A Arte de Enganar: Ataques de Hackers: Controlando o Fator Humano na Segurança da Informação",
     "isbn": "8534615160",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 16,
     "editora": 126,
     "capa": null,
@@ -12610,7 +12659,7 @@
     "titulo": "Como ser um Programador Melhor: um Manual Para Programadores que se Importam com Código",
     "isbn": "8575224158",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 16,
     "editora": 18,
     "capa": null,
@@ -12674,7 +12723,7 @@
     "titulo": "Introdução a Algoritmos e Programação com Python - Uma Abordagem Dirigida Por Testes",
     "isbn": "8535290516",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 20,
     "editora": 161,
     "capa": null,
@@ -12723,7 +12772,7 @@
     "titulo": "Introdução à Linguagem Python",
     "isbn": "8575227149",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 20,
     "editora": 18,
     "capa": null,
@@ -12755,7 +12804,7 @@
     "titulo": "Introdução à Programação com Python: Algoritmos e Lógica de Programação Para Iniciantes",
     "isbn": "8575227181",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 20,
     "editora": 18,
     "capa": null,
@@ -12816,7 +12865,7 @@
   "model": "core.livro",
   "pk": 508,
   "fields": {
-    "titulo": "Vasco: o clube do povo",
+    "titulo": "Vasco: O Clube do Povo",
     "isbn": null,
     "quantidade": 1,
     "preco": "25.00",
@@ -12867,7 +12916,7 @@
     "titulo": "A Segunda Guerra Mundial",
     "isbn": null,
     "quantidade": 1,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 68,
     "editora": 2,
     "capa": null,
@@ -12915,7 +12964,7 @@
     "titulo": "One Piece Vol. 1",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 69,
     "editora": 167,
     "capa": null,
@@ -12929,7 +12978,7 @@
     "titulo": "The Seven Deadly Sins, Volume 1",
     "isbn": "1612629210",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 69,
     "editora": 168,
     "capa": null,
@@ -12943,7 +12992,7 @@
     "titulo": "The Seven Deadly Sins 3",
     "isbn": "6559571386",
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 69,
     "editora": 168,
     "capa": null,
@@ -12973,7 +13022,7 @@
     "titulo": "Arsène Lupin contra Herlock Sholmes",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 3,
     "editora": 169,
     "capa": null,
@@ -12989,7 +13038,7 @@
     "titulo": "Arsène Lupin, O Ladrão de Casaca",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 3,
     "editora": 169,
     "capa": null,
@@ -13005,7 +13054,7 @@
     "titulo": "A rolha de cristal",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 3,
     "editora": 134,
     "capa": null,
@@ -13021,7 +13070,7 @@
     "titulo": "As confidências de Arsène Lupin",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 3,
     "editora": 134,
     "capa": null,
@@ -13037,7 +13086,7 @@
     "titulo": "A Agulha Oca",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 3,
     "editora": 134,
     "capa": null,
@@ -13053,7 +13102,7 @@
     "titulo": "O Leão, a Feiticeira e o Guarda-Roupa",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13069,7 +13118,7 @@
     "titulo": "Príncipe Caspian",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13085,7 +13134,7 @@
     "titulo": "A Viagem do Peregrino da Alvorada",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13101,7 +13150,7 @@
     "titulo": "A Cadeira de Prata",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13117,7 +13166,7 @@
     "titulo": "O Cavalo e seu Menino",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13133,7 +13182,7 @@
     "titulo": "O Sobrinho do Mago",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13149,7 +13198,7 @@
     "titulo": "A Última Batalha",
     "isbn": null,
     "quantidade": 0,
-    "preco": null,
+    "preco": "10.99",
     "categoria": 2,
     "editora": 3,
     "capa": null,
@@ -13232,7 +13281,7 @@
     "preco": "617.12",
     "categoria": 22,
     "editora": 172,
-    "capa": 5,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13248,7 +13297,7 @@
     "preco": "79.80",
     "categoria": 22,
     "editora": 183,
-    "capa": 7,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13312,7 +13361,7 @@
     "preco": "196.00",
     "categoria": 77,
     "editora": 173,
-    "capa": 6,
+    "capa": null,
     "autores": [
       289
     ]
@@ -13376,7 +13425,7 @@
     "preco": "57.62",
     "categoria": 22,
     "editora": 172,
-    "capa": 9,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13392,7 +13441,7 @@
     "preco": "46.00",
     "categoria": 77,
     "editora": 173,
-    "capa": 8,
+    "capa": null,
     "autores": [
       293
     ]
@@ -13440,7 +13489,7 @@
     "preco": "8.50",
     "categoria": 22,
     "editora": 179,
-    "capa": 11,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13472,7 +13521,7 @@
     "preco": "43.00",
     "categoria": 35,
     "editora": 177,
-    "capa": 10,
+    "capa": null,
     "autores": [
       292
     ]
@@ -13534,7 +13583,7 @@
     "preco": "15.00",
     "categoria": 77,
     "editora": 178,
-    "capa": 12,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13550,7 +13599,7 @@
     "preco": "19.90",
     "categoria": 77,
     "editora": 172,
-    "capa": 13,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13568,8 +13617,8 @@
     "editora": 26,
     "capa": null,
     "autores": [
-      4,
-      296
+      296,
+      4
     ]
   }
 },
@@ -13631,7 +13680,7 @@
     "preco": "12.00",
     "categoria": 77,
     "editora": 172,
-    "capa": 14,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13647,7 +13696,7 @@
     "preco": "144.90",
     "categoria": 77,
     "editora": 183,
-    "capa": 16,
+    "capa": null,
     "autores": []
   }
 },
@@ -13661,7 +13710,7 @@
     "preco": "44.00",
     "categoria": 35,
     "editora": 177,
-    "capa": 15,
+    "capa": null,
     "autores": [
       292
     ]
@@ -13719,13 +13768,13 @@
   "model": "core.livro",
   "pk": 566,
   "fields": {
-    "titulo": "CRITÉRIOS E ITINERÁRIOS PARA A INSTITUIÇÃO DO MINISTÉRIO DE CATEQUISTA",
+    "titulo": "Critérios e Itinerários para a Instituição do Ministério de Catequista",
     "isbn": "655975149X",
     "quantidade": 300,
     "preco": "9.18",
     "categoria": 77,
     "editora": 172,
-    "capa": 17,
+    "capa": null,
     "autores": [
       288
     ]
@@ -13927,7 +13976,7 @@
     "preco": "51.94",
     "categoria": 2,
     "editora": 26,
-    "capa": 18,
+    "capa": null,
     "autores": [
       322
     ]
@@ -14036,7 +14085,7 @@
     "titulo": "Corte de espinhos e rosas",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 190,
     "capa": null,
@@ -14082,7 +14131,7 @@
     "titulo": "Corte de Névoa e Fúria",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 190,
     "capa": null,
@@ -14096,7 +14145,7 @@
     "titulo": "Corte de asas e ruína",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 190,
     "capa": null,
@@ -14126,7 +14175,7 @@
     "titulo": "Corte de gelo e estrelas",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 190,
     "capa": null,
@@ -14140,7 +14189,7 @@
     "titulo": "Corte de chamas prateadas",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 190,
     "capa": null,
@@ -14170,7 +14219,7 @@
     "titulo": "A Mentira",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": 32,
     "editora": 118,
     "capa": null,
@@ -14218,7 +14267,7 @@
     "titulo": "Ladykillers",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 29,
     "capa": null,
@@ -14299,10 +14348,10 @@
     "preco": "25.00",
     "categoria": 80,
     "editora": 189,
-    "capa": 20,
+    "capa": null,
     "autores": [
-      123,
-      330
+      330,
+      123
     ]
   }
 },
@@ -14329,7 +14378,7 @@
     "titulo": "Poderosa",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 193,
     "capa": null,
@@ -14359,7 +14408,7 @@
     "titulo": "Meu pé de laranja lima",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": null,
     "capa": null,
@@ -14375,7 +14424,7 @@
     "titulo": "Poderosa 2",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 195,
     "capa": null,
@@ -14437,7 +14486,7 @@
     "titulo": "Poderosa 3",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 195,
     "capa": null,
@@ -14451,7 +14500,7 @@
     "titulo": "Poderosa 4",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 195,
     "capa": null,
@@ -14516,7 +14565,7 @@
     "preco": "50.00",
     "categoria": 80,
     "editora": 196,
-    "capa": 21,
+    "capa": null,
     "autores": [
       332
     ]
@@ -14529,7 +14578,7 @@
     "titulo": "Poderosa 5",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": null,
     "editora": 197,
     "capa": null,
@@ -14556,7 +14605,7 @@
   "model": "core.livro",
   "pk": 621,
   "fields": {
-    "titulo": "Uma mulher no escuro",
+    "titulo": "Uma Mulher no Escuro",
     "isbn": "8535931767",
     "quantidade": 15,
     "preco": "25.90",
@@ -14591,7 +14640,7 @@
     "titulo": "Uma Curva na Estrada",
     "isbn": null,
     "quantidade": 0,
-    "preco": "0.00",
+    "preco": "10.90",
     "categoria": 32,
     "editora": 9,
     "capa": null,
@@ -14658,7 +14707,7 @@
     "preco": "27.00",
     "categoria": 80,
     "editora": 125,
-    "capa": 22,
+    "capa": null,
     "autores": [
       335
     ]
@@ -14770,7 +14819,7 @@
     "preco": "189.00",
     "categoria": 77,
     "editora": 173,
-    "capa": 23,
+    "capa": null,
     "autores": [
       337
     ]
@@ -14972,13 +15021,13 @@
   "model": "core.livro",
   "pk": 647,
   "fields": {
-    "titulo": "A arte da guerra",
+    "titulo": "A Arte da Guerra",
     "isbn": "8594318596",
     "quantidade": 200,
     "preco": "24.90",
     "categoria": 82,
     "editora": 50,
-    "capa": 24,
+    "capa": null,
     "autores": [
       342
     ]
@@ -14994,7 +15043,7 @@
     "preco": "43.09",
     "categoria": 2,
     "editora": 99,
-    "capa": 25,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15010,7 +15059,7 @@
     "preco": "59.99",
     "categoria": 11,
     "editora": 133,
-    "capa": 26,
+    "capa": null,
     "autores": [
       341
     ]
@@ -15020,7 +15069,7 @@
   "model": "core.livro",
   "pk": 650,
   "fields": {
-    "titulo": "Vida em comunhão",
+    "titulo": "Vida em Comunhão",
     "isbn": "6559881032",
     "quantidade": 12,
     "preco": "27.46",
@@ -15042,7 +15091,7 @@
     "preco": "47.18",
     "categoria": 2,
     "editora": 99,
-    "capa": 27,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15074,7 +15123,7 @@
     "preco": "34.00",
     "categoria": 43,
     "editora": 84,
-    "capa": 28,
+    "capa": null,
     "autores": [
       4
     ]
@@ -15090,7 +15139,7 @@
     "preco": "38.52",
     "categoria": 2,
     "editora": 99,
-    "capa": 29,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15106,7 +15155,7 @@
     "preco": "64.90",
     "categoria": 48,
     "editora": 29,
-    "capa": 30,
+    "capa": null,
     "autores": [
       347
     ]
@@ -15122,7 +15171,7 @@
     "preco": "42.00",
     "categoria": 43,
     "editora": 84,
-    "capa": 31,
+    "capa": null,
     "autores": [
       4
     ]
@@ -15138,7 +15187,7 @@
     "preco": "40.20",
     "categoria": 2,
     "editora": 99,
-    "capa": 32,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15154,7 +15203,7 @@
     "preco": "17.90",
     "categoria": 69,
     "editora": 100,
-    "capa": 33,
+    "capa": null,
     "autores": [
       343
     ]
@@ -15170,7 +15219,7 @@
     "preco": "79.90",
     "categoria": 11,
     "editora": 16,
-    "capa": 34,
+    "capa": null,
     "autores": [
       345
     ]
@@ -15186,7 +15235,7 @@
     "preco": "35.00",
     "categoria": 43,
     "editora": 84,
-    "capa": 35,
+    "capa": null,
     "autores": [
       4
     ]
@@ -15234,7 +15283,7 @@
     "preco": "52.31",
     "categoria": 2,
     "editora": 99,
-    "capa": 36,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15250,7 +15299,7 @@
     "preco": "39.44",
     "categoria": 2,
     "editora": 99,
-    "capa": 37,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15298,7 +15347,7 @@
     "preco": "42.29",
     "categoria": 2,
     "editora": 99,
-    "capa": 38,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15346,7 +15395,7 @@
     "preco": "67.40",
     "categoria": 2,
     "editora": 99,
-    "capa": 39,
+    "capa": null,
     "autores": [
       174
     ]
@@ -15442,7 +15491,7 @@
     "preco": "111.01",
     "categoria": 2,
     "editora": null,
-    "capa": 40,
+    "capa": null,
     "autores": [
       351
     ]
@@ -15506,7 +15555,7 @@
     "preco": "142.17",
     "categoria": 2,
     "editora": 25,
-    "capa": 42,
+    "capa": null,
     "autores": [
       350
     ]
@@ -15516,7 +15565,7 @@
   "model": "core.livro",
   "pk": 681,
   "fields": {
-    "titulo": "A megera domada",
+    "titulo": "A Megera Domada",
     "isbn": "6555521872",
     "quantidade": 1,
     "preco": "19.90",
@@ -15532,7 +15581,7 @@
   "model": "core.livro",
   "pk": 682,
   "fields": {
-    "titulo": "1981 - o ano rubro-negro",
+    "titulo": "1981 - O Ano Rubro-Negro",
     "isbn": "8578881613",
     "quantidade": 1,
     "preco": "48.00",
@@ -15586,7 +15635,7 @@
     "preco": "47.91",
     "categoria": 2,
     "editora": 20,
-    "capa": 43,
+    "capa": null,
     "autores": [
       353
     ]
@@ -15602,7 +15651,7 @@
     "preco": "66.90",
     "categoria": 48,
     "editora": 123,
-    "capa": 41,
+    "capa": null,
     "autores": [
       24
     ]
@@ -15746,7 +15795,7 @@
     "preco": "47.90",
     "categoria": 2,
     "editora": 20,
-    "capa": 44,
+    "capa": null,
     "autores": [
       353
     ]
@@ -15778,7 +15827,7 @@
     "preco": "51.90",
     "categoria": 2,
     "editora": 20,
-    "capa": 45,
+    "capa": null,
     "autores": [
       353
     ]
@@ -15815,5 +15864,1730 @@
       346
     ]
   }
-}
-]
+},
+{
+  "model": "core.livro",
+  "pk": 700,
+  "fields": {
+    "titulo": "O Capote e Outras Novelas",
+    "isbn": "8520000541",
+    "quantidade": 1,
+    "preco": "50.00",
+    "categoria": 86,
+    "editora": 84,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 701,
+  "fields": {
+    "titulo": "Estilhaça-me",
+    "isbn": "‎ 9788550303024",
+    "quantidade": 1,
+    "preco": "49.00",
+    "categoria": 13,
+    "editora": 125,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 702,
+  "fields": {
+    "titulo": "o diário de uma princesa desastrada: Um romance: 1",
+    "isbn": "6555357266",
+    "quantidade": 2,
+    "preco": "51.00",
+    "categoria": 32,
+    "editora": 188,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 703,
+  "fields": {
+    "titulo": "o diário de uma princesa desastrada 2: O segredo das flores",
+    "isbn": "8542222822",
+    "quantidade": 1,
+    "preco": "51.00",
+    "categoria": 2,
+    "editora": 188,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 704,
+  "fields": {
+    "titulo": "o diário de uma princesa desastrada 3: A maldição das princesas",
+    "isbn": "8542228782",
+    "quantidade": 1,
+    "preco": "51.00",
+    "categoria": 2,
+    "editora": 188,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 705,
+  "fields": {
+    "titulo": "Memorias do Subsolo",
+    "isbn": "8573261854",
+    "quantidade": 1,
+    "preco": "44.00",
+    "categoria": 86,
+    "editora": 132,
+    "capa": null,
+    "autores": [
+      8
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 706,
+  "fields": {
+    "titulo": "O caderno de maldades do Scorpio",
+    "isbn": "8542226518",
+    "quantidade": 2,
+    "preco": "51.00",
+    "categoria": 2,
+    "editora": 188,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 707,
+  "fields": {
+    "titulo": "Noites Brancas",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "50.00",
+    "categoria": 86,
+    "editora": 132,
+    "capa": null,
+    "autores": [
+      8
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 708,
+  "fields": {
+    "titulo": "Snoopy 1 – E Sua Turma",
+    "isbn": "8525416002",
+    "quantidade": 1,
+    "preco": "51.00",
+    "categoria": 17,
+    "editora": 46,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 709,
+  "fields": {
+    "titulo": "Snoopy 8 – no Mundo da Lua! (Volume 8)",
+    "isbn": "9788525418937",
+    "quantidade": 6,
+    "preco": "51.00",
+    "categoria": 17,
+    "editora": 46,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 710,
+  "fields": {
+    "titulo": "Lorem Ipsum",
+    "isbn": "1257048872",
+    "quantidade": 1,
+    "preco": "324.00",
+    "categoria": 87,
+    "editora": 204,
+    "capa": null,
+    "autores": [
+      357
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 711,
+  "fields": {
+    "titulo": "Peanuts Completo: 1957 a 1958 - Vol. 4 Brochura",
+    "isbn": "6556663328",
+    "quantidade": 9,
+    "preco": "51.00",
+    "categoria": 17,
+    "editora": 46,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 712,
+  "fields": {
+    "titulo": "liberta-me (Estilhaça-me)",
+    "isbn": "978-8550303383",
+    "quantidade": 100,
+    "preco": "51.00",
+    "categoria": 13,
+    "editora": 125,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 713,
+  "fields": {
+    "titulo": "O Homem de Giz",
+    "isbn": "9788551002957",
+    "quantidade": 1,
+    "preco": "33.00",
+    "categoria": 30,
+    "editora": 149,
+    "capa": null,
+    "autores": [
+      359
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 714,
+  "fields": {
+    "titulo": "Dragon Ball Super, Vol. 1: Volume 1",
+    "isbn": "1421592541",
+    "quantidade": 10000,
+    "preco": null,
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 715,
+  "fields": {
+    "titulo": "morri para viver",
+    "isbn": "8542205340",
+    "quantidade": 50,
+    "preco": "51.00",
+    "categoria": 34,
+    "editora": 203,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 716,
+  "fields": {
+    "titulo": "Dragon Ball Super, Vol. 2: The Winning Universe Is Decided!",
+    "isbn": "9781421596471",
+    "quantidade": 100,
+    "preco": "83.46",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 717,
+  "fields": {
+    "titulo": "A Vida não é Útil",
+    "isbn": "8535933697",
+    "quantidade": 1,
+    "preco": "30.00",
+    "categoria": 27,
+    "editora": 5,
+    "capa": null,
+    "autores": [
+      360
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 718,
+  "fields": {
+    "titulo": "Quarto de Despejo - Diário de uma Favelada",
+    "isbn": "8508171277",
+    "quantidade": 1,
+    "preco": "30.00",
+    "categoria": 21,
+    "editora": 205,
+    "capa": null,
+    "autores": [
+      361
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 719,
+  "fields": {
+    "titulo": "Tempestade de Ônix: Sequência dos fenômenos mundiais Quarta Asa e Chama de Ferro",
+    "isbn": "8542229177",
+    "quantidade": 0,
+    "preco": "78.38",
+    "categoria": 88,
+    "editora": 25,
+    "capa": null,
+    "autores": [
+      350
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 720,
+  "fields": {
+    "titulo": "Crítica da Razão Prática",
+    "isbn": "9724415147",
+    "quantidade": 30,
+    "preco": "62.40",
+    "categoria": 27,
+    "editora": 206,
+    "capa": null,
+    "autores": [
+      362
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 721,
+  "fields": {
+    "titulo": "A serpente e as asas feitas de noite",
+    "isbn": "8556512038",
+    "quantidade": 1,
+    "preco": "70.58",
+    "categoria": 32,
+    "editora": 6,
+    "capa": null,
+    "autores": [
+      77
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 722,
+  "fields": {
+    "titulo": "Dragon Ball Super, Vol. 3: Volume 3",
+    "isbn": "1421599465",
+    "quantidade": 10000,
+    "preco": "78.12",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 723,
+  "fields": {
+    "titulo": "Dragon Ball Super, Vol. 4: Volume 4",
+    "isbn": "1974701441",
+    "quantidade": 1223,
+    "preco": "92.96",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 724,
+  "fields": {
+    "titulo": "Dragon Ball Super, Vol. 5: Volume 5",
+    "isbn": "1974704580",
+    "quantidade": 10000,
+    "preco": "91.33",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 725,
+  "fields": {
+    "titulo": "Dragon Ball Super Vol. 6: Volume 6",
+    "isbn": "8542615549",
+    "quantidade": 10000,
+    "preco": "28.27",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 726,
+  "fields": {
+    "titulo": "Dragon Ball Super Vol. 7: Volume 7",
+    "isbn": "8542619870",
+    "quantidade": 1000,
+    "preco": "31.06",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 727,
+  "fields": {
+    "titulo": "Dragon Ball Super  Vol.8: Volume 8",
+    "isbn": "8542619889",
+    "quantidade": 10000,
+    "preco": "34.86",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 728,
+  "fields": {
+    "titulo": "Dragon Ball Super  Vol.9: Volume 9",
+    "isbn": "8542626516",
+    "quantidade": 10000,
+    "preco": "34.90",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 729,
+  "fields": {
+    "titulo": "Dragon Ball Super  Vol.10: Volume 10",
+    "isbn": "8542629299",
+    "quantidade": 10000,
+    "preco": "30.77",
+    "categoria": 6,
+    "editora": 104,
+    "capa": null,
+    "autores": [
+      358
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 730,
+  "fields": {
+    "titulo": "Imitação de Cristo",
+    "isbn": "978-8532649829",
+    "quantidade": 20,
+    "preco": "15.00",
+    "categoria": 22,
+    "editora": 39,
+    "capa": null,
+    "autores": [
+      363
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 731,
+  "fields": {
+    "titulo": "O Senhor dos Anéis - A Sociedade do Anel",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "7.90",
+    "categoria": null,
+    "editora": null,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 732,
+  "fields": {
+    "titulo": "Tratado da verdadeira devoção à Santíssima Virgem",
+    "isbn": "978-8532657114",
+    "quantidade": 30,
+    "preco": "17.00",
+    "categoria": 89,
+    "editora": 39,
+    "capa": null,
+    "autores": [
+      364
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 733,
+  "fields": {
+    "titulo": "Sobre o Suicídio",
+    "isbn": "8575590782",
+    "quantidade": 100,
+    "preco": "31.15",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 734,
+  "fields": {
+    "titulo": "A sagrada família",
+    "isbn": "8575590324",
+    "quantidade": 10,
+    "preco": "30.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 735,
+  "fields": {
+    "titulo": "Confissões de Santo Agostinho",
+    "isbn": "978-8582850473",
+    "quantidade": 30,
+    "preco": "36.80",
+    "categoria": 27,
+    "editora": 116,
+    "capa": null,
+    "autores": [
+      366
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 736,
+  "fields": {
+    "titulo": "A Cirurgiã",
+    "isbn": "6559574601",
+    "quantidade": 0,
+    "preco": "10000.00",
+    "categoria": 30,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      365
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 737,
+  "fields": {
+    "titulo": "Coraline e o Mundo secreto",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "54.90",
+    "categoria": 7,
+    "editora": 58,
+    "capa": null,
+    "autores": [
+      200
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 738,
+  "fields": {
+    "titulo": "O 18 de Brumário de Luiz Bonaparte",
+    "isbn": "8575591711",
+    "quantidade": 100,
+    "preco": "20.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 739,
+  "fields": {
+    "titulo": "O Amor Não É Óbvio",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 32,
+    "editora": 99,
+    "capa": null,
+    "autores": [
+      367
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 740,
+  "fields": {
+    "titulo": "História de uma alma",
+    "isbn": "978-8532666246",
+    "quantidade": 10,
+    "preco": "19.70",
+    "categoria": 89,
+    "editora": 39,
+    "capa": null,
+    "autores": [
+      368
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 741,
+  "fields": {
+    "titulo": "Ed & Lorraine Warren: Vidas Eternas: 3",
+    "isbn": "8594541686",
+    "quantidade": 10,
+    "preco": "60.00",
+    "categoria": 41,
+    "editora": 29,
+    "capa": null,
+    "autores": [
+      369,
+      370
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 742,
+  "fields": {
+    "titulo": "E eu, não sou intelectual?: Um quase manual de sobrevivência acadêmica",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "44.50",
+    "categoria": null,
+    "editora": null,
+    "capa": null,
+    "autores": [
+      84
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 743,
+  "fields": {
+    "titulo": "Luta de classes na Alemanha",
+    "isbn": "8575591495",
+    "quantidade": 10,
+    "preco": "32.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 744,
+  "fields": {
+    "titulo": "Filoteia",
+    "isbn": "978-6557131992",
+    "quantidade": 10,
+    "preco": "17.40",
+    "categoria": 90,
+    "editora": 39,
+    "capa": null,
+    "autores": [
+      373
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 745,
+  "fields": {
+    "titulo": "Star Wars: Discípulo sombrio",
+    "isbn": "6556097268",
+    "quantidade": 30,
+    "preco": "79.90",
+    "categoria": 2,
+    "editora": 208,
+    "capa": null,
+    "autores": [
+      372
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 747,
+  "fields": {
+    "titulo": "A Psicologia Financeira",
+    "isbn": "6555111100",
+    "quantidade": 10,
+    "preco": "0.00",
+    "categoria": null,
+    "editora": null,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 748,
+  "fields": {
+    "titulo": "Coisas Óbvias Sobre O Amor",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 32,
+    "editora": 99,
+    "capa": null,
+    "autores": [
+      367
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 749,
+  "fields": {
+    "titulo": "Para a crítica da economia política",
+    "isbn": "6557173618",
+    "quantidade": 20,
+    "preco": "50.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 750,
+  "fields": {
+    "titulo": "Oxe, Baby",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 28,
+    "editora": 99,
+    "capa": null,
+    "autores": [
+      367
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 751,
+  "fields": {
+    "titulo": "Chiquititas - Livro Oficial dos Personagens",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "20.00",
+    "categoria": null,
+    "editora": null,
+    "capa": null,
+    "autores": [
+      41
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 752,
+  "fields": {
+    "titulo": "A imitação da bem-aventurada Virgem Maria",
+    "isbn": "978-8532668042",
+    "quantidade": 15,
+    "preco": "25.63",
+    "categoria": 91,
+    "editora": 39,
+    "capa": null,
+    "autores": [
+      363
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 753,
+  "fields": {
+    "titulo": "Manuscritos econômico-filosóficos",
+    "isbn": "8575590022",
+    "quantidade": 10,
+    "preco": "30.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 754,
+  "fields": {
+    "titulo": "Sussurros do Passado",
+    "isbn": "6559576590",
+    "quantidade": 0,
+    "preco": "10.00",
+    "categoria": 3,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 755,
+  "fields": {
+    "titulo": "A ideologia alemã",
+    "isbn": "8575590731",
+    "quantidade": 10,
+    "preco": "30.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 756,
+  "fields": {
+    "titulo": "Chiquititas - Livro Oficial dos Personagens",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "20.00",
+    "categoria": 65,
+    "editora": 180,
+    "capa": null,
+    "autores": [
+      41
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 757,
+  "fields": {
+    "titulo": "O segredo de Maria: Sobre a escravidão da Santa Virgem",
+    "isbn": "978-8532657473",
+    "quantidade": 10,
+    "preco": "14.95",
+    "categoria": 92,
+    "editora": 39,
+    "capa": null,
+    "autores": [
+      364
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 758,
+  "fields": {
+    "titulo": "Diferença Entre a Filosofia da Natureza de Demócrito e a de Epicuro",
+    "isbn": "8575596039",
+    "quantidade": 10,
+    "preco": "30.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 759,
+  "fields": {
+    "titulo": "Antes de Partir",
+    "isbn": "6559572641",
+    "quantidade": 2,
+    "preco": "1.81",
+    "categoria": 30,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 760,
+  "fields": {
+    "titulo": "Grundrisse",
+    "isbn": "857559172X",
+    "quantidade": 10,
+    "preco": "10000.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 761,
+  "fields": {
+    "titulo": "Authenticgames - Vivendo uma vida autêntica 2",
+    "isbn": "8582466404",
+    "quantidade": 10,
+    "preco": "30.00",
+    "categoria": 25,
+    "editora": 66,
+    "capa": null,
+    "autores": [
+      122
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 762,
+  "fields": {
+    "titulo": "Crítica do Programa de Gotha",
+    "isbn": "8575591894",
+    "quantidade": 10,
+    "preco": "30.00",
+    "categoria": 10,
+    "editora": 207,
+    "capa": null,
+    "autores": [
+      60
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 763,
+  "fields": {
+    "titulo": "Carrossel 2: O sumiço de Maria Joaquina Carrossel 2 -O sumiço de Maria Joaquina",
+    "isbn": null,
+    "quantidade": 5,
+    "preco": "20.00",
+    "categoria": 65,
+    "editora": 58,
+    "capa": null,
+    "autores": [
+      119
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 764,
+  "fields": {
+    "titulo": "Olhos Vazios",
+    "isbn": "6559574202",
+    "quantidade": 50,
+    "preco": "0.81",
+    "categoria": 30,
+    "editora": null,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 765,
+  "fields": {
+    "titulo": "NEGRO NA RÚSSIA: Sexo, Racismo e Futebol... No País Mais Odiado Do Mundo",
+    "isbn": "979-8334565081",
+    "quantidade": null,
+    "preco": "56.00",
+    "categoria": 93,
+    "editora": 209,
+    "capa": null,
+    "autores": [
+      374
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 766,
+  "fields": {
+    "titulo": "Turma da Mônica",
+    "isbn": null,
+    "quantidade": 3,
+    "preco": "10.00",
+    "categoria": 65,
+    "editora": null,
+    "capa": null,
+    "autores": [
+      46
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 767,
+  "fields": {
+    "titulo": "Procure nas Cinzas",
+    "isbn": "6559570282",
+    "quantidade": 16,
+    "preco": "0.07",
+    "categoria": 3,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 769,
+  "fields": {
+    "titulo": "Não confie em ninguém",
+    "isbn": "8595810435",
+    "quantidade": 13,
+    "preco": "0.04",
+    "categoria": 3,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 770,
+  "fields": {
+    "titulo": "Leis Trabalhistas Comentadas",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 94,
+    "editora": 210,
+    "capa": null,
+    "autores": [
+      375,
+      376,
+      377,
+      378
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 771,
+  "fields": {
+    "titulo": "Nunca saia sozinho",
+    "isbn": "6586041368",
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 52,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 773,
+  "fields": {
+    "titulo": "Deixada para trás",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 3,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 774,
+  "fields": {
+    "titulo": "Minecraft - Em busca da Maçã dourada",
+    "isbn": null,
+    "quantidade": 3,
+    "preco": "200.00",
+    "categoria": 6,
+    "editora": 124,
+    "capa": null,
+    "autores": [
+      123
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 775,
+  "fields": {
+    "titulo": "A Jogada Do Amor",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 32,
+    "editora": 211,
+    "capa": null,
+    "autores": [
+      379
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 776,
+  "fields": {
+    "titulo": "Those empty eyes",
+    "isbn": "00",
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 31,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 777,
+  "fields": {
+    "titulo": "Eu e meu pai",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "22.00",
+    "categoria": 17,
+    "editora": 133,
+    "capa": null,
+    "autores": [
+      102
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 778,
+  "fields": {
+    "titulo": "Twenty years later",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "0.00",
+    "categoria": 30,
+    "editora": 27,
+    "capa": null,
+    "autores": [
+      49
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 779,
+  "fields": {
+    "titulo": "Perigoso!",
+    "isbn": null,
+    "quantidade": 3,
+    "preco": "20.00",
+    "categoria": 65,
+    "editora": 150,
+    "capa": null,
+    "autores": [
+      4
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 780,
+  "fields": {
+    "titulo": "LeBron",
+    "isbn": "8581303431",
+    "quantidade": 40,
+    "preco": "89.00",
+    "categoria": 21,
+    "editora": 171,
+    "capa": null,
+    "autores": [
+      380
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 781,
+  "fields": {
+    "titulo": "Eu Sou Zlatan",
+    "isbn": "Zlatan Ibrahimovic",
+    "quantidade": 0,
+    "preco": "350.00",
+    "categoria": 21,
+    "editora": 212,
+    "capa": null,
+    "autores": [
+      381
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 783,
+  "fields": {
+    "titulo": "Album Capa Dura da Copa 2018",
+    "isbn": "858368281X",
+    "quantidade": 0,
+    "preco": "69.90",
+    "categoria": 95,
+    "editora": 11,
+    "capa": null,
+    "autores": [
+      382
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 784,
+  "fields": {
+    "titulo": "imperio",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "30.00",
+    "categoria": 8,
+    "editora": 121,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 785,
+  "fields": {
+    "titulo": "pequeno principe",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "35.00",
+    "categoria": 65,
+    "editora": 15,
+    "capa": null,
+    "autores": [
+      55
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 786,
+  "fields": {
+    "titulo": "o filho do grufalo",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "40.00",
+    "categoria": 65,
+    "editora": null,
+    "capa": null,
+    "autores": [
+      43
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 787,
+  "fields": {
+    "titulo": "Corrupt",
+    "isbn": "‎ 978-6556360041",
+    "quantidade": 12,
+    "preco": "59.70",
+    "categoria": 58,
+    "editora": 113,
+    "capa": null,
+    "autores": [
+      228
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 789,
+  "fields": {
+    "titulo": "Aristóteles e Dante Descobrem os Segredos do Universo",
+    "isbn": "8565765350",
+    "quantidade": 1,
+    "preco": "45.00",
+    "categoria": 32,
+    "editora": 26,
+    "capa": null,
+    "autores": [
+      385
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 790,
+  "fields": {
+    "titulo": "carona na vassoura",
+    "isbn": null,
+    "quantidade": 29,
+    "preco": "39.99",
+    "categoria": 65,
+    "editora": null,
+    "capa": null,
+    "autores": [
+      114
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 791,
+  "fields": {
+    "titulo": "Entendendo Algoritmos",
+    "isbn": null,
+    "quantidade": 10,
+    "preco": "57.00",
+    "categoria": 16,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      386
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 792,
+  "fields": {
+    "titulo": "macaco danado",
+    "isbn": null,
+    "quantidade": 24,
+    "preco": "80.00",
+    "categoria": 65,
+    "editora": 58,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 793,
+  "fields": {
+    "titulo": "Hideaway (Devil's Night Livro 2)",
+    "isbn": "6556360252",
+    "quantidade": 14,
+    "preco": "78.18",
+    "categoria": 58,
+    "editora": 113,
+    "capa": null,
+    "autores": [
+      228
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 794,
+  "fields": {
+    "titulo": "A Hora da Estrela",
+    "isbn": null,
+    "quantidade": 86,
+    "preco": "35.00",
+    "categoria": 32,
+    "editora": 213,
+    "capa": null,
+    "autores": [
+      387
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 795,
+  "fields": {
+    "titulo": "Introdução à Linguagem SQL",
+    "isbn": null,
+    "quantidade": 5,
+    "preco": "44.00",
+    "categoria": 87,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      36
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 796,
+  "fields": {
+    "titulo": "Jantar secreto",
+    "isbn": null,
+    "quantidade": 14,
+    "preco": "45.90",
+    "categoria": 30,
+    "editora": 5,
+    "capa": null,
+    "autores": [
+      72
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 797,
+  "fields": {
+    "titulo": "Menina bonita do laço de fita",
+    "isbn": null,
+    "quantidade": 23,
+    "preco": "55.00",
+    "categoria": 38,
+    "editora": null,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 798,
+  "fields": {
+    "titulo": "Battlefield 3: O russo",
+    "isbn": "978-8501083876",
+    "quantidade": 50,
+    "preco": "29.99",
+    "categoria": 68,
+    "editora": 99,
+    "capa": null,
+    "autores": [
+      388
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 799,
+  "fields": {
+    "titulo": "Saboroso cadáver",
+    "isbn": null,
+    "quantidade": 1,
+    "preco": "60.00",
+    "categoria": 41,
+    "editora": 29,
+    "capa": null,
+    "autores": [
+      123
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 800,
+  "fields": {
+    "titulo": "Introdução à Programação com Python",
+    "isbn": null,
+    "quantidade": 15,
+    "preco": "99.33",
+    "categoria": 20,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      272
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 801,
+  "fields": {
+    "titulo": "Fundamentos de Html5 e Css3",
+    "isbn": null,
+    "quantidade": 20,
+    "preco": "58.52",
+    "categoria": 97,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      389
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 802,
+  "fields": {
+    "titulo": "Espaço, Poder e Devoção",
+    "isbn": null,
+    "quantidade": 57,
+    "preco": "59.90",
+    "categoria": 93,
+    "editora": 215,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 803,
+  "fields": {
+    "titulo": "Véspera",
+    "isbn": null,
+    "quantidade": 18,
+    "preco": "48.90",
+    "categoria": 13,
+    "editora": 2,
+    "capa": null,
+    "autores": []
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 804,
+  "fields": {
+    "titulo": "A Razão na História",
+    "isbn": null,
+    "quantidade": 11,
+    "preco": "69.90",
+    "categoria": 27,
+    "editora": 214,
+    "capa": null,
+    "autores": [
+      316
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 805,
+  "fields": {
+    "titulo": "JavaScript: O Guia Definitivo",
+    "isbn": null,
+    "quantidade": 25,
+    "preco": "227.33",
+    "categoria": 70,
+    "editora": 131,
+    "capa": null,
+    "autores": [
+      390
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 806,
+  "fields": {
+    "titulo": "Desenvolvendo Websites com PHP",
+    "isbn": null,
+    "quantidade": 30,
+    "preco": "73.51",
+    "categoria": 70,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      392
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 808,
+  "fields": {
+    "titulo": "Tratado da natureza humana",
+    "isbn": null,
+    "quantidade": 0,
+    "preco": "108.90",
+    "categoria": 27,
+    "editora": 217,
+    "capa": null,
+    "autores": [
+      391
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 809,
+  "fields": {
+    "titulo": "Aprendendo Git: Um guia prático e visual para os fundamentos do Git",
+    "isbn": null,
+    "quantidade": 10,
+    "preco": "76.23",
+    "categoria": 87,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      393
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 810,
+  "fields": {
+    "titulo": "Programação Utilizando IA: Otimizando as etapas de planejamento, programação, testes e implantação",
+    "isbn": null,
+    "quantidade": 15,
+    "preco": "63.14",
+    "categoria": 16,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      394
+    ]
+  }
+},
+{
+  "model": "core.livro",
+  "pk": 811,
+  "fields": {
+    "titulo": "Aprendendo Padrões de Projeto em Python",
+    "isbn": null,
+    "quantidade": 20,
+    "preco": "49.28",
+    "categoria": 16,
+    "editora": 18,
+    "capa": null,
+    "autores": [
+      262
+    ]
+  }
+},
+{
+  "model": "core.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$q6xHupz8j1eu6mdgkwIh7j$dIovFo2vMQAqGMggxPrtmxlVVue8+6nmff8jZ+JF13o=",
+    "last_login": "2025-05-30T11:25:06.172Z",
+    "is_superuser": true,
+    "passage_id": "324321544235435",
+    "email": "a@a.com",
+    "name": "Super User",
+    "is_active": true,
+    "is_staff": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$RCDuKm5Xv4B68bkuUNQmy9$pLbD/aWoXOAcFe1SPa/HUj302Upl82x7Sn5eqDMjSxw=",
+    "last_login": null,
+    "is_superuser": false,
+    "passage_id": "2135453453465",
+    "email": "admin1@a.com",
+    "name": "Administrador",
+    "is_active": true,
+    "is_staff": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$UPb0qOwbPoVlvvxvvKUlNC$up73efVUJuOMNAOFIYW/L0lfIwBr9Ipg4Q3dfOJVjRQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "passage_id": "54836734574376",
+    "email": "comprador1@a.com",
+    "name": "Comprador",
+    "is_active": true,
+    "is_staff": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$WdNHr7KMjGHDwUaQN6JWGQ$yxoZ6yXyZL05uAtNPpQvtoIejwJsCKqVUhTI1ha30vg=",
+    "last_login": "2024-10-11T14:03:34.784Z",
+    "is_superuser": false,
+    "passage_id": "hdxkeqXbF8bp1Ql3dNJ0PoTB",
+    "email": "marcoandre@gmail.com",
+    "name": "Marco André Mendes",
+    "is_active": true,
+    "is_staff": true,
+    "groups": [],
+    "user_permissions": []
+  }
+}]
