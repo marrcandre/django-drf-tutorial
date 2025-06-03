@@ -1262,10 +1262,10 @@ Vamos customizar o Admin para as models `Autor`, `Categoria`, `Editora` e `Livro
 ...
 @admin.register(Autor)
 class AutorAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'e-mail')
-    search_fields = ('nome', 'e-mail')
+    list_display = ('nome', 'email')
+    search_fields = ('nome', 'email')
     list_filter = ('nome',)
-    ordering = ('nome', 'e-mail')
+    ordering = ('nome', 'email')
     list_per_page = 10
 
 @admin.register(Categoria)
@@ -1278,10 +1278,10 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Editora)
 class EditoraAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'e-mail', 'cidade')
-    search_fields = ('nome', 'e-mail', 'cidade')
-    list_filter = ('nome', 'e-mail', 'cidade')
-    ordering = ('nome', 'e-mail', 'cidade')
+    list_display = ('nome', 'email', 'cidade')
+    search_fields = ('nome', 'email', 'cidade')
+    list_filter = ('nome', 'email', 'cidade')
+    ordering = ('nome', 'email', 'cidade')
     list_per_page = 10
 
 @admin.register(Livro)
@@ -3872,7 +3872,7 @@ Control + Shift + P + "Recarregar a Janela"
 
 ```shell
 git config --global user.name "Seu Nome"
-git config --global user.e-mail "seuEmailNoGitHub@gmail.com"
+git config --global user.email "seuEmailNoGitHub@gmail.com"
 ```
 
 -   Para verificar se as variáveis foram configuradas corretamente, digite:
