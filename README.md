@@ -1618,7 +1618,7 @@ Vamos aproveitar a aplicação `uploader` para incluir a foto de perfil no usuá
 ...
 from uploader.models import Image
 ...
-class User(AbstractUser):
+class User(AbstractBaseUser, PermissionsMixin):
     foto = models.ForeignKey(
         Image,
         related_name="+",
@@ -1653,8 +1653,7 @@ Seu projeto deve ficar assim:
 ...
 class UserAdmin(UserAdmin):
     ...
-        (_("Personal Info"), {"fields": ("name","foto")}), # inclua a foto aqui
-
+        (_('Personal Info'), {'fields': ('name', 'passage_id', 'foto')}),# inclua a foto aqui
     ...
 ```
 
@@ -1662,7 +1661,7 @@ class UserAdmin(UserAdmin):
 
 **Inclusão da foto no `Serializer`**
 
--   Modifique o serializador para o usuário, em `serializers/user.py`:
+-   Substitua o serializador para o usuário, em `serializers/user.py`, por este:
 
 ```python
 from rest_framework.serializers import ModelSerializer, SlugRelatedField
