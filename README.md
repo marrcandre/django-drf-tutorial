@@ -1447,7 +1447,8 @@ No `Admin`, crie os seguintes usuários e grupos e dê as permissões necessári
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
 -   Crie um grupo chamado `administradores`, com as seguintes as permissões:
-    -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
+    -   Adicionar, editar, visualizar e remover: `autor`, `categoria` e`editora`.
+    -   Adicionar, editar e visualizar: `livro`.
 -   Crie um grupo chamado `compradores`, com as seguintes permissões:
     -   Visualizar: `autor`, `categoria` e `editora`.
     -   Adicionar, editar e visualizar: `livro`.
@@ -1464,8 +1465,8 @@ As permissões para `compradores` devem ficar assim:
 **c. Testando as permissões**
 
 -   Acesse o `Admin` com o usuário `admin1@a.com` e verifique se ele tem acesso a todas as permissões do grupo `Administradores`.
-    - Ele deve conseguir adicionar, editar, visualizar e remover `autor`, `categoria`, `editora` e `livro`.
-    - Faça um teste, removendo a permisão de excluir livros do grupo `Administradores` e verifique se o usuário `admin1@a.com` não consegue mais excluir livros.
+    - Ele deve conseguir adicionar, editar, visualizar e remover `autor`, `categoria`, `editora`.
+    - Deve também conseguir adicionar, editar e visualizar `livro` (mas não deve conseguir remover `livro`).
 -   Acesse o `Admin` com o usuário `comprador1@a.com` e verifique se ele tem acesso apenas às permissões do grupo `Compradores`.
     - Ele deve conseguir apenas visualizar `autor`, `categoria` e `editora`, sem alterar ou excluir esses objetos.
     - Ele deve também conseguir adicionar, editar e visualizar `livro`, mas não deve conseguir excluir livros.
