@@ -1429,16 +1429,16 @@ Uma estratégia muito utilizada para a definição de permissões de acesso é:
 
 **Relação entre nomes das ações**
 
-Podemos perceber uma relação as ações que compõem o **CRUD**, os termos utilizados no **Admin** e os verbos **HTTP** e as **actions** dos **serializadores** do **Django REST Framework**.:
+Podemos perceber uma relação entre as ações que compõem o **CRUD**, os termos utilizados no **Admin**, os verbos **HTTP** e as **actions** dos **serializadores** do **Django REST Framework**.:
 
-| Ação      | CRUD   | Admin  | HTTP        | FDRF Actions |
+| Ação      | CRUD   | Admin  | Verbos HTTP        | Ações do DRF |
 | --------- | ------ | ------ | ----------- | ------------------ |
 | Criar     | **C**reate | `add`    | `POST`        | `create`           |
 | Ler       | **R**ead   | `view`   | `GET`         | `retrieve`, `list` |
 | Atualizar | **U**pdate | `change` | `PUT (PATCH)` | `update`, `partial_update` |
 | Deletar   | **D**elete | `delete` | `DELETE`      | `destroy`          |
 
-**Exercício:**
+**Exercícios**
 
 No `Admin`, crie os seguintes usuários e grupos e dê as permissões necessárias:
 
