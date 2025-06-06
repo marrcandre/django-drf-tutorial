@@ -1461,6 +1461,15 @@ As permissões para `compradores` devem ficar assim:
 -   Crie um usuário `admin1@a.com` e o inclua no grupo `Administradores`.
 -   Crie um usuário `comprador1@a.com` e o inclua no grupo `Compradores`.
 
+**c. Testando as permissões**
+
+-   Acesse o `Admin` com o usuário `admin1@a.com` e verifique se ele tem acesso a todas as permissões do grupo `Administradores`.
+    - Ele deve conseguir adicionar, editar, visualizar e remover `autor`, `categoria`, `editora` e `livro`.
+    - Faça um teste, removendo a permisão de excluir livros do grupo `Administradores` e verifique se o usuário `admin1@a.com` não consegue mais excluir livros.
+-   Acesse o `Admin` com o usuário `comprador1@a.com` e verifique se ele tem acesso apenas às permissões do grupo `Compradores`.
+    - Ele deve conseguir apenas visualizar `autor`, `categoria` e `editora`, sem alterar ou excluir esses objetos.
+    - Ele deve também conseguir adicionar, editar e visualizar `livro`, mas não deve conseguir excluir livros.
+
 # 17. Utilização das permissões do DRF
 
 **Autenticação e permissão**
