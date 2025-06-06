@@ -1452,6 +1452,10 @@ Vamos começar criando 2 grupos e dando a eles permissões distintas:
     -   Visualizar: `autor`, `categoria` e `editora`.
     -   Adicionar, editar e visualizar: `livro`.
 
+As permissões para `compradores` devem ficar assim:
+
+![Permissões do grupo Compradores](imagens/permissoes_compradores.png)
+
 **b. Criando usuários e adicionando aos grupos**
 
 -   Crie um usuário `admin1@a.com` e o inclua no grupo `Administradores`.
