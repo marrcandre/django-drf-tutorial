@@ -1446,9 +1446,9 @@ No `Admin`, crie os seguintes usuários e grupos e dê as permissões necessári
 
 Vamos começar criando 2 grupos e dando a eles permissões distintas:
 
--   Crie um grupo chamado `Administradores`, com as seguintes as permissões:
+-   Crie um grupo chamado `administradores`, com as seguintes as permissões:
     -   Adicionar, editar, visualizar e remover: `autor`, `categoria`, `editora` e `livro`.
--   Crie um grupo chamado `Compradores`, com as seguintes permissões:
+-   Crie um grupo chamado `compradores`, com as seguintes permissões:
     -   Visualizar: `autor`, `categoria` e `editora`.
     -   Adicionar, editar e visualizar: `livro`.
 
