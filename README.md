@@ -1581,12 +1581,12 @@ Se você ainda não tem uma conta no **Passage**:
 
 Após criar a conta, você deve criar um aplicativo:
 - Clique em `Create App`.
-- Escolha a opção `Passkey complete` e clique no botão `Continue`.
-- Escolha a opção `Embedded login experience` e preencha os campos solicitados:
-    - `Name your app`: `livraria`
+- Escolha a opção **`Passkey complete`** e clique no botão `Continue`.
+- Escolha a opção **`Embedded login experience`** e preencha os campos solicitados:
+    - `Name your app`: `livraria` (por exemplo)
     - `Enter the domain for your app`: `http://localhost:5173`
     - `Enter the redirect URL`: `/`
-- Clique em Create App para finalizar a criação do aplicativo
+- Clique em `Create App` para finalizar a criação do aplicativo
 
 > Importante: o domínio e a porta devem ser os mesmos que você está utilizando para desenvolver o seu PWA. No nosso caso, estamos utilizando o domínio http://localhost:5173. Quando você for colocar o seu PWA em produção, você deve alterar o domínio para o domínio do seu site.
 
