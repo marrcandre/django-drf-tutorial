@@ -3562,7 +3562,7 @@ pdm -V
 -   Se não estiver instalado, instale a versão mais recente:
 
 ```shell
-curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
+curl -sSLv https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
 ```
 
 - Após a instalação, feche o terminal (`Ctrl + D`) e abra um novo terminal (`Ctrl + Alt + T`).
@@ -3574,7 +3574,7 @@ curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py 
 -   Execute o seguinte comando:
 
 ```shell
-curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
+curl -sSLv https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
 ```
 
 **Configuração do PDM no `zsh` com o `Oh! My Zsh` (Manjaro e derivados)**
