@@ -1553,7 +1553,7 @@ A autorização só será concedida se o usuário estiver autenticado e tiver as
 -   As solicitações `POST` exigem que o usuário tenha a permissão de adição (`add`) no modelo.
 -   As solicitações `PUT` e `PATCH` exigem que o usuário tenha a permissão de alteração (`change`) no modelo.
 -   As solicitações `DELETE` exigem que o usuário tenha a permissão de exclusão (`remove`) no modelo.
-**-   Se o usuário não estiver autenticado, ele terá acesso somente leitura à API.**
+-   **Se o usuário não estiver autenticado, ele terá acesso somente leitura à API.**
 
 Para isso, teremos que alterar a classe de autenticação, substituindo o que colocamos anteriormente:
 
@@ -3518,7 +3518,7 @@ Eu recomendo as seguintes:
 -   [Prettier (Formatação de código)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 -   [Python (Uhuuuu!)](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 -   [Ruff (Linter e formatador de código)](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
--   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)
+-   [SqLite Viewer (Visualização de bancos de dados SQLite)](https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer)
 -   [Thunder Client (Teste de APIs)](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
 -   [TODO Highlight (Realce de TODOs)](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
 -   [vscode-icons (Ícones para o VS Code)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
