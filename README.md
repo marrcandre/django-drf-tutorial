@@ -337,13 +337,13 @@ from core.models import Categoria
 class CategoriaSerializer(ModelSerializer):
     class Meta:
         model = Categoria
-        fields = "__all__"
+        fields = '__all__'
 ```
 
 **4.2.1 Explicando o código**
 
 -   `model = Categoria`: define o model que será serializado.
--   `fields = "__all__"`: define que todos os campos serão serializados.
+-   `fields = '__all__'`: define que todos os campos serão serializados.
 
 **4.2.2 Inclusão do serializer no __init__.py**
 
@@ -395,8 +395,8 @@ from core.views import UserViewSet
 from core.views import CategoriaViewSet # nova linha
 
 router = DefaultRouter()
-router.register(r"categorias", CategoriaViewSet) # nova linha
-router.register(r"users", UserViewSet, basename="users")
+router.register(r'categorias', CategoriaViewSet) # nova linha
+router.register(r'users', UserViewSet, basename='users')
 ...
 ```
 
@@ -550,7 +550,7 @@ from core.models import Editora
 class EditoraSerializer(ModelSerializer):
     class Meta:
         model = Editora
-        fields = "__all__"
+        fields = '__all__'
 ```
 
 **`serializers/__init__.py`**
@@ -587,8 +587,8 @@ from .editora import EditoraViewSet
 ...
 from core.views import CategoriaViewSet, EditoraViewSet, UserViewSet
 ...
-router.register(r"categorias", CategoriaViewSet)
-router.register(r"editoras", EditoraViewSet)
+router.register(r'categorias', CategoriaViewSet)
+router.register(r'editoras', EditoraViewSet)
 ...
 ```
 
@@ -662,7 +662,7 @@ class Livro(models.Model):
     preco = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=True, blank=True)
 
     def __str__(self):
-        return f"({self.id}) {self.titulo} ({self.quantidade})"
+        return f'({self.id}) {self.titulo} ({self.quantidade})'
 ```
 
 Inclua o modelo no arquivo `__init__.py` da pasta `models`:
@@ -698,7 +698,7 @@ Nosso livro terá uma **categoria** e uma **editora**. Para isso, vamos incluir 
 from .categoria import Categoria
 ...
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.PROTECT, related_name="livros", null=True, blank=True
+        Categoria, on_delete=models.PROTECT, related_name='livros', null=True, blank=True
     )
 ...
 ```
@@ -711,7 +711,7 @@ from .categoria import Categoria
         - `models.CASCADE`: exclui todos os objetos associados ao objeto que está sendo excluído.
         - `models.SET_NULL`: define o campo como nulo quando o objeto associado é excluído.
         - `models.SET_DEFAULT`: define o campo como o valor padrão quando o objeto associado é excluído.
-    - `related_name="livros"`: é chamado de **relacionamento reverso**. Cria um atributo na classe `Categoria` que permite acessar todos os livros de uma categoria. Ou seja, quando você acessar uma categoria, poderá acessar todos os livros associados a ela.
+    - `related_name='livros'`: é chamado de **relacionamento reverso**. Cria um atributo na classe `Categoria` que permite acessar todos os livros de uma categoria. Ou seja, quando você acessar uma categoria, poderá acessar todos os livros associados a ela.
     - `null=True, blank=True`:
         - `null=True`: permite que o campo seja nulo no banco de dados.
         - `blank=True`: permite que o campo seja nulo no formulário do Django Admin.
@@ -725,7 +725,7 @@ from .categoria import Categoria
 ```python
 from .editora import Editora
 ...
-editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros", null=True, blank=True)
+editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name='livros', null=True, blank=True)
 ```
 
 - Faça a migração dos dados.
@@ -784,7 +784,7 @@ Um livro pode ter vários autores, e um autor pode escrever vários livros. Send
 ```python
 from .autor import Autor
 ...
-autores = models.ManyToManyField(Autor, related_name="livros", blank=True)
+autores = models.ManyToManyField(Autor, related_name='livros', blank=True)
 ...
 ```
 
@@ -833,7 +833,7 @@ Uma forma de mostrar essas informações é essa, em `serializers.py`:
 class LivroSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = "__all__"
+        fields = '__all__'
         depth = 1
 ```
 
@@ -845,13 +845,13 @@ Teste e você verá que isso resolve a listagem (GET), mas gera problema na cria
 class LivroSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = "__all__"
+        fields = '__all__'
 
 
 class LivroListRetrieveSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = "__all__"
+        fields = '__all__'
         depth = 1
 ```
 
@@ -875,7 +875,7 @@ class LivroViewSet(ModelViewSet):
     serializer_class = LivroSerializer
 
     def get_serializer_class(self):
-        if self.action in ["list", "retrieve"]:
+        if self.action in {'list', 'retrieve'}:
             return LivroListRetrieveSerializer
         return LivroSerializer
 ```
@@ -902,12 +902,12 @@ from core.serializers import (
 class LivroListSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = ("id", "titulo", "preco")
+        fields = ('id', 'titulo', 'preco')
 
 class LivroRetrieveSerializer(ModelSerializer):
     class Meta:
         model = Livro
-        fields = "__all__"
+        fields = '__all__'
         depth = 1
 ```
 
@@ -915,9 +915,9 @@ class LivroRetrieveSerializer(ModelSerializer):
 
 ```python
     def get_serializer_class(self):
-        if self.action == "list":
+        if self.action == 'list':
             return LivroListSerializer
-        elif self.action == "retrieve":
+        elif self.action == 'retrieve':
             return LivroRetrieveSerializer
         return LivroSerializer
 ```
@@ -994,8 +994,8 @@ pdm install
 ```python
 INSTALLED_APPS = [
     ...
-    "uploader", # nova linha
-    "core",
+    'uploader', # nova linha
+    'core',
     ...
 ]
 ```
@@ -1014,7 +1014,7 @@ from uploader.router import router as uploader_router
 ...
 urlpatterns = [
     ...
-    path("api/media/", include(uploader_router.urls)),  # nova linha
+    path('api/media/', include(uploader_router.urls)),  # nova linha
     ...
 ]
 ...
@@ -1053,7 +1053,7 @@ class Livro(models.Model):
 ...
     capa = models.ForeignKey(
         Image,
-        related_name="+",
+        related_name='+',
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -1063,7 +1063,7 @@ class Livro(models.Model):
 
 > O campo `capa` é uma chave estrangeira para a tabela `uploader_image`.
 
-> O atributo `related_name="+"` indica que não será criado um atributo inverso na tabela `uploader_image`.
+> O atributo `related_name='+'` indica que não será criado um atributo inverso na tabela `uploader_image`.
 
 > O atributo `on_delete=models.SET_NULL` indica que, ao apagar a imagem, o campo `capa` será setado como `NULL`.
 
@@ -1322,7 +1322,7 @@ pdm run shellp
 -   Crie um objeto:
 
 ```python
->>> categoria = Categoria.objects.create(descricao="Desenvolvimento Web")
+>>> categoria = Categoria.objects.create(descricao='Desenvolvimento Web')
 ```
 
 -   Observe que o objeto foi criado:
@@ -1342,7 +1342,7 @@ pdm run shellp
 -   Obtenha o objeto:
 
 ```python
->>> categoria = Categoria.objects.get(descricao="Desenvolvimento Web")
+>>> categoria = Categoria.objects.get(descricao='Desenvolvimento Web')
 ```
 
 -   Observe que o objeto foi obtido:
@@ -1355,7 +1355,7 @@ pdm run shellp
 -   Atualize o objeto:
 
 ```python
->>> categoria.descricao = "Desenvolvimento Web com Django"
+>>> categoria.descricao = 'Desenvolvimento Web com Django'
 >>> categoria.save()
 ```
 
@@ -1530,8 +1530,8 @@ Uma forma de conseguir o mesmo resultado de forma padrão para todo o projeto, i
 
 ```python
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }
 ```
@@ -1560,7 +1560,7 @@ Para isso, teremos que alterar a classe de autenticação, substituindo o que co
 ```python
 REST_FRAMEWORK = {
     ...
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly", ),  # autorização de acesso
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ),  # autorização de acesso
     ...
 }
 ```
@@ -1597,8 +1597,8 @@ Após criar a conta, você deve criar um aplicativo:
 ```python
 REST_FRAMEWORK = {
     ...
-    "DEFAULT_AUTHENTICATION_CLASSES": ("core.authentication.TokenAuthentication",), # Autenticação no passage.id
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly", ),  # autorização de acesso
+    'DEFAULT_AUTHENTICATION_CLASSES': ('core.authentication.TokenAuthentication',), # Autenticação no passage.id
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ),  # autorização de acesso
     ...
 }
 ```
@@ -1635,7 +1635,7 @@ from uploader.models import Image
 class User(AbstractBaseUser, PermissionsMixin):
     foto = models.ForeignKey(
         Image,
-        related_name="+",
+        related_name='user_foto',
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
@@ -1687,9 +1687,9 @@ from uploader.serializers import ImageSerializer
 
 class UserSerializer(ModelSerializer):
     foto_attachment_key = SlugRelatedField(
-        source="foto",
+        source='foto',
         queryset=Image.objects.all(),
-        slug_field="attachment_key",
+        slug_field='attachment_key',
         required=False,
         write_only=True,
     )
@@ -1700,7 +1700,7 @@ class UserSerializer(ModelSerializer):
 
     class Meta:
         model = User
-        fields = "__all__"
+        fields = '__all__'
 ```
 
 > O atributo `write_only=True` indica que o campo `foto_attachment_key` é apenas para escrita. Isso significa que ele não será exibido na resposta da API.
@@ -1737,12 +1737,12 @@ from .user import User
 
 class Compra(models.Model):
     class StatusCompra(models.IntegerChoices):
-        CARRINHO = 1, "Carrinho"
-        FINALIZADO = 2, "Realizado"
-        PAGO = 3, "Pago"
-        ENTREGUE = 4, "Entregue"
+        CARRINHO = 1, 'Carrinho'
+        FINALIZADO = 2, 'Realizado'
+        PAGO = 3, 'Pago'
+        ENTREGUE = 4, 'Entregue'
 
-    usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name="compras")
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name='compras')
     status = models.IntegerField(choices=StatusCompra.choices,  default=StatusCompra.CARRINHO)
 ```
 
@@ -1767,8 +1767,12 @@ from .compra import Compra
 ```python
 ...
 from core.models import Compra
-
-admin.site.register(Compra)
+...
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    list_display = ('usuario', 'status')
+    ordering = ('usuario', 'status')
+    list_per_page = 10
 ```
 
 **Executando as migrações**
@@ -1799,8 +1803,8 @@ No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyT
 from .livro import Livro
 ...
 class ItensCompra(models.Model):
-    compra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name="itens")
-    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="+")
+    compra = models.ForeignKey(Compra, on_delete=models.CASCADE, related_name='itens')
+    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name='+')
     quantidade = models.IntegerField(default=1)
 ```
 
@@ -1808,7 +1812,7 @@ class ItensCompra(models.Model):
 
 > No atributo `livro`, utilizamos `models.PROTECT`, pois queremos impedir que um livro seja deletado se ele estiver associado a um item de compra.
 
-> Ainda no `livro`, utilizamos `related_name="+"`, pois não queremos que o `ItensCompra` tenha um atributo `livro`.
+> Ainda no `livro`, utilizamos `related_name='+'`, pois não queremos que o `ItensCompra` tenha um atributo `livro`.
 
 - Inclua o novo model no arquivo `__init__.py` dos models:
 
@@ -1838,16 +1842,16 @@ Sendo assim, vamos mostrar os itens da compra no `Admin` do Django, utilizando o
 ```python
 class ItensCompraInline(admin.TabularInline):
     model = ItensCompra
-    extra = 1 # Quantidade de itens adicionais
+    extra = 1  # Quantidade de itens adicionais
 
 
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):
-    list_display = ("usuario", "status")
-    search_fields = ("usuario", "status")
-    list_filter = ("usuario", "status")
-    ordering = ("usuario", "status")
-    list_per_page = 25
+    list_display = ('usuario', 'status')
+    search_fields = ('usuario', 'status')
+    list_filter = ('usuario', 'status')
+    ordering = ('usuario', 'status')
+    list_per_page = 10
     inlines = [ItensCompraInline]
 ```
 
@@ -1856,7 +1860,7 @@ class CompraAdmin(admin.ModelAdmin):
 > Opcionalmente, você pode utilizar o `StackedInline` ao invés do `TabularInline`. Experimente e veja a diferença.
 
 -   Teste no `Admin` do Django.
--   Faça um _commit_ com a mensagem `feat: uso de TabularInline no Admin para Itens da Compra`.
+-   Faça um _commit_ com a mensagem `feat: uso de TabularInline e StackedInline no Admin para Itens da Compra`.
 
 # 23. Endpoint para a listagem básica de compras
 
@@ -1881,7 +1885,7 @@ from core.models import Compra
 class CompraSerializer(ModelSerializer):
     class Meta:
         model = Compra
-        fields = "__all__"
+        fields = '__all__'
 ```
 
 -   Inclua o novo `CompraSerializer` no arquivo `__init__.py` dos serializers:
@@ -1933,7 +1937,7 @@ from core.views import (
     UserViewSet,
 )
 ...
-router.register(r"compras", CompraViewSet)
+router.register(r'compras', CompraViewSet)
 ...
 ```
 
@@ -1951,7 +1955,7 @@ Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos sub
 from rest_framework.serializers import CharField, ModelSerializer
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.e-mail", read_only=True) # inclua essa linha
+    usuario = CharField(source='usuario.e-mail', read_only=True) # inclua essa linha
 ...
 ```
 
@@ -1971,7 +1975,7 @@ De forma semelhante ao e-mail do usuário, vamos incluir o status da compra na l
 ```python
 ...
 class CompraSerializer(ModelSerializer):
-    status = CharField(source="get_status_display", read_only=True) # inclua essa linha
+    status = CharField(source='get_status_display', read_only=True) # inclua essa linha
 ...
 ```
 
@@ -1999,7 +2003,7 @@ from core.models import Compra, ItensCompra
 class ItensCompraSerializer(ModelSerializer):
     class Meta:
         model = ItensCompra
-        fields = "__all__"
+        fields = '__all__'
 ```
 
 No `CompraSerializer`, inclua o seguinte código:
@@ -2025,7 +2029,7 @@ itens = ItensCompraSerializer(many=True, read_only=True)
 class ItensCompraSerializer(ModelSerializer):
     class Meta:
         model = ItensCompra
-        fields = "__all__"
+        fields = '__all__'
         depth = 1
 ```
 
@@ -2040,7 +2044,7 @@ Você deve ter percebido que o serializer de `ItensCompra` está mostrando todos
 -   No `ItensCompraSerializer`, modifique a linha `fields`:
 
 ```python
-fields = ("livro", "quantidade")
+fields = ('livro', 'quantidade')
 ```
 
 > O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma sequência de campos, apenas esses campos serão mostrados.
@@ -2069,7 +2073,7 @@ class ItensCompraSerializer(ModelSerializer):
 
     class Meta:
         model = ItensCompra
-        fields = ("livro", "quantidade", "total")
+        fields = ('livro', 'quantidade', 'total')
         depth = 1
 ```
 
@@ -2112,7 +2116,7 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 
 ```python
 ...
-        fields = ("id", "usuario", "status", "total", "itens")
+        fields = ('id', 'usuario', 'status', 'total', 'itens')
 ...
 ```
 
@@ -2156,7 +2160,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = Compra
-        fields = ("usuario", "itens")
+        fields = ('usuario', 'itens')
 ...
 
 ```
@@ -2184,7 +2188,7 @@ class CompraViewSet(ModelViewSet):
     serializer_class = CompraSerializer
 
     def get_serializer_class(self):
-        if self.action in ("create", "update"):
+        if self.action in ('create', 'update'):
             return CompraCreateUpdateSerializer
         return CompraSerializer
 ...
@@ -2230,10 +2234,10 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = Compra
-        fields = ("usuario", "itens")
+        fields = ('usuario', 'itens')
 
     def create(self, validated_data):
-        itens_data = validated_data.pop("itens")
+        itens_data = validated_data.pop('itens')
         compra = Compra.objects.create(**validated_data)
         for item_data in itens_data:
             ItensCompra.objects.create(compra=compra, **item_data)
@@ -2246,7 +2250,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O método `create` recebe um parâmetro `validated_data`, que são os dados validados que estão sendo criados.
 
-> `validade_data.pop("itens")` remove os itens da compra dos dados validados.
+> `validade_data.pop('itens')` remove os itens da compra dos dados validados.
 
 - Precisamos criar também o novo `serializer` `ItensCompraCreateUpdateSerializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código, após o `ItensCompraSerializer`:
 
@@ -2255,7 +2259,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 class ItensCompraCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = ItensCompra
-        fields = ("livro", "quantidade")
+        fields = ('livro', 'quantidade')
 ...
 ```
 
@@ -2299,7 +2303,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 ```python
 ...
     def update(self, compra, validated_data):
-        itens_data = validated_data.pop("itens")
+        itens_data = validated_data.pop('itens')
         if itens_data:
             compra.itens.all().delete()
             for item_data in itens_data:
@@ -2335,12 +2339,12 @@ Como fizemos com o `Livro`, vamos criar um serializador específico para a lista
 ```python
 ...
 class CompraListSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.e-mail", read_only=True)
+    usuario = CharField(source='usuario.e-mail', read_only=True)
     itens = ItensCompraListSerializer(many=True, read_only=True)
 
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "itens")
+        fields = ('id', 'usuario', 'itens')
 ...
 ```
 
@@ -2351,11 +2355,11 @@ Vamos criar também um serializador específico para os itens da compra:
 ```python
 ...
 class ItensCompraListSerializer(ModelSerializer):
-    livro = CharField(source="livro.titulo", read_only=True)
+    livro = CharField(source='livro.titulo', read_only=True)
 
     class Meta:
         model = ItensCompra
-        fields = ("quantidade", "livro")
+        fields = ('quantidade', 'livro')
         depth = 1
 ...
 ```
@@ -2384,9 +2388,9 @@ from .serializers import CompraCreateUpdateSerializer, CompraListSerializer, Com
 class CompraViewSet(ModelViewSet):
 ...
     def get_serializer_class(self):
-        if self.action == "list":
+        if self.action == 'list':
             return CompraListSerializer
-        if self.action in ("create", "update"):
+        if self.action in ('create', 'update'):
             return CompraCreateUpdateSerializer
         return CompraSerializer
 ...
@@ -2457,7 +2461,7 @@ class CompraViewSet(ModelViewSet):
         usuario = self.request.user
         if usuario.is_superuser:
             return Compra.objects.all()
-        if usuario.groups.filter(name="Administradores"):
+        if usuario.groups.filter(name='Administradores'):
             return Compra.objects.all()
         return Compra.objects.filter(usuario=usuario)
 ...
@@ -2494,11 +2498,11 @@ from rest_framework.serializers import (
 class ItensCompraCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = ItensCompra
-        fields = ("livro", "quantidade")
+        fields = ('livro', 'quantidade')
 
     def validate_quantidade(self, quantidade):
         if quantidade <= 0:
-            raise ValidationError("A quantidade deve ser maior do que zero.")
+            raise ValidationError('A quantidade deve ser maior do que zero.')
         return quantidade
 ...
 ```
@@ -2525,12 +2529,12 @@ from rest_framework.serializers import (
 )
 ...
     def validate(self, item):
-        if item["quantidade"] > item["livro"].quantidade:
-            raise ValidationError("Quantidade de itens maior do que a quantidade em estoque.")
+        if item['quantidade'] > item['livro'].quantidade:
+            raise ValidationError('Quantidade de itens maior do que a quantidade em estoque.')
         return item
 ...
 ```
-> A função `validate` permite adicionar validações de campo que dependem de múltiplos valores ao mesmo tempo. Nesse caso, ela está verificando se a quantidade solicitada do item (`item["quantidade"]`) não excede a quantidade disponível em estoque (`item["livro"].quantidade`).
+> A função `validate` permite adicionar validações de campo que dependem de múltiplos valores ao mesmo tempo. Nesse caso, ela está verificando se a quantidade solicitada do item (`item['quantidade']`) não excede a quantidade disponível em estoque (`item['livro'].quantidade`).
 
 - Para testar, tente criar uma compra com um item com a quantidade maior do que a quantidade em estoque daquele item. Você verá que a compra não é criada e é exibida uma mensagem de erro.
 - Faça o _commit_ com a mensagem `feat: validando a quantidade de itens na compra`.
@@ -2581,10 +2585,10 @@ class ItensCompra(models.Model):
 ```python
 ...
     def create(self, validated_data):
-        itens = validated_data.pop("itens")
+        itens = validated_data.pop('itens')
         compra = Compra.objects.create(**validated_data)
         for item in itens:
-            item["preco"] = item["livro"].preco # nova linha
+            item['preco'] = item['livro'].preco # nova linha
             ItensCompra.objects.create(compra=compra, **item)
         compra.save()
         return compra
@@ -2616,11 +2620,11 @@ Da mesma forma, precisamos alterar o método `update` do `serializer` `CompraCre
 ```python
 ...
     def update(self, compra, validated_data):
-        itens = validated_data.pop("itens")
+        itens = validated_data.pop('itens')
         if itens:
             compra.itens.all().delete()
             for item in itens:
-                item["preco"] = item["livro"].preco  # nova linha
+                item['preco'] = item['livro'].preco  # nova linha
                 ItensCompra.objects.create(compra=compra, **item)
         compra.save()
         return super().update(compra, validated_data)
@@ -2640,7 +2644,7 @@ No momento, não existe nenhum registro da data da compra. Vamos incluir a data 
 ...
 class Compra(models.Model):
 ...
-    usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name="compras")
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name='compras')
     status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.CARRINHO)
     data = models.DateTimeField(auto_now_add=True) # campo novo
 ...
@@ -2676,14 +2680,14 @@ from rest_framework.serializers import (
 )
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.e-mail", read_only=True)
-    status = CharField(source="get_status_display", read_only=True)
+    usuario = CharField(source='usuario.e-mail', read_only=True)
+    status = CharField(source='get_status_display', read_only=True)
     data = DateTimeField(read_only=True) # novo campo
     itens = ItensCompraSerializer(many=True, read_only=True)
 
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "status", "total", "data", "itens") # modificado
+        fields = ('id', 'usuario', 'status', 'total', 'data', 'itens') # modificado
 ...
 ```
 
@@ -2700,13 +2704,13 @@ Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `car
 ...
 class Compra(models.Model):
     class TipoPagamento(models.IntegerChoices):
-        CARTAO_CREDITO = 1, "Cartão de Crédito"
-        CARTAO_DEBITO = 2, "Cartão de Débito"
-        PIX = 3, "PIX"
-        BOLETO = 4, "Boleto"
-        TRANSFERENCIA_BANCARIA = 5, "Transferência Bancária"
-        DINHEIRO = 6, "Dinheiro"
-        OUTRO = 7, "Outro"
+        CARTAO_CREDITO = 1, 'Cartão de Crédito'
+        CARTAO_DEBITO = 2, 'Cartão de Débito'
+        PIX = 3, 'PIX'
+        BOLETO = 4, 'Boleto'
+        TRANSFERENCIA_BANCARIA = 5, 'Transferência Bancária'
+        DINHEIRO = 6, 'Dinheiro'
+        OUTRO = 7, 'Outro'
 ...
     tipo_pagamento = models.IntegerField(choices=TipoPagamento.choices, default=TipoPagamento.CARTAO_CREDITO)
 ...
@@ -2721,15 +2725,15 @@ class Compra(models.Model):
 ```python
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source="usuario.e-mail", read_only=True)
-    status = CharField(source="get_status_display", read_only=True)
+    usuario = CharField(source='usuario.e-mail', read_only=True)
+    status = CharField(source='get_status_display', read_only=True)
     data = DateTimeField(read_only=True)
-    tipo_pagamento = CharField(source="get_tipo_pagamento_display", read_only=True) # novo campo
+    tipo_pagamento = CharField(source='get_tipo_pagamento_display', read_only=True) # novo campo
     itens = ItensCompraSerializer(many=True, read_only=True)
 
     class Meta:
         model = Compra
-        fields = ("id", "usuario", "status", "total", "data", "tipo_pagamento", "itens") # modificado
+        fields = ('id', 'usuario', 'status', 'total', 'data', 'tipo_pagamento', 'itens') # modificado
 ...
 ```
 
@@ -2771,9 +2775,9 @@ class LivroAlterarPrecoSerializer(Serializer):
     preco = DecimalField(max_digits=10, decimal_places=2)
 
     def validate_preco(self, value):
-        """Valida se o preço é um valor positivo."""
+        '''Valida se o preço é um valor positivo.'''
         if value <= 0:
-            raise ValidationError("O preço deve ser um valor positivo.")
+            raise ValidationError('O preço deve ser um valor positivo.')
         return value
 ...
 ```
@@ -2812,18 +2816,18 @@ from core.serializers import (
     LivroSerializer,
 )
 ...
-    @action(detail=True, methods=["patch"])
+    @action(detail=True, methods=['patch'])
     def alterar_preco(self, request, pk=None):
         livro = self.get_object()
 
         serializer = LivroAlterarPrecoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        livro.preco = serializer.validated_data["preco"]
+        livro.preco = serializer.validated_data['preco']
         livro.save()
 
         return Response(
-            {"detail": f"Preço do livro '{livro.titulo}' atualizado para {livro.preco}."}, status=status.HTTP_200_OK
+            {'detail': f'Preço do livro "{livro.titulo}" atualizado para {livro.preco}.'}, status=status.HTTP_200_OK
         )
 ```
 
@@ -2862,11 +2866,11 @@ class LivroAjustarEstoqueSerializer(Serializer):
     quantidade = IntegerField()
 
     def validate_quantidade(self, value):
-        livro = self.context.get("livro")
+        livro = self.context.get('livro')
         if livro:
             nova_quantidade = livro.quantidade + value
             if nova_quantidade < 0:
-                raise ValidationError("A quantidade em estoque não pode ser negativa.")
+                raise ValidationError('A quantidade em estoque não pode ser negativa.')
         return value
 ...
 ```
@@ -2892,20 +2896,20 @@ Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa a�
 - No `views/livro.py`, vamos criar um método `ajustar_estoque` na view `LivroViewSet`:
 
 ```python
-     @action(detail=True, methods=["post"])
+     @action(detail=True, methods=['post'])
     def ajustar_estoque(self, request, pk=None):
         livro = self.get_object()
 
-        serializer = LivroAjustarEstoqueSerializer(data=request.data, context={"livro": livro})
+        serializer = LivroAjustarEstoqueSerializer(data=request.data, context={'livro': livro})
         serializer.is_valid(raise_exception=True)
 
-        quantidade_ajuste = serializer.validated_data["quantidade"]
+        quantidade_ajuste = serializer.validated_data['quantidade']
 
         livro.quantidade += quantidade_ajuste
         livro.save()
 
         return Response(
-            {"status": "Quantidade ajustada com sucesso", "novo_estoque": livro.quantidade}, status=status.HTTP_200_OK
+            {'status': 'Quantidade ajustada com sucesso', 'novo_estoque': livro.quantidade}, status=status.HTTP_200_OK
         )
 
 ```
@@ -2940,7 +2944,7 @@ class CompraViewSet(ModelViewSet):
         if compra.status != Compra.StatusCompra.CARRINHO:
             return Response(
                 status=status.HTTP_400_BAD_REQUEST,
-                data={"status": "Compra já finalizada"},
+                data={'status': 'Compra já finalizada'},
             )
 
         with transaction.atomic():
@@ -2950,9 +2954,9 @@ class CompraViewSet(ModelViewSet):
                     return Response(
                         status=status.HTTP_400_BAD_REQUEST,
                         data={
-                            "status": "Quantidade insuficiente",
-                            "livro": item.livro.titulo,
-                            "quantidade_disponivel": item.livro.quantidade,
+                            'status': 'Quantidade insuficiente',
+                            'livro': item.livro.titulo,
+                            'quantidade_disponivel': item.livro.quantidade,
                         },
                     )
 
@@ -2962,7 +2966,7 @@ class CompraViewSet(ModelViewSet):
             compra.status = Compra.StatusCompra.FINALIZADO
             compra.save()
 
-        return Response(status=status.HTTP_200_OK, data={"status": "Compra finalizada"})
+        return Response(status=status.HTTP_200_OK, data={'status': 'Compra finalizada'})
 ```
 
 > O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `api/compras/{id}/finalizar`.
@@ -3000,7 +3004,7 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
 - No `views/compra.py`, vamos criar um método `relatorio_vendas_mes` na view `CompraViewSet`:
 
 ```python
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=['get'])
     def relatorio_vendas_mes(self, request):
         agora = timezone.now()
         inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
@@ -3012,9 +3016,9 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
 
         return Response(
             {
-                "status": "Relatório de vendas deste mês",
-                "total_vendas": total_vendas,
-                "quantidade_vendas": quantidade_vendas,
+                'status': 'Relatório de vendas deste mês',
+                'total_vendas': total_vendas,
+                'quantidade_vendas': quantidade_vendas,
             },
             status=status.HTTP_200_OK,
         )
@@ -3042,7 +3046,7 @@ A primeira coisa que precisamos fazer é incluir um related_name no campo livro 
 ...
 class ItensCompra(models.Model):
 ...
-    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="itens_compra")
+    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name='itens_compra')
 ...
 ```
 
@@ -3053,15 +3057,15 @@ class ItensCompra(models.Model):
 ```python
 from django.db.models.aggregates import Sum
 ...
-    @action(detail=False, methods=["get"])
+    @action(detail=False, methods=['get'])
     def mais_vendidos(self, request):
-        livros = Livro.objects.annotate(total_vendidos=Sum("itenscompra__quantidade")).filter(total_vendidos__gt=10)
+        livros = Livro.objects.annotate(total_vendidos=Sum('itenscompra__quantidade')).filter(total_vendidos__gt=10)
 
         data = [
             {
-                "id": livro.id,
-                "titulo": livro.titulo,
-                "total_vendidos": livro.total_vendidos,
+                'id': livro.id,
+                'titulo': livro.titulo,
+                'total_vendidos': livro.total_vendidos,
             }
             for livro in livros
         ]
@@ -3114,7 +3118,7 @@ class LivroViewSet(viewsets.ModelViewSet):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["categoria__descricao"]
+    filterset_fields = ['categoria__descricao']
 ...
 ```
 
@@ -3133,7 +3137,7 @@ Vamos acrescentar outros filtros na listagem de livros.
 
 ```python
 ...
-    filterset_fields = ["categoria__descricao", "editora__nome"]
+    filterset_fields = ['categoria__descricao', 'editora__nome']  # Acrescentando o filtro por editora
 ...
 ```
 
@@ -3174,8 +3178,8 @@ from rest_framework.filters import SearchFilter
 class LivroViewSet(viewsets.ModelViewSet):
 ...
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ["categoria__descricao", "editora__nome"]
-    search_fields = ["titulo"]
+    filterset_fields = ['categoria__descricao', 'editora__nome']
+    search_fields = ['titulo']
 ...
 ```
 
@@ -3211,10 +3215,10 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 class LivroViewSet(viewsets.ModelViewSet):
 ...
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ["categoria__descricao", "editora__nome"]
-    search_fields = ["titulo"]
-    ordering_fields = ["titulo", "preco"]
-    ordering = ["titulo"]
+    filterset_fields = ['categoria__descricao', 'editora__nome']
+    search_fields = ['titulo']
+    ordering_fields = ['titulo', 'preco']
+    ordering = ['titulo']
 ...
 ```
 
@@ -3246,10 +3250,10 @@ Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 ```python
 ...
     filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
-    filterset_fields = ["usuario__email", "status", "data"]
-    search_fields = ["usuario__email"]
-    ordering_fields = ["usuario__email", "status", "data"]
-    ordering = ["-data"]
+    filterset_fields = ['usuario__email', 'status', 'data']
+    search_fields = ['usuario__email']
+    ordering_fields = ['usuario__email', 'status', 'data']
+    ordering = ['-data']
 ...
 ```
 
@@ -3278,35 +3282,35 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = Compra
-        fields = ("usuario", "itens")
+        fields = ('usuario', 'itens')
 
     def create(self, validated_data):
-        itens = validated_data.pop("itens")
-        usuario = validated_data["usuario"]
+        itens = validated_data.pop('itens')
+        usuario = validated_data['usuario']
 
         compra, criada = Compra.objects.get_or_create(
             usuario=usuario, status=Compra.StatusCompra.CARRINHO, defaults=validated_data
         )
 
         for item in itens:
-            item_existente = compra.itens.filter(livro=item["livro"]).first()
+            item_existente = compra.itens.filter(livro=item['livro']).first()
 
             if item_existente:
-                item_existente.quantidade += item["quantidade"]
-                item_existente.preco = item["livro"].preco
+                item_existente.quantidade += item['quantidade']
+                item_existente.preco = item['livro'].preco
                 item_existente.save()
             else:
-                item["preco"] = item["livro"].preco
+                item['preco'] = item['livro'].preco
                 ItensCompra.objects.create(compra=compra, **item)
 
         return compra
 
     def update(self, compra, validated_data):
-        itens = validated_data.pop("itens", [])
+        itens = validated_data.pop('itens', [])
         if itens:
             compra.itens.all().delete()
             for item in itens:
-                item["preco"] = item["livro"].preco
+                item['preco'] = item['livro'].preco
                 ItensCompra.objects.create(compra=compra, **item)
 
         return super().update(compra, validated_data)
@@ -3397,7 +3401,7 @@ Após adicionar o campo total, você pode usá-lo diretamente no shell do Django
 - Ordenar as compras pelo total, em ordem decrescente:
 
 ```python
-compras = Compra.objects.all().order_by("-total")
+compras = Compra.objects.all().order_by('-total')
 ```
 
 - Filtrar as compras pelo total, com um valor mínimo de 100:
@@ -3843,7 +3847,7 @@ from datetime import timedelta
 ...
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=180),
-    "REFRESH_TOKEN_LIFETIME":timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 ```
 
@@ -3943,7 +3947,7 @@ Seguem abaixo alguns comandos úteis para serem executados no **Django Shell**:
 
 ```python
 from core.models import Categoria
-c = Categoria(descricao="Teste")
+c = Categoria(descricao='Teste')
 c.save()
 ```
 
@@ -3963,7 +3967,7 @@ Categoria.objects.get(id=1)
 
 ```python
 c = Categoria.objects.get(id=1)
-c.descricao = "Teste 2"
+c.descricao = 'Teste 2'
 c.save()
 ```
 
@@ -4016,13 +4020,13 @@ for livro in Editora.objects.get(id=167).livros.all():
 - Listar todos os livros de uma categoria específica (usando o atributo `related_name`):
 
 ```python
-Categoria.objects.get(descricao="Comédia").livros.all()
+Categoria.objects.get(descricao='Comédia').livros.all()
 ```
 
 - Listar todos os livros de uma categoria específica (usando o atributo `categoria`):
 
 ```python
-Livro.objects.filter(categoria__descricao="Comédia")
+Livro.objects.filter(categoria__descricao='Comédia')
 ```
 
 - Remover todas as categorias que não possuem livros:
