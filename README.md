@@ -2129,7 +2129,6 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 
 **Inclusão do total da compra no Admin**
 
-
 Para finalizar, vamos incluir o total da compra no `Admin` do Django.
 
 -   No arquivo `admin.py` do app `core`, modifique o código da model `Compra`:
@@ -2150,13 +2149,17 @@ class CompraAdmin(admin.ModelAdmin):
 ```
 
 > O método `total_formatado` é um método especial do `admin` que é chamado para formatar o valor do campo `total`. Ele recebe como parâmetro o objeto `obj`, que representa a compra. A partir dele, podemos acessar os campos da compra, como `total`.
+
 > O método `total_formatado` retorna o valor do campo `total` formatado como uma string, com duas casas decimais e o símbolo de real (R$).
+
 > O parâmetro `readonly_fields` indica que o campo `total_formatado` é apenas para leitura. Isso significa que ele não será editável no formulário de edição da compra.
+
 > O parâmetro `@admin.display(description="Total")` indica que o campo `total_formatado` será exibido com o título "Total" na listagem do `Admin`.
+
 > O parâmetro `list_display` indica quais campos serão exibidos na listagem do `Admin`. O campo `total_formatado` será exibido na listagem, com o título "Total".
 
 -   Teste o `Admin` do Django e verifique se o total da compra está sendo exibido corretamente.
--   Faça um _commit_ com a mensagem `feat: inclusão do total da compra no `Admin`.
+-   Faça um _commit_ com a mensagem `feat: inclusão do total da compra no Admin`.
 
 # 27. Criação de um endpoint para criar novas compras
 
