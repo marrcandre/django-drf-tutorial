@@ -2127,6 +2127,37 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 - Teste o endpoint no navegador.
 - Faça o _commit_ com a mensagem `feat: inclusão do total da compra na listagem de compras`.
 
+**Inclusão do total da compra no Admin**
+
+
+Para finalizar, vamos incluir o total da compra no `Admin` do Django.
+
+-   No arquivo `admin.py` do app `core`, modifique o código da model `Compra`:
+
+```python
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    list_display = ('usuario', 'status', 'total_formatado')  # mostra na listagem
+    ordering = ('usuario', 'status')
+    list_per_page = 10
+    inlines = [ItensCompraInline]
+    readonly_fields = ("total_formatado",)  # mostra dentro do formulário
+
+    @admin.display(description="Total")
+    def total_formatado(self, obj):
+        """Exibe R$ 123,45 em vez de 123.45."""
+        return f"R$ {obj.total:.2f}"
+```
+
+> O método `total_formatado` é um método especial do `admin` que é chamado para formatar o valor do campo `total`. Ele recebe como parâmetro o objeto `obj`, que representa a compra. A partir dele, podemos acessar os campos da compra, como `total`.
+> O método `total_formatado` retorna o valor do campo `total` formatado como uma string, com duas casas decimais e o símbolo de real (R$).
+> O parâmetro `readonly_fields` indica que o campo `total_formatado` é apenas para leitura. Isso significa que ele não será editável no formulário de edição da compra.
+> O parâmetro `@admin.display(description="Total")` indica que o campo `total_formatado` será exibido com o título "Total" na listagem do `Admin`.
+> O parâmetro `list_display` indica quais campos serão exibidos na listagem do `Admin`. O campo `total_formatado` será exibido na listagem, com o título "Total".
+
+-   Teste o `Admin` do Django e verifique se o total da compra está sendo exibido corretamente.
+-   Faça um _commit_ com a mensagem `feat: inclusão do total da compra no `Admin`.
+
 # 27. Criação de um endpoint para criar novas compras
 
 Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
