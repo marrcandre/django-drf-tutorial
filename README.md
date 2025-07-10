@@ -2286,7 +2286,12 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O método `create` recebe um parâmetro `validated_data`, que são os dados validados que estão sendo criados.
 
-> `validade_data.pop('itens')` remove os itens da compra dos dados validados.
+> `validade_data.pop('itens')` remove os itens da compra dos dados validados. Isso é necessário, pois os itens da compra são criados separadamente.
+
+> O comando `Compra.objects.create(**validated_data)` cria a compra com os dados validados, exceto os itens da compra.
+
+> O comando `ItensCompra.objects.create(compra=compra, **item_data)` cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
+
 
 - Precisamos criar também o novo `serializer` `ItensCompraCreateUpdateSerializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código, após o `ItensCompraSerializer`:
 
