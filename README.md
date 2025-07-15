@@ -2211,7 +2211,7 @@ from .compra import CompraSerializer, CompraCreateUpdateSerializer, ItensCompraS
 
 **Alterando o `viewset` de `Compra` para usar o novo `serializer`**
 
-Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`, nas operações de criação e edição.
+Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`, nas operações de criação e alteração.
 
 - No arquivo `views/compra.py` altere o `viewset` de `Compra` para usar o novo `serializer`:
 
@@ -2224,7 +2224,7 @@ class CompraViewSet(ModelViewSet):
     serializer_class = CompraSerializer
 
     def get_serializer_class(self):
-        if self.action in ('create', 'update'):
+        if self.action in ('create', 'update', 'partial_update'):
             return CompraCreateUpdateSerializer
         return CompraSerializer
 ...
@@ -2342,20 +2342,20 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 - No arquivo `serializers/compra.py`, redefina o método `update` do `serializer` de `CompraCreateUpdateSerializer`:
 
 ```python
-...
     def update(self, compra, validated_data):
-        itens_data = validated_data.pop('itens')
-        if itens_data:
+        itens_data = validated_data.pop('itens', None)
+        if itens_data is not None:
             compra.itens.all().delete()
             for item_data in itens_data:
                 ItensCompra.objects.create(compra=compra, **item_data)
         return super().update(compra, validated_data)
-...
 ```
 
 > O método `update` é chamado quando uma compra é atualizada. Ele recebe os dados validados e atualiza a compra e os itens da compra.
 
 > O método `update` recebe dois parâmetros: `compra` e `validated_data`. O parâmetro `compra` é a compra que está sendo atualizada. O parâmetro `validated_data` são os dados validados que estão sendo atualizados.
+
+> A linha `if itens_data is not None:` verifica se os dados dos itens da compra foram enviados na requisição. Se não foram enviados, não precisamos fazer nada com os itens da compra. Isso é útil para atualizações parciais, onde apenas alguns campos são atualizados.
 
 > O comando `compra.itens.all().delete()` remove todos os itens da compra (se houverem)
 
@@ -2410,8 +2410,8 @@ Temos que incluir o novo `serializer` no arquivo `__init__.py` dos `serializers`
 ```python
 ...
 from .compra import (
-    CompraListSerializer, # novo
     CompraCreateUpdateSerializer,
+    CompraListSerializer, # novo
     CompraSerializer,
     ItensCompraCreateUpdateSerializer,
     ItensCompraListSerializer, # novo
@@ -2431,7 +2431,7 @@ class CompraViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'list':
             return CompraListSerializer
-        if self.action in ('create', 'update'):
+        if self.action in ('create', 'update', 'partial_update'):
             return CompraCreateUpdateSerializer
         return CompraSerializer
 ...
