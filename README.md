@@ -2163,7 +2163,7 @@ class CompraAdmin(admin.ModelAdmin):
 
 # 27. Criação de compras com itens aninhados via API
 
-Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
+Vamos primeiro definir o que é necessário para criar uma nova compra. Para isso, precisamos informar o usuário e os itens da compra. Os itens da compra são compostos pelo livro e pela quantidade.
 
 O formato dos dados para criar uma nova compra é o seguinte:
 
@@ -2183,22 +2183,36 @@ O formato dos dados para criar uma nova compra é o seguinte:
 }
 ```
 
-**Criando um serializer para os itens da compra**
+## Criando serializers para criação de compras
 
-Tendo definido o formato dos dados, vamos criar um novo `serializer`, que será usado para criar uma nova compra ou editar uma compra já existente.
+Como estamos lidando com dados aninhados (compra com vários itens), precisamos criar serializers específicos para entrada de dados.
 
-- No arquivo `serializer/compra.py` , inclua o seguinte `serializer` no final do arquivo:
+**1. `ItensCompraCreateUpdateSerializer`**
+''
+Esse serializer será usado para criar os itens de uma compra. Ele é simples, pois requer apenas o `livro` e a `quantidade`.
+
+No início do arquivo `serializers/compra.py`, adicione:
 
 ```python
-...
+class ItensCompraCreateUpdateSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = ('livro', 'quantidade')
+```
+
+**2. CompraCreateUpdateSerializer**
+
+Agora vamos criar o serializer da `Compra`, utilizando o serializer acima no campo `itens`.
+
+Ainda no `serializers/compra.py`, inclua o seguinte código:
+
+```python
 class CompraCreateUpdateSerializer(ModelSerializer):
-    itens = ItensCompraSerializer(many=True)
+    itens = ItensCompraCreateUpdateSerializer(many=True)
 
     class Meta:
         model = Compra
         fields = ('usuario', 'itens')
-...
-
 ```
 
 > O parâmetro `many=True` indica que o campo `itens` é uma lista de itens de compra.
@@ -2206,10 +2220,15 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 - Inclua também o `serializer` no arquivo `__init__.py` dos `serializers`:
 
 ```python
-from .compra import CompraSerializer, CompraCreateUpdateSerializer, ItensCompraSerializer
+from .compra import (
+    CompraCreateUpdateSerializer,
+    CompraSerializer,
+    ItensCompraCreateUpdateSerializer,
+    ItensCompraSerializer,
+)
 ```
 
-**Alterando o `viewset` de `Compra` para usar o novo `serializer`**
+**Atualizando a `view` para usar o `serializer` de criação**
 
 Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`, nas operações de criação e alteração.
 
@@ -2217,7 +2236,7 @@ Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`, nas operaç
 
 ```python
 ...
-from core.serializers import CompraSerializer, CompraCreateUpdateSerializer
+from core.serializers import CompraCreateUpdateSerializer, CompraSerializer
 ...
 class CompraViewSet(ModelViewSet):
     queryset = Compra.objects.all()
@@ -2227,10 +2246,11 @@ class CompraViewSet(ModelViewSet):
         if self.action in ('create', 'update', 'partial_update'):
             return CompraCreateUpdateSerializer
         return CompraSerializer
-...
 ```
 
-- Tente criar uma nova compra no endpoint `compras/` no `ThunderClient`, utilizando o método `POST`:
+**Testando a criação de compra**
+
+- Tente criar uma nova compra usando o método `POST` no endpoint `/compras/`, por exemplo no ThunderClient:
 
 ```json
 {
@@ -2256,17 +2276,19 @@ Erro de afirmação em `/api/compras/`
 O método `.create()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.create()` explícito para o serializer `core.serializers.compra.CompraCreateUpdateSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 
-O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItemCompra`, através de uma chave estrangeira. O serializer de `Compra` não sabe como criar os itens da compra. Precisamos alterar o método `create` do `serializer` de `Compra` para criar os itens da compra.
+**Entendendo o erro**
 
-**Alterando o método `create` do `serializer` de `Compra`**
+Esse erro acontece porque o DRF, por padrão, n**ão sabe como salvar campos aninhados** (como os itens da compra). Precisamos sobrescrever o método **create** no serializer da **Compra**.
 
-- No arquivo `serializers/compra.py` , altere o `serializer` de `Compra` para suportar campos aninhados:
+**Implementando o método create**
+
+Atualize o `CompraCreateUpdateSerializer` no `serializers/compra`.py para incluir o método:
 
 ```python
 ...
 
 class CompraCreateUpdateSerializer(ModelSerializer):
-    itens = ItensCompraCreateUpdateSerializer(many=True) # Aqui mudou
+    itens = ItensCompraCreateUpdateSerializer(many=True)
 
     class Meta:
         model = Compra
@@ -2282,6 +2304,8 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 ```
 
+**Explicação**
+
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
 > O método `create` recebe um parâmetro `validated_data`, que são os dados validados que estão sendo criados.
@@ -2292,19 +2316,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O comando `ItensCompra.objects.create(compra=compra, **item_data)` cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
 
-
-- Precisamos criar também o novo `serializer` `ItensCompraCreateUpdateSerializer` para os itens da compra. No `serializers/compra.py`, inclua o seguinte código, após o `ItensCompraSerializer`:
-
-```python
-...
-class ItensCompraCreateUpdateSerializer(ModelSerializer):
-    class Meta:
-        model = ItensCompra
-        fields = ('livro', 'quantidade')
-...
-```
-
-> O `serializer` de `ItensCompra` é bem simples, pois ele recebe apenas o livro e a quantidade.
+**Testes e _commit_**
 
 - Teste o endpoint no `ThunderClient.
 - Faça o _commit_ com a mensagem `feat: criação de um endpoint para criar novas compras`.
