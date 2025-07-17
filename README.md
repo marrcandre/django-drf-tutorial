@@ -2316,10 +2316,14 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O comando `ItensCompra.objects.create(compra=compra, **item_data)` cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
 
-**Testes e _commit_**
+**Conclusão**
 
 - Teste o endpoint no `ThunderClient.
-- Faça o _commit_ com a mensagem `feat: criação de um endpoint para criar novas compras`.
+- Faça o _commit_ com a mensagem:
+
+```makefile
+feat: criação de um endpoint para criar novas compras
+```
 
 # 28. Atualização de compras e seus itens via API
 
