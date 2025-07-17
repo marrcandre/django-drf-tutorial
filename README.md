@@ -2161,7 +2161,7 @@ class CompraAdmin(admin.ModelAdmin):
 -   Teste o `Admin` do Django e verifique se o total da compra está sendo exibido corretamente.
 -   Faça um _commit_ com a mensagem `feat: inclusão do total da compra no Admin`.
 
-# 27. Criação de um endpoint para criar novas compras
+# 27. Criação de compras com itens aninhados via API
 
 Vamos primeiro definir o que é necessário para criar uma nova compra. Para criar uma nova compra, precisamos informar o **usuário** e os **itens da compra**. Os itens da compra são compostos pelo **livro** e pela **quantidade**. Essas são as informações necessárias para criar uma nova compra.
 
@@ -2309,7 +2309,7 @@ class ItensCompraCreateUpdateSerializer(ModelSerializer):
 - Teste o endpoint no `ThunderClient.
 - Faça o _commit_ com a mensagem `feat: criação de um endpoint para criar novas compras`.
 
-# 28. Criação de um endpoint para atualizar compras
+# 28. Atualização de compras e seus itens via API
 
 - Vamos tentar alterar uma compra existente no endpoint `compras/1/` (ou aquela que você preferir) no `ThunderClient`, utilizando o método `PUT`:
 
@@ -2343,8 +2343,8 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 ```python
     def update(self, compra, validated_data):
-        itens_data = validated_data.pop('itens', None)
-        if itens_data is not None:
+        itens_data = validated_data.pop('itens', [])
+        if itens_data:
             compra.itens.all().delete()
             for item_data in itens_data:
                 ItensCompra.objects.create(compra=compra, **item_data)
