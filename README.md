@@ -2464,35 +2464,39 @@ class CompraViewSet(ModelViewSet):
 
 # 29. Criação de uma compra a partir do usuário autenticado
 
-Ao invés de passar o usuário no corpo da requisição, podemos pegar o usuário autenticado e criar a compra a partir dele. O `Django Rest Framework` nos dá uma forma de fazer isso.
+Nesta aula, vamos aprimorar a criação de uma *compra* na nossa API. Em vez de enviar o campo `usuario` no corpo da requisição, vamos configurar o *serializer* para usar automaticamente o usuário que está autenticado no sistema. Isso torna a API mais segura e prática para o consumidor.
 
-- Primeiro, vamos importar todos os tipos de campos necessários no arquivo `serializers/compra.py`:
+**Ajustes no serializer**
+
+Abra o arquivo `serializers/compra.py` e adicione as seguintes importações:
 
 ```python
 from rest_framework.serializers import (
     CharField,
-    CurrentUserDefault, # novo
-    HiddenField, # novo
+    CurrentUserDefault,  # novo
+    HiddenField,         # novo
     ModelSerializer,
     SerializerMethodField,
 )
-```
 
-- Agora, vamos definir o usuário como um campo oculto, cujo valor padrão é o usuário autenticado, na criação ou edição de uma compra.
+Agora, no `CompraCreateUpdateSerializer`, substitua o campo usuario para que ele seja preenchido automaticamente com o usuário autenticado:
 
 ```python
 class CompraCreateUpdateSerializer(ModelSerializer):
     usuario = HiddenField(default=CurrentUserDefault())
-...
+
+    class Meta:
+        model = Compra
+        fields = ('id', 'usuario', 'itens')
 ```
 
-> O campo `usuario` é um campo oculto, pois foi definido como `HiddenField`. Ele não é exibido no serializer.
+> O campo `usuario` agora é um `HiddenField`, ou seja, não aparece nem na requisição nem na resposta.
 
-> O valor padrão do campo é o usuário autenticado.
+> Com `CurrentUserDefault()`, o DRF preenche automaticamente com o usuário logado no momento da requisição.
 
-> O `CurrentUserDefault` é um campo padrão que retorna o usuário autenticado.
+**Teste no Thunder Client**
 
-Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClient`, utilizando o método `POST`:
+Faça um teste enviando uma requisição `POST` para o endpoint `/compras/`, com o seguinte corpo:
 
 ```json
 {
@@ -2505,9 +2509,15 @@ Para testar, vamos criar uma nova compra no endpoint `compras/` no `ThunderClien
 }
 ```
 
-> Observe que não precisamos mais passar o usuário no corpo da requisição, pois ele pega o usuário autenticado.
+> Observe que **não precisamos mais informar o usuário**, pois ele será automaticamente associado à compra com base no token de autenticação.
 
-- Faça o _commit_ com a mensagem `feat: criação de uma compra a partir do usuário autenticado`.
+> Esse comportamento só funciona corretamente se a requisição estiver autenticada (via token ou sessão).
+
+**Commit sugerido**
+
+```makefile
+feat: criação de uma compra a partir do usuário autenticado
+```
 
 # 30. Filtragem de apenas as compras do usuário autenticado
 
