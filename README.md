@@ -2520,35 +2520,60 @@ Faça um teste enviando uma requisição `POST` para o endpoint `/compras/`, com
 feat: criação de uma compra a partir do usuário autenticado
 ```
 
-# 30. Filtragem de apenas as compras do usuário autenticado
+# 30. Visualização de compras com base no perfil do usuário
 
-Nesse momento, qualquer usuário pode ver todas as compras. Vamos filtrar da seguinte forma: se o usuário for um usuário normal, ele só pode ver as suas compras. Se o usuário for um administrador, ele pode ver todas as compras.
+Atualmente, qualquer usuário pode visualizar todas as compras cadastradas na API, o que não é o comportamento desejado. Vamos ajustar isso para que:
 
-- No `views/compra.py`, vamos alterar o `viewset` de `Compra` para filtrar apenas as compras do usuário autenticado:
+- Usuários normais vejam apenas as suas próprias compras.
+- Administradores (superusuários ou membros do grupo *administradores*) vejam todas as compras.
+
+**Atualizando o ViewSet**
+
+Abra o arquivo `views/compra.py` e localize o `CompraViewSet`. Vamos sobrescrever o método `get_queryset`:
 
 ```python
-...
-class CompraViewSet(ModelViewSet):
-    queryset = Compra.objects.all()
+from rest_framework.viewsets import ModelViewSet
+from core.models import Compra
+from core.serializers.compra import (
+    CompraCreateUpdateSerializer,
+    CompraListSerializer,
+    CompraSerializer,
+)
 
+class CompraViewSet(ModelViewSet):
     def get_queryset(self):
         usuario = self.request.user
         if usuario.is_superuser:
             return Compra.objects.all()
-        if usuario.groups.filter(name='Administradores'):
+        if usuario.groups.filter(name='administradores'):
             return Compra.objects.all()
         return Compra.objects.filter(usuario=usuario)
 ...
 ```
 
-> O método `get_queryset` é chamado quando uma compra é listada.
+**Explicação do código**
 
-> O `request` é o objeto que representa a requisição. O `request.user` é o usuário autenticado.
+- O método `get_queryset` é chamado sempre que o DRF precisa buscar objetos no banco de dados.
+- Usamos `self.request.user` para acessar o usuário autenticado.
+- Se o usuário for um superusuário ou pertencer ao grupo `administradores`, ele verá todas as compras.
+- Caso contrário, retornamos apenas as compras associadas ao próprio usuário.
 
-> Se o usuário for um superusuário ou for membro do grupo "*Administradores*", retorna todas as compras. Caso contrário, retorna apenas as compras do usuário autenticado.
+> Com isso, garantimos uma separação adequada de permissões entre usuários comuns e administradores.
 
-- Para testar, autentique-se com um usuário normal e depois com um que seja administrador. Você verá que o administrador consegue ver todas as compras, enquanto o usuário normal só consegue ver as suas compras.
-- Faça o _commit_ com a mensagem `feat: filtrando apenas as compras do usuário autenticado`.
+**Testando a funcionalidade**
+
+1. Faça login com um usuário normal.
+2. Acesse o endpoint `/compras/` e confirme que apenas as compras feitas por esse usuário estão visíveis.
+3. Agora autentique-se com um administrador (superusuário ou membro do grupo `administradores`).
+4. Verifique se todas as compras aparecem.
+
+**Commit**
+
+Finalize com o commit:
+
+```makefile
+feat: filtrando apenas as compras do usuário autenticado
+```
 
 # 31. Validação dos campos no serializer
 
