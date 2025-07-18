@@ -176,9 +176,9 @@ Em nosso projeto, temos uma aplicação criada, chamada `core`, conforme a image
 Dentro da pasta `core` temos alguns arquivos e pastas, mas os mais importantes são:
 
 -   `migrations`: é a pasta de migrações de banco de dados da aplicação.
--   `models`: é a pasta onde ficam as `models` (tabelas) da aplicação.
--   `serializers`: é a pasta onde ficam os serializadores da aplicação.
--   `views`: é a pasta onde ficam as views da aplicação.
+-   `models`: é a pasta onde ficam as `models` (modelos de banco de dados, ou tabelas) da aplicação.
+-   `serializers`: é a pasta onde ficam os serializadores (serializadores) da aplicação.
+-   `views`: é a pasta onde ficam as views (visões) da aplicação.
 -   `admin.py`: é o arquivo de configuração do `Admin`, uma ferramenta que permite que você gerencie os dados do seu site.
 
 > O arquivo `__init__.py` é um arquivo que indica que a pasta é um pacote Python. Ele vai aparecer em todas as pastas que contêm código Python. Muitas vezes, ele é um arquivo vazio.
@@ -327,7 +327,7 @@ Nesta aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremo
 
 **4.2 Criação do serializer**
 
-Um _serializer_ é um objeto que transforma um objeto do banco de dados em um objeto JSON.
+*Serializer* (ou serializador, em português) é uma classe que transforma objetos Python (como modelos) em formatos que podem ser enviados pela internet (como JSON), e vice-versa."
 
 -   Crie o arquivo `categoria.py` na pasta `serializers` da aplicação `core`, e adicione o seguinte código, para criar a `CategoriaSerializer`:
 
@@ -375,7 +375,7 @@ class CategoriaViewSet(ModelViewSet):
 **4.3.1 Explicando o código**
 
 -   `queryset = Categoria.objects.all()`: define o conjunto de objetos que será retornado pela view.
--   `serializer_class = CategoriaSerializer`: define o `serializer` que será utilizado para serializar os objetos.
+-   `serializer_class = CategoriaSerializer`: define o serializer que será utilizado para serializar os objetos.
 
 **4.3.2 Inclusão da view no __init__.py**
 
@@ -1675,7 +1675,7 @@ class UserAdmin(BaseUserAdmin):
 
 - Teste a inclusão da foto de um usuário pelo `Admin`.
 
-**Inclusão da foto no `Serializer`**
+**Inclusão da foto no serializer**
 
 -   Substitua o serializador para o usuário, em `serializers/user.py`, por este:
 
@@ -2217,7 +2217,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O parâmetro `many=True` indica que o campo `itens` é uma lista de itens de compra.
 
-- Inclua também o `serializer` no arquivo `__init__.py` dos `serializers`:
+- Inclua também o serializer no arquivo `__init__.py` dos `serializers`:
 
 ```python
 from .compra import (
@@ -2228,11 +2228,11 @@ from .compra import (
 )
 ```
 
-**Atualizando a `view` para usar o `serializer` de criação**
+**Atualizando a `view` para usar o serializer de criação**
 
-Vamos alterar o `viewset` de `Compra` para usar o novo `serializer`, nas operações de criação e alteração.
+Vamos alterar o `viewset` de `Compra` para usar o novo serializer, nas operações de criação e alteração.
 
-- No arquivo `views/compra.py` altere o `viewset` de `Compra` para usar o novo `serializer`:
+- No arquivo `views/compra.py` altere o `viewset` de `Compra` para usar o novo serializer:
 
 ```python
 ...
@@ -2353,9 +2353,9 @@ Erro de afirmação em `/api/compras/1/`
 O método `.update()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.update()` explícito para o serializer `core.serializers.compra.CompraCreateUpdateSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 
-> O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do `serializer` de `Compra` para atualizar os itens da compra.
+> O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do serializer de `Compra` para atualizar os itens da compra.
 
-- No arquivo `serializers/compra.py`, redefina o método `update` do `serializer` de `CompraCreateUpdateSerializer`:
+- No arquivo `serializers/compra.py`, redefina o método `update` do serializer de `CompraCreateUpdateSerializer`:
 
 ```python
     def update(self, compra, validated_data):
@@ -2405,7 +2405,7 @@ class CompraListSerializer(ModelSerializer):
 ...
 ```
 
-> O `serializer` `CompraListSerializer` é um `serializer` específico para a listagem de compras. Ele mostra apenas os campos necessários.
+> O serializer `CompraListSerializer` é um serializer específico para a listagem de compras. Ele mostra apenas os campos necessários.
 
 Vamos criar também um serializador específico para os itens da compra:
 
@@ -2421,7 +2421,7 @@ class ItensCompraListSerializer(ModelSerializer):
 ...
 ```
 
-Temos que incluir o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+Temos que incluir o novo serializer no arquivo `__init__.py` dos `serializers`:
 
 ```python
 ...
@@ -2436,7 +2436,7 @@ from .compra import (
 ...
 ```
 
-- No `viewset` de `Compra`, vamos alterar o `serializer_class` para usar o novo `serializer`:
+- No `viewset` de `Compra`, vamos alterar o `serializer_class` para usar o novo serializer:
 
 ```python
 ...
@@ -2480,7 +2480,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 ...
 ```
 
-> O campo `usuario` é um campo oculto, pois foi definido como `HiddenField`. Ele não é exibido no `serializer`.
+> O campo `usuario` é um campo oculto, pois foi definido como `HiddenField`. Ele não é exibido no serializer.
 
 > O valor padrão do campo é o usuário autenticado.
 
@@ -2539,7 +2539,7 @@ class CompraViewSet(ModelViewSet):
 
 Nesse momento, é possível criar uma compra com um item com quantidade zero. Vamos validar isso.
 
-- No `serializers/compra.py`, vamos alterar o `serializer` `ItensCompraCreateUpdateSerializer` para validar a quantidade do item da compra:
+- No `serializers/compra.py`, vamos alterar o serializer `ItensCompraCreateUpdateSerializer` para validar a quantidade do item da compra:
 
 ```python
 ...
@@ -2572,7 +2572,7 @@ class ItensCompraCreateUpdateSerializer(ModelSerializer):
 
 Nesse momento, é possível criar uma compra com uma quantidade de itens maior do que a quantidade em estoque. Vamos validar isso.
 
-- No `serializers/compra.py`, vamos alterar o `serializer` `ItensCompraCreateUpdateSerializer` para validar a quantidade de itens em estoque, de forma a não permitir que a quantidade de itens solicitada seja maior do que a quantidade em estoque:
+- No `serializers/compra.py`, vamos alterar o serializer `ItensCompraCreateUpdateSerializer` para validar a quantidade de itens em estoque, de forma a não permitir que a quantidade de itens solicitada seja maior do que a quantidade em estoque:
 
 ```python
 ...
@@ -2600,7 +2600,7 @@ from rest_framework.serializers import (
 
 Podemos usar as funções de validação para formatar os dados antes de salvar. Por exemplo, podemos gravar o e-mail da Editora em minúsculas.
 
-- No `serializers/editora.py`, vamos alterar o `serializer` `EditoraSerializer` para formatar o e-mail da Editora em minúsculas:
+- No `serializers/editora.py`, vamos alterar o serializer `EditoraSerializer` para formatar o e-mail da Editora em minúsculas:
 
 ```python
 ...
@@ -2637,7 +2637,7 @@ class ItensCompra(models.Model):
 
 **Gravando o preço do livro na criação do item da compra**
 
-- No `serializers/compra.py`, vamos alterar a função `create` do `serializer` `CompraCreateUpdateSerializer` para gravar o preço do livro no item da compra:
+- No `serializers/compra.py`, vamos alterar a função `create` do serializer `CompraCreateUpdateSerializer` para gravar o preço do livro no item da compra:
 
 ```python
 ...
@@ -2672,7 +2672,7 @@ class ItensCompra(models.Model):
 
 **Gravando o preço do livro na atualização do item da compra**
 
-Da mesma forma, precisamos alterar o método `update` do `serializer` `CompraCreateUpdateSerializer` para gravar o preço do livro no item da compra:
+Da mesma forma, precisamos alterar o método `update` do serializer `CompraCreateUpdateSerializer` para gravar o preço do livro no item da compra:
 
 ```python
 ...
@@ -2721,9 +2721,9 @@ Você receberá um erro na migration, pois o campo `data` não pode ser nulo.
 
 **Modificando o serializer de compra para mostrar a data da compra**
 
-Para que a data da compra seja mostrada no endpoint, precisamos modificar o `serializer` de `Compra` para incluir o campo `data`.
+Para que a data da compra seja mostrada no endpoint, precisamos modificar o serializer de `Compra` para incluir o campo `data`.
 
-- No `serializers/compra.py`, vamos incluir o campo `data` no `serializer` de `Compra`:
+- No `serializers/compra.py`, vamos incluir o campo `data` no serializer de `Compra`:
 
 ```python
 from rest_framework.serializers import (
@@ -2777,7 +2777,7 @@ class Compra(models.Model):
 
 - Execute as migrações.
 
-- Inclua o campo `tipo_pagamento` no `serializer` de `Compra`:
+- Inclua o campo `tipo_pagamento` no serializer de `Compra`:
 
 ```python
 ...
@@ -2817,7 +2817,7 @@ Ações personalizadas são métodos definidos dentro de uma viewset e decorados
 
 É uma boa prática usar um serializer específico na `action` `ajustar_preco`. Isso traria várias vantagens, como validação mais robusta dos dados de entrada e organização do código. Ao usar um serializer dedicado, você garante que a lógica de validação e conversão dos dados está separada da view, seguindo o princípio de responsabilidade única e tornando o código mais limpo e reutilizável.
 
-Vamos incluir um novo `serializer` chamado `AjustarPrecoSerializer` no arquivo `serializers/livro.py`:
+Vamos incluir um novo serializer chamado `AjustarPrecoSerializer` no arquivo `serializers/livro.py`:
 
 ```python
 from rest_framework.serializers import (
@@ -2839,7 +2839,7 @@ class LivroAlterarPrecoSerializer(Serializer):
 ...
 ```
 
-- Inclua o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+- Inclua o novo serializer no arquivo `__init__.py` dos `serializers`:
 
 ```python
 ...
@@ -2894,7 +2894,7 @@ from core.serializers import (
 
 > O método `get_object()` é um método que recupera um objeto com base no `pk` fornecido.
 
-> O método `LivroAlterarPrecoSerializer` é um `serializer` específico para a ação `alterar_preco`. Ele valida o preço fornecido.
+> O método `LivroAlterarPrecoSerializer` é um serializer específico para a ação `alterar_preco`. Ele valida o preço fornecido.
 
 > O método `is_valid(raise_exception=True)` é um método que valida os dados fornecidos. Se os dados não forem válidos, ele lança uma exceção.
 
@@ -2915,7 +2915,7 @@ from core.serializers import (
 
 **Criando um serializer específico para a ação**
 
-Vamos incluir um novo `serializer` chamado `LivroAjustarEstoqueSerializer` no arquivo `serializers/livro.py`:
+Vamos incluir um novo serializer chamado `LivroAjustarEstoqueSerializer` no arquivo `serializers/livro.py`:
 
 ```python
 ...
@@ -2932,7 +2932,7 @@ class LivroAjustarEstoqueSerializer(Serializer):
 ...
 ```
 
-- Inclua o novo `serializer` no arquivo `__init__.py` dos `serializers`:
+- Inclua o novo serializer no arquivo `__init__.py` dos `serializers`:
 
 ```python
 ...
@@ -3330,7 +3330,7 @@ Nesse momento, um usuário pode ter vários carrinhos de compras. Vamos limitar 
 
 Uma vantagem dessa abordagem é que podemos incluir um livro no carrinho simplesmente enviando o `id` do livro e a quantidade. Se o livro já estiver no carrinho, a quantidade será incrementada. Se o livro não estiver no carrinho, ele será adicionado.
 
-- No `serializers/compra.py`, vamos alterar o `serializer` chamado `CompraCreateUpdateSerializer`:
+- No `serializers/compra.py`, vamos alterar o serializer chamado `CompraCreateUpdateSerializer`:
 
 ```python
 class CompraCreateUpdateSerializer(ModelSerializer):
