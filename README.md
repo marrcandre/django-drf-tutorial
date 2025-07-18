@@ -2327,6 +2327,9 @@ feat: criação de um endpoint para criar novas compras
 
 # 28. Atualização de compras e seus itens via API
 
+**Entendendo o problema**
+
+
 - Vamos tentar alterar uma compra existente no endpoint `compras/1/` (ou aquela que você preferir) no `ThunderClient`, utilizando o método `PUT`:
 
 ```json
@@ -2353,9 +2356,11 @@ Erro de afirmação em `/api/compras/1/`
 O método `.update()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.update()` explícito para o serializer `core.serializers.compra.CompraCreateUpdateSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 
-> O erro ocorre por que os itens da compra vêm de outra tabela, a tabela `ItensCompra`, através de uma chave estangeira. O serializer de `Compra` não sabe como atualizar os itens da compra. Precisamos alterar o método `update` do serializer de `Compra` para atualizar os itens da compra.
+> Esse erro acontece porque os itens da compra vêm de uma tabela relacionada (`ItensCompra`) e o DRF, por padrão, **não sabe como atualizar campos aninhados**. Precisamos, portanto, sobrescrever o método update() do serializer.
 
-- No arquivo `serializers/compra.py`, redefina o método `update` do serializer de `CompraCreateUpdateSerializer`:
+**Sobrescrevendo o método `update`**
+
+- No arquivo `serializers/compra.py`, altere o `CompraCreateUpdateSerializer` adicionando o seguinte:
 
 ```python
     def update(self, compra, validated_data):
@@ -2367,25 +2372,26 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
         return super().update(compra, validated_data)
 ```
 
-> O método `update` é chamado quando uma compra é atualizada. Ele recebe os dados validados e atualiza a compra e os itens da compra.
+**Explicando o método `update`**
 
-> O método `update` recebe dois parâmetros: `compra` e `validated_data`. O parâmetro `compra` é a compra que está sendo atualizada. O parâmetro `validated_data` são os dados validados que estão sendo atualizados.
+- `validated_data.pop('itens', [])`: remove os dados dos itens para tratar separadamente;
+- `compra.itens.all().delete()`: remove todos os itens antigos da compra;
+- `ItensCompra.objects.create(...)`: recria cada item com os novos dados;
+- `super().update(...)`: atualiza os demais campos da compra.
 
-> A linha `if itens_data is not None:` verifica se os dados dos itens da compra foram enviados na requisição. Se não foram enviados, não precisamos fazer nada com os itens da compra. Isso é útil para atualizações parciais, onde apenas alguns campos são atualizados.
+**Testando o endpoint no `ThunderClient`**
 
-> O comando `compra.itens.all().delete()` remove todos os itens da compra (se houverem)
-
-> O comando `ItensCompra.objects.create(compra=compra, **item_data)` cria novos itens com os dados validados.
-
-> O comando `super().update(compra, validated_data)` chama o método `update` da classe pai, que é o método padrão de atualização.
-
-- Teste o endpoint no `ThunderClient`:
   - use o método `PUT`, para atualizar a compra de forma completa;
   - use o método `PATCH`, para atualizar a compra de forma parcial.
     - Experimente mudar apenas o usuário;
     - Experimente mudar apenas a quantidade de um item da compra;
     - Experimente mudar o livro de um item da compra;
-- Faça o _commit_ com a mensagem `feat: criação de um endpoint para atualizar compras`.
+
+**Finalize com um commit**
+
+```makefile
+feat: criação de um endpoint para atualizar compras
+```
 
 # 28b. Criação de um serializador específico para a listagem de compras
 
