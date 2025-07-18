@@ -624,7 +624,7 @@ Vamos continuar a criação da API REST para o projeto `livraria`, criando a mod
 O autor terá os seguintes atributos:
 
 -   `nome`: `string` de no máximo 100 caracteres.
--   `e-mail`: campo do tipo e-mail de no máximo 100 caracteres, que pode ser nulo.
+-   `email`: campo do tipo e-mail de no máximo 100 caracteres, que pode ser nulo.
 
 - Teste a API.
 - Faça o _commit_, com a mensagem `feat: criação da API para Autor`.
@@ -1948,7 +1948,7 @@ router.register(r'compras', CompraViewSet)
 
 **Inclusão do e-mail do usuário na listagem da compra**
 
-Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos substituir o `id` pelo `e-mail` do usuário.
+Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos substituir o `id` pelo `email` do usuário.
 
 -   No serializer de `Compra`, inclua o seguinte código:
 
@@ -1957,7 +1957,7 @@ Nesse momento, a listagem de compras mostra apenas o `id` do usuário. Vamos sub
 from rest_framework.serializers import CharField, ModelSerializer
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source='usuario.e-mail', read_only=True) # inclua essa linha
+    usuario = CharField(source='usuario.email', read_only=True) # inclua essa linha
 ...
 ```
 
@@ -2396,7 +2396,7 @@ Como fizemos com o `Livro`, vamos criar um serializador específico para a lista
 ```python
 ...
 class CompraListSerializer(ModelSerializer):
-    usuario = CharField(source='usuario.e-mail', read_only=True)
+    usuario = CharField(source='usuario.email', read_only=True)
     itens = ItensCompraListSerializer(many=True, read_only=True)
 
     class Meta:
@@ -2604,8 +2604,8 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 
 ```python
 ...
-    def validate_email(self, e-mail):
-        return e-mail.lower()
+    def validate_email(self, email):
+        return email.lower()
 ...
 ```
 
@@ -2737,7 +2737,7 @@ from rest_framework.serializers import (
 )
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source='usuario.e-mail', read_only=True)
+    usuario = CharField(source='usuario.email', read_only=True)
     status = CharField(source='get_status_display', read_only=True)
     data = DateTimeField(read_only=True) # novo campo
     itens = ItensCompraSerializer(many=True, read_only=True)
@@ -2782,7 +2782,7 @@ class Compra(models.Model):
 ```python
 ...
 class CompraSerializer(ModelSerializer):
-    usuario = CharField(source='usuario.e-mail', read_only=True)
+    usuario = CharField(source='usuario.email', read_only=True)
     status = CharField(source='get_status_display', read_only=True)
     data = DateTimeField(read_only=True)
     tipo_pagamento = CharField(source='get_tipo_pagamento_display', read_only=True) # novo campo
