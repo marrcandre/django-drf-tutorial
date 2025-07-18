@@ -2478,6 +2478,7 @@ from rest_framework.serializers import (
     ModelSerializer,
     SerializerMethodField,
 )
+```
 
 Agora, no `CompraCreateUpdateSerializer`, substitua o campo usuario para que ele seja preenchido automaticamente com o usuário autenticado:
 
