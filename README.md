@@ -4300,10 +4300,68 @@ Tarefas como migrações ou comandos de manutenção devem ser executadas como p
 **Conclusão**
 Nosso projeto Django + Vue.js segue os 12 fatores de forma consistente, o que nos permite ter uma aplicação modular, escalável, fácil de manter e com deploy contínuo. Essas boas práticas são fundamentais para garantir qualidade e estabilidade tanto em desenvolvimento quanto em produção.
 
+# A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento
+
+O `django-extensions` traz o comando `runserver_plus`, que permite iniciar o servidor de desenvolvimento do Django com **SSL (HTTPS)**. Isso é útil quando você precisa testar recursos que exigem HTTPS, como autenticação via OAuth2, cookies `Secure` ou APIs que só aceitam conexões seguras (como Spotify, por exemplo).
+
+---
+
+## 1. Instalar dependências
+
+Primeiro, instale os pacotes necessários:
+
+```bash
+pdm add django-extensions werkzeug pyOpenSSL
+```
+
+- **django-extensions** → adiciona o comando `runserver_plus`.
+- **werkzeug** → servidor de desenvolvimento avançado.
+- **pyOpenSSL** → suporte a SSL.
+
+---
+
+## 2. Executar com HTTPS
+
+Você pode rodar o servidor com um certificado autoassinado de forma bem simples:
+
+```bash
+pdm run python manage.py runserver_plus --cert-file cert.pem
+```
+
+Se o arquivo `cert.pem` **não existir**, o Django Extensions irá gerar automaticamente um certificado e uma chave, armazenando tudo em `cert.pem`.
+
+---
+
+## 3. Automatizando com script no `pyproject.toml`
+
+Para não ter que digitar o comando completo toda vez, adicione um script no seu `pyproject.toml`:
+
+```toml
+[tool.pdm.scripts]
+devssl = "python manage.py runserver_plus --cert-file cert.pem"
+```
+
+Agora você pode rodar com:
+
+```bash
+pdm devssl
+```
+
+---
+
+## 4. Observações importantes
+
+- O certificado gerado é **autoassinado**, então o navegador exibirá um aviso de “conexão não segura”. Isso é normal em ambiente de desenvolvimento.
+- Caso você queira certificados que não mostrem aviso no navegador, pode usar ferramentas como [mkcert](https://github.com/FiloSottile/mkcert).
+
+---
+
+Pronto! Agora seu projeto Django pode ser testado com HTTPS de maneira simples durante o desenvolvimento.
+
 
 # Contribua
 
-**Para contriburi com este projeto:**
+**Para contribuir com este projeto:**
 
 -   Criar um _fork_ do projeto.
 -   Clonar o _fork_
