@@ -2685,27 +2685,27 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 
 # 32. Gravação do preço do livro no item da compra
 
-Nesse momento, o preço do livro não é gravado no item da compra. Vamos gravar o preço do livro no item da compra, uma vez que o preço do livro pode mudar e queremos manter o registro do preço do livro no momento da compra.
+Até agora, o preço do item da compra era calculado dinamicamente a partir do livro associado. Isso gera um problema: se o preço do livro mudar, o histórico das compras anteriores também mudaria, o que não é desejado.
 
+**Objetivo desta aula:** manter registrado no banco o preço do livro **no momento da compra**, garantindo que o histórico seja preservado.
 
-**Inclui o campo `preco` na entidade `ItensCompra`**
+**Incluindo o campo `preco` em `ItensCompra`**
 
-- Primeiro, precisamos incluir o campo `preco` na entidade `ItensCompra`, em `models/compra.py`:
+- No arquivo `models/compra.py`, adicione o campo `preco`:
 
 ```python
 ...
 class ItensCompra(models.Model):
 ...
     preco = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-...
 ```
 
 - Execute as migrações.
-- Lembre-se de migrar também o banco de dados publicado, caso você esteja utilizando.
+- Se você já estiver utilizando um banco publicado (por exemplo, no Render), **não esqueça de rodar as migrações lá também**.
 
-**Gravando o preço do livro na criação do item da compra**
+**Gravando o preço do livro na criação da compra**
 
-- No `serializers/compra.py`, vamos alterar a função `create` do serializer `CompraCreateUpdateSerializer` para gravar o preço do livro no item da compra:
+- No `serializers/compra.py`, altere o método `create` do `CompraCreateUpdateSerializer` para registrar o preço do livro:
 
 ```python
 ...
@@ -2713,7 +2713,7 @@ class ItensCompra(models.Model):
         itens = validated_data.pop('itens')
         compra = Compra.objects.create(**validated_data)
         for item in itens:
-            item['preco'] = item['livro'].preco # nova linha
+            item['preco'] = item['livro'].preco # preço do livro no momento da compra
             ItensCompra.objects.create(compra=compra, **item)
         compra.save()
         return compra
@@ -2722,9 +2722,9 @@ class ItensCompra(models.Model):
 
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
-**Alterando o campo total da compra para considerar o preço do item da compra**
+**Calculando o total da compra com base no preço do item**
 
-- Para finalizar, precisamos alterar o campo total da compra para considerar o preço do item da compra, e não o preço do livro. No `models/compra.py`, altere o método `total` da `model` `Compra`:
+- No arquivo `models/compra.py`, altere a propriedade `total` da model `Compra`:
 
 ```python
 ...
@@ -2733,14 +2733,13 @@ class ItensCompra(models.Model):
         return sum(item.preco * item.quantidade for item in self.itens.all())
 ...
 ```
-
-> Estamos utilizando o campo `preco` para calcular o total da compra, ao invés do campo `livro.preco`.
+Agora o **total da compra** considera o preço registrado no item, e não o preço atual do livro.
 
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 
 **Gravando o preço do livro na atualização do item da compra**
 
-Da mesma forma, precisamos alterar o método `update` do serializer `CompraCreateUpdateSerializer` para gravar o preço do livro no item da compra:
+No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 
 ```python
 ...
@@ -2749,15 +2748,21 @@ Da mesma forma, precisamos alterar o método `update` do serializer `CompraCreat
         if itens:
             compra.itens.all().delete()
             for item in itens:
-                item['preco'] = item['livro'].preco  # nova linha
+                item['preco'] = item['livro'].preco  # grava o preço histórico
                 ItensCompra.objects.create(compra=compra, **item)
         compra.save()
         return super().update(compra, validated_data)
 ...
 ```
 
-- Para testar, altere uma compra e verifique que o preço do livro foi gravado no item da compra.
-- Faça o _commit_ com a mensagem `feat: gravando o preço do livro no item da compra`.
+**Testando**
+
+- Crie uma nova compra via API (POST `/compras/`).
+- Confira no banco (ou no endpoint de listagem) que o preço foi gravado em `ItensCompra`.
+- Atualize o preço de um livro.
+- Consulte a compra anterior: o preço gravado não muda.
+
+---
 
 # 33. Inclusão da data da compra
 
