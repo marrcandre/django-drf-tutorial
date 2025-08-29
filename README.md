@@ -2681,7 +2681,7 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 
 
 - Para testar, altere o e-mail de uma Editora para maiúsculas e veja que o e-mail foi gravado em minúsculas.
-- Faça o _commit_ com a mensagem `feat: formatando dados antes de salvar`.
+- Faça o _commit_ com a mensagem `feat: validando e formatando dados antes de salvar.`.
 
 # 32. Gravação do preço do livro no item da compra
 
