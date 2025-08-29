@@ -2188,7 +2188,7 @@ O formato dos dados para criar uma nova compra é o seguinte:
 Como estamos lidando com dados aninhados (compra com vários itens), precisamos criar serializers específicos para entrada de dados.
 
 **1. `ItensCompraCreateUpdateSerializer`**
-''
+
 Esse serializer será usado para criar os itens de uma compra. Ele é simples, pois requer apenas o `livro` e a `quantidade`.
 
 No início do arquivo `serializers/compra.py`, adicione:
@@ -2575,7 +2575,33 @@ Finalize com o commit:
 feat: filtrando apenas as compras do usuário autenticado
 ```
 
-# 31. Validação dos campos no serializer
+# 31. Validação dos campos no Serializer
+
+**Objetivo da aula**
+- Entender a importância da validação de dados no backend.
+- Aprender a impedir que dados inválidos (como itens com quantidade zero) sejam salvos no banco.
+
+---
+
+**Revisão rápida**
+- **Serializer:** Ferramenta do Django REST Framework que transforma objetos Python em JSON e vice-versa.
+- **Validação:** Processo de garantir que os dados recebidos pelo serializer atendam às regras do negócio antes de salvar no banco.
+
+---
+
+**Fluxo de Validação no DRF**
+
+- Cliente envia dados (POST/PUT).
+- Serializer recebe os dados (`data=request.data`).
+- Chamado `is_valid()` → começa a validação.
+   - Verificação de tipos (int, string, email, date, etc.).
+   - Execução dos validadores (`validators=[]`).
+   - Métodos `validate_<campo>` (ex.: `validate_quantidade`).
+   - Método `validate(self, attrs)` para regras entre campos.
+- Se inválido → retorna **400 Bad Request** com erros em JSON.
+- Se válido → `serializer.save()` grava no banco.
+
+---
 
 **Não permitindo itens com quantidade zero**
 
