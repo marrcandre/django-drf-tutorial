@@ -290,7 +290,11 @@ Volte ao `Admin` verifique o que mudou na apresentação dos objetos da model `C
 **3.11 Hora de fazer um _commit_**
 
 - Verifique antes se seu computador está configurado corretamente para o **git** com as suas credenciais. Veja como fazer isso [aqui](#4-1-um-aviso-importante).
--  Faça um _commit_ com a mensagem `feat: criação da model de Categoria`.
+-  Faça um _commit_ com a mensagem:
+
+```
+feat: criação da model de Categoria
+```
 
 **IMPORTANTE: Escrevendo uma boa mensagem de _commit_**
 
@@ -466,7 +470,11 @@ Instale uma ou mais das ferramentas sugeridas.
 
 **4.10 Fazendo um _commit_**
 
--   Faça um _commit_ com a mensagem `feat: criação da API para Categoria`.
+-   Faça um _commit_ com a mensagem:
+
+```
+feat: criação da API para Categoria
+```
 
 # 5. Aplicação frontend Vuejs
 
@@ -613,7 +621,11 @@ pdm run migrate
 
 **6.5 Fazendo um _commit_**
 
--   Faça um _commit_ com a mensagem `feat: criação da API para Editora`.
+-   Faça um _commit_ com a mensagem:
+
+```
+feat: criação da API para Editora
+```
 
 # 7. Criação da API para Autor
 
@@ -627,9 +639,13 @@ O autor terá os seguintes atributos:
 -   `email`: campo do tipo e-mail de no máximo 100 caracteres, que pode ser nulo.
 
 - Teste a API.
-- Faça o _commit_, com a mensagem `feat: criação da API para Autor`.
+- Faça o _commit_, com a mensagem:
 
-Exercícios:
+```
+feat: criação da API para Autor
+```
+
+**Exercícios:**
 
 - Crie no Vuejs a tela para listar, incluir, alterar e excluir autores.
 
@@ -686,7 +702,11 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 [Siga os passos conforme já definimos.](#6-incluindo-a-editora-no-projeto-livraria)
 
 - Após a criação da API, teste todas as operações de CRUD para a classe `Livro`.
-- Faça um _commit_ com a mensagem `feat: criação da entidade para Livro`.
+- Faça um _commit_ com a mensagem:
+
+```
+feat: criação da entidade para Livro
+```
 
 # 9. Inclusão das chaves estrangeiras no modelo Livro
 
@@ -771,7 +791,11 @@ pdm run shellp
 
 > O comando `pdm run shellp` é utilizado para abrir o Django Shell Plus com o ambiente virtual do projeto.
 
--  Faça um _commit_ com a mensagem `feat: inclusão do relacionamento de Livro com Categoria e Editora`.
+-  Faça um _commit_ com a mensagem:
+
+```
+feat: inclusão do relacionamento de Livro com Categoria e Editora
+```
 
 # 10. Inclusão do relacionamento n para n no modelo do Livro
 
@@ -806,7 +830,11 @@ autores = models.ManyToManyField(Autor, related_name='livros', blank=True)
 
 > Observe as alterações no **banco de dados**, no **Admin** e na **API**.
 
-- Faça um _commit_ com a mensagem `feat: inclusão do relacionamento n para n entre Livro e Autor`.
+- Faça um _commit_ com a mensagem:
+
+```
+feat: inclusão do relacionamento n para n entre Livro e Autor
+```
 
 **10.2 Exercícios**
 
@@ -885,8 +913,11 @@ class LivroViewSet(ModelViewSet):
 > Nesse caso, o serializador `LivroListRetrieveSerializer` é utilizado para a listagem e recuperação de um único livro, enquanto o `LivroSerializer` é utilizado para as demais operações, ou seja, criação e alteração.
 
 - Teste a API.
-- Faça um _commit_ com a mensagem `feat: criação de dois serializadores para Livro`.
+- Faça um _commit_ com a mensagem:
 
+```
+feat: criação de dois serializadores para Livro
+```
 
 **Criação de um serializador para a listagem de livros**
 
@@ -933,7 +964,11 @@ from .livro import LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
 ```
 
 -   Teste a API. Observe que a listagem de vários livros está diferente da recuperação de um único livro.
--  Faça um _commit_ com a mensagem `feat: criação de múltiplos serializadores para Livro`.
+-  Faça um _commit_ com a mensagem:
+
+```
+feat: criação de múltiplos serializadores para Livro
+```
 
 # 12. Upload e associação de imagens
 
@@ -1132,7 +1167,11 @@ class LivroSerializer(ModelSerializer):
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
 -   Acesse o endpoint `http://0.0.0.0:19003/api/media/images/` e observe que a imagem foi associada ao livro.
 
-- Faça um _commit_ com a mensagem `feat: inclusão da app de upload e associação de imagens`.
+- Faça um _commit_ com a mensagem:
+
+```
+feat: inclusão da app de upload e associação de imagens
+```
 
 # 13. Dump e Load de dados
 
@@ -1309,7 +1348,11 @@ class LivroAdmin(admin.ModelAdmin):
 
     http://0.0.0.0:19003/api/admin/
 
--  Faça um _commit_ com a mensagem `feat: customização do Admin`.
+-  Faça um _commit_ com a mensagem:
+
+```
+feat: customização do Admin
+```
 
 # 15. Uso do Django Shell e do Django Shell Plus
 
@@ -1716,7 +1759,11 @@ class UserSerializer(ModelSerializer):
 **Finalizando**
 
 - Faça as alterações no sistema publicado.
-- Faça um _commit_ com a mensagem `feat: inclusão da foto de perfil no usuário`.
+- Faça um _commit_ com a mensagem:
+
+```
+feat: inclusão da foto de perfil no usuário
+```
 
 # 20. Criação da entidade Compra integrada ao usuário do projeto
 
@@ -1791,8 +1838,11 @@ O seu projeto deve ficar assim:
 
 **Finalizando**
 
-- Faça um _commit_ com a mensagem `feat: criação da entidade Compra integrada ao usuário do projeto`.
+- Faça um _commit_ com a mensagem:
 
+```
+feat: criação da entidade Compra integrada ao usuário do projeto
+```
 
 # 21. Criação dos itens da compra
 
@@ -1830,8 +1880,11 @@ O seu projeto deve ficar assim:
 
 -   Verifique que a tabela `core_itenscompra` foi criada no banco de dados.
 -   Inclua o model `ItensCompra` no `Admin` do Django.
--   Faça um _commit_ com a mensagem `feat: criação dos itens da compra`.
+-   Faça um _commit_ com a mensagem:
 
+```
+feat: criação dos itens da compra
+```
 
 # 22. Uso de TabularInline no Admin para Itens da Compra
 
@@ -1862,7 +1915,11 @@ class CompraAdmin(admin.ModelAdmin):
 > Opcionalmente, você pode utilizar o `StackedInline` ao invés do `TabularInline`. Experimente e veja a diferença.
 
 -   Teste no `Admin` do Django.
--   Faça um _commit_ com a mensagem `feat: uso de TabularInline e StackedInline no Admin para Itens da Compra`.
+-   Faça um _commit_ com a mensagem:
+
+```
+feat: uso de TabularInline e StackedInline no Admin para Itens da Compra
+```
 
 # 23. Endpoint para a listagem básica de compras
 
@@ -1944,7 +2001,11 @@ router.register(r'compras', CompraViewSet)
 ```
 
 -  Teste o endpoint no navegador.
--  Faça o _commit_ com a mensagem `feat: criação do endpoint para a listagem básica de compras`.
+-  Faça o _commit_ com a mensagem:
+
+```
+feat: criação do endpoint para a listagem básica de compras
+```
 
 **Inclusão do e-mail do usuário na listagem da compra**
 
@@ -1966,7 +2027,11 @@ class CompraSerializer(ModelSerializer):
 > O parâmetro `read_only` indica que o campo `usuario` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ com a mensagem `feat: inclusão do e-mail do usuário na listagem da compra`.
+-   Faça o _commit_ com a mensagem:
+
+```
+feat: inclusão do e-mail do usuário na listagem da compra
+```
 
 **Inclusão do status da compra na listagem da compra**
 
@@ -1986,7 +2051,11 @@ class CompraSerializer(ModelSerializer):
 > O parâmetro `read_only` indica que o campo `status` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ com a mensagem `feat: inclusão do status da compra na listagem da compra`.
+-   Faça o _commit_ com a mensagem:
+
+```
+feat: inclusão do status da compra na listagem da compra
+```
 
 > Estes são apenas dois exemplos de como podemos modificar a listagem de compras. Você pode incluir outros campos, como o total da compra, por exemplo.
 
@@ -2021,7 +2090,11 @@ itens = ItensCompraSerializer(many=True, read_only=True)
 > O parâmetro `read_only=True` indica que o campo `itens` não será utilizado para atualizar o model `Compra`.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ com a mensagem `feat: visualização dos itens da compra na listagem da compra`.
+-   Faça o _commit_ com a mensagem:
+
+```
+feat: visualização dos itens da compra na listagem da compra
+```
 
 **Mostrando os detalhes dos itens da compra na listagem de compras**
 
@@ -2052,7 +2125,11 @@ fields = ('livro', 'quantidade')
 > O parâmetro `fields` indica quais campos do model `ItensCompra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma sequência de campos, apenas esses campos serão mostrados.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ com a mensagem `feat: limitando os campos dos itens da compra na listagem de compras`.
+-   Faça o _commit_ com a mensagem:
+
+```
+feat: limitando os campos dos itens da compra na listagem de compras
+```
 
 # 25. Exibição do total do item na listagem de compras
 
@@ -2090,7 +2167,11 @@ class ItensCompraSerializer(ModelSerializer):
 > Incluimos o campo `total` no atributo `fields` do serializer.
 
 -   Teste o endpoint no navegador.
--   Faça o _commit_ com a mensagem `feat: mostrando o total do item na listagem de compras`.
+-   Faça o _commit_ com a mensagem:
+
+```
+feat: mostrando o total do item na listagem de compras
+```
 
 # 26. Inclusão do total da compra na listagem de compras
 
@@ -2125,7 +2206,11 @@ Vamos incluir o total da compra na listagem de compras. O total da compra é cal
 > O parâmetro `fields` indica quais campos do model `Compra` serão mostrados no serializer. Se o valor for `__all__`, todos os campos serão mostrados. Se o valor for uma lista de campos, apenas os campos da lista serão mostrados, na ordem da lista.
 
 - Teste o endpoint no navegador.
-- Faça o _commit_ com a mensagem `feat: inclusão do total da compra na listagem de compras`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: inclusão do total da compra na listagem de compras
+```
 
 **Inclusão do total da compra no Admin**
 
@@ -2159,7 +2244,11 @@ class CompraAdmin(admin.ModelAdmin):
 > O parâmetro `list_display` indica quais campos serão exibidos na listagem do `Admin`. O campo `total_formatado` será exibido na listagem, com o título "Total".
 
 -   Teste o `Admin` do Django e verifique se o total da compra está sendo exibido corretamente.
--   Faça um _commit_ com a mensagem `feat: inclusão do total da compra no Admin`.
+-   Faça um _commit_ com a mensagem:
+
+```
+feat: inclusão do total da compra no Admin
+```
 
 # 27. Criação de compras com itens aninhados via API
 
@@ -2321,7 +2410,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 - Teste o endpoint no `ThunderClient.
 - Faça o _commit_ com a mensagem:
 
-```makefile
+```
 feat: criação de um endpoint para criar novas compras
 ```
 
@@ -2389,7 +2478,7 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 **Finalize com um commit**
 
-```makefile
+```
 feat: criação de um endpoint para atualizar compras
 ```
 
@@ -2460,7 +2549,11 @@ class CompraViewSet(ModelViewSet):
 ```
 
 - Teste o endpoint no navegador.
-- Faça o _commit_ com a mensagem `feat: criação de um serializador específico para a listagem de compras`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: criação de um serializador específico para a listagem de compras
+```
 
 # 29. Criação de uma compra a partir do usuário autenticado
 
@@ -2514,9 +2607,11 @@ Faça um teste enviando uma requisição `POST` para o endpoint `/compras/`, com
 
 > Esse comportamento só funciona corretamente se a requisição estiver autenticada (via token ou sessão).
 
-**Commit sugerido**
+**Commit**
 
-```makefile
+- Faça o _commit_ com a mensagem:
+
+```
 feat: criação de uma compra a partir do usuário autenticado
 ```
 
@@ -2569,9 +2664,9 @@ class CompraViewSet(ModelViewSet):
 
 **Commit**
 
-Finalize com o commit:
+- Faça o _commit_ com a mensagem:
 
-```makefile
+```
 feat: filtrando apenas as compras do usuário autenticado
 ```
 
@@ -2662,7 +2757,11 @@ from rest_framework.serializers import (
 > A função `validate` permite adicionar validações de campo que dependem de múltiplos valores ao mesmo tempo. Nesse caso, ela está verificando se a quantidade solicitada do item (`item['quantidade']`) não excede a quantidade disponível em estoque (`item['livro'].quantidade`).
 
 - Para testar, tente criar uma compra com um item com a quantidade maior do que a quantidade em estoque daquele item. Você verá que a compra não é criada e é exibida uma mensagem de erro.
-- Faça o _commit_ com a mensagem `feat: validando a quantidade de itens na compra`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: validando a quantidade de itens na compra
+```
 
 **Formatando dados antes de salvar**
 
@@ -2681,7 +2780,10 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 
 
 - Para testar, altere o e-mail de uma Editora para maiúsculas e veja que o e-mail foi gravado em minúsculas.
-- Faça o _commit_ com a mensagem `feat: validando e formatando dados antes de salvar.`.
+- Faça o _commit_ com a mensagem:
+```
+feat: validando e formatando dados antes de salvar
+```
 
 # 32. Gravação do preço do livro no item da compra
 
@@ -2822,7 +2924,10 @@ class CompraSerializer(ModelSerializer):
 ```
 
 - Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
-- Faça o _commit_ com a mensagem `feat: acrescentando a data da compra`.
+- Faça o _commit_ com a mensagem:
+```
+feat: acrescentando a data da compra
+```
 
 # 34. Inclusão do tipo de pagamento à entidade de Compra
 
@@ -2874,7 +2979,10 @@ class CompraSerializer(ModelSerializer):
 > O campo `tipo_pagamento` foi incluído no atributo `fields` do serializer.
 
 - Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
-- Faça o _commit_ com a mensagem `feat: adicionando tipo de pagamento à entidade de Compra`.
+- Faça o _commit_ com a mensagem:
+```
+feat: adicionando tipo de pagamento à entidade de Compra
+```
 
 # 35. Inclusão de ações personalizadas
 
@@ -2982,7 +3090,11 @@ from core.serializers import (
   - Altere o preço de um livro com um preço inválido ou negativo.
   - Altere o preço de um livro sem fornecer o preço.
 
-- Faça o _commit_ com a mensagem `feat: alterando o preço de um livro`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: alterando o preço de um livro
+```
 
 ## Ajustando o estoque de um livro
 
@@ -3050,7 +3162,11 @@ Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa a�
   - Ajuste o estoque de um livro.
   - Ajuste o estoque de um livro com um valor inválido.
   - Ajuste o estoque de um livro sem fornecer um valor.
-- Faça o _commit_ com a mensagem `feat: ajustando o estoque de um livro`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: ajustando o estoque de um livro
+```
 
 ## Finalizando a compra e atualizando a quantidade de itens em estoque
 
@@ -3125,7 +3241,11 @@ class CompraViewSet(ModelViewSet):
   - Tente finalizar uma compra com quantidade de itens maior do que a quantidade em estoque.
   - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
 
-- Faça o _commit_ com a mensagem `feat: finalizando a compra e atualizando a quantidade de itens em estoque`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: finalizando a compra e atualizando a quantidade de itens em estoque
+```
 
 ## Gerando um relatório de vendas do mês
 
@@ -3162,7 +3282,11 @@ Vamos criar uma ação personalizada para gerar um relatório de vendas do mês.
 
 - Para testar:
   - Gere um relatório de vendas do mês.
-- Faça o _commit_ com a mensagem `feat: gerando um relatório de vendas do mês`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: gerando um relatório de vendas do mês
+```
 
 ## Listando os livros com mais de 10 cópias vendidas
 
@@ -3286,7 +3410,11 @@ Vamos acrescentar outros filtros na listagem de livros.
 
 - Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora`, `Livro` e `Compra`.
 
-- Faça o _commit_ com a mensagem `feat: utilizando filtros`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: utilizando filtros
+```
 
 # 37. Utilização de busca textual
 
@@ -3321,7 +3449,10 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 - Acrescente a busca textual nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
 
-- Faça o _commit_ com a mensagem `feat: adicionando busca textual`.
+- Faça o _commit_ com a mensagem:
+```
+feat: adicionando busca textual
+```
 
 # 38. Utilização de ordenação dos resultados
 
@@ -3393,7 +3524,10 @@ Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 **Exercício**
 
 - Acrescente a ordenação nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
-- Faça o _commit_ com a mensagem `feat: adicionando ordenação`.
+- Faça o _commit_ com a mensagem:
+```
+feat: adicionando ordenação
+```
 
 ---
 
@@ -3540,8 +3674,13 @@ compras = Compra.objects.all().order_by('-total')
 compras = Compra.objects.filter(total__gte=100)
 ```
 
-- Faça o _commit_ com a mensagem `feat: adicionando o total da compra`.
+**Commit**
 
+- Faça o _commit_ com a mensagem:
+
+```
+feat: adicionando o total da compra
+```
 
 # Exercícios Garagem
 
@@ -3552,7 +3691,10 @@ O projeto **Garagem** é um projeto de uma garagem de carros. O objetivo é prat
 Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do [template](https://github.com/marrcandre/template_django_pdm).
 
 1. Pode chamar o repositório de `garagem`.
-2. Nomeie o _commit_ como sendo `feat: Criação do projeto`.
+2. Nomeie o _commit_ como sendo:
+
+    `feat: Criação do projeto`.
+
 3. Siga [esses passos](#6-inclusão-da-editora-no-projeto-livraria) para criar a API.
    - Você pode utilizar o script de criação da API também, conforme explicado [aqui](#8-criação-da-api-para-livro).
 4. Crie as seguintes APIs, **fazendo um _commit_ para cada etapa**:
@@ -3888,7 +4030,11 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 - Coloque a variável `MODE` com o valor `MIGRATE` no arquivo `.env`.
 -  Faça o upload de uma imagem pelo `Admin` do `Django` e verifique se ela foi salva no `Cloudinary`, na opção `Media Explorer`.
 -  Se deu certo, sua aplicação deve estar funcionando normalmente, utilizando o `Cloudinary` para armazenar os arquivos estáticos.
-- Faça o _commit_ com a mensagem `feat: adicionando Cloudinary`.
+- Faça o _commit_ com a mensagem:
+
+```
+feat: adicionando Cloudinary
+```
 
 # A7. Resolução de erros
 
