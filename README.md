@@ -2866,39 +2866,40 @@ No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 
 ---
 
-# 33. Inclusão da data da compra
+# 33. Registro da data da compra
 
-No momento, não existe nenhum registro da data da compra. Vamos incluir a data da compra, que será definida automaticamente no momento da criação da compra.
+Atualmente, não existe nenhum registro da data da compra. Vamos incluir esse campo para que a data seja definida automaticamente no momento da criação da compra.
 
-- Vamos incluir o campo `data` na entidade `Compra`, em `models/compra.py`:
+No arquivo `models/compra.py`, adicione o campo `data` na entidade **Compra**:
 
 ```python
 ...
 class Compra(models.Model):
-...
+    ...
     usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name='compras')
     status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.CARRINHO)
-    data = models.DateTimeField(auto_now_add=True) # campo novo
-...
+    data = models.DateTimeField(auto_now_add=True)  # campo novo
 ```
 
-> O campo `data` é um campo do tipo `DateTimeField`, que armazena a data e a hora da compra.
+> O campo data é do tipo `DateTimeField`, que armazena tanto a data quanto a hora da compra.
 
-> O parâmetro `auto_now_add=True` indica que o campo será preenchido automaticamente com a data e hora atual, quando a compra for criada.
+> O parâmetro `auto_now_add=True` faz com que o campo seja preenchido automaticamente com a data e hora atuais no momento em que a compra é criada.
 
-- Execute as migrações.
+**Migração**
 
-Você receberá um erro na migration, pois o campo `data` não pode ser nulo.
+Agora, execute as migrações.
 
-- Escolha a opção 1, que é a opção de preencher o campo com a data atual (`timezone.now`).
+Durante a criação da migration, será exibido um erro informando que o campo data não pode ser nulo.
 
-- Execute as migrações no banco de dados publicado, caso você esteja utilizando.
+Escolha a **opção 1**, que preenche automaticamente o campo com a data atual (`timezone.now`).
+
+Depois, aplique as migrações também no banco publicado, caso você esteja utilizando.
 
 **Modificando o serializer de compra para mostrar a data da compra**
 
-Para que a data da compra seja mostrada no endpoint, precisamos modificar o serializer de `Compra` para incluir o campo `data`.
+Para que a data apareça no endpoint, vamos incluir esse campo no serializer de Compra.
 
-- No `serializers/compra.py`, vamos incluir o campo `data` no serializer de `Compra`:
+No arquivo `serializers/compra.py`, modifique o código da seguinte forma:
 
 ```python
 from rest_framework.serializers import (
@@ -2923,11 +2924,20 @@ class CompraSerializer(ModelSerializer):
 ...
 ```
 
-- Para testar, crie uma nova compra e verifique que a data da compra foi gravada.
+**Testando**
+
+- Crie uma nova compra.
+- Verifique se a data foi gravada corretamente no banco de dados.
+- Confira se o campo aparece na resposta do endpoint.
+
+**Commit**
+
 - Faça o _commit_ com a mensagem:
 ```
-feat: acrescentando a data da compra
+feat: registrando a data da compra
 ```
+
+---
 
 # 34. Inclusão do tipo de pagamento à entidade de Compra
 
