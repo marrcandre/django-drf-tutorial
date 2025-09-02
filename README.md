@@ -2824,6 +2824,15 @@ class ItensCompra(models.Model):
 
 > O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
+**Calculando o total do item de compra baseado no preço do livro**
+
+- No `ItensCompraSerializer`, atualize a função `get_total` para usar o preço gravado no item, e não mais o preço atual do livro:
+
+```python
+    def get_total(self, instance):
+        return instance.quantidade * instance.preco
+```
+
 **Calculando o total da compra com base no preço do item**
 
 - No arquivo `models/compra.py`, altere a propriedade `total` da model `Compra`:
@@ -2835,7 +2844,37 @@ class ItensCompra(models.Model):
         return sum(item.preco * item.quantidade for item in self.itens.all())
 ...
 ```
+
 Agora o **total da compra** considera o preço registrado no item, e não o preço atual do livro.
+
+**Inclua o `preco` nos campos `fields` dos serializers**
+
+```python
+class ItensCompraCreateUpdateSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = ('livro', 'quantidade', 'preco')  # mudou
+```
+
+```python
+class ItensCompraListSerializer(ModelSerializer):
+    livro = CharField(source='livro.titulo', read_only=True)
+
+    class Meta:
+        model = ItensCompra
+        fields = ('quantidade', 'preco', 'livro')  # mudou
+        depth = 1
+```
+
+```python
+class ItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = ('livro', 'quantidade', 'preco', 'total')  # mudou
+...
+```
+
+**Testando**
 
 - Para testar, crie uma nova compra e verifique que o preço do livro foi gravado no item da compra.
 
@@ -2865,6 +2904,8 @@ No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 - Consulte a compra anterior: o preço gravado não muda.
 
 ---
+
+**Commit**
 
 ```
 feat: Gravação do preço do livro no item da compra
