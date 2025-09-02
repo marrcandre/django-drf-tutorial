@@ -2799,7 +2799,7 @@ Até agora, o preço do item da compra era calculado dinamicamente a partir do l
 ...
 class ItensCompra(models.Model):
 ...
-    preco = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    preco = models.DecimalField(max_digits=7, decimal_places=2, default=0)
 ```
 
 - Execute as migrações.
@@ -2864,7 +2864,11 @@ No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 - Atualize o preço de um livro.
 - Consulte a compra anterior: o preço gravado não muda.
 
----
+--- 
+
+```
+feat: Gravação do preço do livro no item da compra
+```
 
 # 33. Registro da data da compra
 
