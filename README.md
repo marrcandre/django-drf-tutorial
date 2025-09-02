@@ -677,7 +677,7 @@ class Livro(models.Model):
     titulo = models.CharField(max_length=255)
     isbn = models.CharField(max_length=32, null=True, blank=True)
     quantidade = models.IntegerField(default=0,  null=True, blank=True)
-    preco = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=True, blank=True)
+    preco = models.DecimalField(max_digits=7, decimal_places=2, default=0)
 
     def __str__(self):
         return f'({self.id}) {self.titulo} ({self.quantidade})'
@@ -3065,7 +3065,7 @@ from rest_framework.serializers import (
 )
 ...
 class LivroAlterarPrecoSerializer(Serializer):
-    preco = DecimalField(max_digits=10, decimal_places=2)
+    preco = DecimalField(max_digits=7, decimal_places=2)
 
     def validate_preco(self, value):
         '''Valida se o preço é um valor positivo.'''
@@ -3770,7 +3770,7 @@ Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, cr
 5. Crie a API para o `Veiculo` no projeto `Garagem`.
    - Crie o modelo `Veiculo`, com os seguintes atributos:
      -   `ano` (inteiro, permite nulo, default 0).
-     -   `preco` (decimal, máximo 10 dígitos, 2 casas decimais, permite nulo, default 0).
+     -   `preco` (decimal, máximo 7 dígitos, 2 casas decimais, permite nulo, default 0).
      -   `modelo` (chave estrangeira para `Modelo`).
      -   `cor` (chave estrangeira para `Cor`).
      -   `acessorios` (chave estrangeira para `Acessorio`, muitos para muitos).
