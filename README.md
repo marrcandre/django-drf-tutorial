@@ -2864,7 +2864,7 @@ No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 - Atualize o preço de um livro.
 - Consulte a compra anterior: o preço gravado não muda.
 
---- 
+---
 
 ```
 feat: Gravação do preço do livro no item da compra
@@ -4233,7 +4233,7 @@ curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
 
 Seguem abaixo alguns comandos úteis para serem executados no **Django Shell**:
 
--   **Criar um objeto:**
+**Criar um objeto:**
 
 ```python
 from core.models import Categoria
@@ -4241,19 +4241,19 @@ c = Categoria(descricao='Teste')
 c.save()
 ```
 
--   **Listar todos os objetos:**
+**Listar todos os objetos:**
 
 ```python
 Categoria.objects.all()
 ```
 
--   **Listar um objeto específico:**
+**Listar um objeto específico:**
 
 ```python
 Categoria.objects.get(id=1)
 ```
 
--   **Atualizar um objeto:**
+**Atualizar um objeto:**
 
 ```python
 c = Categoria.objects.get(id=1)
@@ -4261,21 +4261,21 @@ c.descricao = 'Teste 2'
 c.save()
 ```
 
--   **Deletar um objeto:**
+**Deletar um objeto:**
 
 ```python
 c = Categoria.objects.get(id=1)
 c.delete()
 ```
 
-- Listar todos os livros com preço igual a zero:
+**Listar todos os livros com preço igual a zero:**
 
 ```python
 from core.models import Livro
 Livro.objects.filter(preco=10)
 ```
 
-- Mostrar a quantidade de livros com preço igual a zero:
+**Mostrar a quantidade de livros com preço igual a zero:**
 
 ```python
 Livro.objects.filter(preco=0).count()
@@ -4287,19 +4287,19 @@ ou
 len(Livro.objects.filter(preco=0))
 ```
 
-- Alterar o preço de todos os livros com preço igual a zero:
+**Alterar o preço de todos os livros com preço igual a zero:**
 
 ```python
 Livro.objects.filter(preco=0).update(preco=10)
 ```
 
-- Listar todos os livros com preço nulo:
+**Listar todos os livros com preço nulo:**
 
 ```python
 Livro.objects.filter(preco__isnull=True)
 ```
 
-- Alterar a editora de todos os livros de um editora específica:
+**Alterar a editora de todos os livros de um editora específica:**
 
 ```python
 for livro in Editora.objects.get(id=167).livros.all():
@@ -4307,19 +4307,19 @@ for livro in Editora.objects.get(id=167).livros.all():
     livro.save()
 ```
 
-- Listar todos os livros de uma categoria específica (usando o atributo `related_name`):
+**Listar todos os livros de uma categoria específica (usando o atributo `related_name`):**
 
 ```python
 Categoria.objects.get(descricao='Comédia').livros.all()
 ```
 
-- Listar todos os livros de uma categoria específica (usando o atributo `categoria`):
+**Listar todos os livros de uma categoria específica (usando o atributo `categoria`):**
 
 ```python
 Livro.objects.filter(categoria__descricao='Comédia')
 ```
 
-- Remover todas as categorias que não possuem livros:
+**Remover todas as categorias que não possuem livros:**
 
 ```python
 for categoria in Categoria.objects.all():
@@ -4327,6 +4327,18 @@ for categoria in Categoria.objects.all():
         print(categoria)
         categoria.delete()
 ```
+
+**Ajustar o preço do item de compra com base no preco do livro se o preço do item de compra estiver zerado.**
+
+```python
+from compras.models import ItensCompra
+
+for item in ItensCompra.objects.filter(preco=0):
+    item.preco = item.livro.preco
+    item.save()
+```
+
+---
 
 # A11. DBShell - Comandos úteis
 
