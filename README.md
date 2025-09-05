@@ -3109,15 +3109,39 @@ print(compra.get_tipo_pagamento_display()) # mostra o valor legível (ex: 'Cart�
 feat: adicionando tipo de pagamento à entidade de Compra
 ```
 
-# 35. Inclusão de ações personalizadas
+# 35a. Introdução às ações personalizadas no DRF
 
-No **Django REST Framework (DRF)**, **ações personalizadas** são endpoints adicionais que você pode criar em uma viewset usando o decorador `@action`. Elas permitem que você estenda as funcionalidades das viewsets além dos métodos RESTful padrão, como `list`, `retrieve`, `create`, `update` e `destroy`. Essas ações são úteis para operações específicas que não se encaixam perfeitamente nas operações CRUD tradicionais.
+**Objetivo**
 
-**Como funcionam as ações personalizadas**
+Entender o conceito de **ações personalizadas (actions)** no Django REST Framework e aprender a criar uma na prática.
 
-Ações personalizadas são métodos definidos dentro de uma viewset e decorados com `@action`, que define o comportamento específico do endpoint, incluindo o verbo HTTP que será utilizado e se a ação é aplicada a um **recurso específico** ou a uma **coleção**.
+---
 
-## Alterando o preço de um livro
+**O que são ações personalizadas?**
+
+No DRF, os ViewSets já oferecem automaticamente as ações padrão:
+
+- `list`: listar objetos
+- `retrieve`: buscar objeto específico
+- `create`: criar novo objeto
+- `update` / `partial_update`: atualizar objeto
+- `destroy`: excluir objeto
+
+Essas ações cobrem o básico do CRUD.
+Mas muitas vezes precisamos de **funcionalidades extras**, que não se encaixam nesses métodos.
+É aí que entram as **ações personalizadas**: endpoints adicionais que podemos criar em um `ViewSet`, usando o decorador `@action`.
+
+Exemplos práticos:
+
+- Alterar o preço de um livro.
+- Marcar uma compra como "paga".
+- Gerar um relatório.
+
+---
+
+**Alterando o preço de um livro**
+
+Nosso primeiro exemplo será uma ação para alterar o preço de um livro específico, passando o novo preço no corpo da requisição e o ID do livro na URL.
 
 **Criando um serializer específico para a ação**
 
@@ -3157,6 +3181,8 @@ from .livro import (
 )
 ...
 ```
+
+---
 
 **Criando uma ação personalizada para alterar o preço de um livro**
 
@@ -3210,10 +3236,25 @@ from core.serializers import (
 
 > O status `HTTP_200_OK` indica que a requisição foi bem sucedida.
 
-- Para testar:
-  - Altere o preço de um livro.
-  - Altere o preço de um livro com um preço inválido ou negativo.
-  - Altere o preço de um livro sem fornecer o preço.
+---
+
+**Testando a action**
+
+- No Swagger, localize o endpoint:
+**POST /livros/{id}/alterar_preco/**
+- Envie o corpo da requisição:
+
+```json
+{
+  "preco": 59.90
+}
+```
+
+- Verifique se o livro teve seu preço alterado corretamente.
+
+---
+
+**Commit**
 
 - Faça o _commit_ com a mensagem:
 
@@ -3221,7 +3262,9 @@ from core.serializers import (
 feat: alterando o preço de um livro
 ```
 
-## Ajustando o estoque de um livro
+# 35b. Ajustando o estoque de um livro
+
+O objetivo desta aula é criar uma ação personalizada para ajustar o estoque de um livro, permitindo aumentar ou diminuir a quantidade em estoque.
 
 **Criando um serializer específico para a ação**
 
@@ -3255,6 +3298,8 @@ from .livro import (
 )
 ...
 ```
+
+---
 
 **Criando uma ação personalizada para ajustar o estoque de um livro**
 
