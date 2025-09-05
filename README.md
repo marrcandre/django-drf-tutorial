@@ -3141,7 +3141,7 @@ Exemplos práticos:
 
 **Alterando o preço de um livro**
 
-Nosso primeiro exemplo será uma ação para alterar o preço de um livro específico, passando o novo preço no corpo da requisição e o ID do livro na URL.
+Nosso primeiro exemplo será uma ação para alterar o **preço de um livro específico**, passando o novo preço no corpo da requisição e o ID do livro na URL.
 
 **Criando um serializer específico para a ação**
 
@@ -3262,7 +3262,106 @@ from core.serializers import (
 feat: alterando o preço de um livro
 ```
 
-# 35b. Ajustando o estoque de um livro
+---
+# 35b. Ações personalizadas em coleções
+
+**Objetivo**
+
+Aprender a criar ações personalizadas que atuam sobre o conjunto inteiro de objetos, e não apenas em um item específico.
+
+---
+
+**Quando usar** `detail=False`?
+
+- `detail=True` cria endpoints para um item específico, como:
+    ```
+    /api/livros/{id}/alterar_preco/
+    ```
+- `detail=False` cria endpoints para o conjunto de registros, como:
+    ```
+    /api/livros/mais_vendidos/
+    /api/compras/relatorio_vendas_mes/
+    ```
+
+Essas ações são ideais para consultas, estatísticas e relatórios.
+
+---
+
+**Exemplo: Relatório de vendas do mês**
+
+No arquivo `views/compra.py`, dentro da `CompraViewSet`, crie o relatório:
+
+```python
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import status
+from django.utils import timezone
+
+class CompraViewSet(ModelViewSet):
+        queryset = Compra.objects.all()
+        serializer_class = CompraSerializer
+
+        @action(detail=False, methods=['get'])
+        def relatorio_vendas_mes(self, request):
+                agora = timezone.now()
+                inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+                compras = Compra.objects.filter(
+                        status=Compra.StatusCompra.FINALIZADO,
+                        data__gte=inicio_mes
+                )
+
+                total_vendas = sum(compra.total for compra in compras)
+                quantidade_vendas = compras.count()
+
+                return Response(
+                        {
+                                "status": "Relatório de vendas deste mês",
+                                "total_vendas": total_vendas,
+                                "quantidade_vendas": quantidade_vendas,
+                        },
+                        status=status.HTTP_200_OK,
+                )
+```
+
+---
+
+**Explicação**
+
+- `@action(detail=False, methods=['get'])`: cria o endpoint `/api/compras/relatorio_vendas_mes/`.
+- `timezone.now()`: captura a data e hora atuais.
+- `inicio_mes`: marca o primeiro dia do mês(para filtrar compras do mês atual).
+- `Compra.objects.filter(...)`: filtra compras finalizadas no mês atual.
+- `sum(compra.total for compra in compras)`: soma os valores totais.
+
+---
+
+**Testando**
+
+No Swagger, acesse:
+```
+GET /compras/relatorio_vendas_mes/
+```
+A resposta será algo como:
+
+```json
+{
+    "status": "Relatório de vendas deste mês",
+    "total_vendas": 1249.80,
+    "quantidade_vendas": 8
+}
+```
+
+---
+
+**Commit**
+
+```shell
+feat: adicionando relatório de vendas mensal em compras"
+```
+
+
+<!-- # 35b. Ajustando o estoque de um livro
 
 O objetivo desta aula é criar uma ação personalizada para ajustar o estoque de um livro, permitindo aumentar ou diminuir a quantidade em estoque.
 
@@ -3520,7 +3619,7 @@ Ao fazer uma solicitação `GET` para o endpoint `/api/livros/mais_vendidos/`, a
     "total_vendidos": 25
   },
 ]
-```
+``` -->
 
 # 36. Utilização de filtros
 
