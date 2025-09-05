@@ -2911,6 +2911,8 @@ No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 feat: Gravação do preço do livro no item da compra
 ```
 
+---
+
 # 33. Registro da data da compra
 
 Atualmente, não existe nenhum registro da data da compra. Vamos incluir esse campo para que a data seja definida automaticamente no momento da criação da compra.
@@ -2974,6 +2976,37 @@ class CompraSerializer(ModelSerializer):
 - Crie uma nova compra.
 - Verifique se a data foi gravada corretamente no banco de dados.
 - Confira se o campo aparece na resposta do endpoint.
+
+**Incluindo a data no Admin do Django**
+
+No arquivo `admin.py` do app `core`, modifique o código da model `Compra`:
+
+```python
+@admin.register(Compra)
+class CompraAdmin(admin.ModelAdmin):
+    @admin.display(description="Total")
+    def total_formatado(self, obj):
+        """Exibe R$ 123,45 em vez de 123.45."""
+        return f"R$ {obj.total:.2f}"
+
+    list_display = ('usuario', 'status', 'total_formatado', 'data')  # mostra na listagem
+    ordering = ('usuario', 'status', 'data')  # ordena por esses campos
+    search_fields = ('usuario__email', 'status')  # campos pesquisáveis
+    list_filter = ('status', 'data')  # filtros laterais
+    list_per_page = 10
+    inlines = [ItensCompraInline]
+    readonly_fields = ('data', 'total_formatado',)  # campos somente leitura
+...
+```
+
+**Exercício**
+
+- Inclua um campo `data_atualizacao`, que armazena a data da última atualização da compra.
+  - Dicas:
+    - use o parâmetro `auto_now=True`.
+    - inclua o campo no serializer de `Compra`.
+    - inclua o campo no `list_display` e `readonly_fields` do Admin.
+    - modifique o nome do campo `data` para `data_criacao`.
 
 **Commit**
 
