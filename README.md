@@ -3019,9 +3019,18 @@ feat: registrando a data da compra
 
 # 34. Inclusão do tipo de pagamento à entidade de Compra
 
-Vamos adicionar o tipo de pagamento à compra. O tipo de pagamento pode ser `cartão de crédito`, `cartão de débito`, `pix`, `boleto`, `transferência bancária`, `dinheiro` ou `outro`.
+**Contexto**
 
-- No `models\compra.py`, vamos incluir o campo `tipo_pagamento` no model `Compra`:
+Em qualquer sistema de e-commerce ou livraria online, é essencial registrar **como cada compra foi paga**.
+Além de organizar a operação (financeiro, emissão de notas, devoluções), também permite gerar **estatísticas úteis**:
+
+- Quantas compras foram feitas via cartão de crédito?
+- Quantos clientes preferem PIX ou boleto?
+- Qual é a forma de pagamento mais usada?
+
+**Implementação no Model**
+
+No arquivo `models/compra.py`, adicione o campo `tipo_pagamento`:
 
 ```python
 ...
@@ -3035,15 +3044,24 @@ class Compra(models.Model):
         DINHEIRO = 6, 'Dinheiro'
         OUTRO = 7, 'Outro'
 ...
-    tipo_pagamento = models.IntegerField(choices=TipoPagamento.choices, default=TipoPagamento.CARTAO_CREDITO)
+    tipo_pagamento = models.IntegerField(
+        choices=TipoPagamento.choices,
+        default=TipoPagamento.CARTAO_CREDITO
+    )
 ...
 ```
 
-> O campo `tipo_pagamento` é um campo do tipo `IntegerField`, que armazena o tipo de pagamento da compra. O parâmetro `choices` indica as opções de pagamento. O parâmetro `default` indica o tipo de pagamento padrão.
+**O que está acontecendo aqui?**
 
-- Execute as migrações.
+- `IntegerChoices` cria uma lista de opções amigáveis para o campo.
+- O banco armazena apenas o **número**, mas a aplicação mostra o valor legível.
+- Definimos o **padrão** como cartão de crédito.
 
-- Inclua o campo `tipo_pagamento` no serializer de `Compra`:
+Execute as migrações.
+
+**Exibição no Serializer**
+
+No arquivo `serializers/compra.py`, inclua o novo campo:
 
 ```python
 ...
@@ -3066,7 +3084,26 @@ class CompraSerializer(ModelSerializer):
 
 > O campo `tipo_pagamento` foi incluído no atributo `fields` do serializer.
 
-- Para testar, crie uma nova compra e verifique que o tipo de pagamento foi gravado.
+**Testando**
+
+- Crie uma nova compra e verifique que o **tipo de pagamento padrão** foi gravado.
+- No **Django Shell**, rode:
+
+```python
+compra = Compra.objects.first()
+print(compra.tipo_pagamento)              # mostra o valor interno (ex: 1)
+print(compra.get_tipo_pagamento_display()) # mostra o valor legível (ex: 'Cartão de Crédito')
+```
+
+**Atividade Prática**
+
+- **Adicione um novo tipo de pagamento** chamado “Cheque” (por exemplo).
+- Faça as migrações.
+- Crie uma compra no Django Admin usando “Cheque”.
+- Acesse o endpoint da API e confirme que o campo aparece corretamente.
+
+**Commit**
+
 - Faça o _commit_ com a mensagem:
 ```
 feat: adicionando tipo de pagamento à entidade de Compra
