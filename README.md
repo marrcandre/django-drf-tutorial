@@ -3193,7 +3193,6 @@ Vamos agora criar uma ação personalizada para alterar o preço de um livro. Es
 ```python
 from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.filters import OrderingFilter, SearchFilter
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
