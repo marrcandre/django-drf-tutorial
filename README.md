@@ -3272,11 +3272,11 @@ Aprender a criar ações personalizadas que atuam sobre o conjunto inteiro de ob
 
 **Quando usar** `detail=False`?
 
-- `detail=True` cria endpoints para um item específico, como:
+- `detail=True` cria endpoints para um **item específico**, como:
     ```
     /api/livros/{id}/alterar_preco/
     ```
-- `detail=False` cria endpoints para o conjunto de registros, como:
+- `detail=False` cria endpoints para o **conjunto de registros**, como:
     ```
     /api/livros/mais_vendidos/
     /api/compras/relatorio_vendas_mes/
@@ -3359,6 +3359,91 @@ A resposta será algo como:
 feat: adicionando relatório de vendas mensal em compras"
 ```
 
+# 35c. Finalizando a compra e atualizando o estoque
+
+**Objetivo**
+
+Aprender a criar uma ação personalizada que realiza ajustes em vários registros (compra e itens de estoque), garantindo integridade transacional e validação efetiva durante o processo de finalização de compra.
+
+---
+
+**Contexto do problema**
+
+Quando o usuário faz uma compra, ela inicia no status `CARRINHO` e ainda não impacta o estoque dos livros. Ao finalizar a compra, o status passa para `FINALIZADO` e o sistema precisa:
+
+- Diminuir o estoque dos livros conforme a quantidade comprada.
+- Garantir que não seja possível finalizar se o estoque for insuficiente.
+- Validar o status da compra para evitar duplicidade.
+
+---
+
+**Implementação do endpoint de finalização**
+
+No arquivo `views/compra.py`, crie a ação personalizada `finalizar` dentro do `CompraViewSet`:
+
+```python
+from django.db import transaction
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+class CompraViewSet(ModelViewSet):
+    ...
+    @action(detail=True, methods=["post"])
+    def finalizar(self, request, pk=None):
+        compra = self.get_object()
+
+        # Checa se a compra já foi finalizada
+        if compra.status != Compra.StatusCompra.CARRINHO:
+            return Response(
+                status=status.HTTP_400_BAD_REQUEST,
+                data={'status': 'Compra já finalizada'}
+            )
+
+        # Garante integridade transacional durante a finalização
+        with transaction.atomic():
+            for item in compra.itens.all():
+
+                # Valida se o estoque é suficiente para cada livro
+                if item.quantidade > item.livro.quantidade:
+                    return Response(
+                        status=status.HTTP_400_BAD_REQUEST,
+                        data={
+                            'status': 'Quantidade insuficiente',
+                            'livro': item.livro.titulo,
+                            'quantidade_disponivel': item.livro.quantidade,
+                        }
+                    )
+
+                # Atualiza o estoque dos livros
+                item.livro.quantidade -= item.quantidade
+                item.livro.save()
+
+            # Finaliza a compra: atualiza status
+            compra.status = Compra.StatusCompra.FINALIZADO
+            compra.save()
+
+        return Response(status=status.HTTP_200_OK, data={'status': 'Compra finalizada'})
+```
+
+- O decorador `@action` gera o endpoint `api/compras/{id}/finalizar` para esse recurso.
+- O bloco `with transaction.atomic()` garante que toda operação será executada com consistência: se algo falhar, nada será salvo.
+- O método verifica o status, valida o estoque e realiza a atualização do status e estoque dos livros.
+
+---
+- Para testar:
+  - Tente finalizar uma compra que não foi finalizada.
+  - Tente finalizar uma compra que já foi finalizada.
+  - Tente finalizar uma compra com quantidade de itens maior do que a quantidade em estoque.
+  - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
+---
+
+**Commit**
+
+```shell
+feat: finalizando a compra e atualizando a quantidade de itens em estoque
+```
+
 
 <!-- # 35b. Ajustando o estoque de um livro
 
@@ -3434,126 +3519,6 @@ Vamos criar uma ação personalizada para ajustar o estoque de um livro. Essa a�
 
 ```
 feat: ajustando o estoque de um livro
-```
-
-## Finalizando a compra e atualizando a quantidade de itens em estoque
-
-Nesse momento, a compra é criada com o status `CARRINHO`. Vamos criar um endpoint para finalizar a compra, alterando o status da compra para `FINALIZADO`. No momento que a compra é finalizada, a quantidade de itens em estoque deve ser atualizada, isto é, a quantidade de itens em estoque deve ser reduzida pela quantidade de itens comprados.
-
-- No `views/compra.py`, vamos criar um método `finalizar` na view `CompraViewSet`:
-
-```python
-from django.db import transaction
-
-from rest_framework import status
-from rest_framework.decorators import action
-from rest_framework.response import Response
-...
-class CompraViewSet(ModelViewSet):
-...
-    @action(detail=True, methods=["post"])
-    def finalizar(self, request, pk=None):
-        compra = self.get_object()
-
-        if compra.status != Compra.StatusCompra.CARRINHO:
-            return Response(
-                status=status.HTTP_400_BAD_REQUEST,
-                data={'status': 'Compra já finalizada'},
-            )
-
-        with transaction.atomic():
-            for item in compra.itens.all():
-
-                if item.quantidade > item.livro.quantidade:
-                    return Response(
-                        status=status.HTTP_400_BAD_REQUEST,
-                        data={
-                            'status': 'Quantidade insuficiente',
-                            'livro': item.livro.titulo,
-                            'quantidade_disponivel': item.livro.quantidade,
-                        },
-                    )
-
-                item.livro.quantidade -= item.quantidade
-                item.livro.save()
-
-            compra.status = Compra.StatusCompra.FINALIZADO
-            compra.save()
-
-        return Response(status=status.HTTP_200_OK, data={'status': 'Compra finalizada'})
-```
-
-> O decorador `@action` cria um endpoint para a ação `finalizar`, no formato `api/compras/{id}/finalizar`.
-
-> O método `finalizar` é um método de ação que finaliza a compra. Ele recebe a compra que está sendo finalizada.
-
-> Se a compra já foi finalizada, retorna um erro.
-
-> Se a quantidade de itens em estoque for menor do que a quantidade de itens comprados, retorna um erro.
-
-> Se a quantidade de itens em estoque for maior ou igual à quantidade de itens comprados, atualiza a quantidade de itens em estoque e finaliza a compra.
-
-> O comando `with transaction.atomic()` garante que todas as operações dentro do bloco `with` sejam executadas ou nenhuma seja executada.
-
-> O método `save` é chamado para salvar a compra e o livro.
-
-> O método `Response` retorna uma resposta HTTP.
-
-> O status `HTTP_200_OK` indica que a requisição foi bem sucedida.
-
-> O status `HTTP_400_BAD_REQUEST` indica que a requisição não foi bem sucedida.
-
-- Para testar:
-  - Tente finalizar uma compra que não foi finalizada.
-  - Tente finalizar uma compra que já foi finalizada.
-  - Tente finalizar uma compra com quantidade de itens maior do que a quantidade em estoque.
-  - Tente finalizar uma compra com quantidade de itens menor ou igual à quantidade em estoque.
-
-- Faça o _commit_ com a mensagem:
-
-```
-feat: finalizando a compra e atualizando a quantidade de itens em estoque
-```
-
-## Gerando um relatório de vendas do mês
-
-Vamos criar uma ação personalizada para gerar um relatório de vendas do mês. Essa ação será aplicada a uma **coleção**, ou seja, a todas as compras.
-
-- No `views/compra.py`, vamos criar um método `relatorio_vendas_mes` na view `CompraViewSet`:
-
-```python
-    @action(detail=False, methods=['get'])
-    def relatorio_vendas_mes(self, request):
-        agora = timezone.now()
-        inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
-
-        compras = Compra.objects.filter(status=Compra.StatusCompra.FINALIZADO, data__gte=inicio_mes)
-
-        total_vendas = sum(compra.total for compra in compras)
-        quantidade_vendas = compras.count()
-
-        return Response(
-            {
-                'status': 'Relatório de vendas deste mês',
-                'total_vendas': total_vendas,
-                'quantidade_vendas': quantidade_vendas,
-            },
-            status=status.HTTP_200_OK,
-        )
-```
-
-> O decorador `@action` cria um endpoint para a ação `relatorio_vendas_mes`, no formato `api/compras/relatorio_vendas_mes`.
-
-> O método `relatorio_vendas_mes` é um método de ação que gera um relatório de vendas do mês.
-
-> O método `timezone.now()` retorna a data e hora atuais.
-
-- Para testar:
-  - Gere um relatório de vendas do mês.
-- Faça o _commit_ com a mensagem:
-
-```
-feat: gerando um relatório de vendas do mês
 ```
 
 ## Listando os livros com mais de 10 cópias vendidas
