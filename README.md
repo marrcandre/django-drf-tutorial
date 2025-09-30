@@ -3161,11 +3161,11 @@ from rest_framework.serializers import (
 class LivroAlterarPrecoSerializer(Serializer):
     preco = DecimalField(max_digits=7, decimal_places=2)
 
-    def validate_preco(self, value):
+    def validate_preco(self, preco):
         '''Valida se o preço é um valor positivo.'''
-        if value <= 0:
+        if preco <= 0:
             raise ValidationError('O preço deve ser um valor positivo.')
-        return value
+        return preco
 ...
 ```
 
@@ -3291,36 +3291,36 @@ Essas ações são ideais para consultas, estatísticas e relatórios.
 No arquivo `views/compra.py`, dentro da `CompraViewSet`, crie o relatório:
 
 ```python
+from django.utils import timezone
+from rest_framework import status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import status
-from django.utils import timezone
+from rest_framework.viewsets import ModelViewSet
 
 class CompraViewSet(ModelViewSet):
-        queryset = Compra.objects.all()
-        serializer_class = CompraSerializer
+...
 
-        @action(detail=False, methods=['get'])
-        def relatorio_vendas_mes(self, request):
-                agora = timezone.now()
-                inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    @action(detail=False, methods=['get'])
+    def relatorio_vendas_mes(self, request):
+        agora = timezone.now()
+        inicio_mes = agora.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
 
-                compras = Compra.objects.filter(
-                        status=Compra.StatusCompra.FINALIZADO,
-                        data__gte=inicio_mes
-                )
+        compras = Compra.objects.filter(
+                status=Compra.StatusCompra.FINALIZADO,
+                data__gte=inicio_mes
+        )
 
-                total_vendas = sum(compra.total for compra in compras)
-                quantidade_vendas = compras.count()
+        total_vendas = sum(compra.total for compra in compras)
+        quantidade_vendas = compras.count()
 
-                return Response(
-                        {
-                                "status": "Relatório de vendas deste mês",
-                                "total_vendas": total_vendas,
-                                "quantidade_vendas": quantidade_vendas,
-                        },
-                        status=status.HTTP_200_OK,
-                )
+        return Response(
+                {
+                        "status": "Relatório de vendas deste mês",
+                        "total_vendas": total_vendas,
+                        "quantidade_vendas": quantidade_vendas,
+                },
+                status=status.HTTP_200_OK,
+        )
 ```
 
 ---
