@@ -3253,6 +3253,27 @@ from core.serializers import (
 
 ---
 
+**Documentando a action no Swagger**
+
+- No `views/livro.py`, adicione a documentação para o Swagger:
+
+```python
+from drf_spectacular.utils import extend_schema
+...
+    @extend_schema(
+        request=LivroAlterarPrecoSerializer,
+        responses={200: None},
+        description="Altera o preço de um livro específico.",
+        summary="Alterar preço do livro",
+    )
+    @action(detail=True, methods=['patch'])
+    def alterar_preco(self, request, pk=None):
+        ...
+```
+
+> O decorador `@extend_schema` é usado para documentar a action no Swagger.
+
+- Teste novamente no Swagger e veja que a documentação foi atualizada.
 **Commit**
 
 - Faça o _commit_ com a mensagem:
