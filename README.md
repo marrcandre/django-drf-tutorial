@@ -3371,6 +3371,23 @@ A resposta será algo como:
     "quantidade_vendas": 8
 }
 ```
+**Documentando a action no Swagger**
+
+- No `views/compra.py`, adicione a documentação para o Swagger:
+
+```python
+from drf_spectacular.utils import extend_schema
+...
+    @extend_schema(
+        request=None,
+        responses={200: None},
+        description="Gera um relatório de vendas do mês atual.",
+        summary="Relatório de vendas do mês",
+    )
+    @action(detail=False, methods=['get'])
+    def relatorio_vendas_mes(self, request):
+        ...
+```
 
 ---
 
@@ -3410,6 +3427,12 @@ from rest_framework.response import Response
 
 class CompraViewSet(ModelViewSet):
     ...
+    @extend_schema(
+        request=None,
+        responses={200: None, 400: None},
+        description="Finaliza a compra, atualizando o estoque dos livros.",
+        summary="Finalizar compra",
+    )
     @action(detail=True, methods=["post"])
     def finalizar(self, request, pk=None):
         compra = self.get_object()
