@@ -3335,12 +3335,12 @@ class CompraViewSet(ModelViewSet):
         quantidade_vendas = compras.count()
 
         return Response(
-                {
-                        "status": "Relatório de vendas deste mês",
-                        "total_vendas": total_vendas,
-                        "quantidade_vendas": quantidade_vendas,
-                },
-                status=status.HTTP_200_OK,
+            {
+                'status': 'Relatório de vendas deste mês',
+                'total_vendas': total_vendas,
+                'quantidade_vendas': quantidade_vendas,
+            },
+            status=status.HTTP_200_OK,
         )
 ```
 
@@ -3394,7 +3394,7 @@ from drf_spectacular.utils import extend_schema
 **Commit**
 
 ```shell
-feat: adicionando relatório de vendas mensal em compras"
+feat: adicionando relatório de vendas mensal em compras
 ```
 
 # 35c. Finalizando a compra e atualizando o estoque
