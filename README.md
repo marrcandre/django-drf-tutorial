@@ -3625,9 +3625,7 @@ feat: listando livros com mais de 10 cópias vendidas
 Adicione em `serializers/livro.py`:
 
 ```python
-from rest_framework import serializers
-
-class LivroAjustarEstoqueSerializer(serializers.Serializer):
+class LivroAjustarEstoqueSerializer(Serializer):
     quantidade = serializers.IntegerField()
 
     def validate_quantidade(self, value):
@@ -3635,7 +3633,7 @@ class LivroAjustarEstoqueSerializer(serializers.Serializer):
         if livro:
             nova_quantidade = livro.quantidade + value
             if nova_quantidade < 0:
-                raise serializers.ValidationError('A quantidade em estoque não pode ser negativa.')
+                raise ValidationError('A quantidade em estoque não pode ser negativa.')
         return value
 ```
 
@@ -3653,9 +3651,7 @@ from .livro import (
 Em `views/livro.py`, adicione a action ao `LivroViewSet`:
 
 ```python
-from rest_framework import status, viewsets
-from rest_framework.decorators import action
-from rest_framework.response import Response
+...
 from drf_spectacular.utils import extend_schema, OpenApiExample
 from .serializers import LivroAjustarEstoqueSerializer
 
@@ -3676,17 +3672,19 @@ class LivroViewSet(ModelViewSet):
                 value={'quantidade': ['A quantidade em estoque não pode ser negativa.']},
                 response_only=True,
             ),
-        },
-        tags=["Livros"]
+        }
     )
     @action(detail=True, methods=['post'])
     def ajustar_estoque(self, request, pk=None):
         livro = self.get_object()
+
         serializer = LivroAjustarEstoqueSerializer(data=request.data, context={'livro': livro})
         serializer.is_valid(raise_exception=True)
+
         quantidade_ajuste = serializer.validated_data['quantidade']
         livro.quantidade += quantidade_ajuste
         livro.save()
+        
         return Response(
             {'status': 'Quantidade ajustada com sucesso', 'novo_estoque': livro.quantidade},
             status=status.HTTP_200_OK
