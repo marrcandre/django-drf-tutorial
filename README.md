@@ -3437,8 +3437,8 @@ class CompraViewSet(ModelViewSet):
     def finalizar(self, request, pk=None):
         compra = self.get_object()
 
-        # Checa se a compra já foi finalizada
-        if compra.status != Compra.StatusCompra.CARRINHO:
+        # Verifica se a compra já foi finalizada
+        if compra.status == Compra.StatusCompra.FINALIZADO:
             return Response(
                 status=status.HTTP_400_BAD_REQUEST,
                 data={'status': 'Compra já finalizada'}
@@ -3527,8 +3527,9 @@ class LivroMaisVendidoSerializer(ModelSerializer):
 No arquivo `views/livro.py`, inclua o método `mais_vendidos` na view `LivroViewSet`:
 
 ```python
+from django.db.models import Q, Sum
 ...
-from .serializers import LivroMaisVendidoSerializer
+from core.serializers import LivroMaisVendidoSerializer
 
 class LivroViewSet(viewsets.ModelViewSet):
     queryset = Livro.objects.all()
@@ -3537,7 +3538,10 @@ class LivroViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def mais_vendidos(self, request):
         livros = Livro.objects.annotate(
-            total_vendidos=Sum('itens_compra__quantidade')
+            total_vendidos=Sum(
+                'itens_compra__quantidade',
+                filter=Q(itens_compra__compra__status=Compra.StatusCompra.FINALIZADO)
+            )
         ).filter(total_vendidos__gt=10).order_by('-total_vendidos')
 
         serializer = LivroMaisVendidoSerializer(livros, many=True)
@@ -3554,6 +3558,12 @@ class LivroViewSet(viewsets.ModelViewSet):
 > O decorador `@action(detail=False)` define um endpoint de coleção no formato `/api/livros/mais_vendidos/`.
 
 > O método `annotate` soma o total vendido para cada livro por meio do relacionamento reverso (`itens_compra__quantidade`).
+
+> O `filter` dentro do `Sum` assegura que apenas itens de compras finalizadas sejam considerados.
+
+> O `filter(total_vendidos__gt=10)` retorna apenas livros com mais de 10 unidades vendidas.
+
+> O método Q permite aplicar filtros complexos, garantindo que apenas itens de compras finalizadas sejam considerados.
 
 > Os resultados são filtrados para retornar apenas livros que tenham mais de 10 unidades vendidas e já vêm ordenados do maior para o menor total.
 
@@ -3684,7 +3694,7 @@ class LivroViewSet(ModelViewSet):
         quantidade_ajuste = serializer.validated_data['quantidade']
         livro.quantidade += quantidade_ajuste
         livro.save()
-        
+
         return Response(
             {'status': 'Quantidade ajustada com sucesso', 'novo_estoque': livro.quantidade},
             status=status.HTTP_200_OK
