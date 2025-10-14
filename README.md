@@ -3974,7 +3974,7 @@ A ordenação serve para adicionar a funcionalidade de ordenar os resultados de 
 - Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `OrderingFilter` que irá processar a ordenação; e
 - Adicionar o atributo `ordering_fields`, contendo os campos que permitirão a ordenação.
 - Adicionar o atributo `ordering` com o campo que será utilizado como padrão para ordenação.
-- A `LivroViewSet` ficará assim:
+- A `LivroViewSet` em `views/livro.py` ficará assim:
 
 ```python
 ...
