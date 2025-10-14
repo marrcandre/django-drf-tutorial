@@ -30,6 +30,7 @@ A preparação do ambiente será feita apenas uma vez em cada computador. Ela co
 - [Instale e sincronize as extensões do VS Code.](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
 - [Instale e configure o PDM](#a3-instalação-e-configuração-do-pdm)
 
+---
 
 # 2. Criação do projeto
 
@@ -158,6 +159,8 @@ pdm run dev
 -   Apague o projeto e crie novamente, seguindo as instruções acima.
 -   Verifique se o projeto está rodando e se o `Admin` está em execução.
 -   Observe que configurações precisam ser feitas novamente e quais não foram mais necessárias.
+
+---
 
 # 3. Criação de uma aplicação
 
@@ -318,6 +321,8 @@ feat: criação da model de Categoria
     - refactor: Refatoração do código da model Categoria
     - test: Adição de testes para a model Categoria
 
+---
+
 # 4. Criação de uma API REST
 
 Nesta aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API completa, que permite criar, listar, atualizar e deletar categorias.
@@ -476,6 +481,10 @@ Instale uma ou mais das ferramentas sugeridas.
 feat: criação da API para Categoria
 ```
 
+---
+
+
+
 # 5. Aplicação frontend Vuejs
 
 Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
@@ -499,6 +508,9 @@ Se tudo correu bem, execute a aplicação:
 > Se os dados não aparecerem, entre na opção Inspecionar do seu navegador (F12)
 
 > Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
+
+
+---
 
 
 # 6. Inclusão da Editora no projeto Livraria
@@ -627,6 +639,9 @@ pdm run migrate
 feat: criação da API para Editora
 ```
 
+---
+
+
 # 7. Criação da API para Autor
 
 Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Autor` e a API para ela. Os passos são os mesmos que fizemos para as classes `Categoria` e `Editora`.
@@ -648,6 +663,9 @@ feat: criação da API para Autor
 **Exercícios:**
 
 - Crie no Vuejs a tela para listar, incluir, alterar e excluir autores.
+
+---
+
 
 # 8. Criação da API para Livro
 
@@ -707,6 +725,9 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 ```
 feat: criação da entidade para Livro
 ```
+
+---
+
 
 # 9. Inclusão das chaves estrangeiras no modelo Livro
 
@@ -797,6 +818,9 @@ pdm run shellp
 feat: inclusão do relacionamento de Livro com Categoria e Editora
 ```
 
+---
+
+
 # 10. Inclusão do relacionamento n para n no modelo do Livro
 
 **10.1 Model com ManyToManyField - Livros com vários autores**
@@ -840,6 +864,9 @@ feat: inclusão do relacionamento n para n entre Livro e Autor
 
 - Teste a API REST de livros com modificações feitas.
 - Faça o [Exercício da Garagem (E1)](#e1-crie-o-projeto-garagem) para praticar o que foi aprendido até aqui.
+
+---
+
 
 # 11. Modificação da API para Livro
 
@@ -969,6 +996,9 @@ from .livro import LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
 ```
 feat: criação de múltiplos serializadores para Livro
 ```
+
+---
+
 
 # 12. Upload e associação de imagens
 
@@ -1173,6 +1203,9 @@ class LivroSerializer(ModelSerializer):
 feat: inclusão da app de upload e associação de imagens
 ```
 
+---
+
+
 # 13. Dump e Load de dados
 
 O **dump** dos dados permite que você salve os dados do banco de dados em um arquivo. O **load** dos dados permite que você carregue os dados de um arquivo para o banco de dados. Isso é útil para fazer cópias de segurança, para transferir dados entre bancos de dados, para carregar dados iniciais, etc.
@@ -1269,6 +1302,9 @@ E dentro dele, execute:
 
 Você também pode acessar o Django Admin ou o Swagger e verificar que os dados foram carregados.
 
+---
+
+
 # 14. Customização do Admin
 
 O **Admin** é uma ferramenta para gerenciar os dados do banco de dados. Ele pode ser customizado para melhorar a experiência do usuário.
@@ -1353,6 +1389,9 @@ class LivroAdmin(admin.ModelAdmin):
 ```
 feat: customização do Admin
 ```
+
+---
+
 
 # 15. Uso do Django Shell e do Django Shell Plus
 
@@ -1452,6 +1491,9 @@ Editora.objects.get(id=1).livros.all()
 ```
 Para mais exemplos de uso do Django Shell Plus, acesse este [anexo](#a10-django-shell---comandos-úteis).
 
+---
+
+
 # 16. Autenticação e autorização
 
 **Introdução**
@@ -1515,6 +1557,9 @@ As permissões para `compradores` devem ficar assim:
 -   Acesse o `Admin` com o usuário `comprador1@a.com` e verifique se ele tem acesso apenas às permissões do grupo `Compradores`.
     - Ele deve conseguir apenas visualizar `autor`, `categoria` e `editora`, sem alterar ou excluir esses objetos.
     - Ele deve também conseguir adicionar, editar e visualizar `livro`, mas não deve conseguir excluir livros.
+
+---
+
 
 # 17. Utilização das permissões do DRF
 
@@ -1614,6 +1659,9 @@ REST_FRAMEWORK = {
 
 Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Para isso, utilizaremos o **Passage**.
 
+---
+
+
 # 18. Autenticação com Passage
 
 **Criação da conta no Passage**
@@ -1664,6 +1712,9 @@ PASSAGE_APP_KEY=sua_app_key
 ```
 
 Substitua o valor de `app-id` pelo valor do seu `app_id`, no **Passage**.
+
+---
+
 
 # 19. Inclusão da foto de perfil no usuário
 
@@ -1765,6 +1816,9 @@ class UserSerializer(ModelSerializer):
 feat: inclusão da foto de perfil no usuário
 ```
 
+---
+
+
 # 20. Criação da entidade Compra integrada ao usuário do projeto
 
 A partir dessa aula, vamos implementar o processo de compra de livros, na nossa aplicação. Nessa aula, vamos criar um entidade de compras integrada à entidade do usuário do projeto.
@@ -1844,6 +1898,9 @@ O seu projeto deve ficar assim:
 feat: criação da entidade Compra integrada ao usuário do projeto
 ```
 
+---
+
+
 # 21. Criação dos itens da compra
 
 No caso dos itens da compra, não vamos utilizar um campo `livro` do tipo `ManyToManyField` no model `Compra`, pois queremos ter a possibilidade de adicionar mais informações ao item da compra, como a `quantidade`, por exemplo. Desta forma, vamos criar "manualmente" a **entidade associativa**, que será chamada de `ItensCompra`.
@@ -1886,6 +1943,9 @@ O seu projeto deve ficar assim:
 feat: criação dos itens da compra
 ```
 
+---
+
+
 # 22. Uso de TabularInline no Admin para Itens da Compra
 
 Da forma que configuramos o `Admin` para a model `ItensCompra`, não é possível adicionar itens da compra diretamente na tela de edição da compra. Isso é pouco natural, pois há uma relação direta entre a compra e seus itens.
@@ -1920,6 +1980,9 @@ class CompraAdmin(admin.ModelAdmin):
 ```
 feat: uso de TabularInline e StackedInline no Admin para Itens da Compra
 ```
+
+---
+
 
 # 23. Endpoint para a listagem básica de compras
 
@@ -2059,6 +2122,9 @@ feat: inclusão do status da compra na listagem da compra
 
 > Estes são apenas dois exemplos de como podemos modificar a listagem de compras. Você pode incluir outros campos, como o total da compra, por exemplo.
 
+---
+
+
 
 # 24. Visualização dos itens da compra no endpoint da listagem de compras
 
@@ -2131,6 +2197,9 @@ fields = ('livro', 'quantidade')
 feat: limitando os campos dos itens da compra na listagem de compras
 ```
 
+---
+
+
 # 25. Exibição do total do item na listagem de compras
 
 O total do item é calculado pelo preço do livro multiplicado pela quantidade. Esse é um campo calculado, que não existe no model `ItensCompra`. Vamos incluir este campo na listagem de compras.
@@ -2172,6 +2241,9 @@ class ItensCompraSerializer(ModelSerializer):
 ```
 feat: mostrando o total do item na listagem de compras
 ```
+
+---
+
 
 # 26. Inclusão do total da compra na listagem de compras
 
@@ -2250,6 +2322,9 @@ class CompraAdmin(admin.ModelAdmin):
 feat: inclusão do total da compra no Admin
 ```
 
+---
+
+
 # 27. Criação de compras com itens aninhados via API
 
 Vamos primeiro definir o que é necessário para criar uma nova compra. Para isso, precisamos informar o usuário e os itens da compra. Os itens da compra são compostos pelo livro e pela quantidade.
@@ -2272,7 +2347,7 @@ O formato dos dados para criar uma nova compra é o seguinte:
 }
 ```
 
-## Criando serializers para criação de compras
+**Criando serializers para criação de compras**
 
 Como estamos lidando com dados aninhados (compra com vários itens), precisamos criar serializers específicos para entrada de dados.
 
@@ -2414,6 +2489,9 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 feat: criação de um endpoint para criar novas compras
 ```
 
+---
+
+
 # 28. Atualização de compras e seus itens via API
 
 **Entendendo o problema**
@@ -2481,6 +2559,9 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 ```
 feat: criação de um endpoint para atualizar compras
 ```
+
+---
+
 
 # 28b. Criação de um serializador específico para a listagem de compras
 
@@ -2555,6 +2636,9 @@ class CompraViewSet(ModelViewSet):
 feat: criação de um serializador específico para a listagem de compras
 ```
 
+---
+
+
 # 29. Criação de uma compra a partir do usuário autenticado
 
 Nesta aula, vamos aprimorar a criação de uma *compra* na nossa API. Em vez de enviar o campo `usuario` no corpo da requisição, vamos configurar o *serializer* para usar automaticamente o usuário que está autenticado no sistema. Isso torna a API mais segura e prática para o consumidor.
@@ -2615,6 +2699,9 @@ Faça um teste enviando uma requisição `POST` para o endpoint `/compras/`, com
 feat: criação de uma compra a partir do usuário autenticado
 ```
 
+---
+
+
 # 30. Visualização de compras com base no perfil do usuário
 
 Atualmente, qualquer usuário pode visualizar todas as compras cadastradas na API, o que não é o comportamento desejado. Vamos ajustar isso para que:
@@ -2669,6 +2756,9 @@ class CompraViewSet(ModelViewSet):
 ```
 feat: filtrando apenas as compras do usuário autenticado
 ```
+
+---
+
 
 # 31. Validação dos campos no Serializer
 
@@ -2784,6 +2874,9 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 ```
 feat: validando e formatando dados antes de salvar
 ```
+
+---
+
 
 # 32. Gravação do preço do livro no item da compra
 
@@ -3109,6 +3202,9 @@ print(compra.get_tipo_pagamento_display()) # mostra o valor legível (ex: 'Cart�
 feat: adicionando tipo de pagamento à entidade de Compra
 ```
 
+---
+
+
 # 35a. Ações personalizadas: Introdução e alteração do preço de um livro
 
 **Objetivo**
@@ -3397,6 +3493,9 @@ from drf_spectacular.utils import extend_schema
 feat: adicionando relatório de vendas mensal em compras
 ```
 
+---
+
+
 # 35c.  Ações personalizadas: finalizando a compra e atualizando o estoque
 
 **Objetivo**
@@ -3487,6 +3586,9 @@ class CompraViewSet(ModelViewSet):
 ```shell
 feat: finalizando a compra e atualizando a quantidade de itens em estoque
 ```
+
+---
+
 
 # 35d.  Ações personalizadas: listando livros com mais de 10 cópias vendidas
 
@@ -3626,6 +3728,9 @@ Faça o commit com a mensagem:
 feat: listando livros com mais de 10 cópias vendidas
 ```
 
+---
+
+
 # 35e Ações personalizadas: ajustando o estoque de um livro
 
 **Objetivo:** criar uma action personalizada que permita ajustar (aumentar ou diminuir) o estoque de um livro de forma segura, impedindo que o valor fique negativo.
@@ -3744,69 +3849,70 @@ Faça o commit com a mensagem:
 feat: ajustando o estoque de um livro
 ```
 
-# 36. Utilização de filtros
+---
 
-Nesse momento, é possível apenas listar todos os livros. Vamos ver como podemos filtrar os livros por seus atributos, como `categoria`, `editora` e `autores`.
 
-Para isso, vamos utilizar o pacote `django-filter`, que nos permite filtrar os resultados de uma consulta. Ele já está instalado no projeto.
+# 36. Utilização de filtros para kistagem de recursos
 
-**Filtrando os livros por categoria**
+Até agora, nossa API lista todos os livros, sem possibilidade de filtragem. Nesta aula, vamos implementar filtros para facilitar consultas específicas, como por categoria, editora e autores.
 
-Vamos começar filtrando os livros por categoria.
+**Preparando o Filter Backend no ViewSet**
 
-- No `views/livro.py`, vamos alterar o `viewset` de `Livro` para filtrar os livros por categoria:
+O pacote `django-filter` já está instalado no projeto, o que permite criar filtros dinâmicos e declarativos.
+
+No arquivo `views/livro.py`, vamos configurar o `LivroViewSet` para usar filtros:
 
 ```python
-...
 from django_filters.rest_framework import DjangoFilterBackend
-...
+from rest_framework import viewsets
+from .models import Livro
+from .serializers import LivroSerializer
+
 class LivroViewSet(viewsets.ModelViewSet):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializer
+
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['categoria__descricao']
-...
+    filterset_fields = ['categoria__descricao', 'editora__nome']  # Campos para filtragem
 ```
 
-> O `DjangoFilterBackend` é o filtro do `django-filter`.
+> `filter_backends` define o backend que aplica os filtros na query.
 
-> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando apenas pelo campo `categoria__descricao`.
+> `filterset_fields` indica quais campos do model (ou relacionamentos) estarão disponíveis para filtro.
 
-- Para testar no `Swagger`, clique no endpoint `livros/` e depois em `Try it out`. Você verá que apareceu um campo `categoria` para filtrar os livros por categoria. Informe a `descrição` da categoria e clique em `Execute`. Você verá que apenas os livros da categoria informada foram listados.
-- Para testar no ThunderClient, utilize a url com o seguinte formato: `http://0.0.0.0:19003/api/livros/?categoria__descricao=Python`. Você verá que apenas os livros da categoria informada foram listados.
+> Usamos a notação de dupla underscore (`__`) para acessar campos de modelos relacionados.
 
-**Acrescentando outros filtros na listagem de livros**
+**Testando a Filtragem**
 
-Vamos acrescentar outros filtros na listagem de livros.
+Com essa configuração, o endpoint GET `/api/livros/` aceita parâmetros de consulta, como:
 
-- No `views/livro.py`, vamos alterar o atributo `filterset_fields`, na `viewset` de `Livro` para filtrar os livros por `categoria__descricao` e `editora__nome`:
+- Filtrar por categoria:
+    - `GET /api/livros/?categoria__descricao=Python`
 
-```python
-...
-    filterset_fields = ['categoria__descricao', 'editora__nome']  # Acrescentando o filtro por editora
-...
-```
+- Filtrar por editora:
+    - `GET /api/livros/?editora__nome=Novatec`
 
-> O `filterset_fields` indica quais campos serão filtrados. Nesse caso, estamos filtrando pelos campos `categoria__descricao` e `editora__nome`.
+- Combinado:
+    - `GET /api/livros/?categoria__descricao=Python&editora__nome=Novatec`
 
-> Da mesma forma, por outros campos.
+No **Swagger**, acessando o endpoint `livros/`, clique em **Try it out** e verá campos para filtrar por `categoria__descricao` e `editora__nome`.
 
-- Para filtrar por categoria e editora:
-  - http://0.0.0.0:19003/api/livros/?categoria__descricao=Python&editora__nome=Novatec
-- Para filtrar apenas por editora:
-  - http://0.0.0.0:19003/api/livros/?editora__nome=Novatec
-- Para filtrar apenas por categoria:
-  - http://0.0.0.0:19003/api/livros/?categoria__descricao=Python
+Também pode testar via chamadas HTTP diretas com ferramentas como **ThunderClient** ou **curl**.
 
-**Exercício**
+**Acrescentando Filtros em Outros Models**
 
-- Acrescente filtros nas *models* `Autor`, `Categoria`, `Editora`, `Livro` e `Compra`.
+De modo semelhante, acrescente filtros nos viewsets dos models Autor, Categoria, Editora e Compra.
 
-- Faça o _commit_ com a mensagem:
+
+**Commit**
+
+Faça o _commit_ com a mensagem:
 
 ```
-feat: utilizando filtros
+feat: adicionando filtros para listagem de recursos
 ```
+
+---
 
 # 37. Utilização de busca textual
 
@@ -3845,6 +3951,9 @@ class LivroViewSet(viewsets.ModelViewSet):
 ```
 feat: adicionando busca textual
 ```
+
+---
+
 
 # 38. Utilização de ordenação dos resultados
 
@@ -3979,6 +4088,9 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > O método `first` retorna o primeiro objeto `ItensCompra` que atenda aos critérios de pesquisa ou `None` se não houver objetos.
 
+---
+
+
 # 40. Inclusão do total da compra na model de compra
 
 Adicionar um campo `total` ao modelo de `Compra` para armazenar o valor total é uma solução eficaz em termos de **performance** e **facilidade de uso** em consultas frequentes. Com isso, o valor total será calculado e armazenado diretamente no banco de dados, permitindo que você ordene ou filtre pelas compras com eficiência.
@@ -4074,6 +4186,9 @@ compras = Compra.objects.filter(total__gte=100)
 feat: adicionando o total da compra
 ```
 
+---
+
+
 # Exercícios Garagem
 
 O projeto **Garagem** é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto da **Livraria**.
@@ -4148,6 +4263,9 @@ Vamos incluir o modelo `Categoria` no projeto `Garagem`.
 
 # Apêndices
 
+---
+
+
 # A1. Instalação e atualização do VS Code
 
 Para **instalar** ou **atualizar** o **VS Code**, siga as seguintes instruções:
@@ -4167,6 +4285,9 @@ yay -Syu visual-studio-code-bin
 **No Windows:**
 
 -   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Check for Updates`.
+
+---
+
 
 # A2. Instalação e sincronização de extensões do VS Code
 
@@ -4210,6 +4331,9 @@ Você pode configurar a sincronização das extensões entre os computadores. Pa
 
 -   Faça login com a conta do **GitHub** ou da **Microsoft** no VS Code.
 -   Clique no ícone de engrenagem no canto inferior esquerdo da tela do VS Code e clique em `Ativar a Sincronização de Configurações`.
+
+---
+
 
 # A3. Instalação e configuração do PDM
 
@@ -4275,6 +4399,9 @@ pdm config
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
+---
+
+
 # A4. Publicação do banco de dados no Supabase
 
 Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
@@ -4337,6 +4464,9 @@ Após fazer as alterações no banco de dados remoto, volte a configuração par
 
 **IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir este processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
 
+---
+
+
 # A5. Publicação do projeto no Render
 
 O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
@@ -4396,6 +4526,9 @@ PASSAGE_API_KEY=sua_api_key
 
 > Se tudo estiver correto, o projeto será implantado no **Render**.
 
+---
+
+
 # A6. Publicação: armazenamento de arquivos estáticos no Cloudinary
 
 Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Desta forma, os arquivos não serão perdidos a cada nova implantação.
@@ -4427,6 +4560,9 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 ```
 feat: adicionando Cloudinary
 ```
+
+---
+
 
 # A7. Resolução de erros
 
@@ -4575,6 +4711,9 @@ rm ~/.gitconfig
 Repita o processo de configuração de nome e e-mail.
 
 
+---
+
+
 # A9. Uso do curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
@@ -4606,6 +4745,9 @@ curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
 ```shell
 curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
 ```
+
+---
+
 
 # A10. Django Shell - Comandos úteis
 
@@ -4778,6 +4920,9 @@ SELECT * FROM core_livro WHERE preco IS NULL;
 SELECT * FROM core_livro WHERE categoria_id = 1;
 ```
 
+---
+
+
 # A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
 
 Os *12 Fatores* são princípios criados pela equipe da Heroku para o desenvolvimento de aplicações modernas, escaláveis e prontas para a nuvem. Eles ajudam a manter o código limpo, a implantação simples e a aplicação resiliente. Abaixo, explicamos cada um deles, aplicando diretamente ao nosso projeto.
@@ -4880,6 +5025,9 @@ Tarefas como migrações ou comandos de manutenção devem ser executadas como p
 
 **Conclusão**
 Nosso projeto Django + Vue.js segue os 12 fatores de forma consistente, o que nos permite ter uma aplicação modular, escalável, fácil de manter e com deploy contínuo. Essas boas práticas são fundamentais para garantir qualidade e estabilidade tanto em desenvolvimento quanto em produção.
+
+---
+
 
 # A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento
 
