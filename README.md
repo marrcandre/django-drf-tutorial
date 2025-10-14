@@ -3852,7 +3852,7 @@ feat: ajustando o estoque de um livro
 ---
 
 
-# 36. Utilização de filtros para kistagem de recursos
+# 36. Utilização de filtros para listagem de recursos
 
 Até agora, nossa API lista todos os livros, sem possibilidade de filtragem. Nesta aula, vamos implementar filtros para facilitar consultas específicas, como por categoria, editora e autores.
 
@@ -3914,46 +3914,53 @@ feat: adicionando filtros para listagem de recursos
 
 ---
 
-# 37. Utilização de busca textual
+# 37. Utilização de busca textual em Campos de texto
 
-A busca textual serve para adicionar a funcionalidade de realizar buscas dentro de determinados valores de texto armazenados na base de dados.
+A busca textual permite pesquisar dentro dos valores de texto dos campos de um banco de dados, facilitando encontrar registros que contenham determinado texto. Essa funcionalidade é aplicável a campos como `CharField` e `TextField`.
 
-Contudo a busca só funciona para campos de texto, como `CharField` e `TextField`.
+**Configurando a Busca Textual no LivroViewSet**
 
-- Para utilizar a busca textual nos livros, devemos promover duas alterações em nossa `viewset`:
-- Novamente alterar o atributo `filter_backends`, adicionando o *Backend* `SearchFilter` que irá processar a busca; e
-- Adicionar o atributo `search_fields`, contendo os campos que permitirão a busca.
-
-- A `LivroViewSet` ficará assim:
+No arquivo `views/livro.py`, vamos alterar o `LivroViewSet` para incluir o backend `SearchFilter` e definir quais campos permitirão a busca textual:
 
 ```python
-...
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 ...
 
 class LivroViewSet(viewsets.ModelViewSet):
 ...
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['categoria__descricao', 'editora__nome']
-    search_fields = ['titulo']
-...
+    filter_backends = [DjangoFilterBackend, SearchFilter]  # Adicionando SearchFilter
+    filterset_fields = ['categoria__descricao', 'editora__nome']  # Campos para filtro
+    search_fields = ['titulo']  # Campos para busca textual
 ```
 
-- Para pesquisar por um livro, basta adicionar o parâmetro `search` na URL, com o valor a ser pesquisado. Por exemplo, para pesquisar por livros que contenham a palavra `python` no título, a URL ficaria assim:
-  - http://0.0.0.0:19003/api/livros/?search=python
+> `filter_backends` inclui agora tanto `DjangoFilterBackend` para filtros específicos por campos, quanto `SearchFilter` para busca textual.
 
+> `search_fields` define os campos que terão busca textual ativada, neste caso, o campo `titulo` do livro.
 
-**Exercício**
+**Utilizando a Busca Textual**
 
-- Acrescente a busca textual nas *models* `Autor`, `Categoria`, `Editora` e `Compra`.
+Com esta configuração, para buscar livros que contenham uma palavra no título, basta fazer uma requisição `GET` para o endpoint com o parâmetro `search`.
 
-- Faça o _commit_ com a mensagem:
+Exemplo para buscar livros com a palavra "python" no título:
+
+```text
+GET /api/livros/?search=python
+```
+
+- No Swagger, o campo `search` aparecerá automaticamente para preenchimento ao testar o endpoint de listagem de livros.
+
+- Combine filtros específicos (com `filterset_fields`) e busca textual para refinar resultados.
+
+**Commit**
+
+Faça commit com a mensagem padrão para recursos novos:
+
 ```
 feat: adicionando busca textual
 ```
 
 ---
-
 
 # 38. Utilização de ordenação dos resultados
 
