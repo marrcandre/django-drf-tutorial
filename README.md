@@ -3731,7 +3731,7 @@ feat: listando livros com mais de 10 cópias vendidas
 ---
 
 
-# 35e Ações personalizadas: ajustando o estoque de um livro
+# 35e. Ações personalizadas: ajustando o estoque de um livro
 
 **Objetivo:** criar uma action personalizada que permita ajustar (aumentar ou diminuir) o estoque de um livro de forma segura, impedindo que o valor fique negativo.
 
@@ -3914,7 +3914,7 @@ feat: adicionando filtros para listagem de recursos
 
 ---
 
-# 37. Utilização de busca textual em Campos de texto
+# 37. Utilização de busca textual em campos de texto
 
 A busca textual permite pesquisar dentro dos valores de texto dos campos de um banco de dados, facilitando encontrar registros que contenham determinado texto. Essa funcionalidade é aplicável a campos como `CharField` e `TextField`.
 
