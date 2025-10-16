@@ -3767,7 +3767,7 @@ Em `views/livro.py`, adicione a action ao `LivroViewSet`:
 
 ```python
 ...
-from drf_spectacular.utils import extend_schema, OpenApiExample
+from drf_spectacular.utils import OpenApiResponse, extend_schema
 from .serializers import LivroAjustarEstoqueSerializer
 
 class LivroViewSet(ModelViewSet):
@@ -3777,18 +3777,24 @@ class LivroViewSet(ModelViewSet):
         description="Aumenta ou diminui o estoque; impede resultado negativo.",
         request=LivroAjustarEstoqueSerializer,
         responses={
-            200: OpenApiExample(
-                'Estoque ajustado',
-                value={'status': 'Quantidade ajustada com sucesso', 'novo_estoque': 30},
-                response_only=True,
+            200: OpenApiResponse(
+                response=None,
+                description="Estoque ajustado com sucesso.",
+                examples=[
+                    {
+                        "status": "Quantidade ajustada com sucesso",
+                        "novo_estoque": 30
+                    }
+                ]
             ),
-            400: OpenApiExample(
-                'Erro de validação',
-                value={'quantidade': ['A quantidade em estoque não pode ser negativa.']},
-                response_only=True,
+            400: OpenApiResponse(
+                description="Erro de validação",
+                examples=[
+                    {"quantidade": "A quantidade em estoque não pode ser negativa."}
+                ]
             ),
-        }
-    )
+        },
+        )
     @action(detail=True, methods=['post'])
     def ajustar_estoque(self, request, pk=None):
         livro = self.get_object()
