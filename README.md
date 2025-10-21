@@ -4103,12 +4103,16 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 ---
 
+**40. Inclusão do total da compra no modelo**
 
-# 40. Inclusão do total da compra na model de compra
+Nesta etapa, vamos adicionar um campo *total* ao modelo `Compra`, responsável por armazenar o valor total de cada compra.
+Isso traz ganhos de **performance** e **facilidade** nas consultas, permitindo ordenar e filtrar diretamente pelo total no banco de dados.
 
-Adicionar um campo `total` ao modelo de `Compra` para armazenar o valor total é uma solução eficaz em termos de **performance** e **facilidade de uso** em consultas frequentes. Com isso, o valor total será calculado e armazenado diretamente no banco de dados, permitindo que você ordene ou filtre pelas compras com eficiência.
+---
 
-- No `models/compra.py`, vamos adicionar o campo `total` ao modelo `Compra`:
+**1. Adicionando o campo total**
+
+No arquivo `models/compra.py`, inclua o campo abaixo:
 
 ```python
 class Compra(models.Model):
@@ -4117,87 +4121,117 @@ class Compra(models.Model):
     ...
 ```
 
-Vamos também incluir um método `save` para calcular o total da compra:
+**2. Calculando o total automaticamente**
+
+Vamos sobrescrever o método `save` para calcular o total antes de salvar a compra:
 
 ```python
 class Compra(models.Model):
     ...
     def save(self, *args, **kwargs):
-        self.total = sum(item.preco * item.quantidade for item in self.itens.all())
+        if self.pk:
+            self.total = sum(item.preco * item.quantidade for item in self.itens.all())
         super().save(*args, **kwargs)
-    ...
 ```
 
-> O método `save` é um método especial que é chamado sempre que um objeto é salvo no banco de dados.
+**Explicando o método:**
 
-> O método `super().save(*args, **kwargs)` chama o método `save` da classe pai.
+> `save` é chamado sempre que um objeto é salvo no banco.
 
-> O método `sum` retorna a soma de todos os valores em um iterável.
+> `super().save(*args, **kwargs)` chama o método original da classe pai.
 
-> O método `self.itens.all()` retorna todos os itens da compra.
+> `self.itens.all()` retorna todos os itens associados à compra.
 
-Podemos **retirar** a property `total` da classe `Compra`:
+> `sum(...)` soma o total de cada item (preço × quantidade).
+
+> O `if self.pk` garante que o cálculo só ocorra depois da criação inicial da compra.
+
+**3. Removendo a property antiga**
+
+Como o total agora está armazenado no banco, podemos remover o cálculo dinâmico da `property total`:
 
 ```python
 class Compra(models.Model):
     ...
-    @property
-    def total(self):
-        return sum(item.preco * item.quantidade for item in self.itens.all())
+    # Remover o trecho abaixo, se existir:
+    # @property
+    # def total(self):
+    #     return sum(item.preco * item.quantidade for item in self.itens.all())
     ...
 ```
 
-Precisamos ainda incluir o salvamento da compra no método `create` do serializer `CompraCreateUpdateSerializer`:
+**4. Salvando o total no serializer**
+
+No serializer `CompraCreateUpdateSerializer`, garanta que o método `create` salve a compra após a criação dos itens, para atualizar o campo total:
 
 ```python
 class CompraCreateUpdateSerializer(ModelSerializer):
     ...
     def create(self, validated_data):
         ...
-        compra.save() # linha adicionada para salvar a compra
+        compra.save()  # Linha adicionada para atualizar o campo total
         return compra
     ...
 ```
 
-> O método `save` é chamado para salvar a compr, atualizando assim o campo `total`.
+**5. Executando migraçõe**s
 
-- Execute as migrações.
+Após essas alterações, execute as migrações para atualizar o banco de dados:
 
-- Atualize os valores do campo `total` para as compras existentes, utilizando o shell do Django:
+```shell
+pdm migrate
+```
+
+**6. Atualizando compras existentes**
+
+Para atualizar o campo total das compras já existentes, utilize o shell do Django:
 
 ```python
 for compra in Compra.objects.all():
     compra.save()
 ```
 
-- Para testar se o campo `total` está sendo preenchido corretamente:
-  - crie uma nova compra
-  - inclua um novo livro no carrinho
-  - altera a quantidade do livro
+Isso recalcula e salva o total de todas as compras já registradas.
 
-**Ordenações e consultas**
+**7. Testando o funcionamento**
 
-Após adicionar o campo total, você pode usá-lo diretamente no shell do Django em consultas para ordenar ou filtrar as compras.
+- Crie uma nova compra.
+- Adicione um ou mais livros ao carrinho.
+- Altere a quantidade de um dos livros.
+- Verifique se o total é atualizado corretamente.
 
-- Ordenar as compras pelo total, em ordem decrescente:
+**8. Ordenações e consultas**
+
+Com o campo total armazenado, podemos realizar consultas otimizadas:
+
+**Ordenar pelo total (decrescente):**
 
 ```python
 compras = Compra.objects.all().order_by('-total')
 ```
 
-- Filtrar as compras pelo total, com um valor mínimo de 100:
+**Filtrar compras com valor mínimo:**
 
 ```python
 compras = Compra.objects.filter(total__gte=100)
 ```
 
-**Commit**
+**9. Commit**
 
-- Faça o _commit_ com a mensagem:
+Por fim, registre a alteração no controle de versão:
 
+```shell
+ feat: adicionando o total da compra
 ```
-feat: adicionando o total da compra
-```
+
+
+**Resumo da aula**
+
+Adicionamos o campo `total` ao modelo `Compra`.
+O valor total é calculado automaticamente no `save()`.
+A property antiga foi removida.
+O serializer foi atualizado para garantir o salvamento.
+Atualizamos os registros existentes e testamos consultas com base no total.
 
 ---
 
