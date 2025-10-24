@@ -4473,20 +4473,32 @@ INSTALLED_APPS = [
 ]
 ```
 
-- Nas configurações de arquivos estáticos, inclua o seguinte conteúdo:
+- Nas configurações de arquivos estáticos, inclua (ou modifique) o seguinte conteúdo:
 
 ```python
-STATIC_URL = "/static/"
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = 'static/'
 
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    MEDIA_URL = '/media/'
+# App Uploader settings
+MEDIA_ENDPOINT = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+FILE_UPLOAD_PERMISSIONS = 0o640
+
+if MODE == 'DEVELOPMENT':
+    MY_IP = os.getenv('MY_IP', '127.0.0.1')
+    MEDIA_URL = f'http://{MY_IP}:19003/media/'
 else:
-    MY_IP = os.getenv("MY_IP", "127.0.0.1")
-    MEDIA_URL = f"http://{MY_IP}:19003/media/"
+    MEDIA_URL = '/media/'
+    CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STORAGES = {
+        'default': {
+            'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+        },
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        },
+    }
 ```
 
 **Configuração do Cloudinary**
