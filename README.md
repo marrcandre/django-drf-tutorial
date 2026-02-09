@@ -4401,7 +4401,7 @@ pdm -V
 -   Se não estiver instalado, instale a versão mais recente:
 
 ```shell
-curl -sSLv https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python3 -
+curl -sSL https://pdm-project.org/install.sh | bash
 ```
 
 - Após a instalação, feche o terminal (`Ctrl + D`) e abra um novo terminal (`Ctrl + Alt + T`).
