@@ -4398,39 +4398,30 @@ As instruções a seguir são para o **Linux Manjaro e Ubuntu**. Se você estive
 pdm -V
 ```
 
--   Se não estiver instalado, instale a versão mais recente:
+-   **Se não estiver instalado**, instale a versão mais recente:
 
 ```shell
 curl -sSL https://pdm-project.org/install.sh | bash
 ```
 
-- Após a instalação, feche o terminal (`Ctrl + D`) e abra um novo terminal (`Ctrl + Alt + T`).
+- Após a instalação, **feche o terminal** (`Ctrl + D`) e **abra um novo terminal** (`Ctrl + Alt + T`).
 
-> **IMPORTANTE**: Após a instalação do PDM, você precisa rodar o script de configuração, conforme descrito abaixo.
+**IMPORTANTE: Configuração do PDM**
 
-**Configuração do PDM no `bash` (Ubuntu e derivados)**
-
--   Execute o seguinte comando:
+-   Execute os seguintes comandos:
 
 ```shell
-curl -sSLv https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_bash.sh | bash
+pdm --pep582 >> ~/.bashrc
+pdm config python.use_venv false
+pdm plugin add pdm-vscode pdm-autoexport pdm-django
 ```
+> O comando `pdm --pep582 >> ~/.bashrc` adiciona a configuração necessária para que o PDM funcione corretamente no terminal.
 
-**Configuração do PDM no `zsh` com o `Oh! My Zsh` (Manjaro e derivados)**
+> O comando `pdm config python.use_venv false` configura o PDM para não usar virtualenv, evitando a criação de uma pasta `.venv` no diretório do projeto. Ao invés disso, ele criará uma pasta `__pypackages__` para armazenar as dependências do projeto.
 
--   Execute o seguinte comando:
+> Os comandos `pdm plugin add` adicionam plugins úteis para o desenvolvimento com Django e integração com o VS Code.
 
-```shell
-curl -sSL https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/pdm_config_ohmyzsh.sh | zsh
-```
-
-**Instalação do PDM no Windows**
-
-Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
-
-```shell
-(Invoke-WebRequest -Uri https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py -UseBasicParsing).Content | python -
-```
+**Verificação da configuração do PDM**
 
 Verifique se o **PDM** está configurado para não usar virtualenv:
 
@@ -4438,11 +4429,22 @@ Verifique se o **PDM** está configurado para não usar virtualenv:
 pdm config
 ```
 
-> **IMPORTANTE:** Se você não fizer essa configuração, o **PDM** irá criar uma pasta `.venv` no diretório do projeto. Para resolver isso, você deve apagar a pasta `.venv` e executar o comando `pdm config python.use_venv false` e então executar o comando `pdm install`.
+A saída deve conter a linha:
 
-**Se precisar instalar o Python:**
+```
+python.use_venv: False
+```
 
-    sudo apt install python-is-python3 python3.10-venv
+**Instalação do PDM no Windows**
+
+Execute o comando abaixo no **PowerShell** (pode ser no Terminal do `VS Code`):
+
+```shell
+powershell -ExecutionPolicy ByPass -c "irm https://pdm-project.org/install.ps1 | iex"
+```
+
+Após instalar, no **PowerShell**, siga os passos de configuração do PDM, conforme explicado para o **Linux**.
+
 
 [Voltar para a preparação do ambiente](#1-preparação-do-ambiente)
 
