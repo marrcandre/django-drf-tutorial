@@ -143,7 +143,7 @@ pdm run dev
 
 -   Acesse o projeto no navegador:
 
-    http://0.0.0.0:19003/admin
+    http://127.0.0.1:8000/admin
 
 - Os dados de acesso são:
   - **Usuário**: `a@a.com`
@@ -417,17 +417,17 @@ router.register(r'users', UserViewSet, basename='users')
 
 -   Para acessar a interface gerada pelo DRF, acesse:
 
-    http://0.0.0.0:19003/api/
+    http://127.0.0.1:8000/api/
 
 Se tudo correu bem, você deve ver a interface do DRF.
 
 -   Você pode acessar diretamente a rota da `Categoria`:
-    http://0.0.0.0:19003/api/categorias/
+    http://127.0.0.1:8000/api/categorias/
 
 Isso deve trazer todas as categorias do banco, no formato **JSON**.
 
 -   Para acessar um único registro, use o seguinte formato:
-    http://0.0.0.0:19003/api/categorias/1/
+    http://127.0.0.1:8000/api/categorias/1/
 
 Nesse caso, `1` é o `id` do registro no banco de dados.
 
@@ -435,12 +435,12 @@ Nesse caso, `1` é o `id` do registro no banco de dados.
 
 As opções disponíveis para manipulação dos dados são:
 
--   **GET** para **listar** **todos** os registros: http://0.0.0.0:19003/api/categorias/
--   **GET** para **listar** **apenas 1** registro: http://0.0.0.0:19003/api/categorias/1/
--   **POST** (para **criar** um **novo** registro): http://0.0.0.0:19003/api/categorias/
--   **PUT** (para **alterar** um registro existente): http://0.0.0.0:19003/api/categorias/1/
--   **PATCH** (para **alterar parcialmente** um registro): http://0.0.0.0:19003/api/categorias/1/
--   **DELETE** (para **remover** um registro): http://0.0.0.0:19003/api/categorias/1/
+-   **GET** para **listar** **todos** os registros: http://127.0.0.1:8000/api/categorias/
+-   **GET** para **listar** **apenas 1** registro: http://127.0.0.1:8000/api/categorias/1/
+-   **POST** (para **criar** um **novo** registro): http://127.0.0.1:8000/api/categorias/
+-   **PUT** (para **alterar** um registro existente): http://127.0.0.1:8000/api/categorias/1/
+-   **PATCH** (para **alterar parcialmente** um registro): http://127.0.0.1:8000/api/categorias/1/
+-   **DELETE** (para **remover** um registro): http://127.0.0.1:8000/api/categorias/1/
 
 **4.7 Outras ferramentas para testar a API**
 
@@ -457,7 +457,7 @@ O **Swagger** é uma ferramenta que permite a documentação e teste de APIs.
 
 - Para acessar o **Swagger**, acesse:
 
-    http://0.0.0.0:19003/api/swagger/
+    http://127.0.0.1:8000/api/swagger/
 
 
 **4.9 Exercícios: testando a API e as ferramentas**
@@ -626,7 +626,7 @@ pdm run migrate
 
 **6.4 Exercícios: testando da API da Editora**
 
--   Acesse o endpoint: http://0.0.0.0:19003/api/editoras/
+-   Acesse o endpoint: http://127.0.0.1:8000/api/editoras/
 -   Teste todas as operações da `Editora`.
 -   Verifique se é possível incluir novas editoras sem incluir todos os campos.
 -   Tente utilizar o PUT e o PATCH sem informar todos os campos.
@@ -872,7 +872,7 @@ feat: inclusão do relacionamento n para n entre Livro e Autor
 
 - Acesse a API do Livro e veja como está a apresentação dos autores:
 
-    http://0.0.0.0:19003/api/livros/
+    http://127.0.0.1:8000/api/livros/
 
 > **Observou que no `Livro`, aparecem apenas os campos `id` da categoria, da editora e dos autores e não as descrições?**
 
@@ -1189,13 +1189,13 @@ class LivroSerializer(ModelSerializer):
 
 -   Acesse a API de media:
 
-    http://0.0.0.0:19003/api/media/images/
+    http://127.0.0.1:8000/api/media/images/
 
 -   Faça o upload de uma imagem.
 -   Observe que o campo `capa_attachment_key` foi preenchido com o valor `attachment_key` da imagem.
 -   Guarde o valor do campo `capa_attachment_key`.
 -   Crie um novo livro, preenchendo o campo `capa_attachment_key` com o valor guardado anteriormente.
--   Acesse o endpoint `http://0.0.0.0:19003/api/media/images/` e observe que a imagem foi associada ao livro.
+-   Acesse o endpoint `http://127.0.0.1:8000/api/media/images/` e observe que a imagem foi associada ao livro.
 
 - Faça um _commit_ com a mensagem:
 
@@ -1214,7 +1214,7 @@ O **dump** dos dados permite que você salve os dados do banco de dados em um ar
 
 - Acesse o seguinte link:
 
-  - Link: [`http://191.52.55.236:19003/admin/`](http://191.52.55.236:19003/admin/) (ou peça ao professor)
+  - Link: [`http://191.52.55.236:8000/admin/`](http://191.52.55.236:8000/admin/) (ou peça ao professor)
   - Usuário: `a@a.com`
   - Senha: `teste.123`
 
@@ -1241,7 +1241,7 @@ code core.json
 
 ```ini
 MODE = 'DEVELOPMENT'
-MEDIA_URL = 'http://191.52.55.44:19003/media/'
+MEDIA_URL = 'http://191.52.55.44:8000/media/'
 DATABASES = {'default': {'NAME': 'db.sqlite3', 'USER': '', 'PASSWORD': '', 'HOST': '', 'PORT': '', 'CONN_MAX_AGE': 600, 'CONN_HEALTH_CHECKS': True, 'DISABLE_SERVER_SIDE_CURSORS': False, 'ENGINE': 'django.db.backends.sqlite3'}}
 ```
 
@@ -1382,7 +1382,7 @@ class LivroAdmin(admin.ModelAdmin):
 
 -   Acesse o `Admin` e veja as modificações:
 
-    http://0.0.0.0:19003/api/admin/
+    http://127.0.0.1:8000/api/admin/
 
 -  Faça um _commit_ com a mensagem:
 
@@ -3999,19 +3999,19 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 - Para ordenar os livros, basta adicionar o parâmetro `ordering` na URL, com o valor do campo a ser ordenado.
 - Se você não coloca o parâmetro `ordering`, a ordenação será feita pelo campo definido no atributo `ordering`, nesse caso, `titulo`:
-  - http://0.0.0.0:19003/api/livros/
+  - http://127.0.0.1:8000/api/livros/
 - Compare com este exemplo, e perceba que a saída é a mesma:
-  - http://0.0.0.0:19003/api/livros/?ordering=titulo
+  - http://127.0.0.1:8000/api/livros/?ordering=titulo
 - Para mostrar na ordem reversa, basta adicionar um sinal de menos (-) na frente do campo:
-  - http://0.0.0.0:19003/api/livros/?ordering=-titulo
+  - http://127.0.0.1:8000/api/livros/?ordering=-titulo
 - Ou mostrar os livros ordenando pelo preço:
-  - http://0.0.0.0:19003/api/livros/?ordering=preco
+  - http://127.0.0.1:8000/api/livros/?ordering=preco
 - Pode-se ainda juntar a ordenação com a busca textual. Por exemplo, para ordenar os livros pelo título e que contenham a palavra `python` no título, a URL ficaria assim:
-  - http://0.0.0.0:19003/api/livros/?ordering=titulo&search=python
+  - http://127.0.0.1:8000/api/livros/?ordering=titulo&search=python
 - Para utilizar os filtros e a ordenação, basta adicionar os parâmetros na URL, com os valores desejados. Por exemplo, para ordenar os livros pelo título de uma determinada categoria e editora, a URL ficaria assim:
-  - http://0.0.0.0:19003/api/livros/?categoria__descricao=Python&editora_nome=Novatec&ordering=titulo
+  - http://127.0.0.1:8000/api/livros/?categoria__descricao=Python&editora_nome=Novatec&ordering=titulo
 - É possível utilizar todos os recursos ao mesmo tempo: múltiplos filtros, busca textual e ordenação.
-    - http://0.0.0.0:19003/api/livros/?categoria_descricao=Python&editora_nome=Novatec&ordering=titulo&search=python
+    - http://127.0.0.1:8000/api/livros/?categoria_descricao=Python&editora_nome=Novatec&ordering=titulo&search=python
 
 Esses são apenas alguns exemplos de como utilizar os filtros, a pesquisa textual e a ordenação. Você pode combinar esses recursos da forma que desejar.
 
@@ -4033,7 +4033,7 @@ Vamos ver ainda um último exemplo de como adicionar filtro e ordenação.
 ```
 
 - Para ordenar por data, em ordem descrente:
-  - http://0.0.0.0:19003/api/compras/?ordering=-data
+  - http://127.0.0.1:8000/api/compras/?ordering=-data
 
 **Exercício**
 
@@ -4632,10 +4632,10 @@ Error: That port is already in use.
 -   Execute o seguinte comando:
 
 ```shell
-fuser -k 19003/tcp
+fuser -k 8000/tcp
 ```
 
-> Este comando vai matar o processo que está rodando na porta 19003. Mude o número da porta conforme necessário.
+> Este comando vai matar o processo que está rodando na porta 8000. Mude o número da porta conforme necessário.
 
 ## Removendo temporários, migrations e o banco de dados
 
@@ -4768,31 +4768,31 @@ Repita o processo de configuração de nome e e-mail.
 -   Liste todas as categorias:
 
 ```shell
-curl -X GET http://0.0.0.0:19003/api/categorias/
+curl -X GET http://127.0.0.1:8000/api/categorias/
 ```
 
 -   Liste uma categoria específica:
 
 ```shell
-curl -X GET http://0.0.0.0:19003/api/categorias/1/
+curl -X GET http://127.0.0.1:8000/api/categorias/1/
 ```
 
 -   Crie uma nova categoria:
 
 ```shell
-curl -X POST http://0.0.0.0:19003/api/categorias/ -d "descricao=Teste"
+curl -X POST http://127.0.0.1:8000/api/categorias/ -d "descricao=Teste"
 ```
 
 -   Atualize uma categoria:
 
 ```shell
-curl -X PUT http://0.0.0.0:19003/api/categorias/1/ -d "descricao=Teste 2"
+curl -X PUT http://127.0.0.1:8000/api/categorias/1/ -d "descricao=Teste 2"
 ```
 
 -   Delete uma categoria:
 
 ```shell
-curl -X DELETE http://0.0.0.0:19003/api/categorias/1/
+curl -X DELETE http://127.0.0.1:8000/api/categorias/1/
 ```
 
 ---
