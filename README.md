@@ -402,11 +402,10 @@ As rotas são responsáveis por mapear as `URLs` para as `views`.
 
 ```python
 ...
-from core.views import UserViewSet
-from core.views import CategoriaViewSet # nova linha
+from core.views import CategoriaViewSet, UserViewSet # linha modificada
 
 router = DefaultRouter()
-router.register(r'categorias', CategoriaViewSet) # nova linha
+router.register(r'categorias', CategoriaViewSet, basename='categorias') # nova linha
 router.register(r'users', UserViewSet, basename='users')
 ...
 ```
