@@ -391,25 +391,110 @@ feat: criação da model de Categoria
 
 # 4. Criação de uma API REST
 
-Nesta aula, vamos criar uma API REST para o projeto `livraria`. Ao final, teremos uma API completa, que permite criar, listar, atualizar e deletar categorias.
+No ano passado, vocês consumiram uma API (como a do TMDB) usando `GET` com `axios` no JavaScript e no Vue.
 
-**4.1 Instalação e configuração do Django Rest Framework (DRF)**
+Agora vamos fazer o contrário.
 
-- Observe que o `DRF` já está instalado no projeto, conforme os arquivos `pyproject.toml` e `requirements.txt`.
-- Além disso, o `DRF` já está configurado no arquivo `settings.py`, na seção `INSTALLED_APPS`.
+Em vez de consumir uma API, vamos **criar a nossa própria API** para o projeto `livraria`.
 
-> Essas configurações já foram feitas no template que utilizamos para criar o projeto. Se você estiver criando um projeto do zero, terá que fazer essas configurações manualmente.
+Ao final desta aula, você terá uma API completa para `Categoria`, capaz de:
 
-**4.2 Criação do serializer**
+- Criar registros
+- Listar todos
+- Buscar um específico
+- Atualizar
+- Deletar
 
-*Serializer* (ou serializador, em português) é uma classe que transforma objetos Python (como modelos) em formatos que podem ser enviados pela internet (como JSON), e vice-versa."
+Ou seja: você estará construindo o backend que antes apenas utilizava.
 
--   Crie o arquivo `categoria.py` na pasta `serializers` da aplicação `core`, e adicione o seguinte código, para criar a `CategoriaSerializer`:
+---
+
+## Antes de começar: o que é uma API REST?
+
+Uma **API** é uma forma de comunicação entre sistemas.
+
+Por exemplo:
+- Um front-end em Vue
+- Um aplicativo mobile
+- Outro sistema qualquer
+
+Todos eles podem conversar com o nosso backend através de requisições HTTP.
+
+### E o que significa REST?
+
+REST é um jeito organizado de construir APIs:
+
+- Cada tipo de dado é um **recurso**
+- Cada recurso tem uma **URL**
+- Usamos métodos HTTP como `GET`, `POST`, `PUT`, `PATCH` e `DELETE`
+
+No nosso caso:
+
+- `Categoria` é um recurso
+- `/categorias/` será a URL que representa esse recurso
+
+---
+
+## Como uma API funciona no Django Rest Framework?
+
+A estrutura básica é esta:
+
+```
+Model → Serializer → ViewSet → Router → URL
+```
+
+- O **Model** representa os dados no banco.
+- O **Serializer** transforma dados em JSON (e JSON em dados).
+- O **ViewSet** implementa as ações da API.
+- O **Router** cria as rotas automaticamente.
+- A **URL** é o endereço que acessamos no navegador.
+
+Vamos montar isso passo a passo.
+
+---
+
+## 4.1 DRF já está instalado
+
+O Django Rest Framework (DRF) já está instalado no projeto:
+
+- Está listado no `pyproject.toml`
+- Está no `requirements.txt`
+- Já está configurado no `INSTALLED_APPS`
+
+Isso foi feito no template inicial do projeto.
+
+Se fosse um projeto do zero, precisaríamos instalar e configurar manualmente.
+
+---
+
+## 4.2 Criando o Serializer
+
+Lembra que quando você consumia a API do TMDB, recebia um JSON?
+
+Alguém precisou transformar os dados do banco em JSON.
+
+É exatamente isso que o **Serializer** faz.
+
+Ele converte:
+
+- Model → JSON
+- JSON → Model
+
+### Criando o arquivo
+
+Crie o arquivo:
+
+```
+core/serializers/categoria.py
+```
+
+E adicione:
 
 ```python
 from rest_framework.serializers import ModelSerializer
 
 from core.models import Categoria
+
 
 class CategoriaSerializer(ModelSerializer):
     class Meta:
@@ -417,24 +502,40 @@ class CategoriaSerializer(ModelSerializer):
         fields = '__all__'
 ```
 
-**4.2.1 Explicando o código**
+### O que está acontecendo aqui?
 
--   `model = Categoria`: define o model que será serializado.
--   `fields = '__all__'`: define que todos os campos serão serializados.
+- `model = Categoria` → estamos dizendo qual model será usado.
+- `fields = '__all__'` → todos os campos serão enviados na API.
 
-**4.2.2 Inclusão do serializer no __init__.py**
+⚠️ Em projetos reais, muitas vezes escolhemos os campos manualmente, para ter mais controle.
 
--   Inclua o serializer no arquivo `__init__.py` da pasta `serializers`:
+### Não esqueça do __init__.py
+
+No arquivo:
+
+```
+core/serializers/__init__.py
+```
+
+Adicione:
 
 ```python
 from .categoria import CategoriaSerializer
 ```
 
-**4.3 Criação da view**
+---
 
-Uma _view_ é um objeto que recebe uma requisição HTTP e retorna uma resposta HTTP.
+## 4.3 Criando a View
 
--   Crie a view `CategoriaViewSet` na pasta `views` da aplicação `core`, no arquivo `categoria.py`:
+Agora precisamos dizer como a API vai se comportar.
+
+Crie o arquivo:
+
+```
+core/views/categoria.py
+```
+
+E adicione:
 
 ```python
 from rest_framework.viewsets import ModelViewSet
@@ -442,113 +543,229 @@ from rest_framework.viewsets import ModelViewSet
 from core.models import Categoria
 from core.serializers import CategoriaSerializer
 
+
 class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 ```
 
-**4.3.1 Explicando o código**
+### O que é ModelViewSet?
 
--   `queryset = Categoria.objects.all()`: define o conjunto de objetos que será retornado pela view.
--   `serializer_class = CategoriaSerializer`: define o serializer que será utilizado para serializar os objetos.
+Aqui está a parte interessante.
 
-**4.3.2 Inclusão da view no __init__.py**
+O `ModelViewSet` já cria automaticamente:
 
--   Inclua a view no arquivo `__init__.py` da pasta `views`:
+- `list()` → listar todos
+- `retrieve()` → buscar um
+- `create()` → criar
+- `update()` → atualizar totalmente
+- `partial_update()` → atualizar parcialmente
+- `destroy()` → remover
+
+Ou seja, não precisamos escrever essas funções manualmente.
+
+Isso é o poder do DRF.
+
+### Explicando as duas linhas principais
+
+- `queryset` → define quais objetos a view vai usar.
+- `serializer_class` → define qual serializer será usado.
+
+### Atualize o __init__.py
+
+No arquivo:
+
+```
+core/views/__init__.py
+```
+
+Adicione:
 
 ```python
 from .categoria import CategoriaViewSet
 ```
 
-**4.4 Criação das rotas (urls)**
+---
 
-As rotas são responsáveis por mapear as `URLs` para as `views`.
+## 4.4 Criando as rotas (URLs)
 
--   Para criar as rotas da `Categoria`, edite o arquivo `urls.py` na pasta `app` e adicione as linhas indicadas:
+Agora precisamos criar os endereços da API.
+
+No arquivo `urls.py` da pasta `app`, adicione:
 
 ```python
-...
-from core.views import CategoriaViewSet, UserViewSet # linha modificada
+from core.views import CategoriaViewSet, UserViewSet
 
 router = DefaultRouter()
-router.register(r'categorias', CategoriaViewSet, basename='categorias') # nova linha
+router.register(r'categorias', CategoriaViewSet, basename='categorias')
 router.register(r'users', UserViewSet, basename='users')
-...
 ```
 
-**IMPORTANTE**: os nomes das rotas serão sempre nomes **únicos**, no **plural** e em **minúsculas**. Nas maiorias das vezes, os colocamos em **ordem alfabética**.
+O `router.register` cria automaticamente as rotas.
 
-**4.5 Testando a API**
+Ele vai gerar:
 
--   Para acessar a interface gerada pelo DRF, acesse:
+- `/api/categorias/`
+- `/api/categorias/{id}/`
 
-    http://127.0.0.1:8000/api/
+### Sobre o basename
 
-Se tudo correu bem, você deve ver a interface do DRF.
+O `basename` é usado internamente pelo DRF para gerar os nomes das rotas.
 
--   Você pode acessar diretamente a rota da `Categoria`:
-    http://127.0.0.1:8000/api/categorias/
+Ele deve ser:
 
-Isso deve trazer todas as categorias do banco, no formato **JSON**.
+- Único
+- Em minúsculo
+- No plural
 
--   Para acessar um único registro, use o seguinte formato:
-    http://127.0.0.1:8000/api/categorias/1/
+---
 
-Nesse caso, `1` é o `id` do registro no banco de dados.
+## 4.5 Testando a API
 
-**4.6 Opções de manipulação do banco de dados**
+Inicie o servidor e acesse:
 
-As opções disponíveis para manipulação dos dados são:
+```
+http://127.0.0.1:8000/api/
+```
 
--   **GET** para **listar** **todos** os registros: http://127.0.0.1:8000/api/categorias/
--   **GET** para **listar** **apenas 1** registro: http://127.0.0.1:8000/api/categorias/1/
--   **POST** (para **criar** um **novo** registro): http://127.0.0.1:8000/api/categorias/
--   **PUT** (para **alterar** um registro existente): http://127.0.0.1:8000/api/categorias/1/
--   **PATCH** (para **alterar parcialmente** um registro): http://127.0.0.1:8000/api/categorias/1/
--   **DELETE** (para **remover** um registro): http://127.0.0.1:8000/api/categorias/1/
+Se tudo estiver certo, você verá a interface automática do DRF.
 
-**4.7 Outras ferramentas para testar a API**
+### Listar todas as categorias
 
-A interface do DRF é funcional, porém simples e limitada. Algumas opções de ferramentas para o teste da API são:
+```
+http://127.0.0.1:8000/api/categorias/
+```
 
--   [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) (extensão do **VS Code**)
--   [RapidAPI](https://marketplace.visualstudio.com/items?itemName=RapidAPI.vscode-rapidapi-client) (extensão do **VS Code**)
--   [Insomnia](https://docs.insomnia.rest/insomnia/install) (externo)
--   [Postman](https://www.postman.com/downloads/) (externo)
+### Buscar uma categoria específica
 
-**4.8 Utilizando o Swagger**
+```
+http://127.0.0.1:8000/api/categorias/1/
+```
 
-O **Swagger** é uma ferramenta que permite a documentação e teste de APIs.
+Se existir um registro com `id = 1`, você verá algo como:
 
-- Para acessar o **Swagger**, acesse:
+```json
+{
+    "id": 1,
+    "nome": "Romance"
+}
+```
 
-    http://127.0.0.1:8000/api/swagger/
+Perceba: isso é exatamente o tipo de resposta que você já consumiu no front-end.
 
+Só que agora você criou.
 
-**4.9 Exercícios: testando a API e as ferramentas**
+---
 
-Instale uma ou mais das ferramentas sugeridas.
+## 4.6 Métodos HTTP
 
--   Experimente as seguintes tarefas:
-    -   Criar uma ou mais categorias;
-    -   Listar todas as categorias;
-    -   Alterar uma ou mais categorias, utilizando PUT e PATCH;
-    -   Listar a categoria alterada;
-    -   Remover uma categoria;
-    -   Incluir outra categoria;
-    -   Listar todas as categorias.
+A API usa métodos HTTP para manipular dados:
 
-**4.10 Fazendo um _commit_**
+- **GET** → buscar dados
+- **POST** → criar
+- **PUT** → atualizar completamente
+- **PATCH** → atualizar parcialmente
+- **DELETE** → remover
 
--   Faça um _commit_ com a mensagem:
+### Qual a diferença entre PUT e PATCH?
+
+- **PUT** substitui o objeto inteiro.
+- **PATCH** altera apenas os campos enviados.
+
+---
+
+## Códigos de status HTTP
+
+Quando você faz uma requisição, o servidor responde com um código:
+
+- **200 OK** → deu certo
+- **201 Created** → criado com sucesso
+- **204 No Content** → removido com sucesso
+- **400 Bad Request** → erro nos dados enviados
+- **404 Not Found** → não encontrado
+
+Você já deve ter visto alguns desses erros no navegador.
+
+---
+
+## 4.7 Testando com outras ferramentas
+
+O navegador funciona bem para testes simples, mas existem ferramentas mais completas:
+
+- Thunder Client (VS Code)
+- RapidAPI (VS Code)
+- Insomnia
+- Postman
+
+Essas ferramentas permitem enviar requisições com mais controle.
+
+---
+
+## 4.8 Swagger
+
+O Swagger gera uma documentação interativa da API.
+
+Acesse:
+
+```
+http://127.0.0.1:8000/api/swagger/
+```
+
+Você poderá testar os endpoints diretamente por lá.
+
+---
+
+## O que acontece quando fazemos um GET?
+
+Quando você acessa `/categorias/`:
+
+1. A URL chama o Router.
+2. O Router direciona para o ViewSet.
+3. O ViewSet consulta o banco.
+4. O Serializer transforma os dados em JSON.
+5. O DRF retorna a resposta HTTP.
+
+Tudo isso acontece automaticamente.
+
+---
+
+## 4.9 Exercícios
+
+Agora é sua vez.
+
+Utilizando o navegador ou uma ferramenta como Thunder Client:
+
+- Crie algumas categorias.
+- Liste todas.
+- Atualize usando PUT.
+- Atualize usando PATCH.
+- Delete uma categoria.
+- Crie outra.
+- Liste novamente.
+
+Teste tudo.
+
+Quebre.
+
+Experimente.
+
+---
+
+## 4.10 Commit
+
+Faça um commit com a mensagem:
 
 ```
 feat: criação da API para Categoria
 ```
 
+Parabéns.
+
+Agora você não é apenas alguém que consome API.
+
+Você cria APIs.
+
 ---
-
-
 
 # 5. Aplicação frontend Vuejs
 
