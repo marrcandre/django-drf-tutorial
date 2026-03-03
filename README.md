@@ -797,10 +797,6 @@ Se tudo correu bem, execute a aplicação:
 
 ---
 
-> 📦 **AULA 6 — DESAFIO: CRIANDO A API DE EDITORA**
-
----
-
 # 6. Inclusão da Editora no projeto Livraria
 
 Na aula anterior, criamos juntos a API de `Categoria`, passo a passo.
