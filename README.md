@@ -16,6 +16,9 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [4. Criação de uma API REST](#4-criação-de-uma-api-rest)
 - [5. Aplicação frontend Vuejs](#5-aplicação-frontend-vuejs)
 - [6. Inclusão da Editora no projeto Livraria](#6-inclusão-da-editora-no-projeto-livraria)
+- [6.3 Implementação esperada](#63-implementação-esperada)
+- [6.5 Testes obrigatórios](#65-testes-obrigatórios)
+- [6.6 Commit](#66-commit)
 - [7. Criação da API para Autor](#7-criação-da-api-para-autor)
 - [8. Criação da API para Livro](#8-criação-da-api-para-livro)
 - [9. Inclusão das chaves estrangeiras no modelo Livro](#9-inclusão-das-chaves-estrangeiras-no-modelo-livro)
@@ -794,29 +797,93 @@ Se tudo correu bem, execute a aplicação:
 
 ---
 
+> 📦 **AULA 6 — DESAFIO: CRIANDO A API DE EDITORA**
+
+---
 
 # 6. Inclusão da Editora no projeto Livraria
 
-Vamos continuar a criação da API REST para o projeto `livraria`, criando a model `Editora` e a API para ela.
+Na aula anterior, criamos juntos a API de `Categoria`, passo a passo.
 
-**6.1 Criação da API para a classe Editora**
+Agora o cenário muda.
 
-- Os passos para a criação da API para a classe `Editora` são os mesmos que fizemos para a classe `Categoria`:
-  1. Criar a `model` Editora no arquivo `editora.py` na pasta `models`.
-  1. Incluir a `model` no arquivo `__init__.py` da pasta `models`.
-  2. Fazer a migração.
-  3. Registrar a `model` no arquivo `admin.py`.
-  4. Criar o serializador no arquivo `editora.py`na pasta `serializers`.
-  5. Incluir o serializador no arquivo `__init__.py` da pasta `serializers`.
-  6. Criar a viewset no arquivo `editora.py`na pasta `views`.
-  7. Incluir a `viewset` no arquivo `__init__.py` da pasta `views`.
-  8. Incluir a nova rota em `urls.py`.
+Você já viu como funciona:
+- Model
+- Migração
+- Admin
+- Serializer
+- ViewSet
+- Router
 
-**6.2 Criação e modificação dos arquivos**
+Então agora é sua vez.
 
--   Os arquivos ficarão assim:
+Nesta aula, você vai criar **sozinho** a API completa da `Editora`.
 
-**`models/editora.py`**
+A ideia é:
+1. Tentar fazer sem olhar o código pronto.
+2. Usar a API de `Categoria` como referência, se necessário.
+3. Depois comparar com a implementação final.
+
+É assim que se constrói autonomia.
+
+---
+
+## 6.1 Contexto
+
+Nossa aplicação é uma **livraria**.
+
+Já temos:
+- Categoria
+
+Agora vamos criar:
+- Editora
+- (Depois criaremos Autor)
+- (Por último, Livro)
+
+A `Editora` representa a empresa responsável pela publicação dos livros.
+
+Exemplos:
+- Record
+- Novatec
+- Dark Side
+- HarperCollins
+
+Nossa Editora terá os seguintes campos:
+- `nome`: string de no máximo 100 caracteres (obrigatório)
+- `site`: URL do site da editora (opcional)
+
+---
+
+## 6.2 O Desafio
+
+Crie a API completa da `Editora`, repetindo o mesmo padrão utilizado em `Categoria`.
+
+### Você precisa:
+
+1. Criar a model `Editora`
+2. Registrar no `models/__init__.py`
+3. Criar e aplicar a migração
+4. Testar se a tabela foi criada no banco de dados
+5. Registrar no `admin.py`
+6. Testar se a Editora aparece no painel administrativo e criar algumas editoras para testar a exibição
+7. Criar o serializer
+8. Registrar no `serializers/__init__.py`
+9. Criar a viewset
+10. Registrar no `views/__init__.py`
+11. Adicionar a rota no `urls.py`
+12. Testar a API
+
+⚠️ Tente fazer antes de olhar a solução abaixo.
+
+---
+
+# 6.3 Implementação esperada
+
+Após concluir, compare com os arquivos abaixo.
+
+---
+
+## 📁 models/editora.py
 
 ```python
 from django.db import models
@@ -829,26 +896,52 @@ class Editora(models.Model):
         return self.nome
 ```
 
-**models/__init__.py**
+### Reflita:
+
+- Por que `site` possui `blank=True` e `null=True`?
+- Faz sentido obrigar que toda editora tenha site?
+
+---
+
+## 📁 models/__init__.py
 
 ```python
-...
 from .editora import Editora
 ```
 
-**`admin.py`**
+---
+
+## 6.4 Migração
+
+Após criar a model:
+
+```bash
+pdm run migrate
+```
+
+Verifique se a tabela `core_editora` foi criada corretamente.
+
+Se ocorrer erro:
+- Você importou no `__init__.py`?
+- Salvou todos os arquivos?
+- Reiniciou o servidor?
+
+---
+
+## 📁 admin.py
 
 ```python
-...
 admin.site.register(models.Editora)
 ```
 
+Acesse o painel administrativo e confirme se a Editora aparece.
 
-**`serializers/editora.py`**
+---
+
+## 📁 serializers/editora.py
 
 ```python
 from rest_framework.serializers import ModelSerializer
-
 from core.models import Editora
 
 class EditoraSerializer(ModelSerializer):
@@ -857,65 +950,91 @@ class EditoraSerializer(ModelSerializer):
         fields = '__all__'
 ```
 
-**`serializers/__init__.py`**
+---
+
+## 📁 serializers/__init__.py
 
 ```python
-...
 from .editora import EditoraSerializer
 ```
 
-**`views/editora.py`**
+Pergunta importante:
+
+O que acontece se você esquecer de importar o serializer no `__init__.py`?
+
+---
+
+## 📁 views/editora.py
 
 ```python
 from rest_framework.viewsets import ModelViewSet
-
 from core.models import Editora
 from core.serializers import EditoraSerializer
 
-...
 class EditoraViewSet(ModelViewSet):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializer
 ```
 
-**`views/__init__.py`**
+---
+
+## 📁 views/__init__.py
 
 ```python
-...
 from .editora import EditoraViewSet
 ```
 
-**`urls.py`**
+Pergunta:
+
+Por que não precisamos implementar manualmente métodos como `create()` ou `list()`?
+
+---
+
+## 📁 urls.py
 
 ```python
-...
 from core.views import CategoriaViewSet, EditoraViewSet, UserViewSet
-...
+
 router.register(r'categorias', CategoriaViewSet)
 router.register(r'editoras', EditoraViewSet)
-...
 ```
 
-**6.3 Fazendo a migração e efetivando a migração**
+Agora teste o endpoint:
 
--   Faça a migração e efetive a migração:
-
-```shell
-pdm run migrate
+```
+http://127.0.0.1:8000/api/editoras/
 ```
 
-- Verifique se a tabela `core_editora` foi criada no banco de dados.
+---
 
-**6.4 Exercícios: testando da API da Editora**
+# 6.5 Testes obrigatórios
 
--   Acesse o endpoint: http://127.0.0.1:8000/api/editoras/
--   Teste todas as operações da `Editora`.
--   Verifique se é possível incluir novas editoras sem incluir todos os campos.
--   Tente utilizar o PUT e o PATCH sem informar todos os campos.
+Teste todos os métodos da API:
 
-**6.5 Fazendo um _commit_**
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
 
--   Faça um _commit_ com a mensagem:
+---
+
+## 🧠 Exercícios de reflexão
+
+1. É possível criar uma Editora sem informar `site`?
+2. O que acontece se você usar PUT sem enviar todos os campos?
+3. O PATCH exige todos os campos?
+4. Qual código HTTP é retornado ao criar com sucesso?
+5. O que acontece ao buscar um ID inexistente?
+
+Não apenas responda.
+Teste.
+
+---
+
+# 6.6 Commit
+
+Finalize com o commit:
 
 ```
 feat: criação da API para Editora
@@ -923,6 +1042,19 @@ feat: criação da API para Editora
 
 ---
 
+## 🎯 Objetivo desta aula
+
+Reforçar o padrão da arquitetura:
+
+Model → Serializer → ViewSet → Router → URL
+
+Repetição gera domínio.
+
+Agora você já começa a construir APIs sem depender de passo a passo.
+
+Na próxima aula, vamos criar a API de `Autor`. Até lá!
+
+---
 
 # 7. Criação da API para Autor
 
