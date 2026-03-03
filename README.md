@@ -14,7 +14,15 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [2. Criação do projeto](#2-criação-do-projeto)
 - [3. Criação de uma aplicação](#3-criação-de-uma-aplicação)
 - [4. Criação de uma API REST](#4-criação-de-uma-api-rest)
-- [5. Aplicação frontend Vuejs](#5-aplicação-frontend-vuejs)
+- [5. Conectando a API ao frontend com Vue 3](#5-conectando-a-api-ao-frontend-com-vue-3)
+- [5.2 Criando o Projeto a partir do Template](#52-criando-o-projeto-a-partir-do-template)
+- [5.3 Instalando as dependências](#53-instalando-as-dependências)
+- [5.4 Executando a aplicação](#54-executando-a-aplicação)
+- [5.5 Conectando com a API da Categoria](#55-conectando-com-a-api-da-categoria)
+- [5.6 Se os dados não aparecerem](#56-se-os-dados-não-aparecerem)
+- [5.7 Entendendo o que está acontecendo](#57-entendendo-o-que-está-acontecendo)
+- [5.8 Importante: NodeJS](#58-importante-nodejs)
+- [5.9 Exercícios](#59-exercícios)
 - [6. Inclusão da Editora no projeto Livraria](#6-inclusão-da-editora-no-projeto-livraria)
 - [6.3 Implementação esperada](#63-implementação-esperada)
 - [6.5 Testes obrigatórios](#65-testes-obrigatórios)
@@ -770,30 +778,184 @@ Você cria APIs.
 
 ---
 
-# 5. Aplicação frontend Vuejs
+> 📦 **AULA 5 — CONECTANDO A API AO FRONTEND COM VUE 3**
 
-Agora que temos uma API REST completa, vamos criar uma aplicação frontend em `Vuejs` para consumir essa API da Categoria.
+---
 
-- Entre no repositório do template: https://github.com/marrcandre/template-vue3.
--  Clique no botão `Use this template` em `Create a new repository`.
--  Clone o projeto para o seu computador.
-- Execute os seguintes comandos:
+# 5. Conectando a API ao frontend com Vue 3
 
-```shell
-    npm install
+Na aula anterior, você criou sua primeira API REST no backend.
+
+Agora vamos fazer o outro lado da comunicação acontecer.
+
+Até aqui:
+- Criamos a API de `Categoria`
+- Testamos com navegador, Swagger e ferramentas como Thunder Client
+
+Mas agora vamos consumir essa API em uma aplicação real de frontend.
+
+E mais importante: essa aplicação será o modelo base para o frontend completo da nossa **Livraria**.
+
+---
+
+## 5.1 Objetivo da Aula
+
+Nesta aula você vai:
+
+- Criar uma aplicação Vue 3 a partir de um template
+- Executar o projeto localmente
+- Conectar o frontend com a API da `Categoria`
+- Confirmar que os dados estão vindo do backend
+
+---
+
+# 5.2 Criando o Projeto a partir do Template
+
+Vamos usar um template já estruturado para acelerar o processo.
+
+Acesse o repositório:
+
+👉 https://github.com/marrcandre/template-vue3
+
+### Passos:
+
+1. Clique no botão **"Use this template"**
+2. Escolha **"Create a new repository"**
+3. Dê um nome para o seu projeto (ex: `livraria-frontend`)
+4. Clone o repositório para o seu computador
+
+---
+
+# 5.3 Instalando as dependências
+
+Entre na pasta do projeto pelo terminal e execute:
+
+```bash
+npm install
 ```
 
-```shell
-    npm run dev
+Esse comando irá instalar todas as dependências necessárias definidas no `package.json`.
+
+---
+
+# 5.4 Executando a aplicação
+
+Depois da instalação, execute:
+
+```bash
+npm run dev
 ```
-Se tudo correu bem, execute a aplicação:
 
-- http://localhost:3000
+Se tudo estiver correto, a aplicação será iniciada em:
 
-> Se os dados não aparecerem, entre na opção Inspecionar do seu navegador (F12)
+```
+http://localhost:3000
+```
 
-> Para maiores detalhes sobre a instalação do npm, acesse o tutorial de [Instalação da versão LTS do NodeJS](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente) do [Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).
+Abra no navegador.
 
+---
+
+# 5.5 Conectando com a API da Categoria
+
+O template já possui uma estrutura básica para requisições.
+
+Agora precisamos confirmar:
+
+- O backend está rodando?
+- A API está acessível?
+
+Certifique-se de que sua API Django esteja rodando em:
+
+```
+http://127.0.0.1:8000
+```
+
+E que o endpoint funcione:
+
+```
+http://127.0.0.1:8000/api/categorias/
+```
+
+Se a aplicação Vue estiver configurada corretamente, ela deverá buscar os dados da API e exibir as categorias na tela.
+
+---
+
+# 5.6 Se os dados não aparecerem
+
+Caso nada seja exibido:
+
+1. Pressione **F12** no navegador.
+2. Vá até a aba **Network**.
+3. Verifique se a requisição foi feita.
+4. Observe possíveis erros:
+   - Erro de CORS
+   - Erro 404
+   - Erro 500
+   - URL incorreta
+
+Lembre-se:
+
+Frontend e Backend estão em portas diferentes:
+- Vue → 3000
+- Django → 8000
+
+---
+
+# 5.7 Entendendo o que está acontecendo
+
+Quando a página carrega:
+
+1. O Vue faz uma requisição HTTP (GET)
+2. A API responde com JSON
+3. O Vue armazena os dados
+4. O template renderiza na tela
+
+Você acabou de conectar:
+
+Frontend ↔ Backend
+
+Essa é a base de qualquer aplicação moderna.
+
+---
+
+# 5.8 Importante: NodeJS
+
+Se você tiver problemas com `npm`, verifique se está usando a versão LTS do NodeJS.
+
+Consulte o tutorial:
+
+👉 Instalação da versão LTS do NodeJS
+https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente (Material do Prof. Eduardo da Silva).
+
+---
+
+# 5.9 Exercícios
+
+1. Confirme se as categorias aparecem corretamente.
+2. Adicione uma nova categoria pelo backend.
+3. Atualize a página do frontend.
+4. O novo dado aparece?
+5. Tente desligar o backend e atualizar a página.
+   - O que acontece?
+
+Observe.
+Teste.
+Entenda o fluxo completo.
+
+---
+
+## 🎯 Objetivo desta etapa
+
+Você não está apenas rodando um template.
+
+Você está estabelecendo a arquitetura da aplicação:
+
+Backend (API REST)
+↓
+Frontend (Vue.js)
+
+E a partir daqui, tudo começa a se integrar.
 
 ---
 
