@@ -15,8 +15,6 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [3. Criação de uma aplicação](#3-criação-de-uma-aplicação)
 - [4. Criação de uma API REST](#4-criação-de-uma-api-rest)
 - [5. Conectando a API ao frontend com Vue 3](#5-conectando-a-api-ao-frontend-com-vue-3)
-- [5.2 Criando o Projeto a partir do Template](#52-criando-o-projeto-a-partir-do-template)
-- [5.3 Instalando as dependências](#53-instalando-as-dependências)
 - [5.4 Executando a aplicação](#54-executando-a-aplicação)
 - [5.5 Conectando com a API da Categoria](#55-conectando-com-a-api-da-categoria)
 - [5.6 Se os dados não aparecerem](#56-se-os-dados-não-aparecerem)
@@ -149,8 +147,8 @@ O modelo de dados do **Django** é o seguinte:
 - Acesse o _template_ em https://github.com/marrcandre/template_django_pdm.
 - Clique no botão `Use this template` em `Create a new repository`.
 - Preencha as informações solicitadas:
-  - `Owner`: <seu usuário no GitHub>
-  - `Repository name`: `livraria`
+    - `Owner`: <seu usuário no GitHub>
+    - `Repository name`: `livraria`
 - Click no botão `Create repository`.
 
 > Feito isso, o repositório `livraria` será criado no seu GitHub.
@@ -159,19 +157,19 @@ O modelo de dados do **Django** é o seguinte:
 
 Você pode clonar o projeto de duas formas:
 
-**2.3.1 Usando o VS Code**
-  - Abra o **VS Code**.
-  - Clique no ícone de **Source Control** na barra lateral esquerda.
-    - Clique no botão `Clone Repository`.
-    - Você também pode teclar `Control+Shift+P` e digitar `Clone Repository`.
-  - Digite a URL do repositório do projeto (ou procure na lista de repositórios disponíveis).
-  - Escolha a pasta onde o projeto será clonado.
-  - Clique no botão `Clone`.
+**Usando o VS Code**
+    - Abra o **VS Code**.
+    - Clique no ícone de **Source Control** na barra lateral esquerda.
+        - Clique no botão `Clone Repository`.
+        - Você também pode teclar `Control+Shift+P` e digitar `Clone Repository`.
+    - Digite a URL do repositório do projeto (ou procure na lista de repositórios disponíveis).
+    - Escolha a pasta onde o projeto será clonado.
+    - Clique no botão `Clone`.
 
-**2.3.2 Usando o terminal**
-  - Abra o terminal.
-  - Vá para a pasta onde o projeto será clonado.
-  - Digite o comando:
+**Usando o terminal**
+    - Abra o terminal.
+    - Vá para a pasta onde o projeto será clonado.
+    - Digite o comando:
 
 ```shell
 git clone <URL do repositório>
@@ -198,9 +196,9 @@ pdm install
 **2.5 Criando o arquivo `.env`**
 
 -   Crie o arquivo `.env`, a partir do arquivo `.env.exemplo`:
-  - Abra o arquivo `.env.exemplo`.
-  - Escolha a opção `Salvar como...` (Ctrl+Shift+S).
-  - Salve o arquivo como `.env`.
+    - Abra o arquivo `.env.exemplo`.
+    - Escolha a opção `Salvar como...` (Ctrl+Shift+S).
+    - Salve o arquivo como `.env`.
 
 > Opcionalmente, você pode criar o arquivo `.env` a partir do terminal, digitando:
 
@@ -220,11 +218,11 @@ pdm run dev
 
 -   Acesse o projeto no navegador:
 
-    http://127.0.0.1:8000/admin
+        http://127.0.0.1:8000/admin
 
 - Os dados de acesso são:
-  - **Usuário**: `a@a.com`
-  - **Senha**: `teste.123`
+    - **Usuário**: `a@a.com`
+    - **Senha**: `teste.123`
 - Após acessar, você pode o nome do usuário e a senha.
 
 > **IMPORTANTE**: O servidor de desenvolvimento deve estar sempre rodando para que o projeto funcione.
@@ -420,7 +418,7 @@ Ou seja: você estará construindo o backend que antes apenas utilizava.
 
 ---
 
-## Antes de começar: o que é uma API REST?
+**Antes de começar: o que é uma API REST?**
 
 Uma **API** é uma forma de comunicação entre sistemas.
 
@@ -431,7 +429,7 @@ Por exemplo:
 
 Todos eles podem conversar com o nosso backend através de requisições HTTP.
 
-### E o que significa REST?
+**E o que significa REST?**
 
 REST é um jeito organizado de construir APIs:
 
@@ -446,7 +444,7 @@ No nosso caso:
 
 ---
 
-## Como uma API funciona no Django Rest Framework?
+**Como uma API funciona no Django Rest Framework?**
 
 A estrutura básica é esta:
 
@@ -464,7 +462,7 @@ Vamos montar isso passo a passo.
 
 ---
 
-## 4.1 DRF já está instalado
+**4.1 DRF já está instalado**
 
 O Django Rest Framework (DRF) já está instalado no projeto:
 
@@ -478,7 +476,7 @@ Se fosse um projeto do zero, precisaríamos instalar e configurar manualmente.
 
 ---
 
-## 4.2 Criando o Serializer
+**4.2 Criando o Serializer**
 
 Lembra que quando você consumia a API do TMDB, recebia um JSON?
 
@@ -491,7 +489,7 @@ Ele converte:
 - Model → JSON
 - JSON → Model
 
-### Criando o arquivo
+**Criando o arquivo**
 
 Crie o arquivo:
 
@@ -513,14 +511,14 @@ class CategoriaSerializer(ModelSerializer):
         fields = '__all__'
 ```
 
-### O que está acontecendo aqui?
+**O que está acontecendo aqui?**
 
 - `model = Categoria` → estamos dizendo qual model será usado.
 - `fields = '__all__'` → todos os campos serão enviados na API.
 
 ⚠️ Em projetos reais, muitas vezes escolhemos os campos manualmente, para ter mais controle.
 
-### Não esqueça do __init__.py
+**Não esqueça do __init__.py**
 
 No arquivo:
 
@@ -536,7 +534,7 @@ from .categoria import CategoriaSerializer
 
 ---
 
-## 4.3 Criando a View
+**4.3 Criando a View**
 
 Agora precisamos dizer como a API vai se comportar.
 
@@ -560,7 +558,7 @@ class CategoriaViewSet(ModelViewSet):
     serializer_class = CategoriaSerializer
 ```
 
-### O que é ModelViewSet?
+**O que é ModelViewSet?**
 
 Aqui está a parte interessante.
 
@@ -577,12 +575,12 @@ Ou seja, não precisamos escrever essas funções manualmente.
 
 Isso é o poder do DRF.
 
-### Explicando as duas linhas principais
+**Explicando as duas linhas principais**
 
 - `queryset` → define quais objetos a view vai usar.
 - `serializer_class` → define qual serializer será usado.
 
-### Atualize o __init__.py
+**Atualize o __init__.py**
 
 No arquivo:
 
@@ -598,7 +596,7 @@ from .categoria import CategoriaViewSet
 
 ---
 
-## 4.4 Criando as rotas (URLs)
+**4.4 Criando as rotas (URLs)**
 
 Agora precisamos criar os endereços da API.
 
@@ -619,7 +617,7 @@ Ele vai gerar:
 - `/api/categorias/`
 - `/api/categorias/{id}/`
 
-### Sobre o basename
+**Sobre o basename**
 
 O `basename` é usado internamente pelo DRF para gerar os nomes das rotas.
 
@@ -631,7 +629,7 @@ Ele deve ser:
 
 ---
 
-## 4.5 Testando a API
+**4.5 Testando a API**
 
 Inicie o servidor e acesse:
 
@@ -641,13 +639,13 @@ http://127.0.0.1:8000/api/
 
 Se tudo estiver certo, você verá a interface automática do DRF.
 
-### Listar todas as categorias
+**Listar todas as categorias**
 
 ```
 http://127.0.0.1:8000/api/categorias/
 ```
 
-### Buscar uma categoria específica
+**Busca uma categoria específica**
 
 ```
 http://127.0.0.1:8000/api/categorias/1/
@@ -668,7 +666,7 @@ Só que agora você criou.
 
 ---
 
-## 4.6 Métodos HTTP
+**4.6 Métodos HTTP**
 
 A API usa métodos HTTP para manipular dados:
 
@@ -678,7 +676,7 @@ A API usa métodos HTTP para manipular dados:
 - **PATCH** → atualizar parcialmente
 - **DELETE** → remover
 
-### Qual a diferença entre PUT e PATCH?
+**Qual a diferença entre PUT e PATCH?**
 
 - **PUT** substitui o objeto inteiro.
 - **PATCH** altera apenas os campos enviados.
@@ -699,7 +697,7 @@ Você já deve ter visto alguns desses erros no navegador.
 
 ---
 
-## 4.7 Testando com outras ferramentas
+**4.7 Testando com outras ferramentas**
 
 O navegador funciona bem para testes simples, mas existem ferramentas mais completas:
 
@@ -712,7 +710,7 @@ Essas ferramentas permitem enviar requisições com mais controle.
 
 ---
 
-## 4.8 Swagger
+**4.8 Swagger**
 
 O Swagger gera uma documentação interativa da API.
 
@@ -726,7 +724,7 @@ Você poderá testar os endpoints diretamente por lá.
 
 ---
 
-## O que acontece quando fazemos um GET?
+**O que acontece quando fazemos um GET?**
 
 Quando você acessa `/categorias/`:
 
@@ -740,7 +738,7 @@ Tudo isso acontece automaticamente.
 
 ---
 
-## 4.9 Exercícios
+**4.9 Exercícios**
 
 Agora é sua vez.
 
@@ -762,7 +760,7 @@ Experimente.
 
 ---
 
-## 4.10 Commit
+**4.10 Commit**
 
 Faça um commit com a mensagem:
 
@@ -775,10 +773,6 @@ Parabéns.
 Agora você não é apenas alguém que consome API.
 
 Você cria APIs.
-
----
-
-> 📦 **AULA 5 — CONECTANDO A API AO FRONTEND COM VUE 3**
 
 ---
 
@@ -798,7 +792,7 @@ E mais importante: essa aplicação será o modelo base para o frontend completo
 
 ---
 
-## 5.1 Objetivo da Aula
+**5.1 Objetivo da Aula**
 
 Nesta aula você vai:
 
@@ -809,7 +803,7 @@ Nesta aula você vai:
 
 ---
 
-# 5.2 Criando o Projeto a partir do Template
+**5.2 Criando o Projeto a partir do Template**
 
 Vamos usar um template já estruturado para acelerar o processo.
 
@@ -817,7 +811,7 @@ Acesse o repositório:
 
 👉 https://github.com/marrcandre/template-vue3
 
-### Passos:
+**Passos:**
 
 1. Clique no botão **"Use this template"**
 2. Escolha **"Create a new repository"**
@@ -826,7 +820,7 @@ Acesse o repositório:
 
 ---
 
-# 5.3 Instalando as dependências
+**5.3 Instalando as dependências**
 
 Entre na pasta do projeto pelo terminal e execute:
 
