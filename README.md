@@ -2260,19 +2260,69 @@ REST_FRAMEWORK = {
 
 -   Feitas essas alterações, coloque o servidor do Django novamente em execução.
 
+## Endpoints utilizados nesta aula
+
+Nesta aula, utilizaremos os seguintes _endpoints_:
+
+-   `POST /api/registro/`: cria um novo usuário.
+-   `POST /api/token/`: autentica o usuário e devolve os tokens `access` e `refresh`.
+-   `POST /api/token/refresh/`: gera um novo `access token` a partir do `refresh token`.
+-   `POST /api/token/verify/`: verifica se um token é válido.
+
+Observe que o projeto também possui _endpoints_ protegidos, como:
+
+-   `GET /api/categorias/`
+-   `GET /api/usuarios/me/`
+
+Esses _endpoints_ só podem ser acessados quando enviamos um `access token` válido no cabeçalho da requisição.
+
 **Exercícios: Testando a autenticação com o SimpleJWT**
 
 Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Client**.
 
-**Dica:** se sua ferramenta permitir, crie várias requisições separadas e dê nomes, como _login_, _consulta_, _inclusão_, etc.
+**Dica:** se sua ferramenta permitir, crie várias requisições separadas e dê nomes, como _registro_, _login_, _refresh_, _consulta protegida_ e _logout_.
 
--   Ao tentar acessar um _endpoint_ com `GET`, como esse:
+## 18.1 Criando um novo usuário
 
+Antes de fazer o _login_, precisamos garantir que existe um usuário válido no sistema.
+
+No template do projeto, a criação de usuários já está pronta por meio do seguinte _endpoint_:
+
+    [POST] http://0.0.0.0:19003/api/registro/
+
+Envie no `Body`, em `JSON`, as informações abaixo:
+
+```json
+{
+    "email": "comprador1@a.com",
+    "name": "Comprador 1",
+    "password": "teste.123"
+}
 ```
-[GET] http://0.0.0.0:19003/api/categorias/
+
+> A senha deve ter pelo menos 8 caracteres.
+
+Se tudo estiver correto, você receberá uma resposta semelhante a esta:
+
+```json
+{
+    "id": 3,
+    "email": "comprador1@a.com",
+    "name": "Comprador 1"
+}
 ```
 
--   Você deverá receber uma resposta parecida com essa:
+Se você tentar cadastrar um e-mail já existente, receberá uma mensagem de erro informando que o usuário já está em uso.
+
+## 18.2 Fazendo login
+
+Agora, vamos autenticar o usuário recém-criado.
+
+Primeiro, tente acessar um _endpoint_ protegido sem token, por exemplo:
+
+    [GET] http://0.0.0.0:19003/api/categorias/
+
+Você deverá receber uma resposta parecida com esta:
 
 ```json
 {
@@ -2280,9 +2330,11 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 }
 ```
 
-Para fazer a autenticação, precisamos enviar as informações de `usuário` e `senha`.
+Para fazer a autenticação, envie uma requisição `POST` para:
 
--  Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações, no `Body` em `JSON`:
+    [POST] http://0.0.0.0:19003/api/token/
+
+No `Body`, em `JSON`:
 
 ```json
 {
@@ -2291,36 +2343,74 @@ Para fazer a autenticação, precisamos enviar as informações de `usuário` e 
 }
 ```
 
--   O endereço para envio da requisição é o seguinte:
+> **IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se de que esta é uma requisição do tipo `POST`.
 
-    [POST] http://0.0.0.0:19003/api/token/
-
-> **IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
-
-Você deve receber uma resposta semelhante a essa:
+Você deve receber uma resposta semelhante a esta:
 
 ```json
 {
-    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
-    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+    "refresh": "<refresh_token>",
+    "access": "<access_token>"
 }
 ```
 
 > Para verificar as informações do token, acesse os sites [jwt.io](https://jwt.io/) ou [token.dev](https://token.dev/), cole o valor do token no campo `Encoded` e clique no botão `Decode`.
 
-Todas as chamadas ao sistema que precisarem de autenticação deverão ser feitas com o campo `access` token. Para isso, copie o valor do campo `access` e cole no campo `Auth`, opção `Bearer` do Thunder Client.
+## 18.3 Obtendo o token com curl
 
-Para testar, acesse com `GET` o seguinte endereço:
+Se você quiser agilizar os testes, pode obter o token rapidamente pela linha de comando e depois colar apenas o valor do campo `access` no Thunder Client ou no Swagger.
 
+Exemplo com `curl`:
+
+```shell
+curl -s -X POST http://127.0.0.1:19003/api/token/ \
+    -H "Content-Type: application/json" \
+    -d '{"email": "comprador1@a.com", "password": "teste.123"}'
 ```
-[GET] http://0.0.0.0:19003/api/categorias/
+
+A resposta será semelhante a esta:
+
+```json
+{
+    "refresh": "seu_refresh_token",
+    "access": "seu_access_token"
+}
 ```
 
-Você deverá conseguir visualizar todas as categorias cadastradas.
+Se você estiver utilizando Linux e quiser exibir apenas o `access token`, pode usar o comando abaixo com `awk`:
 
-**_Token_ expirado**
+```shell
+curl -s -X POST http://127.0.0.1:19003/api/token/ \
+    -H "Content-Type: application/json" \
+    -d '{"email": "comprador1@a.com", "password": "teste.123"}' | awk -F'"' '/access/ {print $4}'
+```
 
-Quando o token expira, você receberá uma resposta semelhante a essa:
+Depois disso, basta copiar o token e colá-lo na ferramenta que será utilizada nos testes.
+
+-   No **Thunder Client**, cole o token no campo `Auth`, opção `Bearer`.
+-   No **Swagger**, utilize o botão `Authorize` e informe o token de acordo com o formato exigido pela interface da aplicação.
+
+> Essa abordagem é útil para acelerar os testes durante a aula, principalmente quando for necessário gerar um novo token rapidamente.
+
+## 18.4 Usando o access token nas requisições
+
+Todas as chamadas ao sistema que precisarem de autenticação deverão ser feitas com o campo `access` token. Para isso, copie o valor do campo `access` e cole no campo `Auth`, opção `Bearer`, do Thunder Client.
+
+Depois disso, repita a consulta:
+
+    [GET] http://0.0.0.0:19003/api/categorias/
+
+Agora você deverá conseguir visualizar todas as categorias cadastradas.
+
+Você também pode testar o _endpoint_ abaixo para visualizar os dados do usuário autenticado:
+
+    [GET] http://0.0.0.0:19003/api/usuarios/me/
+
+Esse _endpoint_ devolve os dados do usuário associado ao token enviado.
+
+## 18.5 Renovando o token com refresh
+
+Quando o `access token` expira, você receberá uma resposta semelhante a esta:
 
 ```json
 {
@@ -2336,22 +2426,73 @@ Quando o token expira, você receberá uma resposta semelhante a essa:
 }
 ```
 
-Para renovar o token, você pode:
+Nesse caso, você não precisa fazer _login_ novamente imediatamente. Se o `refresh token` ainda estiver válido, envie uma requisição `POST` para:
 
-1. Fazer novamente a requisição de autenticação (`/api/token/`), enviando as informações de usuário e senha.
-2. Usar o _refresh token_ para obter um novo _access token_, enviando uma requisição `POST` para `/api/token/refresh/` com o campo `refresh`:
+    [POST] http://0.0.0.0:19003/api/token/refresh/
+
+No `Body`, em `JSON`:
 
 ```json
 {
-    "refresh": "seu_refresh_token_aqui"
+    "refresh": "<refresh_token>"
 }
 ```
 
-**Tentando alterar uma informação**
+A resposta será semelhante a esta:
 
+```json
+{
+    "access": "<novo_access_token>"
+}
 ```
-[PUT] http://0.0.0.0:19003/api/categorias/10/
+
+Substitua o token antigo pelo novo token e continue utilizando os _endpoints_ protegidos normalmente.
+
+Se o `refresh token` também estiver expirado ou inválido, aí sim será necessário fazer o _login_ novamente com e-mail e senha.
+
+## 18.6 Verificando um token
+
+Se você quiser apenas testar se um token ainda é válido, utilize o seguinte _endpoint_:
+
+    [POST] http://0.0.0.0:19003/api/token/verify/
+
+No `Body`, em `JSON`:
+
+```json
+{
+    "token": "<access_token>"
+}
 ```
+
+Esse teste é útil para depuração e entendimento, mas não substitui o fluxo normal de autenticação da aplicação.
+
+## 18.7 Fazendo logout
+
+No modelo atual deste projeto, o _logout_ não é feito por um _endpoint_ específico do backend.
+
+Como estamos usando JWT, o procedimento de _logout_ no cliente consiste em:
+
+-   remover o `access token` armazenado;
+-   remover o `refresh token` armazenado;
+-   parar de enviar o cabeçalho `Authorization: Bearer <token>` nas próximas requisições.
+
+Na prática, ao apagar o token do Thunder Client, do navegador ou da aplicação cliente, a API voltará a responder como usuário não autenticado.
+
+Para simular isso no Thunder Client, basta remover o token configurado no campo `Auth` e repetir uma requisição protegida, como:
+
+    [GET] http://0.0.0.0:19003/api/categorias/
+
+Você deverá receber novamente a mensagem informando que as credenciais de autenticação não foram fornecidas.
+
+> **IMPORTANTE:** este projeto não está invalidando tokens no servidor. Portanto, se alguém ainda possuir um token válido, conseguirá utilizá-lo até a expiração.
+
+## 18.8 Testando permissões com usuários diferentes
+
+Depois de autenticar um usuário comum, tente realizar uma operação de escrita em um recurso da API.
+
+Por exemplo:
+
+    [PUT] http://0.0.0.0:19003/api/categorias/10/
 
 ```json
 {
@@ -2359,24 +2500,27 @@ Para renovar o token, você pode:
 }
 ```
 
-```json
-{
-    "detail": "Método \"PUT\" não é permitido."
-}
-```
+Dependendo das permissões configuradas na sua API, você poderá receber uma resposta de erro indicando falta de permissão ou, em alguns casos, que o método não é permitido para aquele _endpoint_.
 
-Você não pode alterar uma informação com esse usuário. Para isso, você precisa de um usuário com permissão de escrita.
+Em seguida, repita o processo com outro usuário, como o `admin1`, que tenha mais privilégios no sistema.
 
-**Testando com outro usuário**
+O objetivo desse teste é observar que:
 
-Repita o processo de autenticação e consulta com o usuário `admin1` que criamos anteriormente.
+-   o JWT resolve a **autenticação**, ou seja, identifica quem é o usuário;
+-   as permissões do Django e do DRF continuam responsáveis pela **autorização**, ou seja, definem o que esse usuário pode fazer.
 
-Resumindo, você vai precisar:
+## 18.9 Roteiro resumido da aula
 
--   Criar uma requisição de autenticação, do tipo `POST`, para a URL `/api/token/`, enviando as informações de usuário e senha.
--   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
+Ao final desta aula, você deve ser capaz de executar a seguinte sequência:
 
-Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
+1. Criar um usuário com `POST /api/registro/`.
+2. Fazer _login_ com `POST /api/token/`.
+3. Copiar o `access token` para o cabeçalho `Bearer`.
+4. Acessar um _endpoint_ protegido, como `GET /api/categorias/`.
+5. Renovar o token com `POST /api/token/refresh/`, quando necessário.
+6. Simular o _logout_ removendo os tokens armazenados no cliente.
+
+Com isso, temos um sistema básico de **autenticação** (_login_ com JWT) e **autorização** (_permissões do Django e do DRF_) funcionando em conjunto.
 
 **Finalizando**
 
