@@ -15,16 +15,7 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [3. Criação de uma aplicação](#3-criação-de-uma-aplicação)
 - [4. Criação de uma API REST](#4-criação-de-uma-api-rest)
 - [5. Conectando a API ao frontend com Vue 3](#5-conectando-a-api-ao-frontend-com-vue-3)
-- [5.4 Executando a aplicação](#54-executando-a-aplicação)
-- [5.5 Conectando com a API da Categoria](#55-conectando-com-a-api-da-categoria)
-- [5.6 Se os dados não aparecerem](#56-se-os-dados-não-aparecerem)
-- [5.7 Entendendo o que está acontecendo](#57-entendendo-o-que-está-acontecendo)
-- [5.8 Importante: NodeJS](#58-importante-nodejs)
-- [5.9 Exercícios](#59-exercícios)
 - [6. Inclusão da Editora no projeto Livraria](#6-inclusão-da-editora-no-projeto-livraria)
-- [6.3 Implementação esperada](#63-implementação-esperada)
-- [6.5 Testes obrigatórios](#65-testes-obrigatórios)
-- [6.6 Commit](#66-commit)
 - [7. Criação da API para Autor](#7-criação-da-api-para-autor)
 - [8. Criação da API para Livro](#8-criação-da-api-para-livro)
 - [9. Inclusão das chaves estrangeiras no modelo Livro](#9-inclusão-das-chaves-estrangeiras-no-modelo-livro)
@@ -683,7 +674,7 @@ A API usa métodos HTTP para manipular dados:
 
 ---
 
-## Códigos de status HTTP
+**Códigos de status HTTP**
 
 Quando você faz uma requisição, o servidor responde com um código:
 
@@ -832,7 +823,7 @@ Esse comando irá instalar todas as dependências necessárias definidas no `pac
 
 ---
 
-# 5.4 Executando a aplicação
+**5.4 Executando a aplicação**
 
 Depois da instalação, execute:
 
@@ -850,7 +841,7 @@ Abra no navegador.
 
 ---
 
-# 5.5 Conectando com a API da Categoria
+**5.5 Conectando com a API da Categoria**
 
 O template já possui uma estrutura básica para requisições.
 
@@ -875,7 +866,7 @@ Se a aplicação Vue estiver configurada corretamente, ela deverá buscar os dad
 
 ---
 
-# 5.6 Se os dados não aparecerem
+**5.6 Se os dados não aparecerem**
 
 Caso nada seja exibido:
 
@@ -896,7 +887,7 @@ Frontend e Backend estão em portas diferentes:
 
 ---
 
-# 5.7 Entendendo o que está acontecendo
+**5.7 Entendendo o que está acontecendo**
 
 Quando a página carrega:
 
@@ -913,7 +904,7 @@ Essa é a base de qualquer aplicação moderna.
 
 ---
 
-# 5.8 Importante: NodeJS
+**5.8 Importante: NodeJS**
 
 Se você tiver problemas com `npm`, verifique se está usando a versão LTS do NodeJS.
 
@@ -924,7 +915,7 @@ https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente (Material d
 
 ---
 
-# 5.9 Exercícios
+**5.9 Exercícios**
 
 1. Confirme se as categorias aparecem corretamente.
 2. Adicione uma nova categoria pelo backend.
@@ -939,7 +930,7 @@ Entenda o fluxo completo.
 
 ---
 
-## 🎯 Objetivo desta etapa
+**Objetivo desta etapa**
 
 Você não está apenas rodando um template.
 
@@ -980,7 +971,7 @@ A ideia é:
 
 ---
 
-## 6.1 Contexto
+**6.1 Contexto**
 
 Nossa aplicação é uma **livraria**.
 
@@ -1005,12 +996,11 @@ Nossa Editora terá os seguintes campos:
 - `site`: URL do site da editora (opcional)
 
 ---
-
-## 6.2 O Desafio
+**6.2 O Desafio**
 
 Crie a API completa da `Editora`, repetindo o mesmo padrão utilizado em `Categoria`.
 
-### Você precisa:
+**Você precisa:**
 
 1. Criar a model `Editora`, no arquivo `core/models/editora.py`
 2. Registrar no `models/__init__.py`
@@ -1030,13 +1020,13 @@ Crie a API completa da `Editora`, repetindo o mesmo padrão utilizado em `Catego
 
 ---
 
-# 6.3 Implementação esperada
+**6.3 Implementação esperada**
 
 Após concluir, compare com os arquivos abaixo.
 
 ---
 
-## 📁 models/editora.py
+**📁 models/editora.py**
 
 ```python
 from django.db import models
@@ -1049,14 +1039,14 @@ class Editora(models.Model):
         return self.nome
 ```
 
-### Reflita:
+**Reflita:**
 
 - Por que `site` possui `blank=True` e `null=True`?
 - Faz sentido obrigar que toda editora tenha site?
 
 ---
 
-## 📁 models/__init__.py
+**📁 models/__init__.py**
 
 ```python
 from .editora import Editora
@@ -1064,7 +1054,7 @@ from .editora import Editora
 
 ---
 
-## 6.4 Migração
+**6.4 Migração**
 
 Após criar a model:
 
@@ -1081,7 +1071,7 @@ Se ocorrer erro:
 
 ---
 
-## 📁 admin.py
+**📁 admin.py**
 
 ```python
 admin.site.register(models.Editora)
@@ -1091,7 +1081,7 @@ Acesse o painel administrativo e confirme se a Editora aparece.
 
 ---
 
-## 📁 serializers/editora.py
+**📁 serializers/editora.py**
 
 ```python
 from rest_framework.serializers import ModelSerializer
@@ -1105,7 +1095,7 @@ class EditoraSerializer(ModelSerializer):
 
 ---
 
-## 📁 serializers/__init__.py
+**📁 serializers/__init__.py**
 
 ```python
 from .editora import EditoraSerializer
@@ -1117,7 +1107,7 @@ O que acontece se você esquecer de importar o serializer no `__init__.py`?
 
 ---
 
-## 📁 views/editora.py
+**📁 views/editora.py**
 
 ```python
 from rest_framework.viewsets import ModelViewSet
@@ -1131,7 +1121,7 @@ class EditoraViewSet(ModelViewSet):
 
 ---
 
-## 📁 views/__init__.py
+**📁 views/__init__.py**
 
 ```python
 from .editora import EditoraViewSet
@@ -1143,7 +1133,7 @@ Por que não precisamos implementar manualmente métodos como `create()` ou `lis
 
 ---
 
-## 📁 urls.py
+**📁 urls.py**
 
 ```python
 from core.views import CategoriaViewSet, EditoraViewSet, UserViewSet
@@ -1160,7 +1150,7 @@ http://127.0.0.1:8000/api/editoras/
 
 ---
 
-# 6.5 Testes obrigatórios
+**6.5 Testes obrigatórios**
 
 Teste todos os métodos da API:
 
@@ -1172,7 +1162,7 @@ Teste todos os métodos da API:
 
 ---
 
-## 🧠 Exercícios de reflexão
+**Exercícios de reflexão**
 
 1. É possível criar uma Editora sem informar `site`?
 2. O que acontece se você usar PUT sem enviar todos os campos?
@@ -1185,7 +1175,7 @@ Teste.
 
 ---
 
-# 6.6 Commit
+**6.6 Commit**
 
 Finalize com o commit:
 
@@ -1195,7 +1185,7 @@ feat: criação da API para Editora
 
 ---
 
-## 🎯 Objetivo desta aula
+**Objetivo desta aula**
 
 Reforçar o padrão da arquitetura:
 
@@ -4905,7 +4895,7 @@ yay -Syu visual-studio-code-bin
 
 # A2. Instalação e sincronização de extensões do VS Code
 
-## Instalação de extensões no VS Code
+**Instalação de extensões no VS Code**
 
 Instale as extensoẽs do **VS Code** de sua preferência. Você pode instalar as extensões clicando no ícone de extensões no canto esquerdo da tela do **VS Code** e pesquisando pelo nome da extensão.
 
@@ -4939,7 +4929,7 @@ Utilizo o tema de cores `Escuro +` do **VS Code**. Dẽ preferência, utilize es
 
 Para alterar o tema de cores, useo atalho `Ctrl + K` e depois `Ctrl + T`.
 
-## Sinconização de extensões no VS Code
+**Sincronização de extensões no VS Code**
 
 Você pode configurar a sincronização das extensões entre os computadores. Para isso:
 
@@ -5651,7 +5641,7 @@ O `django-extensions` traz o comando `runserver_plus`, que permite iniciar o ser
 
 ---
 
-## 1. Instalar dependências
+**1. Instalar dependências**
 
 Primeiro, instale os pacotes necessários:
 
@@ -5665,7 +5655,7 @@ pdm add django-extensions werkzeug pyOpenSSL
 
 ---
 
-## 2. Executar com HTTPS
+**2. Executar com HTTPS**
 
 Você pode rodar o servidor com um certificado autoassinado de forma bem simples:
 
@@ -5677,7 +5667,7 @@ Se o arquivo `cert.pem` **não existir**, o Django Extensions irá gerar automat
 
 ---
 
-## 3. Automatizando com script no `pyproject.toml`
+**3. Automatizando com script no `pyproject.toml`**
 
 Para não ter que digitar o comando completo toda vez, adicione um script no seu `pyproject.toml`:
 
@@ -5694,7 +5684,7 @@ pdm devssl
 
 ---
 
-## 4. Observações importantes
+**4. Observações importantes**
 
 - O certificado gerado é **autoassinado**, então o navegador exibirá um aviso de “conexão não segura”. Isso é normal em ambiente de desenvolvimento.
 - Caso você queira certificados que não mostrem aviso no navegador, pode usar ferramentas como [mkcert](https://github.com/FiloSottile/mkcert).
