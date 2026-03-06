@@ -29,13 +29,15 @@ REST_FRAMEWORK = {
 }
 ```
 
--   Observe que já existem duas entradas referentes ao `SimpleJWT` no arquivo `urls.py`:
+-   Observe que já existem as entradas referentes ao `SimpleJWT` no arquivo `urls.py`:
 
-    - http://0.0.0.0:19003/token/
-    - http://0.0.0.0:19003/token/refresh/
+    - http://0.0.0.0:19003/api/token/
+    - http://0.0.0.0:19003/api/token/refresh/
+    - http://0.0.0.0:19003/api/token/verify/
+    - http://0.0.0.0:19003/api/registro/
 
 
--   Feitas essa aterações, coloque o servidor do Django novamente em execução.
+-   Feitas essas alterações, coloque o servidor do Django novamente em execução.
 
 **Exercícios: Testando as permissões com o SimpleJWT**
 

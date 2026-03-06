@@ -27,7 +27,7 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [15. Uso do Django Shell e do Django Shell Plus](#15-uso-do-django-shell-e-do-django-shell-plus)
 - [16. Autenticação e autorização](#16-autenticação-e-autorização)
 - [17. Utilização das permissões do DRF](#17-utilização-das-permissões-do-drf)
-- [18. Autenticação com Passage](#18-autenticação-com-passage)
+- [18. Autenticação com o SimpleJWT](#18-autenticação-com-o-simplejwt)
 - [19. Inclusão da foto de perfil no usuário](#19-inclusão-da-foto-de-perfil-no-usuário)
 - [20. Criação da entidade Compra integrada ao usuário do projeto](#20-criação-da-entidade-compra-integrada-ao-usuário-do-projeto)
 - [21. Criação dos itens da compra](#21-criação-dos-itens-da-compra)
@@ -2214,61 +2214,173 @@ REST_FRAMEWORK = {
 
 > **Resumindo**, utilizaremos a estrutura de usuários, grupos e permissões que o próprio Django já nos fornece. Para isso, utilizaremos o [DjangoModelPermissionsOrAnonReadOnly](https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissionsoranonreadonly) para gerenciar as permissões.
 
-Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Para isso, utilizaremos o **Passage**.
+Para utilizar essa estrutura de permissões corretamente, precisaremos de um sistema de autenticação (`login`) no nosso projeto, de forma a enviar essas informações via a `URL`. Para isso, utilizaremos o **SimpleJWT**.
 
 ---
 
 
-# 18. Autenticação com Passage
+# 18. Autenticação com o SimpleJWT
 
-**Criação da conta no Passage**
+**Um resumo sobre autenticação e autorização**
 
-Se você ainda não tem uma conta no **Passage**:
-- Crie uma conta em [https://passage.id/](https://passage.id/).
-- Clique em `Login` e depois em `Registre-se` para criar uma conta. Siga os passos solicitados para criar a conta.
+Relembrando o que estudamos até aqui em termos de autenticação e autorização:
 
-**Criação de um aplicativo no Passage**
+-   Como criar grupos e usuários e inserir os usuários nesses grupos
+-   Como dar permissões nas models (via **Admin**) para visualização (`view`), adição (`add`), alteração (`change`) e exclusão (`remove`).
+-   Como utilizar diversas formas de gerenciamento de permissões no Django, incluindo as permissões em cada `view` ou as permissões padrão no `settings.py`.
+-   Como utilizar o `DjangoModelPermissions` para fazer uso do gerenciamento de permissões já incluído no **Django Admin**.
 
-Após criar a conta, você deve criar um aplicativo:
-- Clique em `Create App`.
-- Escolha a opção **`Passkey complete`** e clique no botão `Continue`.
-- Escolha a opção **`Embedded login experience`** e preencha os campos solicitados:
-    - `Name your app`: `livraria` (por exemplo)
-    - `Enter the domain for your app`: `http://localhost:5173`
-    - `Enter the redirect URL`: `/`
-- Clique em `Create App` para finalizar a criação do aplicativo
+Agora, vamos utilizar o **SimpleJWT** para a autenticação no **Django REST Framework**.
 
-> Importante: o domínio e a porta devem ser os mesmos que você está utilizando para desenvolver o seu PWA. No nosso caso, estamos utilizando o domínio http://localhost:5173. Quando você for colocar o seu PWA em produção, você deve alterar o domínio para o domínio do seu site.
+> **Resumindo**, utilizaremos o `SimpleJWT` para **autenticação** e a _estrutura de permissões do Django_ para **autorização**.
 
-**Configuração do Passage no backend Django**
+**O SimpleJWT**
 
-- Descomente (ou inclua) as seguintes linhas no arquivo `settings.py`:
+O [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) é um plug-in de autenticação JSON Web Token para o Django REST Framework.
+
+**Ativando o SimpleJWT**
+
+-   Adicione (ou descomente) o `SimpleJWT` no arquivo `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
     ...
-    'DEFAULT_AUTHENTICATION_CLASSES': ('core.authentication.TokenAuthentication',), # Autenticação no passage.id
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ),  # autorização de acesso
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly",),
     ...
 }
 ```
 
-No arquivo `.env`, preencha as seguintes variáveis com os valores da sua aplicação:
+-   Observe que já existem as entradas referentes ao `SimpleJWT` no arquivo `urls.py`:
 
-```shell
-PASSAGE_APP_ID=sua_app_id
-PASSAGE_APP_KEY=sua_app_key
+    - `/api/token/` — obtenção do token (login)
+    - `/api/token/refresh/` — renovação do token
+    - `/api/token/verify/` — verificação do token
+    - `/api/registro/` — registro de novos usuários
+
+-   Feitas essas alterações, coloque o servidor do Django novamente em execução.
+
+**Exercícios: Testando a autenticação com o SimpleJWT**
+
+Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Client**.
+
+**Dica:** se sua ferramenta permitir, crie várias requisições separadas e dê nomes, como _login_, _consulta_, _inclusão_, etc.
+
+-   Ao tentar acessar um _endpoint_ com `GET`, como esse:
+
+```
+[GET] http://0.0.0.0:19003/api/categorias/
 ```
 
-**Configuração do Passage no frontend Vue**
+-   Você deverá receber uma resposta parecida com essa:
 
--   No arquivo `src/views/Login.vue`, inclua o seguinte código:
-
-```html
-    <passage-auth app-id="seu_app_id"></passage-auth>
+```json
+{
+    "detail": "As credenciais de autenticação não foram fornecidas."
+}
 ```
 
-Substitua o valor de `app-id` pelo valor do seu `app_id`, no **Passage**.
+Para fazer a autenticação, precisamos enviar as informações de `usuário` e `senha`.
+
+-  Faremos isso enviando uma requisição do tipo `POST`, com as seguintes informações, no `Body` em `JSON`:
+
+```json
+{
+    "email": "comprador1@a.com",
+    "password": "teste.123"
+}
+```
+
+-   O endereço para envio da requisição é o seguinte:
+
+    [POST] http://0.0.0.0:19003/api/token/
+
+> **IMPORTANTE:** Não esqueça da barra (`/`) final no endereço e lembre-se que essa é uma requisição do tipo `POST`.
+
+Você deve receber uma resposta semelhante a essa:
+
+```json
+{
+    "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..."
+}
+```
+
+> Para verificar as informações do token, acesse os sites [jwt.io](https://jwt.io/) ou [token.dev](https://token.dev/), cole o valor do token no campo `Encoded` e clique no botão `Decode`.
+
+Todas as chamadas ao sistema que precisarem de autenticação deverão ser feitas com o campo `access` token. Para isso, copie o valor do campo `access` e cole no campo `Auth`, opção `Bearer` do Thunder Client.
+
+Para testar, acesse com `GET` o seguinte endereço:
+
+```
+[GET] http://0.0.0.0:19003/api/categorias/
+```
+
+Você deverá conseguir visualizar todas as categorias cadastradas.
+
+**_Token_ expirado**
+
+Quando o token expira, você receberá uma resposta semelhante a essa:
+
+```json
+{
+    "detail": "O token informado não é válido para qualquer tipo de token",
+    "code": "token_not_valid",
+    "messages": [
+        {
+            "token_class": "AccessToken",
+            "token_type": "access",
+            "message": "O token é inválido ou expirado"
+        }
+    ]
+}
+```
+
+Para renovar o token, você pode:
+
+1. Fazer novamente a requisição de autenticação (`/api/token/`), enviando as informações de usuário e senha.
+2. Usar o _refresh token_ para obter um novo _access token_, enviando uma requisição `POST` para `/api/token/refresh/` com o campo `refresh`:
+
+```json
+{
+    "refresh": "seu_refresh_token_aqui"
+}
+```
+
+**Tentando alterar uma informação**
+
+```
+[PUT] http://0.0.0.0:19003/api/categorias/10/
+```
+
+```json
+{
+    "descricao": "Cobol"
+}
+```
+
+```json
+{
+    "detail": "Método \"PUT\" não é permitido."
+}
+```
+
+Você não pode alterar uma informação com esse usuário. Para isso, você precisa de um usuário com permissão de escrita.
+
+**Testando com outro usuário**
+
+Repita o processo de autenticação e consulta com o usuário `admin1` que criamos anteriormente.
+
+Resumindo, você vai precisar:
+
+-   Criar uma requisição de autenticação, do tipo `POST`, para a URL `/api/token/`, enviando as informações de usuário e senha.
+-   Copiar a chave do tipo `access` e colocá-la no cabeçalho `Auth`, opção `Bearer` da requisição do tipo `GET` que você fará.
+
+Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autorização** (_permissões_) usando o próprio sistema já fornecido pelo Django.
+
+**Finalizando**
+
+- Faça um _commit_ com a mensagem `Autenticação com o SimpleJWT`.
 
 ---
 
@@ -2320,7 +2432,7 @@ Seu projeto deve ficar assim:
 ...
 class UserAdmin(BaseUserAdmin):
     ...
-        (_('Personal Info'), {'fields': ('name', 'passage_id', 'foto')}),# inclua a foto aqui
+        (_('Personal Info'), {'fields': ('name', 'foto')}),# inclua a foto aqui
     ...
 ```
 
@@ -5121,8 +5233,6 @@ SECRET_KEY=[sua_secret_key]
 WEB_CONCURRENCY=4
 DATABASE_URL=[sua_database_url]
 CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
-PASSAGE_APP_ID=sua_app_id
-PASSAGE_API_KEY=sua_api_key
 ```
 > Crie uma `SECRET_KEY` nova. Veja como [aqui](#geração-da-secret_key). Coloque essa chave no lugar de `[sua_secret_key]`.
 
@@ -5547,7 +5657,7 @@ Uma aplicação deve ter uma única base de código, versionada em um sistema de
 **2. Dependências – Declare e isole as dependências**
 As dependências devem ser declaradas explicitamente e isoladas do sistema. Isso garante que a aplicação funcione em qualquer ambiente.
 
-*No backend, usamos o PDM com o `pyproject.toml` para declarar pacotes como Django, DRF, passage.id, etc. No frontend, usamos `package.json` com Pinia, Axios e Vue. Assim, qualquer ambiente pode reproduzir o mesmo setup com `pdm install` ou `npm install`.*
+*No backend, usamos o PDM com o `pyproject.toml` para declarar pacotes como Django, DRF, djangorestframework-simplejwt, etc. No frontend, usamos `package.json` com Pinia, Axios e Vue. Assim, qualquer ambiente pode reproduzir o mesmo setup com `pdm install` ou `npm install`.*
 
 ---
 
@@ -5562,7 +5672,7 @@ As configurações devem ser armazenadas como variáveis de ambiente, separadas 
 **4. Serviços de Apoio – Trate serviços de apoio como recursos anexos**
 
 Serviços externos como banco de dados ou armazenamento devem ser tratados como recursos externos e facilmente substituíveis.
-*O projeto usa PostgreSQL no Supabase e Cloudinary para armazenamento de imagens. O Vue.js consome a API do Django, que se conecta ao banco de dados. O passage.id é usado para autenticação. Todos esses serviços são configurados via variáveis de ambiente, permitindo fácil troca entre ambientes. Nosso app pode usar SQLite localmente e PostgreSQL na produção, sem alterar o código.*
+*O projeto usa PostgreSQL no Supabase e Cloudinary para armazenamento de imagens. O Vue.js consome a API do Django, que se conecta ao banco de dados. O SimpleJWT é usado para autenticação. Todos esses serviços são configurados via variáveis de ambiente, permitindo fácil troca entre ambientes. Nosso app pode usar SQLite localmente e PostgreSQL na produção, sem alterar o código.*
 
 ---
 

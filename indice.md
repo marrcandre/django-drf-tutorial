@@ -15,7 +15,7 @@
 # 15. Uso do Django Shell e do Django Shell Plus
 # 16. Autenticação e autorização
 # 17. Utilização das permissões do DRF
-# 18. Autenticação com Passage
+# 18. Autenticação com o SimpleJWT
 # 19. Inclusão da foto de perfil no usuário
 # 20. Criação da entidade Compra integrada ao usuário do projeto
 # 21. Criação dos itens da compra
