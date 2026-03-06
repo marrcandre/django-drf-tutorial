@@ -2382,6 +2382,16 @@ Com isso, fizemos um sistema básico de **autenticação** (_login_) e **autoriz
 
 - Faça um _commit_ com a mensagem `Autenticação com o SimpleJWT`.
 
+**Extra**
+
+Fazendo login pela linha de comando, utilizando o `curl`:
+
+```shell
+curl -X POST http://127.0.0.1:19003/api/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"email": "comprador1@a.com", "password": "teste.123"}'
+```
+
 ---
 
 
