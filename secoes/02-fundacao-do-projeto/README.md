@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../01-preparacao-do-ambiente/README.md) | [Próxima](../03-modelagem-e-crud-base/README.md)
+[Início](../../README.md) | Seção | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)
 
 # Seção 2. Fundação do projeto
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá ter um projeto Django criado a partir do t
 
 - Seção 3. Modelagem e CRUD base
 
-[Início](../../README.md) | Seção | [Anterior](../01-preparacao-do-ambiente/README.md) | [Próxima](../03-modelagem-e-crud-base/README.md)
+[Início](../../README.md) | Seção | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)

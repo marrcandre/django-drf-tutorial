@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | Anterior | [Próxima](../02-fundacao-do-projeto/README.md)
+[Início](../../README.md) | Seção | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)
 
 # Seção 1. Preparação do ambiente
 
@@ -18,4 +18,4 @@ Ao final desta seção, você deverá ter um ambiente pronto para acompanhar as 
 
 No material legado, a preparação do ambiente aparecia como uma aula introdutória seguida de apêndices. Na nova estrutura, esse conteúdo passa a ser a própria seção de abertura do curso.
 
-[Início](../../README.md) | Seção | Anterior | [Próxima](../02-fundacao-do-projeto/README.md)
+[Início](../../README.md) | Seção | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)

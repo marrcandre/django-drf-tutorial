@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../05-autenticacao-e-usuarios/README.md) | [Próxima](06-02-criacao-dos-itens-da-compra.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](06-02-criacao-dos-itens-da-compra.md)
 
 # 6.1 Criação da entidade compra integrada ao usuário
 
@@ -75,4 +75,4 @@ A aplicação passa a ter a estrutura base necessária para modelar um carrinho 
 
 - [6.2 Criação dos itens da compra](06-02-criacao-dos-itens-da-compra.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../05-autenticacao-e-usuarios/README.md) | [Próxima](06-02-criacao-dos-itens-da-compra.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](06-02-criacao-dos-itens-da-compra.md)

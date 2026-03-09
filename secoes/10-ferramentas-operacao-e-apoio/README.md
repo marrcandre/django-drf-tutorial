@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/README.md) | [Próxima](../11-exercicios/README.md)
+[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)
 
 # Seção 10. Ferramentas, operação e apoio
 
@@ -22,4 +22,4 @@ Ao final desta seção, você deverá conseguir resolver problemas comuns do amb
 
 - Seção 11. Exercícios
 
-[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/README.md) | [Próxima](../11-exercicios/README.md)
+[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)

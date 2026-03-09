@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../05-autenticacao-e-usuarios/README.md) | [Próxima](../07-acoes-personalizadas/README.md)
+[Início](../../README.md) | Seção | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)
 
 # Seção 6. Compras e regras de negócio
 
@@ -31,4 +31,4 @@ Ao final desta seção, você deverá conseguir implementar o ciclo de compras d
 
 - Seção 7. Ações personalizadas
 
-[Início](../../README.md) | Seção | [Anterior](../05-autenticacao-e-usuarios/README.md) | [Próxima](../07-acoes-personalizadas/README.md)
+[Início](../../README.md) | Seção | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)

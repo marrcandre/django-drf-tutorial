@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../03-modelagem-e-crud-base/README.md) | [Próxima](../05-autenticacao-e-usuarios/README.md)
+[Início](../../README.md) | Seção | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)
 
 # Seção 4. Dados, arquivos e administração
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá conseguir enriquecer o projeto com upload 
 
 - Seção 5. Autenticação e usuários
 
-[Início](../../README.md) | Seção | [Anterior](../03-modelagem-e-crud-base/README.md) | [Próxima](../05-autenticacao-e-usuarios/README.md)
+[Início](../../README.md) | Seção | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)

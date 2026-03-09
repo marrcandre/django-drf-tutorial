@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../04-dados-arquivos-e-administracao/README.md) | [Próxima](05-02-utilizacao-das-permissoes-do-drf.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](05-02-utilizacao-das-permissoes-do-drf.md)
 
 # 5.1 Autenticação e autorização
 
@@ -88,4 +88,4 @@ O projeto passa a ter uma base organizada de autorização ao usar grupos e perm
 
 - [5.2 Utilização das permissões do DRF](05-02-utilizacao-das-permissoes-do-drf.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../04-dados-arquivos-e-administracao/README.md) | [Próxima](05-02-utilizacao-das-permissoes-do-drf.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](05-02-utilizacao-das-permissoes-do-drf.md)

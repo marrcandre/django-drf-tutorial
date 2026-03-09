@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | Anterior | [Próxima](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md)
 
 # 1.1 Instalação e atualização do VS Code
 
@@ -43,4 +43,4 @@ Com o editor em funcionamento, você já pode passar para a configuração das e
 
 - [1.2 Instalação e sincronização de extensões do VS Code](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md)
 
-[Início](../../README.md) | [Seção](README.md) | Anterior | [Próxima](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md)

@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../02-fundacao-do-projeto/README.md) | [Próxima](03-02-criacao-da-api-para-autor.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](03-02-criacao-da-api-para-autor.md)
 
 # 3.1 Inclusão da Editora no projeto Livraria
 
@@ -204,4 +204,4 @@ Repetir o padrão em uma nova entidade reforça a arquitetura-base do projeto e 
 
 - [3.2 Criação da API para Autor](03-02-criacao-da-api-para-autor.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../02-fundacao-do-projeto/README.md) | [Próxima](03-02-criacao-da-api-para-autor.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](03-02-criacao-da-api-para-autor.md)

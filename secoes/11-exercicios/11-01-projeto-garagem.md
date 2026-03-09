@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../10-ferramentas-operacao-e-apoio/README.md) | Próxima
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | Próxima
 
 # 11.1 Projeto Garagem
 
@@ -64,4 +64,4 @@ docs(secao-11): organiza exercicio do projeto garagem
 
 Esse exercício fecha o ciclo do tutorial ao exigir autonomia para aplicar o conteúdo em outro contexto.
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../10-ferramentas-operacao-e-apoio/README.md) | Próxima
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | Próxima

@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../04-dados-arquivos-e-administracao/README.md) | [Próxima](../06-compras-e-regras-de-negocio/README.md)
+[Início](../../README.md) | Seção | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)
 
 # Seção 5. Autenticação e usuários
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá conseguir autenticar usuários, aplicar pe
 
 - Seção 6. Compras e regras de negócio
 
-[Início](../../README.md) | Seção | [Anterior](../04-dados-arquivos-e-administracao/README.md) | [Próxima](../06-compras-e-regras-de-negocio/README.md)
+[Início](../../README.md) | Seção | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)

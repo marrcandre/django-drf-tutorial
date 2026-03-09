@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../01-preparacao-do-ambiente/README.md) | [Próxima](02-02-criacao-de-uma-aplicacao.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](02-02-criacao-de-uma-aplicacao.md)
 
 # 2.1 Criação do projeto
 
@@ -113,4 +113,4 @@ Com o projeto criado e funcionando localmente, você já pode começar a entende
 
 - [2.2 Criação de uma aplicação](02-02-criacao-de-uma-aplicacao.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../01-preparacao-do-ambiente/README.md) | [Próxima](02-02-criacao-de-uma-aplicacao.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](02-02-criacao-de-uma-aplicacao.md)

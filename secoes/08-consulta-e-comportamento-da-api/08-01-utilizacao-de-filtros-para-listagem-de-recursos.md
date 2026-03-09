@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../07-acoes-personalizadas/README.md) | [Próxima](08-02-utilizacao-de-busca-textual-em-campos-de-texto.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](08-02-utilizacao-de-busca-textual-em-campos-de-texto.md)
 
 # 8.1 Utilização de filtros para listagem de recursos
 
@@ -46,4 +46,4 @@ Os filtros tornam a API mais útil para consumo real sem exigir endpoints espec�
 
 - [8.2 Utilização de busca textual em campos de texto](08-02-utilizacao-de-busca-textual-em-campos-de-texto.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../07-acoes-personalizadas/README.md) | [Próxima](08-02-utilizacao-de-busca-textual-em-campos-de-texto.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](08-02-utilizacao-de-busca-textual-em-campos-de-texto.md)

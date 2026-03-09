@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../08-consulta-e-comportamento-da-api/README.md) | [Próxima](09-02-publicacao-do-projeto-no-render.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](09-02-publicacao-do-projeto-no-render.md)
 
 # 9.1 Publicação do banco de dados no Supabase
 
@@ -55,4 +55,4 @@ O projeto deixa de depender do banco efêmero do deploy e passa a ter persistên
 
 - [9.2 Publicação do projeto no Render](09-02-publicacao-do-projeto-no-render.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../08-consulta-e-comportamento-da-api/README.md) | [Próxima](09-02-publicacao-do-projeto-no-render.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](09-02-publicacao-do-projeto-no-render.md)

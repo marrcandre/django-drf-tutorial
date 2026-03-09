@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../10-ferramentas-operacao-e-apoio/README.md) | Próxima
+[Início](../../README.md) | Seção | [Anterior](../10-ferramentas-operacao-e-apoio/10-07-rodando-o-django-com-https-no-desenvolvimento.md) | [Próxima](11-01-projeto-garagem.md)
 
 # Seção 11. Exercícios
 
@@ -12,4 +12,4 @@ Ao final desta seção, você deverá conseguir aplicar o fluxo aprendido em um 
 
 - [11.1 Projeto Garagem](11-01-projeto-garagem.md)
 
-[Início](../../README.md) | Seção | [Anterior](../10-ferramentas-operacao-e-apoio/README.md) | Próxima
+[Início](../../README.md) | Seção | [Anterior](../10-ferramentas-operacao-e-apoio/10-07-rodando-o-django-com-https-no-desenvolvimento.md) | [Próxima](11-01-projeto-garagem.md)

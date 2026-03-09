@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../07-acoes-personalizadas/README.md) | [Próxima](../09-publicacao-e-deploy/README.md)
+[Início](../../README.md) | Seção | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)
 
 # Seção 8. Consulta e comportamento da API
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá conseguir refinar consultas da API e contr
 
 - Seção 9. Publicação e deploy
 
-[Início](../../README.md) | Seção | [Anterior](../07-acoes-personalizadas/README.md) | [Próxima](../09-publicacao-e-deploy/README.md)
+[Início](../../README.md) | Seção | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)

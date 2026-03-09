@@ -1,4 +1,4 @@
-[Início](../../README.md) | Seção | [Anterior](../06-compras-e-regras-de-negocio/README.md) | [Próxima](../08-consulta-e-comportamento-da-api/README.md)
+[Início](../../README.md) | Seção | [Anterior](../06-compras-e-regras-de-negocio/06-16-inclusao-do-tipo-de-pagamento-na-compra.md) | [Próxima](07-01-alteracao-do-preco-de-um-livro.md)
 
 # Seção 7. Ações personalizadas
 
@@ -20,4 +20,4 @@ Ao final desta seção, você deverá conseguir criar actions personalizadas, do
 
 - Seção 8. Consulta e comportamento da API
 
-[Início](../../README.md) | Seção | [Anterior](../06-compras-e-regras-de-negocio/README.md) | [Próxima](../08-consulta-e-comportamento-da-api/README.md)
+[Início](../../README.md) | Seção | [Anterior](../06-compras-e-regras-de-negocio/06-16-inclusao-do-tipo-de-pagamento-na-compra.md) | [Próxima](07-01-alteracao-do-preco-de-um-livro.md)

@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../06-compras-e-regras-de-negocio/README.md) | [Próxima](07-02-relatorio-de-vendas-do-mes.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](07-02-relatorio-de-vendas-do-mes.md)
 
 # 7.1 Alteração do preço de um livro
 
@@ -67,4 +67,4 @@ O projeto passa a ter um primeiro exemplo claro de action aplicada a um recurso 
 
 - [7.2 Relatório de vendas do mês](07-02-relatorio-de-vendas-do-mes.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](../06-compras-e-regras-de-negocio/README.md) | [Próxima](07-02-relatorio-de-vendas-do-mes.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](07-02-relatorio-de-vendas-do-mes.md)
