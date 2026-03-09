@@ -19,6 +19,6 @@ Ao final desta seção, você vai conseguir modelar entidades relacionadas, cria
 
 ## Próxima seção
 
-- Seção 4. Dados, arquivos e administração
+- [Seção 4. Dados, arquivos e administração](../04-dados-arquivos-e-administracao/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../02-fundacao-do-projeto/02-04-conectando-a-api-ao-frontend-com-vue-3.md) | [Próxima](03-01-inclusao-da-editora-no-projeto-livraria.md)

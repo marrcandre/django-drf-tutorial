@@ -16,6 +16,6 @@ Ao final desta seção, você vai conseguir publicar o projeto com banco externo
 
 ## Próxima seção
 
-- Seção 10. Ferramentas, operação e apoio
+- [Seção 10. Ferramentas, operação e apoio](../10-ferramentas-operacao-e-apoio/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../08-consulta-e-comportamento-da-api/08-04-limite-de-um-carrinho-por-usuario-e-persistencia-do-total.md) | [Próxima](09-01-publicacao-do-banco-de-dados-no-supabase.md)

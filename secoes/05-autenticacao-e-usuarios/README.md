@@ -17,6 +17,6 @@ Ao final desta seção, você vai conseguir autenticar usuários, aplicar permis
 
 ## Próxima seção
 
-- Seção 6. Compras e regras de negócio
+- [Seção 6. Compras e regras de negócio](../06-compras-e-regras-de-negocio/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)

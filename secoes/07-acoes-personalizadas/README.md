@@ -18,6 +18,6 @@ Ao final desta seção, você vai conseguir criar actions personalizadas, docume
 
 ## Próxima seção
 
-- Seção 8. Consulta e comportamento da API
+- [Seção 8. Consulta e comportamento da API](../08-consulta-e-comportamento-da-api/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../06-compras-e-regras-de-negocio/06-16-inclusao-do-tipo-de-pagamento-na-compra.md) | [Próxima](07-01-alteracao-do-preco-de-um-livro.md)

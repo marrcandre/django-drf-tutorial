@@ -29,6 +29,6 @@ Ao final desta seção, você vai conseguir implementar o ciclo de compras do pr
 
 ## Próxima seção
 
-- Seção 7. Ações personalizadas
+- [Seção 7. Ações personalizadas](../07-acoes-personalizadas/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)

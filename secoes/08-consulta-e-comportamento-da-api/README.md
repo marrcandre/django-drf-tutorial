@@ -17,6 +17,6 @@ Ao final desta seção, você vai conseguir refinar consultas da API e controlar
 
 ## Próxima seção
 
-- Seção 9. Publicação e deploy
+- [Seção 9. Publicação e deploy](../09-publicacao-e-deploy/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)

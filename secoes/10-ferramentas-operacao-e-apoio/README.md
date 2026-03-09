@@ -20,6 +20,6 @@ Ao final desta seção, você vai conseguir resolver problemas comuns do ambient
 
 ## Próxima seção
 
-- Seção 11. Exercícios
+- [Seção 11. Exercícios](../11-exercicios/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)

@@ -17,6 +17,6 @@ Ao final desta seção, você vai ter um projeto Django criado a partir do templ
 
 ## Próxima seção
 
-- Seção 3. Modelagem e CRUD base
+- [Seção 3. Modelagem e CRUD base](../03-modelagem-e-crud-base/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)

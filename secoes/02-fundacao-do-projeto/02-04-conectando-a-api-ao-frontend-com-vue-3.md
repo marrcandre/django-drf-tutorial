@@ -123,6 +123,6 @@ Você acabou de conectar frontend e backend, estabelecendo a base da arquitetura
 
 ## Próxima aula
 
-- Seção 3. Modelagem e CRUD base
+- [Seção 3. Modelagem e CRUD base](../03-modelagem-e-crud-base/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](02-03-criacao-de-uma-api-rest.md) | [Próxima](../03-modelagem-e-crud-base/README.md)

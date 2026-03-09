@@ -17,6 +17,6 @@ Ao final desta seção, você vai conseguir enriquecer o projeto com upload de a
 
 ## Próxima seção
 
-- Seção 5. Autenticação e usuários
+- [Seção 5. Autenticação e usuários](../05-autenticacao-e-usuarios/README.md)
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)
