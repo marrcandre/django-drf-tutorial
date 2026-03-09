@@ -8,6 +8,28 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 
 ---
 
+**NOVO TUTORIAL REORGANIZADO**
+
+Esta branch reorganiza o curso em secoes e arquivos menores por aula.
+
+Secoes disponiveis:
+
+- [Seção 1. Preparação do ambiente](secoes/01-preparacao-do-ambiente/README.md)
+- [Seção 2. Fundação do projeto](secoes/02-fundacao-do-projeto/README.md)
+- [Seção 3. Modelagem e CRUD base](secoes/03-modelagem-e-crud-base/README.md)
+- [Seção 4. Dados, arquivos e administração](secoes/04-dados-arquivos-e-administracao/README.md)
+- [Seção 5. Autenticação e usuários](secoes/05-autenticacao-e-usuarios/README.md)
+- [Seção 6. Compras e regras de negócio](secoes/06-compras-e-regras-de-negocio/README.md)
+- [Seção 7. Ações personalizadas](secoes/07-acoes-personalizadas/README.md)
+- [Seção 8. Consulta e comportamento da API](secoes/08-consulta-e-comportamento-da-api/README.md)
+- [Seção 9. Publicação e deploy](secoes/09-publicacao-e-deploy/README.md)
+- [Seção 10. Ferramentas, operação e apoio](secoes/10-ferramentas-operacao-e-apoio/README.md)
+- [Seção 11. Exercícios](secoes/11-exercicios/README.md)
+
+O conteudo legado continua disponivel neste README logo abaixo para revisao e comparacao.
+
+---
+
 **TABELA DE CONTEÚDO**
 
 - [1. Preparação do ambiente](#1-preparação-do-ambiente)
