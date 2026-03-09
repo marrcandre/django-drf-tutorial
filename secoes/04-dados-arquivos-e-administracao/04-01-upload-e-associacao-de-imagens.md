@@ -8,7 +8,7 @@ Instalar a aplicação de upload e associar imagens ao modelo `Livro`, incluindo
 
 ## Introdução
 
-Agora que `Livro` já existe, faz sentido enriquecer a entidade com uma capa. Para isso, vamos incorporar uma aplicação específica de upload de imagens ao projeto.
+Agora que `Livro` já existe e a API está mais encorpada, faz sentido enriquecer esse recurso com uma capa. Para isso, vamos incorporar uma aplicação específica de upload de imagens ao projeto e dar um passo importante para deixá-lo mais próximo de um sistema real.
 
 ## Desenvolvimento
 

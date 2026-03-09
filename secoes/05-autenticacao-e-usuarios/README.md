@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)
 
 # Seção 5. Autenticação e usuários
 
-Esta seção organiza a base de segurança do projeto: autenticação, autorização, permissões do DRF, uso de JWT e evolução do cadastro do usuário.
+Nesta seção, a aplicação passa a tratar um ponto central de qualquer sistema real: segurança. Você vai trabalhar com autenticação, autorização, permissões e evolução do cadastro de usuário.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir autenticar usuários, aplicar permissões do Django e do DRF, trabalhar com SimpleJWT e estender o modelo de usuário com foto de perfil.
+Ao final desta seção, você vai conseguir autenticar usuários, aplicar permissões do Django e do DRF, trabalhar com SimpleJWT e estender o modelo de usuário com foto de perfil.
 
 ## Aulas
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá conseguir autenticar usuários, aplicar pe
 
 - Seção 6. Compras e regras de negócio
 
-[Início](../../README.md) | Seção | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../04-dados-arquivos-e-administracao/04-04-uso-do-django-shell-e-do-django-shell-plus.md) | [Próxima](05-01-autenticacao-e-autorizacao.md)

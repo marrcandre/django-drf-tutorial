@@ -6,6 +6,10 @@
 
 Calcular o total da compra e exibi-lo tanto na API quanto no Admin.
 
+## Introdução
+
+Se cada item já possui um subtotal, faz todo sentido consolidar essa informação no nível da compra. Assim, a API e o Admin passam a oferecer um resumo financeiro mais claro do pedido inteiro.
+
 ## Desenvolvimento
 
 ### 1. Propriedade `total` na model
@@ -48,7 +52,7 @@ feat(6.7): documenta total da compra na listagem
 
 ## Conclusão
 
-A compra passa a fornecer um resumo financeiro próprio, útil para operação e visualização.
+A compra passa a fornecer um resumo financeiro próprio, útil para operação, visualização e evolução futura das regras de negócio.
 
 ## Próxima aula
 

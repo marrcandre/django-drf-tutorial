@@ -6,6 +6,10 @@
 
 Usar o Cloudinary como armazenamento persistente de arquivos e imagens do projeto.
 
+## Introdução
+
+Depois que o projeto vai para produção, salvar arquivos apenas no disco local deixa de ser uma boa ideia. Em plataformas modernas de deploy, o mais comum é usar um serviço externo especializado para armazenar mídias.
+
 ## Desenvolvimento
 
 ### 1. Configurando a conta
@@ -41,7 +45,7 @@ feat(9.3): documenta cloudinary para armazenamento de arquivos
 
 ## Conclusão
 
-As mídias deixam de depender do disco local do deploy e passam a ter armazenamento externo apropriado.
+As mídias deixam de depender do disco local do deploy e passam a ter um armazenamento externo mais adequado para aplicações reais.
 
 ## Próxima aula
 

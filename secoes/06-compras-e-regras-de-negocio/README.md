@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)
 
 # Seção 6. Compras e regras de negócio
 
-Esta seção cobre a modelagem da compra, seus itens, endpoints dedicados, regras de negócio, validações e evolução do fluxo de checkout.
+Nesta seção, a livraria finalmente ganha um fluxo de compra mais completo. É uma parte longa, mas também uma das mais ricas do tutorial, porque junta modelagem, regras de negócio, validações e comportamento de API.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir implementar o ciclo de compras do projeto, incluindo persistência dos itens, serializers especializados, cálculo de totais, vínculo com usuário autenticado e validações de negócio.
+Ao final desta seção, você vai conseguir implementar o ciclo de compras do projeto, incluindo persistência dos itens, serializers especializados, cálculo de totais, vínculo com usuário autenticado e validações de negócio.
 
 ## Aulas
 
@@ -31,4 +31,4 @@ Ao final desta seção, você deverá conseguir implementar o ciclo de compras d
 
 - Seção 7. Ações personalizadas
 
-[Início](../../README.md) | Seção | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../05-autenticacao-e-usuarios/05-04-inclusao-da-foto-de-perfil-no-usuario.md) | [Próxima](06-01-criacao-da-entidade-compra-integrada-ao-usuario.md)

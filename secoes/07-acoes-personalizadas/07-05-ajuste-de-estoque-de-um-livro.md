@@ -6,6 +6,10 @@
 
 Criar uma action para aumentar ou diminuir estoque com validação contra valores negativos.
 
+## Introdução
+
+Estoque é um tipo de dado que muda o tempo todo, e nem sempre isso acontece por uma venda. Às vezes é preciso corrigir valores manualmente por reposição, erro anterior ou conferência de inventário.
+
 ## Desenvolvimento
 
 ### 1. Serializer da action
@@ -57,7 +61,7 @@ feat(7.5): documenta ajuste de estoque de livro
 
 ## Conclusão
 
-A action amplia o controle operacional sobre o catálogo sem misturar esse comportamento às rotas padrão de atualização.
+A action amplia o controle operacional sobre o catálogo sem misturar esse comportamento às rotas padrão de atualização, o que deixa a API mais organizada.
 
 ## Próxima aula
 

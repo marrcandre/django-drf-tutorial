@@ -4,11 +4,11 @@
 
 ## Objetivo da aula
 
-Instalar ou atualizar o VS Code no seu sistema operacional para preparar o ambiente de desenvolvimento.
+Instalar ou atualizar o VS Code no seu sistema operacional para começar o curso com o ambiente de desenvolvimento pronto.
 
 ## Introdução
 
-O VS Code será o editor principal usado ao longo do tutorial. Por isso, vale começar garantindo que ele esteja instalado e atualizado.
+O VS Code será o editor principal usado ao longo de todo o tutorial. Por isso, vale começar com calma e garantir que ele esteja instalado e atualizado antes de avançar para as próximas etapas.
 
 ## Desenvolvimento
 
@@ -37,7 +37,7 @@ yay -Syu visual-studio-code-bin
 
 ## Conclusão
 
-Com o editor em funcionamento, você já pode passar para a configuração das extensões recomendadas para o curso.
+Com o editor em funcionamento, você já tem a base necessária para seguir para a configuração das extensões recomendadas e deixar o ambiente ainda mais confortável para estudar.
 
 ## Próxima aula
 

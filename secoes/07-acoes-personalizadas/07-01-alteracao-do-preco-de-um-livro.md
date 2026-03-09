@@ -8,7 +8,7 @@ Criar uma action em um recurso específico para alterar o preço de um livro com
 
 ## Introdução
 
-As ações padrão do DRF cobrem o CRUD, mas nem todo comportamento cabe em `create`, `update` ou `destroy`. Nesta aula, a API ganha uma ação própria para ajuste de preço.
+As ações padrão do DRF cobrem muito bem o CRUD, mas nem todo comportamento interessante de uma aplicação cabe nesses métodos. Nesta aula, a API começa a ganhar endpoints mais expressivos, voltados para necessidades específicas do domínio.
 
 ## Desenvolvimento
 
@@ -61,7 +61,7 @@ feat(7.1): documenta alteracao do preco de um livro
 
 ## Conclusão
 
-O projeto passa a ter um primeiro exemplo claro de action aplicada a um recurso individual.
+O projeto passa a ter um primeiro exemplo claro de action aplicada a um recurso individual, o que ajuda bastante a entender como o DRF pode ir além do CRUD básico.
 
 ## Próxima aula
 

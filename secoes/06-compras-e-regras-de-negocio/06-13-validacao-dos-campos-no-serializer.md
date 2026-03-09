@@ -6,6 +6,10 @@
 
 Aplicar regras de validação no serializer para impedir compras inválidas.
 
+## Introdução
+
+À medida que a regra de negócio cresce, não basta mais apenas aceitar dados e salvar no banco. Também é preciso proteger a aplicação contra situações inconsistentes, como quantidades inválidas ou pedidos acima do estoque disponível.
+
 ## Desenvolvimento
 
 ### 1. Validando quantidade maior que zero
@@ -47,7 +51,7 @@ feat(6.13): documenta validacao dos campos no serializer
 
 ## Conclusão
 
-O serializer deixa de ser apenas transformação de dados e passa a ser um ponto central de proteção das regras do domínio.
+O serializer deixa de ser apenas uma camada de transformação de dados e passa a funcionar também como um ponto importante de proteção das regras do domínio.
 
 ## Próxima aula
 

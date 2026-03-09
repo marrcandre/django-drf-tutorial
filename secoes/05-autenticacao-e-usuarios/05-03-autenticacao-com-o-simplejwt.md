@@ -8,7 +8,7 @@ Configurar autenticação com JWT e testar registro, login, renovação de token
 
 ## Introdução
 
-Nesta aula, a autenticação passa a usar o SimpleJWT, enquanto a autorização continua apoiada nas permissões do Django e do DRF.
+Nesta aula, o projeto ganha um fluxo de autenticação mais próximo do que aparece em muitas APIs modernas. A ideia é entender não só como obter e usar o token, mas também como esse processo se encaixa no restante da segurança da aplicação.
 
 ## Desenvolvimento
 
@@ -168,7 +168,7 @@ feat(5.3): documenta autenticacao com simplejwt
 
 ## Conclusão
 
-Com SimpleJWT, o projeto passa a separar bem duas responsabilidades: JWT autentica o usuário e as permissões do Django definem o que esse usuário pode fazer.
+Com o SimpleJWT, o projeto passa a separar de forma mais clara duas responsabilidades importantes: o JWT cuida da autenticação do usuário, enquanto as permissões do Django e do DRF continuam definindo o que esse usuário pode fazer.
 
 ## Próxima aula
 

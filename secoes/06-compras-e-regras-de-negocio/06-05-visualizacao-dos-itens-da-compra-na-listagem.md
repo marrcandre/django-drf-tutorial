@@ -6,6 +6,10 @@
 
 Exibir os itens da compra no endpoint de listagem de compras.
 
+## Introdução
+
+Listar apenas a compra, sem mostrar seus itens, ainda deixa a resposta muito pobre para quem consome a API. Nesta etapa, a ideia é começar a transformar essa listagem em algo realmente informativo.
+
 ## Desenvolvimento
 
 Crie um serializer para `ItensCompra`:
@@ -40,7 +44,7 @@ feat(6.5): documenta itens da compra na listagem
 
 ## Conclusão
 
-A compra deixa de mostrar apenas o cabeçalho e passa a expor a composição dos itens.
+A compra deixa de mostrar apenas o cabeçalho e passa a expor a composição dos itens, o que torna a resposta muito mais útil para leitura e integração.
 
 ## Próxima aula
 

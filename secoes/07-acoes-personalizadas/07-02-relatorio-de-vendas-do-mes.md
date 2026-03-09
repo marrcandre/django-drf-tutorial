@@ -6,6 +6,10 @@
 
 Criar uma action de coleção para gerar um resumo mensal de vendas.
 
+## Introdução
+
+Depois de criar actions em recursos específicos, faz sentido olhar também para ações voltadas ao conjunto dos dados. Relatórios são um bom exemplo disso, porque ajudam a transformar registros soltos em informação mais útil para acompanhamento do sistema.
+
 ## Desenvolvimento
 
 Em `CompraViewSet`, implemente:
@@ -50,7 +54,7 @@ feat(7.2): documenta relatorio de vendas do mes
 
 ## Conclusão
 
-As actions de coleção permitem expor relatórios e estatísticas sem deformar os endpoints de CRUD.
+As actions de coleção permitem expor relatórios e estatísticas sem forçar esse tipo de comportamento dentro dos endpoints tradicionais de CRUD.
 
 ## Próxima aula
 

@@ -6,6 +6,10 @@
 
 Criar uma action de coleção que lista livros com maior volume de vendas usando agregação no banco.
 
+## Introdução
+
+Nem toda rota da API precisa servir apenas para cadastro e edição. Em muitos projetos, também surgem consultas analíticas, relatórios rápidos e visões resumidas para apoiar decisões.
+
 ## Desenvolvimento
 
 ### 1. Ajustando o relacionamento reverso
@@ -61,7 +65,7 @@ feat(7.4): documenta livros mais vendidos
 
 ## Conclusão
 
-A API passa a oferecer uma consulta analítica baseada em agregação e relacionamento reverso.
+A API passa a oferecer uma consulta analítica baseada em agregação e relacionamento reverso, abrindo espaço para relatórios cada vez mais úteis.
 
 ## Próxima aula
 

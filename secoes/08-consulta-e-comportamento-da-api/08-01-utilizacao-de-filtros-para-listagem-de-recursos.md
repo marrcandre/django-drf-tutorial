@@ -6,6 +6,10 @@
 
 Habilitar filtros declarativos na API para consultas por campos específicos e relacionamentos.
 
+## Introdução
+
+Até aqui, a API já consegue cadastrar e devolver muita coisa. O próximo passo é torná-la mais agradável de usar no dia a dia, permitindo consultas mais úteis e menos genéricas.
+
 ## Desenvolvimento
 
 No `LivroViewSet`:
@@ -40,7 +44,7 @@ feat(8.1): documenta filtros para listagem de recursos
 
 ## Conclusão
 
-Os filtros tornam a API mais útil para consumo real sem exigir endpoints específicos para cada consulta.
+Os filtros tornam a API mais útil para consumo real sem exigir endpoints específicos para cada tipo de consulta.
 
 ## Próxima aula
 

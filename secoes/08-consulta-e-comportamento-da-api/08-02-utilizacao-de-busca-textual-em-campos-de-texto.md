@@ -6,6 +6,10 @@
 
 Permitir busca textual em campos como título de livro usando `SearchFilter`.
 
+## Introdução
+
+Filtrar por categoria e editora já ajuda bastante, mas ainda falta um comportamento muito comum em catálogos: pesquisar por texto digitado pelo usuário. Essa etapa aproxima a API de uma experiência de busca mais natural.
+
 ## Desenvolvimento
 
 ```python
@@ -40,7 +44,7 @@ feat(8.2): documenta busca textual
 
 ## Conclusão
 
-A API ganha uma forma simples de pesquisa textual, útil para interfaces de catálogo e administração.
+A API ganha uma forma simples de pesquisa textual, útil para interfaces de catálogo, administração e experiências de busca mais amigáveis.
 
 ## Próxima aula
 

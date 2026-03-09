@@ -6,6 +6,10 @@
 
 Executar comandos SQL diretos para manutenção e inspeção do banco em cenários específicos.
 
+## Introdução
+
+Mesmo trabalhando com ORM, há momentos em que olhar o banco de dados diretamente ajuda a entender melhor o que está acontecendo. Isso vale especialmente para inspeções rápidas, correções pontuais e consultas mais específicas.
+
 ## Desenvolvimento
 
 O conteúdo cobre:
@@ -24,7 +28,7 @@ docs(secao-10): documenta comandos uteis no dbshell
 
 ## Conclusão
 
-O DBShell é útil quando o problema exige rapidez, visibilidade e controle direto sobre o banco.
+O DBShell é útil quando o problema exige rapidez, visibilidade e controle direto sobre o banco, sem abandonar o restante da estrutura do projeto.
 
 ## Próxima aula
 

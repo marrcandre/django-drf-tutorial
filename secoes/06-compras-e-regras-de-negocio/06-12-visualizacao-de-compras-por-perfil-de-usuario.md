@@ -6,6 +6,10 @@
 
 Restringir a visualização de compras para que usuários comuns vejam apenas seus próprios registros, enquanto administradores veem todos.
 
+## Introdução
+
+Depois de autenticar o usuário e associar a compra ao dono correto, também é preciso controlar o que cada perfil pode enxergar. Essa etapa é importante para evitar exposição indevida de dados entre clientes diferentes.
+
 ## Desenvolvimento
 
 Sobrescreva `get_queryset` em `CompraViewSet`:
@@ -36,7 +40,7 @@ feat(6.12): documenta visualizacao de compras por perfil
 
 ## Conclusão
 
-O endpoint deixa de expor dados indevidos entre clientes diferentes e passa a respeitar o perfil autenticado.
+O endpoint deixa de expor dados indevidos entre clientes diferentes e passa a respeitar melhor o perfil autenticado de cada usuário.
 
 ## Próxima aula
 

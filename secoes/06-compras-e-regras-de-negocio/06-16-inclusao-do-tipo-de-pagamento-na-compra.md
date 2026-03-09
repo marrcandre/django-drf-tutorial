@@ -6,6 +6,10 @@
 
 Registrar a forma de pagamento da compra usando `IntegerChoices` e exibir o valor legível na API.
 
+## Introdução
+
+Uma compra não envolve apenas itens e valores. A forma de pagamento também é um dado importante, tanto para operação quanto para análises futuras sobre o comportamento dos usuários.
+
 ## Desenvolvimento
 
 ### 1. Campo `tipo_pagamento`
@@ -57,7 +61,7 @@ feat(6.16): documenta tipo de pagamento na compra
 
 ## Conclusão
 
-O domínio de compras fica mais completo ao incluir a forma de pagamento como dado estruturado e pronto para estatísticas futuras.
+O domínio de compras fica mais completo ao incluir a forma de pagamento como dado estruturado e pronto para consultas e estatísticas futuras.
 
 ## Próxima aula
 

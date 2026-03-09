@@ -8,7 +8,7 @@ Entender a diferença entre autenticação e autorização e configurar grupos, 
 
 ## Introdução
 
-Nesta etapa, o foco passa a ser segurança. Autenticação responde quem é o usuário; autorização define o que ele pode fazer dentro da aplicação.
+Nesta etapa, o foco passa a ser segurança. Em qualquer sistema real, não basta saber que uma pessoa entrou: também é preciso definir com clareza o que ela pode fazer dentro da aplicação.
 
 Uma estratégia prática para isso no Django é:
 
@@ -82,7 +82,7 @@ feat(5.1): documenta autenticacao e autorizacao
 
 ## Conclusão
 
-O projeto passa a ter uma base organizada de autorização ao usar grupos e permissões nativas do Django.
+Com essa organização, o projeto passa a ter uma base de autorização mais clara, mais segura e mais parecida com o tipo de solução usada em sistemas reais.
 
 ## Próxima aula
 

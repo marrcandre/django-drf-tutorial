@@ -8,7 +8,7 @@ Melhorar o fluxo de edição de compras no Admin, exibindo os itens diretamente 
 
 ## Introdução
 
-Quando compra e itens são editados separadamente, o fluxo fica artificial. O `TabularInline` resolve isso aproximando a interface da estrutura real do domínio.
+Quando compra e itens são editados separadamente, o processo fica pouco natural e mais cansativo de testar. O `TabularInline` ajuda justamente a aproximar a interface do Admin da forma como a compra existe no domínio da aplicação.
 
 ## Desenvolvimento
 
@@ -46,7 +46,7 @@ feat(6.3): documenta tabularinline para itens da compra
 
 ## Conclusão
 
-O Admin passa a refletir melhor a relação entre compra e itens, reduzindo atrito na operação manual.
+O Admin passa a refletir melhor a relação entre compra e itens, reduzindo atrito na operação manual e deixando os testes do fluxo mais intuitivos.
 
 ## Próxima aula
 

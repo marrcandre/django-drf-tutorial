@@ -6,6 +6,10 @@
 
 Publicar a aplicação no Render usando build script, variáveis de ambiente e servidor ASGI compatível com produção.
 
+## Introdução
+
+Depois de preparar banco e variáveis, chega a parte mais visível: colocar a aplicação no ar. Nesta aula, o foco é transformar o projeto local em um serviço acessível fora da sua máquina.
+
 ## Desenvolvimento
 
 ### 1. Teste local do servidor de produção
@@ -50,7 +54,7 @@ feat(9.2): documenta publicacao do projeto no render
 
 ## Conclusão
 
-A aplicação passa a ter um fluxo de publicação consistente e repetível em ambiente hospedado.
+A aplicação passa a ter um fluxo de publicação mais consistente e repetível em ambiente hospedado, o que deixa o deploy menos improvisado e mais confiável.
 
 ## Próxima aula
 

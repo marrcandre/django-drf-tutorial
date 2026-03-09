@@ -6,6 +6,10 @@
 
 Armazenar automaticamente a data de criação da compra e expor essa informação na API e no Admin.
 
+## Introdução
+
+À medida que o fluxo de compras fica mais completo, também cresce a necessidade de saber quando cada ação aconteceu. Essa informação faz diferença tanto para consulta manual quanto para auditoria e relatórios.
+
 ## Desenvolvimento
 
 ### 1. Campo `data`
@@ -50,7 +54,7 @@ feat(6.15): documenta registro da data da compra
 
 ## Conclusão
 
-A compra passa a ter rastreabilidade temporal, algo importante para auditoria e relatórios.
+A compra passa a ter rastreabilidade temporal, algo importante para auditoria, relatórios e entendimento da evolução dos pedidos.
 
 ## Próxima aula
 

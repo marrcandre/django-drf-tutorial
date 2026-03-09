@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../08-consulta-e-comportamento-da-api/08-04-limite-de-um-carrinho-por-usuario-e-persistencia-do-total.md) | [Próxima](09-01-publicacao-do-banco-de-dados-no-supabase.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../08-consulta-e-comportamento-da-api/08-04-limite-de-um-carrinho-por-usuario-e-persistencia-do-total.md) | [Próxima](09-01-publicacao-do-banco-de-dados-no-supabase.md)
 
 # Seção 9. Publicação e deploy
 
-Esta seção reúne a preparação da infraestrutura de produção: banco externo, deploy da aplicação e armazenamento de arquivos.
+Nesta seção, você começa a olhar para o projeto com olhos de produção. O foco deixa de ser apenas desenvolver localmente e passa a incluir banco externo, deploy e armazenamento de arquivos.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir publicar o projeto com banco externo e armazenamento de mídia apropriado.
+Ao final desta seção, você vai conseguir publicar o projeto com banco externo e armazenamento de mídia apropriado.
 
 ## Aulas
 
@@ -18,4 +18,4 @@ Ao final desta seção, você deverá conseguir publicar o projeto com banco ext
 
 - Seção 10. Ferramentas, operação e apoio
 
-[Início](../../README.md) | Seção | [Anterior](../08-consulta-e-comportamento-da-api/08-04-limite-de-um-carrinho-por-usuario-e-persistencia-do-total.md) | [Próxima](09-01-publicacao-do-banco-de-dados-no-supabase.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../08-consulta-e-comportamento-da-api/08-04-limite-de-um-carrinho-por-usuario-e-persistencia-do-total.md) | [Próxima](09-01-publicacao-do-banco-de-dados-no-supabase.md)

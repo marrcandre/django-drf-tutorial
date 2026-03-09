@@ -8,9 +8,9 @@ Aplicar permissões no DRF tanto em uma viewset específica quanto de forma glob
 
 ## Introdução
 
-Autenticação identifica o usuário. Permissão determina o nível de acesso que esse usuário terá sobre a API.
+Autenticação e permissão caminham juntas, mas não são a mesma coisa. Depois de identificar quem é o usuário, ainda precisamos decidir com bastante clareza quais ações ele pode ou não pode executar.
 
-No DRF, isso pode ser feito por view, globalmente no `settings.py` ou com classes de permissão ligadas às permissões de modelo do Django.
+No DRF, esse controle pode ser aplicado em pontos diferentes: em uma view específica, no projeto inteiro ou por meio de classes de permissão ligadas às permissões de modelo do Django.
 
 ## Desenvolvimento
 
@@ -79,7 +79,7 @@ feat(5.2): documenta permissoes do drf
 
 ## Conclusão
 
-As classes de permissão do DRF permitem centralizar a autorização da API e integrar esse controle com o sistema de usuários e grupos do Django.
+As classes de permissão do DRF ajudam a organizar a autorização da API de um jeito mais limpo e mais próximo do que se espera em uma aplicação real, integrando esse controle ao sistema de usuários e grupos do Django.
 
 ## Próxima aula
 

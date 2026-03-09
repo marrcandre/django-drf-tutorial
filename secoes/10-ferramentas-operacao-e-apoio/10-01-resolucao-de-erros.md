@@ -6,6 +6,10 @@
 
 Reunir procedimentos rápidos para tratar problemas recorrentes do ambiente de desenvolvimento.
 
+## Introdução
+
+Todo tutorial longo acumula pequenas dores de ambiente, configuração e execução. Esta aula funciona como um ponto de apoio para esses momentos, deixando reunidas soluções que costumam economizar bastante tempo.
+
 ## Desenvolvimento
 
 Casos cobertos nesta aula:
@@ -25,7 +29,7 @@ docs(secao-10): documenta resolucao de erros
 
 ## Conclusão
 
-Ter um bloco consolidado de troubleshooting reduz atrito em aulas futuras e em manutenção do projeto.
+Ter um bloco consolidado de troubleshooting reduz atrito nas próximas aulas e ajuda bastante quando alguma configuração sai do esperado.
 
 ## Próxima aula
 

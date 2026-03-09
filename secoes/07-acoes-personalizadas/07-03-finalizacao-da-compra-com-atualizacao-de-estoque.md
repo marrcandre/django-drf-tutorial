@@ -6,6 +6,10 @@
 
 Criar uma action que finaliza a compra, valida estoque e atualiza múltiplos registros com segurança transacional.
 
+## Introdução
+
+Até aqui, a compra ainda podia existir sem fechar de fato o processo de venda. Nesta aula, você transforma esse fluxo em uma operação mais realista, com validação de estoque e alteração consistente dos dados envolvidos.
+
 ## Desenvolvimento
 
 ```python
@@ -52,7 +56,7 @@ feat(7.3): documenta finalizacao da compra com estoque
 
 ## Conclusão
 
-A action concentra regra de negócio real e mostra por que actions são úteis para fluxos além do CRUD.
+A action concentra uma regra de negócio mais próxima do mundo real e mostra por que actions são úteis para fluxos que vão além do CRUD tradicional.
 
 ## Próxima aula
 

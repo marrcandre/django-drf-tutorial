@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)
 
 # Seção 1. Preparação do ambiente
 
-Esta seção reúne os pré-requisitos de instalação e configuração usados ao longo de todo o tutorial.
+Nesta seção, você vai preparar o terreno para o restante do curso. A ideia é deixar o ambiente pronto logo no começo, para que as próximas aulas possam focar mais no desenvolvimento da API e menos em ajustes de ferramenta.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá ter um ambiente pronto para acompanhar as próximas aulas com VS Code, extensões úteis e PDM configurados.
+Ao final desta seção, você vai ter um ambiente pronto para acompanhar o restante do tutorial com mais tranquilidade, usando VS Code, extensões úteis e PDM configurados.
 
 ## Aulas
 
@@ -16,6 +16,6 @@ Ao final desta seção, você deverá ter um ambiente pronto para acompanhar as 
 
 ## Observação
 
-No material legado, a preparação do ambiente aparecia como uma aula introdutória seguida de apêndices. Na nova estrutura, esse conteúdo passa a ser a própria seção de abertura do curso.
+Na organização antiga, esse conteúdo ficava espalhado entre introdução e apêndices. Agora ele aparece logo na abertura do curso, para deixar o começo mais claro e mais fácil de seguir.
 
-[Início](../../README.md) | Seção | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)

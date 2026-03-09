@@ -6,6 +6,10 @@
 
 Criar serializer, viewset e rota para expor a entidade `Compra` na API.
 
+## Introdução
+
+Depois de estruturar a model e os itens da compra, faz sentido começar a enxergar esse recurso também pela API. Nesta aula, a compra passa a ganhar uma primeira versão pública, ainda simples, mas já útil como base para os refinamentos seguintes.
+
 ## Desenvolvimento
 
 ### 1. Serializer inicial
@@ -57,7 +61,7 @@ feat(6.4): documenta listagem basica de compras
 
 ## Conclusão
 
-A entidade de compra passa a ter uma representação mínima na API, pronta para ser enriquecida nas próximas aulas.
+A entidade de compra passa a ter uma representação mínima na API, pronta para ser enriquecida nas próximas aulas com mais contexto, detalhes e regras de negócio.
 
 ## Próxima aula
 

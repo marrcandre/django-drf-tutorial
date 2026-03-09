@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | Próxima
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](../../README.md)
 
 # 11.1 Projeto Garagem
 
@@ -8,7 +8,7 @@ Consolidar os conceitos do tutorial criando uma API paralela para uma garagem de
 
 ## Introdução
 
-Este exercício transfere os padrões aplicados na livraria para outro domínio. A ideia é repetir o fluxo completo de modelagem, API e organização incremental por commits.
+Este exercício transfere os padrões aplicados na livraria para outro domínio. A proposta é sair um pouco do passo a passo guiado e mostrar que o mesmo raciocínio pode ser reaproveitado em outro contexto.
 
 ## Desenvolvimento
 
@@ -62,6 +62,6 @@ docs(secao-11): organiza exercicio do projeto garagem
 
 ## Conclusão
 
-Esse exercício fecha o ciclo do tutorial ao exigir autonomia para aplicar o conteúdo em outro contexto.
+Esse exercício fecha o ciclo do tutorial de um jeito muito natural: você pega o que aprendeu na livraria e testa sua autonomia em outro contexto.
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | Próxima
+[Início](../../README.md) | [Seção](README.md) | [Anterior](README.md) | [Próxima](../../README.md)

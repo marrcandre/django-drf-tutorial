@@ -6,6 +6,10 @@
 
 Restringir cada usuário a um carrinho ativo e armazenar o total da compra no banco para melhorar performance e consistência.
 
+## Introdução
+
+Quando o projeto começa a amadurecer, alguns comportamentos precisam deixar de ser apenas funcionais e passar a ser mais consistentes. É o caso do carrinho único por usuário e do total persistido para evitar recálculos desnecessários.
+
 ## Desenvolvimento
 
 ### 1. Um carrinho por usuário

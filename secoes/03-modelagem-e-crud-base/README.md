@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../02-fundacao-do-projeto/02-04-conectando-a-api-ao-frontend-com-vue-3.md) | [Próxima](03-01-inclusao-da-editora-no-projeto-livraria.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../02-fundacao-do-projeto/02-04-conectando-a-api-ao-frontend-com-vue-3.md) | [Próxima](03-01-inclusao-da-editora-no-projeto-livraria.md)
 
 # Seção 3. Modelagem e CRUD base
 
-Esta seção cobre a expansão do domínio inicial da livraria, com a criação das entidades Editora, Autor e Livro, além dos primeiros refinamentos estruturais da API de livros.
+Nesta seção, a livraria deixa de ser um exemplo mínimo e passa a parecer mais com um sistema de verdade. É aqui que entram novas entidades, relacionamentos e os primeiros ajustes mais interessantes na API.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir modelar entidades relacionadas, criar APIs novas repetindo o padrão do DRF e adaptar a apresentação dos dados quando a estrutura da aplicação ficar mais rica.
+Ao final desta seção, você vai conseguir modelar entidades relacionadas, criar novas APIs repetindo o padrão do DRF e adaptar a apresentação dos dados conforme a aplicação ficar mais rica.
 
 ## Aulas
 
@@ -21,4 +21,4 @@ Ao final desta seção, você deverá conseguir modelar entidades relacionadas, 
 
 - Seção 4. Dados, arquivos e administração
 
-[Início](../../README.md) | Seção | [Anterior](../02-fundacao-do-projeto/02-04-conectando-a-api-ao-frontend-com-vue-3.md) | [Próxima](03-01-inclusao-da-editora-no-projeto-livraria.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../02-fundacao-do-projeto/02-04-conectando-a-api-ao-frontend-com-vue-3.md) | [Próxima](03-01-inclusao-da-editora-no-projeto-livraria.md)

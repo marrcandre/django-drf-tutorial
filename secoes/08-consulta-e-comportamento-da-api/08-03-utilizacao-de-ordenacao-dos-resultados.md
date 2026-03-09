@@ -6,6 +6,10 @@
 
 Permitir ordenação controlada dos resultados da API e combinar esse recurso com filtros e busca textual.
 
+## Introdução
+
+Quando a quantidade de dados cresce, não basta apenas filtrar: também faz diferença decidir em que ordem eles aparecem. Essa ordenação ajuda tanto na leitura humana quanto no consumo da API por outras interfaces.
+
 ## Desenvolvimento
 
 No `LivroViewSet`:
@@ -54,7 +58,7 @@ feat(8.3): documenta ordenacao dos resultados
 
 ## Conclusão
 
-A API passa a oferecer uma camada de consulta muito mais flexível sem aumentar a quantidade de rotas.
+A API passa a oferecer uma camada de consulta muito mais flexível sem aumentar a quantidade de rotas nem complicar a estrutura principal do projeto.
 
 ## Próxima aula
 

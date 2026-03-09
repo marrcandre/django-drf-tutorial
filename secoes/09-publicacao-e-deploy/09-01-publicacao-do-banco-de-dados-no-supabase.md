@@ -6,6 +6,10 @@
 
 Configurar um banco externo no Supabase para uso em produção, mantendo o SQLite local apenas para desenvolvimento.
 
+## Introdução
+
+Enquanto o projeto está só no computador local, o SQLite atende bem. Mas, quando chega a hora de publicar a aplicação, é importante separar desenvolvimento e produção e usar um banco externo mais apropriado.
+
 ## Desenvolvimento
 
 ### 1. Criando o projeto no Supabase
@@ -49,7 +53,7 @@ feat(9.1): documenta publicacao do banco no supabase
 
 ## Conclusão
 
-O projeto deixa de depender do banco efêmero do deploy e passa a ter persistência adequada em produção.
+Com isso, o projeto deixa de depender do banco efêmero do deploy e passa a ter uma persistência mais adequada para uso em produção.
 
 ## Próxima aula
 

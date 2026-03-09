@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)
 
 # Seção 10. Ferramentas, operação e apoio
 
-Esta seção reúne guias auxiliares para manutenção, depuração, Git, shell, DBShell e práticas complementares de operação.
+Nesta seção, ficam reunidos materiais de apoio que ajudam bastante quando surgem dúvidas, erros ou necessidades mais práticas de manutenção. É uma parte menos “linear”, mas muito útil para consulta ao longo do curso.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir resolver problemas comuns do ambiente, usar ferramentas de inspeção e apoiar o projeto em tarefas operacionais.
+Ao final desta seção, você vai conseguir resolver problemas comuns do ambiente, usar ferramentas de inspeção e apoiar o projeto em tarefas operacionais.
 
 ## Aulas
 
@@ -22,4 +22,4 @@ Ao final desta seção, você deverá conseguir resolver problemas comuns do amb
 
 - Seção 11. Exercícios
 
-[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../09-publicacao-e-deploy/09-03-armazenamento-de-arquivos-no-cloudinary.md) | [Próxima](10-01-resolucao-de-erros.md)

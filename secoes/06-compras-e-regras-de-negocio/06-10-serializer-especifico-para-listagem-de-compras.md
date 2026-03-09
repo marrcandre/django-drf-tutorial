@@ -6,6 +6,10 @@
 
 Criar serializers enxutos para a listagem de compras, retornando apenas os campos realmente úteis nesse contexto.
 
+## Introdução
+
+Nem toda resposta da API precisa trazer o máximo de detalhes possível. Em muitos cenários, especialmente na listagem, faz mais sentido devolver uma versão mais leve e mais fácil de ler.
+
 ## Desenvolvimento
 
 Crie serializers dedicados:
@@ -52,7 +56,7 @@ feat(6.10): documenta serializer de listagem de compras
 
 ## Conclusão
 
-Listagem e detalhe passam a ter responsabilidades distintas, deixando a API mais clara e econômica.
+Listagem e detalhe passam a ter responsabilidades distintas, deixando a API mais clara, mais econômica e mais agradável para quem a consome.
 
 ## Próxima aula
 

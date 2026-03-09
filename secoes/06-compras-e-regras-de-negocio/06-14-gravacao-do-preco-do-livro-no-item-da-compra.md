@@ -6,6 +6,10 @@
 
 Preservar o preço histórico da compra, gravando o valor do livro no próprio item no momento da criação ou atualização.
 
+## Introdução
+
+Uma compra não pode depender do preço atual do catálogo para continuar fazendo sentido no futuro. Se o valor do livro mudar depois, o histórico da compra precisa continuar fiel ao momento em que ela foi feita.
+
 ## Desenvolvimento
 
 ### 1. Novo campo em `ItensCompra`
@@ -59,7 +63,7 @@ feat(6.14): documenta gravacao do preco do livro no item
 
 ## Conclusão
 
-O sistema deixa de recalcular compras antigas com base no preço atual do catálogo, preservando o histórico corretamente.
+O sistema deixa de recalcular compras antigas com base no preço atual do catálogo, preservando o histórico da compra de forma muito mais correta.
 
 ## Próxima aula
 

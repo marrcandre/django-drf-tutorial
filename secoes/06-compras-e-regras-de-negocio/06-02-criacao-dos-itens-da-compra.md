@@ -8,7 +8,7 @@ Modelar a entidade associativa entre compra e livro, permitindo armazenar quanti
 
 ## Introdução
 
-Uma compra pode conter vários livros. Em vez de usar `ManyToManyField` puro, esta modelagem cria uma entidade própria para comportar dados extras, como quantidade.
+Uma compra pode conter vários livros, e cada um desses livros pode aparecer com uma quantidade diferente. Por isso, em vez de usar um `ManyToManyField` simples, faz mais sentido criar uma estrutura própria para representar cada item da compra.
 
 ## Desenvolvimento
 
@@ -56,7 +56,7 @@ feat(6.2): documenta criacao dos itens da compra
 
 ## Conclusão
 
-A compra deixa de ser apenas um cabeçalho e passa a armazenar itens reais com quantidade.
+A compra deixa de ser apenas um cabeçalho e passa a representar, de fato, o que o usuário colocou no carrinho, com itens e quantidades reais.
 
 ## Próxima aula
 

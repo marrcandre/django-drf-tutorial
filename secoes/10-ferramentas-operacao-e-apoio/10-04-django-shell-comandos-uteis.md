@@ -6,6 +6,10 @@
 
 Usar o shell do Django para inspeção, correção e manutenção rápida de dados.
 
+## Introdução
+
+Nem toda verificação precisa passar pelo navegador, pelo Admin ou pela API. Em muitos momentos, abrir o shell do Django é a forma mais rápida de entender o estado dos dados e testar pequenos ajustes.
+
 ## Desenvolvimento
 
 Esta aula reúne exemplos de:
@@ -24,7 +28,7 @@ docs(secao-10): documenta comandos uteis no django shell
 
 ## Conclusão
 
-O shell complementa a API e o Admin como ferramenta de inspeção e manutenção operacional.
+O shell complementa a API e o Admin como ferramenta de inspeção e manutenção operacional, especialmente quando você quer observar ou corrigir dados com mais agilidade.
 
 ## Próxima aula
 

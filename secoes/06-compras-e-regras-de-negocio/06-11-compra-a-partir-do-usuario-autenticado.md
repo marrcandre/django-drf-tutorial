@@ -6,6 +6,10 @@
 
 Parar de receber o usuário no corpo da compra e vincular automaticamente a compra ao usuário autenticado.
 
+## Introdução
+
+Quando a compra depende do usuário autenticado, pedir esse campo no corpo da requisição deixa a API mais frágil e menos prática. Nesta aula, o objetivo é alinhar melhor a lógica da compra com a identidade de quem está logado.
+
 ## Desenvolvimento
 
 No `CompraCreateUpdateSerializer`, use `HiddenField` com `CurrentUserDefault`:
@@ -37,7 +41,7 @@ feat(6.11): documenta compra a partir do usuario autenticado
 
 ## Conclusão
 
-A API fica mais segura e mais coerente com o conceito de compra do usuário logado.
+A API fica mais segura e mais coerente com o conceito de compra do usuário logado, além de simplificar a vida de quem consome esse endpoint.
 
 ## Próxima aula
 

@@ -6,6 +6,10 @@
 
 Executar o servidor local com HTTPS para testar fluxos que exigem conexão segura.
 
+## Introdução
+
+Alguns recursos simplesmente não se comportam do mesmo jeito fora de uma conexão segura. Quando isso entra em cena, testar apenas com HTTP local pode esconder problemas que só aparecem mais tarde.
+
 ## Desenvolvimento
 
 ### 1. Dependências
@@ -41,7 +45,7 @@ docs(secao-10): documenta https no ambiente de desenvolvimento
 
 ## Conclusão
 
-Esse fluxo ajuda a testar cenários com OAuth, cookies seguros e integrações que exigem HTTPS.
+Esse fluxo ajuda a testar cenários com OAuth, cookies seguros e integrações que exigem HTTPS, deixando o ambiente local mais próximo do mundo real.
 
 ## Próxima aula
 

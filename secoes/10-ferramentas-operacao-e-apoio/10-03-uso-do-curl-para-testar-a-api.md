@@ -6,6 +6,10 @@
 
 Executar testes rápidos de endpoints pela linha de comando com `curl`.
 
+## Introdução
+
+Nem todo teste precisa passar por interface gráfica, Swagger ou cliente visual. Em vários momentos, usar um comando rápido no terminal é a forma mais direta de confirmar se a API está respondendo como esperado.
+
 ## Desenvolvimento
 
 Exemplos úteis:
@@ -26,7 +30,7 @@ docs(secao-10): documenta uso do curl na api
 
 ## Conclusão
 
-`curl` continua sendo uma ferramenta rápida para validar fluxos simples sem depender de interface gráfica.
+`curl` continua sendo uma ferramenta rápida para validar fluxos simples sem depender de interface gráfica, especialmente em testes curtos e objetivos.
 
 ## Próxima aula
 

@@ -8,7 +8,7 @@ Criar a model `Compra`, associá-la ao usuário do sistema e disponibilizá-la n
 
 ## Introdução
 
-O fluxo de compras começa com uma entidade que representa a transação principal. Ela precisa saber quem realizou a compra e em que estágio do processo essa compra está.
+O fluxo de compras começa com uma entidade que representa a transação principal. A partir daqui, a livraria deixa de ser apenas catálogo e passa a caminhar para um sistema que registra ações reais dos usuários.
 
 ## Desenvolvimento
 
@@ -69,7 +69,7 @@ feat(6.1): documenta entidade compra integrada ao usuario
 
 ## Conclusão
 
-A aplicação passa a ter a estrutura base necessária para modelar um carrinho ou pedido de compra.
+A aplicação passa a ter a estrutura base necessária para modelar um carrinho ou pedido de compra, abrindo caminho para uma parte bem mais interessante das regras de negócio.
 
 ## Próxima aula
 

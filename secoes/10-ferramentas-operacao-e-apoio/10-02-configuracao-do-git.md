@@ -6,6 +6,10 @@
 
 Configurar corretamente o Git do ambiente e evitar erros comuns de identidade ou repositório global indevido.
 
+## Introdução
+
+Mesmo quando o foco principal do curso é Django e DRF, a organização do código com Git faz diferença desde o começo. Uma configuração errada aqui costuma gerar confusão depois, especialmente em commits, autoria e sincronização com o GitHub.
+
 ## Desenvolvimento
 
 Pontos principais:
@@ -24,7 +28,7 @@ docs(secao-10): documenta configuracao do git
 
 ## Conclusão
 
-Uma configuração correta do Git evita ruído em commits e problemas de autoria no repositório.
+Uma configuração correta do Git evita ruído em commits, reduz erros de autoria e deixa o trabalho com o repositório muito mais tranquilo.
 
 ## Próxima aula
 

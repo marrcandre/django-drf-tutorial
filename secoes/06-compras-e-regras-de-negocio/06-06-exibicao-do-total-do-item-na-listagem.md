@@ -6,6 +6,10 @@
 
 Calcular e mostrar o total de cada item da compra no serializer.
 
+## Introdução
+
+Depois de exibir os itens da compra, o próximo passo natural é mostrar também quanto cada item representa em valor. Isso ajuda a API a ficar mais completa e mais fácil de interpretar.
+
 ## Desenvolvimento
 
 Use `SerializerMethodField` no serializer de itens:
@@ -41,7 +45,7 @@ feat(6.6): documenta total do item na listagem
 
 ## Conclusão
 
-Cada item passa a carregar seu subtotal, facilitando inspeção e futura composição do total da compra.
+Cada item passa a carregar seu subtotal, o que facilita tanto a inspeção manual quanto a montagem do total geral da compra nas próximas etapas.
 
 ## Próxima aula
 

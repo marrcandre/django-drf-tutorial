@@ -8,7 +8,7 @@ Reforçar o padrão Model -> Serializer -> ViewSet -> Router -> URL criando, com
 
 ## Introdução
 
-Na aula anterior, a API de `Categoria` foi construída passo a passo. Agora o foco é repetir o mesmo padrão com menos apoio, usando `Categoria` como referência e ganhando autonomia.
+Na aula anterior, a API de `Categoria` foi construída passo a passo. Agora a proposta é repetir o mesmo padrão com um pouco mais de autonomia, usando aquela experiência como referência e começando a ganhar confiança no processo.
 
 ## Desenvolvimento
 

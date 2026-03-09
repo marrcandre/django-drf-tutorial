@@ -8,7 +8,7 @@ Permitir a criação de compras com itens aninhados em uma única requisição.
 
 ## Introdução
 
-O DRF não cria campos aninhados graváveis por padrão. Para esse caso, é necessário um serializer específico com método `create` explícito.
+Até aqui, já existe estrutura suficiente para representar compras e itens. O problema é que o DRF não grava automaticamente esse tipo de estrutura aninhada do jeito que gostaríamos. Nesta aula, você vai resolver exatamente esse ponto.
 
 ## Desenvolvimento
 
@@ -64,7 +64,7 @@ feat(6.8): documenta criacao de compras com itens aninhados
 
 ## Conclusão
 
-O fluxo de criação fica mais útil para clientes reais da API, que conseguem enviar a compra completa em uma única operação.
+Com isso, o fluxo de criação fica muito mais útil para clientes reais da API, que passam a conseguir enviar a compra completa em uma única operação.
 
 ## Próxima aula
 

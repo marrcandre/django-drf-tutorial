@@ -6,6 +6,10 @@
 
 Permitir a atualização de compras com itens aninhados, tratando explicitamente o método `update`.
 
+## Introdução
+
+Depois de conseguir criar compras com itens aninhados, o próximo desafio é atualizá-las sem perder o controle da estrutura interna. É aqui que aparece uma das limitações mais comuns do DRF com dados aninhados.
+
 ## Desenvolvimento
 
 Sem sobrescrever `update`, o DRF retorna erro ao tentar gravar campos aninhados. A solução é remover os itens antigos e recriá-los a partir do payload recebido:
@@ -36,7 +40,7 @@ feat(6.9): documenta atualizacao de compras com itens
 
 ## Conclusão
 
-A atualização de estruturas aninhadas exige regra explícita. O serializer deixa esse fluxo sob controle da aplicação.
+A atualização de estruturas aninhadas exige regra explícita. Com isso, o serializer passa a manter esse fluxo sob controle da aplicação, em vez de depender de um comportamento automático que não atende bem esse caso.
 
 ## Próxima aula
 

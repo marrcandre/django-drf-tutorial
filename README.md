@@ -1,6 +1,6 @@
 # DJANGO COM DRF (2025)
 
-Tutorial para desenvolvimento de APIs REST com Django e DRF, reorganizado em seções e arquivos menores por aula.
+Tutorial de desenvolvimento de APIs REST com Django e DRF, reorganizado em seções e arquivos menores para deixar o estudo mais leve, progressivo e fácil de acompanhar.
 
 Existe uma versão completa e funcional do projeto da livraria neste repositório:
 
@@ -11,11 +11,13 @@ Este tutorial foi construído a partir do curso em vídeo [Django com DRF](https
 
 ## Como usar
 
-O material abaixo segue uma ordem linear. Cada seção possui:
+O material abaixo foi pensado como um percurso de estudo. A ideia é seguir as seções em ordem, avançando de um passo por vez. Cada seção possui:
 
-- um índice próprio;
+- um índice próprio para situar o tema;
 - arquivos separados por aula;
-- navegação entre página anterior e próxima página.
+- navegação entre a página anterior e a próxima página.
+
+Se você estiver começando agora, vale seguir a sequência completa. Se já tiver alguma familiaridade com Django ou DRF, também dá para usar as seções como consulta pontual.
 
 ## Seções
 
@@ -41,4 +43,4 @@ O material abaixo segue uma ordem linear. Cada seção possui:
 
 ## Contribua
 
-Envie sugestões e correções para [marcoandre@gmail.com](mailto:marcoandre@gmail.com).
+Se você encontrar pontos confusos, erros ou oportunidades de melhorar a didática, envie sugestões e correções para [marcoandre@gmail.com](mailto:marcoandre@gmail.com).

@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)
 
 # Seção 2. Fundação do projeto
 
-Esta seção cobre a criação do projeto, a estrutura da aplicação base, a primeira API REST e a conexão inicial com o frontend em Vue 3.
+Nesta seção, o projeto começa a ganhar forma. Você vai sair da preparação do ambiente e entrar, de fato, na construção da livraria: criar a base do sistema, entender a estrutura inicial e fazer a primeira integração entre backend e frontend.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá ter um projeto Django criado a partir do template, compreender a estrutura da aplicação `core`, disponibilizar a API de `Categoria` e conectar o backend a um frontend Vue 3.
+Ao final desta seção, você vai ter um projeto Django criado a partir do template, entender a estrutura da aplicação `core`, disponibilizar a API de `Categoria` e fazer a primeira conexão com um frontend em Vue 3.
 
 ## Aulas
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá ter um projeto Django criado a partir do t
 
 - Seção 3. Modelagem e CRUD base
 
-[Início](../../README.md) | Seção | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)

@@ -6,6 +6,10 @@
 
 Relacionar os princípios dos 12 fatores com as escolhas arquiteturais do projeto Django e Vue.
 
+## Introdução
+
+Os 12 fatores aparecem bastante quando o assunto é aplicação web moderna, mas muitas vezes parecem abstratos demais à primeira vista. Nesta aula, a ideia é trazer esses princípios para perto do projeto que você já construiu.
+
 ## Desenvolvimento
 
 Esta aula reorganiza a discussão dos 12 fatores em torno do projeto atual:
@@ -31,7 +35,7 @@ docs(secao-10): documenta os 12 fatores do projeto
 
 ## Conclusão
 
-Os 12 fatores ajudam a explicar e justificar várias escolhas já feitas no tutorial.
+Os 12 fatores ajudam a explicar e justificar várias escolhas já feitas no tutorial, conectando teoria e prática de um jeito mais concreto.
 
 ## Próxima aula
 

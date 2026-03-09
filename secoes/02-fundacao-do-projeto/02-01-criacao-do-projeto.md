@@ -4,11 +4,11 @@
 
 ## Objetivo da aula
 
-Criar o projeto `livraria` a partir do template adotado no curso e colocá-lo para rodar localmente.
+Criar o projeto `livraria` a partir do template adotado no curso e colocá-lo para rodar localmente com segurança.
 
 ## Introdução
 
-O projeto da livraria será criado a partir de um repositório de template. Isso evita repetir configurações iniciais e permite começar mais rápido a parte de backend com Django e DRF.
+O projeto da livraria será criado a partir de um repositório de template. Isso evita repetir configurações iniciais, reduz o número de obstáculos logo no começo e permite chegar mais rápido à parte realmente interessante do curso: construir a API com Django e DRF.
 
 ## Desenvolvimento
 
@@ -107,7 +107,7 @@ pdm run dev
 
 ## Conclusão
 
-Com o projeto criado e funcionando localmente, você já pode começar a entender a estrutura da aplicação que servirá de base para o restante do curso.
+Com o projeto criado e funcionando localmente, você já tem um ponto de partida sólido para entender a estrutura da aplicação que servirá de base para o restante do curso.
 
 ## Próxima aula
 

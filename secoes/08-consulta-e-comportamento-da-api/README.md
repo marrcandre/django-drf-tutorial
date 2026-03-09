@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)
 
 # Seção 8. Consulta e comportamento da API
 
-Esta seção reúne filtros, busca, ordenação e ajustes de comportamento do carrinho e da compra.
+Nesta seção, o foco sai um pouco da criação de recursos e vai para a experiência de uso da API. Você vai aprender a consultar melhor os dados e a refinar o comportamento do carrinho e das compras.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir refinar consultas da API e controlar melhor o comportamento do carrinho de compras.
+Ao final desta seção, você vai conseguir refinar consultas da API e controlar melhor o comportamento do carrinho de compras.
 
 ## Aulas
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá conseguir refinar consultas da API e contr
 
 - Seção 9. Publicação e deploy
 
-[Início](../../README.md) | Seção | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../07-acoes-personalizadas/07-05-ajuste-de-estoque-de-um-livro.md) | [Próxima](08-01-utilizacao-de-filtros-para-listagem-de-recursos.md)

@@ -1,12 +1,12 @@
-[Início](../../README.md) | Seção | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)
 
 # Seção 4. Dados, arquivos e administração
 
-Esta seção reúne tópicos operacionais importantes do projeto: upload de imagens, carga e restauração de dados, customização do Admin e uso do shell do Django.
+Nesta seção, o projeto começa a ficar mais completo no dia a dia. Você vai trabalhar com imagens, dados de teste, painel administrativo e ferramentas úteis para inspecionar o sistema com mais autonomia.
 
 ## Objetivo da seção
 
-Ao final desta seção, você deverá conseguir enriquecer o projeto com upload de arquivos, importar e exportar dados, melhorar a experiência no Admin e explorar o banco de dados com o shell interativo.
+Ao final desta seção, você vai conseguir enriquecer o projeto com upload de arquivos, importar e exportar dados, melhorar a experiência no Admin e explorar o banco de dados com o shell interativo.
 
 ## Aulas
 
@@ -19,4 +19,4 @@ Ao final desta seção, você deverá conseguir enriquecer o projeto com upload 
 
 - Seção 5. Autenticação e usuários
 
-[Início](../../README.md) | Seção | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](../03-modelagem-e-crud-base/03-06-modificacao-da-api-para-livro.md) | [Próxima](04-01-upload-e-associacao-de-imagens.md)
