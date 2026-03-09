@@ -1,0 +1,49 @@
+[Início](../../README.md) | [Seção](README.md) | [Anterior](06-04-endpoint-para-a-listagem-basica-de-compras.md) | [Próxima](06-06-exibicao-do-total-do-item-na-listagem.md)
+
+# 6.5 Visualização dos itens da compra na listagem
+
+## Objetivo da aula
+
+Exibir os itens da compra no endpoint de listagem de compras.
+
+## Desenvolvimento
+
+Crie um serializer para `ItensCompra`:
+
+```python
+class ItensCompraSerializer(ModelSerializer):
+    class Meta:
+        model = ItensCompra
+        fields = ('livro', 'quantidade')
+        depth = 1
+```
+
+Depois, aninhe esse serializer em `CompraSerializer`:
+
+```python
+itens = ItensCompraSerializer(many=True, read_only=True)
+```
+
+Com isso, a listagem de compras passa a retornar também os livros associados e as respectivas quantidades.
+
+## Hora do commit
+
+```text
+feat(6.5): documenta itens da compra na listagem
+```
+
+## Prática
+
+- Adicione o serializer dos itens.
+- Teste o endpoint de compras.
+- Ajuste `depth` e compare o nível de detalhamento retornado.
+
+## Conclusão
+
+A compra deixa de mostrar apenas o cabeçalho e passa a expor a composição dos itens.
+
+## Próxima aula
+
+- [6.6 Exibição do total do item na listagem](06-06-exibicao-do-total-do-item-na-listagem.md)
+
+[Início](../../README.md) | [Seção](README.md) | [Anterior](06-04-endpoint-para-a-listagem-basica-de-compras.md) | [Próxima](06-06-exibicao-do-total-do-item-na-listagem.md)
