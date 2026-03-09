@@ -1,0 +1,25 @@
+[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/README.md) | [Próxima](../11-exercicios/README.md)
+
+# Seção 10. Ferramentas, operação e apoio
+
+Esta seção reúne guias auxiliares para manutenção, depuração, Git, shell, DBShell e práticas complementares de operação.
+
+## Objetivo da seção
+
+Ao final desta seção, você deverá conseguir resolver problemas comuns do ambiente, usar ferramentas de inspeção e apoiar o projeto em tarefas operacionais.
+
+## Aulas
+
+- [10.1 Resolução de erros](10-01-resolucao-de-erros.md)
+- [10.2 Configuração do Git](10-02-configuracao-do-git.md)
+- [10.3 Uso do curl para testar a API](10-03-uso-do-curl-para-testar-a-api.md)
+- [10.4 Django Shell: comandos úteis](10-04-django-shell-comandos-uteis.md)
+- [10.5 DBShell: comandos úteis](10-05-dbshell-comandos-uteis.md)
+- [10.6 Aplicando os 12 fatores ao projeto](10-06-aplicando-os-12-fatores-ao-projeto.md)
+- [10.7 Rodando o Django com HTTPS no desenvolvimento](10-07-rodando-o-django-com-https-no-desenvolvimento.md)
+
+## Próxima seção
+
+- Seção 11. Exercícios
+
+[Início](../../README.md) | Seção | [Anterior](../09-publicacao-e-deploy/README.md) | [Próxima](../11-exercicios/README.md)
