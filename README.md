@@ -18,6 +18,7 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [6. Inclusão da Editora no projeto Livraria](#6-inclusão-da-editora-no-projeto-livraria)
 - [7. Criação da API para Autor](#7-criação-da-api-para-autor)
 - [8. Criação da API para Livro](#8-criação-da-api-para-livro)
+- [Material extra temporário para 2026: migração para o novo template](#material-extra-temporário-para-2026-migração-para-o-novo-template)
 - [9. Inclusão das chaves estrangeiras no modelo Livro](#9-inclusão-das-chaves-estrangeiras-no-modelo-livro)
 - [10. Inclusão do relacionamento n para n no modelo do Livro](#10-inclusão-do-relacionamento-n-para-n-no-modelo-do-livro)
 - [11. Modificação da API para Livro](#11-modificação-da-api-para-livro)
@@ -1282,6 +1283,17 @@ Da mesma forma que fizemos para as classes `Categoria`, `Editora` e `Autor`, vam
 ```
 feat: criação da entidade para Livro
 ```
+
+---
+
+
+# Material extra temporário para 2026: migração para o novo template
+
+Se você começou o projeto deste ano com o template antigo, consulte o material extra de migração para o novo template com SimpleJWT antes de continuar a partir do tópico 9:
+
+- [Migração do projeto antigo para o novo template com SimpleJWT](migracao_autenticacao.md)
+
+Depois de concluir essa migração, volte ao fluxo normal do tutorial.
 
 ---
 
