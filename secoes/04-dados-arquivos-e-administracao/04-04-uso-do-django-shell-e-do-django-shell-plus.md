@@ -87,7 +87,7 @@ Para mais exemplos, consulte futuramente a seção de ferramentas do tutorial re
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(4.4): documenta uso do django shell plus

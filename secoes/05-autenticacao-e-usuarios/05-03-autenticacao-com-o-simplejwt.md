@@ -153,7 +153,7 @@ Repita operações autenticadas com perfis distintos para observar a diferença 
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(5.3): documenta autenticacao com simplejwt

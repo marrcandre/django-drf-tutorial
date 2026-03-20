@@ -708,7 +708,7 @@ O Swagger gera uma documentação interativa da API.
 Acesse:
 
 ```
-http://127.0.0.1:8000/api/swagger/
+http://127.0.0.1:8000/api/doc
 ```
 
 Você poderá testar os endpoints diretamente por lá.

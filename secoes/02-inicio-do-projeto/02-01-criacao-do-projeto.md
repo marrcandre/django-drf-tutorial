@@ -38,7 +38,7 @@ Este projeto consiste em uma API REST para uma livraria. Ele terá as seguintes 
 
 ### 5. Criação do projeto a partir de um template
 
-> IMPORTANTE: Vamos criar o projeto `livraria` a partir de um repositório de template. Se você quiser aprender a criar um projeto do zero, acesse o tutorial de 2023.
+> IMPORTANTE: Vamos criar o projeto `livraria` a partir de um repositório de template. Se você quiser aprender a criar um projeto do zero, acesse o [tutorial de 2023](https://github.com/marrcandre/django-drf-tutorial/tree/versao-2023).
 
 - Acesse o template em https://github.com/marrcandre/template_django_pdm.
 - Clique em `Use this template` e depois em `Create a new repository`.
@@ -53,10 +53,12 @@ Você pode clonar o projeto de duas formas.
 Usando o VS Code:
 
 - Abra o VS Code.
-- Clique no ícone de Source Control na barra lateral esquerda.
-- Clique no botão `Clone Repository`.
-- Digite a URL do repositório do projeto.
+- Tecle `Ctrl + Shift + P` para abrir a paleta de comandos.
+- Digite `Git: Clone` e selecione a opção.
+- Escolha a opção `Clone from GitHub`.
+- Escolha o repositório do projeto.
 - Escolha a pasta onde o projeto será clonado.
+- Após o clone, o VS Code perguntará se você deseja abrir o projeto. Clique em `Abrir em uma nova janela`.
 
 Usando o terminal:
 

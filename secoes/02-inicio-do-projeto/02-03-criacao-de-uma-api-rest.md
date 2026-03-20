@@ -4,13 +4,13 @@
 
 ## Objetivo da aula
 
-Criar a primeira API REST do projeto, para o recurso `Categoria`, usando Django Rest Framework.
+Criar a primeira API REST do projeto, para o recurso `Categoria`, usando o Django Rest Framework.
 
 ## Introdução
 
 Em vez de apenas consumir uma API, agora vamos criar a nossa própria API para o projeto `livraria`.
 
-Ao final desta aula, você terá uma API completa para `Categoria`, capaz de criar, listar, buscar, atualizar e deletar registros.
+Ao final desta aula, você terá uma API completa para `Categoria`, capaz de criar, listar, buscar, atualizar e deletar registros. Chamamos isso de CRUD: Create, Read, Update, Delete.
 
 ## Desenvolvimento
 
@@ -70,6 +70,12 @@ class CategoriaSerializer(ModelSerializer):
         fields = '__all__'
 ```
 
+> O `ModelSerializer` é uma classe do DRF que facilita a criação de serializers baseados em models. Ele gera automaticamente os campos com base na model.
+
+> O `Meta` é uma classe interna onde definimos a model associada e os campos que queremos incluir.
+
+> O `fields = '__all__'` indica que queremos incluir todos os campos da model.
+
 No arquivo `core/serializers/__init__.py`, adicione:
 
 ```python
@@ -91,6 +97,12 @@ class CategoriaViewSet(ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
 ```
+
+> O `ModelViewSet` é uma classe do DRF que implementa as ações básicas de CRUD para um recurso. Ele já tem métodos como `list()`, `create()`, `retrieve()`, `update()` e `destroy()` pré-definidos.
+
+> O `queryset` define quais dados serão manipulados pela view. No caso, estamos usando `Categoria.objects.all()`, ou seja, todas as categorias.
+
+> O `serializer_class` indica qual serializer será usado para transformar os dados.
 
 No arquivo `core/views/__init__.py`, adicione:
 
@@ -158,12 +170,12 @@ Além do navegador, você pode usar:
 O Swagger pode ser acessado em:
 
 ```text
-http://127.0.0.1:8000/api/swagger/
+http://127.0.0.1:8000/api/doc
 ```
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(2.3): cria api rest para categoria
@@ -181,7 +193,7 @@ feat(2.3): cria api rest para categoria
 
 ## Conclusão
 
-Agora você já criou a primeira API REST do projeto e entende o fluxo básico do DRF de ponta a ponta.
+Agora você já criou a primeira API REST do projeto e entende o fluxo básico do DRF de ponta a ponta. Na próxima aula, vamos conectar essa API ao frontend usando Vue 3.
 
 ## Próxima aula
 

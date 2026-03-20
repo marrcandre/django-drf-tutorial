@@ -105,9 +105,8 @@ Quando a página carrega:
 
 Se você tiver problemas com `npm`, verifique se está usando a versão LTS do NodeJS.
 
-Consulte o material do Prof. Eduardo da Silva:
+Consulte o [material do Prof. Eduardo da Silva](https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente).:
 
-https://eduardo-da-silva.github.io/aula-desenvolvimento-web/ambiente
 
 ## Prática
 

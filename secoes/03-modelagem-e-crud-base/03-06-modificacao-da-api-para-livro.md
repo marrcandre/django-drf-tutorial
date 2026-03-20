@@ -118,7 +118,7 @@ from .livro import LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(3.6): cria multiplos serializadores para livro

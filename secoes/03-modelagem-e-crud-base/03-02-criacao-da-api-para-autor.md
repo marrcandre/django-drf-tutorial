@@ -23,7 +23,7 @@ O autor terá os seguintes atributos:
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(3.2): cria aula de api para autor

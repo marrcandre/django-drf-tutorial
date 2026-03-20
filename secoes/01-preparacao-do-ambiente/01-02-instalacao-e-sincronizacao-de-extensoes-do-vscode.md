@@ -21,7 +21,6 @@ Eu recomendo as seguintes:
 - [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Even Better TOML](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)
-- [Intellicode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 - [Portuguese (Brazil) Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-br)
@@ -54,13 +53,13 @@ Você pode configurar a sincronização das extensões entre os computadores. Pa
 
 ## Prática
 
-- Instale ao menos as extensões essenciais para Python, Vue e Markdown.
+- Instale as extensões recomendadas.
 - Verifique se elas aparecem corretamente na lista de extensões.
 - Se desejar, habilite a sincronização para reaproveitar esse ambiente em outros computadores.
 
 ## Conclusão
 
-Com o editor e as extensões prontas, falta apenas configurar o gerenciador de pacotes Python usado no restante do tutorial.
+Com o editor e as extensões prontas, falta apenas configurar o gerenciador de pacotes Python (PDM) usado no restante do tutorial.
 
 ## Próxima aula
 

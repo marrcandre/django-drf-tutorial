@@ -2,23 +2,6 @@
 
 Tutorial de desenvolvimento de APIs REST com Django e DRF, reorganizado em seções e arquivos menores para deixar o estudo mais leve, progressivo e fácil de acompanhar.
 
-Existe uma versão completa e funcional do projeto da livraria neste repositório:
-
-- [Projeto da livraria no GitHub](https://github.com/marrcandre/livraria_marrcandre_2024)
-- [Projeto publicado no Render](https://livraria-marrcandre-2024.onrender.com/api/)
-
-Este tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
-
-## Como usar
-
-O material abaixo foi pensado como um percurso de estudo. A ideia é seguir as seções em ordem, avançando de um passo por vez. Cada seção possui:
-
-- um índice próprio para situar o tema;
-- arquivos separados por aula;
-- navegação entre a página anterior e a próxima página.
-
-Se você estiver começando agora, vale seguir a sequência completa. Se já tiver alguma familiaridade com Django ou DRF, também dá para usar as seções como consulta pontual.
-
 ## Seções
 
 - [Seção 1. Preparação do ambiente](secoes/01-preparacao-do-ambiente/README.md)
@@ -32,6 +15,22 @@ Se você estiver começando agora, vale seguir a sequência completa. Se já tiv
 - [Seção 9. Publicação e deploy](secoes/09-publicacao-e-deploy/README.md)
 - [Seção 10. Ferramentas, operação e apoio](secoes/10-ferramentas-operacao-e-apoio/README.md)
 - [Seção 11. Exercícios](secoes/11-exercicios/README.md)
+
+---
+
+Existe uma versão completa e funcional do projeto da livraria neste repositório:
+
+- [Projeto da livraria no GitHub](https://github.com/marrcandre/livraria_marrcandre_2024)
+- [Projeto publicado no Render](https://livraria-marrcandre-2024.onrender.com/api/)
+
+Este tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
+
+## Como usar
+
+Este material foi pensado como um percurso de estudo. A ideia é seguir as seções em ordem, avançando de um passo por vez.
+
+Se você estiver começando agora, vale seguir a sequência completa. Se já tiver alguma familiaridade com Django ou DRF, também dá para usar as seções como consulta pontual.
+
 
 ## Trilha do curso
 

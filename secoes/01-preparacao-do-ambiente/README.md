@@ -14,8 +14,6 @@ Ao final desta seção, você vai ter um ambiente pronto para acompanhar o resta
 - [1.2 Instalação e sincronização de extensões do VS Code](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md)
 - [1.3 Instalação e configuração do PDM](01-03-instalacao-e-configuracao-do-pdm.md)
 
-## Observação
-
-Na organização antiga, esse conteúdo ficava espalhado entre introdução e apêndices. Agora ele aparece logo na abertura do curso, para deixar o começo mais claro e mais fácil de seguir.
+---
 
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../../README.md) | [Próxima](01-01-instalacao-e-atualizacao-do-vscode.md)

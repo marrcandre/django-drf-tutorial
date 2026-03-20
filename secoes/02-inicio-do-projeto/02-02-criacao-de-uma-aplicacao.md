@@ -26,11 +26,11 @@ Em nosso projeto, temos uma aplicação criada, chamada `core`:
 
 Dentro da pasta `core`, os itens mais importantes são:
 
-- `migrations`: pasta de migrações de banco de dados.
-- `models`: pasta onde ficam as models.
-- `serializers`: pasta onde ficam os serializadores.
-- `views`: pasta onde ficam as views.
-- `admin.py`: arquivo de configuração do Admin.
+- `migrations`: pasta de migrações de banco de dados (normalmente não é editada diretamente).
+- `models`: pasta onde ficam as models (tabelas).
+- `serializers`: pasta onde ficam os serializadores (representações dos dados).
+- `views`: pasta onde ficam as views (funções que processam as requisições).
+- `admin.py`: arquivo de configuração do Admin (interface de administração do Django).
 
 ### 2. Model User
 
@@ -61,7 +61,7 @@ Nesse código, você:
 
 > IMPORTANTE:
 > - O nome da classe deve ser sempre no singular e com a primeira letra maiúscula.
-> - O nome dos campos deve ser sempre no singular e com a primeira letra minúscula.
+> - O nome dos campos deve ser sempre no singular e com todas as letras em minúsculo.
 
 ### 4. Inclusão da model no `__init__.py`
 
@@ -82,15 +82,18 @@ pdm run migrate
 
 Esse comando executará em sequência:
 
-- `makemigrations`
-- `migrate`
-- `graph_models`
+- `makemigrations` (cria os arquivos de migração);
+- `migrate` (aplica as migrações no banco de dados);
+- `graph_models` (gera o diagrama de classes atualizado).
+
+
+### 6. Verifique o resultado:
 
 - Acesse o arquivo do banco de dados (`db.sqlite3`) e verifique se a tabela `core_categoria` foi criada.
 - Para ver o diagrama de classes atualizado, acesse o arquivo `core.png` na pasta raiz do projeto.
 - Acesse o Admin do projeto e verifique se a nova tabela aparece lá.
 
-### 6. Inclusão no Admin
+### 7. Inclusão no Admin
 
 A tabela ainda não aparecerá enquanto você não a registrar no Admin.
 
@@ -100,11 +103,11 @@ Adicione ao final de `core/admin.py`:
 admin.site.register(models.Categoria)
 ```
 
-### 7. O campo `id`
+### 8. O campo `id`
 
 O campo `id` é criado automaticamente pelo Django. Ele é o identificador único de cada registro da tabela.
 
-### 8. Melhorando a forma de exibição dos registros
+### 9. Melhorando a forma de exibição dos registros
 
 Ao cadastrar categorias, você verá algo como `Categoria object (1)`. Para melhorar isso, adicione o método `__str__` na model:
 
@@ -113,13 +116,20 @@ def __str__(self):
     return self.descricao
 ```
 
+Ou ainda melhor:
+
+```python
+def __str__(self):
+    return f'({self.id}) {self.descricao}'
+```
+
 > O método `__str__` sempre deve retornar uma string.
 
 ## Hora do commit
 
-Verifique antes se o seu computador está configurado corretamente para o git com as suas credenciais.
+Verifique antes se o seu computador está configurado corretamente para o git com as suas credenciais. Caso não esteja, acesse a seção de [configuração do git](https://github.com/marrcandre/django-drf-tutorial/blob/tutorial_secoes/secoes/10-ferramentas-operacao-e-apoio/10-02-configuracao-do-git.md).
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(2.2): cria model de categoria

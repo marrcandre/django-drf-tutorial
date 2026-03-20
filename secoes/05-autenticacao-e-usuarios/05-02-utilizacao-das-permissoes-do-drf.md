@@ -65,7 +65,7 @@ Esse modo funciona assim:
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(5.2): documenta permissoes do drf

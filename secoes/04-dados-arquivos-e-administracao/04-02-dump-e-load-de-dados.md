@@ -86,7 +86,7 @@ Livro.objects.all()
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(4.2): adiciona fluxo de dump e load de dados

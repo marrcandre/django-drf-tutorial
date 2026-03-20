@@ -78,7 +78,7 @@ Categoria.objects.get(id=1).livros.all()
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(3.4): inclui relacionamento de livro com categoria e editora

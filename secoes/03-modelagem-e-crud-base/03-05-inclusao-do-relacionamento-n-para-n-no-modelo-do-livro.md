@@ -39,7 +39,7 @@ Observe também:
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(3.5): inclui relacionamento n para n entre livro e autor

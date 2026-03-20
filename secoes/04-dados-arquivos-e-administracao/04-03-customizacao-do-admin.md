@@ -92,7 +92,7 @@ http://127.0.0.1:8000/api/admin/
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(4.3): customiza admin das models principais

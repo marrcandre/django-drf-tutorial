@@ -93,7 +93,7 @@ Envie uma atualização de usuário com a chave de attachment da imagem e confir
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(5.4): documenta foto de perfil no usuario

@@ -8,7 +8,7 @@ Instalar e configurar o PDM para gerenciar dependências e o ambiente Python dos
 
 ## Introdução
 
-O PDM será usado para instalar dependências, executar comandos e manter o ambiente Python padronizado entre as aulas.
+O PDM será usado para instalar dependências, executar comandos e manter o ambiente Python padronizado entre as aulas. Ele é o correspondente ao `npm` do JavaScript, mas para Python.
 
 ## Desenvolvimento
 
@@ -29,11 +29,11 @@ pdm -V
 curl -sSL https://pdm-project.org/install.sh | bash
 ```
 
-- Após a instalação, feche o terminal com `Ctrl + D` e abra um novo terminal com `Ctrl + Alt + T`.
+- Após a instalação, feche o terminal com `Ctrl + D` e abra um novo terminal com `Ctrl + Alt + T` e verifique novamente a instalação.
 
 ### 2. Configuração do PDM
 
-Execute os seguintes comandos:
+Execute os seguintes comandos, copiando e colando em seu terminal:
 
 ```shell
 pdm --pep582 >> ~/.bashrc

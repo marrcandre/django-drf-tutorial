@@ -157,7 +157,7 @@ class LivroSerializer(ModelSerializer):
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(4.1): inclui app de upload e associacao de imagens

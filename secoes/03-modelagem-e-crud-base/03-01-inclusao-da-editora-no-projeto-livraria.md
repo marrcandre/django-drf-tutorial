@@ -172,7 +172,7 @@ http://127.0.0.1:8000/api/editoras/
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(3.1): cria api para editora

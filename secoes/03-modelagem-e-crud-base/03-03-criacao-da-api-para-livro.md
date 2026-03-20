@@ -60,7 +60,7 @@ Use os passos já estabelecidos como referência e, ao final, teste todas as ope
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(3.3): cria entidade e api para livro

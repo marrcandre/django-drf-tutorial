@@ -68,7 +68,7 @@ O usuário comprador deve conseguir:
 
 ## Hora do commit
 
-Mensagem sugerida na nova convenção:
+Sugestão de mensagem:
 
 ```text
 feat(5.1): documenta autenticacao e autorizacao
