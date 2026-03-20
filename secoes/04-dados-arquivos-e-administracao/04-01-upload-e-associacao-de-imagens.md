@@ -91,6 +91,10 @@ urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT
 
 No `pyproject.toml`, modifique a linha `post_migrate` para incluir a geração do diagrama da app `uploader`.
 
+```toml
+post_migrate = "python manage.py graph_models -S -g -o core.png core uploader"
+```
+
 ### 4. Uso em modelos
 
 No arquivo `models/livro.py`, inclua:

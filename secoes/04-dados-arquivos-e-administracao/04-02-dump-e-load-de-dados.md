@@ -14,7 +14,7 @@ Exportar e importar dados é útil para backup, replicação de ambiente, distri
 
 ### 1. Carga inicial de dados
 
-Acesse o Admin do projeto indicado pelo professor e cadastre pelo menos 10 livros com autor e editora.
+Acesse o Admin do projeto indicado pelo professor e cadastre pelo menos 10 livros com autor, categoria e editora.
 
 Cuidados:
 

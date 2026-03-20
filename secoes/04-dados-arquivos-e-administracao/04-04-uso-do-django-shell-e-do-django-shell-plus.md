@@ -83,7 +83,7 @@ Encerre o shell:
 exit()
 ```
 
-Para mais exemplos, consulte futuramente a seção de ferramentas do tutorial reorganizado.
+Para mais exemplos, consulte a seção de [comandos úteis do Django Shell Plus](../10-ferramentas-operacao-e-apoio/10-05-dbshell-comandos-uteis.md).
 
 ## Hora do commit
 
