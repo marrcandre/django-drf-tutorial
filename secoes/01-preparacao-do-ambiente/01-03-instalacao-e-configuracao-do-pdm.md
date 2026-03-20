@@ -1,4 +1,4 @@
-[Início](../../README.md) | [Seção](README.md) | [Anterior](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md) | [Próxima](../02-fundacao-do-projeto/README.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md) | [Próxima](../02-inicio-do-projeto/README.md)
 
 # 1.3 Instalação e configuração do PDM
 
@@ -83,6 +83,6 @@ Com o PDM configurado, o ambiente base do curso está pronto e você já pode in
 
 ## Próxima aula
 
-- [Seção 2. Fundação do projeto](../02-fundacao-do-projeto/README.md)
+- [Seção 2. Início do projeto](../02-inicio-do-projeto/README.md)
 
-[Início](../../README.md) | [Seção](README.md) | [Anterior](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md) | [Próxima](../02-fundacao-do-projeto/README.md)
+[Início](../../README.md) | [Seção](README.md) | [Anterior](01-02-instalacao-e-sincronizacao-de-extensoes-do-vscode.md) | [Próxima](../02-inicio-do-projeto/README.md)

@@ -1,6 +1,6 @@
 [Início](../../README.md) | [Seção](README.md) | [Anterior](../01-preparacao-do-ambiente/01-03-instalacao-e-configuracao-do-pdm.md) | [Próxima](02-01-criacao-do-projeto.md)
 
-# Seção 2. Fundação do projeto
+# Seção 2. Início do projeto
 
 Nesta seção, o projeto começa a ganhar forma. Você vai sair da preparação do ambiente e entrar, de fato, na construção da livraria: criar a base do sistema, entender a estrutura inicial e fazer a primeira integração entre backend e frontend.
 

@@ -22,7 +22,7 @@ Se você estiver começando agora, vale seguir a sequência completa. Se já tiv
 ## Seções
 
 - [Seção 1. Preparação do ambiente](secoes/01-preparacao-do-ambiente/README.md)
-- [Seção 2. Fundação do projeto](secoes/02-fundacao-do-projeto/README.md)
+- [Seção 2. Início do projeto](secoes/02-inicio-do-projeto/README.md)
 - [Seção 3. Modelagem e CRUD base](secoes/03-modelagem-e-crud-base/README.md)
 - [Seção 4. Dados, arquivos e administração](secoes/04-dados-arquivos-e-administracao/README.md)
 - [Seção 5. Autenticação e usuários](secoes/05-autenticacao-e-usuarios/README.md)
