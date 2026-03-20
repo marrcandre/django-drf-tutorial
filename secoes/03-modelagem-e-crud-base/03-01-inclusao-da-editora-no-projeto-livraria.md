@@ -196,6 +196,8 @@ Exercícios de reflexão:
 4. Qual código HTTP é retornado ao criar com sucesso?
 5. O que acontece ao buscar um ID inexistente?
 
+Teste a aplicação vuejs para verificar se a API de editoras está funcionando corretamente.
+
 ## Conclusão
 
 Repetir o padrão em uma nova entidade reforça a arquitetura-base do projeto e ajuda a reduzir a dependência de passo a passo detalhado.

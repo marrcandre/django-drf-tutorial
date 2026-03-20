@@ -8,7 +8,7 @@ Criar o relacionamento muitos-para-muitos entre `Livro` e `Autor` e entender com
 
 ## Introdução
 
-Um livro pode ter vários autores, e um autor pode escrever vários livros. Esse é o cenário clássico de relacionamento n para n.
+Um livro pode ter vários autores, e um autor pode escrever vários livros. Esse é o cenário clássico de relacionamento n para n. Poderíamos criar uma tabela associativa manualmente, mas o Django tem um campo específico para isso: `ManyToManyField`.
 
 ## Desenvolvimento
 
@@ -19,7 +19,7 @@ Inclua o campo `autores` no modelo `Livro`:
 ```python
 from .autor import Autor
 
-autores = models.ManyToManyField(Autor, related_name='livros', blank=True)
+autores = models.ManyToManyField(Autor, related_name='livros')
 ```
 
 Execute as migrações.
@@ -35,7 +35,7 @@ O modelo ficará assim:
 Observe também:
 
 - no relacionamento entre `Livro` e `Autor`, há uma ligação n para n;
-- no caso de `Livro` com `Categoria` e `Editora`, o relacionamento é n para 1.
+- no caso de `Livro` com `Categoria` e `Editora`, o relacionamento é 1 para n.
 
 ## Hora do commit
 
@@ -48,7 +48,7 @@ feat(3.5): inclui relacionamento n para n entre livro e autor
 ## Prática
 
 - Teste a API REST de livros com as modificações feitas.
-- Faça o Exercício da Garagem para praticar o que foi aprendido até aqui.
+- Faça o [Exercício da Garagem](../11-exercicios/11-01-projeto-garagem.md) para praticar o que foi aprendido até aqui.
 
 ## Conclusão
 

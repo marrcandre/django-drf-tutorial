@@ -32,7 +32,7 @@ feat(3.2): cria aula de api para autor
 ## Prática
 
 - Teste a API completa de `Autor`.
-- Crie no Vue a tela para listar, incluir, alterar e excluir autores.
+- Teste a aplicação vuejs para verificar se a API de autores está funcionando corretamente.
 
 ## Conclusão
 

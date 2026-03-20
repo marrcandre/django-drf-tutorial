@@ -14,11 +14,15 @@ Até aqui, `Livro` ainda estava isolado. Agora vamos conectá-lo às entidades j
 
 ### 1. Campo `categoria` no `Livro`
 
-Inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
+Primeiro, importe a model `Categoria` no arquivo `models/livro.py`:
 
 ```python
 from .categoria import Categoria
+```
 
+Depois, inclua a linha a seguir no modelo `Livro`, logo após o atributo `preco`:
+
+```python
 categoria = models.ForeignKey(
     Categoria, on_delete=models.PROTECT, related_name='livros', null=True, blank=True
 )
@@ -31,6 +35,18 @@ Vamos entender cada parte:
 - `on_delete=models.PROTECT`: impede apagar uma categoria que possua livros associados;
 - `related_name='livros'`: cria o relacionamento reverso em `Categoria`;
 - `null=True, blank=True`: tornam o campo não obrigatório.
+
+Faça as migrações dos dados.
+
+> Observe que o campo `categoria_id` foi criado na tabela `core_livro`, referenciando a tabela `core_categoria.
+
+### Hora do commit
+
+Sugestão de mensagem:
+
+```text
+feat(3.4): inclui relacionamento de livro com categoria
+```
 
 ### 2. Campo `editora` no `Livro`
 
@@ -46,7 +62,7 @@ editora = models.ForeignKey(
 
 Faça a migração dos dados.
 
-> Observe que os campos `categoria_id` e `editora_id` foram criados na tabela `core_livro`, referenciando as tabelas relacionadas.
+> Observe que o campo `editora_id` foi criado na tabela `core_livro`, referenciando a tabela relacionada.
 
 O modelo ficará assim:
 
@@ -81,7 +97,7 @@ Categoria.objects.get(id=1).livros.all()
 Sugestão de mensagem:
 
 ```text
-feat(3.4): inclui relacionamento de livro com categoria e editora
+feat(3.4): inclui relacionamento de livro com editora
 ```
 
 ## Prática
@@ -92,7 +108,7 @@ feat(3.4): inclui relacionamento de livro com categoria e editora
 
 ## Conclusão
 
-Com essas chaves estrangeiras, `Livro` deixa de ser um recurso isolado e passa a refletir melhor o domínio da livraria.
+Com essas chaves estrangeiras, `Livro` deixa de ser um recurso isolado e passa a refletir melhor o domínio da livraria. 
 
 ## Próxima aula
 
