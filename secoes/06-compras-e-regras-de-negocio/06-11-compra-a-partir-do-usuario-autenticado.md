@@ -31,7 +31,7 @@ Assim, o cliente deixa de informar o campo `usuario` manualmente e a API usa o u
 ## Hora do commit
 
 ```text
-feat(6.11): documenta compra a partir do usuario autenticado
+feat(6.11): implementa compra a partir do usuario autenticado
 ```
 
 ## Prática

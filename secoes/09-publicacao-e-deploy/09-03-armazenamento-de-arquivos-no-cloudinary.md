@@ -34,7 +34,7 @@ Inclua essa variável tanto no `.env` local quanto no serviço hospedado.
 ## Hora do commit
 
 ```text
-feat(9.3): documenta cloudinary para armazenamento de arquivos
+feat(9.3): implementa cloudinary para armazenamento de arquivos
 ```
 
 ## Prática

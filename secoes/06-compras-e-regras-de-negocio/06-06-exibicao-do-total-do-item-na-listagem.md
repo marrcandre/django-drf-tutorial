@@ -35,7 +35,7 @@ Essa abordagem calcula o valor dinamicamente a partir do preço do livro e da qu
 ## Hora do commit
 
 ```text
-feat(6.6): documenta total do item na listagem
+feat(6.6): implementa total do item na listagem
 ```
 
 ## Prática

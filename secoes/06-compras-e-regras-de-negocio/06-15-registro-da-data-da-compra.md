@@ -43,7 +43,7 @@ Como evolução, vale renomear `data` para `data_criacao` e adicionar `data_atua
 ## Hora do commit
 
 ```text
-feat(6.15): documenta registro da data da compra
+feat(6.15): implementa registro da data da compra
 ```
 
 ## Prática

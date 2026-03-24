@@ -2,11 +2,11 @@
 
 # Seção 5. Autenticação e usuários
 
-Nesta seção, a aplicação passa a tratar um ponto central de qualquer sistema real: segurança. Você vai trabalhar com autenticação, autorização, permissões e evolução do cadastro de usuário.
+Nesta seção, a aplicação passa a tratar um ponto central de qualquer sistema real: segurança. Você vai trabalhar com autenticação, autorização, permissões de acesso. Vamos também evoluir o cadastro de usuários, incluindo uma foto de perfil.
 
 ## Objetivo da seção
 
-Ao final desta seção, você vai conseguir autenticar usuários, aplicar permissões do Django e do DRF, trabalhar com SimpleJWT e estender o modelo de usuário com foto de perfil.
+Ao final desta seção, você vai conseguir autenticar usuários, aplicar permissões do Django e do DRF, trabalhar com SimpleJWT e estender o modelo de usuário com a foto de perfil.
 
 ## Aulas
 

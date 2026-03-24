@@ -43,7 +43,7 @@ O endpoint resultante é `GET /compras/relatorio_vendas_mes/`.
 ## Hora do commit
 
 ```text
-feat(7.2): documenta relatorio de vendas do mes
+feat(7.2): implementa relatorio de vendas do mes
 ```
 
 ## Prática

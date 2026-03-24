@@ -38,7 +38,7 @@ def get_serializer_class(self):
     return CompraSerializer
 ```
 
-### 3. Implementando `create`
+### 3. implementando `create`
 
 ```python
 def create(self, validated_data):
@@ -53,7 +53,7 @@ def create(self, validated_data):
 ## Hora do commit
 
 ```text
-feat(6.8): documenta criacao de compras com itens aninhados
+feat(6.8): implementa criacao de compras com itens aninhados
 ```
 
 ## Prática

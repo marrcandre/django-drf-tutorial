@@ -58,7 +58,7 @@ Crie e aplique as migrações. Depois, valide no Admin se a nova entidade já po
 ## Hora do commit
 
 ```text
-feat(6.1): documenta entidade compra integrada ao usuario
+feat(6.1): implementa entidade compra integrada ao usuario
 ```
 
 ## Prática

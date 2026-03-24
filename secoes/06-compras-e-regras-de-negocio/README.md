@@ -6,7 +6,7 @@ Nesta seção, a livraria finalmente ganha um fluxo de compra mais completo. É 
 
 ## Objetivo da seção
 
-Ao final desta seção, você vai conseguir implementar o ciclo de compras do projeto, incluindo persistência dos itens, serializers especializados, cálculo de totais, vínculo com usuário autenticado e validações de negócio.
+Ao final desta seção, você vai conseguir implementa r o ciclo de compras do projeto, incluindo persistência dos itens, serializers especializados, cálculo de totais, vínculo com usuário autenticado e validações de negócio.
 
 ## Aulas
 

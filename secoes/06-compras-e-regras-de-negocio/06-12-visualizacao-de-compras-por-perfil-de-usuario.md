@@ -29,7 +29,7 @@ Essa abordagem usa o próprio perfil do usuário para decidir o conjunto de comp
 ## Hora do commit
 
 ```text
-feat(6.12): documenta visualizacao de compras por perfil
+feat(6.12): implementa visualizacao de compras por perfil
 ```
 
 ## Prática

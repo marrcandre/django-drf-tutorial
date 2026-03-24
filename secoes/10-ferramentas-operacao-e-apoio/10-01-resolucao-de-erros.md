@@ -24,7 +24,7 @@ Casos cobertos nesta aula:
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta resolucao de erros
+docs(secao-10): implementa resolucao de erros
 ```
 
 ## Conclusão

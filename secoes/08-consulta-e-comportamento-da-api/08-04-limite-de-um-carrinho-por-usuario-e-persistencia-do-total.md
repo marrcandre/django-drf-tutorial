@@ -60,7 +60,7 @@ Remova a property antiga `total`, gere migrações e recalcule os registros já 
 ## Hora do commit
 
 ```text
-feat(8.4): documenta carrinho unico e persistencia do total
+feat(8.4): implementa carrinho unico e persistencia do total
 ```
 
 ## Prática

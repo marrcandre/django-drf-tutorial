@@ -43,7 +43,7 @@ CLOUDINARY_URL=cloudinary://...
 ## Hora do commit
 
 ```text
-feat(9.2): documenta publicacao do projeto no render
+feat(9.2): implementa publicacao do projeto no render
 ```
 
 ## Prática

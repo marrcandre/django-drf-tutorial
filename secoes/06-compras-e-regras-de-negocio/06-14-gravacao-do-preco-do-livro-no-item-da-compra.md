@@ -52,7 +52,7 @@ Passe a usar `instance.preco` no total do item e `item.preco * item.quantidade` 
 ## Hora do commit
 
 ```text
-feat(6.14): documenta gravacao do preco do livro no item
+feat(6.14): implementa gravacao do preco do livro no item
 ```
 
 ## Prática

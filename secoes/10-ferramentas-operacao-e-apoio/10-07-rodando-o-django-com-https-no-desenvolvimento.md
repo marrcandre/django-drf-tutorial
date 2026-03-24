@@ -40,7 +40,7 @@ pdm devssl
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta https no ambiente de desenvolvimento
+docs(secao-10): implementa https no ambiente de desenvolvimento
 ```
 
 ## Conclusão

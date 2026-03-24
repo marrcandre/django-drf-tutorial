@@ -10,7 +10,7 @@ Aplicar permissões no DRF tanto em uma viewset específica quanto de forma glob
 
 Autenticação e permissão caminham juntas, mas não são a mesma coisa. Depois de identificar quem é o usuário, ainda precisamos decidir com bastante clareza quais ações ele pode ou não pode executar.
 
-No DRF, esse controle pode ser aplicado em pontos diferentes: em uma view específica, no projeto inteiro ou por meio de classes de permissão ligadas às permissões de modelo do Django.
+No DRF, esse controle pode ser aplicado em pontos diferentes: em uma viewset específica, no projeto inteiro ou por meio de classes de permissão ligadas às permissões de modelo do Django.
 
 ## Desenvolvimento
 
@@ -32,7 +32,7 @@ Teste o comportamento com e sem sessão autenticada no Admin. Sem autenticação
 
 ### 2. Exemplo global no `settings.py`
 
-Para aplicar a mesma regra ao projeto inteiro, remova a alteração anterior da viewset e configure:
+Para aplicar a mesma regra ao projeto inteiro, remova a alteração anterior da viewset e configure no `settings.py`:
 
 ```python
 REST_FRAMEWORK = {
@@ -42,11 +42,11 @@ REST_FRAMEWORK = {
 }
 ```
 
-Com isso, os endpoints passam a exigir autenticação por padrão.
+Com isso, todos os endpoints passam a exigir autenticação por padrão.
 
 ### 3. Usando `DjangoModelPermissionsOrAnonReadOnly`
 
-No projeto reorganizado, a abordagem recomendada é usar as permissões já gerenciadas pelo Django:
+A abordagem recomendada é usar as permissões já gerenciadas pelo Django:
 
 ```python
 REST_FRAMEWORK = {
@@ -68,7 +68,7 @@ Esse modo funciona assim:
 Sugestão de mensagem:
 
 ```text
-feat(5.2): documenta permissoes do drf
+feat(5.2): implementa  permissoes do drf
 ```
 
 ## Prática

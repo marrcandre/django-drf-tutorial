@@ -54,7 +54,7 @@ def mais_vendidos(self, request):
 ## Hora do commit
 
 ```text
-feat(7.4): documenta livros mais vendidos
+feat(7.4): implementa livros mais vendidos
 ```
 
 ## Prática

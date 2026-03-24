@@ -40,7 +40,7 @@ O mesmo mecanismo pode normalizar dados antes da gravação, como no caso de e-m
 ## Hora do commit
 
 ```text
-feat(6.13): documenta validacao dos campos no serializer
+feat(6.13): implementa validacao dos campos no serializer
 ```
 
 ## Prática

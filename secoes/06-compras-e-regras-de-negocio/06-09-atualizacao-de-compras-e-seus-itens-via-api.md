@@ -29,7 +29,7 @@ Depois disso, teste operações `PUT` e `PATCH` variando usuário, livro e quant
 ## Hora do commit
 
 ```text
-feat(6.9): documenta atualizacao de compras com itens
+feat(6.9): implementa atualizacao de compras com itens
 ```
 
 ## Prática

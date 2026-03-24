@@ -47,20 +47,21 @@ Crie a API completa da `Editora`, repetindo o mesmo padrão utilizado em `Catego
 Você precisa:
 
 1. criar a model `Editora` em `core/models/editora.py`;
-2. registrar no `models/__init__.py`;
+2. registrar a model em `models/__init__.py`;
 3. criar e aplicar a migração com `pdm run migrate`;
 4. verificar se a tabela foi criada no banco de dados;
-5. registrar no `admin.py`;
-6. testar se a Editora aparece no painel administrativo;
-7. criar algumas editoras para testar a exibição;
+5. registrar a model no `admin.py`;
+6. testar se a Editora aparece no painel administrativo (Admin);
+7. incluir algumas editoras para testar a exibição;
 8. criar o serializer em `core/serializers/editora.py`;
-9. registrar no `serializers/__init__.py`;
+9. registrar o serializer em `serializers/__init__.py`;
 10. criar a viewset em `core/views/editora.py`;
-11. registrar no `views/__init__.py`;
-12. adicionar a rota em `urls.py`;
-13. testar a API.
+11. registrar a viewset em `views/__init__.py`;
+12. adicionar a rota para a viewset em `urls.py`;
+13. testar a API;
+14. fazer o commit.
 
-### 3. Implementação esperada
+### 3. implementação esperada
 
 Depois de tentar sozinho, compare com a implementação esperada.
 

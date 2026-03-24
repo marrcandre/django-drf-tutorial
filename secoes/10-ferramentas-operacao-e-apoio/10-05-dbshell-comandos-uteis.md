@@ -23,7 +23,7 @@ O conteúdo cobre:
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta comandos uteis no dbshell
+docs(secao-10): implementa comandos uteis no dbshell
 ```
 
 ## Conclusão

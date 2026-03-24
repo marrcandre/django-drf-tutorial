@@ -50,7 +50,7 @@ def ajustar_estoque(self, request, pk=None):
 ## Hora do commit
 
 ```text
-feat(7.5): documenta ajuste de estoque de livro
+feat(7.5): implementa ajuste de estoque de livro
 ```
 
 ## Prática

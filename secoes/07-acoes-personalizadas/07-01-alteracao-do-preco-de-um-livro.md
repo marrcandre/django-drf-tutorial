@@ -50,7 +50,7 @@ Use o endpoint `PATCH /livros/{id}/alterar_preco/` enviando um novo preço no co
 ## Hora do commit
 
 ```text
-feat(7.1): documenta alteracao do preco de um livro
+feat(7.1): implementa alteracao do preco de um livro
 ```
 
 ## Prática

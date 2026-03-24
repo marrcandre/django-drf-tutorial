@@ -50,7 +50,7 @@ Depois da migração, crie compras e consulte tanto o valor numérico salvo quan
 ## Hora do commit
 
 ```text
-feat(6.16): documenta tipo de pagamento na compra
+feat(6.16): implementa tipo de pagamento na compra
 ```
 
 ## Prática

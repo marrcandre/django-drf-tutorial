@@ -46,7 +46,7 @@ def get_serializer_class(self):
 ## Hora do commit
 
 ```text
-feat(6.10): documenta serializer de listagem de compras
+feat(6.10): implementa serializer de listagem de compras
 ```
 
 ## Prática

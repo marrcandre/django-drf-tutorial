@@ -23,7 +23,7 @@ Pontos principais:
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta configuracao do git
+docs(secao-10): implementa configuracao do git
 ```
 
 ## Conclusão

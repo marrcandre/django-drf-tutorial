@@ -25,7 +25,7 @@ curl -X DELETE http://127.0.0.1:8000/api/categorias/1/
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta uso do curl na api
+docs(secao-10): implementa uso do curl na api
 ```
 
 ## Conclusão

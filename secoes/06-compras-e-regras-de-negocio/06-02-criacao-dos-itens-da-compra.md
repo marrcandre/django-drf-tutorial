@@ -45,7 +45,7 @@ Execute as migrações, confira a tabela criada e registre `ItensCompra` no Admi
 ## Hora do commit
 
 ```text
-feat(6.2): documenta criacao dos itens da compra
+feat(6.2): implementa criacao dos itens da compra
 ```
 
 ## Prática

@@ -47,7 +47,7 @@ Exemplos:
 ## Hora do commit
 
 ```text
-feat(8.3): documenta ordenacao dos resultados
+feat(8.3): implementa ordenacao dos resultados
 ```
 
 ## Prática

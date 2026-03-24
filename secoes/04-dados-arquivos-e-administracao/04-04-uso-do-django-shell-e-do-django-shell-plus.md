@@ -90,7 +90,7 @@ Para mais exemplos, consulte a seção de [comandos úteis do Django Shell Plus]
 Sugestão de mensagem:
 
 ```text
-feat(4.4): documenta uso do django shell plus
+feat(4.4): implementa uso do django shell plus
 ```
 
 ## Prática

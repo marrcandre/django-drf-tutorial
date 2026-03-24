@@ -45,7 +45,7 @@ def finalizar(self, request, pk=None):
 ## Hora do commit
 
 ```text
-feat(7.3): documenta finalizacao da compra com estoque
+feat(7.3): implementa finalizacao da compra com estoque
 ```
 
 ## Prática

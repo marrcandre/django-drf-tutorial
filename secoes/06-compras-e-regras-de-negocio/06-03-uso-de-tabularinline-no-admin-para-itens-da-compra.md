@@ -35,7 +35,7 @@ Você também pode comparar esse comportamento com `StackedInline`.
 ## Hora do commit
 
 ```text
-feat(6.3): documenta tabularinline para itens da compra
+feat(6.3): implementa tabularinline para itens da compra
 ```
 
 ## Prática

@@ -8,7 +8,7 @@ Entender a diferença entre autenticação e autorização e configurar grupos, 
 
 ## Introdução
 
-Nesta etapa, o foco passa a ser segurança. Em qualquer sistema real, não basta saber que uma pessoa entrou: também é preciso definir com clareza o que ela pode fazer dentro da aplicação.
+Nesta etapa, o foco passa a ser segurança. Em qualquer sistema real, não basta saber que uma pessoa entrou: também é preciso definir com clareza quem ela é e o que ela pode fazer dentro da aplicação.
 
 Uma estratégia prática para isso no Django é:
 
@@ -61,6 +61,8 @@ O usuário administrador deve conseguir:
 - adicionar, editar, visualizar e remover autor, categoria e editora;
 - adicionar, editar e visualizar livro.
 
+Ele não deve conseguir remover livros, pois essa permissão não foi concedida ao grupo `administradores`.
+
 O usuário comprador deve conseguir:
 
 - apenas visualizar autor, categoria e editora;
@@ -71,7 +73,7 @@ O usuário comprador deve conseguir:
 Sugestão de mensagem:
 
 ```text
-feat(5.1): documenta autenticacao e autorizacao
+feat(5.1): implementa autenticacao e autorizacao
 ```
 
 ## Prática

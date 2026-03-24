@@ -1020,7 +1020,7 @@ Crie a API completa da `Editora`, repetindo o mesmo padrão utilizado em `Catego
 
 ---
 
-**6.3 Implementação esperada**
+**6.3 implementação esperada**
 
 Após concluir, compare com os arquivos abaixo.
 
@@ -3267,7 +3267,7 @@ Escreva um método `.create()` explícito para o serializer `core.serializers.co
 
 Esse erro acontece porque o DRF, por padrão, n**ão sabe como salvar campos aninhados** (como os itens da compra). Precisamos sobrescrever o método **create** no serializer da **Compra**.
 
-**Implementando o método create**
+**implementando o método create**
 
 Atualize o `CompraCreateUpdateSerializer` no `serializers/compra`.py para incluir o método:
 
@@ -3944,7 +3944,7 @@ Além de organizar a operação (financeiro, emissão de notas, devoluções), t
 - Quantos clientes preferem PIX ou boleto?
 - Qual é a forma de pagamento mais usada?
 
-**Implementação no Model**
+**implementação no Model**
 
 No arquivo `models/compra.py`, adicione o campo `tipo_pagamento`:
 
@@ -4337,7 +4337,7 @@ Quando o usuário faz uma compra, ela inicia no status `CARRINHO` e ainda não i
 
 ---
 
-**Implementação do endpoint de finalização**
+**implementação do endpoint de finalização**
 
 No arquivo `views/compra.py`, crie a ação personalizada `finalizar` dentro do `CompraViewSet`:
 

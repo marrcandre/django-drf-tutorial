@@ -33,7 +33,7 @@ Com isso, a listagem de compras passa a retornar também os livros associados e 
 ## Hora do commit
 
 ```text
-feat(6.5): documenta itens da compra na listagem
+feat(6.5): implementa itens da compra na listagem
 ```
 
 ## Prática

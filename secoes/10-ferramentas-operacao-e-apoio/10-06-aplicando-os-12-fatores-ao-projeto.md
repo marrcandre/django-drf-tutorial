@@ -30,7 +30,7 @@ Esta aula reorganiza a discussão dos 12 fatores em torno do projeto atual:
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta os 12 fatores do projeto
+docs(secao-10): implementa os 12 fatores do projeto
 ```
 
 ## Conclusão

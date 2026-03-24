@@ -156,7 +156,7 @@ Repita operações autenticadas com perfis distintos para observar a diferença 
 Sugestão de mensagem:
 
 ```text
-feat(5.3): documenta autenticacao com simplejwt
+feat(5.3): implementa   autenticacao com simplejwt
 ```
 
 ## Prática

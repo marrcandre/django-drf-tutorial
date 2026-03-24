@@ -50,7 +50,7 @@ Inclua o viewset em `core/views/__init__.py` e registre `compras` no router prin
 ## Hora do commit
 
 ```text
-feat(6.4): documenta listagem basica de compras
+feat(6.4): implementa listagem basica de compras
 ```
 
 ## Prática

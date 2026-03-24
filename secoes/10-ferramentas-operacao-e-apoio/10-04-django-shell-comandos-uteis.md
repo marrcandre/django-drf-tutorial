@@ -23,7 +23,7 @@ Esta aula reúne exemplos de:
 ## Hora do commit
 
 ```text
-docs(secao-10): documenta comandos uteis no django shell
+docs(secao-10): implementa comandos uteis no django shell
 ```
 
 ## Conclusão

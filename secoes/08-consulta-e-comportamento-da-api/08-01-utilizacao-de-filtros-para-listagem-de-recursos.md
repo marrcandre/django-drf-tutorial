@@ -34,7 +34,7 @@ Com isso, a API aceita parâmetros como:
 ## Hora do commit
 
 ```text
-feat(8.1): documenta filtros para listagem de recursos
+feat(8.1): implementa filtros para listagem de recursos
 ```
 
 ## Prática

@@ -42,7 +42,7 @@ Confira tabelas no `Table Editor` e no `Schema Visualizer`. Depois, ao voltar ao
 ## Hora do commit
 
 ```text
-feat(9.1): documenta publicacao do banco no supabase
+feat(9.1): implementa publicacao do banco no supabase
 ```
 
 ## Prática

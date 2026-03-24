@@ -41,7 +41,7 @@ Use `total_formatado` em `list_display` e `readonly_fields`.
 ## Hora do commit
 
 ```text
-feat(6.7): documenta total da compra na listagem
+feat(6.7): implementa total da compra na listagem
 ```
 
 ## Prática

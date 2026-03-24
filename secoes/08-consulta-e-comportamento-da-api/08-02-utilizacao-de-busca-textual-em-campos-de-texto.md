@@ -34,7 +34,7 @@ Esse filtro pode ser combinado com os filtros declarativos já configurados.
 ## Hora do commit
 
 ```text
-feat(8.2): documenta busca textual
+feat(8.2): implementa busca textual
 ```
 
 ## Prática
