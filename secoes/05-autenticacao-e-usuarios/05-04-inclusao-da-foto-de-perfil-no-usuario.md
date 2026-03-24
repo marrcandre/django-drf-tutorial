@@ -96,7 +96,7 @@ Envie uma atualização de usuário com a chave de attachment da imagem e confir
 Sugestão de mensagem:
 
 ```text
-feat(5.4): implementa  foto de perfil no usuario
+feat(5.4): implementa foto de perfil no usuario
 ```
 
 ## Prática

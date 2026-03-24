@@ -68,7 +68,7 @@ Esse modo funciona assim:
 Sugestão de mensagem:
 
 ```text
-feat(5.2): implementa  permissoes do drf
+feat(5.2): implementa permissoes do drf
 ```
 
 ## Prática
