@@ -58,7 +58,6 @@ def create(self, validated_data):
 
 > O método `create` extrai os dados dos itens, cria a compra principal e depois itera sobre os itens para criá-los associando à compra recém-criada. Isso garante que toda a estrutura seja persistida corretamente em uma única operação de API.
 
-
 ## Hora do commit
 
 ```text

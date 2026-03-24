@@ -39,6 +39,11 @@ Essa configuração indica que:
 
 Depois disso, execute as migrações do projeto.
 
+O projeto deve ficar assim:
+
+![](/diagramas/core_categoria_editora_autor_livro_com_capa_usuario_com_foto.png)
+
+
 ### 2. Exibindo a foto no Admin
 
 No `admin.py`, ajuste a definição do `UserAdmin` para incluir o campo `foto`:

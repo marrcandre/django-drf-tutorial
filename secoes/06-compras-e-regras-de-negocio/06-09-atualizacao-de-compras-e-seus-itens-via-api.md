@@ -24,6 +24,8 @@ def update(self, compra, validated_data):
     return super().update(compra, validated_data)
 ```
 
+> O método `update` sobrescrito primeiro extrai os dados dos itens, remove os itens antigos associados à compra e depois recria os itens a partir dos dados recebidos. Por fim, chama o método `update` da superclasse para atualizar os campos restantes da compra.
+
 Depois disso, teste operações `PUT` e `PATCH` variando usuário, livro e quantidade.
 
 ## Hora do commit
