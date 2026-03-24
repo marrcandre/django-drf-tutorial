@@ -12,7 +12,7 @@ Listar apenas a compra, sem mostrar seus itens, ainda deixa a resposta muito pob
 
 ## Desenvolvimento
 
-Crie um serializer para `ItensCompra`:
+Crie um serializer para `ItensCompra`, em `core/serializers/compra.py`:
 
 ```python
 class ItensCompraSerializer(ModelSerializer):
@@ -22,6 +22,8 @@ class ItensCompraSerializer(ModelSerializer):
         depth = 1
 ```
 
+> O parâmetro `depth = 1` é uma forma rápida de incluir os dados relacionados do livro, como título e preço, sem precisar criar um serializer específico para isso.
+
 Depois, aninhe esse serializer em `CompraSerializer`:
 
 ```python
@@ -29,6 +31,8 @@ itens = ItensCompraSerializer(many=True, read_only=True)
 ```
 
 Com isso, a listagem de compras passa a retornar também os livros associados e as respectivas quantidades.
+
+> O parâmetro `many=True` indica que `itens` é uma lista de objetos, e `read_only=True` garante que esses dados sejam apenas para leitura, evitando problemas de escrita complexa.
 
 ## Hora do commit
 

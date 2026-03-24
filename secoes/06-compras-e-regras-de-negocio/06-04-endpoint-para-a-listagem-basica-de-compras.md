@@ -8,7 +8,7 @@ Criar serializer, viewset e rota para expor a entidade `Compra` na API.
 
 ## Introdução
 
-Depois de estruturar a model e os itens da compra, faz sentido começar a enxergar esse recurso também pela API. Nesta aula, a compra passa a ganhar uma primeira versão pública, ainda simples, mas já útil como base para os refinamentos seguintes.
+Depois de estruturar a model e os itens da compra e testar no Admin, faz sentido começar a enxergar esse recurso também pela API. Nesta aula, a compra passa a ganhar uma primeira versão pública, ainda simples, mas já útil como base para os refinamentos seguintes.
 
 ## Desenvolvimento
 
@@ -29,6 +29,11 @@ class CompraSerializer(ModelSerializer):
         fields = '__all__'
 ```
 
+#### Explicação do serializer
+
+- `usuario` é um campo de leitura que exibe o email do usuário associado à compra.
+- `status` é um campo de leitura que exibe a representação legível do status da compra, utilizando o método `get_status_display` fornecido pelo Django para campos com escolhas.
+  
 ### 2. Viewset
 
 ```python

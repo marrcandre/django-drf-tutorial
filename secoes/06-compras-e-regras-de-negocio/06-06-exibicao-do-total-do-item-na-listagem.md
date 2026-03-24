@@ -30,6 +30,8 @@ class ItensCompraSerializer(ModelSerializer):
         depth = 1
 ```
 
+> O atributo `total` é um campo calculado que multiplica o preço do livro pela quantidade comprada. O método `get_total` é chamado automaticamente pelo DRF para preencher esse campo na resposta da API.
+
 Essa abordagem calcula o valor dinamicamente a partir do preço do livro e da quantidade.
 
 ## Hora do commit

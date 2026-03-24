@@ -34,6 +34,8 @@ class ItensCompra(models.Model):
 
 ### 3. Exportando a model
 
+Adicione a exportação em `core/models/__init__.py`:
+
 ```python
 from .compra import Compra, ItensCompra
 ```

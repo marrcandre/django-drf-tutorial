@@ -30,7 +30,9 @@ class CompraAdmin(admin.ModelAdmin):
     inlines = [ItensCompraInline]
 ```
 
-Você também pode comparar esse comportamento com `StackedInline`.
+A opção `inlines` é a que habilita a exibição dos itens diretamente no formulário da compra. O `extra = 1` indica que sempre haverá uma linha extra para adicionar um novo item.
+
+Você também pode comparar esse comportamento trocando a opção `TabularInline` por `StackedInline`.
 
 ## Hora do commit
 

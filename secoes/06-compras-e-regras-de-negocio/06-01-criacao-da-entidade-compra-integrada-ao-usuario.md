@@ -8,7 +8,7 @@ Criar a model `Compra`, associá-la ao usuário do sistema e disponibilizá-la n
 
 ## Introdução
 
-O fluxo de compras começa com uma entidade que representa a transação principal. A partir daqui, a livraria deixa de ser apenas catálogo e passa a caminhar para um sistema que registra ações reais dos usuários.
+O fluxo de compras começa com uma entidade que representa a transação principal. A partir daqui, a livraria deixa de ser apenas um catálogo e passa a caminhar para um sistema que registra ações reais dos usuários.
 
 ## Desenvolvimento
 
@@ -32,6 +32,16 @@ class Compra(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name='compras')
     status = models.IntegerField(choices=StatusCompra.choices, default=StatusCompra.CARRINHO)
 ```
+
+#### Explicação do IntegerChoices
+
+O `IntegerChoices` é uma forma de definir opções para um campo inteiro, associando cada valor a um rótulo legível. No exemplo acima, o campo `status` pode assumir os valores 1, 2, 3 ou 4, que correspondem respectivamente a "Carrinho", "Finalizado", "Pago" e "Entregue". Isso facilita a leitura do código e a manutenção das opções de status.
+
+o campo 'status' é do tipo `IntegerField` e utiliza as opções definidas em `StatusCompra.choices`, com um valor padrão de `CARRINHO` (1).
+
+Opcionalmente, o campo `status` poderia ser do tipo `CharField`, utilizando `TextChoices` para definir as opções. A escolha entre `IntegerChoices` e `TextChoices` depende do contexto do projeto e das preferências de design. O uso de `IntegerChoices` pode ser mais eficiente em termos de armazenamento, enquanto `TextChoices` pode oferecer maior legibilidade no banco de dados.
+
+Ainda poderíamos ter optado por uma entidade separada para os status, utilizando uma relação de chave estrangeira. Essa abordagem pode ser útil em casos onde os status possuem atributos adicionais ou quando há a necessidade de gerenciar os status dinamicamente. No entanto, para um cenário simples como este, o uso de `IntegerChoices` é mais direto e suficiente.
 
 ### 2. Registrando a model
 

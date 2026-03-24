@@ -20,6 +20,8 @@ def total(self):
     return sum(item.livro.preco * item.quantidade for item in self.itens.all())
 ```
 
+> Uma propriedade (property) é uma forma elegante de calcular o total da compra sem precisar armazenar esse valor no banco, garantindo que ele esteja sempre atualizado com base nos itens associados.
+
 ### 2. Exibindo no serializer
 
 Defina explicitamente os campos do `CompraSerializer`:
@@ -36,7 +38,12 @@ def total_formatado(self, obj):
     return f'R$ {obj.total:.2f}'
 ```
 
-Use `total_formatado` em `list_display` e `readonly_fields`.
+Use `total_formatado` em `list_display` e `readonly_fields`:
+
+```python
+list_display = ('usuario', 'status', 'total_formatado')
+readonly_fields = ('total_formatado',)
+```
 
 ## Hora do commit
 

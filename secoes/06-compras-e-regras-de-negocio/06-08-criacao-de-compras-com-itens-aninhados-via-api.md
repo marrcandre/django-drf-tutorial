@@ -14,6 +14,8 @@ Até aqui, já existe estrutura suficiente para representar compras e itens. O p
 
 ### 1. Serializers de entrada
 
+Precisamos de serializers específicos para criação e atualização, que aceitem os itens como parte da estrutura de entrada:
+
 ```python
 class ItensCompraCreateUpdateSerializer(ModelSerializer):
     class Meta:
@@ -31,6 +33,8 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 ### 2. Selecionando o serializer na viewset
 
+Como a viewset já tem um serializer para listagem, precisamos implementar a lógica para escolher o serializer correto dependendo da ação:
+
 ```python
 def get_serializer_class(self):
     if self.action in ('create', 'update', 'partial_update'):
@@ -38,7 +42,9 @@ def get_serializer_class(self):
     return CompraSerializer
 ```
 
-### 3. implementando `create`
+### 3. Implementando `create`
+
+Precisamos sobrescrever o método `create` para lidar com a criação dos itens associados, uma vez que o DRF não faz isso automaticamente:
 
 ```python
 def create(self, validated_data):
@@ -49,6 +55,9 @@ def create(self, validated_data):
     compra.save()
     return compra
 ```
+
+> O método `create` extrai os dados dos itens, cria a compra principal e depois itera sobre os itens para criá-los associando à compra recém-criada. Isso garante que toda a estrutura seja persistida corretamente em uma única operação de API.
+
 
 ## Hora do commit
 
