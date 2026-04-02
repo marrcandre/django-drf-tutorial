@@ -215,7 +215,7 @@ pdm run dev
 - Os dados de acesso são:
     - **Usuário**: `a@a.com`
     - **Senha**: `teste.123`
-- Após acessar, você pode o nome do usuário e a senha.
+- Após acessar, você pode alterar o nome do usuário.
 
 > **IMPORTANTE**: O servidor de desenvolvimento deve estar sempre rodando para que o projeto funcione.
 
@@ -247,7 +247,7 @@ Dentro da pasta `core` temos alguns arquivos e pastas, mas os mais importantes s
 
 -   `migrations`: é a pasta de migrações de banco de dados da aplicação.
 -   `models`: é a pasta onde ficam as `models` (modelos de banco de dados, ou tabelas) da aplicação.
--   `serializers`: é a pasta onde ficam os serializadores (serializadores) da aplicação.
+-   `serializers`: é a pasta onde ficam os serializadores da aplicação.
 -   `views`: é a pasta onde ficam as views (visões) da aplicação.
 -   `admin.py`: é o arquivo de configuração do `Admin`, uma ferramenta que permite que você gerencie os dados do seu site.
 
