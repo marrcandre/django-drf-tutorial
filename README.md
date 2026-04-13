@@ -1783,7 +1783,7 @@ O **dump** dos dados permite que você salve os dados do banco de dados em um ar
 
 - Acesse o seguinte link:
 
-  - Link: [`http://191.52.55.236:8000/admin/`](http://191.52.55.236:8000/admin/) (ou peça ao professor)
+  - Link: [`http://191.52.55.157:8000/admin/`](http://191.52.55.157:8000/admin/) (ou peça ao professor)
   - Usuário: `a@a.com`
   - Senha: `teste.123`
 
