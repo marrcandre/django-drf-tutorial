@@ -19552,95 +19552,1466 @@
   }
 },
 {
-  "model": "core.user",
-  "pk": 1,
+  "model": "uploader.image",
+  "pk": 58,
   "fields": {
-    "password": "pbkdf2_sha256$1000000$Df5REgRs9AC23EGXfxlu24$ub3tauJc1W7Sf38efUe9QWOfqEvG2GFnP2m0P4/fNww=",
-    "last_login": "2026-04-14T12:09:07.615Z",
-    "is_superuser": true,
-    "email": "a@a.com",
-    "name": "Super User",
-    "is_active": true,
-    "is_staff": true,
-    "foto": 58,
-    "tipo_usuario": 2,
-    "groups": [],
-    "user_permissions": []
+    "attachment_key": "c5043dd2-779e-4e0e-817b-00a3eebf7e74",
+    "public_id": "1f33d591-3538-4ea3-90a2-b59ad30ccda5",
+    "file": "images/1f33d591-3538-4ea3-90a2-b59ad30ccda5.jpg",
+    "description": "Marco André",
+    "uploaded_on": "2026-03-20T12:14:13.598Z"
   }
 },
 {
-  "model": "core.user",
-  "pk": 2,
+  "model": "uploader.image",
+  "pk": 59,
   "fields": {
-    "password": "pbkdf2_sha256$720000$RCDuKm5Xv4B68bkuUNQmy9$pLbD/aWoXOAcFe1SPa/HUj302Upl82x7Sn5eqDMjSxw=",
-    "last_login": null,
-    "is_superuser": false,
-    "email": "admin1@a.com",
-    "name": "Administrador",
-    "is_active": true,
-    "is_staff": true,
-    "foto": null,
-    "tipo_usuario": 3,
-    "groups": [
-      1
-    ],
-    "user_permissions": []
+    "attachment_key": "3953db0e-7d92-48b1-b9ae-f241652de8f3",
+    "public_id": "78593db6-9bf1-4be0-9d47-65fd50564f78",
+    "file": "images/78593db6-9bf1-4be0-9d47-65fd50564f78.jpg",
+    "description": "",
+    "uploaded_on": "2026-03-20T17:08:12.392Z"
   }
 },
 {
-  "model": "core.user",
-  "pk": 3,
+  "model": "uploader.image",
+  "pk": 60,
   "fields": {
-    "password": "pbkdf2_sha256$720000$UPb0qOwbPoVlvvxvvKUlNC$up73efVUJuOMNAOFIYW/L0lfIwBr9Ipg4Q3dfOJVjRQ=",
-    "last_login": null,
-    "is_superuser": false,
-    "email": "comprador1@a.com",
-    "name": "Comprador",
-    "is_active": true,
-    "is_staff": true,
-    "foto": null,
-    "tipo_usuario": 1,
-    "groups": [
-      2
-    ],
-    "user_permissions": []
+    "attachment_key": "f4ceef1a-9cba-48f9-b39b-19567ac12255",
+    "public_id": "58f17eb2-41e8-499b-a8b2-f9d6871241b7",
+    "file": "images/58f17eb2-41e8-499b-a8b2-f9d6871241b7.jpg",
+    "description": "",
+    "uploaded_on": "2026-03-20T17:09:09.544Z"
   }
 },
 {
-  "model": "core.user",
-  "pk": 6,
+  "model": "uploader.image",
+  "pk": 61,
   "fields": {
-    "password": "pbkdf2_sha256$720000$WdNHr7KMjGHDwUaQN6JWGQ$yxoZ6yXyZL05uAtNPpQvtoIejwJsCKqVUhTI1ha30vg=",
-    "last_login": "2024-10-11T14:03:34.784Z",
-    "is_superuser": false,
-    "email": "marcoandre@gmail.com",
-    "name": "Marco André Mendes",
-    "is_active": true,
-    "is_staff": true,
-    "foto": null,
-    "tipo_usuario": 1,
-    "groups": [
-      2,
-      3
-    ],
-    "user_permissions": []
+    "attachment_key": "d21d1976-d581-42a4-bcee-42deb45d9eb9",
+    "public_id": "1deaa800-cc2f-4182-adf1-9dc4e5b9753e",
+    "file": "images/1deaa800-cc2f-4182-adf1-9dc4e5b9753e.jpg",
+    "description": "",
+    "uploaded_on": "2026-03-20T18:06:43.316Z"
   }
 },
 {
-  "model": "core.user",
-  "pk": 7,
+  "model": "uploader.image",
+  "pk": 62,
   "fields": {
-    "password": "pbkdf2_sha256$1000000$AiPru8PjOMCtX1TpYMG5fP$hB9K70lIOdT8N1uDUeHZYkjUcKSoDFYNwwFnaj7n3T0=",
-    "last_login": null,
-    "is_superuser": false,
-    "email": "marco.mendes@ifc.edu.br",
-    "name": "profmarco",
-    "is_active": true,
-    "is_staff": false,
-    "foto": null,
-    "tipo_usuario": 1,
-    "groups": [],
-    "user_permissions": []
+    "attachment_key": "9cf02b98-4372-4b47-9d8b-21bb530e0dad",
+    "public_id": "19e752e4-a15a-4b04-ae8b-ebf9bedcc2d7",
+    "file": "images/19e752e4-a15a-4b04-ae8b-ebf9bedcc2d7.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-07T18:36:31.200Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 63,
+  "fields": {
+    "attachment_key": "3f50b7e6-397a-4279-8687-1a1905cbad7c",
+    "public_id": "9a415ade-73ef-44f9-814a-b3ad7b136812",
+    "file": "images/9a415ade-73ef-44f9-814a-b3ad7b136812.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:12:34.358Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 64,
+  "fields": {
+    "attachment_key": "285d90bd-899b-448c-b682-5765008f0ed8",
+    "public_id": "b3191282-d63b-40d6-ba3f-5cc07015058a",
+    "file": "images/b3191282-d63b-40d6-ba3f-5cc07015058a.webp",
+    "description": "capa-vinte-mil-leguas-submarinas-principis",
+    "uploaded_on": "2026-04-13T19:13:23.217Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 65,
+  "fields": {
+    "attachment_key": "2ea7691a-b2b1-4b5c-b483-35fd9ec0c5e6",
+    "public_id": "b020f844-2ae2-43fe-b1c8-51163a2a7efe",
+    "file": "images/b020f844-2ae2-43fe-b1c8-51163a2a7efe.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:14:35.897Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 66,
+  "fields": {
+    "attachment_key": "18cbd237-72a9-4cd3-95ba-9a0a74a13eca",
+    "public_id": "ff8dfad7-6ba1-4e03-a3ad-ff451be56b27",
+    "file": "images/ff8dfad7-6ba1-4e03-a3ad-ff451be56b27.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:15:18.289Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 67,
+  "fields": {
+    "attachment_key": "e6ae5a9f-fd29-4a18-ad29-e65f3498ac0c",
+    "public_id": "2e7a7856-4634-4fa3-9846-9d37726305b3",
+    "file": "images/2e7a7856-4634-4fa3-9846-9d37726305b3.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:16:15.126Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 68,
+  "fields": {
+    "attachment_key": "6d78007f-2817-4408-bb37-e8637eedc7cf",
+    "public_id": "9bd34f7d-3cec-411d-9ecb-bf918b519411",
+    "file": "images/9bd34f7d-3cec-411d-9ecb-bf918b519411.jpg",
+    "description": "herobrine",
+    "uploaded_on": "2026-04-13T19:17:07.620Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 69,
+  "fields": {
+    "attachment_key": "b85f1fe0-24bc-46f8-b575-2f43b46bf2bf",
+    "public_id": "18e59fd0-5542-4100-bd4f-69e0d38f89c7",
+    "file": "images/18e59fd0-5542-4100-bd4f-69e0d38f89c7.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:17:35.439Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 70,
+  "fields": {
+    "attachment_key": "6aa98730-eae6-4294-873d-493491343c58",
+    "public_id": "5f2c1656-33c8-4db1-ae7d-ab52c31c877f",
+    "file": "images/5f2c1656-33c8-4db1-ae7d-ab52c31c877f.jpg",
+    "description": "capa de \"de volta aos 15\"",
+    "uploaded_on": "2026-04-13T19:18:00.501Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 71,
+  "fields": {
+    "attachment_key": "ab1350d5-a7e9-4f74-9b47-8a48903af2d2",
+    "public_id": "e7458299-eca2-4220-9e4b-c9dc23a7955e",
+    "file": "images/e7458299-eca2-4220-9e4b-c9dc23a7955e.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:18:18.962Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 72,
+  "fields": {
+    "attachment_key": "f6fd8e74-b882-4b2f-9e71-679d08378d04",
+    "public_id": "e8336ae7-61fc-4091-979f-08461fa24585",
+    "file": "images/e8336ae7-61fc-4091-979f-08461fa24585.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:18:27.929Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 73,
+  "fields": {
+    "attachment_key": "33355abc-7982-4bfc-8bdd-fa7a4c243a10",
+    "public_id": "f994fdde-aa7c-4aca-8de1-b5c5072206b9",
+    "file": "images/f994fdde-aa7c-4aca-8de1-b5c5072206b9.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:18:29.206Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 74,
+  "fields": {
+    "attachment_key": "5f73e4de-02e1-45b7-97a5-b69086de4ffd",
+    "public_id": "74590231-6b3c-4b18-8235-c4ceed1e339f",
+    "file": "images/74590231-6b3c-4b18-8235-c4ceed1e339f.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:18:41.771Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 75,
+  "fields": {
+    "attachment_key": "b9840746-5ee5-4c3c-95a0-b83db674e006",
+    "public_id": "a4542749-78ec-4bb1-8020-dee0459f5ea9",
+    "file": "images/a4542749-78ec-4bb1-8020-dee0459f5ea9.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:19:06.172Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 76,
+  "fields": {
+    "attachment_key": "6851bd28-89f7-492c-a4a6-bc7cf241a0a8",
+    "public_id": "fc3b8f1c-6569-4147-bad8-08bff87ed635",
+    "file": "images/fc3b8f1c-6569-4147-bad8-08bff87ed635.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:19:32.623Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 77,
+  "fields": {
+    "attachment_key": "77581c7d-48fc-4b58-99f7-0356d8f5c0ef",
+    "public_id": "53429474-cb5e-4cb6-b613-052856c23d85",
+    "file": "images/53429474-cb5e-4cb6-b613-052856c23d85.jpg",
+    "description": "herobrine - 2",
+    "uploaded_on": "2026-04-13T19:19:43.141Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 78,
+  "fields": {
+    "attachment_key": "111da4af-d276-427a-a933-7afb9ff07171",
+    "public_id": "5dcaedf3-6e10-4489-9b7a-71a580058c77",
+    "file": "images/5dcaedf3-6e10-4489-9b7a-71a580058c77.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:20:25.511Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 79,
+  "fields": {
+    "attachment_key": "9f30e10e-0648-40e8-98f3-76f93a3a8ea5",
+    "public_id": "1fda397a-5bca-4637-86f8-83bd6d8ab531",
+    "file": "images/1fda397a-5bca-4637-86f8-83bd6d8ab531.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:20:28.522Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 80,
+  "fields": {
+    "attachment_key": "35ef4fe8-2f65-4f87-b144-5c8f3a2bd191",
+    "public_id": "eccf964a-22fb-48c3-8505-478a799e9ead",
+    "file": "images/eccf964a-22fb-48c3-8505-478a799e9ead.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:20:32.868Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 81,
+  "fields": {
+    "attachment_key": "7cd442ca-5aa6-4f69-8361-bf5ea4f2ca0e",
+    "public_id": "6e851aef-47d7-4d08-b039-e23bb31f14f2",
+    "file": "images/6e851aef-47d7-4d08-b039-e23bb31f14f2.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:20:51.154Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 82,
+  "fields": {
+    "attachment_key": "12b02ad9-3490-4bfa-8400-6beb65a86500",
+    "public_id": "a55ae0da-1783-40c4-bae1-831072ffea30",
+    "file": "images/a55ae0da-1783-40c4-bae1-831072ffea30.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:20:52.974Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 83,
+  "fields": {
+    "attachment_key": "a55cb383-5a9f-40e0-9439-d247a4fa7929",
+    "public_id": "8f497e62-1916-4c86-9ea2-1ad4877e54c6",
+    "file": "images/8f497e62-1916-4c86-9ea2-1ad4877e54c6.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:21:14.404Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 84,
+  "fields": {
+    "attachment_key": "2918a69c-0157-4845-a36b-00ea9fc3de4c",
+    "public_id": "470d5873-8672-4100-80ba-aeed2b97adaf",
+    "file": "images/470d5873-8672-4100-80ba-aeed2b97adaf.jpg",
+    "description": "capa do livro harry potter o enigma do principe",
+    "uploaded_on": "2026-04-13T19:21:15.060Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 85,
+  "fields": {
+    "attachment_key": "e8eae4e3-8375-40dd-bc6c-0eae46c81303",
+    "public_id": "76de292f-8df9-45ce-80a2-3a864f0493fc",
+    "file": "images/76de292f-8df9-45ce-80a2-3a864f0493fc_BZSBtpi.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:21:27.501Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 86,
+  "fields": {
+    "attachment_key": "bb28813b-c655-430f-83f9-14972f7ed06d",
+    "public_id": "18d32c2e-df8b-426e-a62e-312036a42954",
+    "file": "images/18d32c2e-df8b-426e-a62e-312036a42954.jpg",
+    "description": "Todos os aldeões ficaram convencidos quando ela acariciou a carne de seu irmão com um olhar gentil como um bebê dormindo ”O santo já está louco.\"",
+    "uploaded_on": "2026-04-13T19:21:38.649Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 87,
+  "fields": {
+    "attachment_key": "30c629de-8ce8-4020-ad96-ee396386801c",
+    "public_id": "5cb15cb3-ab93-4986-b506-4a072019bbe2",
+    "file": "images/5cb15cb3-ab93-4986-b506-4a072019bbe2.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:21:52.571Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 88,
+  "fields": {
+    "attachment_key": "fdf1f4ad-e82f-484f-a080-8a47bdbc910c",
+    "public_id": "39f56448-011e-4da6-ba40-bcfe95397a88",
+    "file": "images/39f56448-011e-4da6-ba40-bcfe95397a88.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:22:22.393Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 89,
+  "fields": {
+    "attachment_key": "bb5e67fe-5936-4d15-9b6b-160247c599b6",
+    "public_id": "6ca06dcd-6b04-494a-951d-a865e7af0543",
+    "file": "images/6ca06dcd-6b04-494a-951d-a865e7af0543.jpg",
+    "description": "chume labs",
+    "uploaded_on": "2026-04-13T19:22:49.434Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 90,
+  "fields": {
+    "attachment_key": "c02390aa-6bcb-427c-baf0-e9523416f5b2",
+    "public_id": "f6c500f4-46b4-4988-800d-407fd7547978",
+    "file": "images/f6c500f4-46b4-4988-800d-407fd7547978.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:22:53.416Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 91,
+  "fields": {
+    "attachment_key": "40ea46e4-71cc-4704-9d85-b1b31abdca6a",
+    "public_id": "4f3d35e6-253b-4c41-a366-d0587e3c20db",
+    "file": "images/4f3d35e6-253b-4c41-a366-d0587e3c20db.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:23:06.412Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 92,
+  "fields": {
+    "attachment_key": "c9fd99d1-d311-4cba-83f0-6aad423f65f6",
+    "public_id": "5af5b190-8f58-4712-a177-f3f682f18417",
+    "file": "images/5af5b190-8f58-4712-a177-f3f682f18417.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:23:10.127Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 93,
+  "fields": {
+    "attachment_key": "4f846972-da6a-43b8-b9d4-d6951cc39a90",
+    "public_id": "a136a4b6-0c76-4abc-8a80-cc092cc4e6fc",
+    "file": "images/a136a4b6-0c76-4abc-8a80-cc092cc4e6fc.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:23:38.867Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 94,
+  "fields": {
+    "attachment_key": "7b382957-6ad2-4012-b50f-31361e4580c2",
+    "public_id": "5ac1d49d-5e6b-43ac-a9f5-f244b99fa372",
+    "file": "images/5ac1d49d-5e6b-43ac-a9f5-f244b99fa372.jpg",
+    "description": "capa-diario-de-um-banana-10",
+    "uploaded_on": "2026-04-13T19:24:02.698Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 95,
+  "fields": {
+    "attachment_key": "f8ae58bc-4be1-4d1a-bad5-9a27fcfa4a55",
+    "public_id": "49510038-2c8f-4699-9cd6-58e9daf185bc",
+    "file": "images/49510038-2c8f-4699-9cd6-58e9daf185bc.jpg",
+    "description": "Afinal, por que não voltamos aqui? É uma espécie que vive. Por que você simplesmente não se força a morrer?",
+    "uploaded_on": "2026-04-13T19:24:37.433Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 96,
+  "fields": {
+    "attachment_key": "0ae695f0-2859-4dbe-8260-9d3a363ac3dc",
+    "public_id": "b176b8c4-7036-460e-8673-f112a0bcf5f8",
+    "file": "images/b176b8c4-7036-460e-8673-f112a0bcf5f8.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:24:52.617Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 97,
+  "fields": {
+    "attachment_key": "14e39b7f-0eb4-43bc-9371-2034d2e929cc",
+    "public_id": "552c759b-292d-4bbb-8ccb-a2cbfa89b5c2",
+    "file": "images/552c759b-292d-4bbb-8ccb-a2cbfa89b5c2.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:25:13.307Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 98,
+  "fields": {
+    "attachment_key": "b7ba9ea9-7143-4635-9a9b-6590d303f82e",
+    "public_id": "f9f208a5-6053-45ff-9936-a6cbe6ae84a8",
+    "file": "images/f9f208a5-6053-45ff-9936-a6cbe6ae84a8.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:25:24.901Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 99,
+  "fields": {
+    "attachment_key": "85bd796c-18ce-47b6-b8fa-878f3e73d230",
+    "public_id": "7148e1e7-2568-4bc4-a6cb-dcd3065bffe2",
+    "file": "images/7148e1e7-2568-4bc4-a6cb-dcd3065bffe2.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:25:31.535Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 100,
+  "fields": {
+    "attachment_key": "fbc25dc0-5100-4f74-8a40-39d7ca6a6847",
+    "public_id": "bcbeabb3-5d80-43b7-bac8-59f9e16c5572",
+    "file": "images/bcbeabb3-5d80-43b7-bac8-59f9e16c5572.jpg",
+    "description": "massacre",
+    "uploaded_on": "2026-04-13T19:26:06.954Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 101,
+  "fields": {
+    "attachment_key": "77774c0f-5eb8-44e9-99c0-64379a6ab86c",
+    "public_id": "afbeba9b-e69c-4dea-8361-dda7ca7d13c6",
+    "file": "images/afbeba9b-e69c-4dea-8361-dda7ca7d13c6.png",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:26:16.737Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 102,
+  "fields": {
+    "attachment_key": "039a4415-5ff3-40bb-af4f-49cbc8e724c4",
+    "public_id": "c0b3320a-960e-4dd0-bd41-de834f4a9b64",
+    "file": "images/c0b3320a-960e-4dd0-bd41-de834f4a9b64.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:26:18.537Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 103,
+  "fields": {
+    "attachment_key": "5cbd65bb-443f-45ac-a227-b93ff4d5ba37",
+    "public_id": "84e311d0-f221-4c8a-b453-24038aa32a3d",
+    "file": "images/84e311d0-f221-4c8a-b453-24038aa32a3d.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:26:46.644Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 104,
+  "fields": {
+    "attachment_key": "f84c45e6-6c06-4e05-891a-d0a60730127d",
+    "public_id": "adda9b15-0821-482d-a9aa-8986b5caa879",
+    "file": "images/adda9b15-0821-482d-a9aa-8986b5caa879.png",
+    "description": "elfa",
+    "uploaded_on": "2026-04-13T19:26:56.323Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 105,
+  "fields": {
+    "attachment_key": "3370e486-9570-41df-8533-e0ba80787873",
+    "public_id": "ce6a6ab6-3f7a-4a7e-a1d5-8b4f02efa41a",
+    "file": "images/ce6a6ab6-3f7a-4a7e-a1d5-8b4f02efa41a.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:27:06.658Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 106,
+  "fields": {
+    "attachment_key": "e19ee9de-2314-4e4d-926a-34fca71a2dd2",
+    "public_id": "193eb6dc-f0a5-4aa1-b724-91ba5d2ec74c",
+    "file": "images/193eb6dc-f0a5-4aa1-b724-91ba5d2ec74c.jpg",
+    "description": "capa de \"A Cabana\"",
+    "uploaded_on": "2026-04-13T19:27:12.727Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 107,
+  "fields": {
+    "attachment_key": "eda11d8b-0bc5-4d3d-9601-8c2309671e24",
+    "public_id": "52b0cbaf-c992-4e93-bc9a-8b607265fa7e",
+    "file": "images/52b0cbaf-c992-4e93-bc9a-8b607265fa7e.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:27:19.973Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 108,
+  "fields": {
+    "attachment_key": "97fef97c-9b49-4eee-8cf9-bd6d4dcc8250",
+    "public_id": "1fbc6619-a18a-4363-8d2b-8a0ec76a1240",
+    "file": "images/1fbc6619-a18a-4363-8d2b-8a0ec76a1240.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:27:56.061Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 109,
+  "fields": {
+    "attachment_key": "089913f7-e918-4a25-a9fc-89cd157a1c5c",
+    "public_id": "efb8ec05-8518-4e99-95fa-63a68a3578eb",
+    "file": "images/efb8ec05-8518-4e99-95fa-63a68a3578eb.jpg",
+    "description": "capa-diario-de-um-banana-11",
+    "uploaded_on": "2026-04-13T19:27:58.001Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 110,
+  "fields": {
+    "attachment_key": "af1fbb53-b0c6-450a-a51b-e63cbae67545",
+    "public_id": "54fe2568-4687-41fb-99d3-d3da0d24e1f2",
+    "file": "images/54fe2568-4687-41fb-99d3-d3da0d24e1f2.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:28:20.389Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 111,
+  "fields": {
+    "attachment_key": "737585a3-c5e4-4421-89c7-9e57f4b2b807",
+    "public_id": "30b8ccf4-f693-4d99-8942-76eee6194c99",
+    "file": "images/30b8ccf4-f693-4d99-8942-76eee6194c99.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:28:43.089Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 112,
+  "fields": {
+    "attachment_key": "227773a0-c937-43ce-b78e-80cc80a3e750",
+    "public_id": "40c6e4e1-0d92-48e0-b769-57025e1ed227",
+    "file": "images/40c6e4e1-0d92-48e0-b769-57025e1ed227.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:28:55.852Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 113,
+  "fields": {
+    "attachment_key": "fd554998-1051-44ab-9174-19dde66b8411",
+    "public_id": "4fafc8b0-93bc-449e-8fe3-a84cdb48f886",
+    "file": "images/4fafc8b0-93bc-449e-8fe3-a84cdb48f886.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:29:05.617Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 114,
+  "fields": {
+    "attachment_key": "d08edcb1-9090-43c5-b8cd-ae36447f57c4",
+    "public_id": "f273d020-0c49-4b73-a77f-dcf563aaa4d0",
+    "file": "images/f273d020-0c49-4b73-a77f-dcf563aaa4d0.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:29:30.942Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 115,
+  "fields": {
+    "attachment_key": "4a217f9a-0e73-4bd8-8fb7-ee0380cb488c",
+    "public_id": "3f1a8617-1838-458a-ae1d-083d63e2aba1",
+    "file": "images/3f1a8617-1838-458a-ae1d-083d63e2aba1.jpg",
+    "description": "café com Deus",
+    "uploaded_on": "2026-04-13T19:29:44.821Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 116,
+  "fields": {
+    "attachment_key": "73fd0430-a198-4806-b42f-6509c4801d92",
+    "public_id": "39f141c4-d50f-4667-bbfb-6428904ca82f",
+    "file": "images/39f141c4-d50f-4667-bbfb-6428904ca82f.jpg",
+    "description": "capa-diario-de-um-banana-12",
+    "uploaded_on": "2026-04-13T19:29:58.853Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 117,
+  "fields": {
+    "attachment_key": "2be3d43d-a171-44a4-9c38-0dd35fa83ff1",
+    "public_id": "9f45015d-7bdf-4c6f-9d6c-3c6c33779953",
+    "file": "images/9f45015d-7bdf-4c6f-9d6c-3c6c33779953.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:30:00.106Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 118,
+  "fields": {
+    "attachment_key": "e50ebde6-8c65-4371-a2d7-b28a0b9f558a",
+    "public_id": "5a4a3c68-9766-4478-adf5-6bdc1f2c5473",
+    "file": "images/5a4a3c68-9766-4478-adf5-6bdc1f2c5473.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:30:18.470Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 119,
+  "fields": {
+    "attachment_key": "2e3d66eb-f6b1-4117-b56f-186c8b5f9a0a",
+    "public_id": "be3a606a-dc8d-4472-8a29-edb10cce5e80",
+    "file": "images/be3a606a-dc8d-4472-8a29-edb10cce5e80.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:31:03.005Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 120,
+  "fields": {
+    "attachment_key": "96250a42-d45b-4a71-9117-670423215995",
+    "public_id": "315f43b4-281e-42b4-9360-696aeea9d46c",
+    "file": "images/315f43b4-281e-42b4-9360-696aeea9d46c.png",
+    "description": "morte",
+    "uploaded_on": "2026-04-13T19:31:18.512Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 121,
+  "fields": {
+    "attachment_key": "a6ed6650-7d4b-48b5-b6d0-e58dc1d1b73f",
+    "public_id": "48a0b745-0999-4c9c-96d5-fd22dbd3d66b",
+    "file": "images/48a0b745-0999-4c9c-96d5-fd22dbd3d66b.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:31:21.213Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 122,
+  "fields": {
+    "attachment_key": "21baee48-6691-48d9-858d-1018b9bdda65",
+    "public_id": "8a8995cf-a44e-42ed-86f3-2f9dafc030a4",
+    "file": "images/8a8995cf-a44e-42ed-86f3-2f9dafc030a4.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:31:52.888Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 123,
+  "fields": {
+    "attachment_key": "fd97172b-44c0-4c45-a4d2-04b3ca63acca",
+    "public_id": "c2902cbe-0b99-4212-afcf-9d3673eb1c88",
+    "file": "images/c2902cbe-0b99-4212-afcf-9d3673eb1c88.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:32:10.485Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 124,
+  "fields": {
+    "attachment_key": "81c8c84f-5090-4ad6-9619-e41373da7b1d",
+    "public_id": "fa20512d-e0e5-4d32-9ead-1bffa16a5a6a",
+    "file": "images/fa20512d-e0e5-4d32-9ead-1bffa16a5a6a.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:32:41.713Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 125,
+  "fields": {
+    "attachment_key": "94633aa4-463e-4159-90b3-e97c8a61e0f3",
+    "public_id": "86ddfc91-f003-4189-882c-0115311aa6d6",
+    "file": "images/86ddfc91-f003-4189-882c-0115311aa6d6.png",
+    "description": "cavaleiro",
+    "uploaded_on": "2026-04-13T19:32:59.600Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 126,
+  "fields": {
+    "attachment_key": "c9997c96-49c8-43b2-8056-ccc64ed8d843",
+    "public_id": "5b7e3fc5-7bda-4142-b8b7-68061fdd853d",
+    "file": "images/5b7e3fc5-7bda-4142-b8b7-68061fdd853d.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:33:19.099Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 127,
+  "fields": {
+    "attachment_key": "d77c1de8-93e6-44c2-9cbe-c4bb4ece284c",
+    "public_id": "5b76174b-492a-4350-8bca-82277e810b8e",
+    "file": "images/5b76174b-492a-4350-8bca-82277e810b8e.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:33:31.441Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 128,
+  "fields": {
+    "attachment_key": "d04ef7c6-1f93-4a76-9265-c9442ce7b9b7",
+    "public_id": "e82c3b98-30d1-4f04-8474-739cbd38197d",
+    "file": "images/e82c3b98-30d1-4f04-8474-739cbd38197d.jpg",
+    "description": "capa-diario-de-um-banana-13",
+    "uploaded_on": "2026-04-13T19:33:37.127Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 129,
+  "fields": {
+    "attachment_key": "e328b807-e1e5-4f86-b47b-48af20e1850b",
+    "public_id": "694eb3d1-9c77-44e1-82bf-9c8992eef755",
+    "file": "images/694eb3d1-9c77-44e1-82bf-9c8992eef755.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:34:06.763Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 130,
+  "fields": {
+    "attachment_key": "58332cdb-3728-4533-b559-df7ca69a51be",
+    "public_id": "b602297f-281a-4b62-8de9-3cb5add4ceae",
+    "file": "images/b602297f-281a-4b62-8de9-3cb5add4ceae.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:34:36.097Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 131,
+  "fields": {
+    "attachment_key": "093267c6-237d-4b3b-950b-3b03c612fa8e",
+    "public_id": "86595d51-d3c6-43f0-bb84-de2a87d9ebd0",
+    "file": "images/86595d51-d3c6-43f0-bb84-de2a87d9ebd0.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:34:46.282Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 132,
+  "fields": {
+    "attachment_key": "8efe147d-28c2-4a2a-9391-3fabc847cd1f",
+    "public_id": "369f06a5-12b0-4139-b769-e5f2bdcc2a89",
+    "file": "images/369f06a5-12b0-4139-b769-e5f2bdcc2a89.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:34:57.701Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 133,
+  "fields": {
+    "attachment_key": "c7b5e804-14cb-47d0-b610-7ae7e9ad7b9b",
+    "public_id": "b59a8cf9-db17-4eba-9f86-a860462a90dc",
+    "file": "images/b59a8cf9-db17-4eba-9f86-a860462a90dc.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:35:00.010Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 134,
+  "fields": {
+    "attachment_key": "5a0c1b6c-d262-44ca-a77a-ad412c790696",
+    "public_id": "5c12fd3c-61e7-44d2-bcd6-469056f99cc3",
+    "file": "images/5c12fd3c-61e7-44d2-bcd6-469056f99cc3.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:35:41.805Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 135,
+  "fields": {
+    "attachment_key": "a444060d-3f69-4b3c-990e-8e949d5f98bf",
+    "public_id": "af6b2184-4edf-40d5-b76f-099a95e6bb0c",
+    "file": "images/af6b2184-4edf-40d5-b76f-099a95e6bb0c.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:36:09.278Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 136,
+  "fields": {
+    "attachment_key": "185c7d76-1b55-44b8-9496-8caa14031fbe",
+    "public_id": "294d767a-8010-4775-9f55-42a0f5851782",
+    "file": "images/294d767a-8010-4775-9f55-42a0f5851782.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:36:13.992Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 137,
+  "fields": {
+    "attachment_key": "bcb7be95-aa57-44d0-abbc-ffa96d954581",
+    "public_id": "2495e43e-fcdd-4b2a-a0b7-1b5458a40b8d",
+    "file": "images/2495e43e-fcdd-4b2a-a0b7-1b5458a40b8d.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:36:19.634Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 138,
+  "fields": {
+    "attachment_key": "40e234d7-118a-4e8b-af8a-9396e26b16ba",
+    "public_id": "e08eb93a-71bd-4a5c-9fed-6eab3a973d22",
+    "file": "images/e08eb93a-71bd-4a5c-9fed-6eab3a973d22.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:36:32.700Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 139,
+  "fields": {
+    "attachment_key": "e5f5da4d-4f7e-4053-9a29-00b24eb25e80",
+    "public_id": "1a0ccabc-d0cd-475d-a937-4b55c8d112e7",
+    "file": "images/1a0ccabc-d0cd-475d-a937-4b55c8d112e7.png",
+    "description": "A encarnação do mau",
+    "uploaded_on": "2026-04-13T19:36:33.669Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 140,
+  "fields": {
+    "attachment_key": "8286c15b-4c2a-4b2a-8a93-a717bb54f27d",
+    "public_id": "033c66e1-55bc-478f-9697-af88d39d0a05",
+    "file": "images/033c66e1-55bc-478f-9697-af88d39d0a05.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:37:17.346Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 141,
+  "fields": {
+    "attachment_key": "6eba2bdd-76d8-4eb4-8874-af7462c7a5a4",
+    "public_id": "691098f6-006f-429f-be28-3e91793fc5b4",
+    "file": "images/691098f6-006f-429f-be28-3e91793fc5b4.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:37:22.269Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 142,
+  "fields": {
+    "attachment_key": "a31711a9-dd37-440e-9372-fcb8824cd7a9",
+    "public_id": "2518a2c1-4955-4be7-9505-c19ef451593f",
+    "file": "images/2518a2c1-4955-4be7-9505-c19ef451593f.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:37:28.065Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 143,
+  "fields": {
+    "attachment_key": "e87a16d2-fad4-495a-95de-47c2606c0c45",
+    "public_id": "a5d612de-2709-45b5-8061-0aa4cc41a09e",
+    "file": "images/a5d612de-2709-45b5-8061-0aa4cc41a09e.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:37:49.083Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 144,
+  "fields": {
+    "attachment_key": "dc1e7d80-faaf-4f6c-b222-22162dc76924",
+    "public_id": "cae88e2c-b9cf-438e-800e-8a88ebf0ce23",
+    "file": "images/cae88e2c-b9cf-438e-800e-8a88ebf0ce23.jpg",
+    "description": "capa-diario-de-um-banana-14",
+    "uploaded_on": "2026-04-13T19:37:49.224Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 145,
+  "fields": {
+    "attachment_key": "b08caaa7-3e3b-4155-9d8e-b0854b1ae390",
+    "public_id": "5e14a7bc-068f-4cd3-a785-207131636264",
+    "file": "images/5e14a7bc-068f-4cd3-a785-207131636264.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:38:14.935Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 146,
+  "fields": {
+    "attachment_key": "3bf5f998-e7cf-468f-b1b1-33e0aef775d5",
+    "public_id": "3ce929a2-a243-4340-8bd1-ea01195272a1",
+    "file": "images/3ce929a2-a243-4340-8bd1-ea01195272a1.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:38:15.923Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 147,
+  "fields": {
+    "attachment_key": "af726bb2-1a39-48df-a4ba-192fcf2980c7",
+    "public_id": "b7d73c7d-58c7-4b74-9254-0d2e11000ca4",
+    "file": "images/b7d73c7d-58c7-4b74-9254-0d2e11000ca4.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:38:21.662Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 148,
+  "fields": {
+    "attachment_key": "974bc404-f9d5-422b-a72b-8de0d188cad1",
+    "public_id": "66f5d692-f17f-425b-b17d-1072bb12c5aa",
+    "file": "images/66f5d692-f17f-425b-b17d-1072bb12c5aa.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:38:45.305Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 149,
+  "fields": {
+    "attachment_key": "9b3d86e9-d7be-46c0-b18d-f167747e5af2",
+    "public_id": "4828b39a-d4d2-49e4-b375-81650a00003e",
+    "file": "images/4828b39a-d4d2-49e4-b375-81650a00003e.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:38:48.701Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 150,
+  "fields": {
+    "attachment_key": "0204a619-3789-4712-a2e3-7b3f0ae1170a",
+    "public_id": "3e46291d-5adb-4efe-803f-33bd9b15b3dd",
+    "file": "images/3e46291d-5adb-4efe-803f-33bd9b15b3dd.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:39:10.673Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 151,
+  "fields": {
+    "attachment_key": "4f50de82-263a-4df1-b6dc-6e2f16722704",
+    "public_id": "5614c87f-136d-446f-9122-01a6e011a6d8",
+    "file": "images/5614c87f-136d-446f-9122-01a6e011a6d8.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:39:25.099Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 152,
+  "fields": {
+    "attachment_key": "cb4bda1d-04af-4a68-b2a1-3637c58b95b2",
+    "public_id": "06dd3b64-911e-4a09-aac7-6d22d6c98a3b",
+    "file": "images/06dd3b64-911e-4a09-aac7-6d22d6c98a3b.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:39:41.934Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 153,
+  "fields": {
+    "attachment_key": "a3fa4459-ca35-49d3-96ab-fb0eef056c48",
+    "public_id": "2a75b366-c2f1-4738-9bc5-375e9c652222",
+    "file": "images/2a75b366-c2f1-4738-9bc5-375e9c652222.png",
+    "description": "Ninja",
+    "uploaded_on": "2026-04-13T19:40:39.932Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 154,
+  "fields": {
+    "attachment_key": "3c26ccb0-28de-4d20-b042-bfe7e67aed78",
+    "public_id": "5039f135-5114-4fa0-a106-71c9077f0947",
+    "file": "images/5039f135-5114-4fa0-a106-71c9077f0947.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:41:03.277Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 155,
+  "fields": {
+    "attachment_key": "3604657d-aa2b-434b-9b7d-fb72e717b3e5",
+    "public_id": "5ca3e0af-77ec-4686-972e-a97ff3b9f6dd",
+    "file": "images/5ca3e0af-77ec-4686-972e-a97ff3b9f6dd.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:41:46.458Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 156,
+  "fields": {
+    "attachment_key": "6ff4d6bf-3da6-42e2-9439-bf3969220f76",
+    "public_id": "6fb8b209-6e1c-486b-ab1a-4869f13c1c4c",
+    "file": "images/6fb8b209-6e1c-486b-ab1a-4869f13c1c4c.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:41:51.806Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 157,
+  "fields": {
+    "attachment_key": "6fefbb37-f147-4441-9107-a16bb81d998e",
+    "public_id": "d94b6d1e-54f3-402d-9cfe-e3f6ce248340",
+    "file": "images/d94b6d1e-54f3-402d-9cfe-e3f6ce248340.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:42:41.075Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 158,
+  "fields": {
+    "attachment_key": "0525d653-db62-471d-a98d-379fde9b504c",
+    "public_id": "6153105b-3e07-4d7b-9ad3-50378ecf36da",
+    "file": "images/6153105b-3e07-4d7b-9ad3-50378ecf36da.jpg",
+    "description": "Samurai",
+    "uploaded_on": "2026-04-13T19:42:58.702Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 159,
+  "fields": {
+    "attachment_key": "1c0ade35-7670-4dfc-af67-e0f93102021b",
+    "public_id": "8393b5dd-dd86-49a5-8271-9352fe5dc95f",
+    "file": "images/8393b5dd-dd86-49a5-8271-9352fe5dc95f.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:43:06.593Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 160,
+  "fields": {
+    "attachment_key": "3f39ba12-4f9f-43ff-9021-daad6a8a741c",
+    "public_id": "29bb3824-f84e-486e-95e8-cf34877bf4e5",
+    "file": "images/29bb3824-f84e-486e-95e8-cf34877bf4e5.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:43:37.783Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 161,
+  "fields": {
+    "attachment_key": "e9340199-5694-4580-a36f-dcab0b9e7136",
+    "public_id": "ade0b9c3-83c7-46ac-81b5-21d2688e4cb9",
+    "file": "images/ade0b9c3-83c7-46ac-81b5-21d2688e4cb9.png",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:43:57.595Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 162,
+  "fields": {
+    "attachment_key": "c08f3162-cc12-4879-9033-3056fc7b50bb",
+    "public_id": "d0aaf0d5-385f-4298-a0e0-6f654ab10a00",
+    "file": "images/d0aaf0d5-385f-4298-a0e0-6f654ab10a00.jpg",
+    "description": "capa-diario-de-um-banana-15",
+    "uploaded_on": "2026-04-13T19:44:00.829Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 163,
+  "fields": {
+    "attachment_key": "e47ed0dc-9fb0-4cc1-ba66-782563ee7fdf",
+    "public_id": "3823e99d-8ed5-4ca1-82b0-f71f19b7df71",
+    "file": "images/3823e99d-8ed5-4ca1-82b0-f71f19b7df71.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:45:08.313Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 164,
+  "fields": {
+    "attachment_key": "20799a68-9475-49a4-818b-79750e9f4985",
+    "public_id": "09abb9c5-a297-46f4-9062-071f9e2dbc26",
+    "file": "images/09abb9c5-a297-46f4-9062-071f9e2dbc26.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:45:20.075Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 165,
+  "fields": {
+    "attachment_key": "9aeaf52f-e194-4b95-8f29-7d561ee05ff7",
+    "public_id": "cbf0b5ec-65c9-42f8-963e-bf850ebd8afb",
+    "file": "images/cbf0b5ec-65c9-42f8-963e-bf850ebd8afb.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:45:23.131Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 166,
+  "fields": {
+    "attachment_key": "13c6c1bc-57a6-437b-b3ec-6f825b282b7d",
+    "public_id": "f04cb296-a14a-4fbf-802f-2a968ce6332f",
+    "file": "images/f04cb296-a14a-4fbf-802f-2a968ce6332f.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:45:31.401Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 167,
+  "fields": {
+    "attachment_key": "294b6fd6-6105-48fb-9d63-632d6dfd971e",
+    "public_id": "fd7fe862-5645-4eba-acf1-ccc4fe3d8dc1",
+    "file": "images/fd7fe862-5645-4eba-acf1-ccc4fe3d8dc1.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:46:22.997Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 168,
+  "fields": {
+    "attachment_key": "7e6d7d4f-6407-43fe-bc85-f264cc09869e",
+    "public_id": "d26738b7-8bca-4998-ad90-a1d178445a5e",
+    "file": "images/d26738b7-8bca-4998-ad90-a1d178445a5e.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:46:24.857Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 169,
+  "fields": {
+    "attachment_key": "1f2dfb03-ef6e-4889-9220-54c6f63e03fc",
+    "public_id": "3f6823ed-c0b3-4ba1-afee-7c05d3b069a6",
+    "file": "images/3f6823ed-c0b3-4ba1-afee-7c05d3b069a6.jpg",
+    "description": "capa-diario-de-um-banana-16",
+    "uploaded_on": "2026-04-13T19:46:51.076Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 170,
+  "fields": {
+    "attachment_key": "4805c097-a3ff-4bc5-9db8-1e50d88aa089",
+    "public_id": "ded54f1c-8d24-4590-a31e-61654d42b3e2",
+    "file": "images/ded54f1c-8d24-4590-a31e-61654d42b3e2.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:47:08.442Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 171,
+  "fields": {
+    "attachment_key": "35cce39d-9fcc-4743-a4f4-c60371cda996",
+    "public_id": "54a0de8a-6e59-4dec-bc47-fbac49982e72",
+    "file": "images/54a0de8a-6e59-4dec-bc47-fbac49982e72.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:47:45.823Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 172,
+  "fields": {
+    "attachment_key": "7a03c557-47d6-49ff-aa54-c85b1d97bc77",
+    "public_id": "bf379252-1e18-485f-af7f-caabba57a61e",
+    "file": "images/bf379252-1e18-485f-af7f-caabba57a61e.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:48:26.758Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 173,
+  "fields": {
+    "attachment_key": "0d5efef5-6a01-4dc1-abcd-c281f376d7f0",
+    "public_id": "3faed80c-3d9d-4a16-b5c1-1807dac3b12f",
+    "file": "images/3faed80c-3d9d-4a16-b5c1-1807dac3b12f.png",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:48:53.176Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 174,
+  "fields": {
+    "attachment_key": "51388ce1-3d98-4d5a-833c-97fc1ce30c6a",
+    "public_id": "ca5d8330-395f-479e-a584-9259fd987d02",
+    "file": "images/ca5d8330-395f-479e-a584-9259fd987d02.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:49:33.814Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 175,
+  "fields": {
+    "attachment_key": "b8165d8d-4ab8-4040-86fa-dd79939e8620",
+    "public_id": "ffe143a4-3863-4273-92f3-7044fd41b150",
+    "file": "images/ffe143a4-3863-4273-92f3-7044fd41b150.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:49:53.879Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 176,
+  "fields": {
+    "attachment_key": "7b9d291c-9201-4ace-9f0e-1f9bfe40b789",
+    "public_id": "cca2df57-552e-44c5-abb1-b2e0c4db5e4d",
+    "file": "images/cca2df57-552e-44c5-abb1-b2e0c4db5e4d.jpg",
+    "description": "capa-diario-de-um-banana-17",
+    "uploaded_on": "2026-04-13T19:50:53.392Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 177,
+  "fields": {
+    "attachment_key": "22f132cb-3281-4048-a197-967e0d0d1ad1",
+    "public_id": "4059fa47-f996-4309-a27f-b48b3cd433df",
+    "file": "images/4059fa47-f996-4309-a27f-b48b3cd433df.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:51:43.749Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 178,
+  "fields": {
+    "attachment_key": "138c27fd-3026-469f-a06c-c429f9b75fa0",
+    "public_id": "09085297-bf00-436f-927f-48195db3ee9d",
+    "file": "images/09085297-bf00-436f-927f-48195db3ee9d.jpg",
+    "description": "Capa",
+    "uploaded_on": "2026-04-13T19:51:46.419Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 179,
+  "fields": {
+    "attachment_key": "ef910ef0-c82e-4234-89c2-e93f27e47de5",
+    "public_id": "b82f18c4-f8bc-4538-9563-1f70ea1892ad",
+    "file": "images/b82f18c4-f8bc-4538-9563-1f70ea1892ad.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:51:54.173Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 180,
+  "fields": {
+    "attachment_key": "79f74039-c831-4bba-931e-aef11dc4a555",
+    "public_id": "0b096de6-eb61-44ef-b788-e4503c3b0f72",
+    "file": "images/0b096de6-eb61-44ef-b788-e4503c3b0f72.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:52:26.380Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 181,
+  "fields": {
+    "attachment_key": "83d30156-1b6b-447e-8966-4da285835d1e",
+    "public_id": "59c34f17-36ad-44a5-97a4-5851e1b994c9",
+    "file": "images/59c34f17-36ad-44a5-97a4-5851e1b994c9.webp",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:52:31.398Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 182,
+  "fields": {
+    "attachment_key": "875936e3-7538-4486-b8d6-b43b0b3b2bf3",
+    "public_id": "53f2976f-8177-4a5f-943b-7147c4685833",
+    "file": "images/53f2976f-8177-4a5f-943b-7147c4685833.jpg",
+    "description": "capa-diario-de-um-banana-18",
+    "uploaded_on": "2026-04-13T19:52:57.931Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 183,
+  "fields": {
+    "attachment_key": "7de72dc6-e2bd-4d85-80e7-e67dfd0ed6e9",
+    "public_id": "05d06dcd-0a46-429d-b20f-00bcb547ce5c",
+    "file": "images/05d06dcd-0a46-429d-b20f-00bcb547ce5c.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-13T19:54:36.688Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 184,
+  "fields": {
+    "attachment_key": "6e75dd66-628a-48e0-9377-64bb453e122f",
+    "public_id": "6c88749f-171b-4e48-ab19-f0e93470c6e3",
+    "file": "images/6c88749f-171b-4e48-ab19-f0e93470c6e3.jpg",
+    "description": "capa-diario-de-um-banana-19",
+    "uploaded_on": "2026-04-13T19:54:42.183Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 185,
+  "fields": {
+    "attachment_key": "0fbb12ac-e9e2-48a0-a0da-97f77d2e1e56",
+    "public_id": "85f60d73-72d9-4747-b9ff-c5d5b3b90b87",
+    "file": "images/85f60d73-72d9-4747-b9ff-c5d5b3b90b87.jpg",
+    "description": "Capa Livro",
+    "uploaded_on": "2026-04-14T12:12:45.897Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 186,
+  "fields": {
+    "attachment_key": "b66d8a9c-2ee6-44c8-a9a2-dafcfa783d32",
+    "public_id": "b1e4a699-ee86-4e63-993e-adc86825ebaa",
+    "file": "images/b1e4a699-ee86-4e63-993e-adc86825ebaa.webp",
+    "description": "",
+    "uploaded_on": "2026-04-14T12:21:10.284Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 187,
+  "fields": {
+    "attachment_key": "c45512fa-f4a9-4ee8-87a5-756493625a54",
+    "public_id": "7d89dd50-491d-4317-85f6-327c540ec0c8",
+    "file": "images/7d89dd50-491d-4317-85f6-327c540ec0c8.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-14T12:25:54.852Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 188,
+  "fields": {
+    "attachment_key": "59e29888-ade9-473f-b098-e9073199419c",
+    "public_id": "a5d8915a-4aa4-4b5a-8dd6-d26d97a85c8f",
+    "file": "images/a5d8915a-4aa4-4b5a-8dd6-d26d97a85c8f.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-14T12:27:38.988Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 189,
+  "fields": {
+    "attachment_key": "a5623002-bd5a-4e1f-a4fe-6314dba0bbef",
+    "public_id": "aae6240c-b12e-4df9-b71d-fcbc978a730f",
+    "file": "images/aae6240c-b12e-4df9-b71d-fcbc978a730f.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-14T12:29:22.403Z"
+  }
+},
+{
+  "model": "uploader.image",
+  "pk": 190,
+  "fields": {
+    "attachment_key": "db01bf79-87d9-4940-bcdb-36a7e7c0d8ff",
+    "public_id": "6d546978-ae83-411e-bf5a-087ae38efb15",
+    "file": "images/6d546978-ae83-411e-bf5a-087ae38efb15.jpg",
+    "description": "",
+    "uploaded_on": "2026-04-14T12:30:31.994Z"
   }
 }
 ]
