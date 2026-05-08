@@ -105,7 +105,7 @@ pdm install
 Crie o arquivo `.env`:
 
 ```shell
-cp .env.exemplo .env
+cp .env.sample .env
 ```
 
 Suba o servidor:

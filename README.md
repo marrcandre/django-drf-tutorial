@@ -187,15 +187,15 @@ pdm install
 
 **2.5 Criando o arquivo `.env`**
 
--   Crie o arquivo `.env`, a partir do arquivo `.env.exemplo`:
-    - Abra o arquivo `.env.exemplo`.
+-   Crie o arquivo `.env`, a partir do arquivo `.env.sample`:
+    - Abra o arquivo `.env.sample`.
     - Escolha a opção `Salvar como...` (Ctrl+Shift+S).
     - Salve o arquivo como `.env`.
 
 > Opcionalmente, você pode criar o arquivo `.env` a partir do terminal, digitando:
 
 ```shell
-cp .env.exemplo .env
+cp .env.sample .env
 ```
 
 **2.4 Rodando o servidor de desenvolvimento**
