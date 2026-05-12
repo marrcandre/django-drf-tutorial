@@ -2609,7 +2609,7 @@ class UserAdmin(BaseUserAdmin):
 -   Substitua o serializador para o usuário, em `serializers/user.py`, por este:
 
 ```python
-from rest_framework.serializers import ModelSerializer, SlugRelatedField
+from rest_framework.serializers import CharField, ModelSerializer, SlugRelatedField
 
 from core.models import User
 from uploader.models import Image
@@ -2628,10 +2628,31 @@ class UserSerializer(ModelSerializer):
         required=False,
         read_only=True
     )
+    class Meta:
+        model = User
+        fields = (
+            'id',
+            'email',
+            'name',
+            'foto',
+            'foto_attachment_key',
+            'is_active',
+            'is_staff',
+            'is_superuser',
+            'last_login',
+            'groups')
+        depth = 1
+
+
+class UserRegistrationSerializer(ModelSerializer):
+    password = CharField(write_only=True, min_length=8)
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['id', 'email', 'name', 'password']
+
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
 ```
 
 > O atributo `write_only=True` indica que o campo `foto_attachment_key` é apenas para escrita. Isso significa que ele não será exibido na resposta da API.
