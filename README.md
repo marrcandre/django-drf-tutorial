@@ -2,7 +2,7 @@
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
-Existe uma versão completa e funcional do projeto da livraria, que pode ser acessada neste  [repositório do GitHub](https://github.com/marrcandre/livraria_marrcandre_2024) e está publicada no [render](https://livraria-marrcandre-2024.onrender.com/api/).
+Existe uma versão completa e funcional do projeto da livraria, que pode ser acessada neste  [repositório do GitHub](https://github.com/marrcandre/livraria_marrcandre_2024) e está publicada no [Fabroku](https://fabroku.fabricadesoftware.ifc.edu.br).
 
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [e-mail](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
@@ -60,16 +60,15 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [A1. Instalação e atualização do VS Code](#a1-instalação-e-atualização-do-vs-code)
 - [A2. Instalação e sincronização de extensões do VS Code](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
 - [A3. Instalação e configuração do PDM](#a3-instalação-e-configuração-do-pdm)
-- [A4. Publicação do banco de dados no Supabase](#a4-publicação-do-banco-de-dados-no-supabase)
-- [A5. Publicação do projeto no Render](#a5-publicação-do-projeto-no-render)
-- [A6. Publicação: armazenamento de arquivos estáticos no Cloudinary](#a6-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary)
-- [A7. Resolução de erros](#a7-resolução-de-erros)
-- [A8. Configuração do git](#a8-configuração-do-git)
-- [A9. Uso do curl para testar a API via linha de comando](#a9-uso-do-curl-para-testar-a-api-via-linha-de-comando)
-- [A10. Django Shell - Comandos úteis](#a10-django-shell---comandos-úteis)
-- [A11. DBShell - Comandos úteis](#a11-dbshell---comandos-úteis)
-- [A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js](#a12---aplicando-os-12-fatores-de-uma-aplicação-ao-nosso-projeto-django--vuejs)
-- [A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento](#a13---rodando-o-django-com-https-no-ambiente-de-desenvolvimento)
+- [A4. Publicação do projeto no Fabroku](#a4-publicação-do-projeto-no-fabroku)
+- [A5. Publicação: armazenamento de arquivos estáticos no Cloudinary](#a5-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary)
+- [A6. Resolução de erros](#a6-resolução-de-erros)
+- [A7. Configuração do git](#a7-configuração-do-git)
+- [A8. Uso do curl para testar a API via linha de comando](#a8-uso-do-curl-para-testar-a-api-via-linha-de-comando)
+- [A9. Django Shell - Comandos úteis](#a9-django-shell---comandos-úteis)
+- [A10. DBShell - Comandos úteis](#a10-dbshell---comandos-úteis)
+- [A11 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js](#a11---aplicando-os-12-fatores-de-uma-aplicação-ao-nosso-projeto-django--vuejs)
+- [A12 - Rodando o Django com HTTPS no ambiente de desenvolvimento](#a12---rodando-o-django-com-https-no-ambiente-de-desenvolvimento)
 - [Contribua](#contribua)
 
 
@@ -3752,7 +3751,7 @@ class ItensCompra(models.Model):
 ```
 
 - Execute as migrações.
-- Se você já estiver utilizando um banco publicado (por exemplo, no Render), **não esqueça de rodar as migrações lá também**.
+- Se você já estiver utilizando um banco publicado (por exemplo, no Fabroku), **não esqueça de rodar as migrações lá também**.
 
 **Gravando o preço do livro na criação da compra**
 
@@ -5307,132 +5306,171 @@ Após instalar, no **PowerShell**, siga os passos de configuração do PDM, conf
 ---
 
 
-# A4. Publicação do banco de dados no Supabase
+# A4. Publicação do projeto no Fabroku
 
-Para evitar a perda dos dados a cada nova publicação do projeto, vamos criar um banco de dados externamente no **Supabase**. O banco de dados **SQLite** local será utilizado apenas para desenvolvimento.
+O **Fabroku** é uma plataforma de hospedagem desenvolvida pela [Fábrica de Software do IFC Araquari](https://fabricadesoftware.ifc.edu.br/), baseada no [Dokku](https://dokku.com/). Ela permite publicar o backend **Django**, o frontend **Vue.js** e o banco de dados **PostgreSQL** em um único ambiente.
 
-**Criando um projeto no Supabase**
+**Pré-requisitos**
 
-Para criar o banco de dados no **Supabase**, siga as instruções a seguir:
+- **Node.js 18** ou superior instalado.
+- Conta no **GitHub** com o **e-mail do IFC associado**. Sem essa associação, o acesso ao Fabroku não é liberado.
+- Acesso ao painel: [https://fabroku.fabricadesoftware.ifc.edu.br](https://fabroku.fabricadesoftware.ifc.edu.br)
 
--   Acesse o site do [Supabase](https://supabase.com/).
--   Crie uma conta ou conecte-se no **Supabase**.
--   Clique na opção [Start your project](https://supabase.com/dashboard/projects).
-- Dẽ um nome ao projeto.
-- Selecione a opção `Create a new organization`.
-- Dẽ um nome à organização.
-- Dê um nome ao banco de dados.
-- Escolha uma senha uma clique ana oção de gerar uma senha e **guarde-a** (você vai precisar dela).
-- Selecione a região `South America (São Paulo)`.
+**Instalação da CLI**
 
-**Configurando o banco de dados no projeto**
-
-- Entre no [Dashboard](https://supabase.com/dashboard/projects) do projeto, e escolha o projeto criado.
-- Clique na opção `Connect` (Conectar), ao lado do nome do projeto.
-- Copia a linha de conexão do banco de dados da opção `Session Pooler`.
-  - Ela deve ser parecida com isso: `postgresql://postgres.kfjxquvsjldesrrjqgzo:[YOUR-PASSWORD]@aws-0-sa-east-1.pooler.supabase.com:5432/postgres`
-- Coloque a senha que você gerou no campo `[YOUR-PASSWORD]`.
-- Copie a linha de conexão e cole no arquivo `.env` do projeto, como no exemplo:
+Instale a ferramenta de linha de comando do Fabroku globalmente via npm:
 
 ```shell
-# Supabase
-DATABASE_URL=postgresql://postgres.kfjxquvsjldesrrjqgzo:senha123@aws-0-sa-east-1.pooler.supabase.com:5432/postgres
+npm i -g fabroku
 ```
 
-**Migrando o banco de dados**
+**Autenticação**
 
-- No arquivo `.env`:
-  - Descomente a linha `DATABASE_URL`.
-- Faça a migracão do banco de dados:
+Faça login com sua conta GitHub. O comando abre o browser automaticamente e recebe o token via callback:
 
 ```shell
-pdm run migrate
+fabroku login
 ```
 
-> Observe que o banco de dados foi migrado no `Supabase`.
+Para verificar se a autenticação foi bem-sucedida:
 
-> Para testar, crie alguns registros no banco de dados. Depois volte a configuração local e perceba que os dados são diferentes na base local e na base do **Supabase**.
+```shell
+fabroku whoami
+```
 
-- No site do `Supabase`, acesse o `Table Editor` e verifique que as tabelas foram criadas.
-- Você também pode ver o esquema das tabelas, em `Database`, `Schema Visualizer`.
+**Configuração do backend (Django)**
 
-**Carregando os dados iniciais**
+Na raiz do projeto Django:
 
-- Para carregar os dados iniciais no banco de dados do **Supabase**, acesse a [aula sobre dump e load de dados](#13-dump-e-load-de-dados).
+- Crie o arquivo `.python-version` com a versão do Python:
 
-**Utilizando o banco de dados local**
+```
+3.14
+```
 
-Após fazer as alterações no banco de dados remoto, volte a configuração para utilizar o banco de dados local:
+- Edite o arquivo `Procfile`, acrescentando a linha `release` para as migrações automáticas:
 
-- Para voltar a usar o banco de dados local, no arquivo `.env`:
-  - Comente a linha `DATABASE_URL`.
+```
+web: gunicorn app.wsgi --log-file -
+release: python manage.py migrate --noinput
+```
 
-**IMPORTANTE:** A cada nova alteração no banco de dados, você deve repetir este processo de **migração**, tanto no banco de dados local quanto no banco de dados do **Supabase**.
+- Certifique-se de que o arquivo `requirements.txt` está atualizado:
+
+```shell
+pip freeze > requirements.txt
+```
+
+- Verifique se todos os arquivos necessários estão presentes e corretos:
+
+```shell
+fabroku verify --fix
+```
+
+**Configuração do frontend (Vue.js)**
+
+Na raiz do projeto Vue.js, crie os seguintes arquivos caso ainda não existam:
+
+- `.buildpacks` — define os buildpacks usados pelo Dokku:
+
+```
+https://github.com/heroku/heroku-buildpack-nodejs#latest
+https://github.com/dokku/buildpack-nginx
+```
+
+- `.static` — arquivo vazio que sinaliza ao Fabroku que este é um app estático:
+
+```shell
+touch .static
+```
+
+- `static.json` — configuração do servidor Nginx para a SPA:
+
+```json
+{
+  "root": "dist",
+  "clean_urls": true,
+  "routes": {
+    "/**": "index.html"
+  }
+}
+```
+
+- Verifique se todos os arquivos necessários estão presentes e corretos:
+
+```shell
+fabroku verify --fix
+```
+
+**Criação dos apps no painel**
+
+- Acesse [https://fabroku.fabricadesoftware.ifc.edu.br](https://fabroku.fabricadesoftware.ifc.edu.br) e faça login com sua conta GitHub.
+- Crie um novo projeto e, dentro dele, crie os três apps: **Banco de Dados PostgreSQL**, **Backend Django** e **Frontend Vue.js**.
+- Vincule cada app ao respectivo repositório no GitHub.
+
+**Variáveis de ambiente — Backend**
+
+No painel do Fabroku, configure as seguintes variáveis de ambiente para o app do backend:
+
+| Variável | Valor |
+|---|---|
+| `MODE` | `PRODUCTION` |
+| `DEBUG` | `False` |
+| `SECRET_KEY` | Gere uma chave conforme a seção [Geração da SECRET_KEY](https://marrcandre.github.io/django-drf-tutorial/#gera%C3%A7%C3%A3o-da-secret_key) |
+| `DATABASE_URL` | Gerada automaticamente pelo Fabroku ao criar o banco PostgreSQL |
+| `CLOUDINARY_URL` | Gerada conforme o [apêndice A5](#a5-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary) |
+
+**Variáveis de ambiente — Frontend**
+
+No painel do Fabroku, configure as seguintes variáveis de ambiente para o app do frontend:
+
+| Variável | Valor |
+|---|---|
+| `NGINX_ROOT` | `dist` |
+| `NGINX_DEFAULT_REQUEST` | `index.html` |
+
+**Deploy**
+
+Dentro do diretório do projeto (backend ou frontend), execute:
+
+```shell
+fabroku deploy
+```
+
+A CLI detecta automaticamente o app correspondente comparando a URL do `git remote origin` com os apps registrados na plataforma. Para especificar manualmente:
+
+```shell
+fabroku deploy --app nome-do-app
+```
+
+Para listar e acompanhar o status dos seus apps:
+
+```shell
+fabroku apps
+```
+
+**Carregamento dos dados iniciais**
+
+Para carregar os dados iniciais no banco de dados publicado:
+
+```shell
+fabroku run loaddata --django ./dump.json
+```
+
+> Certifique-se de que o arquivo `dump.json` está no repositório e que o deploy foi realizado antes do `loaddata`.
+
+**Exportação dos dados**
+
+Para exportar os dados do banco de dados publicado:
+
+```shell
+fabroku run dumpdata --django --output ./dump.json
+```
 
 ---
 
 
-# A5. Publicação do projeto no Render
-
-O **Render** é uma plataforma de hospedagem que permite publicar aplicações web, bancos de dados e outros serviços. No site existe um link para o tutorial oficial: [https://render.com/docs/deploy-django](https://render.com/docs/deploy-django)
-
-
-**Criando um script de Build**
-
-Precisamos executar uma série de comandos para construir nosso aplicativo. Podemos fazer isso com um script de construção (`build script`).
-
-- Verifique se seu projeto já possui o arquivo `build.sh` na raiz do projeto.
-
-**Testando a execução localmente**
-
-- Execute a seguinte linha de comando para testar a execução localmente:
-
-```shell
-pdm run python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker
-```
-
-- Acesse o endereço `http://localhost:8000` no navegador para verificar se a aplicação está funcionando.
-
-> O que fizemos foi substituir o servidor de desenvolvimento do Django pelo servidor `Uvicorn` e `Gunicorn`.
-
-**Configurando o Render**
-
-- **Acesse** o site do [Render](https://render.com/)
-- **Crie** uma conta ou **conecte-se** a uma conta existente.
-- Crie um novo serviço (**Web Service**).
-- Escolha a opção `Build and deploy from a Git repository` (Construir e implantar a partir de um repositório Git).
-- Escolha o repositório do projeto.
-- Preencha as informações necessárias:
-  - Name: `nome-do-projeto`.
-  - Region: `Ohio (US East)`.
-  - Branch: `main`.
-  - Runtime: `Python`.
-  - Build command: `./build.sh`.
-  - Start command: `python -m gunicorn app.asgi:application -k uvicorn.workers.UvicornWorker`.
-  - Instance Type: `Free`.
-
-- Environment Variables: clique em `Add from .env` e adicione as informações do seu arquivo `.env`:
-
-```ini
-MODE=PRODUCTION
-DEBUG=False
-SECRET_KEY=[sua_secret_key]
-WEB_CONCURRENCY=4
-DATABASE_URL=[sua_database_url]
-CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
-```
-> Crie uma `SECRET_KEY` nova. Veja como [aqui](#geração-da-secret_key). Coloque essa chave no lugar de `[sua_secret_key]`.
-
-> Coloque a URL do banco de dados do **Supabase** no lugar de `[sua_database_url]`.
-
-- Clique em `Create Web Service`.
-
-> Se tudo estiver correto, o projeto será implantado no **Render**.
-
----
-
-
-# A6. Publicação: armazenamento de arquivos estáticos no Cloudinary
+# A5. Publicação: armazenamento de arquivos estáticos no Cloudinary
 
 Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Desta forma, os arquivos não serão perdidos a cada nova implantação.
 
@@ -5451,7 +5489,7 @@ CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 
 > Altere as informações de acordo com o seu projeto, acessando o [Cloudinary Console](https://cloudin**IMPORTANTE:**ary.com/console) na opção `Dashboard`.
 
-- Inclua essa mesma variável no `Render` (ou no serviço de hospedagem que você estiver utilizando), na opção `Environment variables`.
+- Inclua essa mesma variável no `Fabroku` (ou no serviço de hospedagem que você estiver utilizando), na opção `Environment variables`.
 
 **Testando**
 
@@ -5467,7 +5505,7 @@ feat: adicionando Cloudinary
 ---
 
 
-# A7. Resolução de erros
+# A6. Resolução de erros
 
 ## Liberando uma porta em uso
 
@@ -5558,7 +5596,7 @@ SIMPLE_JWT = {
 }
 ```
 
-# A8. Configuração do git
+# A7. Configuração do git
 
 **Um aviso importante**
 
@@ -5617,7 +5655,7 @@ Repita o processo de configuração de nome e e-mail.
 ---
 
 
-# A9. Uso do curl para testar a API via linha de comando
+# A8. Uso do curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
@@ -5652,7 +5690,7 @@ curl -X DELETE http://127.0.0.1:8000/api/categorias/1/
 ---
 
 
-# A10. Django Shell - Comandos úteis
+# A9. Django Shell - Comandos úteis
 
 Seguem abaixo alguns comandos úteis para serem executados no **Django Shell**:
 
@@ -5763,7 +5801,7 @@ for item in ItensCompra.objects.filter(preco=0):
 
 ---
 
-# A11. DBShell - Comandos úteis
+# A10. DBShell - Comandos úteis
 
 Antes de utilizar o **DBShell**, é necessário instalar o pacote `sqlite3`.
 
@@ -5826,7 +5864,7 @@ SELECT * FROM core_livro WHERE categoria_id = 1;
 ---
 
 
-# A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
+# A11 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
 
 Os *12 Fatores* são princípios criados pela equipe da Heroku para o desenvolvimento de aplicações modernas, escaláveis e prontas para a nuvem. Eles ajudam a manter o código limpo, a implantação simples e a aplicação resiliente. Abaixo, explicamos cada um deles, aplicando diretamente ao nosso projeto.
 
@@ -5932,7 +5970,7 @@ Nosso projeto Django + Vue.js segue os 12 fatores de forma consistente, o que no
 ---
 
 
-# A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento
+# A12 - Rodando o Django com HTTPS no ambiente de desenvolvimento
 
 O `django-extensions` traz o comando `runserver_plus`, que permite iniciar o servidor de desenvolvimento do Django com **SSL (HTTPS)**. Isso é útil quando você precisa testar recursos que exigem HTTPS, como autenticação via OAuth2, cookies `Secure` ou APIs que só aceitam conexões seguras (como Spotify, por exemplo).
 

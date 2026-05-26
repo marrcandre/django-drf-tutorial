@@ -43,15 +43,13 @@
 # A1. Instalação e atualização do VS Code
 # A2. Instalação e sincronização de extensões do VS Code
 # A3. Instalação e configuração do PDM
-# A4. Publicação do banco de dados no Supabase
-# Supabase
-# A5. Publicação do projeto no Render
-# Cloudinary
-# A7. Resolução de erros
-# A8. Configuração do git
-# A9. Uso do curl para testar a API via linha de comando
-# A10. Django Shell - Comandos úteis
-# A11. DBShell - Comandos úteis
-# A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
-# A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento
+# A4. Publicação do projeto no Fabroku
+# A5. Publicação: armazenamento de arquivos estáticos no Cloudinary
+# A6. Resolução de erros
+# A7. Configuração do git
+# A8. Uso do curl para testar a API via linha de comando
+# A9. Django Shell - Comandos úteis
+# A10. DBShell - Comandos úteis
+# A11 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
+# A12 - Rodando o Django com HTTPS no ambiente de desenvolvimento
 # Contribua
