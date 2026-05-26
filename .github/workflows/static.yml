@@ -21,12 +21,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v4
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+        run: |
+          gem install jekyll --no-document
+          jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
