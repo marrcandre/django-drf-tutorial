@@ -58,7 +58,7 @@ Ao longo deste documento, cada fator é explicado e então aplicado concretament
 | **Backend** | Django 5+, Django REST Framework, SimpleJWT |
 | **Gerenciador de pacotes (backend)** | PDM com `pyproject.toml` |
 | **Frontend** | Vue.js 3, Vite, Pinia, Axios |
-| **Gerenciador de pacotes (frontend)** | NPM com `package.json` |
+| **Gerenciador de pacotes (frontend)** | NPM com `packages.json` |
 | **Controle de versão** | Git + GitHub (dois repositórios: backend e frontend) |
 | **Deploy do frontend** | Vercel |
 | **Deploy do backend** | Fabroku (implementação interna do Dokku na Fábrica de Software) |
@@ -166,21 +166,27 @@ dependencies = [
 ]
 ```
 
-Para instalar o ambiente em uma nova máquina, basta:
+No caso do Fabroku (e da maioria das plataformas de nuvem), o arquivo utilizado para instalar as dependências é o `requirements.txt`, que é gerado automaticamente a partir do `pyproject.toml`:
 
 ```bash
-pdm install
+pdm export -f requirements > requirements.txt
+```
+
+Para instalar o ambiente em uma nova máquina, basta usar o pip do Python:
+
+```bash
+pip install -r requirements.txt
 ```
 
 O PDM cria um ambiente virtual isolado em `__pypackages__/` e instala exatamente as versões declaradas.
 Não há dependência de nada instalado globalmente no sistema.
 
-**Frontend — NPM com `package.json`**
+**Frontend — NPM com `packages.json`**
 
 No frontend, o NPM cumpre o mesmo papel:
 
 ```json
-// package.json
+// packages.json
 {
   "dependencies": {
     "axios": "^1.7.2",
@@ -854,7 +860,7 @@ npm run lint     # verificação de código
 | # | Fator | Princípio em uma linha | Ferramenta no nosso stack |
 |---|-------|------------------------|--------------------------|
 | I | Código-base | Um repo por aplicação, múltiplos deploys | GitHub (2 repos: backend + frontend) |
-| II | Dependências | Declare e isole tudo explicitamente | PDM + `pyproject.toml` / NPM + `package.json` |
+| II | Dependências | Declare e isole tudo explicitamente | PDM + `pyproject.toml` / NPM + `packages.json` |
 | III | Configurações | Config no ambiente, nunca no código | `python-dotenv`, `dj-database-url`, `VITE_*` |
 | IV | Serviços de Apoio | Serviços externos como recursos trocáveis | PostgreSQL, Cloudinary, SimpleJWT via env vars |
 | V | Build, Release, Run | Separe construção, configuração e execução | Procfile, `pdm run migrate`, Vercel build |
