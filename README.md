@@ -61,14 +61,15 @@ Este tutorial está em constante desenvolvimento. Envie sugestões e correções
 - [A2. Instalação e sincronização de extensões do VS Code](#a2-instalação-e-sincronização-de-extensões-do-vs-code)
 - [A3. Instalação e configuração do PDM](#a3-instalação-e-configuração-do-pdm)
 - [A4. Publicação do projeto no Fabroku](#a4-publicação-do-projeto-no-fabroku)
-- [A5. Publicação: armazenamento de arquivos estáticos no Cloudinary](#a5-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary)
-- [A6. Resolução de erros](#a6-resolução-de-erros)
-- [A7. Configuração do git](#a7-configuração-do-git)
-- [A8. Uso do curl para testar a API via linha de comando](#a8-uso-do-curl-para-testar-a-api-via-linha-de-comando)
-- [A9. Django Shell - Comandos úteis](#a9-django-shell---comandos-úteis)
-- [A10. DBShell - Comandos úteis](#a10-dbshell---comandos-úteis)
-- [A11 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js](#a11---aplicando-os-12-fatores-de-uma-aplicação-ao-nosso-projeto-django--vuejs)
-- [A12 - Rodando o Django com HTTPS no ambiente de desenvolvimento](#a12---rodando-o-django-com-https-no-ambiente-de-desenvolvimento)
+- [A5. Banco de dados em produção com PostgreSQL](#a5-banco-de-dados-em-produção-com-postgresql)
+- [A6. Publicação: armazenamento de arquivos estáticos no Cloudinary](#a6-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary)
+- [A7. Resolução de erros](#a7-resolução-de-erros)
+- [A8. Configuração do git](#a8-configuração-do-git)
+- [A9. Uso do curl para testar a API via linha de comando](#a9-uso-do-curl-para-testar-a-api-via-linha-de-comando)
+- [A10. Django Shell - Comandos úteis](#a10-django-shell---comandos-úteis)
+- [A11. DBShell - Comandos úteis](#a11-dbshell---comandos-úteis)
+- [A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js](#a12---aplicando-os-12-fatores-de-uma-aplicação-ao-nosso-projeto-django--vuejs)
+- [A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento](#a13---rodando-o-django-com-https-no-ambiente-de-desenvolvimento)
 - [Contribua](#contribua)
 
 
@@ -5418,7 +5419,7 @@ No painel do Fabroku, configure as seguintes variáveis de ambiente para o app d
 | `DEBUG` | `False` |
 | `SECRET_KEY` | Gere uma chave conforme a seção [Geração da SECRET_KEY](https://marrcandre.github.io/django-drf-tutorial/#gera%C3%A7%C3%A3o-da-secret_key) |
 | `DATABASE_URL` | Gerada automaticamente pelo Fabroku ao criar o banco PostgreSQL |
-| `CLOUDINARY_URL` | Gerada conforme o [apêndice A5](#a5-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary) |
+| `CLOUDINARY_URL` | Gerada conforme o [apêndice A6](#a6-publicação-armazenamento-de-arquivos-estáticos-no-cloudinary) |
 
 **Variáveis de ambiente — Frontend**
 
@@ -5470,9 +5471,61 @@ fabroku run dumpdata --django --output ./dump.json
 ---
 
 
-# A5. Publicação: armazenamento de arquivos estáticos no Cloudinary
+# A5. Banco de dados em produção com PostgreSQL
 
-Vamos utilizar o Cloudinary para armazenar os arquivos estáticos, como as imagens dos livros. Desta forma, os arquivos não serão perdidos a cada nova implantação.
+O SQLite funciona bem durante o desenvolvimento, mas **não é adequado para produção** por dois motivos principais:
+
+1. **Não persiste entre deploys**: em plataformas como o Fabroku, cada deploy recria o contêiner e o arquivo `db.sqlite3` é perdido junto.
+2. **Não suporta múltiplos acessos simultâneos**: em produção, vários usuários fazem requisições ao mesmo tempo.
+
+Por isso, usamos o **PostgreSQL** como serviço externo. A aplicação acessa o banco via variável de ambiente `DATABASE_URL`, sem precisar saber se é SQLite ou PostgreSQL — o mesmo código funciona nos dois ambientes. Para mais detalhes sobre essa abordagem, consulte o [apêndice A12](#a12---aplicando-os-12-fatores-de-uma-aplicação-ao-nosso-projeto-django--vuejs) (12 Fatores).
+
+**Como o Django usa a `DATABASE_URL`**
+
+No `settings.py`, a configuração do banco usa a biblioteca `dj-database-url`:
+
+```python
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600,
+    )
+}
+```
+
+Em desenvolvimento, sem `DATABASE_URL` definida, o Django usa o SQLite local. Em produção, a variável `DATABASE_URL` aponta para o PostgreSQL do Fabroku.
+
+**Criando o serviço PostgreSQL no Fabroku**
+
+- Acesse [https://fabroku.fabricadesoftware.ifc.edu.br](https://fabroku.fabricadesoftware.ifc.edu.br) e faça login.
+- No painel do seu projeto, crie um app do tipo **Banco de Dados PostgreSQL**.
+- Após a criação, o Fabroku gera automaticamente a `DATABASE_URL` — copie esse valor.
+
+**Configurando a variável no backend**
+
+No painel do app **backend**, adicione a variável de ambiente:
+
+| Variável | Valor |
+|---|---|
+| `DATABASE_URL` | Valor gerado pelo Fabroku ao criar o banco PostgreSQL |
+
+Após o próximo deploy, o backend passará a usar o PostgreSQL automaticamente. As migrações são executadas pelo comando `release` do `Procfile`:
+
+```
+release: python manage.py migrate --noinput
+```
+
+---
+
+
+# A6. Publicação: armazenamento de arquivos estáticos no Cloudinary
+
+Quando um usuário faz upload de uma imagem (ex: capa de livro), o Django salva o arquivo em `media/` — uma pasta local no servidor. Em produção, isso causa dois problemas:
+
+1. **Arquivos são perdidos a cada deploy**: plataformas como o Fabroku recriam o contêiner a cada deploy. Qualquer arquivo salvo em disco desaparece.
+2. **Não escala**: se a aplicação rodar em múltiplas instâncias, cada uma teria sua própria cópia (ou nenhuma) dos arquivos.
+
+A solução é tratar o armazenamento de mídia como um **serviço externo**, acessado via variável de ambiente `CLOUDINARY_URL` — assim como o banco de dados usa `DATABASE_URL`. O mesmo código funciona em desenvolvimento (armazenamento local) e em produção (Cloudinary), bastando definir ou não a variável. Para mais detalhes sobre essa abordagem, consulte o [apêndice A12](#a12---aplicando-os-12-fatores-de-uma-aplicação-ao-nosso-projeto-django--vuejs) (12 Fatores).
 
 **Criando uma conta no Cloudinary**
 
@@ -5505,7 +5558,7 @@ feat: adicionando Cloudinary
 ---
 
 
-# A6. Resolução de erros
+# A7. Resolução de erros
 
 ## Liberando uma porta em uso
 
@@ -5596,7 +5649,7 @@ SIMPLE_JWT = {
 }
 ```
 
-# A7. Configuração do git
+# A8. Configuração do git
 
 **Um aviso importante**
 
@@ -5655,7 +5708,7 @@ Repita o processo de configuração de nome e e-mail.
 ---
 
 
-# A8. Uso do curl para testar a API via linha de comando
+# A9. Uso do curl para testar a API via linha de comando
 
 -   Liste todas as categorias:
 
@@ -5690,7 +5743,7 @@ curl -X DELETE http://127.0.0.1:8000/api/categorias/1/
 ---
 
 
-# A9. Django Shell - Comandos úteis
+# A10. Django Shell - Comandos úteis
 
 Seguem abaixo alguns comandos úteis para serem executados no **Django Shell**:
 
@@ -5801,7 +5854,7 @@ for item in ItensCompra.objects.filter(preco=0):
 
 ---
 
-# A10. DBShell - Comandos úteis
+# A11. DBShell - Comandos úteis
 
 Antes de utilizar o **DBShell**, é necessário instalar o pacote `sqlite3`.
 
@@ -5864,7 +5917,7 @@ SELECT * FROM core_livro WHERE categoria_id = 1;
 ---
 
 
-# A11 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
+# A12 - Aplicando os 12 Fatores de uma Aplicação ao Nosso Projeto Django + Vue.js
 
 Os *12 Fatores* são princípios criados pela equipe da Heroku para o desenvolvimento de aplicações modernas, escaláveis e prontas para a nuvem. Eles ajudam a manter o código limpo, a implantação simples e a aplicação resiliente. Abaixo, explicamos cada um deles, aplicando diretamente ao nosso projeto.
 
@@ -5970,7 +6023,7 @@ Nosso projeto Django + Vue.js segue os 12 fatores de forma consistente, o que no
 ---
 
 
-# A12 - Rodando o Django com HTTPS no ambiente de desenvolvimento
+# A13 - Rodando o Django com HTTPS no ambiente de desenvolvimento
 
 O `django-extensions` traz o comando `runserver_plus`, que permite iniciar o servidor de desenvolvimento do Django com **SSL (HTTPS)**. Isso é útil quando você precisa testar recursos que exigem HTTPS, como autenticação via OAuth2, cookies `Secure` ou APIs que só aceitam conexões seguras (como Spotify, por exemplo).
 
