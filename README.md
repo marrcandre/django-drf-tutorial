@@ -2,7 +2,7 @@
 
 Tutorial para desenvolvimento de APIs REST usando o [Django](https://www.djangoproject.com/) com [DRF](https://www.django-rest-framework.org/) (Django Rest Framework). Esse tutorial foi construído a partir do curso em vídeo [Django com DRF](https://www.youtube.com/playlist?list=PL6u1VNwqZdJZT5lCMbBQA1UHVWy0FOYOl) do [Eduardo da Silva](https://github.com/eduardo-da-silva).
 
-Existe uma versão completa e funcional do projeto da livraria, que pode ser acessada neste  [repositório do GitHub](https://github.com/marrcandre/livraria_marrcandre_2024) e está publicada no [Fabroku](https://fabroku.fabricadesoftware.ifc.edu.br).
+Existe uma versão completa e funcional do projeto da livraria, que pode ser acessada neste  [repositório do GitHub](https://github.com/marrcandre/livraria-marrcandre) e está publicada no [Fabroku](https://fabroku.fabricadesoftware.ifc.edu.br).
 
 Este tutorial está em constante desenvolvimento. Envie sugestões e correções para meu [e-mail](mailto:marcoandre@gmail.com). Se preferir, faça uma [solicitação de contribuição ao projeto](#contribua).
 
@@ -800,7 +800,7 @@ Vamos usar um template já estruturado para acelerar o processo.
 
 Acesse o repositório:
 
-👉 https://github.com/marrcandre/template-vue3
+👉 https://github.com/marrcandre/livraria-marrcandre-front
 
 **Passos:**
 
