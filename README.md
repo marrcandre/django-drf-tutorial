@@ -1888,12 +1888,12 @@ Vamos importar as models de forma explícita:
 from core.models import Autor, Categoria, Editora, Livro, User
 ```
 
-**Registro das models através do decorator `@admin.register`**
+**Registro das models através do decorator `@register`**
 
-Vamos registrar as models através do decorator `@admin.register`, ao invés de utilizar a função `admin.site.register()`. Por exemplo, para a model `User`:
+Vamos registrar as models através do decorator `@register`, ao invés de utilizar a função `admin.site.register()`. Por exemplo, para a model `User`:
 
 ```python
-@admin.register(User)
+@register(User)
 class UserAdmin(BaseUserAdmin):
 ...
 ```
@@ -1906,32 +1906,32 @@ Vamos customizar o Admin para as models `Autor`, `Categoria`, `Editora` e `Livro
 
 ```python
 ...
-@admin.register(Autor)
-class AutorAdmin(admin.ModelAdmin):
+@register(Autor)
+class AutorAdmin(ModelAdmin):
     list_display = ('nome', 'email')
     search_fields = ('nome', 'email')
     list_filter = ('nome',)
     ordering = ('nome', 'email')
     list_per_page = 10
 
-@admin.register(Categoria)
-class CategoriaAdmin(admin.ModelAdmin):
+@register(Categoria)
+class CategoriaAdmin(ModelAdmin):
     list_display = ('descricao',)
     search_fields = ('descricao',)
     list_filter = ('descricao',)
     ordering = ('descricao',)
     list_per_page = 10
 
-@admin.register(Editora)
-class EditoraAdmin(admin.ModelAdmin):
+@register(Editora)
+class EditoraAdmin(ModelAdmin):
     list_display = ('nome', 'email', 'cidade')
     search_fields = ('nome', 'email', 'cidade')
     list_filter = ('nome', 'email', 'cidade')
     ordering = ('nome', 'email', 'cidade')
     list_per_page = 10
 
-@admin.register(Livro)
-class LivroAdmin(admin.ModelAdmin):
+@register(Livro)
+class LivroAdmin(ModelAdmin):
     list_display = ('titulo', 'editora', 'categoria')
     search_fields = ('titulo', 'editora__nome', 'categoria__descricao')
     list_filter = ('editora', 'categoria')
@@ -2727,8 +2727,8 @@ from .compra import Compra
 ...
 from core.models import Compra
 ...
-@admin.register(Compra)
-class CompraAdmin(admin.ModelAdmin):
+@register(Compra)
+class CompraAdmin(ModelAdmin):
     list_display = ('usuario', 'status')
     ordering = ('usuario', 'status')
     list_per_page = 10
@@ -2816,8 +2816,8 @@ class ItensCompraInline(admin.TabularInline):
     extra = 1  # Quantidade de itens adicionais
 
 
-@admin.register(Compra)
-class CompraAdmin(admin.ModelAdmin):
+@register(Compra)
+class CompraAdmin(ModelAdmin):
     list_display = ('usuario', 'status')
     search_fields = ('usuario', 'status')
     list_filter = ('usuario', 'status')
@@ -3147,8 +3147,8 @@ Para finalizar, vamos incluir o total da compra no `Admin` do Django.
 -   No arquivo `admin.py` do app `core`, modifique o código da model `Compra`:
 
 ```python
-@admin.register(Compra)
-class CompraAdmin(admin.ModelAdmin):
+@register(Compra)
+class CompraAdmin(ModelAdmin):
     list_display = ('usuario', 'status', 'total_formatado')  # mostra na listagem
     ordering = ('usuario', 'status')
     list_per_page = 10
@@ -3931,8 +3931,8 @@ class CompraSerializer(ModelSerializer):
 No arquivo `admin.py` do app `core`, modifique o código da model `Compra`:
 
 ```python
-@admin.register(Compra)
-class CompraAdmin(admin.ModelAdmin):
+@register(Compra)
+class CompraAdmin(ModelAdmin):
     @admin.display(description="Total")
     def total_formatado(self, obj):
         """Exibe R$ 123,45 em vez de 123.45."""
