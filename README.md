@@ -2294,7 +2294,7 @@ Para testar se tudo deu certo, utilizaremos um cliente HTTP, como o **Thunder Cl
 
 **Dica:** se sua ferramenta permitir, crie várias requisições separadas e dê nomes, como _registro_, _login_, _refresh_, _consulta protegida_ e _logout_.
 
-## 18.1 Criando um novo usuário
+**18.1 Criando um novo usuário**
 
 Antes de fazer o _login_, precisamos garantir que existe um usuário válido no sistema.
 
@@ -2326,7 +2326,7 @@ Se tudo estiver correto, você receberá uma resposta semelhante a esta:
 
 Se você tentar cadastrar um e-mail já existente, receberá uma mensagem de erro informando que o usuário já está em uso.
 
-## 18.2 Fazendo login
+**18.2 Fazendo login**
 
 Agora, vamos autenticar o usuário recém-criado.
 
@@ -2368,7 +2368,7 @@ Você deve receber uma resposta semelhante a esta:
 
 > Para verificar as informações do token, acesse os sites [jwt.io](https://jwt.io/) ou [token.dev](https://token.dev/), cole o valor do token no campo `Encoded` e clique no botão `Decode`.
 
-## 18.3 Obtendo o token com curl
+**18.3 Obtendo o token com curl**
 
 Se você quiser agilizar os testes, pode obter o token rapidamente pela linha de comando e depois colar apenas o valor do campo `access` no Thunder Client ou no Swagger.
 
@@ -2404,7 +2404,7 @@ Depois disso, basta copiar o token e colá-lo na ferramenta que será utilizada 
 
 > Essa abordagem é útil para acelerar os testes durante a aula, principalmente quando for necessário gerar um novo token rapidamente.
 
-## 18.4 Usando o access token nas requisições
+**18.4 Usando o access token nas requisições**
 
 Todas as chamadas ao sistema que precisarem de autenticação deverão ser feitas com o campo `access` token. Para isso, copie o valor do campo `access` e cole no campo `Auth`, opção `Bearer`, do Thunder Client.
 
@@ -2420,7 +2420,7 @@ Você também pode testar o _endpoint_ abaixo para visualizar os dados do usuár
 
 Esse _endpoint_ devolve os dados do usuário associado ao token enviado.
 
-## 18.5 Renovando o token com refresh
+**18.5 Renovando o token com refresh**
 
 Quando o `access token` expira, você receberá uma resposta semelhante a esta:
 
@@ -2462,7 +2462,7 @@ Substitua o token antigo pelo novo token e continue utilizando os _endpoints_ pr
 
 Se o `refresh token` também estiver expirado ou inválido, aí sim será necessário fazer o _login_ novamente com e-mail e senha.
 
-## 18.6 Verificando um token
+**18.6 Verificando um token**
 
 Se você quiser apenas testar se um token ainda é válido, utilize o seguinte _endpoint_:
 
@@ -2478,7 +2478,7 @@ No `Body`, em `JSON`:
 
 Esse teste é útil para depuração e entendimento, mas não substitui o fluxo normal de autenticação da aplicação.
 
-## 18.7 Fazendo logout
+**18.7 Fazendo logout**
 
 No modelo atual deste projeto, o _logout_ não é feito por um _endpoint_ específico do backend.
 
@@ -2498,7 +2498,7 @@ Você deverá receber novamente a mensagem informando que as credenciais de aute
 
 > **IMPORTANTE:** este projeto não está invalidando tokens no servidor. Portanto, se alguém ainda possuir um token válido, conseguirá utilizá-lo até a expiração.
 
-## 18.8 Testando permissões com usuários diferentes
+**18.8 Testando permissões com usuários diferentes**
 
 Depois de autenticar um usuário comum, tente realizar uma operação de escrita em um recurso da API.
 
@@ -2521,7 +2521,7 @@ O objetivo desse teste é observar que:
 -   o JWT resolve a **autenticação**, ou seja, identifica quem é o usuário;
 -   as permissões do Django e do DRF continuam responsáveis pela **autorização**, ou seja, definem o que esse usuário pode fazer.
 
-## 18.9 Roteiro resumido da aula
+**18.9 Roteiro resumido da aula**
 
 Ao final desta aula, você deve ser capaz de executar a seguinte sequência:
 
