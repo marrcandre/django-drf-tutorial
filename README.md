@@ -3305,6 +3305,7 @@ Esse erro acontece porque o DRF, por padrão, n**ão sabe como salvar campos ani
 Atualize o `CompraCreateUpdateSerializer` no `serializers/compra`.py para incluir o método:
 
 ```python
+from django.db import transaction
 ...
 
 class CompraCreateUpdateSerializer(ModelSerializer):
@@ -3314,6 +3315,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
         model = Compra
         fields = ('usuario', 'itens')
 
+    @transaction.atomic
     def create(self, validated_data):
         itens_data = validated_data.pop('itens')
         compra = Compra.objects.create(**validated_data)
@@ -3326,15 +3328,17 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 **Explicação**
 
-> O método `create` é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
+> `create`: é chamado quando uma nova compra é criada. Ele recebe os dados validados e cria a compra e os itens da compra.
 
-> O método `create` recebe um parâmetro `validated_data`, que são os dados validados que estão sendo criados.
+> `create`: recebe um parâmetro `validated_data`, que são os dados validados que estão sendo criados.
 
-> `validade_data.pop('itens')` remove os itens da compra dos dados validados. Isso é necessário, pois os itens da compra são criados separadamente.
+> `validade_data.pop('itens')`: remove os itens da compra dos dados validados. Isso é necessário, pois os itens da compra são criados separadamente.
 
-> O comando `Compra.objects.create(**validated_data)` cria a compra com os dados validados, exceto os itens da compra.
+> `Compra.objects.create(**validated_data)`: cria a compra com os dados validados, exceto os itens da compra.
 
-> O comando `ItensCompra.objects.create(compra=compra, **item_data)` cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
+> `ItensCompra.objects.create(compra=compra, **item_data)`: cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
+
+> O decorador `@transaction.atomic` garante que todas as operações de criação da compra e dos itens da compra sejam feitas em uma única transação. Se alguma operação falhar, todas as operações serão revertidas.
 
 **Conclusão**
 
@@ -3386,9 +3390,10 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 - No arquivo `serializers/compra.py`, altere o `CompraCreateUpdateSerializer` adicionando o seguinte:
 
 ```python
+    @transaction.atomic
     def update(self, compra, validated_data):
-        itens_data = validated_data.pop('itens', [])
-        if itens_data:
+        itens_data = validated_data.pop('itens', None)
+        if itens_data is not None:
             compra.itens.all().delete()
             for item_data in itens_data:
                 ItensCompra.objects.create(compra=compra, **item_data)
@@ -3397,10 +3402,15 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 **Explicando o método `update`**
 
-- `validated_data.pop('itens', [])`: remove os dados dos itens para tratar separadamente;
-- `compra.itens.all().delete()`: remove todos os itens antigos da compra;
-- `ItensCompra.objects.create(...)`: recria cada item com os novos dados;
-- `super().update(...)`: atualiza os demais campos da compra.
+> `validated_data.pop('itens', None)`: remove os dados dos itens para tratar separadamente;
+
+> `compra.itens.all().delete()`: remove todos os itens antigos da compra;
+
+> `ItensCompra.objects.create(...)`: recria cada item com os novos dados;
+
+> `super().update(...)`: atualiza os demais campos da compra.
+
+> `@transaction.atomic`: garante que todas as operações sejam feitas em uma única transação. Se alguma operação falhar, todas as operações serão revertidas.
 
 **Testando o endpoint no `ThunderClient`**
 
@@ -3760,6 +3770,7 @@ class ItensCompra(models.Model):
 
 ```python
 ...
+    @transaction.atomic
     def create(self, validated_data):
         itens = validated_data.pop('itens')
         compra = Compra.objects.create(**validated_data)
@@ -3833,6 +3844,7 @@ No mesmo serializer (`CompraCreateUpdateSerializer`), ajuste o método `update`:
 
 ```python
 ...
+    @transaction.atomic
     def update(self, compra, validated_data):
         itens = validated_data.pop('itens')
         if itens:
@@ -4918,6 +4930,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
         model = Compra
         fields = ('usuario', 'itens')
 
+    @transaction.atomic
     def create(self, validated_data):
         itens = validated_data.pop('itens')
         usuario = validated_data['usuario']
@@ -4939,6 +4952,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
         return compra
 
+    @transaction.atomic
     def update(self, compra, validated_data):
         itens = validated_data.pop('itens', [])
         if itens:
