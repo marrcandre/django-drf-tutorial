@@ -3232,10 +3232,12 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = Compra
-        fields = ('usuario', 'itens')
+        fields = ('id', 'usuario', 'itens')
 ```
 
 > O parâmetro `many=True` indica que o campo `itens` é uma lista de itens de compra.
+
+> O campo `id` é gerado pelo servidor e é somente leitura. Ele não deve ser enviado no corpo da requisição, mas será retornado na resposta para identificar a compra criada.
 
 - Inclua também o serializer no arquivo `__init__.py` dos `serializers`:
 
@@ -3313,7 +3315,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = Compra
-        fields = ('usuario', 'itens')
+        fields = ('id', 'usuario', 'itens')
 
     @transaction.atomic
     def create(self, validated_data):
@@ -3343,6 +3345,23 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 **Conclusão**
 
 - Teste o endpoint no `ThunderClient.
+- Após implementar o método `create`, uma criação bem-sucedida retorna o `id` gerado pelo servidor:
+
+```json
+{
+    "id": 1,
+    "usuario": 1,
+    "itens": [
+        {
+            "livro": 1,
+            "quantidade": 1
+        }
+    ]
+}
+```
+
+> O `id` é somente leitura e identifica a compra criada. Guarde esse valor: ele será utilizado na seção 28 para atualizar esta mesma compra.
+
 - Faça o _commit_ com a mensagem:
 
 ```
@@ -3357,7 +3376,7 @@ feat: criação de um endpoint para criar novas compras
 **Entendendo o problema**
 
 
-- Vamos tentar alterar uma compra existente no endpoint `compras/1/` (ou aquela que você preferir) no `ThunderClient`, utilizando o método `PUT`:
+- Utilize no endpoint `compras/{id}/` o `id` retornado pelo `POST` da seção 27. Substitua `{id}` pelo valor retornado na criação; não escolha um ID arbitrário. No `ThunderClient`, utilize o método `PUT`:
 
 ```json
 {
@@ -3373,13 +3392,13 @@ feat: criação de um endpoint para criar novas compras
 
 Você receberá o seguinte erro:
 
-AssertionError at `/api/compras/1/`
+AssertionError at `/api/compras/{id}/`
 The `.update()` method does not support writable nested fields by default.
 Write an explicit `.update()` method for serializer `core.serializers.compra.CompraCreateUpdateSerializer`, or set `read_only=True` on nested serializer fields.
 
 Traduzindo:
 
-Erro de afirmação em `/api/compras/1/`
+Erro de afirmação em `/api/compras/{id}/`
 O método `.update()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.update()` explícito para o serializer `core.serializers.compra.CompraCreateUpdateSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
 
@@ -3523,7 +3542,7 @@ from rest_framework.serializers import (
 )
 ```
 
-Agora, no `CompraCreateUpdateSerializer`, substitua o campo usuario para que ele seja preenchido automaticamente com o usuário autenticado:
+O campo `id` já está disponível desde a seção 27 para identificar a compra criada. Nesta seção ele é mantido; a novidade é substituir o campo `usuario` para que ele seja preenchido automaticamente com o usuário autenticado:
 
 ```python
 class CompraCreateUpdateSerializer(ModelSerializer):

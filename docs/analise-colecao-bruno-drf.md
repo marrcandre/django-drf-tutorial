@@ -388,15 +388,118 @@ substituindo a coleção didática.
 3. Validar o piloto com um aluno fictício (banco zerado → criar dados → rodar pastas).
 4. Adicionar a seção do README do template explicando o uso da coleção (**com autorização**).
 5. Expandir para as pastas 06–16 após o piloto aprovado (autenticação entra na 07, seção 16).
+   **06 implementada nesta etapa** (seção 14); **07 pronta** (folha à parte já criada).
 6. Fase 2 (opcional): catálogo em `livraria-marrcandre-back`, somente se necessário.
 
 ---
 
-## Conclusão
+## 14. Pasta 06 — Upload de imagens (seção 12, implementada)
 
-> A coleção Bruno didática fica em **`template_django_pdm/http/drf/`**, versionada junto ao ambiente
-> do aluno, desenhada **por estágios do tutorial** e validada por **asserts monotônicos sobre o
-> comportamento real do template** (GET 200; escrita anônima 401 até a seção 16). Sem JWT no início
-> da coleção: a autenticação entra na pasta da seção 16. O `livraria-marrcandre-back` permanece como
-> referência do professor e não alimenta a coleção didática. Nenhum arquivo do template/tutorial é
-> alterado para acomodar a coleção; esta etapa produz o **piloto v1** (pastas 01–05).
+**Status desta etapa:** pasta criada, validada e idempotente; artefatos de teste removidos do banco.
+
+### Estrutura
+
+```
+http/drf/06 - Upload de imagens/
+├── folder.bru                        # seq 6, auth inherit
+├── 01 - login tecnico superuser.bru  # POST /api/token/ → access_token_upload (auth none)
+├── 02 - listar imagens.bru           # GET /api/media/images/ → 200, results definido
+├── 03 - enviar imagem.bru            # POST /api/media/images/ multipart → 201, image_key_capa/image_url_capa
+├── 04 - criar livro com capa.bru     # POST /api/livros/ c/ capa_attachment_key → 201, livro_capa_id
+└── 05 - consultar livro com capa.bru # GET /api/livros/{id}/ → 200 e capa.url == image_url_capa
+```
+
+### Autenticação técnica isolada (decisão desta etapa)
+
+A seção 12 do tutorial apresenta o **upload sem autenticação**. O backend real (template e
+referência) exige autenticação para escritas. Para **validar o fluxo real** mantendo a sequência
+pedagógica (06 antes de 07, sem JWT formal antes da seção 16), a pasta 06 faz **login técnico**
+do superuser `a@a.com`:
+
+- `01 - login tecnico superuser.bru`: `POST /api/token/` com `auth: none`; salva `access_token_upload`
+  (variável **própria da pasta**, NÃO `access_token` da coleção — que pertence à convenção pedagógica
+  da pasta 07). Sem `refresh` (desnecessário). Não altera o bearer global da coleção.
+- Nas requests 02–05, o token é enviado explicitamente por request (`auth: bearer` + `access_token_upload`).
+- Os `docs{}` registram essa divergência e que o token é **mecanismo técnico de validação**, não
+  introdução pedagógica de JWT na seção 12 (o ensino formal fica na seção 16 / pasta 07).
+
+### Fluxo validado (ponta a ponta)
+
+```
+upload (03) → attachment_key → criação do livro c/ capa (04) → leitura da capa (05)
+```
+
+- `image_key_capa`/`image_url_capa` e `livro_capa_id` são variáveis próprias via Save-as-variable;
+  sem IDs fixos; nome do livro usa `{{$guid}}`. Categoria, editora e autores são opcionais no
+  backend, portanto a pasta não depende de IDs nem de dados de pastas anteriores.
+- **Validação da resposta:** o `LivroRetrieveSerializer` não expõe `attachment_key` no objeto `capa`
+  (só `url`, `description`, `uploaded_on`). A correspondência é provada por **`capa.url == url do upload`**
+  — o equivalente observável de `capa.attachment_key` nesta resposta —, não por um campo ausente.
+
+### Comportamento real registrado (divergência tutorial × backend)
+
+| Ação | anônimo | comprador | admin | superuser |
+| --- | --- | --- | --- | --- |
+| `POST /api/media/images/` | 401 | 403 | 403 | 201 |
+
+Assim, o tutorial continua apresentando upload sem autenticação na seção 12, enquanto a pasta usa
+o token técnico apenas para validar a API real. JWT continua sendo introduzido pedagogicamente na
+seção 16 / pasta 07.
+
+### Idempotência e dependências
+
+- Cada execução cria **sua própria imagem** e **seu próprio livro** (`{{$guid}}`); sem `results[0]`,
+  sem imagens/livros pré-existentes, sem IDs fixos.
+- **Sem dependência com a pasta 07**: a pasta é autossuficiente para o fluxo de upload (login técnico
+  + `image_key_capa` próprios), sem reutilizar `access_token` nem `image_key` da pasta 07 e sem mover
+  qualquer pasta.
+
+### Validação
+
+CLI `@usebruno/cli` 4.0.0 contra o backend real (`livraria-marrcandre-back`, porta 8011): **14/14
+asserts** na execução e **14/14** na reexecução (idempotência). Banco de referência restaurado ao fim
+(os dois livros e as duas imagens de teste, incluindo seus arquivos, foram removidos).
+
+---
+
+## 15. Pasta 08 — Compras CRUD (seções 20–28, implementada)
+
+**Status desta etapa:** pasta criada, validada e idempotente; ambiente de teste descartável limpo após validação.
+
+### Estrutura
+
+```
+http/drf/08 - Compras CRUD/
+├── folder.bru                           # seq 8, auth inherit
+├── 01 - listar compras.bru              # GET /api/compras/ → 200, results definido
+├── 02 - criar livro para compra.bru     # POST /api/livros/ → 201, livro_compra_id e titulo_livro_compra
+├── 03 - criar compra com itens aninhados.bru # POST /api/compras/ → 201, compra_id (capturado via res.body.id)
+├── 04 - consultar compra criada.bru     # GET /api/compras/{id}/ → 200, compra_id e itens detalhados
+├── 05 - substituir itens da compra.bru  # PUT /api/compras/{id}/ → 200, substituição atômica de itens
+└── 06 - atualizar compra parcialmente.bru # PATCH /api/compras/{id}/ → 200, atualização parcial
+```
+
+### Ambiente e Backend de Referência
+
+- **Projeto de referência:** `livraria_3info3_2026_2`
+- **Commit de referência:** `686311b` (*feat: criação de um endpoint para atualizar compras*)
+- **Configuração de execução:** Git worktree descartável isolado, servido em `127.0.0.1:8012` com banco SQLite descartável fora dos repositórios principais.
+- **Correção pontual do serializer:** Inclusão de `'id'` na tupla `fields` de `CompraCreateUpdateSerializer` (`fields = ('id', 'usuario', 'itens')`). Essa adaptação permite que o `POST` de criação de compras retorne o ID gerado pelo servidor, possibilitando a captura dinâmica `bru.setVar('compra_id', res.body.id)` sem IDs fixos ou heurísticas.
+
+### Validação HTTP e Comportamento dos Verbos
+
+A validação direta via HTTP no backend de referência confirmou:
+1. **`POST /api/compras/`**: Retorna `HTTP 201 Created` contendo `id`, `usuario` e `itens`.
+2. **`GET /api/compras/{id}/`**: Retorna `HTTP 200 OK` contendo os detalhes da compra, dados aninhados do livro e totais calculados.
+3. **`PUT /api/compras/{id}/`**: Retorna `HTTP 200 OK` realizando a substituição atômica dos itens via `update()` do serializer e devolvendo o `id`.
+4. **`PATCH /api/compras/{id}/`**:
+   - Sem envio de `itens`: Preserva os itens existentes e retorna `HTTP 200 OK`.
+   - Com envio de `itens`: Substitui os itens conforme a lógica da Seção 28 do tutorial e retorna `HTTP 200 OK` com `id`.
+
+### Métricas de Execução da Coleção (Bruno CLI 4.0.0)
+
+- **Coleção / Pastas validadas:** `07 - Autenticacao e permissoes` + `08 - Compras CRUD`.
+- **Total de requisições:** 27 requisições (21 da pasta 07 + 6 da pasta 08).
+- **Total de asserções:** 67 asserções (41 da pasta 07 + 26 da pasta 08).
+- **Taxa de sucesso:** 100% de aprovação (0 falhas).
+- **Confirmação de Reexecução e Idempotência:** Duas execuções completas acumuladas foram executadas via Bruno CLI 4.0.0. Ambas obtiveram **67/67 asserções aprovadas**, confirmando autonomia total e ausência de acoplamento a IDs fixos.
