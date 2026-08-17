@@ -1575,6 +1575,8 @@ Vamos instalar uma aplicação para gerenciar o upload de imagens e sua associa�
 
 Essa aplicação não será instalada através do comando `pdm add <pacote>`, pois é uma aplicação que não está disponível no `PyPI`. Ela será instalada manualmente, baixando e descompactando um arquivo compactado.
 
+---
+
 **Baixando o pacote**
 
 Baixe e descompacte o arquivo com a `app` pronta para ser utilizada.
@@ -1606,6 +1608,7 @@ Remove-Item -Force uploader.zip
 ```
 </details>
 
+---
 
 O projeto ficará com uma estrutura parecida com essa:
 
@@ -1822,6 +1825,8 @@ MEDIA_URL = 'http://191.52.55.44:8000/media/'
 DATABASES = {'default': {'NAME': 'db.sqlite3', 'USER': '', 'PASSWORD': '', 'HOST': '', 'PORT': '', 'CONN_MAX_AGE': 600, 'CONN_HEALTH_CHECKS': True, 'DISABLE_SERVER_SIDE_CURSORS': False, 'ENGINE': 'django.db.backends.sqlite3'}}
 ```
 
+---
+
 **Arquivo exemplo:**
 
 -   Baixe o arquivo `core.json`:
@@ -1842,6 +1847,8 @@ Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/ma
 ```
 
 </details>
+
+---
 
 **Carga dos dados**
 
