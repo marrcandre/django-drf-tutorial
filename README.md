@@ -3760,6 +3760,13 @@ Podemos usar as funções de validação para formatar os dados antes de salvar.
 feat: validando e formatando dados antes de salvar
 ```
 
+**Dica: validando documentos com validadores externos**
+
+Para validar documentos como CPF e CNPJ, podemos utilizar bibliotecas externas. Por exemplo, a biblioteca `validate-docbr` permite validar CPFs e CNPJs de forma simples.
+
+Acesse o site da biblioteca: [https://pypi.org/project/validate-docbr/](https://pypi.org/project/validate-docbr/)
+
+
 ---
 
 
