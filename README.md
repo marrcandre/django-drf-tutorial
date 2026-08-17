@@ -1579,13 +1579,19 @@ Essa aplicação não será instalada através do comando `pdm add <pacote>`, po
 
 Baixe e descompacte o arquivo com a `app` pronta para ser utilizada.
 
-- No `Linux`, execute o seguinte comando no terminal:
+<details>
+<summary><strong>Linux</strong></summary>
+
+No `Linux`, execute o seguinte comando no terminal:
 
 ```shell
 wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm -v uploader.zip
 ```
+</details>
 
-- No `Windows`, execute os seguintes comandos no `PowerShell`:
+<details>
+<summary><strong>Windows</strong></summary>
+No `Windows`, execute os seguintes comandos no `PowerShell`:
 
 ```shell
 Invoke-WebRequest -Uri https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -OutFile uploader.zip
@@ -1598,6 +1604,8 @@ Expand-Archive -Path uploader.zip -DestinationPath .
 ```shell
 Remove-Item -Force uploader.zip
 ```
+</details>
+
 
 O projeto ficará com uma estrutura parecida com essa:
 
@@ -1818,17 +1826,22 @@ DATABASES = {'default': {'NAME': 'db.sqlite3', 'USER': '', 'PASSWORD': '', 'HOST
 
 -   Baixe o arquivo `core.json`:
 
-**No Linux:**
+<details>
+<summary><strong>Linux</strong></summary>
 
 ```shell
 wget https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/refs/heads/main/scripts/core.json
 ```
+</details>
 
-**No Windows:**
+<details>
+<summary><strong>Windows</strong></summary>
 
 ```shell
 Invoke-WebRequest -Uri "https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json" -OutFile core.json
 ```
+
+</details>
 
 **Carga dos dados**
 
@@ -3766,6 +3779,9 @@ Para validar documentos como CPF e CNPJ, podemos utilizar bibliotecas externas. 
 
 Acesse o site da biblioteca: [https://pypi.org/project/validate-docbr/](https://pypi.org/project/validate-docbr/)
 
+Temos também a `django-localflavor`, que possui validadores para diversos tipos de dados brasileiros, incluindo CPF e CNPJ.
+
+Acesse o site da biblioteca: [https://pypi.org/project/django-localflavor/](https://pypi.org/project/django-localflavor/)
 
 ---
 
