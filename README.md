@@ -3167,6 +3167,8 @@ Para finalizar, vamos incluir o total da compra no `Admin` do Django.
 -   No arquivo `admin.py` do app `core`, modifique o código da model `Compra`:
 
 ```python
+from django.contrib.admin import ModelAdmin, StackedInline, display, register
+...
 @register(Compra)
 class CompraAdmin(ModelAdmin):
     list_display = ('usuario', 'status', 'total_formatado')  # mostra na listagem
@@ -3175,7 +3177,7 @@ class CompraAdmin(ModelAdmin):
     inlines = [ItensCompraInline]
     readonly_fields = ("total_formatado",)  # mostra dentro do formulário
 
-    @admin.display(description="Total")
+    @display(description="Total")
     def total_formatado(self, obj):
         """Exibe R$ 123,45 em vez de 123.45."""
         return f"R$ {obj.total:.2f}"
@@ -3187,7 +3189,7 @@ class CompraAdmin(ModelAdmin):
 
 > O parâmetro `readonly_fields` indica que o campo `total_formatado` é apenas para leitura. Isso significa que ele não será editável no formulário de edição da compra.
 
-> O parâmetro `@admin.display(description="Total")` indica que o campo `total_formatado` será exibido com o título "Total" na listagem do `Admin`.
+> O parâmetro `@display(description="Total")` indica que o campo `total_formatado` será exibido com o título "Total" na listagem do `Admin`.
 
 > O parâmetro `list_display` indica quais campos serão exibidos na listagem do `Admin`. O campo `total_formatado` será exibido na listagem, com o título "Total".
 
