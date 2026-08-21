@@ -3397,8 +3397,11 @@ feat: criação de um endpoint para criar novas compras
 
 **Entendendo o problema**
 
+O recurso de **Compra** possui um relacionamento aninhado com **ItensCompra**. O `CompraCreateUpdateSerializer` recebe a lista de `itens` através de um serializer aninhado configurado com `many=True`.
 
-- Utilize no endpoint `compras/{id}/` o `id` retornado pelo `POST` da seção 27. Substitua `{id}` pelo valor retornado na criação; não escolha um ID arbitrário. No `ThunderClient`, utilize o método `PUT`:
+Para observar o comportamento padrão do Django REST Framework ao tentar atualizar um recurso com campos aninhados, utilize no endpoint `compras/{id}/` o `id` retornado pelo `POST` da seção 27 (substitua `{id}` pelo valor retornado na criação).
+
+No `ThunderClient`, tente realizar uma requisição utilizando o método `PUT`:
 
 ```json
 {
@@ -3412,23 +3415,27 @@ feat: criação de um endpoint para criar novas compras
 }
 ```
 
-Você receberá o seguinte erro:
+Ao enviar a requisição, o DRF retornará o seguinte erro:
 
+```
 AssertionError at `/api/compras/{id}/`
 The `.update()` method does not support writable nested fields by default.
 Write an explicit `.update()` method for serializer `core.serializers.compra.CompraCreateUpdateSerializer`, or set `read_only=True` on nested serializer fields.
+```
 
 Traduzindo:
 
+```
 Erro de afirmação em `/api/compras/{id}/`
 O método `.update()` não suporta campos aninhados graváveis por padrão.
 Escreva um método `.update()` explícito para o serializer `core.serializers.compra.CompraCreateUpdateSerializer`, ou defina `read_only=True` nos campos do serializer aninhado.
+```
 
-> Esse erro acontece porque os itens da compra vêm de uma tabela relacionada (`ItensCompra`) e o DRF, por padrão, **não sabe como atualizar campos aninhados**. Precisamos, portanto, sobrescrever o método update() do serializer.
+Esse erro ocorre porque os itens da compra pertencem a uma tabela relacionada (`ItensCompra`) e o Django REST Framework não sabe, por padrão, como atualizar automaticamente dados de relacionamentos aninhados. Por esse motivo, precisamos definir explicitamente o comportamento de atualização no serializer.
 
 **Sobrescrevendo o método `update`**
 
-- No arquivo `serializers/compra.py`, altere o `CompraCreateUpdateSerializer` adicionando o seguinte:
+No arquivo `serializers/compra.py`, altere o `CompraCreateUpdateSerializer` adicionando a implementação explícita do método `update()`:
 
 ```python
     @transaction.atomic
@@ -3443,23 +3450,71 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 
 **Explicando o método `update`**
 
-> `validated_data.pop('itens', None)`: remove os dados dos itens para tratar separadamente;
+- `validated_data.pop('itens', None)`: remove a chave `'itens'` do dicionário `validated_data`. Essa etapa é fundamental para retirar os dados dos itens do fluxo padrão e tratá-los separadamente, evitando que o método `super().update()` tente processar campos aninhados automaticamente.
+- `compra.itens.all().delete()`: remove todos os itens associados atualmente a essa compra no banco de dados.
+- O laço `for item in itens`: percorre a lista dos novos itens enviados no corpo da requisição.
+- `ItensCompra.objects.create(compra=compra, **item)`: cria cada um dos novos itens associando-os à compra em questão.
+- `super().update(compra, validated_data)`: executa a atualização padrão da classe mãe para atualizar os demais campos próprios do modelo `Compra` (como o `usuario`).
+- `@transaction.atomic`: garante que todas as operações no banco de dados sejam executadas dentro de uma única transação atômica. Se a criação de algum item falhar, toda a operação é revertida.
 
-> `compra.itens.all().delete()`: remove todos os itens antigos da compra;
+Com essa implementação, deixamos claro para o DRF como tratar o relacionamento aninhado, definindo explicitamente o comportamento desejado para a atualização de compras.
 
-> `ItensCompra.objects.create(...)`: recria cada item com os novos dados;
+**Configurando a CompraViewSet**
 
-> `super().update(...)`: atualiza os demais campos da compra.
+No arquivo `views/compra.py`, ajuste a `CompraViewSet`:
 
-> `@transaction.atomic`: garante que todas as operações sejam feitas em uma única transação. Se alguma operação falhar, todas as operações serão revertidas.
+```python
+class CompraViewSet(ModelViewSet):
+    queryset = Compra.objects.order_by("-id")
+    serializer_class = CompraSerializer
+    http_method_names = ['get', 'post', 'put', 'delete']
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return CompraListSerializer
+        if self.action in {'create', 'update'}:
+            return CompraCreateUpdateSerializer
+        return CompraSerializer
+```
+
+Nesta configuração:
+- `http_method_names = ['get', 'post', 'put', 'delete']`: restringe os métodos HTTP aceitos pela ViewSet para indicar que a API não disponibilizará o método `PATCH`.
+- No método `get_serializer_class()`, a ação `partial_update` foi removida porque ela corresponde à requisição `PATCH`, que não estará disponível nesta ViewSet.
 
 **Testando o endpoint no `ThunderClient`**
 
-  - use o método `PUT`, para atualizar a compra de forma completa;
-  - use o método `PATCH`, para atualizar a compra de forma parcial.
-    - Experimente mudar apenas o usuário;
-    - Experimente mudar apenas a quantidade de um item da compra;
-    - Experimente mudar o livro de um item da compra;
+Agora que o método `update()` do serializer e a ViewSet estão configurados:
+
+1. No `ThunderClient`, selecione o método **PUT**.
+2. Informe a URL `http://127.0.0.1:8000/api/compras/{id}/` (substituindo `{id}` pelo ID retornado na criação da aula 27).
+3. Envie a nova representação completa da compra no corpo da requisição:
+
+```json
+{
+    "usuario": 2,
+    "itens": [
+        {
+            "livro": 2,
+            "quantidade": 2
+        }
+    ]
+}
+```
+
+O corpo da requisição representa a nova composição completa da compra. A API responderá com o status `200 OK` e o objeto atualizado.
+
+> Como nossa atualização substitui a composição completa dos itens da compra, utilizaremos `PUT` para essa operação. Por isso, o método `PATCH` não será disponibilizado para o recurso `Compra`.
+
+**Resultado esperado**
+
+Ao final desta aula, a regra dos métodos HTTP para o recurso **Compra** fica estabelecida assim:
+
+- **POST** → cria uma compra;
+- **GET** → consulta compras;
+- **PUT** → atualiza a compra e seus itens;
+- **DELETE** → exclui uma compra.
+
+*(Nota: O método PATCH não está disponível para este recurso).*
 
 **Finalize com um commit**
 
@@ -3530,7 +3585,7 @@ class CompraViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'list':
             return CompraListSerializer
-        if self.action in ('create', 'update', 'partial_update'):
+        if self.action in ('create', 'update'):
             return CompraCreateUpdateSerializer
         return CompraSerializer
 ...
