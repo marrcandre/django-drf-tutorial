@@ -3341,10 +3341,10 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
     @transaction.atomic
     def create(self, validated_data):
-        itens_data = validated_data.pop('itens')
+        itens = validated_data.pop('itens')
         compra = Compra.objects.create(**validated_data)
-        for item_data in itens_data:
-            ItensCompra.objects.create(compra=compra, **item_data)
+        for item in itens:
+            ItensCompra.objects.create(compra=compra, **item)
         compra.save()
         return compra
 
@@ -3360,7 +3360,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 > `Compra.objects.create(**validated_data)`: cria a compra com os dados validados, exceto os itens da compra.
 
-> `ItensCompra.objects.create(compra=compra, **item_data)`: cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
+> `ItensCompra.objects.create(compra=compra, **item)`: cria novos itens com os dados validados. Ele liga os itens da compra à compra recém criada, através do parâmetro `compra=compra`.
 
 > O decorador `@transaction.atomic` garante que todas as operações de criação da compra e dos itens da compra sejam feitas em uma única transação. Se alguma operação falhar, todas as operações serão revertidas.
 
@@ -3433,11 +3433,11 @@ Escreva um método `.update()` explícito para o serializer `core.serializers.co
 ```python
     @transaction.atomic
     def update(self, compra, validated_data):
-        itens_data = validated_data.pop('itens', None)
-        if itens_data is not None:
+        itens = validated_data.pop('itens', None)
+        if itens is not None:
             compra.itens.all().delete()
-            for item_data in itens_data:
-                ItensCompra.objects.create(compra=compra, **item_data)
+            for item in itens:
+                ItensCompra.objects.create(compra=compra, **item)
         return super().update(compra, validated_data)
 ```
 
