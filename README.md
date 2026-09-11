@@ -2286,7 +2286,7 @@ REST_FRAMEWORK = {
 
 -   Feitas essas alterações, coloque o servidor do Django novamente em execução.
 
-## Endpoints utilizados nesta aula
+**Endpoints utilizados nesta aula**
 
 Nesta aula, utilizaremos os seguintes _endpoints_:
 
@@ -5210,7 +5210,7 @@ Atualizamos os registros existentes e testamos consultas com base no total.
 
 O projeto **Garagem** é um projeto de uma garagem de carros. O objetivo é praticar aquilo que foi visto nesse tutorial, no projeto da **Livraria**.
 
-## E1. Crie o projeto Garagem
+**E1. Crie o projeto Garagem**
 
 Seguindo aquilo que você já aprendeu na criação do projeto da `Livraria`, crie um **novo projeto**, a partir do [template](https://github.com/marrcandre/template_django_pdm).
 
