@@ -1581,15 +1581,11 @@ Essa aplicação não será instalada através do comando `pdm add <pacote>`, po
 
 Baixe e descompacte o arquivo com a `app` pronta para ser utilizada.
 
-<details>
-<summary><strong>Linux</strong></summary>
-
 No `Linux`, execute o seguinte comando no terminal:
 
 ```shell
-wget https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -O uploader.zip && unzip uploader.zip && rm -v uploader.zip
+curl -Lk https://github.com/marrcandre/django-drf-tutorial/raw/main/apps/uploader.zip -o uploader.zip && unzip uploader.zip && rm -v uploader.zip
 ```
-</details>
 
 <details>
 <summary><strong>Windows</strong></summary>
@@ -1831,13 +1827,11 @@ DATABASES = {'default': {'NAME': 'db.sqlite3', 'USER': '', 'PASSWORD': '', 'HOST
 
 -   Baixe o arquivo `core.json`:
 
-<details>
-<summary><strong>Linux</strong></summary>
+**Linux**
 
 ```shell
-wget https://raw.githubusercontent.com/marrcandre/django-drf-tutorial/refs/heads/main/scripts/core.json
+curl -Lk https://github.com/marrcandre/django-drf-tutorial/raw/main/scripts/core.json -o core.json
 ```
-</details>
 
 <details>
 <summary><strong>Windows</strong></summary>
@@ -5377,7 +5371,7 @@ pdm -V
 -   **Se não estiver instalado**, instale a versão mais recente:
 
 ```shell
-curl -sSL https://pdm-project.org/install.sh | bash
+curl -Lk https://pdm-project.org/install.sh | bash
 ```
 
 - Após a instalação, **feche o terminal** (`Ctrl + D`) e **abra um novo terminal** (`Ctrl + Alt + T`).
