@@ -4209,9 +4209,9 @@ Nosso primeiro exemplo será uma ação para alterar o **preço de um livro espe
 
 **Criando um serializer específico para a ação**
 
-É uma boa prática usar um serializer específico na `action` `ajustar_preco`. Isso traria várias vantagens, como validação mais robusta dos dados de entrada e organização do código. Ao usar um serializer dedicado, você garante que a lógica de validação e conversão dos dados está separada da view, seguindo o princípio de responsabilidade única e tornando o código mais limpo e reutilizável.
+É uma boa prática usar um serializer específico na `action` `alterar_preco`. Isso traria várias vantagens, como validação mais robusta dos dados de entrada e organização do código. Ao usar um serializer dedicado, você garante que a lógica de validação e conversão dos dados está separada da view, seguindo o princípio de responsabilidade única e tornando o código mais limpo e reutilizável.
 
-Vamos incluir um novo serializer chamado `AjustarPrecoSerializer` no arquivo `serializers/livro.py`:
+Vamos incluir um novo serializer chamado `LivroAlterarPrecoSerializer` no arquivo `serializers/livro.py`:
 
 ```python
 from rest_framework.serializers import (
@@ -4501,6 +4501,7 @@ class CompraViewSet(ModelViewSet):
         summary="Finalizar compra",
     )
     @action(detail=True, methods=["post"])
+    @transaction.atomic
     def finalizar(self, request, pk=None):
         compra = self.get_object()
 
@@ -4511,34 +4512,32 @@ class CompraViewSet(ModelViewSet):
                 data={'status': 'Compra já finalizada'}
             )
 
-        # Garante integridade transacional durante a finalização
-        with transaction.atomic():
-            for item in compra.itens.all():
+        for item in compra.itens.all():
 
-                # Valida se o estoque é suficiente para cada livro
-                if item.quantidade > item.livro.quantidade:
-                    return Response(
-                        status=status.HTTP_400_BAD_REQUEST,
-                        data={
-                            'status': 'Quantidade insuficiente',
-                            'livro': item.livro.titulo,
-                            'quantidade_disponivel': item.livro.quantidade,
-                        }
-                    )
+            # Valida se o estoque é suficiente para cada livro
+            if item.quantidade > item.livro.quantidade:
+                return Response(
+                    status=status.HTTP_400_BAD_REQUEST,
+                    data={
+                        'status': 'Quantidade insuficiente',
+                        'livro': item.livro.titulo,
+                        'quantidade_disponivel': item.livro.quantidade,
+                    }
+                )
 
-                # Atualiza o estoque dos livros
-                item.livro.quantidade -= item.quantidade
-                item.livro.save()
+            # Atualiza o estoque dos livros
+            item.livro.quantidade -= item.quantidade
+            item.livro.save()
 
-            # Finaliza a compra: atualiza status
-            compra.status = Compra.StatusCompra.FINALIZADO
-            compra.save()
+        # Finaliza a compra: atualiza status
+        compra.status = Compra.StatusCompra.FINALIZADO
+        compra.save()
 
         return Response(status=status.HTTP_200_OK, data={'status': 'Compra finalizada'})
 ```
 
 - O decorador `@action` gera o endpoint `api/compras/{id}/finalizar` para esse recurso.
-- O bloco `with transaction.atomic()` garante que toda operação será executada com consistência: se algo falhar, nada será salvo.
+- O decorador `@transaction.atomic` garante que toda operação será executada com consistência: se algo falhar, nada será salvo.
 - O método verifica o status, valida o estoque e realiza a atualização do status e estoque dos livros.
 
 ---
@@ -4556,7 +4555,6 @@ feat: finalizando a compra e atualizando a quantidade de itens em estoque
 ```
 
 ---
-
 
 # 35d.  Ações personalizadas: listando livros com mais de 10 cópias vendidas
 
@@ -4589,7 +4587,7 @@ class LivroMaisVendidoSerializer(ModelSerializer):
 
     class Meta:
         model = Livro
-        fields = ['id', 'titulo', 'total_vendidos']
+        fields = ('id', 'titulo', 'total_vendidos')
 ```
 
 **Implementando a Ação Personalizada**
@@ -4633,7 +4631,7 @@ class LivroViewSet(viewsets.ModelViewSet):
 
 > O `filter(total_vendidos__gt=10)` retorna apenas livros com mais de 10 unidades vendidas.
 
-> O método Q permite aplicar filtros complexos, garantindo que apenas itens de compras finalizadas sejam considerados.
+> O método `Q` permite aplicar filtros complexos, garantindo que apenas itens de compras finalizadas sejam considerados.
 
 > Os resultados são filtrados para retornar apenas livros que tenham mais de 10 unidades vendidas e já vêm ordenados do maior para o menor total.
 
@@ -4697,7 +4695,6 @@ feat: listando livros com mais de 10 cópias vendidas
 ```
 
 ---
-
 
 # 35e. Ações personalizadas: ajustando o estoque de um livro
 
@@ -5073,7 +5070,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
 
 ---
 
-**40. Inclusão do total da compra no modelo**
+# 40. Inclusão do total da compra no modelo
 
 Nesta etapa, vamos adicionar um campo *total* ao modelo `Compra`, responsável por armazenar o valor total de cada compra.
 Isso traz ganhos de **performance** e **facilidade** nas consultas, permitindo ordenar e filtrar diretamente pelo total no banco de dados.
@@ -5144,7 +5141,7 @@ class CompraCreateUpdateSerializer(ModelSerializer):
     ...
 ```
 
-**5. Executando migraçõe**s
+**5. Executando migrações**
 
 Após essas alterações, execute as migrações para atualizar o banco de dados:
 
