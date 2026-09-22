@@ -3173,7 +3173,6 @@ class CompraAdmin(ModelAdmin):
 
     @display(description="Total")
     def total_formatado(self, obj):
-        """Exibe R$ 123,45 em vez de 123.45."""
         return f"R$ {obj.total:.2f}"
 ```
 
