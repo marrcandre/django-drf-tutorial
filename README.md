@@ -4811,6 +4811,12 @@ Exemplo de resposta de erro:
 - Teste sem fornecer o campo quantidade para validar a mensagem de erro.
 - Verifique que o endpoint e as respostas aparecem documentados automaticamente no Swagger/Redoc da sua API.
 
+**Uso do POST e idempotência**
+
+Esta `action` utiliza `POST` porque não define diretamente o estoque final; ela aplica um ajuste sobre o valor atual, aumentando ou diminuindo a quantidade. Por exemplo, com estoque igual a 10, enviar `{"quantidade": 5}` resulta em 15. Se a mesma requisição for repetida, o estoque passará para 20.
+
+Portanto, essa operação não é **idempotente**: repetir a mesma requisição produz um novo efeito. Isso a diferencia da alteração de preço, que define um valor específico. Repetir `{"preco": 50}` mantém o preço em 50, tornando essa operação idempotente, onde utilizamos o método `PATCH`.
+
 **Commit**
 
 Faça o commit com a mensagem:
